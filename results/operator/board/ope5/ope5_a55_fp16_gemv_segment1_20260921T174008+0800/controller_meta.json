@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-05-A55-FP16-GEMV",
+  "formal_segment_ordinal": 1,
+  "segment_label": "ope5_a55_fp16_gemv_segment1_20260921T174008+0800",
+  "controller_before": "2026-09-21T17:40:08.557437910+08:00",
+  "controller_after": "2026-09-21T17:41:37.995532870+08:00",
+  "controller_elapsed_seconds": 88.574254813,
+  "ssh_exit_code": 0,
+  "additional_segment_scheduled": false,
+  "same_day_retest_scheduled": false,
+  "a76_rerun_performed": false,
+  "performance_smoke_performed": false,
+  "instability_retry_authorized": false,
+  "clock_domain_note": "PC controller timestamps bound the process; board CLOCK_MONOTONIC_RAW supplies durations. Board and controller wall clocks are not subtracted."
+}

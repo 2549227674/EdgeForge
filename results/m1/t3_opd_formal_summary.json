@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "milestone": "M1",
+  "stage": "T3_OPD_formal_terminal_summary",
+  "status": "PASS",
+  "source": {
+    "cloud_receipt": "/root/autodl-tmp/edgeforge-m1/workspace/results/m1/t3_opd_formal_r1_receipt.json",
+    "cloud_receipt_sha256": "697b8b04284e71fab3bdbd90609f6458458de14ced3c6d11d6b7f603577e165d",
+    "formal_prompt_pool_sha256": "e005b5f0f7ed4e01a1f2317f4821787cfed7a48e7a6ec46c84547666f2e5d5ca",
+    "formal_prompt_manifest_sha256": "b299687af3fc3de9beb619800bff4ed6ee343be454ada46fe0b3af625a05397c"
+  },
+  "runtime": {
+    "started_at": "2026-08-13T00:08:26.293797+08:00",
+    "finished_at": "2026-08-13T05:46:48.686669+08:00",
+    "wall_seconds": 20302.392910112045,
+    "train_runtime_seconds": 20286.4796,
+    "peak_allocated_gib": 71.54798936843872,
+    "peak_reserved_gib": 92.240234375,
+    "error": null
+  },
+  "schedule": {
+    "unique_non_holdout_prompts": 3840,
+    "rollout_windows": 60,
+    "rollout_buffer_size": 64,
+    "optimizer_batch_size": 4,
+    "optimizer_steps": 960,
+    "warmup_steps": 29,
+    "consumed_slices": 3840,
+    "duplicate_or_skipped_slices": 0
+  },
+  "rollouts": {
+    "generated_tokens": 7316638,
+    "mean_generated_tokens_per_prompt": 1905.3744791666666,
+    "minimum_generated_tokens": 2,
+    "maximum_generated_tokens": 3072,
+    "configured_eos_stops": 2376,
+    "batch_cap_hits": 1464
+  },
+  "optimization": {
+    "train_loss": 0.12659115966628937,
+    "last_step_loss": 0.16710934042930603,
+    "final_global_step": 960
+  },
+  "adapter": {
+    "method": "rsLoRA",
+    "rank": 256,
+    "alpha": 16,
+    "base_precision": "bfloat16",
+    "cloud_path": "/root/autodl-tmp/edgeforge-m1/workspace/results/t3/c02_s_opd_formal_r1_state/final_adapter",
+    "adapter_model_bytes": 2488376152,
+    "adapter_model_sha256": "e1fddbeef0cfb338c89e7f37845545a490f7b062bb1290b757ed8a0c3c34326d",
+    "checkpoint_960_adapter_sha256": "e1fddbeef0cfb338c89e7f37845545a490f7b062bb1290b757ed8a0c3c34326d",
+    "adapter_config_sha256": "bc89fa51f25acee6c123a11dc29c1159ab0bb59f00097cf34b757a014f6a9b06",
+    "chat_template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5"
+  },
+  "artifactization": {
+    "merged_bf16_c02_s_o": "NOT_DONE",
+    "independent_reload_and_tensor_audit": "NOT_DONE",
+    "q4_k_m_carrier": "NOT_DONE",
+    "post_opd_quality_evaluation": "NOT_DONE"
+  },
+  "captured_from_cloud_at": "2026-09-14T16:10:24+08:00",
+  "note": "This compact repository record does not replace the full 3.8 MiB cloud receipt. It binds the terminal metrics and adapter identity needed for handoff without committing per-prompt rollout events."
+}

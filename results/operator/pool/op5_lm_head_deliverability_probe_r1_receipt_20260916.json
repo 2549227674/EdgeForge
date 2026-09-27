@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_LM_HEAD_DELIVERABILITY_PROBE_R1",
+  "target": "tied_cpu_lm_head_262144_vocab_softcap_30",
+  "timestamp": "2026-09-16T20:48:50+08:00",
+  "status": "LM_HEAD_DELIVERABILITY_HOLD_LIFTED_SELECTION_AUTHORIZED",
+  "hard_gates_pass": true,
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "result": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_lm_head_deliverability_probe_r1_20260916.json",
+  "gates": {
+    "owner_no_sha_direction_honored": "PASS",
+    "formal_c02_nf4_carrier_343_modules": "PASS",
+    "longest_of_11_frozen_prompts_real_hidden_finite": "PASS",
+    "static_r5_peak_plus_exact_mirror_below_7_5_gib": "PASS",
+    "live_longest_prompt_cache_plus_mirror_below_7_5_gib": "PASS",
+    "same_load_cpu_cuda_softcapped_greedy_token_exact": "PASS",
+    "softcap_elision_argmax_exact_cpu_and_cuda": "PASS",
+    "original_tied_cpu_weight_and_model_structure_unchanged": "PASS",
+    "telemetry_present": "PASS",
+    "thermal_hardware_throttle_absent": "PASS"
+  },
+  "summary": {
+    "request_id": "openssl-selfsigned-cert__oCvmg5c:2",
+    "rendered_prompt_tokens": 5142,
+    "mirror_bytes": 1342177280,
+    "projected_peak_plus_mirror_bytes": 6365310976,
+    "live_peak_allocated_bytes": 3727292416,
+    "gpu_budget_bytes": 8053063680,
+    "token_exact": true,
+    "softcap_elision_exact": true,
+    "cpu_p50_ms": 42.401599,
+    "cuda_p50_ms": 6.047262,
+    "cuda_vs_cpu_p50_speedup": 7.011701990090722,
+    "telemetry_samples": 29,
+    "thermal_or_hardware_throttle": false
+  },
+  "authorization_boundary": "A PASS authorizes a separate, freshly frozen lm_head A/B/C/D selection probe only. It does not authorize candidate implementation, performance claims, C02 reconnection, or deployment.",
+  "next_action": "Freeze and run a separate lm_head A/B/C/D selection probe."
+}

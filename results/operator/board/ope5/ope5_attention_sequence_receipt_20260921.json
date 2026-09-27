@@ -1,0 +1,674 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-01-DECODE-ATTENTION-SEQUENCE-FINAL",
+  "status": "VALID_PRIMARY_OPE5_01_SINGLE_SEGMENT_OWNER_WAIVER_PARTIAL_TIER_B_PROTOCOL_CASE_ID_DEFECT",
+  "recorded_at": "2026-09-21T18:27:57+08:00",
+  "primary_sequence_measurement_valid": true,
+  "strict_original_prereg_complete": false,
+  "owner_waiver": "OWNER_WAIVER_ACCEPT_PRIMARY_DROP_FULL_TIER_B",
+  "check_summary": {
+    "passed": 14,
+    "total": 14
+  },
+  "checks": {
+    "prereg_sha_locked": true,
+    "source_lock_identity": true,
+    "adjudication_narrow_no_rerun": true,
+    "capability_26_of_26": true,
+    "correctness_270336_of_270336": true,
+    "state_gates_8_of_8": true,
+    "primary_timing_39_of_39": true,
+    "swa_tier_b_3_of_3_numeric": true,
+    "full_tier_b_protocol_case_id_defect_exact": true,
+    "run_exit_and_restore_disclosed": true,
+    "governors_exactly_restored": true,
+    "telemetry_frequency_and_governor_gate": true,
+    "thermal_headroom_positive": true,
+    "npu_core0_only": true
+  },
+  "sources": {
+    "preregistration": {
+      "path": "configs/operator/board/ope5_attention_sequence_prereg.json",
+      "sha256": "a0cc5d0c516f1b9e12028debec03743c386980041e4a5c6e2502e3d110cff464"
+    },
+    "source_lock": {
+      "path": "results/operator/board/ope5/ope5_attention_sequence_source_lock_20260921.json",
+      "sha256": "fc2d1bd1c4d3a701fa081a80460c1dafb7738ed99afc835ac978edd4a043ae8b"
+    },
+    "postrun_adjudication": {
+      "path": "configs/operator/board/ope5_attention_sequence_tier_b_adjudication_20260921.json",
+      "sha256": "fc680a8d99867db11edb45182bbb11e028315f80528182577d7af9cf07533841"
+    },
+    "run_directory": "results/operator/board/ope5/ope5_attention_sequence_segment1_20260921T182337+0800"
+  },
+  "controller_window": {
+    "before": "2026-09-21T18:23:37.095589070+08:00",
+    "after": "2026-09-21T18:27:57.278515145+08:00"
+  },
+  "board_window": {
+    "start_monotonic_raw_ns": 20672996436419,
+    "end_monotonic_raw_ns": 20877998152975,
+    "duration_seconds": 205.001716556,
+    "runner_exit_code": 90,
+    "governor_restore_exit_code": 0,
+    "wall_clock_advisory_only": true
+  },
+  "correctness": {
+    "capability_cells": 26,
+    "logical_trials": 24,
+    "implementation_trials": 72,
+    "output_element_comparisons": 270336,
+    "mismatches": 0,
+    "state_gates": "8/8",
+    "by_variant": {
+      "cpu_scalar_sequence": {
+        "trials": 24,
+        "elements": 90112,
+        "mismatches": 0,
+        "max_abs": 0.0009765625,
+        "max_rel": 0.0909090909091,
+        "max_pre_round_row_sum_error": 3.37744801016e-08,
+        "max_fp16_row_sum_error": 0.000260710716248
+      },
+      "cpu_neon_sequence": {
+        "trials": 24,
+        "elements": 90112,
+        "mismatches": 0,
+        "max_abs": 0.0009765625,
+        "max_rel": 0.0909090909091,
+        "max_pre_round_row_sum_error": 3.28826996743e-08,
+        "max_fp16_row_sum_error": 0.000260710716248
+      },
+      "hybrid_rknpu_sequence": {
+        "trials": 24,
+        "elements": 90112,
+        "mismatches": 0,
+        "max_abs": 0.0009765625,
+        "max_rel": 0.0909090909091,
+        "max_pre_round_row_sum_error": 3.23640105826e-08,
+        "max_fp16_row_sum_error": 0.000260710716248
+      }
+    }
+  },
+  "primary_timing": {
+    "method": "sum(projected_invocations * case_p50_us) / 911148; forward equivalent multiplies by 42",
+    "variants": {
+      "cpu_scalar_sequence": {
+        "case_count": 13,
+        "sliding_p50_us": 4232.375,
+        "full_weighted_case_p50_us": 105505.37871501336,
+        "all_invocation_weighted_case_p50_us": 21111.208952502227,
+        "model_forward_equivalent_ms": 886.6707760050936,
+        "counterfactual_fraction_of_ope4": 1.9874884159839823,
+        "minimum_repetitions": 50,
+        "maximum_repetitions": 249,
+        "maximum_iqr_over_p50": 0.25659160357
+      },
+      "cpu_neon_sequence": {
+        "case_count": 13,
+        "sliding_p50_us": 2080.458,
+        "full_weighted_case_p50_us": 28755.623826541898,
+        "all_invocation_weighted_case_p50_us": 6526.318971090317,
+        "model_forward_equivalent_ms": 274.1053967857933,
+        "counterfactual_fraction_of_ope4": 0.6144121534319382,
+        "minimum_repetitions": 50,
+        "maximum_repetitions": 249,
+        "maximum_iqr_over_p50": 0.342188608694
+      },
+      "hybrid_rknpu_sequence": {
+        "case_count": 13,
+        "sliding_p50_us": 3747.917,
+        "full_weighted_case_p50_us": 37493.56883430902,
+        "all_invocation_weighted_case_p50_us": 9372.19230571817,
+        "model_forward_equivalent_ms": 393.63207684016317,
+        "counterfactual_fraction_of_ope4": 0.8823333463231756,
+        "minimum_repetitions": 50,
+        "maximum_repetitions": 249,
+        "maximum_iqr_over_p50": 0.282568270925
+      }
+    },
+    "comparisons": {
+      "hybrid_latency_ratio_vs_neon": 1.4360610241752263,
+      "hybrid_speedup_vs_neon": 0.6963492380655136,
+      "hybrid_speedup_vs_scalar": 2.2525368946625046,
+      "neon_speedup_vs_scalar": 3.2347804399415208,
+      "sliding_hybrid_latency_ratio_vs_neon": 1.801486499607298,
+      "full_hybrid_latency_ratio_vs_neon": 1.3038690817655594,
+      "classification": "NEGATIVE_HYBRID_SLOWER_THAN_NEON"
+    },
+    "case_rows": [
+      {
+        "case_id": "sliding_k512_d256",
+        "family": "sliding",
+        "K": 512,
+        "D": 256,
+        "projected_invocations": 759290,
+        "variant": "cpu_scalar_sequence",
+        "repetitions": 249,
+        "p50_us": 4232.375,
+        "iqr_over_p50": 0.0314246729082
+      },
+      {
+        "case_id": "sliding_k512_d256",
+        "family": "sliding",
+        "K": 512,
+        "D": 256,
+        "projected_invocations": 759290,
+        "variant": "cpu_neon_sequence",
+        "repetitions": 249,
+        "p50_us": 2080.458,
+        "iqr_over_p50": 0.058320812052
+      },
+      {
+        "case_id": "sliding_k512_d256",
+        "family": "sliding",
+        "K": 512,
+        "D": 256,
+        "projected_invocations": 759290,
+        "variant": "hybrid_rknpu_sequence",
+        "repetitions": 249,
+        "p50_us": 3747.917,
+        "iqr_over_p50": 0.0336184072379
+      },
+      {
+        "case_id": "full_k1264_d512",
+        "family": "full",
+        "K": 1264,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_scalar_sequence",
+        "repetitions": 58,
+        "p50_us": 28115.354,
+        "iqr_over_p50": 0.0254731987369
+      },
+      {
+        "case_id": "full_k1264_d512",
+        "family": "full",
+        "K": 1264,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_neon_sequence",
+        "repetitions": 58,
+        "p50_us": 8805.5625,
+        "iqr_over_p50": 0.0904092157656
+      },
+      {
+        "case_id": "full_k1264_d512",
+        "family": "full",
+        "K": 1264,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "hybrid_rknpu_sequence",
+        "repetitions": 58,
+        "p50_us": 14187.104,
+        "iqr_over_p50": 0.0874664589757
+      },
+      {
+        "case_id": "full_k1569_d512",
+        "family": "full",
+        "K": 1569,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_scalar_sequence",
+        "repetitions": 50,
+        "p50_us": 35358.4585,
+        "iqr_over_p50": 0.00250352401534
+      },
+      {
+        "case_id": "full_k1569_d512",
+        "family": "full",
+        "K": 1569,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_neon_sequence",
+        "repetitions": 50,
+        "p50_us": 11147.9375,
+        "iqr_over_p50": 0.00838536276329
+      },
+      {
+        "case_id": "full_k1569_d512",
+        "family": "full",
+        "K": 1569,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "hybrid_rknpu_sequence",
+        "repetitions": 50,
+        "p50_us": 18398.0415,
+        "iqr_over_p50": 0.00364623049687
+      },
+      {
+        "case_id": "full_k1843_d512",
+        "family": "full",
+        "K": 1843,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_scalar_sequence",
+        "repetitions": 50,
+        "p50_us": 41759.229,
+        "iqr_over_p50": 0.0844441476637
+      },
+      {
+        "case_id": "full_k1843_d512",
+        "family": "full",
+        "K": 1843,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_neon_sequence",
+        "repetitions": 50,
+        "p50_us": 13781.3955,
+        "iqr_over_p50": 0.298044454206
+      },
+      {
+        "case_id": "full_k1843_d512",
+        "family": "full",
+        "K": 1843,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "hybrid_rknpu_sequence",
+        "repetitions": 50,
+        "p50_us": 20627.9795,
+        "iqr_over_p50": 0.282568270925
+      },
+      {
+        "case_id": "full_k2153_d512",
+        "family": "full",
+        "K": 2153,
+        "D": 512,
+        "projected_invocations": 12649,
+        "variant": "cpu_scalar_sequence",
+        "repetitions": 50,
+        "p50_us": 53950.8955,
+        "iqr_over_p50": 0.112522256466
+      },
+      {
+        "case_id": "full_k2153_d512",
+        "family": "full",
+        "K": 2153,
+        "D": 512,
+        "projected_invocations": 12649,
+        "variant": "cpu_neon_sequence",
+        "repetitions": 50,
+        "p50_us": 20689.9585,
+        "iqr_over_p50": 0.211906309527
+      },
+      {
+        "case_id": "full_k2153_d512",
+        "family": "full",
+        "K": 2153,
+        "D": 512,
+        "projected_invocations": 12649,
+        "variant": "hybrid_rknpu_sequence",
+        "repetitions": 50,
+        "p50_us": 32231.5,
+        "iqr_over_p50": 0.261517242449
+      },
+      {
+        "case_id": "full_k2514_d512",
+        "family": "full",
+        "K": 2514,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_scalar_sequence",
+        "repetitions": 50,
+        "p50_us": 57134.7295,
+        "iqr_over_p50": 0.0416954848802
+      },
+      {
+        "case_id": "full_k2514_d512",
+        "family": "full",
+        "K": 2514,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_neon_sequence",
+        "repetitions": 50,
+        "p50_us": 18331.25,
+        "iqr_over_p50": 0.321336529151
+      },
+      {
+        "case_id": "full_k2514_d512",
+        "family": "full",
+        "K": 2514,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "hybrid_rknpu_sequence",
+        "repetitions": 50,
+        "p50_us": 28318.2085,
+        "iqr_over_p50": 0.207702051491
+      },
+      {
+        "case_id": "full_k2897_d512",
+        "family": "full",
+        "K": 2897,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_scalar_sequence",
+        "repetitions": 50,
+        "p50_us": 65934.458,
+        "iqr_over_p50": 0.0150866334565
+      },
+      {
+        "case_id": "full_k2897_d512",
+        "family": "full",
+        "K": 2897,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_neon_sequence",
+        "repetitions": 50,
+        "p50_us": 20841.0415,
+        "iqr_over_p50": 0.0156707259568
+      },
+      {
+        "case_id": "full_k2897_d512",
+        "family": "full",
+        "K": 2897,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "hybrid_rknpu_sequence",
+        "repetitions": 50,
+        "p50_us": 32439.1665,
+        "iqr_over_p50": 0.00942277601368
+      },
+      {
+        "case_id": "full_k3349_d512",
+        "family": "full",
+        "K": 3349,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_scalar_sequence",
+        "repetitions": 50,
+        "p50_us": 99630.271,
+        "iqr_over_p50": 0.25659160357
+      },
+      {
+        "case_id": "full_k3349_d512",
+        "family": "full",
+        "K": 3349,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_neon_sequence",
+        "repetitions": 50,
+        "p50_us": 29006.542,
+        "iqr_over_p50": 0.342188608694
+      },
+      {
+        "case_id": "full_k3349_d512",
+        "family": "full",
+        "K": 3349,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "hybrid_rknpu_sequence",
+        "repetitions": 50,
+        "p50_us": 39607.3125,
+        "iqr_over_p50": 0.273900646503
+      },
+      {
+        "case_id": "full_k3801_d512",
+        "family": "full",
+        "K": 3801,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_scalar_sequence",
+        "repetitions": 50,
+        "p50_us": 135746.917,
+        "iqr_over_p50": 0.0051942560876
+      },
+      {
+        "case_id": "full_k3801_d512",
+        "family": "full",
+        "K": 3801,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_neon_sequence",
+        "repetitions": 50,
+        "p50_us": 33762.7495,
+        "iqr_over_p50": 0.00647255490848
+      },
+      {
+        "case_id": "full_k3801_d512",
+        "family": "full",
+        "K": 3801,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "hybrid_rknpu_sequence",
+        "repetitions": 50,
+        "p50_us": 42286.7085,
+        "iqr_over_p50": 0.00162778098466
+      },
+      {
+        "case_id": "full_k4191_d512",
+        "family": "full",
+        "K": 4191,
+        "D": 512,
+        "projected_invocations": 12649,
+        "variant": "cpu_scalar_sequence",
+        "repetitions": 50,
+        "p50_us": 153514.229,
+        "iqr_over_p50": 0.00446483693704
+      },
+      {
+        "case_id": "full_k4191_d512",
+        "family": "full",
+        "K": 4191,
+        "D": 512,
+        "projected_invocations": 12649,
+        "variant": "cpu_neon_sequence",
+        "repetitions": 50,
+        "p50_us": 38126.8125,
+        "iqr_over_p50": 0.00821025885655
+      },
+      {
+        "case_id": "full_k4191_d512",
+        "family": "full",
+        "K": 4191,
+        "D": 512,
+        "projected_invocations": 12649,
+        "variant": "hybrid_rknpu_sequence",
+        "repetitions": 50,
+        "p50_us": 45895.2085,
+        "iqr_over_p50": 0.00591654900097
+      },
+      {
+        "case_id": "full_k4728_d512",
+        "family": "full",
+        "K": 4728,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_scalar_sequence",
+        "repetitions": 50,
+        "p50_us": 184017.313,
+        "iqr_over_p50": 0.00753586566064
+      },
+      {
+        "case_id": "full_k4728_d512",
+        "family": "full",
+        "K": 4728,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_neon_sequence",
+        "repetitions": 50,
+        "p50_us": 49618.771,
+        "iqr_over_p50": 0.00210290375793
+      },
+      {
+        "case_id": "full_k4728_d512",
+        "family": "full",
+        "K": 4728,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "hybrid_rknpu_sequence",
+        "repetitions": 50,
+        "p50_us": 56999.104,
+        "iqr_over_p50": 0.00270689781369
+      },
+      {
+        "case_id": "full_k5331_d512",
+        "family": "full",
+        "K": 5331,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_scalar_sequence",
+        "repetitions": 50,
+        "p50_us": 181370.0,
+        "iqr_over_p50": 0.00798115041076
+      },
+      {
+        "case_id": "full_k5331_d512",
+        "family": "full",
+        "K": 5331,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_neon_sequence",
+        "repetitions": 50,
+        "p50_us": 44896.9795,
+        "iqr_over_p50": 0.00182870876648
+      },
+      {
+        "case_id": "full_k5331_d512",
+        "family": "full",
+        "K": 5331,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "hybrid_rknpu_sequence",
+        "repetitions": 50,
+        "p50_us": 53926.687,
+        "iqr_over_p50": 0.00179429713529
+      },
+      {
+        "case_id": "full_k6455_d512",
+        "family": "full",
+        "K": 6455,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_scalar_sequence",
+        "repetitions": 50,
+        "p50_us": 229530.729,
+        "iqr_over_p50": 0.112030433189
+      },
+      {
+        "case_id": "full_k6455_d512",
+        "family": "full",
+        "K": 6455,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "cpu_neon_sequence",
+        "repetitions": 50,
+        "p50_us": 56059.208,
+        "iqr_over_p50": 0.13257208789
+      },
+      {
+        "case_id": "full_k6455_d512",
+        "family": "full",
+        "K": 6455,
+        "D": 512,
+        "projected_invocations": 12656,
+        "variant": "hybrid_rknpu_sequence",
+        "repetitions": 50,
+        "p50_us": 65007.542,
+        "iqr_over_p50": 0.0960818054004
+      }
+    ]
+  },
+  "tier_b": {
+    "status": "PARTIAL_SWA_ONLY_OWNER_WAIVER",
+    "swa": {
+      "cpu_scalar_sequence": {
+        "case_id": "sliding_k512_d256",
+        "benchmark": {
+          "warmup": 10,
+          "repetitions": 140,
+          "elapsed_ms": 501.477667
+        },
+        "process_block_events": {
+          "cycles:u": 1293695751.0,
+          "instructions:u": 2919499249.0,
+          "task-clock": 570.7,
+          "context-switches": 3.0,
+          "cpu-migrations": 1.0
+        }
+      },
+      "cpu_neon_sequence": {
+        "case_id": "sliding_k512_d256",
+        "benchmark": {
+          "warmup": 10,
+          "repetitions": 312,
+          "elapsed_ms": 500.113833
+        },
+        "process_block_events": {
+          "cycles:u": 1244632716.0,
+          "instructions:u": 1608166651.0,
+          "task-clock": 549.76,
+          "context-switches": 5.0,
+          "cpu-migrations": 1.0
+        }
+      },
+      "hybrid_rknpu_sequence": {
+        "case_id": "sliding_k512_d256",
+        "benchmark": {
+          "warmup": 10,
+          "repetitions": 163,
+          "elapsed_ms": 502.1415
+        },
+        "process_block_events": {
+          "cycles:u": 1077855970.0,
+          "instructions:u": 1745602338.0,
+          "task-clock": 501.62,
+          "context-switches": 696.0,
+          "cpu-migrations": 0.0
+        }
+      }
+    },
+    "full": {
+      "status": "NOT_MEASURED_PROTOCOL_CASE_ID_DEFECT",
+      "requested_case_id": "full_k3123_d512",
+      "runner_exit_code": 90,
+      "benchmark_work_started": false
+    },
+    "claim_limit": "SWA process-block CPU counters include process setup and warmup and do not measure NPU operations or bytes; no full-context Tier-B claim is available."
+  },
+  "telemetry": {
+    "system_samples": 190,
+    "npu_load_10hz": {
+      "core0": {
+        "samples": 2047,
+        "mean_pct": 0.32730825598436736,
+        "p50_pct": 0.0,
+        "max_pct": 4.0
+      },
+      "core1": {
+        "samples": 2047,
+        "mean_pct": 0.0,
+        "p50_pct": 0.0,
+        "max_pct": 0.0
+      },
+      "core2": {
+        "samples": 2047,
+        "mean_pct": 0.0,
+        "p50_pct": 0.0,
+        "max_pct": 0.0
+      }
+    },
+    "policy6_khz": 2352000,
+    "npu_hz": 1000000000,
+    "maximum_temperature_mC": 54538,
+    "minimum_thermal_headroom_mC": 21385,
+    "governors_restored": true,
+    "policy4_unchanged": true
+  },
+  "evidence_strength": {
+    "formal_segments": 1,
+    "performance_smoke_performed": false,
+    "automatic_retry_performed": false,
+    "same_day_retest_performed": false,
+    "cross_day_retest_performed": false,
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "strict_prereg_tier_b_complete": false
+  },
+  "bounded_conclusion": "The complete CPU NEON sequence is faster than the host-orchestrated core0-RKNPU hybrid for both SWA and full families in this synthetic FP16 carrier. This supports a negative hybrid result, not an RKLLM attention placement or deployment conclusion.",
+  "claim_limits": [
+    "Do not call the original preregistration fully satisfied.",
+    "Do not report full-context Tier-B CPU counters or infer NPU operation/byte counts.",
+    "Do not hide runner exit 90 or describe the sole segment as exit-zero.",
+    "Primary timing remains an isolated synthetic carrier result, not RKLLM attention time or deployment gain.",
+    "No additional board benchmark execution, correction run, retry, same-day retest, or cross-day replication may be performed for this attempt."
+  ]
+}

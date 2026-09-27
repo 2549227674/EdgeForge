@@ -1,0 +1,2 @@
+scope,variant,population_sequences,population_calls,analytic_bytes_per_sequence,elapsed_ms,ring_frames,sink
+perf_population,autovec_o3,1652,498904,3840000,3000.916918,16,5535

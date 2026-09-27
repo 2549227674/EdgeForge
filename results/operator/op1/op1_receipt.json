@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "stage": "OP1",
+  "timestamp": "2026-09-15T16:14:22+08:00",
+  "config": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op1_shape_census.json",
+    "sha256": "0a91487fb5996d1cc297011b0d179422d79ee76df638e7a695376eaf44dfc2df"
+  },
+  "artifacts": {
+    "channel_a": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op1/channel_a_static.json",
+      "sha256": "4fa6f63e95d21bd77947da69b51b1a60b5c7178140de970b4438e80a491d2e93"
+    },
+    "channel_b": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op1/channel_b_profiler.json",
+      "sha256": "d1e9524cffc6c81c6ef401d7281e7ca353baf110ddc9d72a4a522a4ad81d278a"
+    },
+    "shape_census": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/shape_census.json",
+      "sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f"
+    }
+  },
+  "gates": {
+    "channel_a": "PASS",
+    "channel_b": "PASS",
+    "selected_profile_coverage": "PASS",
+    "module_counts_and_shapes": "PASS",
+    "nf4_carrier": "PASS",
+    "cpu_embedding_persistence": "PASS",
+    "gpu_budget": "PASS"
+  },
+  "summary": {
+    "tapes": 5,
+    "requests": 11,
+    "c02_prompt_tokens_min": 806.0,
+    "c02_prompt_tokens_p50": 1358.0,
+    "c02_prompt_tokens_max": 5142.0,
+    "b0_reference_deepest_context_tokens": 9931,
+    "c02_projected_deepest_context_tokens": 7360,
+    "projected_incremental_decode_forwards": 21694,
+    "rmsnorm_calls_per_forward": 302,
+    "linear4bit_calls_per_forward": 343,
+    "rmsnorm_draft_semantics_corrected": true
+  },
+  "git_sha": "354d2c1b086a1809c256309f56bca420de243f92",
+  "status": "PASS"
+}

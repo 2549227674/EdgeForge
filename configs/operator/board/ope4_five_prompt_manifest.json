@@ -1,0 +1,73 @@
+{
+  "schema": "edgeforge-ope4-prompt-manifest-v1",
+  "stage": "OPE4",
+  "status": "FROZEN_NOT_RUN",
+  "frozen_at_controller": "2026-09-21T12:54:02+08:00",
+  "source": {
+    "archive": "exports/m0/board/EdgeForge_M0_S6_lineB_E4B_W8A8_smoke_evidence_20260808.zip",
+    "archive_sha256": "02b6f1445f9ad20922b603ca932f64ce0b264a3729466dfd5086b8d475e586ec",
+    "member": "evidence_P_20260808/supporting/upload_bundle_20260807_v5_claude_addendum/scripts/run_rkllm_board_smoke.sh",
+    "member_sha256": "0b05cdca633e2641094901da39b1d4e88ff03a7dc2292b75b57ed708a3ed7475",
+    "extraction_rule": "the five literal printf arguments on source-member lines 36-40, in order; trailing exit is excluded"
+  },
+  "payload_file": "data/operator/board/ope4_fixed_prompts.txt",
+  "payload_encoding": "UTF-8",
+  "payload_line_ending": "LF",
+  "payload_trailing_lf": true,
+  "payload_bytes": 358,
+  "payload_sha256": "b5cbaf281f3c379e7c375e92a6570799b92226e267378747b65079c74eded290",
+  "prompt_count": 5,
+  "prompts": [
+    {
+      "prompt_id": 1,
+      "text": "请用一句话解释什么是模型量化。",
+      "utf8_bytes": 45,
+      "sha256": "9dda6a543178deae78955ab93f09b31a14f8316fb0743f0a9819c0011d945409"
+    },
+    {
+      "prompt_id": 2,
+      "text": "一个笼子里有鸡和兔，共14个头、38条腿。鸡和兔各多少只？请简要说明。",
+      "utf8_bytes": 97,
+      "sha256": "e76acee97da9f3d968cae87e9720c765c5b93d07525b6413d1478e76fdeee278"
+    },
+    {
+      "prompt_id": 3,
+      "text": "Reply in English with exactly one sentence: what is the capital of France?",
+      "utf8_bytes": 74,
+      "sha256": "8a961e3c065218a46e7a85feba5556bca1c8fd913ab36b67915744441254831d"
+    },
+    {
+      "prompt_id": 4,
+      "text": "将 17、23、5 按从小到大排序，并说明排序结果。",
+      "utf8_bytes": 64,
+      "sha256": "5c574059f9034a904e6cc4e8765ab75eca31c463ecd8851f11550a35c407e0bd"
+    },
+    {
+      "prompt_id": 5,
+      "text": "请输出一个 JSON 对象，键为 answer，值为 2 加 3 的结果。",
+      "utf8_bytes": 73,
+      "sha256": "68a64cfe1b5eb39230ef20f0097a61e566e40cef60fec0d658c5f31da796d9c8"
+    }
+  ],
+  "generation_contract": {
+    "max_new_tokens": 96,
+    "max_context_len": 16384,
+    "sampling": "greedy",
+    "top_k": 1,
+    "top_p": 0.95,
+    "temperature": 0.8,
+    "repeat_penalty": 1.1,
+    "skip_special_token": true,
+    "ignore_eos_token": false,
+    "keep_history": 0,
+    "prompt_cache": false,
+    "thinking": false,
+    "template": {
+      "path": "manual-rkllm-set-chat-template",
+      "system_prompt": "",
+      "prompt_prefix": "<bos><|turn>user\n",
+      "prompt_postfix": "<turn|>\n<|turn>model\n"
+    }
+  },
+  "claim_limit": "workload identity only; transcript checks are UTF-8/nonempty/no-[PAD] and never semantic quality judgments"
+}

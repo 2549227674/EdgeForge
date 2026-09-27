@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "stage": "T3_OPD_formal_launch",
+  "captured_at": "2026-08-13T00:12:48.872474+08:00",
+  "formal_pid": 64941,
+  "formal_process_started_at": "2026-08-13T00:08:18.040000+08:00",
+  "instance_started_at": "2026-08-12T16:06:41.880000+08:00",
+  "cgroup": {
+    "memory_max_bytes": 257698037760,
+    "memory_max_gib": 240.0,
+    "cpu_max_raw": "5000000 100000",
+    "cpu_quota_cores": 50.0
+  },
+  "gpus": [
+    {
+      "index": 0,
+      "uuid": "GPU-8441031a-35d4-fc0b-d6c1-70adb534e305",
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "memory_total_mib": 97887
+    },
+    {
+      "index": 1,
+      "uuid": "GPU-39160c7c-0272-9254-c171-be00298b0dfc",
+      "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "memory_total_mib": 97887
+    }
+  ],
+  "file_identities": [
+    {
+      "path": "scripts/m1/run_t3_dynamic_length_smoke.py",
+      "bytes": 20855,
+      "sha256": "257aedf513732ddf6f4156dcd7415240483b8e61b51b0cbdd9a8bb7e4e20dd84"
+    },
+    {
+      "path": "scripts/m1/t3_dynamic_length.py",
+      "bytes": 16144,
+      "sha256": "3a545daf6fd3e5d64c0545e0a8b1bc234446a38ea3da55d15faaf5020b257c9f"
+    },
+    {
+      "path": "scripts/m1/launch_t3_opd_formal_r1.sh",
+      "bytes": 2220,
+      "sha256": "93de59eceaeba98e94f80ce9f8f7f4b86e3a51b6508bb4b4a553ff3ea5e1936a"
+    },
+    {
+      "path": "results/t3/opd_prompt_pool_formal_3840/prompts.parquet",
+      "bytes": 2215382,
+      "sha256": "e005b5f0f7ed4e01a1f2317f4821787cfed7a48e7a6ec46c84547666f2e5d5ca"
+    },
+    {
+      "path": "manifests/m1_t3_opd_prompt_pool_formal_3840.json",
+      "bytes": 3233404,
+      "sha256": "b299687af3fc3de9beb619800bff4ed6ee343be454ada46fe0b3af625a05397c"
+    },
+    {
+      "path": "models/C01-S-bf16-r1/artifact_manifest.json",
+      "bytes": 4478,
+      "sha256": "89fed9d97eeb95847d41a11ad55b751a69d6ce1d9df827852f56dc12bf0998d0"
+    },
+    {
+      "path": "results/m1/t3_rollout64_optimizer4_bf16_end_to_end_projection_receipt.json",
+      "bytes": 69847,
+      "sha256": "a4331843c5f60c160f0807abb484c146fc5f83dfc7e05cb19ddba58caa2a01ad"
+    }
+  ],
+  "cmdline": "/root/autodl-tmp/edgeforge-m1/t3-venv-py312/bin/python -u scripts/m1/run_t3_dynamic_length_smoke.py --model models/C01-S-bf16-r1 --plan results/t1/family_80_20_half_plan_r1/family_80_20.parquet --prompt-pool results/t3/opd_prompt_pool_formal_3840/prompts.parquet --prompt-pool-offset 0 --prompt-pool-count 3840 --teacher-url http://127.0.0.1:8000 --rank 256 --alpha 16 --learning-rate 5e-5 --weight-decay 0 --student-base-precision bf16 --total-length-cap 4096 --prompt-length-cap 3072 --completion-length-cap 3072 --generation-batch-size 64 --optimizer-batch-size 4 --max-steps 960 --warmup-steps 29 --lr-scheduler-type cosine --state-output-dir results/t3/c02_s_opd_formal_r1_state --save-steps 320 --save-total-limit 2 --save-final-model --seed 20260811 --output results/m1/t3_opd_formal_r1_receipt.json",
+  "schedule": {
+    "prompts": 3840,
+    "unique_sources": 3840,
+    "holdout_intersection": 0,
+    "rollout_buffer_size": 64,
+    "optimizer_batch_size": 4,
+    "rollout_windows": 60,
+    "optimizer_steps": 960,
+    "warmup_steps": 29,
+    "checkpoint_steps": [
+      320,
+      640,
+      960
+    ],
+    "projected_train_hours": 6.830021666666667
+  },
+  "paths": {
+    "log": "results/m1/t3_opd_formal_r1.log",
+    "pid": "results/m1/t3_opd_formal_r1.pid",
+    "state": "results/t3/c02_s_opd_formal_r1_state",
+    "terminal_receipt": "results/m1/t3_opd_formal_r1_receipt.json"
+  }
+}

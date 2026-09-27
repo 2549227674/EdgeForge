@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "stage": "OP3",
+  "kernel": "k1_gemma4_rmsnorm",
+  "timestamp": "2026-09-15T21:31:42+08:00",
+  "status": "PASS",
+  "artifacts": {
+    "config": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op3_reconnect.json",
+      "sha256": "d4917b82fecc894a69db63e258e921a165eee8db395c7c1590bfe3416a96e8c6"
+    },
+    "custom_op": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k1_custom_op.py",
+      "sha256": "5548bf8dff8289e0cef3977099a34827cb295dd126bf0897860f6281d430d0ae"
+    },
+    "replay": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/replay_tapes_torch.py",
+      "sha256": "a46343f3f3590b89e6c183f8aa53e72b9063e9ae30b517517896566d5dc315ea"
+    },
+    "runner": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op3.py",
+      "sha256": "69661f96d80e3977cb12f5d7be93eead617d9ad7b2da0658da54ecd3c5d03fbe"
+    },
+    "op2_candidate": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k1_rmsnorm.py",
+      "sha256": "6e1d282bc174e9f91210281c086c0928820e7b3e8782f7bf02e8f94ed31d7ca1"
+    },
+    "result": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/k1_rmsnorm_op3.json",
+      "sha256": "9eeb431a8d543ef1da0de06b2c29d4d174e6f2a299cc599309b19108fda3808e"
+    }
+  },
+  "gates": {
+    "op3_config_frozen_and_immutable": "PASS",
+    "upstream_identity": "PASS",
+    "formal_c02_nf4_carrier": "PASS",
+    "direct_scale_and_scale_free_semantics": "PASS",
+    "language_model_only_reconnection": "PASS",
+    "custom_op_cuda_dispatch": "PASS",
+    "kernel_invocation_op2_frequency_reconciliation": "PASS",
+    "four_passes_5_tapes_11_requests": "PASS",
+    "pass_2_only_end_to_end_metrics": "PASS",
+    "baseline_self_repeat_tokens": "PASS",
+    "a_b_generated_tokens": "REPORTABLE_DIVERGENCE",
+    "finite_outputs": "PASS",
+    "state_dict_module_parameter_weight_identity": "PASS",
+    "cpu_embedding_no_remigration": "PASS",
+    "gpu_memory_below_7_5_gib": "PASS",
+    "telemetry_1hz_coverage": "PASS",
+    "thermal_hardware_throttle": "PASS",
+    "ncu_tier_b": "BLOCKED_WINDOWS_ERR_NVGPUCTRPERM_DEFERRED_TO_OP4"
+  },
+  "summary": {
+    "tapes": 5,
+    "requests": 11,
+    "runs": 44,
+    "completion_tokens_per_path_per_pass": 21705,
+    "custom_op_invocations_per_b_pass": {
+      "1": 6554910,
+      "2": 6554910
+    },
+    "baseline_self_repeat_identical_requests": 11,
+    "a_b_identical_requests": 0,
+    "token_attribution": "K1_ASSOCIATED_DIVERGENCE_BASELINE_STABLE",
+    "A_ttft_p50_ms": 878.708294,
+    "B_ttft_p50_ms": 798.369076,
+    "ttft_b_vs_a_percent": -9.142876942049217,
+    "A_incremental_tpot_ms": 146.3299892348676,
+    "B_incremental_tpot_ms": 127.33236422328234,
+    "tpot_b_vs_a_percent": -12.982728360003525,
+    "A_incremental_tokens_per_second": 6.8338691557951625,
+    "B_incremental_tokens_per_second": 7.8534629125903965,
+    "peak_cuda_allocated_bytes": {
+      "A": 5023133696,
+      "B": 5023754240
+    },
+    "telemetry_samples": 11907,
+    "thermal_or_hardware_throttle": false,
+    "wall_seconds": 12103.279952689001
+  },
+  "scope": {
+    "op3_complete": true,
+    "op3_formal_replay_executed": true,
+    "op4_not_executed": true,
+    "op5_not_executed": true,
+    "p0_3b_not_executed": true
+  },
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0"
+}

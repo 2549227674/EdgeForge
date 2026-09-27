@@ -1,0 +1,1201 @@
+{
+  "schema_version": 1,
+  "stage": "OPE2",
+  "status": "PASS_RESUMED_PROTOCOL_AMENDED_MATRIX_WITH_CAPABILITY_NA_AND_DISCARDED_BOUNDARY",
+  "prereg_ref": "configs/operator/board/ope2_matmul_prereg_amendment_a1.json",
+  "board_run_ref": "results/operator/board/ope2/ope2_formal_20260918T1254",
+  "counts": {
+    "expected_terminals": 1206,
+    "observed_terminals": 1206,
+    "duplicate_cell_ids": [],
+    "by_scope": {
+      "attention_standby": 108,
+      "formal": 1008,
+      "randomized_preflight": 54,
+      "synthetic_m_sweep": 36
+    },
+    "status_by_scope": {
+      "attention_standby": {
+        "N/A": 108
+      },
+      "formal": {
+        "FAIL_CORRECTNESS": 5,
+        "N/A": 728,
+        "PASS": 275
+      },
+      "randomized_preflight": {
+        "N/A": 39,
+        "PASS": 15
+      },
+      "synthetic_m_sweep": {
+        "N/A": 24,
+        "PASS": 12
+      }
+    }
+  },
+  "capability_adjudication": {
+    "core0": "RUNNABLE",
+    "core0_1": "N/A: rknn_matmul_set_core_mask returns -1; runtime logs fallback, which is not accepted as two-core evidence",
+    "core0_1_2": "N/A: rknn_matmul_set_core_mask returns -1; runtime logs fallback, which is not accepted as three-core evidence",
+    "int4_normal": "N/A: vendor and project harness both abort in runtime 2.3.2 before run; no fallback result is accepted",
+    "int4_native": "RUNNABLE after passing unpacked signed int4 values to the vendor normal-to-native conversion API; three-seed preflight follows"
+  },
+  "protocol_amendment": {
+    "id": "OPE2-A1",
+    "authorized_by": "owner",
+    "authorized_at": "2026-09-18T18:46:57+08:00",
+    "reason": "Uniform 50+200 sampling materially over-samples multi-second cells. Retain the complete matrix and correctness/telemetry gates while using a conservative duration-aware sample budget for unfinished cells.",
+    "scope": "Only terminals appended after the durable cutoff; no completed terminal is replaced or rerun.",
+    "effective_after_terminal_count": 673,
+    "last_terminal_cell_id": "formal__prefill_m7082_mlp_gate_up_proj__int4xint4_to_int16__core0__normal",
+    "interrupted_uncommitted_cell_id": "formal__prefill_m7082_mlp_gate_up_proj__int4xint4_to_int16__core0__native",
+    "interrupted_cell_disposition": "No terminal was committed; rerun once under the amended protocol.",
+    "original_sampling": {
+      "warmup_repetitions": 50,
+      "timed_repetitions_minimum": 200,
+      "timed_window_minimum_ms": 1250
+    },
+    "amended_sampling": {
+      "warmup_repetitions": 5,
+      "timed_repetitions_minimum": 30,
+      "timed_window_minimum_ms": 5000.0
+    },
+    "unchanged": [
+      "all shapes and axes",
+      "correctness oracle",
+      "IQR/p50 > 0.30 one-retry rule",
+      "governor and telemetry gates",
+      "single logical matrix with no replication claim"
+    ],
+    "evidence_label": "PROTOCOL_AMENDED_DURING_RUN",
+    "cutoff_identity_pass": true,
+    "attempt_groups": {
+      "amended": 120,
+      "original": 173
+    },
+    "sampling_mismatches": [],
+    "pass": true
+  },
+  "correctness_boundary_adjudication": {
+    "schema_version": 1,
+    "stage": "OPE2",
+    "adjudication_id": "OPE2-INT4-NATIVE-K8192-BOUNDARY",
+    "created_at": "2026-09-18T21:41:19+08:00",
+    "status": "CONFIRMED_RUNTIME_CORRECTNESS_BOUNDARY",
+    "runtime": "librknnrt 2.3.2 (429f97ae6b@2025-04-09T09:09:27)",
+    "axis": {
+      "type": "int4xint4_to_int16",
+      "core_mask": "core0",
+      "b_layout": "native"
+    },
+    "boundary": {
+      "last_verified_correct_k": 8192,
+      "first_verified_incorrect_k": 8224,
+      "k_alignment": 32,
+      "predicate": "K > 8192",
+      "observed_failure": "Output is pinned to signed int16 extrema for both constant and randomized inputs instead of the CPU oracle.",
+      "header_contract_context": "The board header admits the formal K=10240 geometry; the narrower K<=8192 correctness boundary is an observed runtime limitation, not a preregistered alignment exclusion."
+    },
+    "diagnostic_probes": [
+      {
+        "K": 8192,
+        "pattern": "constant",
+        "status": "PASS"
+      },
+      {
+        "K": 8192,
+        "pattern": "random",
+        "status": "PASS"
+      },
+      {
+        "K": 8224,
+        "pattern": "constant",
+        "status": "CORRECTNESS_FAIL"
+      },
+      {
+        "K": 8224,
+        "pattern": "random",
+        "status": "CORRECTNESS_FAIL"
+      },
+      {
+        "K": 9216,
+        "pattern": "constant",
+        "status": "CORRECTNESS_FAIL"
+      },
+      {
+        "K": 10240,
+        "pattern": "constant",
+        "status": "CORRECTNESS_FAIL"
+      },
+      {
+        "K": 10240,
+        "pattern": "random",
+        "status": "CORRECTNESS_FAIL"
+      }
+    ],
+    "affected_formal_cell_ids": [
+      "formal__decode_mlp_down_proj__int4xint4_to_int16__core0__native",
+      "formal__prefill_m813_mlp_down_proj__int4xint4_to_int16__core0__native",
+      "formal__prefill_m1445_mlp_down_proj__int4xint4_to_int16__core0__native",
+      "formal__prefill_m5142_mlp_down_proj__int4xint4_to_int16__core0__native",
+      "formal__prefill_m7082_mlp_down_proj__int4xint4_to_int16__core0__native"
+    ],
+    "terminal_disposition": "DISCARDED_RUNTIME_CORRECTNESS_BOUNDARY",
+    "performance_disposition": "EXCLUDE",
+    "matrix_acceptance": "The raw FAIL_CORRECTNESS terminals remain immutable. OPE2 may close with these five cells explicitly discarded because the full matrix has a terminal for every cell and the failure boundary is independently reproduced by adjacent aligned-K and randomized probes.",
+    "claim_limit": "Do not generalize this predicate to another librknnrt version, layout, type, or core mask. Do not use throughput from an incorrect cell.",
+    "evidence": {
+      "formal_terminals": "results/operator/board/ope2/ope2_formal_20260918T1254/matrix/matrix_terminals.jsonl",
+      "focused_probe_log": "results/operator/board/failures/ope2_int4_k_boundary_diag_20260918.log"
+    },
+    "checks": {
+      "affected_cells_exactly_match_correctness_failures": true,
+      "axes_match": true,
+      "boundary_predicate_match": true,
+      "adjacent_aligned_k_constant_and_random_probes": true,
+      "evidence_paths_exist": true,
+      "failed_performance_excluded": true
+    },
+    "pass": true
+  },
+  "randomized_preflight": {
+    "status_counts": {
+      "N/A": 39,
+      "PASS": 15
+    },
+    "pass": true
+  },
+  "formal_matrix": {
+    "status_counts": {
+      "FAIL_CORRECTNESS": 5,
+      "N/A": 728,
+      "PASS": 275
+    },
+    "runnable_pass_cells": 275,
+    "adjudicated_discarded_cells": [
+      "formal__decode_mlp_down_proj__int4xint4_to_int16__core0__native",
+      "formal__prefill_m1445_mlp_down_proj__int4xint4_to_int16__core0__native",
+      "formal__prefill_m5142_mlp_down_proj__int4xint4_to_int16__core0__native",
+      "formal__prefill_m7082_mlp_down_proj__int4xint4_to_int16__core0__native",
+      "formal__prefill_m813_mlp_down_proj__int4xint4_to_int16__core0__native"
+    ],
+    "unexpected_non_pass_non_na": [],
+    "performance_by_axis": {
+      "int8xint8_to_int32__normal": {
+        "cells": 56,
+        "p50_us": {
+          "min": 70.0,
+          "p25": 3355.55149925,
+          "p50": 23491.4894995,
+          "p75": 101967.10425075,
+          "max": 16594576.112001,
+          "iqr": 98611.5527515
+        },
+        "measured_gops": {
+          "min": 18.493404027,
+          "p25": 22.37600421125,
+          "p50": 706.1513061759999,
+          "p75": 1134.08096624675,
+          "max": 1743.621572978,
+          "iqr": 1111.7049620355
+        },
+        "measured_gbps": {
+          "min": 0.010319863,
+          "p25": 0.69872894525,
+          "p50": 1.6439180305,
+          "p75": 2.36330976325,
+          "max": 11.211801236,
+          "iqr": 1.6645808180000001
+        },
+        "memory_relative_to_ope0": {
+          "min": 0.000444914,
+          "p25": 0.03012387975,
+          "p50": 0.070873246,
+          "p75": 0.10188794749999999,
+          "max": 0.483367621,
+          "iqr": 0.07176406775
+        },
+        "layout_conv_us": {
+          "min": 0.0,
+          "p25": 0.0,
+          "p50": 0.0,
+          "p75": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        },
+        "compute_relative_to_2tops_core0": {
+          "min": 0.0092467020135,
+          "p25": 0.011188002105625,
+          "p50": 0.353075653088,
+          "p75": 0.567040483123375,
+          "max": 0.8718107864889999,
+          "iqr": 0.55585248101775
+        }
+      },
+      "int8xint8_to_int32__native": {
+        "cells": 56,
+        "p50_us": {
+          "min": 70.0,
+          "p25": 3352.48925,
+          "p50": 26817.6562495,
+          "p75": 81176.77587475,
+          "max": 16593269.591,
+          "iqr": 77824.28662475
+        },
+        "measured_gops": {
+          "min": 18.569647688,
+          "p25": 22.37648432525,
+          "p50": 703.051885894,
+          "p75": 1181.99347504625,
+          "max": 1736.202184969,
+          "iqr": 1159.616990721
+        },
+        "measured_gbps": {
+          "min": 0.010320676,
+          "p25": 0.79107063975,
+          "p50": 1.6489925655,
+          "p75": 2.3683904145,
+          "max": 11.212019494,
+          "iqr": 1.5773197747499998
+        },
+        "memory_relative_to_ope0": {
+          "min": 0.000444949,
+          "p25": 0.03410495125,
+          "p50": 0.0710920215,
+          "p75": 0.1021069865,
+          "max": 0.483377031,
+          "iqr": 0.06800203525
+        },
+        "layout_conv_us": {
+          "min": 1691.374999,
+          "p25": 3712.1142505000003,
+          "p50": 23164.021,
+          "p75": 79639.58324825001,
+          "max": 31107676.264999,
+          "iqr": 75927.46899775001
+        },
+        "compute_relative_to_2tops_core0": {
+          "min": 0.009284823844,
+          "p25": 0.011188242162625001,
+          "p50": 0.351525942947,
+          "p75": 0.5909967375231251,
+          "max": 0.8681010924845,
+          "iqr": 0.5798084953605
+        }
+      },
+      "int4xint4_to_int16__native": {
+        "cells": 51,
+        "p50_us": {
+          "min": 40.833,
+          "p25": 36873.8119995,
+          "p50": 309485.020501,
+          "p75": 1211160.417,
+          "max": 8715133.2955,
+          "iqr": 1174286.6050004999
+        },
+        "measured_gops": {
+          "min": 31.64690764,
+          "p25": 43.291951845,
+          "p50": 44.23316604,
+          "p75": 44.6331900495,
+          "max": 44.734347308,
+          "iqr": 1.3412382045000015
+        },
+        "measured_gbps": {
+          "min": 0.016820877,
+          "p25": 0.026981941000000002,
+          "p50": 0.03648277,
+          "p75": 0.178254272,
+          "max": 11.192225632,
+          "iqr": 0.15127233099999998
+        },
+        "memory_relative_to_ope0": {
+          "min": 0.000725188,
+          "p25": 0.001163256,
+          "p50": 0.00157286,
+          "p75": 0.007684969,
+          "max": 0.48252367,
+          "iqr": 0.006521713
+        },
+        "layout_conv_us": {
+          "min": 2090.958,
+          "p25": 4503.6254995,
+          "p50": 23487.916999,
+          "p75": 51847.3955005,
+          "max": 32114905.682001,
+          "iqr": 47343.770001000004
+        }
+      },
+      "fp16xfp16_to_fp32__normal": {
+        "cells": 56,
+        "p50_us": {
+          "min": 128.333,
+          "p25": 8925.61962525,
+          "p50": 55392.8962495,
+          "p75": 163045.932375,
+          "max": 33138647.9535,
+          "iqr": 154120.31274975
+        },
+        "measured_gops": {
+          "min": 10.167161854,
+          "p25": 11.204433170999998,
+          "p50": 344.7290935895,
+          "p75": 465.32279542975,
+          "max": 652.366464556,
+          "iqr": 454.11836225875
+        },
+        "measured_gbps": {
+          "min": 0.00814722,
+          "p25": 0.58138199875,
+          "p50": 0.9826426070000001,
+          "p75": 1.66592351725,
+          "max": 11.215715213,
+          "iqr": 1.0845415185
+        },
+        "memory_relative_to_ope0": {
+          "min": 0.000351246,
+          "p25": 0.0250647715,
+          "p50": 0.0423640775,
+          "p75": 0.0718219555,
+          "max": 0.483536362,
+          "iqr": 0.04675718400000001
+        },
+        "layout_conv_us": {
+          "min": 0.0,
+          "p25": 0.0,
+          "p50": 0.0,
+          "p75": 0.0,
+          "max": 0.0,
+          "iqr": 0.0
+        }
+      },
+      "fp16xfp16_to_fp32__native": {
+        "cells": 56,
+        "p50_us": {
+          "min": 128.333999,
+          "p25": 8973.744625000001,
+          "p50": 55349.073000000004,
+          "p75": 163189.17737524997,
+          "max": 33138608.724,
+          "iqr": 154215.43275024998
+        },
+        "measured_gops": {
+          "min": 10.144263542,
+          "p25": 11.2044641715,
+          "p50": 345.2840209515,
+          "p75": 464.7516940915,
+          "max": 651.036974754,
+          "iqr": 453.54722992
+        },
+        "measured_gbps": {
+          "min": 0.008147229,
+          "p25": 0.58125729625,
+          "p50": 0.9811249630000001,
+          "p75": 1.6629732882500001,
+          "max": 11.215769857,
+          "iqr": 1.0817159920000001
+        },
+        "memory_relative_to_ope0": {
+          "min": 0.000351247,
+          "p25": 0.02505939475,
+          "p50": 0.042298648499999994,
+          "p75": 0.07169476375,
+          "max": 0.483538718,
+          "iqr": 0.046635369
+        },
+        "layout_conv_us": {
+          "min": 1904.875,
+          "p25": 5483.91649925,
+          "p50": 30665.9795,
+          "p75": 122855.25000075,
+          "max": 39629588.561,
+          "iqr": 117371.3335015
+        }
+      }
+    },
+    "decode_census_weighted_primitive_estimate": {
+      "normal": {
+        "shape_rows": 11,
+        "linear_calls_per_forward": 343,
+        "core_projection_258_calls_ms": 355.28774145700004,
+        "ple_85_calls_ms": 8.423332958,
+        "all_343_non_lm_head_linear_ms": 363.71107441500004,
+        "ope1_bandwidth_lower_bound_ms": 171.27659799989493,
+        "lower_bound_fraction_of_measured": 0.4709138930547538,
+        "claim_limit": "Sum of isolated primitive medians weighted by census calls; excludes runtime orchestration, lm_head, attention, norms, sampling, and all RKLLM graph effects."
+      },
+      "native": {
+        "shape_rows": 11,
+        "linear_calls_per_forward": 343,
+        "core_projection_258_calls_ms": 355.301020508,
+        "ple_85_calls_ms": 8.411110958,
+        "all_343_non_lm_head_linear_ms": 363.712131466,
+        "ope1_bandwidth_lower_bound_ms": 171.27659799989493,
+        "lower_bound_fraction_of_measured": 0.47091252444491516,
+        "claim_limit": "Sum of isolated primitive medians weighted by census calls; excludes runtime orchestration, lm_head, attention, norms, sampling, and all RKLLM graph effects."
+      }
+    },
+    "lm_head_boundary": [
+      {
+        "axes": {
+          "type": "int8xint8_to_int32",
+          "core_mask": "core0",
+          "b_layout": "normal"
+        },
+        "terminal_status": "PASS",
+        "terminal_reason": null,
+        "result": {
+          "schema_version": 1,
+          "status": "PASS",
+          "primitive": "rknn_matmul_run",
+          "type": "int8",
+          "api_type": "RKNN_INT8_MM_INT8_TO_INT32",
+          "shape_mkn": [
+            1,
+            2560,
+            262144
+          ],
+          "core_mask": "core0",
+          "core_count": 1,
+          "core_mask_ret": 0,
+          "b_layout": "normal",
+          "ac_layout": "normal",
+          "pattern": "constant",
+          "b_conversion_input": "normal_storage_representation",
+          "seed": 1,
+          "io_sizes_bytes": {
+            "A": 2560,
+            "B": 671088640,
+            "C": 1048576
+          },
+          "normal_analytic_bytes": 672139776,
+          "analytic_ops": 1342177280,
+          "b_prepare_us": 54928.125001,
+          "layout_conv_us": 0.0,
+          "warmup_reps": 5,
+          "timed_reps": 84,
+          "timed_elapsed_ms": 5035.668169,
+          "run_only_us": {
+            "p25": 59941.21825,
+            "p50": 59949.3125,
+            "p75": 59952.375001,
+            "iqr": 11.156751,
+            "iqr_over_p50": 0.000186103
+          },
+          "throughput": {
+            "measured_gops": 22.388534981,
+            "measured_gbps": 11.211801236,
+            "memory_relative_to_ope0": 0.483367621
+          },
+          "correctness": {
+            "oracle": "constant_input_analytic",
+            "checked_elements": 262144,
+            "total_elements": 262144,
+            "mismatch_count": 0,
+            "max_abs_diff": 0.0,
+            "first_expected": 2560.0,
+            "first_actual": 2560.0,
+            "pass": true
+          }
+        }
+      },
+      {
+        "axes": {
+          "type": "int8xint8_to_int32",
+          "core_mask": "core0",
+          "b_layout": "native"
+        },
+        "terminal_status": "PASS",
+        "terminal_reason": null,
+        "result": {
+          "schema_version": 1,
+          "status": "PASS",
+          "primitive": "rknn_matmul_run",
+          "type": "int8",
+          "api_type": "RKNN_INT8_MM_INT8_TO_INT32",
+          "shape_mkn": [
+            1,
+            2560,
+            262144
+          ],
+          "core_mask": "core0",
+          "core_count": 1,
+          "core_mask_ret": 0,
+          "b_layout": "native",
+          "ac_layout": "normal",
+          "pattern": "constant",
+          "b_conversion_input": "normal_storage_representation",
+          "seed": 1,
+          "io_sizes_bytes": {
+            "A": 2560,
+            "B": 671088640,
+            "C": 1048576
+          },
+          "normal_analytic_bytes": 672139776,
+          "analytic_ops": 1342177280,
+          "b_prepare_us": 31107676.264999,
+          "layout_conv_us": 31107676.264999,
+          "warmup_reps": 5,
+          "timed_reps": 84,
+          "timed_elapsed_ms": 5035.526419,
+          "run_only_us": {
+            "p25": 59940.052,
+            "p50": 59948.1455,
+            "p75": 59951.79175,
+            "iqr": 11.73975,
+            "iqr_over_p50": 0.000195832
+          },
+          "throughput": {
+            "measured_gops": 22.388970815,
+            "measured_gbps": 11.212019494,
+            "memory_relative_to_ope0": 0.483377031
+          },
+          "correctness": {
+            "oracle": "constant_input_analytic",
+            "checked_elements": 262144,
+            "total_elements": 262144,
+            "mismatch_count": 0,
+            "max_abs_diff": 0.0,
+            "first_expected": 2560.0,
+            "first_actual": 2560.0,
+            "pass": true
+          }
+        }
+      },
+      {
+        "axes": {
+          "type": "int8xint8_to_int32",
+          "core_mask": "core0_1",
+          "b_layout": "normal"
+        },
+        "terminal_status": "N/A",
+        "terminal_reason": "N/A_CORE_MASK_RUNTIME_2_3_2_REJECTED",
+        "result": null
+      },
+      {
+        "axes": {
+          "type": "int8xint8_to_int32",
+          "core_mask": "core0_1",
+          "b_layout": "native"
+        },
+        "terminal_status": "N/A",
+        "terminal_reason": "N/A_CORE_MASK_RUNTIME_2_3_2_REJECTED",
+        "result": null
+      },
+      {
+        "axes": {
+          "type": "int8xint8_to_int32",
+          "core_mask": "core0_1_2",
+          "b_layout": "normal"
+        },
+        "terminal_status": "N/A",
+        "terminal_reason": "N/A_CORE_MASK_RUNTIME_2_3_2_REJECTED",
+        "result": null
+      },
+      {
+        "axes": {
+          "type": "int8xint8_to_int32",
+          "core_mask": "core0_1_2",
+          "b_layout": "native"
+        },
+        "terminal_status": "N/A",
+        "terminal_reason": "N/A_CORE_MASK_RUNTIME_2_3_2_REJECTED",
+        "result": null
+      },
+      {
+        "axes": {
+          "type": "int4xint4_to_int16",
+          "core_mask": "core0",
+          "b_layout": "normal"
+        },
+        "terminal_status": "N/A",
+        "terminal_reason": "N/A_INT4_NORMAL_RUNTIME_2_3_2_ABORTS_IN_SET_IO",
+        "result": null
+      },
+      {
+        "axes": {
+          "type": "int4xint4_to_int16",
+          "core_mask": "core0",
+          "b_layout": "native"
+        },
+        "terminal_status": "PASS",
+        "terminal_reason": null,
+        "result": {
+          "schema_version": 1,
+          "status": "PASS",
+          "primitive": "rknn_matmul_run",
+          "type": "int4",
+          "api_type": "RKNN_INT4_MM_INT4_TO_INT16",
+          "shape_mkn": [
+            1,
+            2560,
+            262144
+          ],
+          "core_mask": "core0",
+          "core_count": 1,
+          "core_mask_ret": 0,
+          "b_layout": "native",
+          "ac_layout": "normal",
+          "pattern": "constant",
+          "b_conversion_input": "unpacked_signed_int4_values",
+          "seed": 1,
+          "io_sizes_bytes": {
+            "A": 1280,
+            "B": 335544320,
+            "C": 524288
+          },
+          "normal_analytic_bytes": 336069888,
+          "analytic_ops": 1342177280,
+          "b_prepare_us": 32114905.682001,
+          "layout_conv_us": 32114905.682001,
+          "warmup_reps": 5,
+          "timed_reps": 167,
+          "timed_elapsed_ms": 5014.910252,
+          "run_only_us": {
+            "p25": 30022.416,
+            "p50": 30027.082999,
+            "p75": 30034.957999,
+            "iqr": 12.541999,
+            "iqr_over_p50": 0.00041769
+          },
+          "throughput": {
+            "measured_gops": 44.69889,
+            "measured_gbps": 11.192225632,
+            "memory_relative_to_ope0": 0.48252367
+          },
+          "correctness": {
+            "oracle": "constant_input_analytic",
+            "checked_elements": 262144,
+            "total_elements": 262144,
+            "mismatch_count": 0,
+            "max_abs_diff": 0.0,
+            "first_expected": 2560.0,
+            "first_actual": 2560.0,
+            "pass": true
+          }
+        }
+      },
+      {
+        "axes": {
+          "type": "int4xint4_to_int16",
+          "core_mask": "core0_1",
+          "b_layout": "normal"
+        },
+        "terminal_status": "N/A",
+        "terminal_reason": "N/A_CORE_MASK_RUNTIME_2_3_2_REJECTED",
+        "result": null
+      },
+      {
+        "axes": {
+          "type": "int4xint4_to_int16",
+          "core_mask": "core0_1",
+          "b_layout": "native"
+        },
+        "terminal_status": "N/A",
+        "terminal_reason": "N/A_CORE_MASK_RUNTIME_2_3_2_REJECTED",
+        "result": null
+      },
+      {
+        "axes": {
+          "type": "int4xint4_to_int16",
+          "core_mask": "core0_1_2",
+          "b_layout": "normal"
+        },
+        "terminal_status": "N/A",
+        "terminal_reason": "N/A_CORE_MASK_RUNTIME_2_3_2_REJECTED",
+        "result": null
+      },
+      {
+        "axes": {
+          "type": "int4xint4_to_int16",
+          "core_mask": "core0_1_2",
+          "b_layout": "native"
+        },
+        "terminal_status": "N/A",
+        "terminal_reason": "N/A_CORE_MASK_RUNTIME_2_3_2_REJECTED",
+        "result": null
+      },
+      {
+        "axes": {
+          "type": "fp16xfp16_to_fp32",
+          "core_mask": "core0",
+          "b_layout": "normal"
+        },
+        "terminal_status": "PASS",
+        "terminal_reason": null,
+        "result": {
+          "schema_version": 1,
+          "status": "PASS",
+          "primitive": "rknn_matmul_run",
+          "type": "fp16",
+          "api_type": "RKNN_FLOAT16_MM_FLOAT16_TO_FLOAT32",
+          "shape_mkn": [
+            1,
+            2560,
+            262144
+          ],
+          "core_mask": "core0",
+          "core_count": 1,
+          "core_mask_ret": 0,
+          "b_layout": "normal",
+          "ac_layout": "normal",
+          "pattern": "constant",
+          "b_conversion_input": "normal_storage_representation",
+          "seed": 1,
+          "io_sizes_bytes": {
+            "A": 5120,
+            "B": 1342177280,
+            "C": 1048576
+          },
+          "normal_analytic_bytes": 1343230976,
+          "analytic_ops": 1342177280,
+          "b_prepare_us": 164171.584,
+          "layout_conv_us": 0.0,
+          "warmup_reps": 5,
+          "timed_reps": 42,
+          "timed_elapsed_ms": 5030.095877,
+          "run_only_us": {
+            "p25": 119762.417,
+            "p50": 119763.291999,
+            "p75": 119765.625,
+            "iqr": 3.208,
+            "iqr_over_p50": 2.6786e-05
+          },
+          "throughput": {
+            "measured_gops": 11.206917058,
+            "measured_gbps": 11.215715213,
+            "memory_relative_to_ope0": 0.483536362
+          },
+          "correctness": {
+            "oracle": "constant_input_analytic",
+            "checked_elements": 262144,
+            "total_elements": 262144,
+            "mismatch_count": 0,
+            "max_abs_diff": 0.0,
+            "first_expected": 640.0,
+            "first_actual": 640.0,
+            "pass": true
+          }
+        }
+      },
+      {
+        "axes": {
+          "type": "fp16xfp16_to_fp32",
+          "core_mask": "core0",
+          "b_layout": "native"
+        },
+        "terminal_status": "PASS",
+        "terminal_reason": null,
+        "result": {
+          "schema_version": 1,
+          "status": "PASS",
+          "primitive": "rknn_matmul_run",
+          "type": "fp16",
+          "api_type": "RKNN_FLOAT16_MM_FLOAT16_TO_FLOAT32",
+          "shape_mkn": [
+            1,
+            2560,
+            262144
+          ],
+          "core_mask": "core0",
+          "core_count": 1,
+          "core_mask_ret": 0,
+          "b_layout": "native",
+          "ac_layout": "normal",
+          "pattern": "constant",
+          "b_conversion_input": "normal_storage_representation",
+          "seed": 1,
+          "io_sizes_bytes": {
+            "A": 5120,
+            "B": 1342177280,
+            "C": 1048576
+          },
+          "normal_analytic_bytes": 1343230976,
+          "analytic_ops": 1342177280,
+          "b_prepare_us": 39629588.561,
+          "layout_conv_us": 39629588.561,
+          "warmup_reps": 5,
+          "timed_reps": 42,
+          "timed_elapsed_ms": 5030.042503,
+          "run_only_us": {
+            "p25": 119760.739751,
+            "p50": 119762.708499,
+            "p75": 119765.334,
+            "iqr": 4.594249,
+            "iqr_over_p50": 3.8361e-05
+          },
+          "throughput": {
+            "measured_gops": 11.206971659,
+            "measured_gbps": 11.215769857,
+            "memory_relative_to_ope0": 0.483538718
+          },
+          "correctness": {
+            "oracle": "constant_input_analytic",
+            "checked_elements": 262144,
+            "total_elements": 262144,
+            "mismatch_count": 0,
+            "max_abs_diff": 0.0,
+            "first_expected": 640.0,
+            "first_actual": 640.0,
+            "pass": true
+          }
+        }
+      },
+      {
+        "axes": {
+          "type": "fp16xfp16_to_fp32",
+          "core_mask": "core0_1",
+          "b_layout": "normal"
+        },
+        "terminal_status": "N/A",
+        "terminal_reason": "N/A_CORE_MASK_RUNTIME_2_3_2_REJECTED",
+        "result": null
+      },
+      {
+        "axes": {
+          "type": "fp16xfp16_to_fp32",
+          "core_mask": "core0_1",
+          "b_layout": "native"
+        },
+        "terminal_status": "N/A",
+        "terminal_reason": "N/A_CORE_MASK_RUNTIME_2_3_2_REJECTED",
+        "result": null
+      },
+      {
+        "axes": {
+          "type": "fp16xfp16_to_fp32",
+          "core_mask": "core0_1_2",
+          "b_layout": "normal"
+        },
+        "terminal_status": "N/A",
+        "terminal_reason": "N/A_CORE_MASK_RUNTIME_2_3_2_REJECTED",
+        "result": null
+      },
+      {
+        "axes": {
+          "type": "fp16xfp16_to_fp32",
+          "core_mask": "core0_1_2",
+          "b_layout": "native"
+        },
+        "terminal_status": "N/A",
+        "terminal_reason": "N/A_CORE_MASK_RUNTIME_2_3_2_REJECTED",
+        "result": null
+      }
+    ]
+  },
+  "m_sweep": {
+    "status_counts": {
+      "N/A": 24,
+      "PASS": 12
+    },
+    "points": [
+      {
+        "M": 1,
+        "p50_us": 2391.958,
+        "measured_gops": 21.918779512,
+        "measured_gbps": 10.967951779,
+        "compute_relative_to_2tops_core0": 0.010959389756,
+        "memory_relative_to_ope0": 0.472854687,
+        "arithmetic_intensity_ops_per_byte": 1.9984387197501952
+      },
+      {
+        "M": 2,
+        "p50_us": 4735.209001,
+        "measured_gops": 22.144239038,
+        "measured_gbps": 5.544709853,
+        "compute_relative_to_2tops_core0": 0.011072119519,
+        "memory_relative_to_ope0": 0.23904573,
+        "arithmetic_intensity_ops_per_byte": 3.9937597503900157
+      },
+      {
+        "M": 4,
+        "p50_us": 9422.000001,
+        "measured_gops": 22.258034385,
+        "measured_gbps": 2.790948843,
+        "compute_relative_to_2tops_core0": 0.0111290171925,
+        "memory_relative_to_ope0": 0.120324493,
+        "arithmetic_intensity_ops_per_byte": 7.975077881619938
+      },
+      {
+        "M": 8,
+        "p50_us": 18795.875001,
+        "measured_gops": 22.315023907,
+        "measured_gbps": 1.4034058,
+        "compute_relative_to_2tops_core0": 0.0111575119535,
+        "memory_relative_to_ope0": 0.060504187,
+        "arithmetic_intensity_ops_per_byte": 15.900621118012422
+      },
+      {
+        "M": 16,
+        "p50_us": 37550.333001,
+        "measured_gops": 22.339636775,
+        "measured_gbps": 0.70684007,
+        "compute_relative_to_2tops_core0": 0.011169818387499999,
+        "memory_relative_to_ope0": 0.030473569,
+        "arithmetic_intensity_ops_per_byte": 31.604938271604937
+      },
+      {
+        "M": 32,
+        "p50_us": 75055.75,
+        "measured_gops": 22.353005599,
+        "measured_gbps": 0.357997355,
+        "compute_relative_to_2tops_core0": 0.0111765027995,
+        "memory_relative_to_ope0": 0.015434124,
+        "arithmetic_intensity_ops_per_byte": 62.4390243902439
+      },
+      {
+        "M": 64,
+        "p50_us": 150064.25,
+        "measured_gops": 22.360043781,
+        "measured_gbps": 0.183422234,
+        "compute_relative_to_2tops_core0": 0.0111800218905,
+        "memory_relative_to_ope0": 0.007907772,
+        "arithmetic_intensity_ops_per_byte": 121.9047619047619
+      },
+      {
+        "M": 128,
+        "p50_us": 300082.416999,
+        "measured_gops": 22.363477564,
+        "measured_gbps": 0.096093068,
+        "compute_relative_to_2tops_core0": 0.011181738782,
+        "memory_relative_to_ope0": 0.004142802,
+        "arithmetic_intensity_ops_per_byte": 232.72727272727272
+      },
+      {
+        "M": 256,
+        "p50_us": 600049.6255,
+        "measured_gops": 22.367771314,
+        "measured_gbps": 0.052424464,
+        "compute_relative_to_2tops_core0": 0.011183885656999999,
+        "memory_relative_to_ope0": 0.002260144,
+        "arithmetic_intensity_ops_per_byte": 426.6666666666667
+      },
+      {
+        "M": 512,
+        "p50_us": 1199929.9385,
+        "measured_gops": 22.370927451,
+        "measured_gbps": 0.030585252,
+        "compute_relative_to_2tops_core0": 0.0111854637255,
+        "memory_relative_to_ope0": 0.001318604,
+        "arithmetic_intensity_ops_per_byte": 731.4285714285714
+      },
+      {
+        "M": 1024,
+        "p50_us": 2399670.4385,
+        "measured_gops": 22.372693491,
+        "measured_gbps": 0.0196635,
+        "compute_relative_to_2tops_core0": 0.0111863467455,
+        "memory_relative_to_ope0": 0.000847741,
+        "arithmetic_intensity_ops_per_byte": 1137.7777777777778
+      },
+      {
+        "M": 2048,
+        "p50_us": 4799235.877501,
+        "measured_gops": 22.373182969,
+        "measured_gbps": 0.014201727,
+        "compute_relative_to_2tops_core0": 0.011186591484499998,
+        "memory_relative_to_ope0": 0.000612271,
+        "arithmetic_intensity_ops_per_byte": 1575.3846153846155
+      }
+    ],
+    "roofline_balance_intensity_ops_per_byte": 86.22479314493586,
+    "analytic_first_compute_side_M": 64,
+    "measured_max_gops": 22.373182969,
+    "measured_first_M_at_80pct_max_gops": 1
+  },
+  "six_tops_attribution": {
+    "vendor_nominal": "3 NPU cores x 2 TOPS/core INT8 = 6 TOPS",
+    "measured_core_masks": [
+      "core0"
+    ],
+    "unmeasured_core_masks": [
+      "core0_1",
+      "core0_1_2"
+    ],
+    "reason": "librknnrt 2.3.2 rejects matmul core masks 0x3 and 0x7; accepting its single-core fallback would falsely label one-core work as 2/3-core evidence.",
+    "core0_int8_peak_measured_gops": 1743.621572978,
+    "claim_limit": "The 6-TOPS aggregate remains a nominal hardware label, not a measured OPE2 result on this runtime. OPE2 directly measures only the accepted core0 axis against 2 TOPS."
+  },
+  "telemetry": {
+    "full_system_sources": [
+      "results/operator/board/ope2/ope2_formal_20260918T1254/telemetry_1hz.csv",
+      "results/operator/board/ope2/ope2_formal_20260918T1254/telemetry_1hz.resume1.csv",
+      "results/operator/board/ope2/ope2_formal_20260918T1254/telemetry_1hz.resume2.csv"
+    ],
+    "npu_load_sources": [
+      "results/operator/board/ope2/ope2_formal_20260918T1254/npu_load_10hz.csv",
+      "results/operator/board/ope2/ope2_formal_20260918T1254/npu_load_10hz.resume1.csv",
+      "results/operator/board/ope2/ope2_formal_20260918T1254/npu_load_10hz.resume2.csv"
+    ],
+    "full_system_samples": 20617,
+    "npu_load_samples": 200237,
+    "missing_pass_cell_windows": [],
+    "timed_governor_values": [
+      [
+        "performance",
+        "performance",
+        "performance"
+      ]
+    ],
+    "npu_frequency_fraction_of_max": {
+      "min": 1.0,
+      "p25": 1.0,
+      "p50": 1.0,
+      "p75": 1.0,
+      "max": 1.0,
+      "iqr": 0.0
+    },
+    "policy6_frequency_fraction_of_max": {
+      "min": 1.0,
+      "p25": 1.0,
+      "p50": 1.0,
+      "p75": 1.0,
+      "max": 1.0,
+      "iqr": 0.0
+    },
+    "thermal_max_c": {
+      "thermal_zone0_soc_thermal": 60.076,
+      "thermal_zone1_bigcore0_thermal": 60.076,
+      "thermal_zone2_bigcore1_thermal": 60.076,
+      "thermal_zone3_littlecore_thermal": 60.076,
+      "thermal_zone4_center_thermal": 59.153,
+      "thermal_zone5_gpu_thermal": 58.23,
+      "thermal_zone6_npu_thermal": 59.153
+    },
+    "npu_load_max_pct": {
+      "core0": 100.0,
+      "core1": 0.0,
+      "core2": 0.0
+    },
+    "pass": true
+  },
+  "governor_guard": {
+    "sessions": [
+      {
+        "source": "results/operator/board/ope2/ope2_formal_20260918T1254/governor_state.tsv",
+        "events": {
+          "before": {
+            "event": "before",
+            "board_wall_time": "2026-09-18T12:53:37.611408646+08:00",
+            "uptime_s": "6370.79",
+            "policy4_governor": "ondemand",
+            "policy6_governor": "ondemand",
+            "npu_governor": "rknpu_ondemand"
+          },
+          "after_set": {
+            "event": "after_set",
+            "board_wall_time": "2026-09-18T12:53:37.686479965+08:00",
+            "uptime_s": "6370.86",
+            "policy4_governor": "performance",
+            "policy6_governor": "performance",
+            "npu_governor": "performance"
+          }
+        },
+        "performance_set_pass": true,
+        "exact_restore_pass": false
+      },
+      {
+        "source": "results/operator/board/ope2/ope2_formal_20260918T1254/governor_state.resume1.tsv",
+        "events": {
+          "before": {
+            "event": "before",
+            "board_wall_time": "2026-09-18T17:26:31.029011313+08:00",
+            "uptime_s": "527.58",
+            "policy4_governor": "ondemand",
+            "policy6_governor": "ondemand",
+            "npu_governor": "rknpu_ondemand"
+          },
+          "after_set": {
+            "event": "after_set",
+            "board_wall_time": "2026-09-18T17:26:31.136202139+08:00",
+            "uptime_s": "527.69",
+            "policy4_governor": "performance",
+            "policy6_governor": "performance",
+            "npu_governor": "performance"
+          },
+          "after_restore": {
+            "event": "after_restore",
+            "board_wall_time": "2026-09-18T18:44:40.702625996+08:00",
+            "uptime_s": "5217.25",
+            "policy4_governor": "ondemand",
+            "policy6_governor": "ondemand",
+            "npu_governor": "rknpu_ondemand"
+          }
+        },
+        "performance_set_pass": true,
+        "exact_restore_pass": true
+      },
+      {
+        "source": "results/operator/board/ope2/ope2_formal_20260918T1254/governor_state.resume2.tsv",
+        "events": {
+          "before": {
+            "event": "before",
+            "board_wall_time": "2026-09-18T18:47:18.601219552+08:00",
+            "uptime_s": "5375.15",
+            "policy4_governor": "ondemand",
+            "policy6_governor": "ondemand",
+            "npu_governor": "rknpu_ondemand"
+          },
+          "after_set": {
+            "event": "after_set",
+            "board_wall_time": "2026-09-18T18:47:18.704473740+08:00",
+            "uptime_s": "5375.25",
+            "policy4_governor": "performance",
+            "policy6_governor": "performance",
+            "npu_governor": "performance"
+          },
+          "after_restore": {
+            "event": "after_restore",
+            "board_wall_time": "2026-09-18T21:31:19.521080280+08:00",
+            "uptime_s": "15216.07",
+            "policy4_governor": "ondemand",
+            "policy6_governor": "ondemand",
+            "npu_governor": "rknpu_ondemand"
+          }
+        },
+        "performance_set_pass": true,
+        "exact_restore_pass": true
+      }
+    ],
+    "performance_set_pass": true,
+    "final_exact_restore_pass": true,
+    "interrupted_sessions_recovered_before_resume": [
+      "results/operator/board/ope2/ope2_formal_20260918T1254/governor_state.tsv"
+    ],
+    "unrecovered_interrupted_sessions": [],
+    "closure_pass": true
+  },
+  "iova_guard": {
+    "failure_matches": [],
+    "pass": true
+  },
+  "validity_gates": {
+    "terminal_count_pass": true,
+    "all_formal_cells_pass_na_or_adjudicated_discard": true,
+    "correctness_boundary_adjudication_pass": true,
+    "randomized_preflight_pass": true,
+    "telemetry_pass": true,
+    "performance_governors_pass": true,
+    "governor_closure_pass": true,
+    "final_session_exact_governor_restore_pass": true,
+    "runner_pass": true,
+    "board_process_exit_pass": true,
+    "protocol_amendment_pass": true
+  },
+  "evidence_level": {
+    "logical_formal_matrices": 1,
+    "execution_sessions": 3,
+    "interruption": "board reboot; durable per-cell terminals retained and remaining cells resumed",
+    "replication": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "tier_a_denominator": "OPE0 single formal segment under owner waiver"
+  },
+  "claim_limits": [
+    "This is an isolated rknn_matmul primitive benchmark, not an RKLLM model run or deployment claim.",
+    "Attention rows are explicit OPE5-standby N/A terminals and were not silently dropped.",
+    "B0-reference prefill rows remain reference probes; only M=5142 carries formal C02 rendered-shape lineage.",
+    "int4 and fp16 have measured GOPS but no invented nominal-TOPS relative score.",
+    "No same-day second matrix was executed; replication is not claimed.",
+    "A board reboot interrupted the matrix after durable terminal 583; this receipt merges the original and resumed telemetry sessions without treating the resume as replication.",
+    "Owner-authorized protocol amendment OPE2-A1 applies only after durable terminal 673; completed cells were neither replaced nor rerun."
+  ]
+}

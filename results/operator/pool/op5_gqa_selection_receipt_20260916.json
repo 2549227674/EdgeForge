@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_GQA_DECODE_SELECTION",
+  "timestamp": "2026-09-16T17:11:46+08:00",
+  "protocol": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op5_gqa_decode_selection_probe.json",
+    "sha256": "121ae0b4b4ad6858f1b497c1f6895073823519f17fe7ead93db94703f3d2617d"
+  },
+  "preregistration_receipt": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_gqa_prereg_receipt_20260916.json",
+    "sha256": "6fd79a4fcaa47bd652b3e7f8b2174827ff348851e22e027d4ebd13f955c74c8f"
+  },
+  "harness_execution_attempt": 3,
+  "prior_harness_failures": {
+    "count": 2,
+    "failures": [
+      {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/failures/op5_gqa_selection_failure_20260916T170832.json",
+        "sha256": "c3b542ecfa12e414e20d05afacf13d8ccb2656283f2a8499dbd112bb40809fe9",
+        "classification": "HARNESS_ONLY_INFERENCE_TENSOR_VERSION_COUNTER",
+        "formal_attention_baseline_executed_before_failure": false,
+        "custom_candidate_implemented_or_timed": false,
+        "protocol_changed_after_failure": false,
+        "repair_scope": "create audited input tensors outside torch.inference_mode"
+      },
+      {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/failures/op5_gqa_selection_failure_20260916T170952.json",
+        "sha256": "091548bdb95f95186dc492beebe166e44fbb65abb8201e41021c08dc2d0c05a4",
+        "classification": "HARNESS_ONLY_CUDAGRAPH_OUTPUT_LIFETIME",
+        "correctness_operations_started": true,
+        "formal_performance_measurement_started": false,
+        "custom_candidate_implemented_or_timed": false,
+        "protocol_changed_after_failure": false,
+        "repair_scope": "clone correctness outputs immediately outside compiled graphs; timed path unchanged"
+      }
+    ]
+  },
+  "runner": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_gqa_selection.py",
+    "sha256": "9869b85b405527b408f33b3867f843b451573a0d3e6dc56de385fd7808914f17"
+  },
+  "result": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_gqa_selection_20260916.json",
+    "sha256": "0b83a210be8a061ce7572e9a71fc15d3814e7bcf050b09836826cdf41717c12d"
+  },
+  "gates": {
+    "frozen_protocol_immutable": "PASS",
+    "prior_harness_failures_preserved_and_classified": "PASS",
+    "source_and_git_identity": "PASS",
+    "k2_r2_terminal_transition": "PASS",
+    "authenticity": "PASS",
+    "correctness": "PASS",
+    "all_13_cases_x_3_seeds": "PASS",
+    "four_existing_baselines_measured": "PASS",
+    "same_day_bandwidth": "PASS",
+    "thermal_or_hardware_throttle_absent": "PASS",
+    "memory_clock_gate": "PASS",
+    "bottleneck": "PASS"
+  },
+  "best_baseline_eligibility": {
+    "transformers_eager": true,
+    "compile_eager": true,
+    "torch_sdpa_gqa": false,
+    "compile_sdpa_gqa": false
+  },
+  "best_baseline_tier_a_relative_score": 0.04808261149661573,
+  "best_sdpa_speedup_vs_current_eager": null,
+  "decision": "CUSTOM_GQA_DESIGN_PREREG_AUTHORIZED",
+  "custom_candidate_implemented_or_timed": false,
+  "next_authorized_action": "Complete C/D design, then freeze a custom GQA candidate protocol before implementation.",
+  "status": "PASS_CUSTOM_DESIGN_AUTHORIZED"
+}

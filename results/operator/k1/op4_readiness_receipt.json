@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "stage": "OP4-readiness",
+  "kernel": "k1_gemma4_rmsnorm",
+  "timestamp": "2026-09-15T22:03:48+08:00",
+  "status": "PASS",
+  "permission_change": {
+    "performed_by": "owner on Windows host",
+    "owner_confirmation": "已开启",
+    "prior_status": "BLOCKED_SOFT",
+    "prior_failure": {
+      "path": "results/operator/failures/k1_op4_readiness_20260915T214529.json",
+      "sha256": "83e9cc94d2b48e48eaccc79735a1d88d7e4aed0bd797c3ef70888cccc29f4324",
+      "error": "ERR_NVGPUCTRPERM"
+    }
+  },
+  "identical_counter_smoke": {
+    "started_at": "2026-09-15T22:03:43+08:00",
+    "finished_at": "2026-09-15T22:03:48+08:00",
+    "command": [
+      "/usr/local/cuda/bin/ncu",
+      "--set",
+      "basic",
+      "--kernel-name",
+      "regex:k0_vector_add_kernel",
+      "--launch-count",
+      "1",
+      "--target-processes",
+      "all",
+      ".venv-bfcl/bin/python",
+      "scripts/operator/k0_harness.py",
+      "--config",
+      "configs/operator/op0_measurement.json",
+      "--ncu-target"
+    ],
+    "exit_code": 0,
+    "profiled_process_id": 74599,
+    "profiled_kernel": "k0_vector_add_kernel",
+    "collection_passes": 8,
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "compute_capability": "8.9",
+    "observed_metrics": {
+      "dram_frequency_ghz": 7.87,
+      "sm_frequency_ghz": 1.89,
+      "dram_throughput_percent": 52.30,
+      "duration_us": 4,
+      "grid_size": 256,
+      "block_size": 128
+    },
+    "permission_error_present": false
+  },
+  "required_metric_probe": {
+    "purpose": "Verify the exact OP4 metric names and CUDA profiler start/stop filtering before freezing the formal config; K0 only and excluded from K1 attribution.",
+    "command_shape": "ncu --csv --page raw --metrics dram__bytes.sum,dram__bytes_read.sum,dram__bytes_write.sum,gpu__time_duration.sum --profile-from-start off --kernel-name regex:^k0_vector_add_kernel$ --launch-count 1 ...",
+    "exit_code": 0,
+    "profiled_process_id": 73577,
+    "profiled_rows": 1,
+    "cuda_profiler_start_status": "cudaError.success",
+    "cuda_profiler_stop_status": "cudaError.success",
+    "observed": {
+      "dram__bytes.sum": 527232,
+      "dram__bytes_read.sum": 527232,
+      "dram__bytes_write.sum": 0,
+      "gpu__time_duration.sum": 4480,
+      "profiler__replayer_passes": 1
+    },
+    "formal_k1_measurement": false
+  },
+  "ncu": {
+    "path": "/usr/local/cuda/bin/ncu",
+    "version": "2025.1.1.0",
+    "build": "35528883",
+    "installed": true
+  },
+  "evidence": {
+    "original_op0_toolchain_probe": {
+      "path": "results/operator/op0/toolchain_probe.json",
+      "sha256": "0a48304b4552d4a1286389604cdcdd2912cce0dd158bdfe22adbc38fbf41dec0"
+    },
+    "op0_receipt": {
+      "path": "results/operator/op0/op0_receipt.json",
+      "sha256": "86c3a2fa42b5a0c157e3880a4861efce330fb453025001f9c8752b387930261d",
+      "status": "PASS"
+    },
+    "op2_receipt": {
+      "path": "results/operator/k1/op2_receipt.json",
+      "sha256": "414bfa626414aef041c20529ca49303f1545accd405e24cbb1a3c6ab9eead813",
+      "status": "PASS"
+    },
+    "op3_receipt": {
+      "path": "results/operator/k1/op3_receipt.json",
+      "sha256": "80c32bd466e2db199882affc3690b566eeb5f22ecc5ed58534c396ea18c5b210",
+      "status": "PASS"
+    }
+  },
+  "assessment": {
+    "op4_executable_now": true,
+    "reason": "The identical ncu counter smoke exits 0 and collects GPU metrics; a separate K0-only probe also collects the exact dram__bytes.sum counter required by OP4.",
+    "resume_gate": "PASS",
+    "next_action": "Freeze the OP4 config before any formal K1 counter launch, then profile all 96 frozen OP2 cases."
+  },
+  "scope": {
+    "counter_smoke_executed": true,
+    "op4_formal_config_frozen": false,
+    "op4_ncu_attribution_executed": false,
+    "op2_unchanged": true,
+    "op3_unchanged": true,
+    "op5_not_executed": true
+  },
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0"
+}

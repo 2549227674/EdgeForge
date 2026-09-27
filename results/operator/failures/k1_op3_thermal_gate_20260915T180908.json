@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "stage": "OP3",
+  "status": "INVALIDATED_AND_STOPPED",
+  "evidence_kind": "post-stop read-only power and throttle diagnosis",
+  "diagnosed_at": "2026-09-15T18:09:45+08:00",
+  "formal_attempt_failure_receipt": {
+    "path": "results/operator/failures/k1_op3_20260915T180908.json",
+    "sha256": "6711fbc67ae93a06ddfa0b6c634d1d265e92600ddab6a200c664301b4937d1e3"
+  },
+  "trigger": {
+    "reason": "the frozen OP3 thermal protocol invalidates any thermal or hardware throttle window",
+    "observed_sustained_step_time_change": "B1 rose from approximately 117-130 ms/token to approximately 220-315 ms/token late in regex-log__HM89SBD:1",
+    "nvidia_smi_sample": {
+      "timestamp": "2026/09/15 18:09:45",
+      "performance_state": "P3",
+      "sw_power_cap": "Active",
+      "sw_thermal_slowdown": "Active",
+      "hw_thermal_slowdown": "Not Active",
+      "hw_power_brake_slowdown": "Not Active",
+      "gpu_temperature_c": 60,
+      "gpu_power_draw_w": 18.08,
+      "current_power_limit_w": 45.0,
+      "requested_power_limit_w": 45.0,
+      "default_power_limit_w": 80.0,
+      "max_power_limit_w": 140.0
+    },
+    "power_supply": {
+      "/sys/class/power_supply/AC1/online": 0,
+      "/sys/class/power_supply/BAT1/status": "Discharging",
+      "/sys/class/power_supply/BAT1/capacity_percent": 94
+    }
+  },
+  "comparison_to_upstream_passed_protocol": {
+    "op0_bandwidth_thermal_or_hardware_throttle": false,
+    "op2_thermal_or_hardware_throttle": false,
+    "current_condition_matches_upstream": false
+  },
+  "action": {
+    "controlled_interrupt": true,
+    "reason": "continuing would spend hours on a run already guaranteed to fail the frozen thermal gate",
+    "runner_cleanup_logged": true,
+    "original_forward_restore_was_in_finally": true,
+    "formal_result_published": false,
+    "restart_policy": "connect AC power, verify AC online and sw_thermal_slowdown Not Active, then restart OP3 from A1"
+  },
+  "scope": {
+    "op3_formal_attempt_complete": false,
+    "op4_not_started": true,
+    "op5_not_started": true,
+    "p0_3b_not_started": true
+  }
+}

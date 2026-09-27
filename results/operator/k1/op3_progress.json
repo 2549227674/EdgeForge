@@ -1,0 +1,409 @@
+{
+  "schema_version": 1,
+  "stage": "OP3",
+  "status": "PASS",
+  "started_at": "2026-09-15T18:12:50+08:00",
+  "updated_at": "2026-09-15T21:31:43+08:00",
+  "config_sha256": "d4917b82fecc894a69db63e258e921a165eee8db395c7c1590bfe3416a96e8c6",
+  "completed_runs": 44,
+  "total_runs": 44,
+  "current": null,
+  "completed": [
+    {
+      "path": "A",
+      "pass": 1,
+      "tape_id": "regex-log__HM89SBD",
+      "request_id": "regex-log__HM89SBD:1",
+      "generated_token_ids_sha256": "323a3b5a8a2efd6ab33e22234fe0416ea5483188b643f6f9a5e563c7976a7971",
+      "total_seconds": 518.5254092260002,
+      "completed_at": "2026-09-15T18:24:16+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 1,
+      "tape_id": "regex-log__HM89SBD",
+      "request_id": "regex-log__HM89SBD:2",
+      "generated_token_ids_sha256": "2e0b2561090bca9f49e7035e93ff65c30ba424c360cd5e81caa277250c539022",
+      "total_seconds": 45.055266921999646,
+      "completed_at": "2026-09-15T18:25:00+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 2,
+      "tape_id": "regex-log__HM89SBD",
+      "request_id": "regex-log__HM89SBD:1",
+      "generated_token_ids_sha256": "323a3b5a8a2efd6ab33e22234fe0416ea5483188b643f6f9a5e563c7976a7971",
+      "total_seconds": 495.03629429099965,
+      "completed_at": "2026-09-15T18:33:05+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 2,
+      "tape_id": "regex-log__HM89SBD",
+      "request_id": "regex-log__HM89SBD:2",
+      "generated_token_ids_sha256": "2e0b2561090bca9f49e7035e93ff65c30ba424c360cd5e81caa277250c539022",
+      "total_seconds": 45.23502802500116,
+      "completed_at": "2026-09-15T18:33:49+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 1,
+      "tape_id": "regex-log__HM89SBD",
+      "request_id": "regex-log__HM89SBD:1",
+      "generated_token_ids_sha256": "890dfa044a762e9725ea21ae3f55eef21b4ee93d123b42b9c388ec578ba7a859",
+      "total_seconds": 417.14451018,
+      "completed_at": "2026-09-15T18:40:38+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 1,
+      "tape_id": "regex-log__HM89SBD",
+      "request_id": "regex-log__HM89SBD:2",
+      "generated_token_ids_sha256": "361c60f1543ae82214c31e623261313725e90c615dd0f00e7807b0e393a9771c",
+      "total_seconds": 35.876208980998854,
+      "completed_at": "2026-09-15T18:41:14+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 2,
+      "tape_id": "regex-log__HM89SBD",
+      "request_id": "regex-log__HM89SBD:1",
+      "generated_token_ids_sha256": "890dfa044a762e9725ea21ae3f55eef21b4ee93d123b42b9c388ec578ba7a859",
+      "total_seconds": 374.8274268290006,
+      "completed_at": "2026-09-15T18:47:21+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 2,
+      "tape_id": "regex-log__HM89SBD",
+      "request_id": "regex-log__HM89SBD:2",
+      "generated_token_ids_sha256": "361c60f1543ae82214c31e623261313725e90c615dd0f00e7807b0e393a9771c",
+      "total_seconds": 34.68602572099917,
+      "completed_at": "2026-09-15T18:47:55+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 1,
+      "tape_id": "openssl-selfsigned-cert__oCvmg5c",
+      "request_id": "openssl-selfsigned-cert__oCvmg5c:1",
+      "generated_token_ids_sha256": "0e54043c0c1f6daea8c2eb0b1aec9d083a318dd873c2a5fcba516f3861d96fe9",
+      "total_seconds": 483.32831102599994,
+      "completed_at": "2026-09-15T18:55:48+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 1,
+      "tape_id": "openssl-selfsigned-cert__oCvmg5c",
+      "request_id": "openssl-selfsigned-cert__oCvmg5c:2",
+      "generated_token_ids_sha256": "5f4b8eb617f6b8c46761973393a20e7e2e43c6297c187f19d8cf67fc795dd366",
+      "total_seconds": 86.62163301500004,
+      "completed_at": "2026-09-15T18:57:13+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 2,
+      "tape_id": "openssl-selfsigned-cert__oCvmg5c",
+      "request_id": "openssl-selfsigned-cert__oCvmg5c:1",
+      "generated_token_ids_sha256": "0e54043c0c1f6daea8c2eb0b1aec9d083a318dd873c2a5fcba516f3861d96fe9",
+      "total_seconds": 474.0019025820002,
+      "completed_at": "2026-09-15T19:04:58+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 2,
+      "tape_id": "openssl-selfsigned-cert__oCvmg5c",
+      "request_id": "openssl-selfsigned-cert__oCvmg5c:2",
+      "generated_token_ids_sha256": "5f4b8eb617f6b8c46761973393a20e7e2e43c6297c187f19d8cf67fc795dd366",
+      "total_seconds": 73.50477852399854,
+      "completed_at": "2026-09-15T19:06:11+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 1,
+      "tape_id": "openssl-selfsigned-cert__oCvmg5c",
+      "request_id": "openssl-selfsigned-cert__oCvmg5c:1",
+      "generated_token_ids_sha256": "11fec3395274b067e9b4994f83f9ddc7224ed81d6b5aa8a8d79a363beeb07f4c",
+      "total_seconds": 400.0679819699999,
+      "completed_at": "2026-09-15T19:12:46+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 1,
+      "tape_id": "openssl-selfsigned-cert__oCvmg5c",
+      "request_id": "openssl-selfsigned-cert__oCvmg5c:2",
+      "generated_token_ids_sha256": "a144881b2061ccbd2e1bb8df52f8eeee81739ac6ba60f2727a2e16a4b9d583fb",
+      "total_seconds": 65.22866516799877,
+      "completed_at": "2026-09-15T19:13:50+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 2,
+      "tape_id": "openssl-selfsigned-cert__oCvmg5c",
+      "request_id": "openssl-selfsigned-cert__oCvmg5c:1",
+      "generated_token_ids_sha256": "11fec3395274b067e9b4994f83f9ddc7224ed81d6b5aa8a8d79a363beeb07f4c",
+      "total_seconds": 400.58320038199963,
+      "completed_at": "2026-09-15T19:20:28+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 2,
+      "tape_id": "openssl-selfsigned-cert__oCvmg5c",
+      "request_id": "openssl-selfsigned-cert__oCvmg5c:2",
+      "generated_token_ids_sha256": "a144881b2061ccbd2e1bb8df52f8eeee81739ac6ba60f2727a2e16a4b9d583fb",
+      "total_seconds": 66.83734248700057,
+      "completed_at": "2026-09-15T19:21:35+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 1,
+      "tape_id": "multi-source-data-merger__bUyWMFa",
+      "request_id": "multi-source-data-merger__bUyWMFa:1",
+      "generated_token_ids_sha256": "e7e44574e4c947ecf0c68485b79be64f532d2ac8cd77a553452e237fda3062a4",
+      "total_seconds": 527.4243750969999,
+      "completed_at": "2026-09-15T19:30:18+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 1,
+      "tape_id": "multi-source-data-merger__bUyWMFa",
+      "request_id": "multi-source-data-merger__bUyWMFa:2",
+      "generated_token_ids_sha256": "8d7df51b463f33f436e40fbcd41a325f4dd624ec415fbac2257e05c88314986e",
+      "total_seconds": 56.604592051999134,
+      "completed_at": "2026-09-15T19:31:14+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 2,
+      "tape_id": "multi-source-data-merger__bUyWMFa",
+      "request_id": "multi-source-data-merger__bUyWMFa:1",
+      "generated_token_ids_sha256": "e7e44574e4c947ecf0c68485b79be64f532d2ac8cd77a553452e237fda3062a4",
+      "total_seconds": 542.4694550339991,
+      "completed_at": "2026-09-15T19:40:07+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 2,
+      "tape_id": "multi-source-data-merger__bUyWMFa",
+      "request_id": "multi-source-data-merger__bUyWMFa:2",
+      "generated_token_ids_sha256": "8d7df51b463f33f436e40fbcd41a325f4dd624ec415fbac2257e05c88314986e",
+      "total_seconds": 58.036928658999386,
+      "completed_at": "2026-09-15T19:41:04+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 1,
+      "tape_id": "multi-source-data-merger__bUyWMFa",
+      "request_id": "multi-source-data-merger__bUyWMFa:1",
+      "generated_token_ids_sha256": "c54aa24081b16b496ad95c500566e1b72574e8fb5d194c3d4292791a946ad7be",
+      "total_seconds": 462.1573707849984,
+      "completed_at": "2026-09-15T19:48:38+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 1,
+      "tape_id": "multi-source-data-merger__bUyWMFa",
+      "request_id": "multi-source-data-merger__bUyWMFa:2",
+      "generated_token_ids_sha256": "d0be526a84c123513f550d4cf55c636ce9578d850ad9379c240a87f784f7430d",
+      "total_seconds": 54.975209702999564,
+      "completed_at": "2026-09-15T19:49:32+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 2,
+      "tape_id": "multi-source-data-merger__bUyWMFa",
+      "request_id": "multi-source-data-merger__bUyWMFa:1",
+      "generated_token_ids_sha256": "c54aa24081b16b496ad95c500566e1b72574e8fb5d194c3d4292791a946ad7be",
+      "total_seconds": 516.3565084299989,
+      "completed_at": "2026-09-15T19:57:59+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 2,
+      "tape_id": "multi-source-data-merger__bUyWMFa",
+      "request_id": "multi-source-data-merger__bUyWMFa:2",
+      "generated_token_ids_sha256": "d0be526a84c123513f550d4cf55c636ce9578d850ad9379c240a87f784f7430d",
+      "total_seconds": 53.80363036000017,
+      "completed_at": "2026-09-15T19:58:53+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 1,
+      "tape_id": "constraints-scheduling__aaSRUnD",
+      "request_id": "constraints-scheduling__aaSRUnD:1",
+      "generated_token_ids_sha256": "667bf778fdc715868b3c1bf7a26766e615958336daefb6fb0b74debbda1b695d",
+      "total_seconds": 658.7953634750011,
+      "completed_at": "2026-09-15T20:09:45+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 1,
+      "tape_id": "constraints-scheduling__aaSRUnD",
+      "request_id": "constraints-scheduling__aaSRUnD:2",
+      "generated_token_ids_sha256": "434682c902b12f4a3d924d3344b36eef19d0852c7f01b82920e9c4fe4de032cf",
+      "total_seconds": 429.37274720799905,
+      "completed_at": "2026-09-15T20:16:48+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 2,
+      "tape_id": "constraints-scheduling__aaSRUnD",
+      "request_id": "constraints-scheduling__aaSRUnD:1",
+      "generated_token_ids_sha256": "667bf778fdc715868b3c1bf7a26766e615958336daefb6fb0b74debbda1b695d",
+      "total_seconds": 650.5499856700008,
+      "completed_at": "2026-09-15T20:27:29+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 2,
+      "tape_id": "constraints-scheduling__aaSRUnD",
+      "request_id": "constraints-scheduling__aaSRUnD:2",
+      "generated_token_ids_sha256": "434682c902b12f4a3d924d3344b36eef19d0852c7f01b82920e9c4fe4de032cf",
+      "total_seconds": 436.2082438010002,
+      "completed_at": "2026-09-15T20:34:39+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 1,
+      "tape_id": "constraints-scheduling__aaSRUnD",
+      "request_id": "constraints-scheduling__aaSRUnD:1",
+      "generated_token_ids_sha256": "d28acd86739f5cdcc1fd1514db757c12de466cad2c6e12f6e0305df1e3fd36cc",
+      "total_seconds": 564.7555124339997,
+      "completed_at": "2026-09-15T20:43:53+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 1,
+      "tape_id": "constraints-scheduling__aaSRUnD",
+      "request_id": "constraints-scheduling__aaSRUnD:2",
+      "generated_token_ids_sha256": "48d426b0ab387c94d71d5a78b1b9b993844ccd752bc5f155e400553643ab75f6",
+      "total_seconds": 375.7961128269999,
+      "completed_at": "2026-09-15T20:50:06+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 2,
+      "tape_id": "constraints-scheduling__aaSRUnD",
+      "request_id": "constraints-scheduling__aaSRUnD:1",
+      "generated_token_ids_sha256": "d28acd86739f5cdcc1fd1514db757c12de466cad2c6e12f6e0305df1e3fd36cc",
+      "total_seconds": 586.2858445709971,
+      "completed_at": "2026-09-15T20:59:45+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 2,
+      "tape_id": "constraints-scheduling__aaSRUnD",
+      "request_id": "constraints-scheduling__aaSRUnD:2",
+      "generated_token_ids_sha256": "48d426b0ab387c94d71d5a78b1b9b993844ccd752bc5f155e400553643ab75f6",
+      "total_seconds": 376.856254033999,
+      "completed_at": "2026-09-15T21:05:57+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 1,
+      "tape_id": "sqlite-db-truncate__Z9iGbrN",
+      "request_id": "sqlite-db-truncate__Z9iGbrN:1",
+      "generated_token_ids_sha256": "5b2e04600bfc4bbf6e6fa9eaa81f69a5ff9f81f257db35562f40799254724f36",
+      "total_seconds": 300.54260814900044,
+      "completed_at": "2026-09-15T21:10:54+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 1,
+      "tape_id": "sqlite-db-truncate__Z9iGbrN",
+      "request_id": "sqlite-db-truncate__Z9iGbrN:2",
+      "generated_token_ids_sha256": "0405e30f2adc89c72a50c613d2c235a6f21eed69207d0b8a66f161277d524832",
+      "total_seconds": 78.7420477989981,
+      "completed_at": "2026-09-15T21:12:12+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 1,
+      "tape_id": "sqlite-db-truncate__Z9iGbrN",
+      "request_id": "sqlite-db-truncate__Z9iGbrN:3",
+      "generated_token_ids_sha256": "519cb5e477bb575358dfea3888f0adcbcd903f2f45b76f93dd3a67af958b8224",
+      "total_seconds": 42.69620995199875,
+      "completed_at": "2026-09-15T21:12:54+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 2,
+      "tape_id": "sqlite-db-truncate__Z9iGbrN",
+      "request_id": "sqlite-db-truncate__Z9iGbrN:1",
+      "generated_token_ids_sha256": "5b2e04600bfc4bbf6e6fa9eaa81f69a5ff9f81f257db35562f40799254724f36",
+      "total_seconds": 297.1612324429989,
+      "completed_at": "2026-09-15T21:17:50+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 2,
+      "tape_id": "sqlite-db-truncate__Z9iGbrN",
+      "request_id": "sqlite-db-truncate__Z9iGbrN:2",
+      "generated_token_ids_sha256": "0405e30f2adc89c72a50c613d2c235a6f21eed69207d0b8a66f161277d524832",
+      "total_seconds": 78.60479382400081,
+      "completed_at": "2026-09-15T21:19:09+08:00"
+    },
+    {
+      "path": "A",
+      "pass": 2,
+      "tape_id": "sqlite-db-truncate__Z9iGbrN",
+      "request_id": "sqlite-db-truncate__Z9iGbrN:3",
+      "generated_token_ids_sha256": "519cb5e477bb575358dfea3888f0adcbcd903f2f45b76f93dd3a67af958b8224",
+      "total_seconds": 41.75548970399905,
+      "completed_at": "2026-09-15T21:19:50+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 1,
+      "tape_id": "sqlite-db-truncate__Z9iGbrN",
+      "request_id": "sqlite-db-truncate__Z9iGbrN:1",
+      "generated_token_ids_sha256": "22a4d79862d3b8be1c3d4350e317d4fad27425f88dce421d03dbe51386e5c002",
+      "total_seconds": 252.5395072579995,
+      "completed_at": "2026-09-15T21:24:01+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 1,
+      "tape_id": "sqlite-db-truncate__Z9iGbrN",
+      "request_id": "sqlite-db-truncate__Z9iGbrN:2",
+      "generated_token_ids_sha256": "acbe416f82c5ebb6daa9cd3d626ef052aaca523069bcb1f14ba494c856af1093",
+      "total_seconds": 61.06710792499871,
+      "completed_at": "2026-09-15T21:25:02+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 1,
+      "tape_id": "sqlite-db-truncate__Z9iGbrN",
+      "request_id": "sqlite-db-truncate__Z9iGbrN:3",
+      "generated_token_ids_sha256": "acfea6f409aae80bdd9fbe98abd2184dbe8cdd2c713f8852c589eabe01930082",
+      "total_seconds": 32.30120778700075,
+      "completed_at": "2026-09-15T21:25:35+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 2,
+      "tape_id": "sqlite-db-truncate__Z9iGbrN",
+      "request_id": "sqlite-db-truncate__Z9iGbrN:1",
+      "generated_token_ids_sha256": "22a4d79862d3b8be1c3d4350e317d4fad27425f88dce421d03dbe51386e5c002",
+      "total_seconds": 263.8373648100023,
+      "completed_at": "2026-09-15T21:29:57+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 2,
+      "tape_id": "sqlite-db-truncate__Z9iGbrN",
+      "request_id": "sqlite-db-truncate__Z9iGbrN:2",
+      "generated_token_ids_sha256": "acbe416f82c5ebb6daa9cd3d626ef052aaca523069bcb1f14ba494c856af1093",
+      "total_seconds": 68.51349934999962,
+      "completed_at": "2026-09-15T21:31:05+08:00"
+    },
+    {
+      "path": "B",
+      "pass": 2,
+      "tape_id": "sqlite-db-truncate__Z9iGbrN",
+      "request_id": "sqlite-db-truncate__Z9iGbrN:3",
+      "generated_token_ids_sha256": "acfea6f409aae80bdd9fbe98abd2184dbe8cdd2c713f8852c589eabe01930082",
+      "total_seconds": 36.24611589399865,
+      "completed_at": "2026-09-15T21:31:42+08:00"
+    }
+  ]
+}

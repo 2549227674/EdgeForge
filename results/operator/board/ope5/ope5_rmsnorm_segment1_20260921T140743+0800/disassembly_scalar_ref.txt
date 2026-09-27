@@ -1,0 +1,100 @@
+
+/home/orangepi/edgeforge_ope_r1/bin/ope5_rmsnorm_bench:     file format elf64-littleaarch64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .text:
+
+0000000000005460 <scalar_ref>:
+    5460:	7100007f 	cmp	w3, #0x0
+    5464:	54000aad 	b.le	55b8 <scalar_ref+0x158>
+    5468:	a9b97bfd 	stp	x29, x30, [sp, #-112]!
+    546c:	910003fd 	mov	x29, sp
+    5470:	a9046bf9 	stp	x25, x26, [sp, #64]
+    5474:	aa0103f9 	mov	x25, x1
+    5478:	5286f7a1 	mov	w1, #0x37bd                	// #14269
+    547c:	72a6b0c1 	movk	w1, #0x3586, lsl #16
+    5480:	5280001a 	mov	w26, #0x0                   	// #0
+    5484:	6d0627e8 	stp	d8, d9, [sp, #96]
+    5488:	1e2e1009 	fmov	s9, #1.000000000000000000e+00
+    548c:	1e270028 	fmov	s8, w1
+    5490:	fd002fea 	str	d10, [sp, #88]
+    5494:	1e22008a 	scvtf	s10, w4
+    5498:	a90153f3 	stp	x19, x20, [sp, #16]
+    549c:	51000494 	sub	w20, w4, #0x1
+    54a0:	aa0003f3 	mov	x19, x0
+    54a4:	91000800 	add	x0, x0, #0x2
+    54a8:	a90363f7 	stp	x23, x24, [sp, #48]
+    54ac:	d37f7e98 	ubfiz	x24, x20, #1, #32
+    54b0:	aa0203f7 	mov	x23, x2
+    54b4:	91000b18 	add	x24, x24, #0x2
+    54b8:	8b344414 	add	x20, x0, w20, uxtw #1
+    54bc:	a9025bf5 	stp	x21, x22, [sp, #32]
+    54c0:	2a0303f5 	mov	w21, w3
+    54c4:	2a0403f6 	mov	w22, w4
+    54c8:	f9002bfb 	str	x27, [sp, #80]
+    54cc:	937f7c9b 	sbfiz	x27, x4, #1, #32
+    54d0:	710002df 	cmp	w22, #0x0
+    54d4:	5400032d 	b.le	5538 <scalar_ref+0xd8>
+    54d8:	0f000400 	movi	v0.2s, #0x0
+    54dc:	aa1303e0 	mov	x0, x19
+    54e0:	7c402401 	ldr	h1, [x0], #2
+    54e4:	1ee24021 	fcvt	s1, h1
+    54e8:	1f010020 	fmadd	s0, s1, s1, s0
+    54ec:	eb00029f 	cmp	x20, x0
+    54f0:	54ffff81 	b.ne	54e0 <scalar_ref+0x80>  // b.any
+    54f4:	1e2a1800 	fdiv	s0, s0, s10
+    54f8:	1e282800 	fadd	s0, s0, s8
+    54fc:	940003b9 	bl	63e0 <_ZSt4sqrtf>
+    5500:	1e201920 	fdiv	s0, s9, s0
+    5504:	d2800000 	mov	x0, #0x0                   	// #0
+    5508:	b4000379 	cbz	x25, 5574 <scalar_ref+0x114>
+    550c:	7c606a61 	ldr	h1, [x19, x0]
+    5510:	7c606b22 	ldr	h2, [x25, x0]
+    5514:	1ee24021 	fcvt	s1, h1
+    5518:	1ee24042 	fcvt	s2, h2
+    551c:	1e200821 	fmul	s1, s1, s0
+    5520:	1e220821 	fmul	s1, s1, s2
+    5524:	1e23c021 	fcvt	h1, s1
+    5528:	7c206ae1 	str	h1, [x23, x0]
+    552c:	91000800 	add	x0, x0, #0x2
+    5530:	eb18001f 	cmp	x0, x24
+    5534:	54fffec1 	b.ne	550c <scalar_ref+0xac>  // b.any
+    5538:	1100075a 	add	w26, w26, #0x1
+    553c:	8b1b0273 	add	x19, x19, x27
+    5540:	8b1b02f7 	add	x23, x23, x27
+    5544:	8b1b0294 	add	x20, x20, x27
+    5548:	6b1a02bf 	cmp	w21, w26
+    554c:	54fffc21 	b.ne	54d0 <scalar_ref+0x70>  // b.any
+    5550:	a94153f3 	ldp	x19, x20, [sp, #16]
+    5554:	a9425bf5 	ldp	x21, x22, [sp, #32]
+    5558:	a94363f7 	ldp	x23, x24, [sp, #48]
+    555c:	a9446bf9 	ldp	x25, x26, [sp, #64]
+    5560:	f9402bfb 	ldr	x27, [sp, #80]
+    5564:	fd402fea 	ldr	d10, [sp, #88]
+    5568:	6d4627e8 	ldp	d8, d9, [sp, #96]
+    556c:	a8c77bfd 	ldp	x29, x30, [sp], #112
+    5570:	d65f03c0 	ret
+    5574:	7c606a61 	ldr	h1, [x19, x0]
+    5578:	1ee24021 	fcvt	s1, h1
+    557c:	1e200821 	fmul	s1, s1, s0
+    5580:	1e23c021 	fcvt	h1, s1
+    5584:	7c206ae1 	str	h1, [x23, x0]
+    5588:	91000800 	add	x0, x0, #0x2
+    558c:	eb00031f 	cmp	x24, x0
+    5590:	54fffd40 	b.eq	5538 <scalar_ref+0xd8>  // b.none
+    5594:	7c606a61 	ldr	h1, [x19, x0]
+    5598:	1ee24021 	fcvt	s1, h1
+    559c:	1e200821 	fmul	s1, s1, s0
+    55a0:	1e23c021 	fcvt	h1, s1
+    55a4:	7c206ae1 	str	h1, [x23, x0]
+    55a8:	91000800 	add	x0, x0, #0x2
+    55ac:	eb00031f 	cmp	x24, x0
+    55b0:	54fffe21 	b.ne	5574 <scalar_ref+0x114>  // b.any
+    55b4:	17ffffe1 	b	5538 <scalar_ref+0xd8>
+    55b8:	d65f03c0 	ret
+
+Disassembly of section .fini:

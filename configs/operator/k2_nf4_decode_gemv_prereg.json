@@ -1,0 +1,374 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K2",
+  "kernel": "k2_nf4_double_quant_decode_gemv",
+  "frozen_at": "2026-09-16T13:13:15+08:00",
+  "frozen_before_any_k2_candidate_implementation_or_measurement": true,
+  "selection_probe_is_not_formal_k2_candidate_measurement": true,
+  "host_scope": "RTX 4060 Laptop GPU / sm_89 / WSL2 only",
+  "formal_numbers_must_not_be_extrapolated": [
+    "sm_100",
+    "sm_120",
+    "board targets",
+    "llama.cpp Q4_K_M"
+  ],
+  "source_identity": {
+    "shape_census": {
+      "path": "results/operator/shape_census.json",
+      "sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f"
+    },
+    "op1_receipt": {
+      "path": "results/operator/op1/op1_receipt.json",
+      "sha256": "e07ab8594314f171d38cd50bcedd0acd7dae2b09b17a2c3e272c720d3965ae60"
+    },
+    "op0_receipt": {
+      "path": "results/operator/op0/op0_receipt.json",
+      "sha256": "86c3a2fa42b5a0c157e3880a4861efce330fb453025001f9c8752b387930261d"
+    },
+    "op0_bandwidth_ceiling": {
+      "path": "results/operator/op0/bandwidth_ceiling.json",
+      "sha256": "772a80293900f9ac81349cf08e2d6a9791c4ec53a1f3c04cbf79ee0cf40727c9"
+    },
+    "p0_nf4_receipt": {
+      "path": "results/operator/p0/c02_s_nf4_smoke_receipt.json",
+      "sha256": "364d7fc93fe104bf4f3543ada7c2476e93ffd4ae4d8f5d8b7bccccea66053d4b"
+    },
+    "op4_receipt": {
+      "path": "results/operator/k1/op4_receipt.json",
+      "sha256": "dd12ef31ee61c859142d6bc9f5df378ccfec98e2145d6bcef7a3405e0a5bbee8"
+    },
+    "op5_selection_config": {
+      "path": "configs/operator/op5_k2_selection_probe.json",
+      "sha256": "455078161d9935388d19d5aae3ff48ae9da6ba66ffecb2cb347656981720b347"
+    },
+    "op5_selection_result": {
+      "path": "results/operator/pool/op5_k2_selection.json",
+      "sha256": "cb83e67e8766d2e07e4267563ffd77875c49cc85a26fa93e55408c35e33fd43f"
+    },
+    "op5_receipt": {
+      "path": "results/operator/pool/op5_receipt.json",
+      "sha256": "1666ed0bd944e8b14e71ec18311f690ffd9e4c4d466ac75041965cdfd5304c92"
+    },
+    "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0"
+  },
+  "four_questions": {
+    "authenticity": {
+      "answer": "PASS",
+      "basis": "The formal C02 profiler observed 343 bitsandbytes Linear4bit calls per model forward. The frozen 11-request census projects 7,444,815 NF4 calls; 7,441,042 calls (99.9493204332%) are M=1 decode calls in 14 semantic variants.",
+      "census_pointer": "results/operator/shape_census.json#/op_families/nf4_linear",
+      "calls_per_model_forward": 343,
+      "projected_workload_invocations": 7444815,
+      "projected_decode_invocations": 7441042,
+      "decode_invocation_fraction": 0.999493204332
+    },
+    "bottleneck": {
+      "answer": "PASS",
+      "basis": "The frozen OP5 selection probe rotated all 343 real weights in model order and compared the fused bitsandbytes eager path plus a zero-graph-break fullgraph compile path against a same-day 241.755911 GB/s triad ceiling.",
+      "compile_tier_a_relative_score": 0.12847238530393168,
+      "compile_headroom_fraction": 0.8715276146960683,
+      "vendor_eager_tier_a_relative_score_conservative_crosscheck": 0.4754898840422475,
+      "vendor_eager_headroom_fraction_conservative_crosscheck": 0.5245101159577525,
+      "pre_registered_selection_maximum_relative_score": 0.8,
+      "compile_regression_guard": "The compile wrapper is 3.701x slower than eager by invocation-weighted p50; K2 performance claims must therefore compare against the faster vendor eager baseline, never compile alone."
+    },
+    "capability": {
+      "answer": "PASS_DESIGN",
+      "basis": "All 343 C02 modules passed the same row-major nested-NF4 invariants: uint8 packed weights, blocksize 64, uint8 first-level scale indices, float32 second-level scale table with blocksize 256, BF16 activation/output, and no bias. Triton 3.7.1 on sm_89 can express the decode and reduction without a full BF16 weight materialization.",
+      "architecture": "sm_89",
+      "toolchain": "Triton 3.7.1 / Torch 2.13.0+cu130 / bitsandbytes 0.50.0"
+    },
+    "deliverability": {
+      "answer": "PASS_DESIGN",
+      "basis": "A torch.library op can consume the existing weight and QuantState tensors. A reversible Linear4bit dispatch can select it only for the frozen M=1 contract and preserve original parameters, state_dict keys, prefill behavior, and a mandatory fallback.",
+      "formal_reconnection_deferred_to": "OP5 K2 reconnection after isolated correctness and performance"
+    }
+  },
+  "semantics": {
+    "operation": "Y[1,N] = cast_bfloat16(sum_K(float32(X[1,K]) * dequantized_weight[N,K]))",
+    "quant_state_shape": "[N,K]",
+    "packed_storage": "row-major flattened [N,K], two 4-bit indices per uint8; even flattened element uses the high nibble and odd element uses the low nibble",
+    "quant_blocksize": 64,
+    "nested_scale_formula": "scale_index=floor(flat_weight_index/64); scale=float32(second_code[first_absmax_uint8[scale_index]]) * second_absmax_float32[floor(scale_index/256)] + offset_float32",
+    "weight_formula": "weight = NF4_CODEBOOK[nibble] * scale",
+    "nf4_codebook_index_order": [
+      -1.0,
+      -0.6961928009986877,
+      -0.5250730514526367,
+      -0.39491748809814453,
+      -0.28444138169288635,
+      -0.18477343022823334,
+      -0.09105003625154495,
+      0.0,
+      0.07958029955625534,
+      0.16093020141124725,
+      0.24611230194568634,
+      0.33791524171829224,
+      0.44070982933044434,
+      0.5626170039176941,
+      0.7229568362236023,
+      1.0
+    ],
+    "accumulator_dtype": "float32",
+    "input_output_dtype": "bfloat16",
+    "bias": null,
+    "census_op_semantics_sha256": "6a714208f36eca001b432b1fe3870e4a4c0133a176d91a56551eca2ba5bb10c4"
+  },
+  "candidate_contract": {
+    "formal_scope": "decode M=1 only",
+    "required_conditions": [
+      "CUDA device compute capability is sm_89",
+      "input is contiguous BF16 with shape [1,1,K] or [1,K]",
+      "inference/no-grad execution",
+      "quant_type is nf4 and QuantState is nested",
+      "quant blocksize is 64 and second-level blocksize is 256",
+      "packed and scale tensor dtypes/shapes match the frozen layout",
+      "bias is absent"
+    ],
+    "fallback": "Any condition miss, including every prefill M>1 call, invokes the original bitsandbytes Linear4bit path unchanged.",
+    "forbidden": [
+      "materializing the full BF16/FP32 weight matrix",
+      "changing Parameters or state_dict keys",
+      "crediting repeated-single-weight L2 reuse as formal performance",
+      "selecting a manual per-shape configuration after seeing formal results"
+    ]
+  },
+  "target_population": {
+    "source_pointer": "results/operator/shape_census.json#/op_families/nf4_linear/shapes",
+    "source_census_rows": 168,
+    "formal_selection": "all 14 decode rows and all 343 real C02 Linear4bit module weights",
+    "expected_decode_rows": 14,
+    "expected_modules": 343,
+    "expected_projected_decode_invocations": 7441042,
+    "phase_frequency": {
+      "prefill_invocation_weight": 0.000506795674,
+      "decode_invocation_weight": 0.999493204332,
+      "prefill_work_weight": 0.520691102707,
+      "decode_work_weight": 0.479308897281
+    },
+    "cache_control": "Every timing repetition executes all 343 module weights in model registration/execution order before reuse; results aggregate by the 14 variants and by census invocation weight.",
+    "prefill_policy": "No candidate timing claim; all prefill rows exercise and verify the original fallback during reconnection."
+  },
+  "candidate_design": {
+    "algorithm": "One Triton program owns a tile of output rows, iterates K in fixed chunks, decodes the high/low NF4 nibbles and nested scale in registers, accumulates float32 row reductions, and writes BF16 output once.",
+    "autotune_key": [
+      "K",
+      "N"
+    ],
+    "frozen_search_space": [
+      {
+        "BLOCK_N": 4,
+        "BLOCK_K": 256,
+        "num_warps": 4,
+        "num_stages": 2
+      },
+      {
+        "BLOCK_N": 8,
+        "BLOCK_K": 256,
+        "num_warps": 4,
+        "num_stages": 3
+      },
+      {
+        "BLOCK_N": 8,
+        "BLOCK_K": 512,
+        "num_warps": 8,
+        "num_stages": 3
+      },
+      {
+        "BLOCK_N": 16,
+        "BLOCK_K": 256,
+        "num_warps": 8,
+        "num_stages": 3
+      },
+      {
+        "BLOCK_N": 16,
+        "BLOCK_K": 512,
+        "num_warps": 8,
+        "num_stages": 4
+      }
+    ],
+    "tuning_policy": "Triton autotune may select only from the frozen search space. Autotune and compilation complete before correctness/performance timing; chosen configs are recorded. No manual shape-specific retuning after formal numbers are visible."
+  },
+  "analytic_bytes": {
+    "tier": "Tier-A compulsory unique bytes",
+    "formula": "input BF16 bytes + packed NF4 bytes + uint8 first-level scale-index bytes + float32 second-level absmax bytes + 256-entry float32 scale codebook + float32 offset + output BF16 bytes",
+    "bias_bytes": 0,
+    "cache_assumption": "Each tensor is counted once per invocation. No reuse between distinct module weights is credited.",
+    "same_day_ceiling_protocol": {
+      "operation": "Triton float32 triad",
+      "array_size_mib": 512,
+      "warmup_repetitions": 50,
+      "measured_repetitions": 200,
+      "block_size": 256
+    },
+    "tier_b_override": "For each representative decode row, ncu dram__bytes.sum supersedes the Tier-A byte count when the absolute difference exceeds 15%."
+  },
+  "baselines": {
+    "eager": {
+      "definition": "bitsandbytes 0.50.0 fused bitsandbytes::gemm_4bit CUDA path with the exact C02 packed weight and nested scale tensors",
+      "timed": true,
+      "claim_guard": "This is the primary/best performance baseline."
+    },
+    "compile": {
+      "definition": "torch.compile(fullgraph=true, mode=reduce-overhead, dynamic=false) around the exact tensor-only bitsandbytes::gemm_4bit call",
+      "timed": true,
+      "claim_guard": "Report it, but never claim success solely by beating it when eager is faster."
+    },
+    "reference": {
+      "definition": "bitsandbytes dequantize_4bit followed by an explicit float32 torch linear/dot and final BF16 cast",
+      "timed": false,
+      "reason": "correctness oracle; full materialization is outside the candidate contract"
+    },
+    "candidate": {
+      "definition": "Triton fused NF4 high/low nibble decode, nested scale reconstruction, and M=1 row reduction without full weight materialization",
+      "timed": true
+    },
+    "best_baseline_rule": "For every case and aggregate classification, best_baseline_us=min(eager_p50_us, compile_p50_us)."
+  },
+  "correctness_protocol": {
+    "actual_weight_coverage": [
+      "all 343 C02 module weights with unit_normal seed 20260916 against eager",
+      "one exact representative from each of 14 variants for every distribution and seed against eager and the float32 reference"
+    ],
+    "input_distributions": [
+      {
+        "name": "unit_normal",
+        "definition": "normal(mean=0, std=1)"
+      },
+      {
+        "name": "wide_normal",
+        "definition": "normal(mean=0, std=8)"
+      },
+      {
+        "name": "near_zero_uniform",
+        "definition": "uniform(low=-0.001, high=0.001)"
+      }
+    ],
+    "seeds": [
+      20260916,
+      20260917,
+      20260918
+    ],
+    "tolerances": {
+      "bfloat16": {
+        "atol": 0.03125,
+        "rtol": 0.02
+      }
+    },
+    "assertions": [
+      "candidate is allclose to the explicit float32 reference cast to BF16",
+      "candidate is allclose to the bitsandbytes eager result",
+      "shape, dtype, device, contiguity, and finite-value contract matches",
+      "input and all packed/scale tensors are unmodified",
+      "exhaustive nibble indices 0..15 prove high-nibble-first ordering",
+      "nested scale-index boundary cases cover indices 63/64 and 255/256",
+      "fallback output is exactly equal to original Linear4bit for M>1 and every rejected condition"
+    ]
+  },
+  "measurement_protocol": {
+    "event_timer": "torch.cuda.Event(enable_timing=true)",
+    "warmup_full_343_call_sequences_per_implementation": 50,
+    "steady_state_warmup_min_seconds": 2.0,
+    "measured_full_343_call_sequences_per_implementation": 200,
+    "timed_implementations": [
+      "eager",
+      "compile",
+      "candidate"
+    ],
+    "interleave_order": "three-way rotation by full-sequence repetition index; identical 343-module order for each implementation",
+    "gpu_telemetry_interval_seconds": 1.0,
+    "minimum_memory_clock_ratio_vs_op0": 0.95,
+    "op0_memory_clock_mhz_p50": 8000.0,
+    "invalidate_on_thermal_or_hardware_throttle": true,
+    "record_software_power_cap_without_invalidating": true,
+    "report": [
+      "per-variant p50_us and IQR_us",
+      "census-invocation-weighted aggregate p50_us",
+      "candidate speedup versus eager, compile, and best baseline",
+      "analytic bytes, measured GB/s, and Tier-A relative score",
+      "full 343-call sequence p50 and IQR",
+      "autotune choice for every geometry"
+    ]
+  },
+  "cross_day_replication": {
+    "required_before_final_performance_conclusion": true,
+    "minimum_valid_calendar_days": 2,
+    "same_protocol_and_power_mode_required": true,
+    "consistency": [
+      "aggregate outcome classification versus best baseline is identical on both days",
+      "aggregate candidate speedup versus best baseline differs by no more than 10% relative",
+      "mlp_gate_proj, mlp_up_proj, and mlp_down_proj speedup direction is identical on both days",
+      "both days pass telemetry, memory-clock, and same-day bandwidth gates"
+    ],
+    "adjudication": "If either consistency condition fails, run one third valid calendar day and report the median valid-day aggregate; do not discard a valid slow day."
+  },
+  "success_and_kill_criteria": {
+    "formal_isolated_pass_requires": [
+      "pre-registration hash remains unchanged from process start through receipt write",
+      "all frozen source hashes and upstream PASS states verify",
+      "all semantic microcases and randomized actual-weight correctness trials pass",
+      "all 14 variants and 343 weights complete 200 interleaved full-sequence repetitions",
+      "same-day Tier-A ceiling and all per-variant roofline fields are present",
+      "no thermal or hardware throttle is observed and memory clock ratio is at least 95%",
+      "a second valid calendar-day replication satisfies the frozen consistency rules"
+    ],
+    "performance_outcome_not_pipeline_completion_gate": true,
+    "aggregate_classification_against_best_baseline": {
+      "positive": "candidate weighted speedup >=1.05 and none of the three MLP variants regresses by more than 5%",
+      "parity": "candidate weighted speedup >=0.95 and <1.05",
+      "negative": "candidate weighted speedup <0.95"
+    },
+    "claim_rule": "Only the positive class may be described as a K2 speedup. Beating compile while losing to eager is negative, not positive.",
+    "kill": [
+      "unresolved correctness after three implementation-fix iterations: kill and retain every failure receipt",
+      "candidate slower than best baseline by more than 30% with Tier-B-confirmed relative score >=0.85: record optimization-negative and stop tuning",
+      "isolated implementation plus reconnection exceeds four working days: stop and document",
+      "any full-weight materialization or state_dict mutation: immediate design rejection"
+    ]
+  },
+  "ncu_tier_b": {
+    "required": true,
+    "population": "one exact representative module for each of 14 decode variants",
+    "metrics": [
+      "dram__bytes.sum",
+      "dram__throughput.avg.pct_of_peak_sustained_elapsed",
+      "sm__throughput.avg.pct_of_peak_sustained_elapsed"
+    ],
+    "repetitions_per_profiled_case": 1,
+    "analytic_override_threshold_fraction": 0.15,
+    "counter_permission_precondition": "OP4 PASS proves the Windows/WSL2 counter path is available."
+  },
+  "reconnection_protocol": {
+    "registration": "torch.library custom op with a fake/meta implementation and an sm_89 CUDA implementation",
+    "dispatch": "reversible replacement of active C02 Linear4bit forward; candidate only for the exact M=1 contract, original forward otherwise",
+    "structural_gates": [
+      "343 active modules remain present",
+      "parameter object identities and state_dict key/value hashes are unchanged",
+      "CPU embedding/lm_head storage identities and device placement are unchanged",
+      "prefill invokes the original bitsandbytes path",
+      "decode candidate invocation count is exactly 343 per generated token",
+      "peak VRAM remains below the existing 7.5 GiB carrier budget"
+    ],
+    "tape_replay": {
+      "population": "all 5 frozen tapes / 11 requests",
+      "rendering": "frozen C02 chat template",
+      "decoding": "greedy, fixed seed, identical stop rules",
+      "paths": [
+        "A original bitsandbytes",
+        "B K2 candidate dispatch"
+      ],
+      "passes_per_path": 2,
+      "timed_pass": 2,
+      "order": "A/B alternated by request, with both paths completing pass 1 before timed pass 2",
+      "hard_correctness_gate": "Every greedy token id must match A versus B for every request; any divergence is reported and K2 reconnection is not deployment-equivalent.",
+      "report": [
+        "kernel microseconds and inferred milliseconds per decode token",
+        "TTFT",
+        "TPOT and tokens/second",
+        "peak memory",
+        "thermal telemetry",
+        "token equality and first divergence",
+        "fallback counts and side effects"
+      ]
+    }
+  }
+}

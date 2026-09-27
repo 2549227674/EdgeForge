@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-05-A55-FP16-GEMV-PREREG-EVIDENCE",
+  "status": "PASS_FROZEN_BEFORE_IMPLEMENTATION_NO_BOARD_EXECUTION",
+  "recorded_at": "2026-09-21T17:08:50+08:00",
+  "scope_status": "PASS_OPE5_05_FOUR_QUESTIONS_PREREG_AUTHORIZED",
+  "scope_checks": "24/24",
+  "prereg_checks": "31/31",
+  "board_connection_performed": false,
+  "candidate_implemented": false,
+  "source_locked": false,
+  "formal_execution_started": false,
+  "selected_primary": "OPE5-02 four-A76 FP16 GEMV",
+  "future_a55_formal_segments": 1,
+  "a76_rerun_authorized": false,
+  "performance_smoke_authorized": false,
+  "same_day_a55_retest_authorized": false,
+  "instability_retry_authorized": false,
+  "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+  "payload_file_count": 19,
+  "archive_member_count_including_manifest": 20,
+  "files": [
+    {
+      "path": "configs/operator/board/ope5_a55_fp16_gemv_scope.json",
+      "sha256": "8f3a2c6949980d04096a1e995ff2aafae653aed031fdf0960b1261c86059d1f4",
+      "role": "frozen OPE5-05 four-question scope"
+    },
+    {
+      "path": "configs/operator/board/ope5_a55_fp16_gemv_prereg.json",
+      "sha256": "98a3fe20f7982f7fb58fca01f1fe23fa483f4ca11f387d24767805f1e7fb43ce",
+      "role": "frozen OPE5-05 preregistration"
+    },
+    {
+      "path": "scripts/operator/board/verify_ope5_a55_fp16_gemv_prereg.py",
+      "sha256": "b1a6134f492dfb51ff3750cce7cd22401b4d18fc5bafbd0851948fee8cf12c72",
+      "role": "independent scope and preregistration verifier"
+    },
+    {
+      "path": "scripts/operator/board/package_ope5_a55_fp16_gemv_prereg_evidence.py",
+      "sha256": "c03c0e02e65a991f7ebf3ea715fd56738ad63ec7a4d61a3cca231c71a8a431f6",
+      "role": "deterministic preregistration evidence packager"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_a55_fp16_gemv_scope_receipt_20260921.json",
+      "sha256": "8585f0a80225ad27e69155511be4c63c46657d1d1ead1d1d11ebf4a6eefe42dd",
+      "role": "24-of-24 scope verification receipt"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_a55_fp16_gemv_prereg_receipt_20260921.json",
+      "sha256": "94402c6c7f9309cacea5ecc9cb9dccffbbb3e75d24d6eaed5195a46aeadaa3dd",
+      "role": "31-of-31 preregistration verification receipt"
+    },
+    {
+      "path": "docs/operator/EdgeForge_算子面_板端_OPE5_A55_FP16_GEMV立项与测前冻结_2026-09-21.md",
+      "sha256": "aedf16e7bc8b0f24fb46d5aafad5813b287d8b2f5cc4e4568b86bf4a1536a5c3",
+      "role": "human-readable OPE5-05 freeze report"
+    },
+    {
+      "path": "configs/operator/board/ope5_backlog_triage.json",
+      "sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539",
+      "role": "frozen OPE5 backlog ordering and disposition"
+    },
+    {
+      "path": "results/operator/board/board_env_identity_20260917T2022+0800.json",
+      "sha256": "000cbc82dd1386871521ba22f1a73b20aba9e63bcbc5264f136b988847407028",
+      "role": "captured board ISA identity"
+    },
+    {
+      "path": "configs/operator/board/ope1_shape_manifest.json",
+      "sha256": "1b5f6a4690da92fcc2aa2213915280cda3ef866feab5fcbcfd06c702b781e05d",
+      "role": "authentic shape and invocation census"
+    },
+    {
+      "path": "results/operator/board/bandwidth_ceiling.json",
+      "sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9",
+      "role": "shared OPE0 platform ceiling with A76 lineage limit"
+    },
+    {
+      "path": "results/operator/board/ope3/ope3_receipt_20260919.json",
+      "sha256": "5a3e96c095888b7ea9d96d93aee8463351affd05f8d77da8351dcee09f3e489e",
+      "role": "separate same-shape int8 context"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_receipt_20260921.json",
+      "sha256": "0e4eb654fe51b73e8ea41f888effc19921376caacb5440da31a2b2bb77cfacab",
+      "role": "separate RMSNorm primary disposition context"
+    },
+    {
+      "path": "configs/operator/board/ope5_fp16_gemv_prereg.json",
+      "sha256": "b89dc6e03bcae62ab817a0814f48541ff6c8526c4b23f60108bbd438434fb514",
+      "role": "immutable OPE5-02 A76 protocol"
+    },
+    {
+      "path": "scripts/operator/board/ope5_fp16_gemv_bench.cpp",
+      "sha256": "7843a9f797bcf566eae34e9982b6ecab832a53060aaa8287403e42c10b132c9e",
+      "role": "locked OPE5-02 source lineage parent"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_source_lock_20260921.json",
+      "sha256": "cee44b4f4734655d44cf38bdadc106ec9ac0d956e02f3c5d8ff92f710638ad5b",
+      "role": "immutable OPE5-02 source lock"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_receipt_20260921.json",
+      "sha256": "221e26f63cfde04362ae6a718f9c85ea40331b4cca084bae385374ef8213421a",
+      "role": "immutable OPE5-02 A76 primary receipt"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/telemetry_1hz.csv",
+      "sha256": "d9a31f4d82a2636c7ba60353415c4cb9c016968901f3024a98b1334ea176ec65",
+      "role": "OPE5-02 policy0 and A76 frequency identity evidence"
+    },
+    {
+      "path": "results/operator/board/ope4/ope4_receipt_20260921.json",
+      "sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d",
+      "role": "OPE4 attribution boundary anchor"
+    }
+  ],
+  "claim_limits": [
+    "This archive records scope and preregistration only; it contains no A55 implementation, source-lock, board connection, benchmark execution, or A55 performance result.",
+    "The immutable A76 primary comes from one owner-waived nonconcurrent formal segment and is not paired replication.",
+    "The future A55/A76 result is a system-level cluster comparison, not a single-variable microarchitecture causal estimate or RKLLM placement claim.",
+    "Execution card, facts, handoff, this manifest, archive checksum, and the archive itself are mutable/index or self-referential artifacts and are not hashed as payload members."
+  ]
+}

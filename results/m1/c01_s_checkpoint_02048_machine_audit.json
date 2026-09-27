@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "candidate": "C01-S",
+  "optimizer_step": 2048,
+  "verified_at_utc": "2026-08-11T19:23:48.137738+00:00",
+  "hostname": "autodl-container-atdlpbjbca-22473649",
+  "checkpoint": {
+    "path": "results/t2/c01_s_family_80_20_half_r1/checkpoints/step-02048",
+    "completed_steps": 2048,
+    "evaluation_steps": [
+      0,
+      1024,
+      2048
+    ],
+    "rank_audits": [
+      {
+        "rank": 0,
+        "local_rank": 0,
+        "seed": 20260811,
+        "records": 20887,
+        "input_tokens": 37971956,
+        "supervised_tokens": 22750618,
+        "peak_allocated_gib": 86.65991353988647,
+        "peak_reserved_gib": 87.896484375
+      },
+      {
+        "rank": 1,
+        "local_rank": 1,
+        "seed": 20260812,
+        "records": 19889,
+        "input_tokens": 36244107,
+        "supervised_tokens": 21630987,
+        "peak_allocated_gib": 86.65991353988647,
+        "peak_reserved_gib": 87.9140625
+      }
+    ],
+    "rng_ranks": [
+      0,
+      1
+    ],
+    "scheduler_last_epoch": 2048,
+    "files": [
+      {
+        "path": "READY",
+        "bytes": 9,
+        "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+      },
+      {
+        "path": "adapter/README.md",
+        "bytes": 5196,
+        "sha256": "6a369ffd0c2d8faf04f11e374228788bdb6d63f9d006215a273f8ad032301ec9"
+      },
+      {
+        "path": "adapter/adapter_config.json",
+        "bytes": 10162,
+        "sha256": "c3b3d2588b0d1eeea5aa84df262ed3cfca605306990e9c00aead78ef65c1fe4a"
+      },
+      {
+        "path": "adapter/adapter_model.safetensors",
+        "bytes": 101178872,
+        "sha256": "5f4bf9fab862c053ccf327d08333eff1ed21ab442b8af6b8faf22c42cf66b944"
+      },
+      {
+        "path": "continuation_state.pt",
+        "bytes": 156128869,
+        "sha256": "b9cd8453cf2e064c9fe6964658e021bfebf79abe8a30cae98ed99858862068ed"
+      }
+    ],
+    "artifact_set_sha256": "cf5f7658b958b5128a016665c94b8bdb26ca5adb5c8fb2916fade884d99f2526",
+    "numeric_path_inventory": {
+      "ready_marker": "complete",
+      "adapter_config": {
+        "r": 8,
+        "lora_alpha": 16,
+        "lora_dropout": 0.0,
+        "bias": "none"
+      },
+      "adapter_tensor_count": 1184,
+      "adapter_dtype_numel": {
+        "torch.float32": 25249792
+      },
+      "adapter_nonfinite_values": 0,
+      "optimizer_state_entries": 686,
+      "optimizer_moment_dtype_numel": {
+        "exp_avg": {
+          "torch.float32": 19439616
+        },
+        "exp_avg_sq": {
+          "torch.float32": 19439616
+        }
+      },
+      "optimizer_moment_nonfinite_values": {
+        "exp_avg": 0,
+        "exp_avg_sq": 0
+      }
+    }
+  },
+  "holdout_evaluations": [
+    {
+      "records": 1948,
+      "input_tokens": 3483799,
+      "supervised_tokens": 1964016,
+      "sample_mean_loss": 1.8861029172470363,
+      "sample_loss_standard_error": 0.02209180513929917,
+      "token_weighted_loss": 1.6302139139329317,
+      "elapsed_seconds": 265.5615859730169,
+      "world_size": 2,
+      "optimizer_step": 0
+    },
+    {
+      "records": 1948,
+      "input_tokens": 3483799,
+      "supervised_tokens": 1964016,
+      "sample_mean_loss": 0.9195983184763015,
+      "sample_loss_standard_error": 0.01227786915342431,
+      "token_weighted_loss": 0.8784114528221411,
+      "elapsed_seconds": 260.8354722009972,
+      "world_size": 2,
+      "optimizer_step": 1024
+    },
+    {
+      "records": 1948,
+      "input_tokens": 3483799,
+      "supervised_tokens": 1964016,
+      "sample_mean_loss": 0.8918359111659243,
+      "sample_loss_standard_error": 0.012101129349340394,
+      "token_weighted_loss": 0.8543855091034045,
+      "elapsed_seconds": 261.2756215054542,
+      "world_size": 2,
+      "optimizer_step": 2048
+    }
+  ],
+  "numeric_path": {
+    "base_compute_dtype": "bfloat16",
+    "adapter_trainable_dtype": "float32",
+    "optimizer_moment_dtype": "float32",
+    "final_merge_required_dtype": "bfloat16",
+    "owner_decision_date": "2026-08-12"
+  },
+  "gates": {
+    "checkpoint_identity": "PASS",
+    "checkpoint_file_hashes": "PASS",
+    "scheduler_and_two_rank_rng": "PASS",
+    "fp32_adapter_and_optimizer_finite": "PASS_OWNER_ACCEPTED",
+    "holdout_identity_and_finite_losses": "PASS",
+    "end_to_end_resume_smoke": "WAIVED_BY_OWNER"
+  },
+  "verifier": "/root/autodl-tmp/edgeforge-m1/workspace/scripts/m1/verify_c01_s_intermediate.py",
+  "verifier_sha256": "332629a6bc2ccda9248fa23a1083c795fddb09f610f2cf11d89ef81c2895f3c4",
+  "completion_verifier_sha256": "da940ae44b328547ce50e7f7ea1a8265a64d461db2341f17b1a0d510864ca0f5"
+}

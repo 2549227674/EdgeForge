@@ -1,0 +1,193 @@
+{
+  "a55_design_identity": {
+    "compiler_target": "-mcpu=cortex-a55",
+    "expected_cpu_cores": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "expected_cpufreq_policy": "policy0",
+    "observed_policy_max_frequency_khz": 1800000,
+    "output_partition": "Four fixed contiguous N/4=640-row partitions, one per pinned A55 worker.",
+    "prelock_assertions": [
+      "policy0 related_cpus is exactly CPU0-3",
+      "policy0 scaling_max_freq is 1800000 kHz",
+      "CPU0-3 each accept single-CPU affinity",
+      "required FP16/ASIMD feature bits are present",
+      "all named perf events are available numerically in a compile/probe-only capability check that does not execute the benchmark"
+    ],
+    "required_features": [
+      "asimd",
+      "fphp",
+      "asimdhp"
+    ],
+    "threads": 4
+  },
+  "a76_primary_anchor": {
+    "candidate_analytic_gbps": 17.9466405846,
+    "candidate_bus_access_per_invocation": 6850613.273797841,
+    "candidate_cycles_per_invocation": 29466634.99509323,
+    "candidate_instructions_per_invocation": 30352204.90088322,
+    "candidate_l2d_cache_refill_per_invocation": 12699.053974484788,
+    "compiler_target": "-mcpu=cortex-a76",
+    "cpu_cores": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "recorded_max_frequency_khz": 2352000,
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "status": "VALID_OPE5_02_SINGLE_SEGMENT_OWNER_WAIVER_ISOLATED_4XA76_FP16_GEMV",
+    "variant_p50_us": {
+      "autovec_o3": 5836.9795,
+      "neon_fp16_f32acc": 2923.083,
+      "scalar_fp32": 5836.3955
+    }
+  },
+  "board_connection_performed": false,
+  "board_execution_started": false,
+  "candidate_implemented": false,
+  "check_summary": {
+    "passed": 24,
+    "total": 24
+  },
+  "checks": {
+    "a76_anchor_exact": true,
+    "alternatives_remain_separate": true,
+    "analytic_account_matches_ope1": true,
+    "candidate_is_rank_three_and_ready": true,
+    "existing_a55_capability_evidence": true,
+    "four_questions_pass": true,
+    "git_sha_at_freeze": true,
+    "no_board_connection_execution_or_implementation": true,
+    "ope4_is_limit_not_attribution": true,
+    "prelock_topology_assertions_frozen": true,
+    "prior_a76_primary_valid": true,
+    "scope_status": true,
+    "shape_frequency_and_semantics_match_ope1": true,
+    "source_board_environment_identity_sha256": true,
+    "source_ope0_bandwidth_ceiling_sha256": true,
+    "source_ope1_shape_manifest_sha256": true,
+    "source_ope3_receipt_sha256": true,
+    "source_ope4_receipt_sha256": true,
+    "source_ope5_02_preregistration_sha256": true,
+    "source_ope5_02_receipt_sha256": true,
+    "source_ope5_02_source_lock_sha256": true,
+    "source_ope5_02_telemetry_sha256": true,
+    "source_ope5_03_receipt_sha256": true,
+    "source_ope5_backlog_triage_sha256": true
+  },
+  "four_questions": {
+    "A_authenticity": {
+      "evidence": "The semantic shape, 42-call frequency, FP16/FP32 contract, row-major layout, four-way partition, and full-matrix working set are inherited exactly from the frozen and valid OPE5-02 primary. CPU0 is the first core captured by the board identity and exposes fphp/asimdhp; existing telemetry records policy0 at 1.8 GHz.",
+      "limit": "A55 placement is deliberately synthetic comparator placement. It is not an assertion that the closed W8A8 RKLLM carrier dispatches this GEMV to A55 or to CPU at all.",
+      "status": "PASS_COMPARATOR_ONLY"
+    },
+    "B_bottleneck": {
+      "evidence": "OPE5-02 supplies a valid four-A76 FP16 primary for the exact same semantics. One four-A55 row quantifies practical big.LITTLE sensitivity without changing dtype, logical shape, thread count, partition, oracle, or working set.",
+      "limit": "The comparison does not identify the OPE4 NPU/runtime decode gap. Raw latency combines clock, microarchitecture, cache hierarchy, memory service, compiler target, and synchronization effects.",
+      "status": "PASS_BIG_LITTLE_METHOD_VALUE_ONLY"
+    },
+    "C_capability": {
+      "evidence": "The captured first-core feature set contains asimd, fphp, and asimdhp, which is sufficient for the frozen FP16-load/FP32-FMA implementation. The board exposes policy0 at 1,800,000 kHz and the existing taskset/governor/telemetry/perf harness supports an isolated four-core lane.",
+      "limit": "Before source-lock, a read-only topology gate must reassert policy0 related_cpus=0-3, all four requested affinities, 1.8 GHz max, and the required feature bits. The A55 binary must be newly compiled with -mcpu=cortex-a55; the A76 binary is not reused.",
+      "status": "PASS_DESIGN_WITH_PRELOCK_TOPOLOGY_ASSERTION"
+    },
+    "D_deliverability": {
+      "evidence": "The result can add one explicitly labelled A55 row beside the immutable OPE5-02 A76 primary and report raw p50 ratio, analytic-GB/s ratio, and cycles-per-invocation ratio. Within-A55 scalar/autovec/NEON results retain the three-baseline method.",
+      "limit": "No deployment-speed, hardware-leaderboard, OPE4 component-attribution, quality, energy, or cost claim is deliverable. Cross-microarchitecture L2D/bus event ratios remain descriptive unless event semantics are independently established.",
+      "status": "PASS_SEPARATE_COMPARATOR_LANE"
+    }
+  },
+  "frozen_shape": {
+    "accumulator_output_dtype": "float32",
+    "activation_dtype": "IEEE float16",
+    "calls_per_model_forward": 42,
+    "census_ptr": "$.op_families.nf4_linear.shapes[phase=decode,variant=mlp_down_proj]",
+    "cpu_weight_layout": "row-major contiguous [N,K]",
+    "k": 10240,
+    "m": 1,
+    "n": 2560,
+    "observed_invocations": 911148,
+    "observed_model_forwards": 21694,
+    "phase": "decode",
+    "shape_id": "decode_mlp_down_proj",
+    "weight_dtype": "IEEE float16"
+  },
+  "git_sha": "213460d88311cba5d84add4d3ee57aae26716c6d",
+  "next_action": "Freeze and verify the independent OPE5-05 A55 preregistration before implementation.",
+  "recorded_at": "2026-09-21T17:06:52+08:00",
+  "schema_version": 1,
+  "scope": {
+    "path": "configs/operator/board/ope5_a55_fp16_gemv_scope.json",
+    "sha256": "8f3a2c6949980d04096a1e995ff2aafae653aed031fdf0960b1261c86059d1f4"
+  },
+  "selection": {
+    "backlog_rank": 3,
+    "backlog_score": 10,
+    "candidate_id": "OPE5-05",
+    "prior_primary_status": "VALID_OPE5_02_SINGLE_SEGMENT_OWNER_WAIVER_ISOLATED_4XA76_FP16_GEMV",
+    "selected_primary": "OPE5-02 four-A76 FP16 GEMV"
+  },
+  "source_hashes_at_freeze": {
+    "board_environment_identity": {
+      "expected_sha256": "000cbc82dd1386871521ba22f1a73b20aba9e63bcbc5264f136b988847407028",
+      "observed_sha256": "000cbc82dd1386871521ba22f1a73b20aba9e63bcbc5264f136b988847407028",
+      "path": "results/operator/board/board_env_identity_20260917T2022+0800.json"
+    },
+    "ope0_bandwidth_ceiling": {
+      "expected_sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9",
+      "observed_sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9",
+      "path": "results/operator/board/bandwidth_ceiling.json"
+    },
+    "ope1_shape_manifest": {
+      "expected_sha256": "1b5f6a4690da92fcc2aa2213915280cda3ef866feab5fcbcfd06c702b781e05d",
+      "observed_sha256": "1b5f6a4690da92fcc2aa2213915280cda3ef866feab5fcbcfd06c702b781e05d",
+      "path": "configs/operator/board/ope1_shape_manifest.json"
+    },
+    "ope3_receipt": {
+      "expected_sha256": "5a3e96c095888b7ea9d96d93aee8463351affd05f8d77da8351dcee09f3e489e",
+      "observed_sha256": "5a3e96c095888b7ea9d96d93aee8463351affd05f8d77da8351dcee09f3e489e",
+      "path": "results/operator/board/ope3/ope3_receipt_20260919.json"
+    },
+    "ope4_receipt": {
+      "expected_sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d",
+      "observed_sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d",
+      "path": "results/operator/board/ope4/ope4_receipt_20260921.json"
+    },
+    "ope5_02_preregistration": {
+      "expected_sha256": "b89dc6e03bcae62ab817a0814f48541ff6c8526c4b23f60108bbd438434fb514",
+      "observed_sha256": "b89dc6e03bcae62ab817a0814f48541ff6c8526c4b23f60108bbd438434fb514",
+      "path": "configs/operator/board/ope5_fp16_gemv_prereg.json"
+    },
+    "ope5_02_receipt": {
+      "expected_sha256": "221e26f63cfde04362ae6a718f9c85ea40331b4cca084bae385374ef8213421a",
+      "observed_sha256": "221e26f63cfde04362ae6a718f9c85ea40331b4cca084bae385374ef8213421a",
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_receipt_20260921.json"
+    },
+    "ope5_02_source_lock": {
+      "expected_sha256": "cee44b4f4734655d44cf38bdadc106ec9ac0d956e02f3c5d8ff92f710638ad5b",
+      "observed_sha256": "cee44b4f4734655d44cf38bdadc106ec9ac0d956e02f3c5d8ff92f710638ad5b",
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_source_lock_20260921.json"
+    },
+    "ope5_02_telemetry": {
+      "expected_sha256": "d9a31f4d82a2636c7ba60353415c4cb9c016968901f3024a98b1334ea176ec65",
+      "observed_sha256": "d9a31f4d82a2636c7ba60353415c4cb9c016968901f3024a98b1334ea176ec65",
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/telemetry_1hz.csv"
+    },
+    "ope5_03_receipt": {
+      "expected_sha256": "0e4eb654fe51b73e8ea41f888effc19921376caacb5440da31a2b2bb77cfacab",
+      "observed_sha256": "0e4eb654fe51b73e8ea41f888effc19921376caacb5440da31a2b2bb77cfacab",
+      "path": "results/operator/board/ope5/ope5_receipt_20260921.json"
+    },
+    "ope5_backlog_triage": {
+      "expected_sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539",
+      "observed_sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539",
+      "path": "configs/operator/board/ope5_backlog_triage.json"
+    }
+  },
+  "stage": "OPE5-05-A55-FP16-GEMV-SCOPE",
+  "status": "PASS_OPE5_05_FOUR_QUESTIONS_PREREG_AUTHORIZED"
+}

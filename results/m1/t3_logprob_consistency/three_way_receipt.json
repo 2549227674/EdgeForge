@@ -1,0 +1,683 @@
+{
+  "gate": {
+    "actual": 0.8653375733855186,
+    "metric": "vllm_bf16_vs_vllm_fp8.top1_agreement",
+    "minimum": 0.99,
+    "pass": false
+  },
+  "inputs": {
+    "hf_bf16": {
+      "path": "/root/autodl-tmp/edgeforge-m1/workspace/results/m1/t3_logprob_consistency/hf_bf16.json",
+      "sha256": "8b5bc9e630da32e0c60d6206a8f3737005604966bd9bc36211b1c4ccc39f7708"
+    },
+    "vllm_bf16": {
+      "path": "/root/autodl-tmp/edgeforge-m1/workspace/results/m1/t3_logprob_consistency/vllm_bf16.json",
+      "sha256": "57722a27e544afc7ff6647ca6ac4bb480be60996ab50d3dbe2f33d57a572e971"
+    },
+    "vllm_fp8": {
+      "path": "/root/autodl-tmp/edgeforge-m1/workspace/results/m1/t3_logprob_consistency/vllm_fp8.json",
+      "sha256": "6781fa353a5ac6e89e1be243dbeb158c719c81a746a330e3439d743c7d33f6ee"
+    }
+  },
+  "pairs": {
+    "hf_bf16_vs_vllm_bf16": {
+      "actual_logprob_abs_delta": {
+        "max": 6.549642562866211,
+        "mean": 0.25294906799732986,
+        "p50": 0.02626514434814453,
+        "p90": 0.7044310569763184,
+        "p95": 1.2297039031982422,
+        "p99": 3.215850353240967
+      },
+      "left": "hf_bf16",
+      "per_sample": [
+        {
+          "mean_abs_delta_actual_logprob": 0.22084397233850053,
+          "tokens": 511,
+          "top1_agreement": 0.9628180039138943,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee172-2f9f-7341-8125-4e5d535d9e56:0"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.2522655318216643,
+          "tokens": 511,
+          "top1_agreement": 0.9608610567514677,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee173-6fff-7300-ab06-cf89fc97744b:1"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.2538562197135656,
+          "tokens": 511,
+          "top1_agreement": 0.958904109589041,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee174-28a3-76b2-bae6-f6679665530c:2"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.25821881448199824,
+          "tokens": 511,
+          "top1_agreement": 0.9628180039138943,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee177-4aa8-7439-af33-649141f0e2c6:4"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.25751400421665555,
+          "tokens": 511,
+          "top1_agreement": 0.958904109589041,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-695b-729e-9bcb-9192fc451d25:5"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.2547206711569165,
+          "tokens": 511,
+          "top1_agreement": 0.9608610567514677,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-699b-710a-9553-087aa3830843:6"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.2578095589555847,
+          "tokens": 511,
+          "top1_agreement": 0.9628180039138943,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6abe-722c-864e-046c1eb5e1e9:7"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.25950841129708907,
+          "tokens": 511,
+          "top1_agreement": 0.958904109589041,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b34-7106-a681-f5d68ade46b5:9"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.22384006732866016,
+          "tokens": 511,
+          "top1_agreement": 0.9628180039138943,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b49-74fe-acdf-7db962bf91cf:10"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.2532502127184347,
+          "tokens": 511,
+          "top1_agreement": 0.958904109589041,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b5d-739c-abc4-7a695e11ec95:11"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.26005892644291995,
+          "tokens": 511,
+          "top1_agreement": 0.9549902152641878,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6c93-709c-9a90-b72bfff48d3a:12"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.2580837510988596,
+          "tokens": 511,
+          "top1_agreement": 0.9628180039138943,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee190-7bed-7235-9acc-bbf17f0b6e46:13"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.25934662540727277,
+          "tokens": 511,
+          "top1_agreement": 0.958904109589041,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee193-f6ad-726a-a910-1fc256893c5c:14"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.26118824601576474,
+          "tokens": 511,
+          "top1_agreement": 0.9608610567514677,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee19c-bd20-74bd-bc18-a7db41554c6b:15"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.24974558718677686,
+          "tokens": 511,
+          "top1_agreement": 0.9608610567514677,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1a1-ba56-75ce-a3a8-38e71f97a846:16"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.2529788006648229,
+          "tokens": 511,
+          "top1_agreement": 0.958904109589041,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a3b7-761b-abc4-5f78a747b2a9:17"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.22018266821311372,
+          "tokens": 511,
+          "top1_agreement": 0.9628180039138943,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a4be-7752-a155-1c26f2d31f34:19"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.2553879028904589,
+          "tokens": 511,
+          "top1_agreement": 0.9608610567514677,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a5e7-72bb-b81b-cef030975684:20"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.25512270202158827,
+          "tokens": 511,
+          "top1_agreement": 0.9608610567514677,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a6a5-7549-92e7-0ed6e20877cd:21"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.26655206677115856,
+          "tokens": 511,
+          "top1_agreement": 0.958904109589041,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a74c-715a-9c4e-8ac650001d81:22"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.2587546441339679,
+          "tokens": 511,
+          "top1_agreement": 0.9628180039138943,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a78f-7244-b496-dfd5ad479dcf:23"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.2577818967088947,
+          "tokens": 511,
+          "top1_agreement": 0.9510763209393346,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a92d-70ce-8d35-a2ea793b536a:24"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.2643351576275882,
+          "tokens": 511,
+          "top1_agreement": 0.958904109589041,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a988-72c7-a9a1-b8aecef227c1:25"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.25885435984468824,
+          "tokens": 511,
+          "top1_agreement": 0.9549902152641878,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a9a1-72ce-a534-3c563906f079:26"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.22500177297181095,
+          "tokens": 511,
+          "top1_agreement": 0.9569471624266145,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a9f1-74d9-bed7-0a3950776dc5:27"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.25927198171495563,
+          "tokens": 511,
+          "top1_agreement": 0.9569471624266145,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-aad4-739b-9e12-2329a26d882c:28"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.25512876084807795,
+          "tokens": 511,
+          "top1_agreement": 0.9628180039138943,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-ad2b-70db-be90-3755399f696c:29"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.25931015724670325,
+          "tokens": 511,
+          "top1_agreement": 0.9628180039138943,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-ad76-7025-bd60-872a919488f8:30"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.2533527885582561,
+          "tokens": 511,
+          "top1_agreement": 0.9608610567514677,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-aeb3-726d-842c-4729148399b0:31"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.25730303967944945,
+          "tokens": 511,
+          "top1_agreement": 0.958904109589041,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-af2c-700b-b19b-c33c49b832af:32"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.25438326670648614,
+          "tokens": 511,
+          "top1_agreement": 0.9608610567514677,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-af91-73fd-a1a2-04795a7b5060:33"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.26041760913187295,
+          "tokens": 511,
+          "top1_agreement": 0.9628180039138943,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-b15e-7351-ac5f-720726095082:34"
+        }
+      ],
+      "right": "vllm_bf16",
+      "tokens": 16352,
+      "top1_agreement": 0.9600048923679061,
+      "top1_equal_tokens": 15698,
+      "top1_logprob_abs_delta": {
+        "max": 1.9009299278259277,
+        "mean": 0.05847908107855527,
+        "p99": 0.7698319554328918
+      }
+    },
+    "hf_bf16_vs_vllm_fp8": {
+      "actual_logprob_abs_delta": {
+        "max": 8.13679313659668,
+        "mean": 0.7481027882310556,
+        "p50": 0.11939692497253418,
+        "p90": 2.4426116943359375,
+        "p95": 3.322622299194336,
+        "p99": 6.122900009155273
+      },
+      "left": "hf_bf16",
+      "per_sample": [
+        {
+          "mean_abs_delta_actual_logprob": 0.7315386953351823,
+          "tokens": 511,
+          "top1_agreement": 0.8590998043052838,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee172-2f9f-7341-8125-4e5d535d9e56:0"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7332187948409825,
+          "tokens": 511,
+          "top1_agreement": 0.863013698630137,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee173-6fff-7300-ab06-cf89fc97744b:1"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7418705478263765,
+          "tokens": 511,
+          "top1_agreement": 0.8532289628180039,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee174-28a3-76b2-bae6-f6679665530c:2"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7492648475976293,
+          "tokens": 511,
+          "top1_agreement": 0.8532289628180039,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee177-4aa8-7439-af33-649141f0e2c6:4"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7541508194539229,
+          "tokens": 511,
+          "top1_agreement": 0.8493150684931506,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-695b-729e-9bcb-9192fc451d25:5"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7515565179112214,
+          "tokens": 511,
+          "top1_agreement": 0.8532289628180039,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-699b-710a-9553-087aa3830843:6"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7528993077971948,
+          "tokens": 511,
+          "top1_agreement": 0.8532289628180039,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6abe-722c-864e-046c1eb5e1e9:7"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.748671601351169,
+          "tokens": 511,
+          "top1_agreement": 0.8571428571428571,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b34-7106-a681-f5d68ade46b5:9"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7409879062837007,
+          "tokens": 511,
+          "top1_agreement": 0.8590998043052838,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b49-74fe-acdf-7db962bf91cf:10"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7273844656349193,
+          "tokens": 511,
+          "top1_agreement": 0.8551859099804305,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b5d-739c-abc4-7a695e11ec95:11"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7567374786338837,
+          "tokens": 511,
+          "top1_agreement": 0.8512720156555773,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6c93-709c-9a90-b72bfff48d3a:12"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7432488533059266,
+          "tokens": 511,
+          "top1_agreement": 0.8571428571428571,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee190-7bed-7235-9acc-bbf17f0b6e46:13"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7615011735363996,
+          "tokens": 511,
+          "top1_agreement": 0.8493150684931506,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee193-f6ad-726a-a910-1fc256893c5c:14"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.766345169404813,
+          "tokens": 511,
+          "top1_agreement": 0.8493150684931506,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee19c-bd20-74bd-bc18-a7db41554c6b:15"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.723135948026118,
+          "tokens": 511,
+          "top1_agreement": 0.8669275929549902,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1a1-ba56-75ce-a3a8-38e71f97a846:16"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7346289012862768,
+          "tokens": 511,
+          "top1_agreement": 0.8532289628180039,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a3b7-761b-abc4-5f78a747b2a9:17"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7409888007176177,
+          "tokens": 511,
+          "top1_agreement": 0.8590998043052838,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a4be-7752-a155-1c26f2d31f34:19"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7434379128787967,
+          "tokens": 511,
+          "top1_agreement": 0.8532289628180039,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a5e7-72bb-b81b-cef030975684:20"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7535764474761761,
+          "tokens": 511,
+          "top1_agreement": 0.8414872798434442,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a6a5-7549-92e7-0ed6e20877cd:21"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7880252916684273,
+          "tokens": 511,
+          "top1_agreement": 0.8551859099804305,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a74c-715a-9c4e-8ac650001d81:22"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7567796044066846,
+          "tokens": 511,
+          "top1_agreement": 0.8571428571428571,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a78f-7244-b496-dfd5ad479dcf:23"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7480262661694764,
+          "tokens": 511,
+          "top1_agreement": 0.8551859099804305,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a92d-70ce-8d35-a2ea793b536a:24"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7849388353747581,
+          "tokens": 511,
+          "top1_agreement": 0.8551859099804305,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a988-72c7-a9a1-b8aecef227c1:25"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7491672525537246,
+          "tokens": 511,
+          "top1_agreement": 0.8532289628180039,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a9a1-72ce-a534-3c563906f079:26"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7594146112432935,
+          "tokens": 511,
+          "top1_agreement": 0.8493150684931506,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a9f1-74d9-bed7-0a3950776dc5:27"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7546552464162141,
+          "tokens": 511,
+          "top1_agreement": 0.8551859099804305,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-aad4-739b-9e12-2329a26d882c:28"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7348653241666642,
+          "tokens": 511,
+          "top1_agreement": 0.8512720156555773,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-ad2b-70db-be90-3755399f696c:29"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7449657939927075,
+          "tokens": 511,
+          "top1_agreement": 0.8512720156555773,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-ad76-7025-bd60-872a919488f8:30"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7339526556835094,
+          "tokens": 511,
+          "top1_agreement": 0.8551859099804305,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-aeb3-726d-842c-4729148399b0:31"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7544722663503002,
+          "tokens": 511,
+          "top1_agreement": 0.8551859099804305,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-af2c-700b-b19b-c33c49b832af:32"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7298397066165412,
+          "tokens": 511,
+          "top1_agreement": 0.8590998043052838,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-af91-73fd-a1a2-04795a7b5060:33"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.745042179453171,
+          "tokens": 511,
+          "top1_agreement": 0.8551859099804305,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-b15e-7351-ac5f-720726095082:34"
+        }
+      ],
+      "right": "vllm_fp8",
+      "tokens": 16352,
+      "top1_agreement": 0.8545132093933464,
+      "top1_equal_tokens": 13973,
+      "top1_logprob_abs_delta": {
+        "max": 2.3726771995425224,
+        "mean": 0.12795731968842852,
+        "p99": 1.3465231657028198
+      }
+    },
+    "vllm_bf16_vs_vllm_fp8": {
+      "actual_logprob_abs_delta": {
+        "max": 8.649637222290039,
+        "mean": 0.7510988984018748,
+        "p50": 0.11257123947143555,
+        "p90": 2.344179153442383,
+        "p95": 3.476597785949707,
+        "p99": 6.59394645690918
+      },
+      "left": "vllm_bf16",
+      "per_sample": [
+        {
+          "mean_abs_delta_actual_logprob": 0.7218400093198615,
+          "tokens": 511,
+          "top1_agreement": 0.863013698630137,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee172-2f9f-7341-8125-4e5d535d9e56:0"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7384986408235844,
+          "tokens": 511,
+          "top1_agreement": 0.8767123287671232,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee173-6fff-7300-ab06-cf89fc97744b:1"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7472034571877375,
+          "tokens": 511,
+          "top1_agreement": 0.8688845401174168,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee174-28a3-76b2-bae6-f6679665530c:2"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7541976409916397,
+          "tokens": 511,
+          "top1_agreement": 0.8649706457925636,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee177-4aa8-7439-af33-649141f0e2c6:4"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7583356220684488,
+          "tokens": 511,
+          "top1_agreement": 0.8571428571428571,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-695b-729e-9bcb-9192fc451d25:5"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.755981873674753,
+          "tokens": 511,
+          "top1_agreement": 0.863013698630137,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-699b-710a-9553-087aa3830843:6"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7587808996246674,
+          "tokens": 511,
+          "top1_agreement": 0.8649706457925636,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6abe-722c-864e-046c1eb5e1e9:7"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7521723014428089,
+          "tokens": 511,
+          "top1_agreement": 0.87279843444227,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b34-7106-a681-f5d68ade46b5:9"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7326840501332186,
+          "tokens": 511,
+          "top1_agreement": 0.863013698630137,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b49-74fe-acdf-7db962bf91cf:10"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7306249089403338,
+          "tokens": 511,
+          "top1_agreement": 0.8688845401174168,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b5d-739c-abc4-7a695e11ec95:11"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7651433158988017,
+          "tokens": 511,
+          "top1_agreement": 0.8571428571428571,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6c93-709c-9a90-b72bfff48d3a:12"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7478923516224223,
+          "tokens": 511,
+          "top1_agreement": 0.8688845401174168,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee190-7bed-7235-9acc-bbf17f0b6e46:13"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7659344336539247,
+          "tokens": 511,
+          "top1_agreement": 0.8610567514677103,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee193-f6ad-726a-a910-1fc256893c5c:14"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7670194522193851,
+          "tokens": 511,
+          "top1_agreement": 0.863013698630137,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee19c-bd20-74bd-bc18-a7db41554c6b:15"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7295097551403716,
+          "tokens": 511,
+          "top1_agreement": 0.8767123287671232,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1a1-ba56-75ce-a3a8-38e71f97a846:16"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.74037415793298,
+          "tokens": 511,
+          "top1_agreement": 0.8688845401174168,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a3b7-761b-abc4-5f78a747b2a9:17"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7297605430439259,
+          "tokens": 511,
+          "top1_agreement": 0.863013698630137,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a4be-7752-a155-1c26f2d31f34:19"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7457711089362177,
+          "tokens": 511,
+          "top1_agreement": 0.8669275929549902,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a5e7-72bb-b81b-cef030975684:20"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7570280440255593,
+          "tokens": 511,
+          "top1_agreement": 0.8551859099804305,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a6a5-7549-92e7-0ed6e20877cd:21"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7945523666814289,
+          "tokens": 511,
+          "top1_agreement": 0.863013698630137,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a74c-715a-9c4e-8ac650001d81:22"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7623348857815799,
+          "tokens": 511,
+          "top1_agreement": 0.8688845401174168,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a78f-7244-b496-dfd5ad479dcf:23"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7496368271639207,
+          "tokens": 511,
+          "top1_agreement": 0.863013698630137,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a92d-70ce-8d35-a2ea793b536a:24"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.788723848556724,
+          "tokens": 511,
+          "top1_agreement": 0.8669275929549902,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a988-72c7-a9a1-b8aecef227c1:25"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7549522275563514,
+          "tokens": 511,
+          "top1_agreement": 0.8669275929549902,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a9a1-72ce-a534-3c563906f079:26"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7510278523012293,
+          "tokens": 511,
+          "top1_agreement": 0.8590998043052838,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a9f1-74d9-bed7-0a3950776dc5:27"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7664547446863387,
+          "tokens": 511,
+          "top1_agreement": 0.8649706457925636,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-aad4-739b-9e12-2329a26d882c:28"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.739231181152909,
+          "tokens": 511,
+          "top1_agreement": 0.863013698630137,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-ad2b-70db-be90-3755399f696c:29"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7455958007020869,
+          "tokens": 511,
+          "top1_agreement": 0.863013698630137,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-ad76-7025-bd60-872a919488f8:30"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7406246835668905,
+          "tokens": 511,
+          "top1_agreement": 0.8688845401174168,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-aeb3-726d-842c-4729148399b0:31"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7547110775933807,
+          "tokens": 511,
+          "top1_agreement": 0.863013698630137,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-af2c-700b-b19b-c33c49b832af:32"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7349495220000394,
+          "tokens": 511,
+          "top1_agreement": 0.8688845401174168,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-af91-73fd-a1a2-04795a7b5060:33"
+        },
+        {
+          "mean_abs_delta_actual_logprob": 0.7536171644364733,
+          "tokens": 511,
+          "top1_agreement": 0.8669275929549902,
+          "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-b15e-7351-ac5f-720726095082:34"
+        }
+      ],
+      "right": "vllm_fp8",
+      "tokens": 16352,
+      "top1_agreement": 0.8653375733855186,
+      "top1_equal_tokens": 14150,
+      "top1_logprob_abs_delta": {
+        "max": 2.475923530757427,
+        "mean": 0.13432796257779894,
+        "p99": 1.3689807560294867
+      }
+    }
+  },
+  "runtime_identity": {
+    "cgroup_cpu_max": "5000000 100000",
+    "cgroup_memory_max": "257698037760",
+    "gpus": [
+      "0, GPU-8441031a-35d4-fc0b-d6c1-70adb534e305, NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887",
+      "1, GPU-39160c7c-0272-9254-c171-be00298b0dfc, NVIDIA RTX PRO 6000 Blackwell Server Edition, 97887"
+    ],
+    "hostname": "autodl-container-uh8nves9v6-22e5a1b3",
+    "pid1_started_at_raw": "Wed Aug 12 16:06:41 2026"
+  },
+  "sample_count": 32,
+  "samples_file_sha256": "73277c8ac0620873350574edc3fd59c5de8d25fdc6a732ff3bcd16a23c9fbec0",
+  "schema_version": 1,
+  "scored_tokens": 16352,
+  "stage": "T3_teacher_logprob_three_way_consistency",
+  "status": "FAIL",
+  "verified_at": "2026-08-12T18:24:06.812353+08:00"
+}

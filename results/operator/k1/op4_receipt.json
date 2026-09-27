@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "stage": "OP4",
+  "kernel": "k1_gemma4_rmsnorm",
+  "timestamp": "2026-09-15T22:07:20+08:00",
+  "status": "PASS",
+  "artifacts": {
+    "preregistration": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op4_ncu_attribution.json",
+      "sha256": "aa9dac98c6f23aa5b1e245a3021265f6df646e3cf9f1218fb01c024d4a87f077"
+    },
+    "result": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/k1_rmsnorm_op4.json",
+      "sha256": "b7a8b6819ff3b1e5cdc3b4d2d8e23ec0e65133fc8209e24e9e628e52f794f257"
+    },
+    "raw_ncu_csv": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/op4_ncu_raw.csv",
+      "sha256": "2fb8f4e2c0a2747c341c3f0d8ccc508b7fc4954e70837a08ead9746601b66dcf"
+    },
+    "target_receipt": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/op4_target_receipt.json",
+      "sha256": "a3902a44c4ea368074c40601bfb26e17f1a99ad58ebc2fa44ce2b144c7e015c3"
+    },
+    "runner": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op4.py",
+      "sha256": "b9423fc55bd6528d8079e59c9c0ea7982e5f458cb7f65eae8e500b2215128d4d"
+    }
+  },
+  "summary": {
+    "formal_cases": 96,
+    "analytic_backed_cases": 5,
+    "ncu_superseded_cases": 91,
+    "max_absolute_relative_delta": 1.0625,
+    "projected_analytic_bytes": 147413489664,
+    "projected_measured_dram_bytes": 119539556608,
+    "projected_accounting_bytes": 120465037696,
+    "corrected_relative_score": 0.001028297,
+    "ncu_replayer_passes": [
+      1
+    ],
+    "telemetry_samples": 8,
+    "memory_clock_ratio_vs_op0": 1.0,
+    "thermal_or_hardware_throttle": false
+  },
+  "scope": {
+    "k1_b_complete": true,
+    "k1_success_definition_closed": true,
+    "op2_unchanged": true,
+    "op3_unchanged": true,
+    "performance_gain_required": false,
+    "op5_not_executed": true
+  },
+  "gates": {
+    "readiness_counter_smoke": "PASS",
+    "frozen_source_identity": "PASS",
+    "config_immutable_during_measurement": "PASS",
+    "formal_population_all_96_cases": "PASS",
+    "warmup_at_least_50_per_case": "PASS",
+    "ncu_required_metrics_complete": "PASS",
+    "ncu_single_replay_pass": "PASS",
+    "analytic_plus_minus_15_percent_closed": "SUPERSEDED_BY_NCU_PER_PROTOCOL",
+    "ac_power": "PASS",
+    "telemetry_1hz": "PASS",
+    "memory_clock_comparability": "PASS",
+    "thermal_hardware_throttle": "PASS",
+    "op2_performance_timing_inherited": "PASS",
+    "op3_formal_reconnection_inherited": "PASS"
+  },
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0"
+}

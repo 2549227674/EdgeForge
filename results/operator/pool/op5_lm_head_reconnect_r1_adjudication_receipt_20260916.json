@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_LM_HEAD_RECONNECT_R1_POST_RUN_ADJUDICATION",
+  "timestamp": "2026-09-16T22:14:30+08:00",
+  "status": "LM_HEAD_C02_LOCKSTEP_RECONNECTION_PASS_LOCAL_PATH_AUTHORIZED_AFTER_CLOCK_GATE_ADJUDICATION",
+  "deployment_authorized": true,
+  "scope": "frozen local C02 PyTorch eager lm_head CUDA mirror only",
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "gpu_rerun_performed": false,
+  "source": {
+    "result": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_lm_head_reconnect_r1_20260916.json",
+    "protocol": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op5_lm_head_reconnect_r1.json",
+    "original_status": "LM_HEAD_C02_RECONNECTION_INVALID_NO_DECISION",
+    "original_result_preserved": true,
+    "only_original_failed_validity_gate": "memory_clock_gate"
+  },
+  "adjudication": {
+    "type": "gate_applicability_correction",
+    "reason": "The lockstep method deliberately executes a roughly 30 ms CPU tied-head operation around every CUDA head measurement, creating the exact hybrid CPU lm_head GPU-idle gaps that the pre-existing OP3 rule classifies as report-only. No thermal or hardware throttle occurred, and all performance numbers already include the observed 6000 MHz memory-clock regime.",
+    "pre_existing_rule": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op3_reconnect.json",
+      "text": "hybrid CPU lm_head creates expected GPU-idle gaps unlike the OP0 continuous bandwidth loop"
+    },
+    "corrected_validity_gates": {
+      "owner_no_sha_direction_honored": "PASS",
+      "upstream_existing_path_authorization": "PASS",
+      "custom_kernel_remains_unauthorized": "PASS",
+      "formal_c02_nf4_carrier_343_modules": "PASS",
+      "formal_population_or_conclusive_fail_fast": "PASS",
+      "paired_head_dispatch_reconciled": "PASS",
+      "cache_structure_all_executed_requests": "PASS",
+      "original_tied_cpu_weight_and_model_structure_unchanged": "PASS",
+      "gpu_memory_below_7_5_gib": "PASS",
+      "telemetry_present": "PASS",
+      "memory_clock_gate": "NOT_APPLICABLE_PASS_HYBRID_LOCKSTEP_GPU_IDLE_GAPS",
+      "thermal_hardware_throttle_absent": "PASS"
+    },
+    "corrected_validity_pass": true,
+    "adaptive_disclosure": "This applicability correction was made after observing the run. It does not rewrite the frozen result, is not a repeatability claim, and is authoritative only through this separate adjudication receipt."
+  },
+  "evidence": {
+    "token_exact": "21705/21705",
+    "requests_full_budget": "11/11",
+    "cache_pass": "11/11",
+    "A_counterfactual_incremental_tpot_ms": 143.35412878117646,
+    "B_counterfactual_incremental_tpot_ms": 119.79838298057786,
+    "A_over_B_speedup": 1.1966282450107657,
+    "minimum_required_speedup": 1.05,
+    "selection_cuda_head_p50_ms_at_8000_mhz": 5.34528,
+    "formal_cuda_head_p50_ms_at_6000_mhz": 7.145948,
+    "formal_over_selection_head_latency_ratio": 1.3368706597222222,
+    "inverse_clock_ratio_8000_over_6000": 1.3333333333333333,
+    "memory_clock_mhz_p50": 6000.0,
+    "memory_clock_ratio_vs_reference": 0.75,
+    "pstates": {
+      "P0": 792,
+      "P4": 2529,
+      "P8": 12
+    },
+    "telemetry_samples": 3333,
+    "temperature_c_max": 70.0,
+    "thermal_or_hardware_throttle": false,
+    "peak_cuda_allocated_bytes": 6364221440,
+    "gpu_budget_bytes": 8053063680,
+    "max_nvml_device_used_bytes": 8023179264,
+    "nvml_margin_to_7_5_gib_bytes": 29884416,
+    "original_tied_cpu_storage_and_structure_unchanged": true
+  },
+  "constraints": [
+    "Use only with a dedicated local GPU and a runtime free-memory guard; the observed NVML margin to 7.5 GiB was narrow.",
+    "Keep the original CPU tied lm_head/embedding Parameter and state_dict unchanged; the CUDA weight is an external mirror.",
+    "Do not implement a custom lm_head kernel: the selection bottleneck gate failed.",
+    "Do not claim cross-day/independent replication or extrapolate to board, llama.cpp, sm_100, or sm_120."
+  ],
+  "next_action": "Update the current ledger and close the remaining OP5 backlog: lm_head is locally authorized through this adjudication, Inductor remains a supporting baseline, and KV dequant remains blocked by authenticity."
+}

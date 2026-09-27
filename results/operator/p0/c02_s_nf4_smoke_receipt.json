@@ -1,0 +1,568 @@
+{
+  "schema_version": 1,
+  "stage": "OP-P0-3",
+  "started_at": "2026-09-15T15:00:02+08:00",
+  "argv": [
+    "scripts/operator/load_smoke_nf4.py",
+    "--model",
+    "models/C02-S.O-bf16-r1",
+    "--carrier",
+    "formal",
+    "--receipt",
+    "results/operator/p0/c02_s_nf4_smoke_receipt.json"
+  ],
+  "cwd": "/home/qbz415/piloop-edge-inference-profiler",
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.22.2",
+      "sentencepiece": "0.2.2",
+      "protobuf": "6.33.6"
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 140.00 W"
+  },
+  "script": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/load_smoke_nf4.py",
+  "script_sha256": "6fb7844fea5b10d1884096e21c5e31e1cc097b06bf622b8bcd05603a4e4bf459",
+  "status": "PASS",
+  "finished_at": "2026-09-15T15:01:44+08:00",
+  "assertions": {
+    "transfer_integrity": "PASS",
+    "nf4_carrier": "PASS",
+    "prefill_512_decode_32": "PASS",
+    "gpu_memory_below_7_5_gib": "PASS",
+    "embedding_no_remigration": "PASS"
+  },
+  "integrity": {
+    "mode": "formal_full_hash_verification",
+    "manifest_path": "/home/qbz415/piloop-edge-inference-profiler/models/C02-S.O-bf16-r1/artifact_manifest.json",
+    "manifest_sha256": "ee7d426d1e912a6c53cad1cd52739f26d7fff45b4a4f7429a4c08656f68dc5f2",
+    "file_count": 11,
+    "total_bytes_excluding_manifest": 15914883861,
+    "artifact_set_sha256_excluding_manifest": "89578279a5f391e44628086a332cd0c119203f53b5d6d739c5aa9f0fe1717b0a",
+    "status": "PASS"
+  },
+  "carrier": "formal",
+  "formal_evidence_eligible": true,
+  "model_path": "/home/qbz415/piloop-edge-inference-profiler/models/C02-S.O-bf16-r1",
+  "quantization": {
+    "load_in_4bit": true,
+    "quant_type": "nf4",
+    "double_quant": true,
+    "compute_dtype": "torch.bfloat16",
+    "linear4bit_module_count_all": 343,
+    "linear4bit_module_count_active_language": 343,
+    "observed_quant_types_all": {
+      "nf4": 343
+    },
+    "observed_quant_types_active_language": {
+      "nf4": 343
+    },
+    "active_language_weight_devices": {
+      "cuda:0": 343
+    }
+  },
+  "device_map_requested": {
+    "model.vision_tower": "cpu",
+    "model.audio_tower": "cpu",
+    "model.embed_vision": "cpu",
+    "model.embed_audio": "cpu",
+    "model.language_model.embed_tokens": "cpu",
+    "model.language_model.embed_tokens_per_layer": "cpu",
+    "lm_head": "cpu",
+    "model.language_model.layers": 0,
+    "model.language_model.norm": 0,
+    "model.language_model.rotary_emb": 0,
+    "model.language_model.per_layer_model_projection": 0,
+    "model.language_model.per_layer_projection_norm": 0
+  },
+  "hf_device_map_observed": {
+    "model.vision_tower": "cpu",
+    "model.audio_tower": "cpu",
+    "model.embed_vision": "cpu",
+    "model.embed_audio": "cpu",
+    "model.language_model.embed_tokens": "cpu",
+    "model.language_model.embed_tokens_per_layer": "cpu",
+    "lm_head": "cpu",
+    "model.language_model.layers": 0,
+    "model.language_model.norm": 0,
+    "model.language_model.rotary_emb": 0,
+    "model.language_model.per_layer_model_projection": 0,
+    "model.language_model.per_layer_projection_norm": 0
+  },
+  "cpu_materialization": {
+    "strategy": "detach_leaf_offload_hooks_and_retie_lm_head",
+    "before": {
+      "model.language_model.embed_tokens": {
+        "hook": {
+          "present": true,
+          "type": "AlignDevicesHook",
+          "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'shared_kv_states', 'past_key_values'})",
+          "execution_device": "0",
+          "offload": true
+        },
+        "storage": {
+          "weight": {
+            "device": "meta",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              262144,
+              2560
+            ],
+            "numel": 671088640,
+            "data_ptr": null
+          },
+          "embed_scale": {
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "shape": [],
+            "numel": 1,
+            "data_ptr": 52765530112
+          }
+        }
+      },
+      "model.language_model.embed_tokens_per_layer": {
+        "hook": {
+          "present": true,
+          "type": "AlignDevicesHook",
+          "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'shared_kv_states', 'past_key_values'})",
+          "execution_device": "0",
+          "offload": true
+        },
+        "storage": {
+          "weight": {
+            "device": "meta",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              262144,
+              10752
+            ],
+            "numel": 2818572288,
+            "data_ptr": null
+          },
+          "embed_scale": {
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "shape": [],
+            "numel": 1,
+            "data_ptr": 52765530624
+          }
+        }
+      },
+      "lm_head": {
+        "hook": {
+          "present": true,
+          "type": "AlignDevicesHook",
+          "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'shared_kv_states', 'past_key_values'})",
+          "execution_device": "0",
+          "offload": true
+        },
+        "storage": {
+          "weight": {
+            "device": "meta",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              262144,
+              2560
+            ],
+            "numel": 671088640,
+            "data_ptr": null
+          }
+        }
+      }
+    },
+    "after": {
+      "model.language_model.embed_tokens": {
+        "hook": {
+          "present": false,
+          "type": null,
+          "repr": null,
+          "execution_device": "None",
+          "offload": null
+        },
+        "storage": {
+          "weight": {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              262144,
+              2560
+            ],
+            "numel": 671088640,
+            "data_ptr": 124480282987112
+          },
+          "embed_scale": {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [],
+            "numel": 1,
+            "data_ptr": 691907200
+          }
+        }
+      },
+      "model.language_model.embed_tokens_per_layer": {
+        "hook": {
+          "present": false,
+          "type": null,
+          "repr": null,
+          "execution_device": "None",
+          "offload": null
+        },
+        "storage": {
+          "weight": {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              262144,
+              10752
+            ],
+            "numel": 2818572288,
+            "data_ptr": 124484656824488
+          },
+          "embed_scale": {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [],
+            "numel": 1,
+            "data_ptr": 689148544
+          }
+        }
+      },
+      "lm_head": {
+        "hook": {
+          "present": false,
+          "type": null,
+          "repr": null,
+          "execution_device": "None",
+          "offload": null
+        },
+        "storage": {
+          "weight": {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              262144,
+              2560
+            ],
+            "numel": 671088640,
+            "data_ptr": 124480282987112
+          }
+        }
+      }
+    },
+    "lm_head_tied_to_token_embedding": true,
+    "persistent_cpu_bytes_unique": 6979321856
+  },
+  "persistent_cpu_storage_before_generation": {
+    "model.language_model.embed_tokens": {
+      "weight": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          262144,
+          2560
+        ],
+        "numel": 671088640,
+        "data_ptr": 124480282987112
+      },
+      "embed_scale": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [],
+        "numel": 1,
+        "data_ptr": 691907200
+      }
+    },
+    "model.language_model.embed_tokens_per_layer": {
+      "weight": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          262144,
+          10752
+        ],
+        "numel": 2818572288,
+        "data_ptr": 124484656824488
+      },
+      "embed_scale": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [],
+        "numel": 1,
+        "data_ptr": 689148544
+      }
+    },
+    "lm_head": {
+      "weight": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          262144,
+          2560
+        ],
+        "numel": 671088640,
+        "data_ptr": 124480282987112
+      }
+    }
+  },
+  "persistent_cpu_storage_after_generation": {
+    "model.language_model.embed_tokens": {
+      "weight": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          262144,
+          2560
+        ],
+        "numel": 671088640,
+        "data_ptr": 124480282987112
+      },
+      "embed_scale": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [],
+        "numel": 1,
+        "data_ptr": 691907200
+      }
+    },
+    "model.language_model.embed_tokens_per_layer": {
+      "weight": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          262144,
+          10752
+        ],
+        "numel": 2818572288,
+        "data_ptr": 124484656824488
+      },
+      "embed_scale": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [],
+        "numel": 1,
+        "data_ptr": 689148544
+      }
+    },
+    "lm_head": {
+      "weight": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          262144,
+          2560
+        ],
+        "numel": 671088640,
+        "data_ptr": 124480282987112
+      }
+    }
+  },
+  "unused_multimodal_offload_state": {
+    "model.vision_tower": {
+      "hook": {
+        "present": true,
+        "type": "AlignDevicesHook",
+        "repr": "AlignDevicesHook(execution_device=0, offload=False, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'shared_kv_states', 'past_key_values'})",
+        "execution_device": "0",
+        "offload": false
+      },
+      "devices_recursive": [
+        "cuda:0",
+        "meta"
+      ]
+    },
+    "model.audio_tower": {
+      "hook": {
+        "present": true,
+        "type": "AlignDevicesHook",
+        "repr": "AlignDevicesHook(execution_device=0, offload=False, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'shared_kv_states', 'past_key_values'})",
+        "execution_device": "0",
+        "offload": false
+      },
+      "devices_recursive": [
+        "cuda:0",
+        "meta"
+      ]
+    },
+    "model.embed_vision": {
+      "hook": {
+        "present": true,
+        "type": "AlignDevicesHook",
+        "repr": "AlignDevicesHook(execution_device=0, offload=False, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'shared_kv_states', 'past_key_values'})",
+        "execution_device": "0",
+        "offload": false
+      },
+      "devices_recursive": [
+        "meta"
+      ]
+    },
+    "model.embed_audio": {
+      "hook": {
+        "present": true,
+        "type": "AlignDevicesHook",
+        "repr": "AlignDevicesHook(execution_device=0, offload=False, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'shared_kv_states', 'past_key_values'})",
+        "execution_device": "0",
+        "offload": false
+      },
+      "devices_recursive": [
+        "meta"
+      ]
+    }
+  },
+  "embedding_no_remigration": true,
+  "load_seconds": 28.10464286599995,
+  "generation": {
+    "prefill_tokens": 512,
+    "decode_tokens": 32,
+    "greedy": true,
+    "seed": 20260914,
+    "generated_token_ids": [
+      1161,
+      236764,
+      532,
+      1458,
+      12167,
+      236761,
+      20090,
+      128547,
+      121019,
+      64745,
+      7377,
+      34711,
+      236764,
+      5904,
+      1161,
+      236764,
+      532,
+      1458,
+      12167,
+      236761,
+      20090,
+      128547,
+      121019,
+      64745,
+      7377,
+      34711,
+      236764,
+      5904,
+      1161,
+      236764,
+      532,
+      1458
+    ],
+    "generated_token_ids_sha256": "5ee47b41935e10010b9eec3297cf3bd3a7e4a7168aea592d359b7dc45e820db1",
+    "seconds": 17.950198316999945,
+    "prefill_and_first_token_seconds": 10.54163430799997,
+    "incremental_decode_seconds": 7.395511467000119,
+    "incremental_decode_input_tokens": 31,
+    "step_seconds": [
+      10.54163430799997,
+      1.172548914999993,
+      0.5284260910000285,
+      0.2071211290000292,
+      0.20844502699992518,
+      0.15065061000007063,
+      0.23165502800009108,
+      0.17652435900004093,
+      0.19883476300003622,
+      0.22136064999995142,
+      0.21016543899997941,
+      0.18664556599992466,
+      0.1862596980000717,
+      0.16910167900005035,
+      0.25012062299992976,
+      0.15292210200004774,
+      0.1542505859999892,
+      0.18632502499997372,
+      0.14217618300006052,
+      0.1754325780000272,
+      0.23420091499997397,
+      0.15673369199998888,
+      0.20413470400001188,
+      0.1489090000000033,
+      0.19838709999999082,
+      0.24811885700000857,
+      0.17253206399993815,
+      0.32770224600005804,
+      0.21793579999996382,
+      0.1560681979999572,
+      0.18621107900003153,
+      0.23561176099997283
+    ],
+    "embedding_cuda_allocation_deltas_bytes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "embedding_cuda_allocation_delta_max_bytes": 0,
+    "final_cache_length": 543
+  },
+  "memory_after_load": {
+    "allocated_bytes": 2051864576,
+    "reserved_bytes": 2092957696,
+    "peak_allocated_bytes": 2109867520,
+    "peak_reserved_bytes": 2155872256,
+    "device_used_bytes": 3250061312,
+    "device_free_bytes": 5335154688,
+    "device_total_bytes": 8585216000,
+    "peak_allocated_mib": 2012.126,
+    "peak_reserved_mib": 2056.0,
+    "device_used_mib": 3099.5
+  },
+  "memory_final": {
+    "allocated_bytes": 2060383232,
+    "reserved_bytes": 2233466880,
+    "peak_allocated_bytes": 2205760512,
+    "peak_reserved_bytes": 2233466880,
+    "device_used_bytes": 3407347712,
+    "device_free_bytes": 5177868288,
+    "device_total_bytes": 8585216000,
+    "peak_allocated_mib": 2103.577,
+    "peak_reserved_mib": 2130.0,
+    "device_used_mib": 3249.5
+  },
+  "gpu_budget_gib": 7.5,
+  "gpu_budget_bytes": 8053063680,
+  "gpu_budget_checks": {
+    "peak_allocated_bytes": true,
+    "peak_reserved_bytes": true,
+    "device_used_bytes": true
+  }
+}

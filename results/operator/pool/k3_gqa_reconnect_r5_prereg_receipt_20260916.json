@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_RECONNECT_R5_PREREG",
+  "kernel": "k3_gqa_decode_attention",
+  "timestamp": "2026-09-16T18:23:51+08:00",
+  "status": "FROZEN_BEFORE_FORMAL_REPLAY",
+  "protocol": "configs/operator/k3_gqa_reconnect_override_r5.json",
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "r4_status": "INVALID_EXECUTION_ATTEMPT_NO_DECISION",
+  "r5_fixes": [
+    "normalize real decode attention_mask=None to an explicit contiguous BF16 zero mask",
+    "use same-load full A/B token lists as the strict oracle",
+    "remove the temporary registry entry from the Transformers global mapping"
+  ],
+  "formal_replay_started": false,
+  "expected": {
+    "tapes": 5,
+    "requests_per_path": 11,
+    "runs": 22,
+    "completion_tokens_per_path": 21705,
+    "candidate_calls": 911148,
+    "synthetic_zero_masks": 911148,
+    "prefill_eager_calls": 462,
+    "attention_modules": 42,
+    "nf4_modules": 343
+  },
+  "replication_disclosure": "Owner waived both the original cross-day replication and the prepared R2 same-day replication after Day-1; R5 cannot establish replication PASS."
+}

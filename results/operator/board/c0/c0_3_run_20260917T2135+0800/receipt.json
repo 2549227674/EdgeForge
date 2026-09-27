@@ -1,0 +1,68 @@
+{
+  "artifact": {
+    "bytes": 11687037412,
+    "path": "/autodl-fs/data/edgeforge-c0-3/run-20260917T2135+0800/artifacts/C02-S.O-w8a8-rk3588-16k-1core-A2.rkllm",
+    "sha256": "61d2fedd5ce1a0c5cbd785b5198550254bea26d685bc49cabe98558ae0fa2c62"
+  },
+  "command": [
+    "/root/autodl-tmp/edgeforge-m1/rkllm-1.3.0-venv/bin/python",
+    "/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/board/run_c02_rkllm_build.py",
+    "--worker",
+    "--model",
+    "/root/autodl-tmp/edgeforge-m1/workspace/models/C02-S.O-rkllm-input-r1",
+    "--model-manifest",
+    "/root/autodl-tmp/edgeforge-m1/workspace/configs/operator/board/c02_rkllm_input_manifest.json",
+    "--dataset",
+    "/root/autodl-tmp/edgeforge-m1/workspace/data/operator/board/a2_calibration/data_quant.json",
+    "--a2-manifest",
+    "/root/autodl-tmp/edgeforge-m1/workspace/configs/operator/board/a2_calibration_manifest.json",
+    "--a2-rule",
+    "/root/autodl-tmp/edgeforge-m1/workspace/configs/operator/board/a2_calibration_rule.json",
+    "--a2-receipt",
+    "/root/autodl-tmp/edgeforge-m1/workspace/results/operator/board/c0/c0_2_a2_calibration_receipt.json",
+    "--allow-memory-variance",
+    "--memory-variance-note",
+    "Owner supplied the 92 GiB instance and delegated cloud/local execution choice; one build is accepted because the same-geometry X4 N=128 peak was 58.7 GiB, leaving 33.3 GiB to memory.max. No calibration cap or build setting is changed."
+  ],
+  "ended_at": "2026-09-17T21:59:02+08:00",
+  "evidence": {
+    "preflight": "/autodl-fs/data/edgeforge-c0-3/run-20260917T2135+0800/preflight.json",
+    "resource_monitor": "/autodl-fs/data/edgeforge-c0-3/run-20260917T2135+0800/resource_monitor.tsv",
+    "script": {
+      "path": "/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/board/run_c02_rkllm_build.py",
+      "sha256": "be1a3b7a80de3f959b9b503c692e3726d3b244514bdc7ec0ff47107ce36445d4"
+    },
+    "stderr": "/autodl-fs/data/edgeforge-c0-3/run-20260917T2135+0800/stderr.log",
+    "stdout": "/autodl-fs/data/edgeforge-c0-3/run-20260917T2135+0800/stdout.log"
+  },
+  "host": "autodl-container-z7m72ul12w-4c2b02f8",
+  "interrupted": false,
+  "memory_variance_requested": {
+    "allowed": true,
+    "note": "Owner supplied the 92 GiB instance and delegated cloud/local execution choice; one build is accepted because the same-geometry X4 N=128 peak was 58.7 GiB, leaving 33.3 GiB to memory.max. No calibration cap or build setting is changed."
+  },
+  "resource_peaks": {
+    "gpu_memory_used_mib": 38079,
+    "minimum_system_mem_available_kib": 555498076,
+    "process_tree_rss_kib": 60957092,
+    "root_process_vm_hwm_kib": 62345852
+  },
+  "return_code": 0,
+  "run_directory": "/autodl-fs/data/edgeforge-c0-3/run-20260917T2135+0800",
+  "schema": "edgeforge-ope-c0-3-rkllm-build/v1",
+  "scope": "C02 A2 W8A8 conversion only; no quality evaluation",
+  "sdk_results": {
+    "build": 0,
+    "export_rkllm": 0,
+    "load_huggingface": 0
+  },
+  "stage": "C0-3",
+  "started_at": "2026-09-17T21:33:54+08:00",
+  "status": "PASS",
+  "temporary_directories": {
+    "TEMP": "/autodl-fs/data/edgeforge-c0-3/run-20260917T2135+0800/tmp",
+    "TMP": "/autodl-fs/data/edgeforge-c0-3/run-20260917T2135+0800/tmp",
+    "TMPDIR": "/autodl-fs/data/edgeforge-c0-3/run-20260917T2135+0800/tmp"
+  },
+  "wall_seconds": 1523.503988262266
+}

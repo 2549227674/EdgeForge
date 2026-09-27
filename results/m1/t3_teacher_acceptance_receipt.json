@@ -1,0 +1,158 @@
+{
+  "schema_version": 2,
+  "status": "PASS",
+  "repo_id": "google/gemma-4-31B-it",
+  "revision": "842da3794eaa0b77d5f08bae87a17459d91ff475",
+  "artifact_dir": "/root/autodl-tmp/edgeforge-m1/workspace/models/gemma-4-31B-it",
+  "verification_mode": "verify_only",
+  "verified_at": {
+    "utc": "2026-08-12T08:42:18.857322+00:00",
+    "local": "2026-08-12T16:42:18.857322+08:00"
+  },
+  "identity_authority": "upstream_huggingface_lfs_sha256_for_frozen_files",
+  "expected_repository_bytes": 62578686256,
+  "repository_bytes": 62578686256,
+  "repository_file_count": 12,
+  "repository_artifact_set_sha256": "d36ce1b4da4dfd476c42a3cf3130c31999931ee8b205ec43ed7702ffd3ca9ee6",
+  "repository_inventory": [
+    {
+      "file": ".eval_results/mmmu_pro.yaml",
+      "bytes": 182,
+      "sha256": "e673fe773afc0807cf25534cefac2e9c4c81673fc450fb1fe501624fb807532c",
+      "identity_status": "acceptance_inventory_only"
+    },
+    {
+      "file": ".gitattributes",
+      "bytes": 1708,
+      "sha256": "aa4fc74fe06acc698271341dee76eca26c6672a1f4b2840dedbf37f1b4fe27a4",
+      "identity_status": "acceptance_inventory_only"
+    },
+    {
+      "file": "README.md",
+      "bytes": 27963,
+      "sha256": "e209f5c435b1e66055bd6d7c29185103ae8d2027a03a96b359335154f206b82b",
+      "identity_status": "acceptance_inventory_only"
+    },
+    {
+      "file": "chat_template.jinja",
+      "bytes": 18683,
+      "sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+      "identity_status": "acceptance_inventory_only"
+    },
+    {
+      "file": "config.json",
+      "bytes": 4621,
+      "sha256": "e967dd38bc5cfd38bd09a995a7bf4a754075df2b46aba68f7fbb5a791e6d8dd1",
+      "identity_status": "acceptance_inventory_only"
+    },
+    {
+      "file": "generation_config.json",
+      "bytes": 208,
+      "sha256": "d4226bbe3117d2d253ba4609720ba82c6c4ce4627a9a6ae05387c78983ac03de",
+      "identity_status": "acceptance_inventory_only"
+    },
+    {
+      "file": "model-00001-of-00002.safetensors",
+      "bytes": 49784788364,
+      "sha256": "eeef8791537bc04f110967c513149e037d2a9ae97d49add7291ebfa62806bbfa",
+      "identity_status": "upstream_frozen_match"
+    },
+    {
+      "file": "model-00002-of-00002.safetensors",
+      "bytes": 12761549884,
+      "sha256": "018912220f559f7025d60333e0996183cd538aa77ad6f4988a89ce47be681f10",
+      "identity_status": "upstream_frozen_match"
+    },
+    {
+      "file": "model.safetensors.index.json",
+      "bytes": 120246,
+      "sha256": "d4aff3b976d69c123a29d1c085d7ba4de1ac3f4ca1726a7f81e1b11462a64ea2",
+      "identity_status": "acceptance_inventory_only"
+    },
+    {
+      "file": "processor_config.json",
+      "bytes": 1689,
+      "sha256": "32bdf45d2ad4cc29a0822ddd157a182de76644f0419a6228d151495256e9813c",
+      "identity_status": "acceptance_inventory_only"
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 32169626,
+      "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+      "identity_status": "upstream_frozen_match"
+    },
+    {
+      "file": "tokenizer_config.json",
+      "bytes": 3082,
+      "sha256": "9f4fec4b1dc6ecddf8f4a92e9caea5971c0e67d81309f3f9066a2bee8c362633",
+      "identity_status": "acceptance_inventory_only"
+    }
+  ],
+  "verified_files": [
+    {
+      "file": "model-00001-of-00002.safetensors",
+      "bytes": 49784788364,
+      "sha256": "eeef8791537bc04f110967c513149e037d2a9ae97d49add7291ebfa62806bbfa",
+      "identity_status": "upstream_frozen_match"
+    },
+    {
+      "file": "model-00002-of-00002.safetensors",
+      "bytes": 12761549884,
+      "sha256": "018912220f559f7025d60333e0996183cd538aa77ad6f4988a89ce47be681f10",
+      "identity_status": "upstream_frozen_match"
+    },
+    {
+      "file": "tokenizer.json",
+      "bytes": 32169626,
+      "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+      "identity_status": "upstream_frozen_match"
+    }
+  ],
+  "verified_bytes": 62578507874,
+  "runtime": {
+    "captured_at": {
+      "utc": "2026-08-12T08:42:18.857322+00:00",
+      "local": "2026-08-12T16:42:18.857322+08:00"
+    },
+    "hostname": "autodl-container-uh8nves9v6-22e5a1b3",
+    "instance_started_at": {
+      "meaning": "instance/container PID 1 start time",
+      "source": "/proc/1/stat starttime + /proc/stat btime",
+      "utc": "2026-08-12T08:06:41.880000+00:00",
+      "local": "2026-08-12T16:06:41.880000+08:00"
+    },
+    "cgroup_v2": {
+      "version": 2,
+      "available": true,
+      "memory": {
+        "raw": "257698037760",
+        "bytes": 257698037760,
+        "gib": 240.0
+      },
+      "cpu": {
+        "raw": "5000000 100000",
+        "quota_us": 5000000,
+        "period_us": 100000,
+        "quota_cores": 50.0
+      }
+    },
+    "gpus": [
+      {
+        "index": 0,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-8441031a-35d4-fc0b-d6c1-70adb534e305",
+        "memory_total_mib": 97887,
+        "driver_version": "595.71.05",
+        "compute_capability": "12.0"
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-39160c7c-0272-9254-c171-be00298b0dfc",
+        "memory_total_mib": 97887,
+        "driver_version": "595.71.05",
+        "compute_capability": "12.0"
+      }
+    ]
+  }
+}

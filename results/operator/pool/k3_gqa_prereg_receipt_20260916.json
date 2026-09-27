@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_GQA_DECODE_ATTENTION_PREREG",
+  "timestamp": "2026-09-16T17:17:50+08:00",
+  "protocol": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k3_gqa_decode_attention_prereg.json",
+    "sha256": "fe427c9650aa929d18f72daaaa22ed918b7d33fd5b0af4da12386e0a86229626"
+  },
+  "verified_sources": {
+    "gqa_selection_protocol": "PASS",
+    "gqa_selection_prereg_receipt": "PASS",
+    "gqa_selection_result": "PASS",
+    "gqa_selection_receipt": "PASS",
+    "shape_census": "PASS",
+    "op1_channel_b_profiler": "PASS",
+    "transformers_gemma4_source": "PASS",
+    "git_sha": "PASS"
+  },
+  "freeze_assertions": {
+    "before_candidate_implementation": true,
+    "before_candidate_measurement": true,
+    "selection_observations_disclosed": true,
+    "candidate_algorithm_and_search_spaces_frozen": true,
+    "fresh_formal_holdout_seeds_unobserved_by_candidate": true,
+    "correctness_and_bounded_continuation_gates_frozen": true,
+    "reconnection_gate_frozen": true
+  },
+  "next_authorized_action": "Implement and debug only the frozen three-stage Triton candidate on already-observed selection inputs, then lock its source SHA before formal correctness.",
+  "status": "PASS"
+}

@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "stage": "T3_OPD_dynamic_length_native_trainer_smoke",
+  "status": "PASS",
+  "started_at": "2026-08-12T21:14:51.455349+08:00",
+  "argv": [
+    "scripts/m1/run_t3_dynamic_length_smoke.py",
+    "--model",
+    "models/C01-S-bf16-r1",
+    "--plan",
+    "results/t1/family_80_20_half_plan_r1/family_80_20.parquet",
+    "--teacher-url",
+    "http://127.0.0.1:8000",
+    "--rank",
+    "256",
+    "--alpha",
+    "16",
+    "--learning-rate",
+    "5e-5",
+    "--weight-decay",
+    "0",
+    "--total-length-cap",
+    "64",
+    "--prompt-length-cap",
+    "63",
+    "--completion-length-cap",
+    "32",
+    "--target-prompt-length",
+    "32",
+    "--target-prompt-length",
+    "40",
+    "--target-prompt-length",
+    "48",
+    "--target-prompt-length",
+    "63",
+    "--output",
+    "results/m1/t3_dynamic_length_native_short_smoke_receipt.json"
+  ],
+  "inputs": {
+    "model": "/root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1",
+    "plan": "/root/autodl-tmp/edgeforge-m1/workspace/results/t1/family_80_20_half_plan_r1/family_80_20.parquet",
+    "plan_sha256": "61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e",
+    "prompts": [
+      {
+        "uid": "Crownelius__Complete-FABLE.5-traces-2M:a1c8140d177fdd13d13315d471b5e5d3d23986cbebcc3cb5f6e376eac2ffd37f:0::segment:0000",
+        "source_uid": "Crownelius__Complete-FABLE.5-traces-2M:a1c8140d177fdd13d13315d471b5e5d3d23986cbebcc3cb5f6e376eac2ffd37f:0",
+        "family": "claimed_anthropic_from_source_label",
+        "task_type": "chat_or_reasoning",
+        "prompt_length": 32,
+        "prompt_ids_sha256": "f4629e90c1d8c051e9963029ea0791dc606c6d22bfbc6389d8dc82bbd251a926"
+      },
+      {
+        "uid": "Crownelius__Complete-FABLE.5-traces-2M:0405298b034b55149157cb1de09e2d17b876792592ed502e90367af4cbdaef3e:0::segment:0000",
+        "source_uid": "Crownelius__Complete-FABLE.5-traces-2M:0405298b034b55149157cb1de09e2d17b876792592ed502e90367af4cbdaef3e:0",
+        "family": "claimed_anthropic_from_source_label",
+        "task_type": "chat_or_reasoning",
+        "prompt_length": 40,
+        "prompt_ids_sha256": "e10c3c2e87e3aa3a0176fee39a872982e9e734ad0a3257d41642ea55e03b37ab"
+      },
+      {
+        "uid": "Crownelius__Complete-FABLE.5-traces-2M:6c05b629c0f6a9bb08e5a2f041dd5efb187dd17686014458008985b01919b0fc:0::segment:0000",
+        "source_uid": "Crownelius__Complete-FABLE.5-traces-2M:6c05b629c0f6a9bb08e5a2f041dd5efb187dd17686014458008985b01919b0fc:0",
+        "family": "claimed_anthropic_from_source_label",
+        "task_type": "chat_or_reasoning",
+        "prompt_length": 48,
+        "prompt_ids_sha256": "62943f23d4e0517f2c52fabaf29cffc8d84b983acbec63655f485bcc00c66f85"
+      },
+      {
+        "uid": "Crownelius__Complete-FABLE.5-traces-2M:2bcb8b173d8af3e2997dfe4213290cc2aab63718ad7a18b7d7c5a40dc70ed131:0::segment:0000",
+        "source_uid": "Crownelius__Complete-FABLE.5-traces-2M:2bcb8b173d8af3e2997dfe4213290cc2aab63718ad7a18b7d7c5a40dc70ed131:0",
+        "family": "claimed_anthropic_from_source_label",
+        "task_type": "chat_or_reasoning",
+        "prompt_length": 63,
+        "prompt_ids_sha256": "5425e87b785737d2161f044f92c7ea7e2a99d208f232327dd307f02c0ac250e1"
+      }
+    ]
+  },
+  "configuration": {
+    "trainer": "t3_dynamic_length.DynamicLengthServerDistillationTrainer",
+    "rank": 256,
+    "alpha": 16,
+    "use_rslora": true,
+    "scaling": 1.0,
+    "learning_rate": 5e-05,
+    "weight_decay": 0.0,
+    "per_device_train_batch_size": 1,
+    "gradient_accumulation_steps": 4,
+    "generation_batch_size": 4,
+    "num_generations": 1,
+    "total_length_cap": 64,
+    "prompt_length_cap": 63,
+    "completion_length_cap": 32,
+    "completion_rule": "min(completion_length_cap,total_length_cap-real_prompt_width)"
+  },
+  "runtime": {
+    "packages": {
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "datasets": "5.0.1",
+      "numpy": "2.3.5",
+      "peft": "0.20.0",
+      "pyarrow": "25.0.1",
+      "torch": "2.13.0",
+      "transformers": "5.15.0",
+      "trl": "1.9.2",
+      "vllm": "0.27.0"
+    },
+    "cuda_visible_devices": "1",
+    "initial_gpu_inventory": [
+      {
+        "index": 0,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-8441031a-35d4-fc0b-d6c1-70adb534e305",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 78093,
+        "utilization_percent": 0
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-39160c7c-0272-9254-c171-be00298b0dfc",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 3,
+        "utilization_percent": 0
+      }
+    ],
+    "teacher_initial_health": {
+      "status": 200,
+      "latency_seconds": 0.03861855308059603,
+      "body": "{\"status\":\"ok\"}"
+    },
+    "final_gpu_inventory": [
+      {
+        "index": 0,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-8441031a-35d4-fc0b-d6c1-70adb534e305",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 78095,
+        "utilization_percent": 0
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-39160c7c-0272-9254-c171-be00298b0dfc",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 28579,
+        "utilization_percent": 18
+      }
+    ],
+    "teacher_final_health": {
+      "status": 200,
+      "latency_seconds": 0.002919877995736897,
+      "body": "{\"status\":\"ok\"}"
+    }
+  },
+  "completed_global_steps": 1,
+  "dynamic_length_events": [
+    {
+      "slice_index": 0,
+      "prompt_width": 48,
+      "completion_cap": 16,
+      "generated_completion_tokens": 16,
+      "padded_sequence_width": 64
+    },
+    {
+      "slice_index": 1,
+      "prompt_width": 40,
+      "completion_cap": 24,
+      "generated_completion_tokens": 24,
+      "padded_sequence_width": 64
+    },
+    {
+      "slice_index": 2,
+      "prompt_width": 63,
+      "completion_cap": 1,
+      "generated_completion_tokens": 1,
+      "padded_sequence_width": 64
+    },
+    {
+      "slice_index": 3,
+      "prompt_width": 32,
+      "completion_cap": 32,
+      "generated_completion_tokens": 32,
+      "padded_sequence_width": 64
+    }
+  ],
+  "trainable_inventory": {
+    "parameter_tensors": 686,
+    "parameters": 622067712,
+    "by_branch": {
+      "language_model": 622067712
+    },
+    "dtype_numel": {
+      "torch.float32": 622067712
+    },
+    "all_trainables_inside_language_model": true,
+    "first_names": [
+      "base_model.model.model.language_model.layers.0.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.language_model.layers.0.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.language_model.layers.0.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.language_model.layers.0.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.language_model.layers.0.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.language_model.layers.0.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.language_model.layers.0.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.language_model.layers.0.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.language_model.layers.0.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.language_model.layers.0.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.language_model.layers.0.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.language_model.layers.0.mlp.up_proj.lora_B.default.weight"
+    ]
+  },
+  "target_module_count": 343,
+  "train_metrics": {
+    "train_runtime": 10.9438,
+    "train_samples_per_second": 0.366,
+    "train_steps_per_second": 0.091,
+    "total_flos": 30684574061568.0,
+    "train_loss": 1.5528466701507568,
+    "epoch": 1.0
+  },
+  "log_history": [
+    {
+      "loss": 1.5528466701507568,
+      "grad_norm": 40.07917404174805,
+      "learning_rate": 5e-05,
+      "completions/mean_length": 18.25,
+      "completions/max_length": 18.25,
+      "completions/min_length": 18.25,
+      "completions/truncated_fraction": 0.25,
+      "epoch": 1.0,
+      "step": 1
+    },
+    {
+      "train_runtime": 10.9438,
+      "train_samples_per_second": 0.366,
+      "train_steps_per_second": 0.091,
+      "total_flos": 30684574061568.0,
+      "train_loss": 1.5528466701507568,
+      "epoch": 1.0,
+      "step": 1
+    }
+  ],
+  "peak_allocated_gib": 26.94365119934082,
+  "peak_reserved_gib": 27.21875,
+  "finished_at": "2026-08-12T21:15:35.893631+08:00",
+  "wall_seconds": 44.4383090849733
+}

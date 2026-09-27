@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "stage": "OPE1-independent-verification",
+  "status": "PASS",
+  "source_census_ref": "results/operator/shape_census.json",
+  "manifest_ref": "configs/operator/board/ope1_shape_manifest.json",
+  "checks": {
+    "decode_variant_count": 14,
+    "core_projection_calls": 258,
+    "ple_calls": 85,
+    "all_linear_calls_excluding_lm_head": 343,
+    "core_projection_weight_bytes": 3890216960,
+    "ple_weight_bytes": 82575360,
+    "all_343_linear_weight_bytes": 3972792320,
+    "shape_rows_verified": 62,
+    "arithmetic_field_checks": 1488,
+    "lineage_checks": 220,
+    "attention_decode_forwards_reconstructed": 21694,
+    "attention_context_range": [
+      807,
+      7359
+    ],
+    "prefill_anchor_values": [
+      813,
+      1445,
+      5142,
+      7082
+    ]
+  },
+  "adjudication": "3,890,216,960 bytes is exact for the 258 q/k/v/o+MLP calls, not for all 343 non-lm-head linear calls. Adding the 85 PLE calls yields 3,972,792,320 bytes.",
+  "claim_limit": "This verification checks lineage and analytic arithmetic only; it is not a board performance run. The 3,972,792,320-byte result happens to equal an M0 IOVA map size, but equality does not establish allocation identity."
+}

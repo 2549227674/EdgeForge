@@ -1,0 +1,4 @@
+event	board_wall_time	uptime_s	policy0_governor	policy4_governor	policy6_governor	npu_governor
+before	2026-09-19T05:17:52.717373396+08:00	18055.91	ondemand	ondemand	ondemand	rknpu_ondemand
+after_set	2026-09-19T05:17:52.742593068+08:00	18055.94	performance	ondemand	ondemand	rknpu_ondemand
+after_restore	2026-09-19T05:19:17.412107970+08:00	18140.61	ondemand	ondemand	ondemand	rknpu_ondemand

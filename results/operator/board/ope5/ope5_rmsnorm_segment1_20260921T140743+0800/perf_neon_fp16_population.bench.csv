@@ -1,0 +1,2 @@
+scope,variant,population_sequences,population_calls,analytic_bytes_per_sequence,elapsed_ms,ring_frames,sink
+perf_population,neon_fp16,4340,1310680,3840000,3000.202335,16,5535

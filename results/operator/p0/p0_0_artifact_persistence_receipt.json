@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "stage": "OP-P0-0",
+  "status": "PASS",
+  "checked_at": "2026-09-14T20:59:06+08:00",
+  "remote_host": "autodl-container-f79243921a-a9a8b753",
+  "workspace": "/root/autodl-tmp/edgeforge-m1/workspace",
+  "checks": {
+    "c01_s_directory": {
+      "path": "/root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1",
+      "exists": true,
+      "observed_mtime": "2026-08-12 08:01:48.030369769 +0800"
+    },
+    "final_adapter_directory": {
+      "path": "/root/autodl-tmp/edgeforge-m1/workspace/results/t3/c02_s_opd_formal_r1_state/final_adapter",
+      "exists": true,
+      "observed_mtime": "2026-08-13 05:46:48.668579551 +0800"
+    },
+    "adapter_model": {
+      "path": "/root/autodl-tmp/edgeforge-m1/workspace/results/t3/c02_s_opd_formal_r1_state/final_adapter/adapter_model.safetensors",
+      "bytes": 2488376152,
+      "sha256": "e1fddbeef0cfb338c89e7f37845545a490f7b062bb1290b757ed8a0c3c34326d",
+      "expected_sha256": "e1fddbeef0cfb338c89e7f37845545a490f7b062bb1290b757ed8a0c3c34326d",
+      "matches_expected": true
+    }
+  },
+  "command_contract": "ls -l C01-S final_adapter && sha256sum adapter_model.safetensors"
+}

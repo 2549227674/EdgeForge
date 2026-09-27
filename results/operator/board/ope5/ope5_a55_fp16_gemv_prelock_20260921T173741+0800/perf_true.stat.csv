@@ -1,0 +1,6 @@
+# started on Sat Sep 19 05:15:23 2026
+
+658521,,cycles:u,1933167,100.00,,
+242759,,instructions:u,1933167,100.00,0.37,insn per cycle
+6675,,l2d_cache_refill:u,1933167,100.00,,
+52831,,bus_access:u,1933167,100.00,,

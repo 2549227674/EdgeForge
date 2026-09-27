@@ -1,0 +1,29 @@
+
+bin/ope5_attention_sequence_bench:     file format elf64-littleaarch64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .text:
+
+00000000000049e4 <ope5_attention_scalar_dot>:
+    49e4:	0f000400 	movi	v0.2s, #0x0
+    49e8:	7100005f 	cmp	w2, #0x0
+    49ec:	540001ad 	b.le	4a20 <ope5_attention_scalar_dot+0x3c>
+    49f0:	937f7c43 	sbfiz	x3, x2, #1, #32
+    49f4:	d2800002 	mov	x2, #0x0                   	// #0
+    49f8:	d503201f 	nop
+    49fc:	d503201f 	nop
+    4a00:	7c626802 	ldr	h2, [x0, x2]
+    4a04:	7c626821 	ldr	h1, [x1, x2]
+    4a08:	91000842 	add	x2, x2, #0x2
+    4a0c:	1ee24042 	fcvt	s2, h2
+    4a10:	1ee24021 	fcvt	s1, h1
+    4a14:	1f010040 	fmadd	s0, s2, s1, s0
+    4a18:	eb02007f 	cmp	x3, x2
+    4a1c:	54ffff21 	b.ne	4a00 <ope5_attention_scalar_dot+0x1c>  // b.any
+    4a20:	d65f03c0 	ret
+
+Disassembly of section .fini:

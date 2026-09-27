@@ -1,0 +1,5737 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K2_FROZEN_ORACLE_CONSISTENCY_AUDIT",
+  "timestamp": "2026-09-16T16:16:41+08:00",
+  "purpose": "Determine whether any candidate output can simultaneously satisfy both frozen allclose assertions before further implementation attempts or performance measurement.",
+  "preregistration": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k2_nf4_decode_gemv_prereg.json",
+    "sha256_start": "bb497bf4be20a922abbe6edbf8e4812d55b01e14d8db088371ec332ad61f299f",
+    "sha256_end": "bb497bf4be20a922abbe6edbf8e4812d55b01e14d8db088371ec332ad61f299f"
+  },
+  "runner": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/audit_k2_oracle_consistency.py",
+    "sha256": "3e2807a8d945b71475fad8cfa9e5b7c6a8ac9a7613e9732a12fcb9120033a697"
+  },
+  "candidate_observation": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k2_nf4_gemv.py",
+    "sha256": "149b4b8c651cfa6530f320779687132f0bdb31f511282473250ffc80257d7c65",
+    "note": "Candidate output is not needed for the impossibility proof; only the two frozen oracle intervals are compared."
+  },
+  "reference_definition": "bitsandbytes dequantize_4bit (C02 QuantState dtype BF16), cast the dequantized weight to FP32, explicit torch F.linear with FP32 activation, then cast output to BF16",
+  "eager_definition": "bitsandbytes 0.50.0 fused bitsandbytes::gemm_4bit CUDA path with the exact C02 packed weight and nested scale tensors",
+  "allclose_semantics": "For candidate c and oracle o, abs(c-o) <= atol + rtol*abs(o). If the eager and reference allowed intervals are disjoint, no real-valued candidate can satisfy both assertions.",
+  "tolerances": {
+    "atol": 0.03125,
+    "rtol": 0.02,
+    "output_dtype": "torch.bfloat16"
+  },
+  "population": {
+    "variants": 14,
+    "distributions": [
+      "unit_normal",
+      "wide_normal",
+      "near_zero_uniform"
+    ],
+    "seeds": [
+      20260916,
+      20260917,
+      20260918
+    ],
+    "cases": 126,
+    "layout": {
+      "module_count": 343,
+      "variant_count": 14,
+      "counts_by_variant": {
+        "k_proj_full_nonshared": 4,
+        "k_proj_sliding_nonshared": 20,
+        "mlp_down_proj": 42,
+        "mlp_gate_proj": 42,
+        "mlp_up_proj": 42,
+        "o_proj_full": 7,
+        "o_proj_sliding": 35,
+        "ple_context_projection": 1,
+        "ple_input_gate": 42,
+        "ple_residual_projection": 42,
+        "q_proj_full": 7,
+        "q_proj_sliding": 35,
+        "v_proj_full_nonshared": 4,
+        "v_proj_sliding_nonshared": 20
+      },
+      "all_layout_invariants_pass": true,
+      "representatives": {
+        "k_proj_full_nonshared": {
+          "name": "model.language_model.layers.11.self_attn.k_proj",
+          "variant": "k_proj_full_nonshared",
+          "shape_n_k": [
+            1024,
+            2560
+          ],
+          "packed_weight": {
+            "shape": [
+              1310720,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 1310720
+          },
+          "first_absmax": {
+            "shape": [
+              40960
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 40960
+          },
+          "second_absmax": {
+            "shape": [
+              160
+            ],
+            "dtype": "torch.float32",
+            "bytes": 640
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 1360516
+        },
+        "k_proj_sliding_nonshared": {
+          "name": "model.language_model.layers.0.self_attn.k_proj",
+          "variant": "k_proj_sliding_nonshared",
+          "shape_n_k": [
+            512,
+            2560
+          ],
+          "packed_weight": {
+            "shape": [
+              655360,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 655360
+          },
+          "first_absmax": {
+            "shape": [
+              20480
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 20480
+          },
+          "second_absmax": {
+            "shape": [
+              80
+            ],
+            "dtype": "torch.float32",
+            "bytes": 320
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 683332
+        },
+        "mlp_down_proj": {
+          "name": "model.language_model.layers.0.mlp.down_proj",
+          "variant": "mlp_down_proj",
+          "shape_n_k": [
+            2560,
+            10240
+          ],
+          "packed_weight": {
+            "shape": [
+              13107200,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 13107200
+          },
+          "first_absmax": {
+            "shape": [
+              409600
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 409600
+          },
+          "second_absmax": {
+            "shape": [
+              1600
+            ],
+            "dtype": "torch.float32",
+            "bytes": 6400
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 13549828
+        },
+        "mlp_gate_proj": {
+          "name": "model.language_model.layers.0.mlp.gate_proj",
+          "variant": "mlp_gate_proj",
+          "shape_n_k": [
+            10240,
+            2560
+          ],
+          "packed_weight": {
+            "shape": [
+              13107200,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 13107200
+          },
+          "first_absmax": {
+            "shape": [
+              409600
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 409600
+          },
+          "second_absmax": {
+            "shape": [
+              1600
+            ],
+            "dtype": "torch.float32",
+            "bytes": 6400
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 13549828
+        },
+        "mlp_up_proj": {
+          "name": "model.language_model.layers.0.mlp.up_proj",
+          "variant": "mlp_up_proj",
+          "shape_n_k": [
+            10240,
+            2560
+          ],
+          "packed_weight": {
+            "shape": [
+              13107200,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 13107200
+          },
+          "first_absmax": {
+            "shape": [
+              409600
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 409600
+          },
+          "second_absmax": {
+            "shape": [
+              1600
+            ],
+            "dtype": "torch.float32",
+            "bytes": 6400
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 13549828
+        },
+        "o_proj_full": {
+          "name": "model.language_model.layers.11.self_attn.o_proj",
+          "variant": "o_proj_full",
+          "shape_n_k": [
+            2560,
+            4096
+          ],
+          "packed_weight": {
+            "shape": [
+              5242880,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 5242880
+          },
+          "first_absmax": {
+            "shape": [
+              163840
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 163840
+          },
+          "second_absmax": {
+            "shape": [
+              640
+            ],
+            "dtype": "torch.float32",
+            "bytes": 2560
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 5423620
+        },
+        "o_proj_sliding": {
+          "name": "model.language_model.layers.0.self_attn.o_proj",
+          "variant": "o_proj_sliding",
+          "shape_n_k": [
+            2560,
+            2048
+          ],
+          "packed_weight": {
+            "shape": [
+              2621440,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 2621440
+          },
+          "first_absmax": {
+            "shape": [
+              81920
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 81920
+          },
+          "second_absmax": {
+            "shape": [
+              320
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1280
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 2714884
+        },
+        "ple_context_projection": {
+          "name": "model.language_model.per_layer_model_projection",
+          "variant": "ple_context_projection",
+          "shape_n_k": [
+            10752,
+            2560
+          ],
+          "packed_weight": {
+            "shape": [
+              13762560,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 13762560
+          },
+          "first_absmax": {
+            "shape": [
+              430080
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 430080
+          },
+          "second_absmax": {
+            "shape": [
+              1680
+            ],
+            "dtype": "torch.float32",
+            "bytes": 6720
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 14227012
+        },
+        "ple_input_gate": {
+          "name": "model.language_model.layers.0.per_layer_input_gate",
+          "variant": "ple_input_gate",
+          "shape_n_k": [
+            256,
+            2560
+          ],
+          "packed_weight": {
+            "shape": [
+              327680,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 327680
+          },
+          "first_absmax": {
+            "shape": [
+              10240
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 10240
+          },
+          "second_absmax": {
+            "shape": [
+              40
+            ],
+            "dtype": "torch.float32",
+            "bytes": 160
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 344740
+        },
+        "ple_residual_projection": {
+          "name": "model.language_model.layers.0.per_layer_projection",
+          "variant": "ple_residual_projection",
+          "shape_n_k": [
+            2560,
+            256
+          ],
+          "packed_weight": {
+            "shape": [
+              327680,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 327680
+          },
+          "first_absmax": {
+            "shape": [
+              10240
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 10240
+          },
+          "second_absmax": {
+            "shape": [
+              40
+            ],
+            "dtype": "torch.float32",
+            "bytes": 160
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 344740
+        },
+        "q_proj_full": {
+          "name": "model.language_model.layers.11.self_attn.q_proj",
+          "variant": "q_proj_full",
+          "shape_n_k": [
+            4096,
+            2560
+          ],
+          "packed_weight": {
+            "shape": [
+              5242880,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 5242880
+          },
+          "first_absmax": {
+            "shape": [
+              163840
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 163840
+          },
+          "second_absmax": {
+            "shape": [
+              640
+            ],
+            "dtype": "torch.float32",
+            "bytes": 2560
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 5423620
+        },
+        "q_proj_sliding": {
+          "name": "model.language_model.layers.0.self_attn.q_proj",
+          "variant": "q_proj_sliding",
+          "shape_n_k": [
+            2048,
+            2560
+          ],
+          "packed_weight": {
+            "shape": [
+              2621440,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 2621440
+          },
+          "first_absmax": {
+            "shape": [
+              81920
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 81920
+          },
+          "second_absmax": {
+            "shape": [
+              320
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1280
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 2714884
+        },
+        "v_proj_full_nonshared": {
+          "name": "model.language_model.layers.11.self_attn.v_proj",
+          "variant": "v_proj_full_nonshared",
+          "shape_n_k": [
+            1024,
+            2560
+          ],
+          "packed_weight": {
+            "shape": [
+              1310720,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 1310720
+          },
+          "first_absmax": {
+            "shape": [
+              40960
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 40960
+          },
+          "second_absmax": {
+            "shape": [
+              160
+            ],
+            "dtype": "torch.float32",
+            "bytes": 640
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 1360516
+        },
+        "v_proj_sliding_nonshared": {
+          "name": "model.language_model.layers.0.self_attn.v_proj",
+          "variant": "v_proj_sliding_nonshared",
+          "shape_n_k": [
+            512,
+            2560
+          ],
+          "packed_weight": {
+            "shape": [
+              655360,
+              1
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 655360
+          },
+          "first_absmax": {
+            "shape": [
+              20480
+            ],
+            "dtype": "torch.uint8",
+            "bytes": 20480
+          },
+          "second_absmax": {
+            "shape": [
+              80
+            ],
+            "dtype": "torch.float32",
+            "bytes": 320
+          },
+          "scale_code": {
+            "shape": [
+              256
+            ],
+            "dtype": "torch.float32",
+            "bytes": 1024
+          },
+          "scale_offset": {
+            "shape": [],
+            "dtype": "torch.float32",
+            "bytes": 4
+          },
+          "quant_type": "nf4",
+          "blocksize": 64,
+          "nested": true,
+          "second_level_blocksize": 256,
+          "bias": null,
+          "analytic_bytes": 683332
+        }
+      },
+      "module_order": [
+        "model.language_model.layers.0.self_attn.q_proj",
+        "model.language_model.layers.0.self_attn.k_proj",
+        "model.language_model.layers.0.self_attn.v_proj",
+        "model.language_model.layers.0.self_attn.o_proj",
+        "model.language_model.layers.0.mlp.gate_proj",
+        "model.language_model.layers.0.mlp.up_proj",
+        "model.language_model.layers.0.mlp.down_proj",
+        "model.language_model.layers.0.per_layer_input_gate",
+        "model.language_model.layers.0.per_layer_projection",
+        "model.language_model.layers.1.self_attn.q_proj",
+        "model.language_model.layers.1.self_attn.k_proj",
+        "model.language_model.layers.1.self_attn.v_proj",
+        "model.language_model.layers.1.self_attn.o_proj",
+        "model.language_model.layers.1.mlp.gate_proj",
+        "model.language_model.layers.1.mlp.up_proj",
+        "model.language_model.layers.1.mlp.down_proj",
+        "model.language_model.layers.1.per_layer_input_gate",
+        "model.language_model.layers.1.per_layer_projection",
+        "model.language_model.layers.2.self_attn.q_proj",
+        "model.language_model.layers.2.self_attn.k_proj",
+        "model.language_model.layers.2.self_attn.v_proj",
+        "model.language_model.layers.2.self_attn.o_proj",
+        "model.language_model.layers.2.mlp.gate_proj",
+        "model.language_model.layers.2.mlp.up_proj",
+        "model.language_model.layers.2.mlp.down_proj",
+        "model.language_model.layers.2.per_layer_input_gate",
+        "model.language_model.layers.2.per_layer_projection",
+        "model.language_model.layers.3.self_attn.q_proj",
+        "model.language_model.layers.3.self_attn.k_proj",
+        "model.language_model.layers.3.self_attn.v_proj",
+        "model.language_model.layers.3.self_attn.o_proj",
+        "model.language_model.layers.3.mlp.gate_proj",
+        "model.language_model.layers.3.mlp.up_proj",
+        "model.language_model.layers.3.mlp.down_proj",
+        "model.language_model.layers.3.per_layer_input_gate",
+        "model.language_model.layers.3.per_layer_projection",
+        "model.language_model.layers.4.self_attn.q_proj",
+        "model.language_model.layers.4.self_attn.k_proj",
+        "model.language_model.layers.4.self_attn.v_proj",
+        "model.language_model.layers.4.self_attn.o_proj",
+        "model.language_model.layers.4.mlp.gate_proj",
+        "model.language_model.layers.4.mlp.up_proj",
+        "model.language_model.layers.4.mlp.down_proj",
+        "model.language_model.layers.4.per_layer_input_gate",
+        "model.language_model.layers.4.per_layer_projection",
+        "model.language_model.layers.5.self_attn.q_proj",
+        "model.language_model.layers.5.self_attn.k_proj",
+        "model.language_model.layers.5.self_attn.v_proj",
+        "model.language_model.layers.5.self_attn.o_proj",
+        "model.language_model.layers.5.mlp.gate_proj",
+        "model.language_model.layers.5.mlp.up_proj",
+        "model.language_model.layers.5.mlp.down_proj",
+        "model.language_model.layers.5.per_layer_input_gate",
+        "model.language_model.layers.5.per_layer_projection",
+        "model.language_model.layers.6.self_attn.q_proj",
+        "model.language_model.layers.6.self_attn.k_proj",
+        "model.language_model.layers.6.self_attn.v_proj",
+        "model.language_model.layers.6.self_attn.o_proj",
+        "model.language_model.layers.6.mlp.gate_proj",
+        "model.language_model.layers.6.mlp.up_proj",
+        "model.language_model.layers.6.mlp.down_proj",
+        "model.language_model.layers.6.per_layer_input_gate",
+        "model.language_model.layers.6.per_layer_projection",
+        "model.language_model.layers.7.self_attn.q_proj",
+        "model.language_model.layers.7.self_attn.k_proj",
+        "model.language_model.layers.7.self_attn.v_proj",
+        "model.language_model.layers.7.self_attn.o_proj",
+        "model.language_model.layers.7.mlp.gate_proj",
+        "model.language_model.layers.7.mlp.up_proj",
+        "model.language_model.layers.7.mlp.down_proj",
+        "model.language_model.layers.7.per_layer_input_gate",
+        "model.language_model.layers.7.per_layer_projection",
+        "model.language_model.layers.8.self_attn.q_proj",
+        "model.language_model.layers.8.self_attn.k_proj",
+        "model.language_model.layers.8.self_attn.v_proj",
+        "model.language_model.layers.8.self_attn.o_proj",
+        "model.language_model.layers.8.mlp.gate_proj",
+        "model.language_model.layers.8.mlp.up_proj",
+        "model.language_model.layers.8.mlp.down_proj",
+        "model.language_model.layers.8.per_layer_input_gate",
+        "model.language_model.layers.8.per_layer_projection",
+        "model.language_model.layers.9.self_attn.q_proj",
+        "model.language_model.layers.9.self_attn.k_proj",
+        "model.language_model.layers.9.self_attn.v_proj",
+        "model.language_model.layers.9.self_attn.o_proj",
+        "model.language_model.layers.9.mlp.gate_proj",
+        "model.language_model.layers.9.mlp.up_proj",
+        "model.language_model.layers.9.mlp.down_proj",
+        "model.language_model.layers.9.per_layer_input_gate",
+        "model.language_model.layers.9.per_layer_projection",
+        "model.language_model.layers.10.self_attn.q_proj",
+        "model.language_model.layers.10.self_attn.k_proj",
+        "model.language_model.layers.10.self_attn.v_proj",
+        "model.language_model.layers.10.self_attn.o_proj",
+        "model.language_model.layers.10.mlp.gate_proj",
+        "model.language_model.layers.10.mlp.up_proj",
+        "model.language_model.layers.10.mlp.down_proj",
+        "model.language_model.layers.10.per_layer_input_gate",
+        "model.language_model.layers.10.per_layer_projection",
+        "model.language_model.layers.11.self_attn.q_proj",
+        "model.language_model.layers.11.self_attn.k_proj",
+        "model.language_model.layers.11.self_attn.v_proj",
+        "model.language_model.layers.11.self_attn.o_proj",
+        "model.language_model.layers.11.mlp.gate_proj",
+        "model.language_model.layers.11.mlp.up_proj",
+        "model.language_model.layers.11.mlp.down_proj",
+        "model.language_model.layers.11.per_layer_input_gate",
+        "model.language_model.layers.11.per_layer_projection",
+        "model.language_model.layers.12.self_attn.q_proj",
+        "model.language_model.layers.12.self_attn.k_proj",
+        "model.language_model.layers.12.self_attn.v_proj",
+        "model.language_model.layers.12.self_attn.o_proj",
+        "model.language_model.layers.12.mlp.gate_proj",
+        "model.language_model.layers.12.mlp.up_proj",
+        "model.language_model.layers.12.mlp.down_proj",
+        "model.language_model.layers.12.per_layer_input_gate",
+        "model.language_model.layers.12.per_layer_projection",
+        "model.language_model.layers.13.self_attn.q_proj",
+        "model.language_model.layers.13.self_attn.k_proj",
+        "model.language_model.layers.13.self_attn.v_proj",
+        "model.language_model.layers.13.self_attn.o_proj",
+        "model.language_model.layers.13.mlp.gate_proj",
+        "model.language_model.layers.13.mlp.up_proj",
+        "model.language_model.layers.13.mlp.down_proj",
+        "model.language_model.layers.13.per_layer_input_gate",
+        "model.language_model.layers.13.per_layer_projection",
+        "model.language_model.layers.14.self_attn.q_proj",
+        "model.language_model.layers.14.self_attn.k_proj",
+        "model.language_model.layers.14.self_attn.v_proj",
+        "model.language_model.layers.14.self_attn.o_proj",
+        "model.language_model.layers.14.mlp.gate_proj",
+        "model.language_model.layers.14.mlp.up_proj",
+        "model.language_model.layers.14.mlp.down_proj",
+        "model.language_model.layers.14.per_layer_input_gate",
+        "model.language_model.layers.14.per_layer_projection",
+        "model.language_model.layers.15.self_attn.q_proj",
+        "model.language_model.layers.15.self_attn.k_proj",
+        "model.language_model.layers.15.self_attn.v_proj",
+        "model.language_model.layers.15.self_attn.o_proj",
+        "model.language_model.layers.15.mlp.gate_proj",
+        "model.language_model.layers.15.mlp.up_proj",
+        "model.language_model.layers.15.mlp.down_proj",
+        "model.language_model.layers.15.per_layer_input_gate",
+        "model.language_model.layers.15.per_layer_projection",
+        "model.language_model.layers.16.self_attn.q_proj",
+        "model.language_model.layers.16.self_attn.k_proj",
+        "model.language_model.layers.16.self_attn.v_proj",
+        "model.language_model.layers.16.self_attn.o_proj",
+        "model.language_model.layers.16.mlp.gate_proj",
+        "model.language_model.layers.16.mlp.up_proj",
+        "model.language_model.layers.16.mlp.down_proj",
+        "model.language_model.layers.16.per_layer_input_gate",
+        "model.language_model.layers.16.per_layer_projection",
+        "model.language_model.layers.17.self_attn.q_proj",
+        "model.language_model.layers.17.self_attn.k_proj",
+        "model.language_model.layers.17.self_attn.v_proj",
+        "model.language_model.layers.17.self_attn.o_proj",
+        "model.language_model.layers.17.mlp.gate_proj",
+        "model.language_model.layers.17.mlp.up_proj",
+        "model.language_model.layers.17.mlp.down_proj",
+        "model.language_model.layers.17.per_layer_input_gate",
+        "model.language_model.layers.17.per_layer_projection",
+        "model.language_model.layers.18.self_attn.q_proj",
+        "model.language_model.layers.18.self_attn.k_proj",
+        "model.language_model.layers.18.self_attn.v_proj",
+        "model.language_model.layers.18.self_attn.o_proj",
+        "model.language_model.layers.18.mlp.gate_proj",
+        "model.language_model.layers.18.mlp.up_proj",
+        "model.language_model.layers.18.mlp.down_proj",
+        "model.language_model.layers.18.per_layer_input_gate",
+        "model.language_model.layers.18.per_layer_projection",
+        "model.language_model.layers.19.self_attn.q_proj",
+        "model.language_model.layers.19.self_attn.k_proj",
+        "model.language_model.layers.19.self_attn.v_proj",
+        "model.language_model.layers.19.self_attn.o_proj",
+        "model.language_model.layers.19.mlp.gate_proj",
+        "model.language_model.layers.19.mlp.up_proj",
+        "model.language_model.layers.19.mlp.down_proj",
+        "model.language_model.layers.19.per_layer_input_gate",
+        "model.language_model.layers.19.per_layer_projection",
+        "model.language_model.layers.20.self_attn.q_proj",
+        "model.language_model.layers.20.self_attn.k_proj",
+        "model.language_model.layers.20.self_attn.v_proj",
+        "model.language_model.layers.20.self_attn.o_proj",
+        "model.language_model.layers.20.mlp.gate_proj",
+        "model.language_model.layers.20.mlp.up_proj",
+        "model.language_model.layers.20.mlp.down_proj",
+        "model.language_model.layers.20.per_layer_input_gate",
+        "model.language_model.layers.20.per_layer_projection",
+        "model.language_model.layers.21.self_attn.q_proj",
+        "model.language_model.layers.21.self_attn.k_proj",
+        "model.language_model.layers.21.self_attn.v_proj",
+        "model.language_model.layers.21.self_attn.o_proj",
+        "model.language_model.layers.21.mlp.gate_proj",
+        "model.language_model.layers.21.mlp.up_proj",
+        "model.language_model.layers.21.mlp.down_proj",
+        "model.language_model.layers.21.per_layer_input_gate",
+        "model.language_model.layers.21.per_layer_projection",
+        "model.language_model.layers.22.self_attn.q_proj",
+        "model.language_model.layers.22.self_attn.k_proj",
+        "model.language_model.layers.22.self_attn.v_proj",
+        "model.language_model.layers.22.self_attn.o_proj",
+        "model.language_model.layers.22.mlp.gate_proj",
+        "model.language_model.layers.22.mlp.up_proj",
+        "model.language_model.layers.22.mlp.down_proj",
+        "model.language_model.layers.22.per_layer_input_gate",
+        "model.language_model.layers.22.per_layer_projection",
+        "model.language_model.layers.23.self_attn.q_proj",
+        "model.language_model.layers.23.self_attn.k_proj",
+        "model.language_model.layers.23.self_attn.v_proj",
+        "model.language_model.layers.23.self_attn.o_proj",
+        "model.language_model.layers.23.mlp.gate_proj",
+        "model.language_model.layers.23.mlp.up_proj",
+        "model.language_model.layers.23.mlp.down_proj",
+        "model.language_model.layers.23.per_layer_input_gate",
+        "model.language_model.layers.23.per_layer_projection",
+        "model.language_model.layers.24.self_attn.q_proj",
+        "model.language_model.layers.24.self_attn.o_proj",
+        "model.language_model.layers.24.mlp.gate_proj",
+        "model.language_model.layers.24.mlp.up_proj",
+        "model.language_model.layers.24.mlp.down_proj",
+        "model.language_model.layers.24.per_layer_input_gate",
+        "model.language_model.layers.24.per_layer_projection",
+        "model.language_model.layers.25.self_attn.q_proj",
+        "model.language_model.layers.25.self_attn.o_proj",
+        "model.language_model.layers.25.mlp.gate_proj",
+        "model.language_model.layers.25.mlp.up_proj",
+        "model.language_model.layers.25.mlp.down_proj",
+        "model.language_model.layers.25.per_layer_input_gate",
+        "model.language_model.layers.25.per_layer_projection",
+        "model.language_model.layers.26.self_attn.q_proj",
+        "model.language_model.layers.26.self_attn.o_proj",
+        "model.language_model.layers.26.mlp.gate_proj",
+        "model.language_model.layers.26.mlp.up_proj",
+        "model.language_model.layers.26.mlp.down_proj",
+        "model.language_model.layers.26.per_layer_input_gate",
+        "model.language_model.layers.26.per_layer_projection",
+        "model.language_model.layers.27.self_attn.q_proj",
+        "model.language_model.layers.27.self_attn.o_proj",
+        "model.language_model.layers.27.mlp.gate_proj",
+        "model.language_model.layers.27.mlp.up_proj",
+        "model.language_model.layers.27.mlp.down_proj",
+        "model.language_model.layers.27.per_layer_input_gate",
+        "model.language_model.layers.27.per_layer_projection",
+        "model.language_model.layers.28.self_attn.q_proj",
+        "model.language_model.layers.28.self_attn.o_proj",
+        "model.language_model.layers.28.mlp.gate_proj",
+        "model.language_model.layers.28.mlp.up_proj",
+        "model.language_model.layers.28.mlp.down_proj",
+        "model.language_model.layers.28.per_layer_input_gate",
+        "model.language_model.layers.28.per_layer_projection",
+        "model.language_model.layers.29.self_attn.q_proj",
+        "model.language_model.layers.29.self_attn.o_proj",
+        "model.language_model.layers.29.mlp.gate_proj",
+        "model.language_model.layers.29.mlp.up_proj",
+        "model.language_model.layers.29.mlp.down_proj",
+        "model.language_model.layers.29.per_layer_input_gate",
+        "model.language_model.layers.29.per_layer_projection",
+        "model.language_model.layers.30.self_attn.q_proj",
+        "model.language_model.layers.30.self_attn.o_proj",
+        "model.language_model.layers.30.mlp.gate_proj",
+        "model.language_model.layers.30.mlp.up_proj",
+        "model.language_model.layers.30.mlp.down_proj",
+        "model.language_model.layers.30.per_layer_input_gate",
+        "model.language_model.layers.30.per_layer_projection",
+        "model.language_model.layers.31.self_attn.q_proj",
+        "model.language_model.layers.31.self_attn.o_proj",
+        "model.language_model.layers.31.mlp.gate_proj",
+        "model.language_model.layers.31.mlp.up_proj",
+        "model.language_model.layers.31.mlp.down_proj",
+        "model.language_model.layers.31.per_layer_input_gate",
+        "model.language_model.layers.31.per_layer_projection",
+        "model.language_model.layers.32.self_attn.q_proj",
+        "model.language_model.layers.32.self_attn.o_proj",
+        "model.language_model.layers.32.mlp.gate_proj",
+        "model.language_model.layers.32.mlp.up_proj",
+        "model.language_model.layers.32.mlp.down_proj",
+        "model.language_model.layers.32.per_layer_input_gate",
+        "model.language_model.layers.32.per_layer_projection",
+        "model.language_model.layers.33.self_attn.q_proj",
+        "model.language_model.layers.33.self_attn.o_proj",
+        "model.language_model.layers.33.mlp.gate_proj",
+        "model.language_model.layers.33.mlp.up_proj",
+        "model.language_model.layers.33.mlp.down_proj",
+        "model.language_model.layers.33.per_layer_input_gate",
+        "model.language_model.layers.33.per_layer_projection",
+        "model.language_model.layers.34.self_attn.q_proj",
+        "model.language_model.layers.34.self_attn.o_proj",
+        "model.language_model.layers.34.mlp.gate_proj",
+        "model.language_model.layers.34.mlp.up_proj",
+        "model.language_model.layers.34.mlp.down_proj",
+        "model.language_model.layers.34.per_layer_input_gate",
+        "model.language_model.layers.34.per_layer_projection",
+        "model.language_model.layers.35.self_attn.q_proj",
+        "model.language_model.layers.35.self_attn.o_proj",
+        "model.language_model.layers.35.mlp.gate_proj",
+        "model.language_model.layers.35.mlp.up_proj",
+        "model.language_model.layers.35.mlp.down_proj",
+        "model.language_model.layers.35.per_layer_input_gate",
+        "model.language_model.layers.35.per_layer_projection",
+        "model.language_model.layers.36.self_attn.q_proj",
+        "model.language_model.layers.36.self_attn.o_proj",
+        "model.language_model.layers.36.mlp.gate_proj",
+        "model.language_model.layers.36.mlp.up_proj",
+        "model.language_model.layers.36.mlp.down_proj",
+        "model.language_model.layers.36.per_layer_input_gate",
+        "model.language_model.layers.36.per_layer_projection",
+        "model.language_model.layers.37.self_attn.q_proj",
+        "model.language_model.layers.37.self_attn.o_proj",
+        "model.language_model.layers.37.mlp.gate_proj",
+        "model.language_model.layers.37.mlp.up_proj",
+        "model.language_model.layers.37.mlp.down_proj",
+        "model.language_model.layers.37.per_layer_input_gate",
+        "model.language_model.layers.37.per_layer_projection",
+        "model.language_model.layers.38.self_attn.q_proj",
+        "model.language_model.layers.38.self_attn.o_proj",
+        "model.language_model.layers.38.mlp.gate_proj",
+        "model.language_model.layers.38.mlp.up_proj",
+        "model.language_model.layers.38.mlp.down_proj",
+        "model.language_model.layers.38.per_layer_input_gate",
+        "model.language_model.layers.38.per_layer_projection",
+        "model.language_model.layers.39.self_attn.q_proj",
+        "model.language_model.layers.39.self_attn.o_proj",
+        "model.language_model.layers.39.mlp.gate_proj",
+        "model.language_model.layers.39.mlp.up_proj",
+        "model.language_model.layers.39.mlp.down_proj",
+        "model.language_model.layers.39.per_layer_input_gate",
+        "model.language_model.layers.39.per_layer_projection",
+        "model.language_model.layers.40.self_attn.q_proj",
+        "model.language_model.layers.40.self_attn.o_proj",
+        "model.language_model.layers.40.mlp.gate_proj",
+        "model.language_model.layers.40.mlp.up_proj",
+        "model.language_model.layers.40.mlp.down_proj",
+        "model.language_model.layers.40.per_layer_input_gate",
+        "model.language_model.layers.40.per_layer_projection",
+        "model.language_model.layers.41.self_attn.q_proj",
+        "model.language_model.layers.41.self_attn.o_proj",
+        "model.language_model.layers.41.mlp.gate_proj",
+        "model.language_model.layers.41.mlp.up_proj",
+        "model.language_model.layers.41.mlp.down_proj",
+        "model.language_model.layers.41.per_layer_input_gate",
+        "model.language_model.layers.41.per_layer_projection",
+        "model.language_model.per_layer_model_projection"
+      ]
+    }
+  },
+  "model_load": {
+    "integrity": {
+      "mode": "formal_full_hash_verification",
+      "manifest_path": "/home/qbz415/piloop-edge-inference-profiler/models/C02-S.O-bf16-r1/artifact_manifest.json",
+      "manifest_sha256": "ee7d426d1e912a6c53cad1cd52739f26d7fff45b4a4f7429a4c08656f68dc5f2",
+      "file_count": 11,
+      "total_bytes_excluding_manifest": 15914883861,
+      "artifact_set_sha256_excluding_manifest": "89578279a5f391e44628086a332cd0c119203f53b5d6d739c5aa9f0fe1717b0a",
+      "status": "PASS"
+    },
+    "load_seconds": 11.194798681000066,
+    "device_map_requested": {
+      "model.vision_tower": "cpu",
+      "model.audio_tower": "cpu",
+      "model.embed_vision": "cpu",
+      "model.embed_audio": "cpu",
+      "model.language_model.embed_tokens": "cpu",
+      "model.language_model.embed_tokens_per_layer": "cpu",
+      "lm_head": "cpu",
+      "model.language_model.layers": 0,
+      "model.language_model.norm": 0,
+      "model.language_model.rotary_emb": 0,
+      "model.language_model.per_layer_model_projection": 0,
+      "model.language_model.per_layer_projection_norm": 0
+    },
+    "hf_device_map_observed": {
+      "model.vision_tower": "cpu",
+      "model.audio_tower": "cpu",
+      "model.embed_vision": "cpu",
+      "model.embed_audio": "cpu",
+      "model.language_model.embed_tokens": "cpu",
+      "model.language_model.embed_tokens_per_layer": "cpu",
+      "lm_head": "cpu",
+      "model.language_model.layers": 0,
+      "model.language_model.norm": 0,
+      "model.language_model.rotary_emb": 0,
+      "model.language_model.per_layer_model_projection": 0,
+      "model.language_model.per_layer_projection_norm": 0
+    },
+    "cpu_materialization": {
+      "strategy": "detach_leaf_offload_hooks_and_retie_lm_head",
+      "before": {
+        "model.language_model.embed_tokens": {
+          "hook": {
+            "present": true,
+            "type": "AlignDevicesHook",
+            "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+            "execution_device": "0",
+            "offload": true
+          },
+          "storage": {
+            "weight": {
+              "device": "meta",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                2560
+              ],
+              "numel": 671088640,
+              "data_ptr": null
+            },
+            "embed_scale": {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "shape": [],
+              "numel": 1,
+              "data_ptr": 32276682752
+            }
+          }
+        },
+        "model.language_model.embed_tokens_per_layer": {
+          "hook": {
+            "present": true,
+            "type": "AlignDevicesHook",
+            "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+            "execution_device": "0",
+            "offload": true
+          },
+          "storage": {
+            "weight": {
+              "device": "meta",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                10752
+              ],
+              "numel": 2818572288,
+              "data_ptr": null
+            },
+            "embed_scale": {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "shape": [],
+              "numel": 1,
+              "data_ptr": 32276683264
+            }
+          }
+        },
+        "lm_head": {
+          "hook": {
+            "present": true,
+            "type": "AlignDevicesHook",
+            "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+            "execution_device": "0",
+            "offload": true
+          },
+          "storage": {
+            "weight": {
+              "device": "meta",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                2560
+              ],
+              "numel": 671088640,
+              "data_ptr": null
+            }
+          }
+        }
+      },
+      "after": {
+        "model.language_model.embed_tokens": {
+          "hook": {
+            "present": false,
+            "type": null,
+            "repr": null,
+            "execution_device": "None",
+            "offload": null
+          },
+          "storage": {
+            "weight": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                2560
+              ],
+              "numel": 671088640,
+              "data_ptr": 138670922041960
+            },
+            "embed_scale": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [],
+              "numel": 1,
+              "data_ptr": 358495616
+            }
+          }
+        },
+        "model.language_model.embed_tokens_per_layer": {
+          "hook": {
+            "present": false,
+            "type": null,
+            "repr": null,
+            "execution_device": "None",
+            "offload": null
+          },
+          "storage": {
+            "weight": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                10752
+              ],
+              "numel": 2818572288,
+              "data_ptr": 138675295879336
+            },
+            "embed_scale": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [],
+              "numel": 1,
+              "data_ptr": 358269440
+            }
+          }
+        },
+        "lm_head": {
+          "hook": {
+            "present": false,
+            "type": null,
+            "repr": null,
+            "execution_device": "None",
+            "offload": null
+          },
+          "storage": {
+            "weight": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                2560
+              ],
+              "numel": 671088640,
+              "data_ptr": 138670922041960
+            }
+          }
+        }
+      },
+      "lm_head_tied_to_token_embedding": true,
+      "persistent_cpu_bytes_unique": 6979321856
+    },
+    "memory_after_load": {
+      "allocated_bytes": 2052518912,
+      "reserved_bytes": 2107637760,
+      "peak_allocated_bytes": 2110522880,
+      "peak_reserved_bytes": 2166358016,
+      "device_used_bytes": 3264741376,
+      "device_free_bytes": 5320474624,
+      "device_total_bytes": 8585216000,
+      "peak_allocated_mib": 2012.751,
+      "peak_reserved_mib": 2066.0,
+      "device_used_mib": 3113.5
+    },
+    "bitsandbytes_version": "0.50.0"
+  },
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0"
+    },
+    "cuda": {
+      "available": true,
+      "torch_cuda": "13.0",
+      "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "sm_89",
+      "total_memory_bytes": 8585216000,
+      "multi_processor_count": 24,
+      "l2_cache_size_bytes": 33554432
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 8001 MHz, 140.00 W"
+  },
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0",
+  "rows": [
+    {
+      "variant": "k_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.k_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "k_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.k_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "k_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.k_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "k_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.k_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 23,
+      "disjoint_allowed_interval_elements": 3,
+      "maximum_uncovered_gap": 0.016874969005584717,
+      "examples": [
+        {
+          "flat_output_index": 401,
+          "eager": 0.67578125,
+          "reference": 0.58203125,
+          "eager_allowed_interval": [
+            0.6310155987739563,
+            0.7205469012260437
+          ],
+          "reference_allowed_interval": [
+            0.5391406416893005,
+            0.6249218583106995
+          ],
+          "uncovered_gap": 0.006093740463256836
+        },
+        {
+          "flat_output_index": 966,
+          "eager": -0.60546875,
+          "reference": -0.50390625,
+          "eager_allowed_interval": [
+            -0.6488281488418579,
+            -0.5621093511581421
+          ],
+          "reference_allowed_interval": [
+            -0.5452343821525574,
+            -0.4625781178474426
+          ],
+          "uncovered_gap": 0.016874969005584717
+        },
+        {
+          "flat_output_index": 978,
+          "eager": 0.08349609375,
+          "reference": 0.15625,
+          "eager_allowed_interval": [
+            0.05057617276906967,
+            0.11641601473093033
+          ],
+          "reference_allowed_interval": [
+            0.12187500298023224,
+            0.19062499701976776
+          ],
+          "uncovered_gap": 0.00545898824930191
+        }
+      ]
+    },
+    {
+      "variant": "k_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.k_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 25,
+      "disjoint_allowed_interval_elements": 4,
+      "maximum_uncovered_gap": 0.0710742175579071,
+      "examples": [
+        {
+          "flat_output_index": 179,
+          "eager": 0.1875,
+          "reference": 0.09912109375,
+          "eager_allowed_interval": [
+            0.1525000035762787,
+            0.2224999964237213
+          ],
+          "reference_allowed_interval": [
+            0.0658886730670929,
+            0.1323535144329071
+          ],
+          "uncovered_gap": 0.020146489143371582
+        },
+        {
+          "flat_output_index": 323,
+          "eager": 0.2392578125,
+          "reference": 0.123046875,
+          "eager_allowed_interval": [
+            0.20322266221046448,
+            0.2752929627895355
+          ],
+          "reference_allowed_interval": [
+            0.08933593332767487,
+            0.15675781667232513
+          ],
+          "uncovered_gap": 0.04646484553813934
+        },
+        {
+          "flat_output_index": 725,
+          "eager": -0.95703125,
+          "reference": -1.078125,
+          "eager_allowed_interval": [
+            -1.007421851158142,
+            -0.9066406488418579
+          ],
+          "reference_allowed_interval": [
+            -1.1309374570846558,
+            -1.0253125429153442
+          ],
+          "uncovered_gap": 0.01789069175720215
+        },
+        {
+          "flat_output_index": 759,
+          "eager": -0.2255859375,
+          "reference": -0.37109375,
+          "eager_allowed_interval": [
+            -0.2613476514816284,
+            -0.18982422351837158
+          ],
+          "reference_allowed_interval": [
+            -0.4097656309604645,
+            -0.3324218690395355
+          ],
+          "uncovered_gap": 0.0710742175579071
+        }
+      ]
+    },
+    {
+      "variant": "k_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.k_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 20,
+      "disjoint_allowed_interval_elements": 2,
+      "maximum_uncovered_gap": 0.026386722922325134,
+      "examples": [
+        {
+          "flat_output_index": 173,
+          "eager": 0.146484375,
+          "reference": 0.2431640625,
+          "eager_allowed_interval": [
+            0.1123046875,
+            0.1806640625
+          ],
+          "reference_allowed_interval": [
+            0.20705078542232513,
+            0.27927735447883606
+          ],
+          "uncovered_gap": 0.026386722922325134
+        },
+        {
+          "flat_output_index": 763,
+          "eager": 0.038818359375,
+          "reference": 0.11669921875,
+          "eager_allowed_interval": [
+            0.006791993975639343,
+            0.07084472477436066
+          ],
+          "reference_allowed_interval": [
+            0.08311523497104645,
+            0.15028320252895355
+          ],
+          "uncovered_gap": 0.012270510196685791
+        }
+      ]
+    },
+    {
+      "variant": "k_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.k_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "k_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.k_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "k_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.k_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "k_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.k_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "k_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.k_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "k_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.k_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "k_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.k_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 12,
+      "disjoint_allowed_interval_elements": 1,
+      "maximum_uncovered_gap": 0.004921913146972656,
+      "examples": [
+        {
+          "flat_output_index": 466,
+          "eager": 0.8046875,
+          "reference": 0.70703125,
+          "eager_allowed_interval": [
+            0.7573437690734863,
+            0.8520312309265137
+          ],
+          "reference_allowed_interval": [
+            0.6616406440734863,
+            0.7524218559265137
+          ],
+          "uncovered_gap": 0.004921913146972656
+        }
+      ]
+    },
+    {
+      "variant": "k_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.k_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 17,
+      "disjoint_allowed_interval_elements": 1,
+      "maximum_uncovered_gap": 0.024506837129592896,
+      "examples": [
+        {
+          "flat_output_index": 233,
+          "eager": 0.031982421875,
+          "reference": 0.1220703125,
+          "eager_allowed_interval": [
+            9.277462959289551e-05,
+            0.0638720691204071
+          ],
+          "reference_allowed_interval": [
+            0.08837890625,
+            0.15576171875
+          ],
+          "uncovered_gap": 0.024506837129592896
+        }
+      ]
+    },
+    {
+      "variant": "k_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.k_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 9,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "k_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.k_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "k_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.k_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "k_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.k_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_down_proj",
+      "module": "model.language_model.layers.0.mlp.down_proj",
+      "shape_n_k": [
+        2560,
+        10240
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_down_proj",
+      "module": "model.language_model.layers.0.mlp.down_proj",
+      "shape_n_k": [
+        2560,
+        10240
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_down_proj",
+      "module": "model.language_model.layers.0.mlp.down_proj",
+      "shape_n_k": [
+        2560,
+        10240
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_down_proj",
+      "module": "model.language_model.layers.0.mlp.down_proj",
+      "shape_n_k": [
+        2560,
+        10240
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 114,
+      "disjoint_allowed_interval_elements": 22,
+      "maximum_uncovered_gap": 0.10308104753494263,
+      "examples": [
+        {
+          "flat_output_index": 115,
+          "eager": -0.1806640625,
+          "reference": -0.30859375,
+          "eager_allowed_interval": [
+            -0.21552734076976776,
+            -0.14580078423023224
+          ],
+          "reference_allowed_interval": [
+            -0.3460156321525574,
+            -0.2711718678474426
+          ],
+          "uncovered_gap": 0.055644527077674866
+        },
+        {
+          "flat_output_index": 356,
+          "eager": -0.224609375,
+          "reference": -0.3515625,
+          "eager_allowed_interval": [
+            -0.2603515684604645,
+            -0.18886718153953552
+          ],
+          "reference_allowed_interval": [
+            -0.38984376192092896,
+            -0.31328123807907104
+          ],
+          "uncovered_gap": 0.05292966961860657
+        },
+        {
+          "flat_output_index": 544,
+          "eager": -0.2216796875,
+          "reference": -0.1513671875,
+          "eager_allowed_interval": [
+            -0.25736328959465027,
+            -0.18599608540534973
+          ],
+          "reference_allowed_interval": [
+            -0.18564453721046448,
+            -0.11708984524011612
+          ],
+          "uncovered_gap": 0.0003515481948852539
+        },
+        {
+          "flat_output_index": 596,
+          "eager": -0.41015625,
+          "reference": -0.55859375,
+          "eager_allowed_interval": [
+            -0.4496093690395355,
+            -0.3707031309604645
+          ],
+          "reference_allowed_interval": [
+            -0.6010156273841858,
+            -0.5161718726158142
+          ],
+          "uncovered_gap": 0.06656250357627869
+        },
+        {
+          "flat_output_index": 612,
+          "eager": -0.4375,
+          "reference": -0.341796875,
+          "eager_allowed_interval": [
+            -0.47749999165534973,
+            -0.39750000834465027
+          ],
+          "reference_allowed_interval": [
+            -0.3798828125,
+            -0.3037109375
+          ],
+          "uncovered_gap": 0.01761719584465027
+        },
+        {
+          "flat_output_index": 614,
+          "eager": 1.125,
+          "reference": 1.0078125,
+          "eager_allowed_interval": [
+            1.0712499618530273,
+            1.1787500381469727
+          ],
+          "reference_allowed_interval": [
+            0.9564062356948853,
+            1.0592187643051147
+          ],
+          "uncovered_gap": 0.012031197547912598
+        },
+        {
+          "flat_output_index": 641,
+          "eager": -0.53515625,
+          "reference": -0.439453125,
+          "eager_allowed_interval": [
+            -0.5771093964576721,
+            -0.49320313334465027
+          ],
+          "reference_allowed_interval": [
+            -0.4794921875,
+            -0.3994140625
+          ],
+          "uncovered_gap": 0.013710945844650269
+        },
+        {
+          "flat_output_index": 698,
+          "eager": -0.64453125,
+          "reference": -0.78515625,
+          "eager_allowed_interval": [
+            -0.688671886920929,
+            -0.600390613079071
+          ],
+          "reference_allowed_interval": [
+            -0.8321093916893005,
+            -0.7382031083106995
+          ],
+          "uncovered_gap": 0.04953122138977051
+        }
+      ]
+    },
+    {
+      "variant": "mlp_down_proj",
+      "module": "model.language_model.layers.0.mlp.down_proj",
+      "shape_n_k": [
+        2560,
+        10240
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 102,
+      "disjoint_allowed_interval_elements": 18,
+      "maximum_uncovered_gap": 0.06143554672598839,
+      "examples": [
+        {
+          "flat_output_index": 251,
+          "eager": -0.62890625,
+          "reference": -0.52734375,
+          "eager_allowed_interval": [
+            -0.6727343797683716,
+            -0.5850781202316284
+          ],
+          "reference_allowed_interval": [
+            -0.569140613079071,
+            -0.48554688692092896
+          ],
+          "uncovered_gap": 0.015937507152557373
+        },
+        {
+          "flat_output_index": 307,
+          "eager": -0.1337890625,
+          "reference": -0.03515625,
+          "eager_allowed_interval": [
+            -0.16771484911441803,
+            -0.09986327588558197
+          ],
+          "reference_allowed_interval": [
+            -0.0671093761920929,
+            -0.0032031238079071045
+          ],
+          "uncovered_gap": 0.032753899693489075
+        },
+        {
+          "flat_output_index": 441,
+          "eager": 0.220703125,
+          "reference": 0.341796875,
+          "eager_allowed_interval": [
+            0.18503905832767487,
+            0.25636717677116394
+          ],
+          "reference_allowed_interval": [
+            0.3037109375,
+            0.3798828125
+          ],
+          "uncovered_gap": 0.04734376072883606
+        },
+        {
+          "flat_output_index": 449,
+          "eager": -0.2138671875,
+          "reference": -0.29296875,
+          "eager_allowed_interval": [
+            -0.24939453601837158,
+            -0.17833983898162842
+          ],
+          "reference_allowed_interval": [
+            -0.330078125,
+            -0.255859375
+          ],
+          "uncovered_gap": 0.006464838981628418
+        },
+        {
+          "flat_output_index": 503,
+          "eager": 0.55078125,
+          "reference": 0.44140625,
+          "eager_allowed_interval": [
+            0.5085155963897705,
+            0.5930469036102295
+          ],
+          "reference_allowed_interval": [
+            0.40132811665534973,
+            0.48148438334465027
+          ],
+          "uncovered_gap": 0.02703121304512024
+        },
+        {
+          "flat_output_index": 538,
+          "eager": 0.86328125,
+          "reference": 0.98046875,
+          "eager_allowed_interval": [
+            0.8147656321525574,
+            0.9117968678474426
+          ],
+          "reference_allowed_interval": [
+            0.9296093583106995,
+            1.0313280820846558
+          ],
+          "uncovered_gap": 0.017812490463256836
+        },
+        {
+          "flat_output_index": 560,
+          "eager": 3.59375,
+          "reference": 3.390625,
+          "eager_allowed_interval": [
+            3.4906249046325684,
+            3.6968750953674316
+          ],
+          "reference_allowed_interval": [
+            3.291562557220459,
+            3.489687442779541
+          ],
+          "uncovered_gap": 0.0009374618530273438
+        },
+        {
+          "flat_output_index": 561,
+          "eager": 1.515625,
+          "reference": 1.390625,
+          "eager_allowed_interval": [
+            1.4540624618530273,
+            1.5771875381469727
+          ],
+          "reference_allowed_interval": [
+            1.3315625190734863,
+            1.4496874809265137
+          ],
+          "uncovered_gap": 0.004374980926513672
+        }
+      ]
+    },
+    {
+      "variant": "mlp_down_proj",
+      "module": "model.language_model.layers.0.mlp.down_proj",
+      "shape_n_k": [
+        2560,
+        10240
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 145,
+      "disjoint_allowed_interval_elements": 28,
+      "maximum_uncovered_gap": 0.08156245946884155,
+      "examples": [
+        {
+          "flat_output_index": 73,
+          "eager": -0.337890625,
+          "reference": -0.419921875,
+          "eager_allowed_interval": [
+            -0.37589842081069946,
+            -0.29988282918930054
+          ],
+          "reference_allowed_interval": [
+            -0.4595703184604645,
+            -0.3802734315395355
+          ],
+          "uncovered_gap": 0.00437501072883606
+        },
+        {
+          "flat_output_index": 75,
+          "eager": 0.80078125,
+          "reference": 0.98046875,
+          "eager_allowed_interval": [
+            0.7535156011581421,
+            0.8480468988418579
+          ],
+          "reference_allowed_interval": [
+            0.9296093583106995,
+            1.0313280820846558
+          ],
+          "uncovered_gap": 0.08156245946884155
+        },
+        {
+          "flat_output_index": 203,
+          "eager": -0.50390625,
+          "reference": -0.60546875,
+          "eager_allowed_interval": [
+            -0.5452343821525574,
+            -0.4625781178474426
+          ],
+          "reference_allowed_interval": [
+            -0.6488281488418579,
+            -0.5621093511581421
+          ],
+          "uncovered_gap": 0.016874969005584717
+        },
+        {
+          "flat_output_index": 251,
+          "eager": 0.42578125,
+          "reference": 0.337890625,
+          "eager_allowed_interval": [
+            0.3860156238079071,
+            0.4655468761920929
+          ],
+          "reference_allowed_interval": [
+            0.29988282918930054,
+            0.37589842081069946
+          ],
+          "uncovered_gap": 0.010117202997207642
+        },
+        {
+          "flat_output_index": 271,
+          "eager": 0.68359375,
+          "reference": 0.578125,
+          "eager_allowed_interval": [
+            0.638671875,
+            0.728515625
+          ],
+          "reference_allowed_interval": [
+            0.5353124737739563,
+            0.6209375262260437
+          ],
+          "uncovered_gap": 0.0177343487739563
+        },
+        {
+          "flat_output_index": 479,
+          "eager": -0.0252685546875,
+          "reference": -0.134765625,
+          "eager_allowed_interval": [
+            -0.05702392756938934,
+            0.006486818194389343
+          ],
+          "reference_allowed_interval": [
+            -0.16871093213558197,
+            -0.10082031786441803
+          ],
+          "uncovered_gap": 0.043796390295028687
+        },
+        {
+          "flat_output_index": 493,
+          "eager": 0.2734375,
+          "reference": 0.1728515625,
+          "eager_allowed_interval": [
+            0.23671874403953552,
+            0.3101562559604645
+          ],
+          "reference_allowed_interval": [
+            0.13814452290534973,
+            0.20755860209465027
+          ],
+          "uncovered_gap": 0.029160141944885254
+        },
+        {
+          "flat_output_index": 536,
+          "eager": 0.71875,
+          "reference": 0.59765625,
+          "eager_allowed_interval": [
+            0.6731250286102295,
+            0.7643749713897705
+          ],
+          "reference_allowed_interval": [
+            0.5544531345367432,
+            0.6408593654632568
+          ],
+          "uncovered_gap": 0.032265663146972656
+        }
+      ]
+    },
+    {
+      "variant": "mlp_down_proj",
+      "module": "model.language_model.layers.0.mlp.down_proj",
+      "shape_n_k": [
+        2560,
+        10240
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_down_proj",
+      "module": "model.language_model.layers.0.mlp.down_proj",
+      "shape_n_k": [
+        2560,
+        10240
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_down_proj",
+      "module": "model.language_model.layers.0.mlp.down_proj",
+      "shape_n_k": [
+        2560,
+        10240
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_gate_proj",
+      "module": "model.language_model.layers.0.mlp.gate_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_gate_proj",
+      "module": "model.language_model.layers.0.mlp.gate_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_gate_proj",
+      "module": "model.language_model.layers.0.mlp.gate_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_gate_proj",
+      "module": "model.language_model.layers.0.mlp.gate_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 208,
+      "disjoint_allowed_interval_elements": 17,
+      "maximum_uncovered_gap": 0.04296872019767761,
+      "examples": [
+        {
+          "flat_output_index": 85,
+          "eager": -0.035400390625,
+          "reference": -0.11083984375,
+          "eager_allowed_interval": [
+            -0.06735839694738388,
+            -0.0034423843026161194
+          ],
+          "reference_allowed_interval": [
+            -0.14430664479732513,
+            -0.07737304270267487
+          ],
+          "uncovered_gap": 0.010014645755290985
+        },
+        {
+          "flat_output_index": 156,
+          "eager": 0.173828125,
+          "reference": 0.25390625,
+          "eager_allowed_interval": [
+            0.1391015648841858,
+            0.2085546851158142
+          ],
+          "reference_allowed_interval": [
+            0.21757812798023224,
+            0.29023438692092896
+          ],
+          "uncovered_gap": 0.00902344286441803
+        },
+        {
+          "flat_output_index": 1329,
+          "eager": -0.025146484375,
+          "reference": -0.10107421875,
+          "eager_allowed_interval": [
+            -0.05689941346645355,
+            0.006606444716453552
+          ],
+          "reference_allowed_interval": [
+            -0.13434571027755737,
+            -0.06780273467302322
+          ],
+          "uncovered_gap": 0.010903321206569672
+        },
+        {
+          "flat_output_index": 1534,
+          "eager": 0.392578125,
+          "reference": 0.310546875,
+          "eager_allowed_interval": [
+            0.35347655415534973,
+            0.43167969584465027
+          ],
+          "reference_allowed_interval": [
+            0.27308595180511475,
+            0.34800779819488525
+          ],
+          "uncovered_gap": 0.0054687559604644775
+        },
+        {
+          "flat_output_index": 1991,
+          "eager": 0.36328125,
+          "reference": 0.44921875,
+          "eager_allowed_interval": [
+            0.3247656226158142,
+            0.4017968773841858
+          ],
+          "reference_allowed_interval": [
+            0.40898436307907104,
+            0.48945313692092896
+          ],
+          "uncovered_gap": 0.007187485694885254
+        },
+        {
+          "flat_output_index": 2271,
+          "eager": -0.1552734375,
+          "reference": -0.2392578125,
+          "eager_allowed_interval": [
+            -0.18962889909744263,
+            -0.12091796845197678
+          ],
+          "reference_allowed_interval": [
+            -0.2752929627895355,
+            -0.20322266221046448
+          ],
+          "uncovered_gap": 0.01359376311302185
+        },
+        {
+          "flat_output_index": 2530,
+          "eager": 0.1845703125,
+          "reference": 0.10400390625,
+          "eager_allowed_interval": [
+            0.1496289074420929,
+            0.2195117175579071
+          ],
+          "reference_allowed_interval": [
+            0.07067382335662842,
+            0.13733398914337158
+          ],
+          "uncovered_gap": 0.012294918298721313
+        },
+        {
+          "flat_output_index": 2888,
+          "eager": 0.064453125,
+          "reference": 0.1630859375,
+          "eager_allowed_interval": [
+            0.031914062798023224,
+            0.09699218720197678
+          ],
+          "reference_allowed_interval": [
+            0.1285742223262787,
+            0.1975976526737213
+          ],
+          "uncovered_gap": 0.03158203512430191
+        }
+      ]
+    },
+    {
+      "variant": "mlp_gate_proj",
+      "module": "model.language_model.layers.0.mlp.gate_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 253,
+      "disjoint_allowed_interval_elements": 12,
+      "maximum_uncovered_gap": 0.03185547888278961,
+      "examples": [
+        {
+          "flat_output_index": 1237,
+          "eager": -0.5625,
+          "reference": -0.65625,
+          "eager_allowed_interval": [
+            -0.6050000190734863,
+            -0.5199999809265137
+          ],
+          "reference_allowed_interval": [
+            -0.7006250023841858,
+            -0.6118749976158142
+          ],
+          "uncovered_gap": 0.006874978542327881
+        },
+        {
+          "flat_output_index": 2172,
+          "eager": -0.0986328125,
+          "reference": -0.0296630859375,
+          "eager_allowed_interval": [
+            -0.13185547292232513,
+            -0.06541015207767487
+          ],
+          "reference_allowed_interval": [
+            -0.06150634586811066,
+            0.0021801739931106567
+          ],
+          "uncovered_gap": 0.003903806209564209
+        },
+        {
+          "flat_output_index": 3216,
+          "eager": 0.255859375,
+          "reference": 0.1533203125,
+          "eager_allowed_interval": [
+            0.21949219703674316,
+            0.29222655296325684
+          ],
+          "reference_allowed_interval": [
+            0.11900390684604645,
+            0.18763671815395355
+          ],
+          "uncovered_gap": 0.03185547888278961
+        },
+        {
+          "flat_output_index": 4570,
+          "eager": -0.0595703125,
+          "reference": 0.03564453125,
+          "eager_allowed_interval": [
+            -0.0920117199420929,
+            -0.027128905057907104
+          ],
+          "reference_allowed_interval": [
+            0.003681641072034836,
+            0.06760741770267487
+          ],
+          "uncovered_gap": 0.03081054612994194
+        },
+        {
+          "flat_output_index": 5571,
+          "eager": 0.0277099609375,
+          "reference": -0.0478515625,
+          "eager_allowed_interval": [
+            -0.004094239324331284,
+            0.059514161199331284
+          ],
+          "reference_allowed_interval": [
+            -0.08005858957767487,
+            -0.015644531697034836
+          ],
+          "uncovered_gap": 0.011550292372703552
+        },
+        {
+          "flat_output_index": 6882,
+          "eager": 0.2265625,
+          "reference": 0.1494140625,
+          "eager_allowed_interval": [
+            0.19078125059604645,
+            0.26234376430511475
+          ],
+          "reference_allowed_interval": [
+            0.11517578363418579,
+            0.1836523413658142
+          ],
+          "uncovered_gap": 0.007128909230232239
+        },
+        {
+          "flat_output_index": 7007,
+          "eager": -0.361328125,
+          "reference": -0.44921875,
+          "eager_allowed_interval": [
+            -0.3998046815395355,
+            -0.3228515684604645
+          ],
+          "reference_allowed_interval": [
+            -0.48945313692092896,
+            -0.40898436307907104
+          ],
+          "uncovered_gap": 0.009179681539535522
+        },
+        {
+          "flat_output_index": 7321,
+          "eager": 0.345703125,
+          "reference": 0.26953125,
+          "eager_allowed_interval": [
+            0.30753904581069946,
+            0.38386720418930054
+          ],
+          "reference_allowed_interval": [
+            0.23289062082767487,
+            0.30617186427116394
+          ],
+          "uncovered_gap": 0.0013671815395355225
+        }
+      ]
+    },
+    {
+      "variant": "mlp_gate_proj",
+      "module": "model.language_model.layers.0.mlp.gate_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 239,
+      "disjoint_allowed_interval_elements": 17,
+      "maximum_uncovered_gap": 0.03152831643819809,
+      "examples": [
+        {
+          "flat_output_index": 240,
+          "eager": 0.248046875,
+          "reference": 0.1650390625,
+          "eager_allowed_interval": [
+            0.21183593571186066,
+            0.28425782918930054
+          ],
+          "reference_allowed_interval": [
+            0.13048827648162842,
+            0.19958984851837158
+          ],
+          "uncovered_gap": 0.012246087193489075
+        },
+        {
+          "flat_output_index": 612,
+          "eager": 0.9765625,
+          "reference": 0.8671875,
+          "eager_allowed_interval": [
+            0.92578125,
+            1.02734375
+          ],
+          "reference_allowed_interval": [
+            0.8185937404632568,
+            0.9157812595367432
+          ],
+          "uncovered_gap": 0.009999990463256836
+        },
+        {
+          "flat_output_index": 855,
+          "eager": 0.337890625,
+          "reference": 0.26171875,
+          "eager_allowed_interval": [
+            0.29988282918930054,
+            0.37589842081069946
+          ],
+          "reference_allowed_interval": [
+            0.22523437440395355,
+            0.29820311069488525
+          ],
+          "uncovered_gap": 0.0016797184944152832
+        },
+        {
+          "flat_output_index": 1365,
+          "eager": 0.059814453125,
+          "reference": 0.158203125,
+          "eager_allowed_interval": [
+            0.02736816555261612,
+            0.09226074069738388
+          ],
+          "reference_allowed_interval": [
+            0.12378905713558197,
+            0.19261719286441803
+          ],
+          "uncovered_gap": 0.03152831643819809
+        },
+        {
+          "flat_output_index": 2109,
+          "eager": -0.3671875,
+          "reference": -0.291015625,
+          "eager_allowed_interval": [
+            -0.40578123927116394,
+            -0.32859376072883606
+          ],
+          "reference_allowed_interval": [
+            -0.32808592915534973,
+            -0.25394532084465027
+          ],
+          "uncovered_gap": 0.0005078315734863281
+        },
+        {
+          "flat_output_index": 2192,
+          "eager": 0.8203125,
+          "reference": 0.9296875,
+          "eager_allowed_interval": [
+            0.772656261920929,
+            0.867968738079071
+          ],
+          "reference_allowed_interval": [
+            0.8798437714576721,
+            0.9795312285423279
+          ],
+          "uncovered_gap": 0.011875033378601074
+        },
+        {
+          "flat_output_index": 2887,
+          "eager": 0.2255859375,
+          "reference": 0.3046875,
+          "eager_allowed_interval": [
+            0.18982422351837158,
+            0.2613476514816284
+          ],
+          "reference_allowed_interval": [
+            0.26734375953674316,
+            0.34203124046325684
+          ],
+          "uncovered_gap": 0.005996108055114746
+        },
+        {
+          "flat_output_index": 3084,
+          "eager": 0.01422119140625,
+          "reference": -0.051025390625,
+          "eager_allowed_interval": [
+            -0.01731323078274727,
+            0.04575561359524727
+          ],
+          "reference_allowed_interval": [
+            -0.08329589664936066,
+            -0.018754884600639343
+          ],
+          "uncovered_gap": 0.0014416538178920746
+        }
+      ]
+    },
+    {
+      "variant": "mlp_gate_proj",
+      "module": "model.language_model.layers.0.mlp.gate_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_gate_proj",
+      "module": "model.language_model.layers.0.mlp.gate_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_gate_proj",
+      "module": "model.language_model.layers.0.mlp.gate_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_up_proj",
+      "module": "model.language_model.layers.0.mlp.up_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_up_proj",
+      "module": "model.language_model.layers.0.mlp.up_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_up_proj",
+      "module": "model.language_model.layers.0.mlp.up_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_up_proj",
+      "module": "model.language_model.layers.0.mlp.up_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 244,
+      "disjoint_allowed_interval_elements": 16,
+      "maximum_uncovered_gap": 0.023378904908895493,
+      "examples": [
+        {
+          "flat_output_index": 352,
+          "eager": -0.443359375,
+          "reference": -0.34375,
+          "eager_allowed_interval": [
+            -0.48347657918930054,
+            -0.40324217081069946
+          ],
+          "reference_allowed_interval": [
+            -0.38187500834465027,
+            -0.30562499165534973
+          ],
+          "uncovered_gap": 0.021367162466049194
+        },
+        {
+          "flat_output_index": 906,
+          "eager": 0.189453125,
+          "reference": 0.11669921875,
+          "eager_allowed_interval": [
+            0.15441405773162842,
+            0.22449219226837158
+          ],
+          "reference_allowed_interval": [
+            0.08311523497104645,
+            0.15028320252895355
+          ],
+          "uncovered_gap": 0.004130855202674866
+        },
+        {
+          "flat_output_index": 2430,
+          "eager": 0.017578125,
+          "reference": 0.103515625,
+          "eager_allowed_interval": [
+            -0.014023438096046448,
+            0.04917968809604645
+          ],
+          "reference_allowed_interval": [
+            0.07019531726837158,
+            0.13683593273162842
+          ],
+          "uncovered_gap": 0.021015629172325134
+        },
+        {
+          "flat_output_index": 3180,
+          "eager": 0.59765625,
+          "reference": 0.5078125,
+          "eager_allowed_interval": [
+            0.5544531345367432,
+            0.6408593654632568
+          ],
+          "reference_allowed_interval": [
+            0.4664062559604645,
+            0.5492187738418579
+          ],
+          "uncovered_gap": 0.005234360694885254
+        },
+        {
+          "flat_output_index": 3918,
+          "eager": -0.8359375,
+          "reference": -0.9375,
+          "eager_allowed_interval": [
+            -0.8839062452316284,
+            -0.7879687547683716
+          ],
+          "reference_allowed_interval": [
+            -0.987500011920929,
+            -0.887499988079071
+          ],
+          "uncovered_gap": 0.003593742847442627
+        },
+        {
+          "flat_output_index": 4875,
+          "eager": -0.035888671875,
+          "reference": 0.043212890625,
+          "eager_allowed_interval": [
+            -0.06785644590854645,
+            -0.003920897841453552
+          ],
+          "reference_allowed_interval": [
+            0.011098634451627731,
+            0.07532714307308197
+          ],
+          "uncovered_gap": 0.015019532293081284
+        },
+        {
+          "flat_output_index": 5044,
+          "eager": 1.609375,
+          "reference": 1.4765625,
+          "eager_allowed_interval": [
+            1.5459375381469727,
+            1.6728124618530273
+          ],
+          "reference_allowed_interval": [
+            1.4157812595367432,
+            1.5373437404632568
+          ],
+          "uncovered_gap": 0.00859379768371582
+        },
+        {
+          "flat_output_index": 5858,
+          "eager": 0.42578125,
+          "reference": 0.51171875,
+          "eager_allowed_interval": [
+            0.3860156238079071,
+            0.4655468761920929
+          ],
+          "reference_allowed_interval": [
+            0.47023436427116394,
+            0.5532031059265137
+          ],
+          "uncovered_gap": 0.004687488079071045
+        }
+      ]
+    },
+    {
+      "variant": "mlp_up_proj",
+      "module": "model.language_model.layers.0.mlp.up_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 273,
+      "disjoint_allowed_interval_elements": 21,
+      "maximum_uncovered_gap": 0.05613282322883606,
+      "examples": [
+        {
+          "flat_output_index": 831,
+          "eager": 0.0166015625,
+          "reference": -0.06591796875,
+          "eager_allowed_interval": [
+            -0.014980468899011612,
+            0.04818359389901161
+          ],
+          "reference_allowed_interval": [
+            -0.09848632663488388,
+            -0.03334961086511612
+          ],
+          "uncovered_gap": 0.018369141966104507
+        },
+        {
+          "flat_output_index": 1648,
+          "eager": 0.34765625,
+          "reference": 0.265625,
+          "eager_allowed_interval": [
+            0.3094531297683716,
+            0.3858593702316284
+          ],
+          "reference_allowed_interval": [
+            0.2290624976158142,
+            0.3021875023841858
+          ],
+          "uncovered_gap": 0.007265627384185791
+        },
+        {
+          "flat_output_index": 1655,
+          "eager": 0.66015625,
+          "reference": 0.7734375,
+          "eager_allowed_interval": [
+            0.6157031059265137,
+            0.7046093940734863
+          ],
+          "reference_allowed_interval": [
+            0.7267187237739563,
+            0.8201562762260437
+          ],
+          "uncovered_gap": 0.02210932970046997
+        },
+        {
+          "flat_output_index": 2443,
+          "eager": -0.0966796875,
+          "reference": -0.2109375,
+          "eager_allowed_interval": [
+            -0.12986327707767487,
+            -0.06349609792232513
+          ],
+          "reference_allowed_interval": [
+            -0.24640625715255737,
+            -0.17546874284744263
+          ],
+          "uncovered_gap": 0.04560546576976776
+        },
+        {
+          "flat_output_index": 2599,
+          "eager": 0.0517578125,
+          "reference": -0.03173828125,
+          "eager_allowed_interval": [
+            0.019472654908895493,
+            0.08404296636581421
+          ],
+          "reference_allowed_interval": [
+            -0.06362304836511612,
+            0.00014648586511611938
+          ],
+          "uncovered_gap": 0.019326169043779373
+        },
+        {
+          "flat_output_index": 4168,
+          "eager": 0.03271484375,
+          "reference": -0.060302734375,
+          "eager_allowed_interval": [
+            0.0008105486631393433,
+            0.06461913883686066
+          ],
+          "reference_allowed_interval": [
+            -0.09275878965854645,
+            -0.027846679091453552
+          ],
+          "uncovered_gap": 0.028657227754592896
+        },
+        {
+          "flat_output_index": 4851,
+          "eager": -0.5546875,
+          "reference": -0.64453125,
+          "eager_allowed_interval": [
+            -0.5970312356948853,
+            -0.5123437643051147
+          ],
+          "reference_allowed_interval": [
+            -0.688671886920929,
+            -0.600390613079071
+          ],
+          "uncovered_gap": 0.003359377384185791
+        },
+        {
+          "flat_output_index": 4928,
+          "eager": 0.181640625,
+          "reference": 0.07861328125,
+          "eager_allowed_interval": [
+            0.1467578113079071,
+            0.2165234386920929
+          ],
+          "reference_allowed_interval": [
+            0.04579101502895355,
+            0.11143554747104645
+          ],
+          "uncovered_gap": 0.03532226383686066
+        }
+      ]
+    },
+    {
+      "variant": "mlp_up_proj",
+      "module": "model.language_model.layers.0.mlp.up_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 244,
+      "disjoint_allowed_interval_elements": 13,
+      "maximum_uncovered_gap": 0.025905761867761612,
+      "examples": [
+        {
+          "flat_output_index": 89,
+          "eager": -0.0986328125,
+          "reference": -0.1826171875,
+          "eager_allowed_interval": [
+            -0.13185547292232513,
+            -0.06541015207767487
+          ],
+          "reference_allowed_interval": [
+            -0.21751953661441803,
+            -0.14771483838558197
+          ],
+          "uncovered_gap": 0.015859365463256836
+        },
+        {
+          "flat_output_index": 652,
+          "eager": 0.373046875,
+          "reference": 0.287109375,
+          "eager_allowed_interval": [
+            0.33433592319488525,
+            0.41175782680511475
+          ],
+          "reference_allowed_interval": [
+            0.2501171827316284,
+            0.3241015672683716
+          ],
+          "uncovered_gap": 0.010234355926513672
+        },
+        {
+          "flat_output_index": 1535,
+          "eager": -0.49609375,
+          "reference": -0.58203125,
+          "eager_allowed_interval": [
+            -0.5372655987739563,
+            -0.4549218714237213
+          ],
+          "reference_allowed_interval": [
+            -0.6249218583106995,
+            -0.5391406416893005
+          ],
+          "uncovered_gap": 0.0018750429153442383
+        },
+        {
+          "flat_output_index": 1687,
+          "eager": 0.0712890625,
+          "reference": -0.0189208984375,
+          "eager_allowed_interval": [
+            0.03861328214406967,
+            0.10396484285593033
+          ],
+          "reference_allowed_interval": [
+            -0.05054931715130806,
+            0.01270752027630806
+          ],
+          "uncovered_gap": 0.025905761867761612
+        },
+        {
+          "flat_output_index": 3103,
+          "eager": 0.16015625,
+          "reference": 0.080078125,
+          "eager_allowed_interval": [
+            0.1257031261920929,
+            0.1946093738079071
+          ],
+          "reference_allowed_interval": [
+            0.04722656309604645,
+            0.11292968690395355
+          ],
+          "uncovered_gap": 0.012773439288139343
+        },
+        {
+          "flat_output_index": 3128,
+          "eager": -0.62890625,
+          "reference": -0.51953125,
+          "eager_allowed_interval": [
+            -0.6727343797683716,
+            -0.5850781202316284
+          ],
+          "reference_allowed_interval": [
+            -0.5611718893051147,
+            -0.47789061069488525
+          ],
+          "uncovered_gap": 0.023906230926513672
+        },
+        {
+          "flat_output_index": 5222,
+          "eager": 0.08544921875,
+          "reference": 0.1533203125,
+          "eager_allowed_interval": [
+            0.052490234375,
+            0.118408203125
+          ],
+          "reference_allowed_interval": [
+            0.11900390684604645,
+            0.18763671815395355
+          ],
+          "uncovered_gap": 0.0005957037210464478
+        },
+        {
+          "flat_output_index": 5274,
+          "eager": 0.373046875,
+          "reference": 0.275390625,
+          "eager_allowed_interval": [
+            0.33433592319488525,
+            0.41175782680511475
+          ],
+          "reference_allowed_interval": [
+            0.23863281309604645,
+            0.31214845180511475
+          ],
+          "uncovered_gap": 0.022187471389770508
+        }
+      ]
+    },
+    {
+      "variant": "mlp_up_proj",
+      "module": "model.language_model.layers.0.mlp.up_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_up_proj",
+      "module": "model.language_model.layers.0.mlp.up_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "mlp_up_proj",
+      "module": "model.language_model.layers.0.mlp.up_proj",
+      "shape_n_k": [
+        10240,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10240,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "o_proj_full",
+      "module": "model.language_model.layers.11.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        4096
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "o_proj_full",
+      "module": "model.language_model.layers.11.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        4096
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "o_proj_full",
+      "module": "model.language_model.layers.11.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        4096
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "o_proj_full",
+      "module": "model.language_model.layers.11.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        4096
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 73,
+      "disjoint_allowed_interval_elements": 7,
+      "maximum_uncovered_gap": 0.01958984136581421,
+      "examples": [
+        {
+          "flat_output_index": 415,
+          "eager": -0.06298828125,
+          "reference": -0.13671875,
+          "eager_allowed_interval": [
+            -0.09549804776906967,
+            -0.03047851473093033
+          ],
+          "reference_allowed_interval": [
+            -0.17070312798023224,
+            -0.10273437201976776
+          ],
+          "uncovered_gap": 0.00723632425069809
+        },
+        {
+          "flat_output_index": 458,
+          "eager": -0.1650390625,
+          "reference": -0.240234375,
+          "eager_allowed_interval": [
+            -0.19958984851837158,
+            -0.13048827648162842
+          ],
+          "reference_allowed_interval": [
+            -0.27628904581069946,
+            -0.20417968928813934
+          ],
+          "uncovered_gap": 0.004589840769767761
+        },
+        {
+          "flat_output_index": 732,
+          "eager": 0.1953125,
+          "reference": 0.1259765625,
+          "eager_allowed_interval": [
+            0.16015625,
+            0.23046875
+          ],
+          "reference_allowed_interval": [
+            0.09220702946186066,
+            0.15974609553813934
+          ],
+          "uncovered_gap": 0.00041015446186065674
+        },
+        {
+          "flat_output_index": 1253,
+          "eager": -0.05078125,
+          "reference": 0.0174560546875,
+          "eager_allowed_interval": [
+            -0.08304687589406967,
+            -0.01851562410593033
+          ],
+          "reference_allowed_interval": [
+            -0.014143064618110657,
+            0.04905517399311066
+          ],
+          "uncovered_gap": 0.004372559487819672
+        },
+        {
+          "flat_output_index": 1921,
+          "eager": -0.1640625,
+          "reference": -0.0771484375,
+          "eager_allowed_interval": [
+            -0.19859375059604645,
+            -0.12953124940395355
+          ],
+          "reference_allowed_interval": [
+            -0.10994140803813934,
+            -0.04435546696186066
+          ],
+          "uncovered_gap": 0.01958984136581421
+        },
+        {
+          "flat_output_index": 2121,
+          "eager": 0.56640625,
+          "reference": 0.474609375,
+          "eager_allowed_interval": [
+            0.5238281488418579,
+            0.6089843511581421
+          ],
+          "reference_allowed_interval": [
+            0.4338671863079071,
+            0.5153515338897705
+          ],
+          "uncovered_gap": 0.008476614952087402
+        },
+        {
+          "flat_output_index": 2520,
+          "eager": 0.059326171875,
+          "reference": 0.1376953125,
+          "eager_allowed_interval": [
+            0.026889648288488388,
+            0.09176269173622131
+          ],
+          "reference_allowed_interval": [
+            0.10369140654802322,
+            0.17169922590255737
+          ],
+          "uncovered_gap": 0.01192871481180191
+        }
+      ]
+    },
+    {
+      "variant": "o_proj_full",
+      "module": "model.language_model.layers.11.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        4096
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 70,
+      "disjoint_allowed_interval_elements": 5,
+      "maximum_uncovered_gap": 0.09273439645767212,
+      "examples": [
+        {
+          "flat_output_index": 24,
+          "eager": -0.232421875,
+          "reference": -0.16015625,
+          "eager_allowed_interval": [
+            -0.26832032203674316,
+            -0.19652344286441803
+          ],
+          "reference_allowed_interval": [
+            -0.1946093738079071,
+            -0.1257031261920929
+          ],
+          "uncovered_gap": 0.0019140690565109253
+        },
+        {
+          "flat_output_index": 176,
+          "eager": -0.09375,
+          "reference": -0.19921875,
+          "eager_allowed_interval": [
+            -0.12687499821186066,
+            -0.06062500178813934
+          ],
+          "reference_allowed_interval": [
+            -0.23445312678813934,
+            -0.16398437321186066
+          ],
+          "uncovered_gap": 0.037109375
+        },
+        {
+          "flat_output_index": 492,
+          "eager": -0.3203125,
+          "reference": -0.40234375,
+          "eager_allowed_interval": [
+            -0.3579687476158142,
+            -0.2826562523841858
+          ],
+          "reference_allowed_interval": [
+            -0.44164061546325684,
+            -0.36304688453674316
+          ],
+          "uncovered_gap": 0.005078136920928955
+        },
+        {
+          "flat_output_index": 526,
+          "eager": -0.80859375,
+          "reference": -1.0,
+          "eager_allowed_interval": [
+            -0.8560156226158142,
+            -0.7611718773841858
+          ],
+          "reference_allowed_interval": [
+            -1.0512499809265137,
+            -0.9487500190734863
+          ],
+          "uncovered_gap": 0.09273439645767212
+        },
+        {
+          "flat_output_index": 1023,
+          "eager": 0.359375,
+          "reference": 0.447265625,
+          "eager_allowed_interval": [
+            0.32093751430511475,
+            0.39781248569488525
+          ],
+          "reference_allowed_interval": [
+            0.4070703089237213,
+            0.4874609410762787
+          ],
+          "uncovered_gap": 0.00925782322883606
+        }
+      ]
+    },
+    {
+      "variant": "o_proj_full",
+      "module": "model.language_model.layers.11.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        4096
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 74,
+      "disjoint_allowed_interval_elements": 4,
+      "maximum_uncovered_gap": 0.010832518339157104,
+      "examples": [
+        {
+          "flat_output_index": 43,
+          "eager": 0.63671875,
+          "reference": 0.546875,
+          "eager_allowed_interval": [
+            0.5927343964576721,
+            0.6807031035423279
+          ],
+          "reference_allowed_interval": [
+            0.504687488079071,
+            0.589062511920929
+          ],
+          "uncovered_gap": 0.003671884536743164
+        },
+        {
+          "flat_output_index": 154,
+          "eager": -0.07763671875,
+          "reference": -0.1533203125,
+          "eager_allowed_interval": [
+            -0.11043944954872131,
+            -0.04483398422598839
+          ],
+          "reference_allowed_interval": [
+            -0.18763671815395355,
+            -0.11900390684604645
+          ],
+          "uncovered_gap": 0.008564457297325134
+        },
+        {
+          "flat_output_index": 1326,
+          "eager": 0.2265625,
+          "reference": 0.1552734375,
+          "eager_allowed_interval": [
+            0.19078125059604645,
+            0.26234376430511475
+          ],
+          "reference_allowed_interval": [
+            0.12091796845197678,
+            0.18962889909744263
+          ],
+          "uncovered_gap": 0.0011523514986038208
+        },
+        {
+          "flat_output_index": 1868,
+          "eager": 0.0186767578125,
+          "reference": -0.05615234375,
+          "eager_allowed_interval": [
+            -0.012946777045726776,
+            0.050300292670726776
+          ],
+          "reference_allowed_interval": [
+            -0.08852539211511612,
+            -0.02377929538488388
+          ],
+          "uncovered_gap": 0.010832518339157104
+        }
+      ]
+    },
+    {
+      "variant": "o_proj_full",
+      "module": "model.language_model.layers.11.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        4096
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "o_proj_full",
+      "module": "model.language_model.layers.11.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        4096
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "o_proj_full",
+      "module": "model.language_model.layers.11.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        4096
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "o_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        2048
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "o_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        2048
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "o_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        2048
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "o_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        2048
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 37,
+      "disjoint_allowed_interval_elements": 5,
+      "maximum_uncovered_gap": 0.03472656011581421,
+      "examples": [
+        {
+          "flat_output_index": 30,
+          "eager": 1.765625,
+          "reference": 1.9140625,
+          "eager_allowed_interval": [
+            1.699062466621399,
+            1.832187533378601
+          ],
+          "reference_allowed_interval": [
+            1.8445312976837158,
+            1.9835937023162842
+          ],
+          "uncovered_gap": 0.012343764305114746
+        },
+        {
+          "flat_output_index": 62,
+          "eager": 0.0390625,
+          "reference": -0.02978515625,
+          "eager_allowed_interval": [
+            0.00703125074505806,
+            0.07109375298023224
+          ],
+          "reference_allowed_interval": [
+            -0.06163085997104645,
+            0.0020605474710464478
+          ],
+          "uncovered_gap": 0.004970703274011612
+        },
+        {
+          "flat_output_index": 1325,
+          "eager": 0.10693359375,
+          "reference": 0.038330078125,
+          "eager_allowed_interval": [
+            0.07354491949081421,
+            0.1403222680091858
+          ],
+          "reference_allowed_interval": [
+            0.006313476711511612,
+            0.07034668326377869
+          ],
+          "uncovered_gap": 0.0031982362270355225
+        },
+        {
+          "flat_output_index": 1368,
+          "eager": -0.07763671875,
+          "reference": -0.00994873046875,
+          "eager_allowed_interval": [
+            -0.11043944954872131,
+            -0.04483398422598839
+          ],
+          "reference_allowed_interval": [
+            -0.04139770567417145,
+            0.021500244736671448
+          ],
+          "uncovered_gap": 0.0034362785518169403
+        },
+        {
+          "flat_output_index": 2221,
+          "eager": 0.5078125,
+          "reference": 0.392578125,
+          "eager_allowed_interval": [
+            0.4664062559604645,
+            0.5492187738418579
+          ],
+          "reference_allowed_interval": [
+            0.35347655415534973,
+            0.43167969584465027
+          ],
+          "uncovered_gap": 0.03472656011581421
+        }
+      ]
+    },
+    {
+      "variant": "o_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        2048
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 65,
+      "disjoint_allowed_interval_elements": 4,
+      "maximum_uncovered_gap": 0.012812495231628418,
+      "examples": [
+        {
+          "flat_output_index": 154,
+          "eager": -0.1474609375,
+          "reference": -0.2294921875,
+          "eager_allowed_interval": [
+            -0.18166016042232513,
+            -0.11326171457767487
+          ],
+          "reference_allowed_interval": [
+            -0.26533204317092896,
+            -0.19365234673023224
+          ],
+          "uncovered_gap": 0.011992186307907104
+        },
+        {
+          "flat_output_index": 1731,
+          "eager": 0.037841796875,
+          "reference": -0.03466796875,
+          "eager_allowed_interval": [
+            0.005834959447383881,
+            0.06984863430261612
+          ],
+          "reference_allowed_interval": [
+            -0.06661132723093033,
+            -0.0027246102690696716
+          ],
+          "uncovered_gap": 0.008559569716453552
+        },
+        {
+          "flat_output_index": 2059,
+          "eager": 0.06640625,
+          "reference": 0.14453125,
+          "eager_allowed_interval": [
+            0.03382812440395355,
+            0.09898437559604645
+          ],
+          "reference_allowed_interval": [
+            0.11039062589406967,
+            0.17867186665534973
+          ],
+          "uncovered_gap": 0.011406250298023224
+        },
+        {
+          "flat_output_index": 2090,
+          "eager": 0.90625,
+          "reference": 0.796875,
+          "eager_allowed_interval": [
+            0.8568750023841858,
+            0.9556249976158142
+          ],
+          "reference_allowed_interval": [
+            0.7496874928474426,
+            0.8440625071525574
+          ],
+          "uncovered_gap": 0.012812495231628418
+        }
+      ]
+    },
+    {
+      "variant": "o_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        2048
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 48,
+      "disjoint_allowed_interval_elements": 2,
+      "maximum_uncovered_gap": 0.0075390636920928955,
+      "examples": [
+        {
+          "flat_output_index": 627,
+          "eager": -0.318359375,
+          "reference": -0.240234375,
+          "eager_allowed_interval": [
+            -0.35597655177116394,
+            -0.28074219822883606
+          ],
+          "reference_allowed_interval": [
+            -0.27628904581069946,
+            -0.20417968928813934
+          ],
+          "uncovered_gap": 0.004453152418136597
+        },
+        {
+          "flat_output_index": 2196,
+          "eager": -0.115234375,
+          "reference": -0.19140625,
+          "eager_allowed_interval": [
+            -0.14878906309604645,
+            -0.08167968690395355
+          ],
+          "reference_allowed_interval": [
+            -0.22648437321186066,
+            -0.15632812678813934
+          ],
+          "uncovered_gap": 0.0075390636920928955
+        }
+      ]
+    },
+    {
+      "variant": "o_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        2048
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "o_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        2048
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "o_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.o_proj",
+      "shape_n_k": [
+        2560,
+        2048
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_context_projection",
+      "module": "model.language_model.per_layer_model_projection",
+      "shape_n_k": [
+        10752,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10752,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_context_projection",
+      "module": "model.language_model.per_layer_model_projection",
+      "shape_n_k": [
+        10752,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10752,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_context_projection",
+      "module": "model.language_model.per_layer_model_projection",
+      "shape_n_k": [
+        10752,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10752,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_context_projection",
+      "module": "model.language_model.per_layer_model_projection",
+      "shape_n_k": [
+        10752,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 10752,
+      "eager_reference_not_close_elements": 247,
+      "disjoint_allowed_interval_elements": 18,
+      "maximum_uncovered_gap": 0.03477539122104645,
+      "examples": [
+        {
+          "flat_output_index": 429,
+          "eager": 0.043212890625,
+          "reference": -0.0244140625,
+          "eager_allowed_interval": [
+            0.011098634451627731,
+            0.07532714307308197
+          ],
+          "reference_allowed_interval": [
+            -0.05615234375,
+            0.00732421875
+          ],
+          "uncovered_gap": 0.0037744157016277313
+        },
+        {
+          "flat_output_index": 1023,
+          "eager": 0.81640625,
+          "reference": 0.71875,
+          "eager_allowed_interval": [
+            0.7688281536102295,
+            0.8639843463897705
+          ],
+          "reference_allowed_interval": [
+            0.6731250286102295,
+            0.7643749713897705
+          ],
+          "uncovered_gap": 0.004453182220458984
+        },
+        {
+          "flat_output_index": 1935,
+          "eager": -0.197265625,
+          "reference": -0.28125,
+          "eager_allowed_interval": [
+            -0.23246094584465027,
+            -0.16207030415534973
+          ],
+          "reference_allowed_interval": [
+            -0.31812500953674316,
+            -0.24437500536441803
+          ],
+          "uncovered_gap": 0.011914059519767761
+        },
+        {
+          "flat_output_index": 2832,
+          "eager": -0.134765625,
+          "reference": -0.2197265625,
+          "eager_allowed_interval": [
+            -0.16871093213558197,
+            -0.10082031786441803
+          ],
+          "reference_allowed_interval": [
+            -0.25537109375,
+            -0.18408203125
+          ],
+          "uncovered_gap": 0.01537109911441803
+        },
+        {
+          "flat_output_index": 3067,
+          "eager": 0.35546875,
+          "reference": 0.4609375,
+          "eager_allowed_interval": [
+            0.3171093761920929,
+            0.3938281238079071
+          ],
+          "reference_allowed_interval": [
+            0.4204687476158142,
+            0.5014062523841858
+          ],
+          "uncovered_gap": 0.026640623807907104
+        },
+        {
+          "flat_output_index": 3486,
+          "eager": 0.427734375,
+          "reference": 0.341796875,
+          "eager_allowed_interval": [
+            0.38792967796325684,
+            0.46753907203674316
+          ],
+          "reference_allowed_interval": [
+            0.3037109375,
+            0.3798828125
+          ],
+          "uncovered_gap": 0.008046865463256836
+        },
+        {
+          "flat_output_index": 4020,
+          "eager": 0.251953125,
+          "reference": 0.337890625,
+          "eager_allowed_interval": [
+            0.2156640589237213,
+            0.2882421910762787
+          ],
+          "reference_allowed_interval": [
+            0.29988282918930054,
+            0.37589842081069946
+          ],
+          "uncovered_gap": 0.01164063811302185
+        },
+        {
+          "flat_output_index": 4273,
+          "eager": -0.04443359375,
+          "reference": -0.1455078125,
+          "eager_allowed_interval": [
+            -0.07657226920127869,
+            -0.012294922024011612
+          ],
+          "reference_allowed_interval": [
+            -0.17966796457767487,
+            -0.11134766042232513
+          ],
+          "uncovered_gap": 0.03477539122104645
+        }
+      ]
+    },
+    {
+      "variant": "ple_context_projection",
+      "module": "model.language_model.per_layer_model_projection",
+      "shape_n_k": [
+        10752,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 10752,
+      "eager_reference_not_close_elements": 270,
+      "disjoint_allowed_interval_elements": 24,
+      "maximum_uncovered_gap": 0.05322265625,
+      "examples": [
+        {
+          "flat_output_index": 84,
+          "eager": 0.08251953125,
+          "reference": -0.003997802734375,
+          "eager_allowed_interval": [
+            0.04961914196610451,
+            0.11541992425918579
+          ],
+          "reference_allowed_interval": [
+            -0.03532775864005089,
+            0.027332153171300888
+          ],
+          "uncovered_gap": 0.02228698879480362
+        },
+        {
+          "flat_output_index": 584,
+          "eager": -0.671875,
+          "reference": -0.765625,
+          "eager_allowed_interval": [
+            -0.7165625095367432,
+            -0.6271874904632568
+          ],
+          "reference_allowed_interval": [
+            -0.8121874928474426,
+            -0.7190625071525574
+          ],
+          "uncovered_gap": 0.002499997615814209
+        },
+        {
+          "flat_output_index": 1159,
+          "eager": -0.033447265625,
+          "reference": -0.126953125,
+          "eager_allowed_interval": [
+            -0.06536620855331421,
+            -0.0015283189713954926
+          ],
+          "reference_allowed_interval": [
+            -0.16074219346046448,
+            -0.09316406399011612
+          ],
+          "uncovered_gap": 0.02779785543680191
+        },
+        {
+          "flat_output_index": 1513,
+          "eager": 0.037109375,
+          "reference": -0.027099609375,
+          "eager_allowed_interval": [
+            0.005117189139127731,
+            0.06910155713558197
+          ],
+          "reference_allowed_interval": [
+            -0.058891601860523224,
+            0.004692383110523224
+          ],
+          "uncovered_gap": 0.00042480602860450745
+        },
+        {
+          "flat_output_index": 1852,
+          "eager": 0.67578125,
+          "reference": 0.58203125,
+          "eager_allowed_interval": [
+            0.6310155987739563,
+            0.7205469012260437
+          ],
+          "reference_allowed_interval": [
+            0.5391406416893005,
+            0.6249218583106995
+          ],
+          "uncovered_gap": 0.006093740463256836
+        },
+        {
+          "flat_output_index": 2045,
+          "eager": -0.2216796875,
+          "reference": -0.30078125,
+          "eager_allowed_interval": [
+            -0.25736328959465027,
+            -0.18599608540534973
+          ],
+          "reference_allowed_interval": [
+            -0.3380468785762787,
+            -0.2635156214237213
+          ],
+          "uncovered_gap": 0.006152331829071045
+        },
+        {
+          "flat_output_index": 2050,
+          "eager": 0.8515625,
+          "reference": 0.95703125,
+          "eager_allowed_interval": [
+            0.8032812476158142,
+            0.8998437523841858
+          ],
+          "reference_allowed_interval": [
+            0.9066406488418579,
+            1.007421851158142
+          ],
+          "uncovered_gap": 0.006796896457672119
+        },
+        {
+          "flat_output_index": 2549,
+          "eager": 0.5234375,
+          "reference": 0.4375,
+          "eager_allowed_interval": [
+            0.4817187488079071,
+            0.5651562213897705
+          ],
+          "reference_allowed_interval": [
+            0.39750000834465027,
+            0.47749999165534973
+          ],
+          "uncovered_gap": 0.004218757152557373
+        }
+      ]
+    },
+    {
+      "variant": "ple_context_projection",
+      "module": "model.language_model.per_layer_model_projection",
+      "shape_n_k": [
+        10752,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 10752,
+      "eager_reference_not_close_elements": 224,
+      "disjoint_allowed_interval_elements": 19,
+      "maximum_uncovered_gap": 0.05554687976837158,
+      "examples": [
+        {
+          "flat_output_index": 220,
+          "eager": -0.00020313262939453125,
+          "reference": 0.0830078125,
+          "eager_allowed_interval": [
+            -0.03145719692111015,
+            0.03105093166232109
+          ],
+          "reference_allowed_interval": [
+            0.05009765550494194,
+            0.11591796576976776
+          ],
+          "uncovered_gap": 0.01904672384262085
+        },
+        {
+          "flat_output_index": 363,
+          "eager": -0.435546875,
+          "reference": -0.302734375,
+          "eager_allowed_interval": [
+            -0.47550779581069946,
+            -0.39558595418930054
+          ],
+          "reference_allowed_interval": [
+            -0.34003907442092896,
+            -0.26542967557907104
+          ],
+          "uncovered_gap": 0.05554687976837158
+        },
+        {
+          "flat_output_index": 1178,
+          "eager": 0.28125,
+          "reference": 0.3828125,
+          "eager_allowed_interval": [
+            0.24437500536441803,
+            0.31812500953674316
+          ],
+          "reference_allowed_interval": [
+            0.3439062535762787,
+            0.4217187464237213
+          ],
+          "uncovered_gap": 0.025781244039535522
+        },
+        {
+          "flat_output_index": 1293,
+          "eager": 0.2041015625,
+          "reference": 0.103515625,
+          "eager_allowed_interval": [
+            0.16876953840255737,
+            0.23943358659744263
+          ],
+          "reference_allowed_interval": [
+            0.07019531726837158,
+            0.13683593273162842
+          ],
+          "uncovered_gap": 0.031933605670928955
+        },
+        {
+          "flat_output_index": 1582,
+          "eager": -0.427734375,
+          "reference": -0.341796875,
+          "eager_allowed_interval": [
+            -0.46753907203674316,
+            -0.38792967796325684
+          ],
+          "reference_allowed_interval": [
+            -0.3798828125,
+            -0.3037109375
+          ],
+          "uncovered_gap": 0.008046865463256836
+        },
+        {
+          "flat_output_index": 2066,
+          "eager": 0.1337890625,
+          "reference": 0.220703125,
+          "eager_allowed_interval": [
+            0.09986327588558197,
+            0.16771484911441803
+          ],
+          "reference_allowed_interval": [
+            0.18503905832767487,
+            0.25636717677116394
+          ],
+          "uncovered_gap": 0.017324209213256836
+        },
+        {
+          "flat_output_index": 2247,
+          "eager": -0.0556640625,
+          "reference": -0.1220703125,
+          "eager_allowed_interval": [
+            -0.08802734315395355,
+            -0.023300781846046448
+          ],
+          "reference_allowed_interval": [
+            -0.15576171875,
+            -0.08837890625
+          ],
+          "uncovered_gap": 0.00035156309604644775
+        },
+        {
+          "flat_output_index": 2556,
+          "eager": 0.380859375,
+          "reference": 0.30078125,
+          "eager_allowed_interval": [
+            0.34199219942092896,
+            0.41972655057907104
+          ],
+          "reference_allowed_interval": [
+            0.2635156214237213,
+            0.3380468785762787
+          ],
+          "uncovered_gap": 0.0039453208446502686
+        }
+      ]
+    },
+    {
+      "variant": "ple_context_projection",
+      "module": "model.language_model.per_layer_model_projection",
+      "shape_n_k": [
+        10752,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10752,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_context_projection",
+      "module": "model.language_model.per_layer_model_projection",
+      "shape_n_k": [
+        10752,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10752,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_context_projection",
+      "module": "model.language_model.per_layer_model_projection",
+      "shape_n_k": [
+        10752,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 10752,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_input_gate",
+      "module": "model.language_model.layers.0.per_layer_input_gate",
+      "shape_n_k": [
+        256,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 256,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_input_gate",
+      "module": "model.language_model.layers.0.per_layer_input_gate",
+      "shape_n_k": [
+        256,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 256,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_input_gate",
+      "module": "model.language_model.layers.0.per_layer_input_gate",
+      "shape_n_k": [
+        256,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 256,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_input_gate",
+      "module": "model.language_model.layers.0.per_layer_input_gate",
+      "shape_n_k": [
+        256,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 256,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_input_gate",
+      "module": "model.language_model.layers.0.per_layer_input_gate",
+      "shape_n_k": [
+        256,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 256,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_input_gate",
+      "module": "model.language_model.layers.0.per_layer_input_gate",
+      "shape_n_k": [
+        256,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 256,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_input_gate",
+      "module": "model.language_model.layers.0.per_layer_input_gate",
+      "shape_n_k": [
+        256,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 256,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_input_gate",
+      "module": "model.language_model.layers.0.per_layer_input_gate",
+      "shape_n_k": [
+        256,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 256,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_input_gate",
+      "module": "model.language_model.layers.0.per_layer_input_gate",
+      "shape_n_k": [
+        256,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 256,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_residual_projection",
+      "module": "model.language_model.layers.0.per_layer_projection",
+      "shape_n_k": [
+        2560,
+        256
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_residual_projection",
+      "module": "model.language_model.layers.0.per_layer_projection",
+      "shape_n_k": [
+        2560,
+        256
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_residual_projection",
+      "module": "model.language_model.layers.0.per_layer_projection",
+      "shape_n_k": [
+        2560,
+        256
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_residual_projection",
+      "module": "model.language_model.layers.0.per_layer_projection",
+      "shape_n_k": [
+        2560,
+        256
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 15,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_residual_projection",
+      "module": "model.language_model.layers.0.per_layer_projection",
+      "shape_n_k": [
+        2560,
+        256
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 25,
+      "disjoint_allowed_interval_elements": 3,
+      "maximum_uncovered_gap": 0.015468835830688477,
+      "examples": [
+        {
+          "flat_output_index": 98,
+          "eager": 0.123046875,
+          "reference": 0.2021484375,
+          "eager_allowed_interval": [
+            0.08933593332767487,
+            0.15675781667232513
+          ],
+          "reference_allowed_interval": [
+            0.16685546934604645,
+            0.23744140565395355
+          ],
+          "uncovered_gap": 0.010097652673721313
+        },
+        {
+          "flat_output_index": 1076,
+          "eager": -0.314453125,
+          "reference": -0.2392578125,
+          "eager_allowed_interval": [
+            -0.3519921898841858,
+            -0.2769140601158142
+          ],
+          "reference_allowed_interval": [
+            -0.2752929627895355,
+            -0.20322266221046448
+          ],
+          "uncovered_gap": 0.0016210973262786865
+        },
+        {
+          "flat_output_index": 1811,
+          "eager": 1.4375,
+          "reference": 1.3046875,
+          "eager_allowed_interval": [
+            1.377500057220459,
+            1.497499942779541
+          ],
+          "reference_allowed_interval": [
+            1.2473437786102295,
+            1.3620312213897705
+          ],
+          "uncovered_gap": 0.015468835830688477
+        }
+      ]
+    },
+    {
+      "variant": "ple_residual_projection",
+      "module": "model.language_model.layers.0.per_layer_projection",
+      "shape_n_k": [
+        2560,
+        256
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 33,
+      "disjoint_allowed_interval_elements": 3,
+      "maximum_uncovered_gap": 0.030839845538139343,
+      "examples": [
+        {
+          "flat_output_index": 724,
+          "eager": 1.2109375,
+          "reference": 1.0859375,
+          "eager_allowed_interval": [
+            1.1554687023162842,
+            1.2664062976837158
+          ],
+          "reference_allowed_interval": [
+            1.0329687595367432,
+            1.1389062404632568
+          ],
+          "uncovered_gap": 0.016562461853027344
+        },
+        {
+          "flat_output_index": 1324,
+          "eager": -1.328125,
+          "reference": -1.203125,
+          "eager_allowed_interval": [
+            -1.3859374523162842,
+            -1.2703125476837158
+          ],
+          "reference_allowed_interval": [
+            -1.2584375143051147,
+            -1.1478124856948853
+          ],
+          "uncovered_gap": 0.011875033378601074
+        },
+        {
+          "flat_output_index": 2234,
+          "eager": 0.28125,
+          "reference": 0.1787109375,
+          "eager_allowed_interval": [
+            0.24437500536441803,
+            0.31812500953674316
+          ],
+          "reference_allowed_interval": [
+            0.1438867151737213,
+            0.2135351598262787
+          ],
+          "uncovered_gap": 0.030839845538139343
+        }
+      ]
+    },
+    {
+      "variant": "ple_residual_projection",
+      "module": "model.language_model.layers.0.per_layer_projection",
+      "shape_n_k": [
+        2560,
+        256
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_residual_projection",
+      "module": "model.language_model.layers.0.per_layer_projection",
+      "shape_n_k": [
+        2560,
+        256
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "ple_residual_projection",
+      "module": "model.language_model.layers.0.per_layer_projection",
+      "shape_n_k": [
+        2560,
+        256
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2560,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "q_proj_full",
+      "module": "model.language_model.layers.11.self_attn.q_proj",
+      "shape_n_k": [
+        4096,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 4096,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "q_proj_full",
+      "module": "model.language_model.layers.11.self_attn.q_proj",
+      "shape_n_k": [
+        4096,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 4096,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "q_proj_full",
+      "module": "model.language_model.layers.11.self_attn.q_proj",
+      "shape_n_k": [
+        4096,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 4096,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "q_proj_full",
+      "module": "model.language_model.layers.11.self_attn.q_proj",
+      "shape_n_k": [
+        4096,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 4096,
+      "eager_reference_not_close_elements": 95,
+      "disjoint_allowed_interval_elements": 4,
+      "maximum_uncovered_gap": 0.01161133497953415,
+      "examples": [
+        {
+          "flat_output_index": 3005,
+          "eager": -0.042236328125,
+          "reference": -0.1162109375,
+          "eager_allowed_interval": [
+            -0.07433106005191803,
+            -0.010141599923372269
+          ],
+          "reference_allowed_interval": [
+            -0.14978516101837158,
+            -0.08263671398162842
+          ],
+          "uncovered_gap": 0.008305653929710388
+        },
+        {
+          "flat_output_index": 3284,
+          "eager": -0.04931640625,
+          "reference": -0.126953125,
+          "eager_allowed_interval": [
+            -0.08155272901058197,
+            -0.01708007976412773
+          ],
+          "reference_allowed_interval": [
+            -0.16074219346046448,
+            -0.09316406399011612
+          ],
+          "uncovered_gap": 0.01161133497953415
+        },
+        {
+          "flat_output_index": 3313,
+          "eager": 0.04443359375,
+          "reference": 0.1103515625,
+          "eager_allowed_interval": [
+            0.012294922024011612,
+            0.07657226920127869
+          ],
+          "reference_allowed_interval": [
+            0.07689453661441803,
+            0.14380858838558197
+          ],
+          "uncovered_gap": 0.00032226741313934326
+        },
+        {
+          "flat_output_index": 3723,
+          "eager": 0.12451171875,
+          "reference": 0.0576171875,
+          "eager_allowed_interval": [
+            0.09077148139476776,
+            0.15825195610523224
+          ],
+          "reference_allowed_interval": [
+            0.025214843451976776,
+            0.09001953154802322
+          ],
+          "uncovered_gap": 0.0007519498467445374
+        }
+      ]
+    },
+    {
+      "variant": "q_proj_full",
+      "module": "model.language_model.layers.11.self_attn.q_proj",
+      "shape_n_k": [
+        4096,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 4096,
+      "eager_reference_not_close_elements": 92,
+      "disjoint_allowed_interval_elements": 8,
+      "maximum_uncovered_gap": 0.024218738079071045,
+      "examples": [
+        {
+          "flat_output_index": 101,
+          "eager": 0.1513671875,
+          "reference": 0.0732421875,
+          "eager_allowed_interval": [
+            0.11708984524011612,
+            0.18564453721046448
+          ],
+          "reference_allowed_interval": [
+            0.04052734375,
+            0.10595703125
+          ],
+          "uncovered_gap": 0.01113281399011612
+        },
+        {
+          "flat_output_index": 118,
+          "eager": -0.1376953125,
+          "reference": -0.2080078125,
+          "eager_allowed_interval": [
+            -0.17169922590255737,
+            -0.10369140654802322
+          ],
+          "reference_allowed_interval": [
+            -0.24341796338558197,
+            -0.17259766161441803
+          ],
+          "uncovered_gap": 0.0008984357118606567
+        },
+        {
+          "flat_output_index": 1860,
+          "eager": 0.322265625,
+          "reference": 0.224609375,
+          "eager_allowed_interval": [
+            0.2845703065395355,
+            0.3599609434604645
+          ],
+          "reference_allowed_interval": [
+            0.18886718153953552,
+            0.2603515684604645
+          ],
+          "uncovered_gap": 0.024218738079071045
+        },
+        {
+          "flat_output_index": 2194,
+          "eager": -0.05224609375,
+          "reference": -0.12158203125,
+          "eager_allowed_interval": [
+            -0.08454101532697678,
+            -0.019951172173023224
+          ],
+          "reference_allowed_interval": [
+            -0.15526367723941803,
+            -0.08790038526058197
+          ],
+          "uncovered_gap": 0.003359369933605194
+        },
+        {
+          "flat_output_index": 2636,
+          "eager": 0.049560546875,
+          "reference": -0.0167236328125,
+          "eager_allowed_interval": [
+            0.017319336533546448,
+            0.08180175721645355
+          ],
+          "reference_allowed_interval": [
+            -0.048308104276657104,
+            0.014860838651657104
+          ],
+          "uncovered_gap": 0.0024584978818893433
+        },
+        {
+          "flat_output_index": 3916,
+          "eager": -0.4140625,
+          "reference": -0.49609375,
+          "eager_allowed_interval": [
+            -0.45359376072883606,
+            -0.37453123927116394
+          ],
+          "reference_allowed_interval": [
+            -0.5372655987739563,
+            -0.4549218714237213
+          ],
+          "uncovered_gap": 0.001328110694885254
+        },
+        {
+          "flat_output_index": 3935,
+          "eager": -0.515625,
+          "reference": -0.60546875,
+          "eager_allowed_interval": [
+            -0.5571874976158142,
+            -0.4740625023841858
+          ],
+          "reference_allowed_interval": [
+            -0.6488281488418579,
+            -0.5621093511581421
+          ],
+          "uncovered_gap": 0.004921853542327881
+        },
+        {
+          "flat_output_index": 4073,
+          "eager": -0.00738525390625,
+          "reference": -0.087890625,
+          "eager_allowed_interval": [
+            -0.038782957941293716,
+            0.024012450128793716
+          ],
+          "reference_allowed_interval": [
+            -0.12089844048023224,
+            -0.05488281324505806
+          ],
+          "uncovered_gap": 0.016099855303764343
+        }
+      ]
+    },
+    {
+      "variant": "q_proj_full",
+      "module": "model.language_model.layers.11.self_attn.q_proj",
+      "shape_n_k": [
+        4096,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 4096,
+      "eager_reference_not_close_elements": 87,
+      "disjoint_allowed_interval_elements": 2,
+      "maximum_uncovered_gap": 0.020283203572034836,
+      "examples": [
+        {
+          "flat_output_index": 1989,
+          "eager": -0.044677734375,
+          "reference": 0.039794921875,
+          "eager_allowed_interval": [
+            -0.07682128995656967,
+            -0.012534178793430328
+          ],
+          "reference_allowed_interval": [
+            0.0077490247786045074,
+            0.07184082269668579
+          ],
+          "uncovered_gap": 0.020283203572034836
+        },
+        {
+          "flat_output_index": 3482,
+          "eager": 0.001983642578125,
+          "reference": 0.0703125,
+          "eager_allowed_interval": [
+            -0.02930603176355362,
+            0.03327331691980362
+          ],
+          "reference_allowed_interval": [
+            0.03765625134110451,
+            0.10296875238418579
+          ],
+          "uncovered_gap": 0.004382934421300888
+        }
+      ]
+    },
+    {
+      "variant": "q_proj_full",
+      "module": "model.language_model.layers.11.self_attn.q_proj",
+      "shape_n_k": [
+        4096,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 4096,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "q_proj_full",
+      "module": "model.language_model.layers.11.self_attn.q_proj",
+      "shape_n_k": [
+        4096,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 4096,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "q_proj_full",
+      "module": "model.language_model.layers.11.self_attn.q_proj",
+      "shape_n_k": [
+        4096,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 4096,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "q_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.q_proj",
+      "shape_n_k": [
+        2048,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2048,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "q_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.q_proj",
+      "shape_n_k": [
+        2048,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2048,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "q_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.q_proj",
+      "shape_n_k": [
+        2048,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2048,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "q_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.q_proj",
+      "shape_n_k": [
+        2048,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2048,
+      "eager_reference_not_close_elements": 47,
+      "disjoint_allowed_interval_elements": 3,
+      "maximum_uncovered_gap": 0.05162597820162773,
+      "examples": [
+        {
+          "flat_output_index": 320,
+          "eager": -0.7578125,
+          "reference": -0.63671875,
+          "eager_allowed_interval": [
+            -0.8042187690734863,
+            -0.7114062309265137
+          ],
+          "reference_allowed_interval": [
+            -0.6807031035423279,
+            -0.5927343964576721
+          ],
+          "uncovered_gap": 0.03070312738418579
+        },
+        {
+          "flat_output_index": 1241,
+          "eager": 0.053955078125,
+          "reference": -0.0625,
+          "eager_allowed_interval": [
+            0.021625977009534836,
+            0.08628417551517487
+          ],
+          "reference_allowed_interval": [
+            -0.0949999988079071,
+            -0.030000001192092896
+          ],
+          "uncovered_gap": 0.05162597820162773
+        },
+        {
+          "flat_output_index": 1521,
+          "eager": -0.7578125,
+          "reference": -0.859375,
+          "eager_allowed_interval": [
+            -0.8042187690734863,
+            -0.7114062309265137
+          ],
+          "reference_allowed_interval": [
+            -0.9078124761581421,
+            -0.8109375238418579
+          ],
+          "uncovered_gap": 0.006718754768371582
+        }
+      ]
+    },
+    {
+      "variant": "q_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.q_proj",
+      "shape_n_k": [
+        2048,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2048,
+      "eager_reference_not_close_elements": 65,
+      "disjoint_allowed_interval_elements": 4,
+      "maximum_uncovered_gap": 0.02435547113418579,
+      "examples": [
+        {
+          "flat_output_index": 181,
+          "eager": 0.6328125,
+          "reference": 0.52734375,
+          "eager_allowed_interval": [
+            0.5889062285423279,
+            0.6767187714576721
+          ],
+          "reference_allowed_interval": [
+            0.48554688692092896,
+            0.569140613079071
+          ],
+          "uncovered_gap": 0.019765615463256836
+        },
+        {
+          "flat_output_index": 497,
+          "eager": 0.34375,
+          "reference": 0.2451171875,
+          "eager_allowed_interval": [
+            0.30562499165534973,
+            0.38187500834465027
+          ],
+          "reference_allowed_interval": [
+            0.20896483957767487,
+            0.28126952052116394
+          ],
+          "uncovered_gap": 0.02435547113418579
+        },
+        {
+          "flat_output_index": 676,
+          "eager": 0.330078125,
+          "reference": 0.2470703125,
+          "eager_allowed_interval": [
+            0.29222655296325684,
+            0.36792969703674316
+          ],
+          "reference_allowed_interval": [
+            0.2108789086341858,
+            0.2832617163658142
+          ],
+          "uncovered_gap": 0.008964836597442627
+        },
+        {
+          "flat_output_index": 1320,
+          "eager": 0.373046875,
+          "reference": 0.462890625,
+          "eager_allowed_interval": [
+            0.33433592319488525,
+            0.41175782680511475
+          ],
+          "reference_allowed_interval": [
+            0.42238280177116394,
+            0.5033984184265137
+          ],
+          "uncovered_gap": 0.010624974966049194
+        }
+      ]
+    },
+    {
+      "variant": "q_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.q_proj",
+      "shape_n_k": [
+        2048,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 2048,
+      "eager_reference_not_close_elements": 62,
+      "disjoint_allowed_interval_elements": 3,
+      "maximum_uncovered_gap": 0.026220709085464478,
+      "examples": [
+        {
+          "flat_output_index": 915,
+          "eager": 0.00921630859375,
+          "reference": -0.0634765625,
+          "eager_allowed_interval": [
+            -0.022218018770217896,
+            0.040650635957717896
+          ],
+          "reference_allowed_interval": [
+            -0.09599609673023224,
+            -0.03095703199505806
+          ],
+          "uncovered_gap": 0.008739013224840164
+        },
+        {
+          "flat_output_index": 954,
+          "eager": -0.412109375,
+          "reference": -0.33203125,
+          "eager_allowed_interval": [
+            -0.4516015648841858,
+            -0.3726171851158142
+          ],
+          "reference_allowed_interval": [
+            -0.36992186307907104,
+            -0.29414063692092896
+          ],
+          "uncovered_gap": 0.002695322036743164
+        },
+        {
+          "flat_output_index": 1809,
+          "eager": 0.06689453125,
+          "reference": 0.16015625,
+          "eager_allowed_interval": [
+            0.034306641668081284,
+            0.09948241710662842
+          ],
+          "reference_allowed_interval": [
+            0.1257031261920929,
+            0.1946093738079071
+          ],
+          "uncovered_gap": 0.026220709085464478
+        }
+      ]
+    },
+    {
+      "variant": "q_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.q_proj",
+      "shape_n_k": [
+        2048,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2048,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "q_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.q_proj",
+      "shape_n_k": [
+        2048,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2048,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "q_proj_sliding",
+      "module": "model.language_model.layers.0.self_attn.q_proj",
+      "shape_n_k": [
+        2048,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 2048,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.v_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.v_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.v_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.v_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 25,
+      "disjoint_allowed_interval_elements": 1,
+      "maximum_uncovered_gap": 0.015566408634185791,
+      "examples": [
+        {
+          "flat_output_index": 609,
+          "eager": 0.21484375,
+          "reference": 0.1298828125,
+          "eager_allowed_interval": [
+            0.17929688096046448,
+            0.2503906190395355
+          ],
+          "reference_allowed_interval": [
+            0.09603515267372131,
+            0.1637304723262787
+          ],
+          "uncovered_gap": 0.015566408634185791
+        }
+      ]
+    },
+    {
+      "variant": "v_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.v_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 26,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.v_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 18,
+      "disjoint_allowed_interval_elements": 1,
+      "maximum_uncovered_gap": 0.003281235694885254,
+      "examples": [
+        {
+          "flat_output_index": 45,
+          "eager": -0.4609375,
+          "reference": -0.546875,
+          "eager_allowed_interval": [
+            -0.5014062523841858,
+            -0.4204687476158142
+          ],
+          "reference_allowed_interval": [
+            -0.589062511920929,
+            -0.504687488079071
+          ],
+          "uncovered_gap": 0.003281235694885254
+        }
+      ]
+    },
+    {
+      "variant": "v_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.v_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.v_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_full_nonshared",
+      "module": "model.language_model.layers.11.self_attn.v_proj",
+      "shape_n_k": [
+        1024,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 1024,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.v_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.v_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.v_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "unit_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.v_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 15,
+      "disjoint_allowed_interval_elements": 1,
+      "maximum_uncovered_gap": 0.0038671940565109253,
+      "examples": [
+        {
+          "flat_output_index": 447,
+          "eager": -0.2333984375,
+          "reference": -0.1591796875,
+          "eager_allowed_interval": [
+            -0.2693164050579071,
+            -0.1974804699420929
+          ],
+          "reference_allowed_interval": [
+            -0.19361327588558197,
+            -0.12474609911441803
+          ],
+          "uncovered_gap": 0.0038671940565109253
+        }
+      ]
+    },
+    {
+      "variant": "v_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.v_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 10,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.v_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "wide_normal",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": true,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 12,
+      "disjoint_allowed_interval_elements": 1,
+      "maximum_uncovered_gap": 0.002656221389770508,
+      "examples": [
+        {
+          "flat_output_index": 410,
+          "eager": 0.4765625,
+          "reference": 0.5625,
+          "eager_allowed_interval": [
+            0.43578124046325684,
+            0.5173437595367432
+          ],
+          "reference_allowed_interval": [
+            0.5199999809265137,
+            0.6050000190734863
+          ],
+          "uncovered_gap": 0.002656221389770508
+        }
+      ]
+    },
+    {
+      "variant": "v_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.v_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260916,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.v_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260917,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    },
+    {
+      "variant": "v_proj_sliding_nonshared",
+      "module": "model.language_model.layers.0.self_attn.v_proj",
+      "shape_n_k": [
+        512,
+        2560
+      ],
+      "distribution": "near_zero_uniform",
+      "seed": 20260918,
+      "mathematically_impossible_for_any_candidate": false,
+      "output_elements": 512,
+      "eager_reference_not_close_elements": 0,
+      "disjoint_allowed_interval_elements": 0,
+      "maximum_uncovered_gap": 0.0,
+      "examples": []
+    }
+  ],
+  "summary": {
+    "cases_checked": 126,
+    "cases_with_disjoint_frozen_oracle_intervals": 35,
+    "total_output_elements_with_disjoint_intervals": 297,
+    "frozen_correctness_gate_satisfiable": false,
+    "performance_measurement_allowed": false
+  },
+  "formal_candidate_performance_measurement_started": false,
+  "status": "FROZEN_CORRECTNESS_GATE_UNSATISFIABLE"
+}

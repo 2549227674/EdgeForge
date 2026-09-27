@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "manifest": "download_manifest.json",
+  "manifest_sha256": "b24922952c1eb9988abdfeb20f27827815e81f151f8902353e990d2719f13a6b",
+  "verified_at": {
+    "utc": "2026-08-12T08:42:18.857322+00:00",
+    "local": "2026-08-12T16:42:18.857322+08:00"
+  }
+}

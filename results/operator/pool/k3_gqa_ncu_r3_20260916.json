@@ -1,0 +1,626 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_NCU_R3",
+  "timestamp": "2026-09-16T17:48:05+08:00",
+  "status": "K3_R3_NCU_PASS_RECONNECTION_AUTHORIZED",
+  "revision_disclosure": "The original K3 R1 cross-day replication and the subsequently prepared R2 same-day replication are both waived by explicit owner direction after the positive Day-1 result. R2 measurement never started. R3 authorizes ncu attribution directly from the single valid positive Day-1 evidence and must not be described as satisfying a replication gate.",
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "config_path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k3_gqa_ncu_override_r3.json",
+  "runner_path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k3_ncu_r3.py",
+  "source_paths": {
+    "original_protocol_path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k3_gqa_decode_attention_prereg.json",
+    "candidate_path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k3_gqa_attention.py",
+    "correctness_receipt_path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_correctness_receipt_20260916.json",
+    "day1_result_path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_day1_20260916.json",
+    "day1_receipt_path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_day1_receipt_20260916.json",
+    "r2_replication_receipt_path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_replication_override_r2_receipt_20260916.json"
+  },
+  "toolchain": {
+    "version_output": "NVIDIA (R) Nsight Compute Command Line Profiler\nCopyright (c) 2018-2025 NVIDIA Corporation\nVersion 2025.1.1.0 (build 35528883) (public-release)",
+    "command": [
+      "/usr/local/cuda/bin/ncu",
+      "--csv",
+      "--page",
+      "raw",
+      "--metrics",
+      "dram__bytes.sum,dram__throughput.avg.pct_of_peak_sustained_elapsed,sm__throughput.avg.pct_of_peak_sustained_elapsed,gpu__time_duration.sum",
+      "--disable-extra-suffixes",
+      "--cache-control",
+      "all",
+      "--replay-mode",
+      "kernel",
+      "--profile-from-start",
+      "off",
+      "--launch-count",
+      "9",
+      "--target-processes",
+      "application-only",
+      "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+      "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k3_ncu_r3.py",
+      "--target",
+      "--config",
+      "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k3_gqa_ncu_override_r3.json",
+      "--target-receipt",
+      "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_ncu_r3_target_receipt_20260916.json",
+      "--device",
+      "0"
+    ]
+  },
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0"
+    },
+    "cuda": {
+      "available": true,
+      "torch_cuda": "13.0",
+      "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "sm_89",
+      "total_memory_bytes": 8585216000,
+      "multi_processor_count": 24,
+      "l2_cache_size_bytes": 33554432
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 8001 MHz, 140.00 W"
+  },
+  "target_receipt": {
+    "schema_version": 1,
+    "stage": "OP5_K3_NCU_R3_TARGET",
+    "timestamp": "2026-09-16T17:48:03+08:00",
+    "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+    "protocol": {
+      "warmup_candidate_calls_per_case": 50,
+      "profiled_candidate_calls_per_case": 1,
+      "expected_profiled_kernel_launches": 9,
+      "input_seed": 20261011,
+      "cuda_profiler_start_status": "cudaError.success",
+      "cuda_profiler_stop_status": "cudaError.success"
+    },
+    "cases": [
+      {
+        "case": "sliding_k512_d256",
+        "day1_case": "sliding_k512_d256",
+        "family": "sliding",
+        "k_tokens": 512,
+        "head_dim": 256,
+        "projected_invocations": 759290,
+        "day1_candidate_p50_us": 188.928001,
+        "analytic_bytes": 1057792
+      },
+      {
+        "case": "full_k2897_d512",
+        "day1_case": "full_bin05_k2897_d512",
+        "family": "full",
+        "k_tokens": 2897,
+        "head_dim": 512,
+        "projected_invocations": 12656,
+        "day1_candidate_p50_us": 305.151999,
+        "analytic_bytes": 11888290
+      },
+      {
+        "case": "full_k6455_d512",
+        "day1_case": "full_bin11_k6455_d512",
+        "family": "full",
+        "k_tokens": 6455,
+        "head_dim": 512,
+        "projected_invocations": 12656,
+        "day1_candidate_p50_us": 629.248023,
+        "analytic_bytes": 26468974
+      }
+    ],
+    "output_witnesses": [
+      -0.62109375,
+      1.2578125,
+      0.005157470703125
+    ],
+    "status": "PASS"
+  },
+  "raw_ncu_csv_path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_ncu_r3_raw_20260916.csv",
+  "elapsed_seconds": 11.213846974999797,
+  "measurements": [
+    {
+      "case": "sliding_k512_d256",
+      "day1_case": "sliding_k512_d256",
+      "family": "sliding",
+      "k_tokens": 512,
+      "head_dim": 256,
+      "projected_invocations": 759290,
+      "day1_candidate_p50_us": 188.928001,
+      "analytic_bytes": 1057792,
+      "kernel_rows": [
+        {
+          "ncu_id": 0,
+          "kernel_name": "_gqa_score_kernel",
+          "grid_size": "(8, 32, 1)",
+          "block_size": "(128, 1, 1)",
+          "device": "0",
+          "compute_capability": "8.9",
+          "replayer_passes": 7,
+          "metrics": {
+            "dram__bytes.sum": 535680.0,
+            "dram__throughput.avg.pct_of_peak_sustained_elapsed": 45.73,
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": 29.51,
+            "gpu__time_duration.sum": 4640.0
+          }
+        },
+        {
+          "ncu_id": 1,
+          "kernel_name": "_gqa_softmax_kernel",
+          "grid_size": "(8, 1, 1)",
+          "block_size": "(256, 1, 1)",
+          "device": "0",
+          "compute_capability": "8.9",
+          "replayer_passes": 7,
+          "metrics": {
+            "dram__bytes.sum": 20352.0,
+            "dram__throughput.avg.pct_of_peak_sustained_elapsed": 3.4,
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": 3.25,
+            "gpu__time_duration.sum": 2368.0
+          }
+        },
+        {
+          "ncu_id": 2,
+          "kernel_name": "_gqa_pv_kernel",
+          "grid_size": "(8, 8, 1)",
+          "block_size": "(128, 1, 1)",
+          "device": "0",
+          "compute_capability": "8.9",
+          "replayer_passes": 7,
+          "metrics": {
+            "dram__bytes.sum": 537728.0,
+            "dram__throughput.avg.pct_of_peak_sustained_elapsed": 12.95,
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": 50.56,
+            "gpu__time_duration.sum": 16288.0
+          }
+        }
+      ],
+      "measured_dram_bytes": 1093760,
+      "measured_to_analytic_ratio": 1.034002904162633,
+      "relative_delta": 0.034002904162633074,
+      "within_analytic_tolerance": true,
+      "accounting_bytes": 1057792,
+      "accounting_source": "Tier-A analytic (ncu-backed within ±15%)",
+      "ncu_total_duration_ns_diagnostic": 23296.0,
+      "duration_weighted_dram_throughput_pct": 18.508241758241756,
+      "duration_weighted_sm_throughput_pct": 41.558365384615385,
+      "corrected_candidate_gbps_decimal": 5.598915959524708,
+      "corrected_tier_relative_score": 0.02314513678890097
+    },
+    {
+      "case": "full_k2897_d512",
+      "day1_case": "full_bin05_k2897_d512",
+      "family": "full",
+      "k_tokens": 2897,
+      "head_dim": 512,
+      "projected_invocations": 12656,
+      "day1_candidate_p50_us": 305.151999,
+      "analytic_bytes": 11888290,
+      "kernel_rows": [
+        {
+          "ncu_id": 3,
+          "kernel_name": "_gqa_score_kernel",
+          "grid_size": "(8, 182, 1)",
+          "block_size": "(256, 1, 1)",
+          "device": "0",
+          "compute_capability": "8.9",
+          "replayer_passes": 7,
+          "metrics": {
+            "dram__bytes.sum": 5953280.0,
+            "dram__throughput.avg.pct_of_peak_sustained_elapsed": 78.23,
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": 49.54,
+            "gpu__time_duration.sum": 29792.0
+          }
+        },
+        {
+          "ncu_id": 4,
+          "kernel_name": "_gqa_softmax_kernel",
+          "grid_size": "(8, 1, 1)",
+          "block_size": "(256, 1, 1)",
+          "device": "0",
+          "compute_capability": "8.9",
+          "replayer_passes": 7,
+          "metrics": {
+            "dram__bytes.sum": 99712.0,
+            "dram__throughput.avg.pct_of_peak_sustained_elapsed": 13.38,
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": 4.64,
+            "gpu__time_duration.sum": 2976.0
+          }
+        },
+        {
+          "ncu_id": 5,
+          "kernel_name": "_gqa_pv_kernel",
+          "grid_size": "(8, 8, 1)",
+          "block_size": "(256, 1, 1)",
+          "device": "0",
+          "compute_capability": "8.9",
+          "replayer_passes": 7,
+          "metrics": {
+            "dram__bytes.sum": 5985664.0,
+            "dram__throughput.avg.pct_of_peak_sustained_elapsed": 20.24,
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": 40.9,
+            "gpu__time_duration.sum": 115648.0
+          }
+        }
+      ],
+      "measured_dram_bytes": 12038656,
+      "measured_to_analytic_ratio": 1.012648244617182,
+      "relative_delta": 0.012648244617182058,
+      "within_analytic_tolerance": true,
+      "accounting_bytes": 11888290,
+      "accounting_source": "Tier-A analytic (ncu-backed within ±15%)",
+      "ncu_total_duration_ns_diagnostic": 148416.0,
+      "duration_weighted_dram_throughput_pct": 31.742956015523937,
+      "duration_weighted_sm_throughput_pct": 41.907257438551106,
+      "corrected_candidate_gbps_decimal": 38.958584701914404,
+      "corrected_tier_relative_score": 0.16104934929302617
+    },
+    {
+      "case": "full_k6455_d512",
+      "day1_case": "full_bin11_k6455_d512",
+      "family": "full",
+      "k_tokens": 6455,
+      "head_dim": 512,
+      "projected_invocations": 12656,
+      "day1_candidate_p50_us": 629.248023,
+      "analytic_bytes": 26468974,
+      "kernel_rows": [
+        {
+          "ncu_id": 6,
+          "kernel_name": "_gqa_score_kernel",
+          "grid_size": "(8, 404, 1)",
+          "block_size": "(128, 1, 1)",
+          "device": "0",
+          "compute_capability": "8.9",
+          "replayer_passes": 7,
+          "metrics": {
+            "dram__bytes.sum": 13255424.0,
+            "dram__throughput.avg.pct_of_peak_sustained_elapsed": 84.89,
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": 57.09,
+            "gpu__time_duration.sum": 61120.0
+          }
+        },
+        {
+          "ncu_id": 7,
+          "kernel_name": "_gqa_softmax_kernel",
+          "grid_size": "(8, 1, 1)",
+          "block_size": "(128, 1, 1)",
+          "device": "0",
+          "compute_capability": "8.9",
+          "replayer_passes": 7,
+          "metrics": {
+            "dram__bytes.sum": 223616.0,
+            "dram__throughput.avg.pct_of_peak_sustained_elapsed": 21.0,
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": 4.19,
+            "gpu__time_duration.sum": 4192.0
+          }
+        },
+        {
+          "ncu_id": 8,
+          "kernel_name": "_gqa_pv_kernel",
+          "grid_size": "(8, 8, 1)",
+          "block_size": "(128, 1, 1)",
+          "device": "0",
+          "compute_capability": "8.9",
+          "replayer_passes": 7,
+          "metrics": {
+            "dram__bytes.sum": 13329280.0,
+            "dram__throughput.avg.pct_of_peak_sustained_elapsed": 20.49,
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": 38.87,
+            "gpu__time_duration.sum": 254464.0
+          }
+        }
+      ],
+      "measured_dram_bytes": 26808320,
+      "measured_to_analytic_ratio": 1.0128205196015532,
+      "relative_delta": 0.01282051960155317,
+      "within_analytic_tolerance": true,
+      "accounting_bytes": 26468974,
+      "accounting_source": "Tier-A analytic (ncu-backed within ±15%)",
+      "ncu_total_duration_ns_diagnostic": 319776.0,
+      "duration_weighted_dram_throughput_pct": 32.805701991393974,
+      "duration_weighted_sm_throughput_pct": 41.89783148203743,
+      "corrected_candidate_gbps_decimal": 42.064453176676885,
+      "corrected_tier_relative_score": 0.17388857588910017
+    }
+  ],
+  "aggregate": {
+    "cases": 3,
+    "analytic_backed_cases": 3,
+    "ncu_superseded_cases": 0,
+    "all_cases_closed": true,
+    "max_absolute_relative_delta": 0.034002904162633074,
+    "ncu_duration_use": "diagnostic only; Day-1 CUDA-event p50 remains the performance timing"
+  },
+  "telemetry": {
+    "interval_seconds": 1.0,
+    "sample_count": 14,
+    "errors": [],
+    "numeric": {
+      "sm_mhz": {
+        "count": 14,
+        "min": 210.0,
+        "q1": 210.0,
+        "p50": 780.0,
+        "q3": 791.25,
+        "max": 1920.0,
+        "mean": 621.429,
+        "iqr": 581.25
+      },
+      "memory_mhz": {
+        "count": 14,
+        "min": 405.0,
+        "q1": 405.0,
+        "p50": 8000.0,
+        "q3": 8000.0,
+        "max": 8000.0,
+        "mean": 4745.0,
+        "iqr": 7595.0
+      },
+      "temperature_c": {
+        "count": 14,
+        "min": 64.0,
+        "q1": 64.0,
+        "p50": 64.5,
+        "q3": 65.0,
+        "max": 66.0,
+        "mean": 64.643,
+        "iqr": 1.0
+      },
+      "power_w": {
+        "count": 14,
+        "min": 2.21,
+        "q1": 2.433,
+        "p50": 8.045,
+        "q3": 21.495,
+        "max": 29.33,
+        "mean": 12.056,
+        "iqr": 19.062
+      }
+    },
+    "pstates": {
+      "P0": 8,
+      "P8": 6
+    },
+    "throttle_flags": {
+      "clocks_event_reasons.sw_power_cap": false,
+      "clocks_event_reasons.sw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_power_brake_slowdown": false
+    },
+    "thermal_or_hardware_throttle": false,
+    "samples": [
+      {
+        "timestamp": "2026/09/16 17:47:53.640",
+        "pstate": "P8",
+        "clocks.current.sm": "210",
+        "clocks.current.memory": "405",
+        "temperature.gpu": "64",
+        "power.draw": "2.21",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:47:53+08:00",
+        "phase": "k3_ncu_r3"
+      },
+      {
+        "timestamp": "2026/09/16 17:47:53.774",
+        "pstate": "P8",
+        "clocks.current.sm": "210",
+        "clocks.current.memory": "405",
+        "temperature.gpu": "64",
+        "power.draw": "2.42",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:47:53+08:00",
+        "phase": "k3_ncu_r3"
+      },
+      {
+        "timestamp": "2026/09/16 17:47:54.618",
+        "pstate": "P8",
+        "clocks.current.sm": "210",
+        "clocks.current.memory": "405",
+        "temperature.gpu": "64",
+        "power.draw": "3.19",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:47:54+08:00",
+        "phase": "k3_ncu_r3"
+      },
+      {
+        "timestamp": "2026/09/16 17:47:55.614",
+        "pstate": "P8",
+        "clocks.current.sm": "210",
+        "clocks.current.memory": "405",
+        "temperature.gpu": "64",
+        "power.draw": "2.47",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:47:55+08:00",
+        "phase": "k3_ncu_r3"
+      },
+      {
+        "timestamp": "2026/09/16 17:47:56.617",
+        "pstate": "P8",
+        "clocks.current.sm": "210",
+        "clocks.current.memory": "405",
+        "temperature.gpu": "64",
+        "power.draw": "2.33",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:47:56+08:00",
+        "phase": "k3_ncu_r3"
+      },
+      {
+        "timestamp": "2026/09/16 17:47:57.612",
+        "pstate": "P8",
+        "clocks.current.sm": "210",
+        "clocks.current.memory": "405",
+        "temperature.gpu": "64",
+        "power.draw": "2.29",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:47:57+08:00",
+        "phase": "k3_ncu_r3"
+      },
+      {
+        "timestamp": "2026/09/16 17:47:58.607",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "64",
+        "power.draw": "4.33",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:47:58+08:00",
+        "phase": "k3_ncu_r3"
+      },
+      {
+        "timestamp": "2026/09/16 17:47:59.604",
+        "pstate": "P0",
+        "clocks.current.sm": "795",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "22.12",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:47:59+08:00",
+        "phase": "k3_ncu_r3"
+      },
+      {
+        "timestamp": "2026/09/16 17:48:00.612",
+        "pstate": "P0",
+        "clocks.current.sm": "795",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "29.33",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:48:00+08:00",
+        "phase": "k3_ncu_r3"
+      },
+      {
+        "timestamp": "2026/09/16 17:48:01.617",
+        "pstate": "P0",
+        "clocks.current.sm": "810",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "29.04",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:48:01+08:00",
+        "phase": "k3_ncu_r3"
+      },
+      {
+        "timestamp": "2026/09/16 17:48:02.600",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "23.59",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:48:02+08:00",
+        "phase": "k3_ncu_r3"
+      },
+      {
+        "timestamp": "2026/09/16 17:48:03.618",
+        "pstate": "P0",
+        "clocks.current.sm": "1920",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "19.62",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:48:03+08:00",
+        "phase": "k3_ncu_r3"
+      },
+      {
+        "timestamp": "2026/09/16 17:48:04.608",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "14.08",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:48:04+08:00",
+        "phase": "k3_ncu_r3"
+      },
+      {
+        "timestamp": "2026/09/16 17:48:04.999",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "11.76",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:48:05+08:00",
+        "phase": "k3_ncu_r3"
+      }
+    ]
+  },
+  "compact_telemetry": {
+    "sample_count": 14,
+    "errors": [],
+    "sm_mhz_p50": 780.0,
+    "memory_mhz_p50": 8000.0,
+    "temperature_c_max": 66.0,
+    "power_w_p50": 8.045,
+    "throttle_flags": {
+      "clocks_event_reasons.sw_power_cap": false,
+      "clocks_event_reasons.sw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_power_brake_slowdown": false
+    },
+    "thermal_or_hardware_throttle": false
+  },
+  "gates": {
+    "correctness_precondition": "PASS",
+    "positive_day1_precondition": "PASS",
+    "replication_waiver_recorded": "PASS",
+    "exactly_nine_profiled_kernels": "PASS",
+    "required_metrics": "PASS",
+    "three_case_byte_accounts_closed": "PASS",
+    "telemetry_samples": "PASS",
+    "memory_clock": "PASS",
+    "thermal_hardware_throttle_absent": "PASS"
+  },
+  "memory_clock_ratio_vs_op0": 1.0,
+  "reconnection": "AUTHORIZED_AS_NEXT_STAGE_BY_R3_OWNER_OVERRIDE",
+  "next_authorized_action": "C02 output-attentions-false reconnection becomes the next authorized stage; no reconnection is executed inside this ncu stage."
+}

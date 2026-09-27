@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "stage": "C0-1b-logits-gate",
+  "card": "docs/operator/EdgeForge_算子面_板端_执行卡_R2.md",
+  "timestamp_start": "2026-09-17T20:06:07+08:00",
+  "argv": [
+    "scripts/operator/board/verify_c02_backfill_logits_gate.py",
+    "--backend",
+    "bf16"
+  ],
+  "cwd": "/root/autodl-tmp/edgeforge-m1/workspace",
+  "environment": {
+    "hostname": "autodl-container-z7m72ul12w-4c2b02f8",
+    "platform": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "python_executable": "/root/autodl-tmp/edgeforge-m1/workspace/../venv/bin/python",
+    "packages": {
+      "torch": "2.11.0+cu128",
+      "transformers": "5.14.1",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.22.2"
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4090, 49140 MiB, 580.105.08"
+  },
+  "script": "/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/board/verify_c02_backfill_logits_gate.py",
+  "script_sha256": "e508b7d46b1678a693a976a3038a5c86c128320f906660a78ce70a7352a52150",
+  "prompts": [
+    "Write a bash one-liner that counts unique IP addresses in access.log.",
+    "用一句话解释什么是 KV cache。",
+    "def fib(n):"
+  ],
+  "max_new_tokens": 32,
+  "seed": 20260917,
+  "original": "models/C02-S.O-bf16-r1",
+  "backfilled": "models/C02-S.O-rkllm-input-r1",
+  "status": "FAIL",
+  "backend_requested": "bf16",
+  "backend_selected": "bf16",
+  "auto_detected_cuda_total_bytes": null,
+  "timestamp_end": "2026-09-17T20:06:23+08:00",
+  "error_type": "RuntimeError",
+  "error": "worker failed for models/C02-S.O-bf16-r1 with exit 1\nstdout:\n\nstderr:\n[transformers] Reading global config value for per-layer attribute `head_dim` on a heterogeneous config. Only do this if the caller can safely handle heterogeneous configs; code that assumes a homogeneous model may use the global value incorrectly.\n\nLoading weights:   0%|          | 0/2076 [00:00<?, ?it/s]\nLoading weights:  12%|█▏        | 240/2076 [00:00<00:00, 2388.20it/s]\nLoading weights:  23%|██▎       | 479/2076 [00:00<00:00, 2138.69it/s]\nLoading weights:  33%|███▎      | 695/2076 [00:00<00:00, 2080.49it/s]\nLoading weights:  44%|████▎     | 904/2076 [00:02<00:04, 291.36it/s] \nLoading weights:  50%|████▉     | 1036/2076 [00:02<00:03, 289.76it/s]\nLoading weights:  54%|█████▍    | 1131/2076 [00:02<00:03, 295.49it/s]\nLoading weights:  58%|█████▊    | 1204/2076 [00:03<00:03, 286.69it/s]\nLoading weights:  61%|██████    | 1262/2076 [00:03<00:02, 280.33it/s]\nLoading weights:  63%|██████▎   | 1310/2076 [00:03<00:02, 275.63it/s]\nLoading weights:  65%|██████▌   | 1351/2076 [00:03<00:02, 267.16it/s]\nLoading weights:  67%|██████▋   | 1387/2076 [00:03<00:02, 272.71it/s]\nLoading weights:  68%|██████▊   | 1421/2076 [00:03<00:02, 269.17it/s]\nLoading weights:  80%|████████  | 1668/2076 [00:04<00:00, 660.96it/s]\nLoading weights:  92%|█████████▏| 1907/2076 [00:04<00:00, 1011.54it/s]\nLoading weights: 100%|██████████| 2076/2076 [00:04<00:00, 487.28it/s] \nTraceback (most recent call last):\n  File \"/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/board/verify_c02_backfill_logits_gate.py\", line 514, in <module>\n    raise SystemExit(main())\n  File \"/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/board/verify_c02_backfill_logits_gate.py\", line 403, in main\n    print(\"WORKER_JSON:\" + json.dumps(result, ensure_ascii=False), flush=True)\n  File \"/usr/lib/python3.10/json/__init__.py\", line 238, in dumps\n    **kw).encode(obj)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 199, in encode\n    chunks = self.iterencode(o, _one_shot=True)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 257, in iterencode\n    return _iterencode(o, 0)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 179, in default\n    raise TypeError(f'Object of type {o.__class__.__name__} '\nTypeError: Object of type set is not JSON serializable\n",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/board/verify_c02_backfill_logits_gate.py\", line 433, in main\n    reference = run_worker(args.original, backend, args.device, args.seed)\n  File \"/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/board/verify_c02_backfill_logits_gate.py\", line 333, in run_worker\n    raise RuntimeError(\nRuntimeError: worker failed for models/C02-S.O-bf16-r1 with exit 1\nstdout:\n\nstderr:\n[transformers] Reading global config value for per-layer attribute `head_dim` on a heterogeneous config. Only do this if the caller can safely handle heterogeneous configs; code that assumes a homogeneous model may use the global value incorrectly.\n\nLoading weights:   0%|          | 0/2076 [00:00<?, ?it/s]\nLoading weights:  12%|█▏        | 240/2076 [00:00<00:00, 2388.20it/s]\nLoading weights:  23%|██▎       | 479/2076 [00:00<00:00, 2138.69it/s]\nLoading weights:  33%|███▎      | 695/2076 [00:00<00:00, 2080.49it/s]\nLoading weights:  44%|████▎     | 904/2076 [00:02<00:04, 291.36it/s] \nLoading weights:  50%|████▉     | 1036/2076 [00:02<00:03, 289.76it/s]\nLoading weights:  54%|█████▍    | 1131/2076 [00:02<00:03, 295.49it/s]\nLoading weights:  58%|█████▊    | 1204/2076 [00:03<00:03, 286.69it/s]\nLoading weights:  61%|██████    | 1262/2076 [00:03<00:02, 280.33it/s]\nLoading weights:  63%|██████▎   | 1310/2076 [00:03<00:02, 275.63it/s]\nLoading weights:  65%|██████▌   | 1351/2076 [00:03<00:02, 267.16it/s]\nLoading weights:  67%|██████▋   | 1387/2076 [00:03<00:02, 272.71it/s]\nLoading weights:  68%|██████▊   | 1421/2076 [00:03<00:02, 269.17it/s]\nLoading weights:  80%|████████  | 1668/2076 [00:04<00:00, 660.96it/s]\nLoading weights:  92%|█████████▏| 1907/2076 [00:04<00:00, 1011.54it/s]\nLoading weights: 100%|██████████| 2076/2076 [00:04<00:00, 487.28it/s] \nTraceback (most recent call last):\n  File \"/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/board/verify_c02_backfill_logits_gate.py\", line 514, in <module>\n    raise SystemExit(main())\n  File \"/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/board/verify_c02_backfill_logits_gate.py\", line 403, in main\n    print(\"WORKER_JSON:\" + json.dumps(result, ensure_ascii=False), flush=True)\n  File \"/usr/lib/python3.10/json/__init__.py\", line 238, in dumps\n    **kw).encode(obj)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 199, in encode\n    chunks = self.iterencode(o, _one_shot=True)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 257, in iterencode\n    return _iterencode(o, 0)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 179, in default\n    raise TypeError(f'Object of type {o.__class__.__name__} '\nTypeError: Object of type set is not JSON serializable\n\n"
+}

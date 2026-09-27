@@ -1,0 +1,131 @@
+schema_version: 1
+milestone: M1
+stage: T3_teacher_acceptance
+status: ready_verified_and_bf16_server_qualified
+frozen_at: 2026-08-11
+updated_at: 2026-08-12
+
+source:
+  repo_id: google/gemma-4-31B-it
+  revision: 842da3794eaa0b77d5f08bae87a17459d91ff475
+  gated: false
+  expected_repository_bytes: 62578686256
+  files:
+    model-00001-of-00002.safetensors:
+      bytes: 49784788364
+      sha256: eeef8791537bc04f110967c513149e037d2a9ae97d49add7291ebfa62806bbfa
+    model-00002-of-00002.safetensors:
+      bytes: 12761549884
+      sha256: 018912220f559f7025d60333e0996183cd538aa77ad6f4988a89ce47be681f10
+    tokenizer.json:
+      bytes: 32169626
+      sha256: cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f
+
+download:
+  cloud_output: models/gemma-4-31B-it
+  script: scripts/m1/download_t3_teacher.py
+  endpoint: https://hf-mirror.com
+  endpoint_role: transport_only
+  integrity_authority: upstream_huggingface_lfs_sha256
+  max_workers: 4
+  resumable: true
+  ready_marker: models/gemma-4-31B-it/READY
+  pc_proxy_fallback: http_over_ssh_reverse_tunnel
+  pc_proxy_fallback_scope: metadata_and_small_files_only
+  cloud_prefetch:
+    status: owner_cancelled_2026-08-11
+    process_running: false
+    ready_marker_present: false
+    preserved_directory_bytes: 200131824
+    preserved_regular_file_bytes: 200123330
+    note: partial_unverified_metadata_and_cache_only_not_a_model_artifact
+    archive_path: models/gemma-4-31B-it.partial-unverified-20260811
+  replacement_transfer:
+    source: owner_local_verified_download
+    method: mobaxterm_sftp
+    observed_local_download_rate_mib_per_second: 3
+    destination: models/gemma-4-31B-it
+    post_upload_verification: scripts/m1/download_t3_teacher.py_upstream_size_and_sha256_gate
+
+acceptance:
+  status: PASS
+  verified_at: 2026-08-12T16:42:18.857322+08:00
+  verification_mode: verify_only
+  canonical_path: /root/autodl-tmp/edgeforge-m1/workspace/models/gemma-4-31B-it
+  archived_partial_path: /root/autodl-tmp/edgeforge-m1/workspace/models/gemma-4-31B-it.partial-unverified-20260811
+  repository_files: 12
+  repository_bytes: 62578686256
+  repository_artifact_set_sha256: d36ce1b4da4dfd476c42a3cf3130c31999931ee8b205ec43ed7702ffd3ca9ee6
+  manifest:
+    cloud_path: models/gemma-4-31B-it/download_manifest.json
+    repository_receipt: results/m1/t3_teacher_acceptance_receipt.json
+    sha256: b24922952c1eb9988abdfeb20f27827815e81f151f8902353e990d2719f13a6b
+  ready:
+    cloud_path: models/gemma-4-31B-it/READY
+    repository_receipt: results/m1/t3_teacher_READY.json
+    sha256: 4b74ba0266b9e51eaa5e5403a6835203df078d827115b00805f96c28d935eaa1
+  verifier_script_sha256: 376e0ddc4e65bc3cfb0a28b8bba4697fc47608d492f31ed15e84b03f5b243526
+  runtime_identity:
+    hostname: autodl-container-uh8nves9v6-22e5a1b3
+    instance_started_at: 2026-08-12T16:06:41.880000+08:00
+    cgroup_memory_bytes: 257698037760
+    cgroup_memory_gib: 240
+    cgroup_cpu_max: "5000000 100000"
+    cgroup_cpu_quota_cores: 50
+    gpus:
+      - index: 0
+        uuid: GPU-8441031a-35d4-fc0b-d6c1-70adb534e305
+      - index: 1
+        uuid: GPU-39160c7c-0272-9254-c171-be00298b0dfc
+
+runtime:
+  isolated_environment: /root/autodl-tmp/edgeforge-m1/t3-venv-py312
+  python: 3.12.3
+  packages:
+    torch: 2.13.0
+    transformers: 5.15.0
+    trl: 1.9.2
+    peft: 0.20.0
+    bitsandbytes: 0.50.0
+    accelerate: 1.14.0
+    datasets: 5.0.1
+    vllm: 0.27.0
+  forbid_mutating_completed_t2_environment: true
+  declared_compatibility_exception:
+    present: true
+    detail: TRL_1.9.2_declares_vllm_0.17.0_through_0.25.1
+    disposition: accepted_only_after_dynamic_HTTP_binary_logprob_and_backward_gate
+    receipt: results/m1/t3_latest_stack_multimodal_bf16_dynamic_receipt.json
+
+qualified_server:
+  status: running_healthy
+  precision: bfloat16
+  full_multimodal_checkpoint_loaded: true
+  opd_request_path: pretokenized_text_token_ids
+  gpu_index: 0
+  gpu_uuid: GPU-8441031a-35d4-fc0b-d6c1-70adb534e305
+  host: 127.0.0.1
+  port: 8000
+  tensor_parallel_size: 1
+  data_parallel_size: 1
+  gpu_memory_utilization: 0.80
+  max_model_len: 8192
+  checkpoint_native_max_position_embeddings: 262144
+  max_num_seqs: 8
+  enable_prefix_caching: true
+  enforce_eager: true
+  kv_cache_dtype: auto
+  startup_memory_used_mib: 75639
+  max_model_len_reason: >-
+    TRL 1.9.2 get_sequence_logprobs internally asks vLLM for one extra token;
+    8192 keeps a full 4096-token OPD sequence legal without dropping its final
+    supervised token. Increasing to 16384 would not improve the frozen 4096-token
+    workload and would reduce concurrency under a fixed KV-cache budget.
+  numerical_gate:
+    sample_count: 32
+    scored_tokens: 16352
+    fp8_vs_bf16_top1_agreement: 0.8653375733855186
+    required_top1_agreement: 0.99
+    fp8_status: rejected
+    selected_precision: bfloat16
+    receipt: results/m1/t3_logprob_consistency/three_way_receipt.json

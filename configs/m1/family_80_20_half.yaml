@@ -1,0 +1,69 @@
+schema_version: 1
+milestone: M1
+stage: T2_c01_s_training
+frozen_at: 2026-08-11
+
+decision:
+  authority: owner_override
+  recipe: family_80_20
+  race_status: abandoned_without_winner
+  token_budget_policy: half_of_post_segment_training_pool
+  smoke_policy: owner_waiver_2026_08_11
+
+identity:
+  rendered_report_sha256: 0694e87c5b75185adff702929d6f03f8fdd3098d7059e16fb95db83866b2bb02
+  holdout_manifest_sha256: c6ae96e93474b639ee4217a0d14506e383d1f406320b01a0b0aa1ec75c1b9374
+  plan_manifest_sha256: 3e5879066ea8946b9f7c11c511417b5423db2fb9ffaceb6f8b3e507ffbdfd102
+  plan_sha256: 61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e
+  holdout_parquet_sha256: 0a28a7f7b52a01f7a73ccdf927f98ac21902f8037ef236db4f86d5024a67d73b
+  template_sha256: 0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5
+
+data:
+  renderer_branch: segmented_4096_r6
+  max_seq_length: 4096
+  full_post_crop_training_tokens: 296850623
+  selected_input_tokens: 148425311
+  selected_shifted_supervised_tokens: 88486262
+  selected_windows: 81757
+  selected_unique_windows: 81757
+  selected_unique_sources: 64756
+  duplicate_draws: 0
+  sampled_records:
+    anthropic: 65362
+    other: 16395
+  optimizer_steps: 4096
+
+training:
+  base_model: gemma-4-E4B-it
+  topology: 2x_RTX_PRO_6000_DDP
+  world_size: 2
+  seed: 20260811
+  rank_seeds: [20260811, 20260812]
+  attention_implementation: sdpa
+  dtype: bf16
+  use_cache: true
+  activation_checkpointing: false
+  quantization: bnb_nf4_double_quant_bf16_compute
+  lora:
+    rank: 8
+    alpha: 16
+    dropout: 0.0
+    bias: none
+    target_modules: all-linear
+  micro_batch_size: 1
+  optimizer: AdamW
+  learning_rate: 0.0002
+  scheduler: cosine
+  warmup_ratio: 0.03
+  warmup_steps: 123
+  gradient_accumulation: variable_records_token_weighted
+  validation_interval_optimizer_steps: 1024
+  checkpoint_interval_optimizer_steps: 512
+  expected_final_optimizer_step: 4096
+  expected_input_tokens: 148425311
+
+cloud:
+  workspace: /root/autodl-tmp/edgeforge-m1/workspace
+  plan: results/t1/family_80_20_half_plan_r1/family_80_20.parquet
+  holdout: results/t1/family_80_20_half_plan_r1/holdout.parquet
+  output: results/t2/c01_s_family_80_20_half_r1

@@ -1,0 +1,4 @@
+variant	events	exit_code
+scalar_ref	cycles:u,instructions:u,l2d_cache_refill:u,bus_access:u	0
+autovec_o3	cycles:u,instructions:u,l2d_cache_refill:u,bus_access:u	0
+neon_fp16	cycles:u,instructions:u,l2d_cache_refill:u,bus_access:u	0

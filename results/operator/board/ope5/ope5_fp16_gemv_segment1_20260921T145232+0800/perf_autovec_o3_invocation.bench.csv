@@ -1,0 +1,2 @@
+scope,variant,invocations,analytic_bytes_per_invocation,ops_per_invocation,elapsed_ms,threads,working_set_weight_bytes,affinity_pass,partition_coverage_pass,sink
+perf_invocation,autovec_o3,512,52459520,52428800,3004.12321,4,52428800,1,1,0

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "segment_id": "ope5_fp16_gemv_segment1_20260921T145232+0800",
+  "controller_before": "2026-09-21T14:52:32.731171628+08:00",
+  "controller_after": "2026-09-21T14:53:15.538703367+08:00",
+  "controller_elapsed_seconds": 42.800745992,
+  "ssh_exit_code": 0,
+  "board_target": "orangepi@192.168.137.66",
+  "formal_segment_ordinal": 1,
+  "additional_segment_scheduled": false,
+  "instability_retry_authorized": false,
+  "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+  "clock_domain_note": "Controller timestamps identify the formal run. Board wall time is separately retained from the unsynchronized board RTC, while every measured duration uses board CLOCK_MONOTONIC_RAW; the two wall-clock domains are not subtracted from each other."
+}

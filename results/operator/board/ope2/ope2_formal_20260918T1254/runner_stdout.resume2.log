@@ -1,0 +1,12 @@
+{"progress":680,"runnable_completed":190,"last":"formal__prefill_m7082_mlp_gate_up_proj__fp16xfp16_to_fp32__core0__native","status":"PASS"}
+{"progress":716,"runnable_completed":200,"last":"formal__prefill_m813_mlp_down_proj__fp16xfp16_to_fp32__core0__native","status":"PASS"}
+{"progress":752,"runnable_completed":210,"last":"formal__prefill_m5142_mlp_down_proj__fp16xfp16_to_fp32__core0__native","status":"PASS"}
+{"progress":788,"runnable_completed":220,"last":"formal__decode_ple_context_projection__fp16xfp16_to_fp32__core0__native","status":"PASS"}
+{"progress":824,"runnable_completed":230,"last":"formal__prefill_m1445_ple_context_projection__fp16xfp16_to_fp32__core0__native","status":"PASS"}
+{"progress":860,"runnable_completed":240,"last":"formal__prefill_m7082_ple_context_projection__fp16xfp16_to_fp32__core0__native","status":"PASS"}
+{"progress":896,"runnable_completed":250,"last":"formal__prefill_m813_ple_input_gate__fp16xfp16_to_fp32__core0__native","status":"PASS"}
+{"progress":932,"runnable_completed":260,"last":"formal__prefill_m5142_ple_input_gate__fp16xfp16_to_fp32__core0__native","status":"PASS"}
+{"progress":968,"runnable_completed":270,"last":"formal__decode_ple_residual_projection__fp16xfp16_to_fp32__core0__native","status":"PASS"}
+{"progress":1004,"runnable_completed":280,"last":"formal__prefill_m1445_ple_residual_projection__fp16xfp16_to_fp32__core0__native","status":"PASS"}
+{"progress":1040,"runnable_completed":290,"last":"formal__prefill_m7082_ple_residual_projection__fp16xfp16_to_fp32__core0__native","status":"PASS"}
+{"status":"PASS_TERMINAL_MATRIX_COMPLETE","terminal_count":1206,"expected_terminal_count":1206,"runnable_completed":307,"resumed":true,"resume_initial_terminal_count":673,"finished_at":"2026-09-18T21:31:17.490041+08:00"}

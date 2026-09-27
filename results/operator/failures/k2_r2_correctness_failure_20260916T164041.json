@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K2_R2_CORRECTNESS",
+  "started_at": "2026-09-16T16:39:14+08:00",
+  "failed_at": "2026-09-16T16:40:41+08:00",
+  "protocol": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k2_nf4_decode_gemv_prereg_r2.json",
+  "protocol_sha256": "86c3e13edaca148b4c7bcceddfe9d86806997155b285ca39408876e721e739ae",
+  "locked_candidate": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k2_nf4_gemv.py",
+  "locked_candidate_sha256": "149b4b8c651cfa6530f320779687132f0bdb31f511282473250ffc80257d7c65",
+  "runner": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_r2_correctness.py",
+  "runner_sha256": "341dbbf57d9d622f4ce894bd7d0a394c80e3aae9a13ca4f993db87c173ecb7a7",
+  "command": [
+    "scripts/operator/run_k2_r2_correctness.py"
+  ],
+  "error_type": "IndexError",
+  "error": "slice() cannot be applied to a 0-dim tensor.",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_r2_correctness.py\", line 591, in main\n    receipt = execute(\n              ^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_r2_correctness.py\", line 505, in execute\n    correctness = run_correctness(protocol, prepared, layout, device)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_r2_correctness.py\", line 434, in run_correctness\n    fallback = run_fallback_checks(fallback_record, device)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_day.py\", line 366, in run_fallback_checks\n    proxy = copied_proxy(record, mutation)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_day.py\", line 307, in copied_proxy\n    mutation(proxy, state, state2)\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_day.py\", line 361, in <lambda>\n    (\"scale_offset_size_mismatch\", lambda proxy, state, state2: setattr(state, \"offset\", state.offset[:0])),\n                                                                                         ~~~~~~~~~~~~^^^^\nIndexError: slice() cannot be applied to a 0-dim tensor.\n",
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0",
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0"
+    },
+    "cuda": {
+      "available": true,
+      "torch_cuda": "13.0",
+      "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "sm_89",
+      "total_memory_bytes": 8585216000,
+      "multi_processor_count": 24,
+      "l2_cache_size_bytes": 33554432
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 8001 MHz, 140.00 W"
+  },
+  "formal_candidate_performance_started": false,
+  "r2_candidate_attempt_disposition": "CLOSE_K2_IF_CANDIDATE_CORRECTNESS_FAILURE; FIX_HARNESS_ONLY_IF_FAILURE_IS_PROVEN_NON_CANDIDATE",
+  "status": "FAIL"
+}

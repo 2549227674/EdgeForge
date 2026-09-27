@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/board/run_c02_rkllm_build.py", line 782, in <module>
+    raise SystemExit(main())
+  File "/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/board/run_c02_rkllm_build.py", line 776, in main
+    return worker(args)
+  File "/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/board/run_c02_rkllm_build.py", line 413, in worker
+    resources = resource_preflight(
+  File "/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/board/run_c02_rkllm_build.py", line 347, in resource_preflight
+    raise ValueError(
+ValueError: cgroup memory.max is below the frozen 96 GiB floor: 98784247808 B (92.00 GiB); an explicit --allow-memory-variance plus --memory-variance-note is required

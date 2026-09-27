@@ -1,0 +1,1941 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-06T07:26:37.104809+00:00",
+  "datasets": [
+    {
+      "repo_id": "AletheiaResearch/GLM-5.2-Agent",
+      "revision": "d032fa92b465d6f8e64c014d8239564a8e3adb74",
+      "revision_source": "refs/convert/parquet",
+      "hub_default_revision": "c0c098b3a1bdc8c0a4896ed92b31769bcd52ce61",
+      "upstream_rows": 319,
+      "local_rows": 319,
+      "completeness": 1.0,
+      "license": "unlabeled",
+      "row_count_detail": {
+        "source_unit": "rows"
+      },
+      "files": [
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/.gitattributes",
+          "bytes": 2504,
+          "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T19-53-37-440Z_019ee172-2f9f-7341-8125-4e5d535d9e56.jsonl",
+          "bytes": 19819,
+          "sha256": "408bcb9eb9500cfb4c163f77548483c333dd5fb65ea0b0624920e4466f74bb0c",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T19-54-59-456Z_019ee173-6fff-7300-ab06-cf89fc97744b.jsonl",
+          "bytes": 10251,
+          "sha256": "052dc90ccf55dff56b3229babe647c0cc532c31c37109ecff4de94ef84c28268",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T19-55-46-723Z_019ee174-28a3-76b2-bae6-f6679665530c.jsonl",
+          "bytes": 74418,
+          "sha256": "c74d4465a85b1e18a5626239e60166d6f89e054459455c157bc450693f33f1b6",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T19-58-39-773Z_019ee176-cc9c-75e8-b51f-0e9c33a33f5c.jsonl",
+          "bytes": 10663,
+          "sha256": "762a897ca3104b8e16214326195f55253ed4ce39c9cbca70fad40ccb8ca61c8a",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T19-59-12-041Z_019ee177-4aa8-7439-af33-649141f0e2c6.jsonl",
+          "bytes": 21821,
+          "sha256": "0d801b9e498258356cad4f4d66b678e57f2c2d548fd13aa938aaafbeb3a9a785",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T20-17-54-011Z_019ee188-695b-729e-9bcb-9192fc451d25.jsonl",
+          "bytes": 371103,
+          "sha256": "1119bd8a2c7a2574ac1b730fc708b59dd60602ee6dd821903a773b347f977674",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T20-17-54-075Z_019ee188-699b-710a-9553-087aa3830843.jsonl",
+          "bytes": 267978,
+          "sha256": "5e78be91087511d0dc1ecd45ed2d2309e8cc5f94d193296213da85a8306816b0",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T20-17-54-411Z_019ee188-6aeb-7465-a2b1-a5ecc2672d35.jsonl",
+          "bytes": 499937,
+          "sha256": "779e855a1a90b054801c02326adeb59c65fab5bee2e7530e988085d0d7936a22",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T20-17-54-485Z_019ee188-6b34-7106-a681-f5d68ade46b5.jsonl",
+          "bytes": 575360,
+          "sha256": "b92bbfc908d46e2b5a66a4e161c17ad292f4c130e01c9b6cfa2bca34fe9c25be",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T20-17-54-505Z_019ee188-6b49-74fe-acdf-7db962bf91cf.jsonl",
+          "bytes": 211305,
+          "sha256": "b566f6a329beabb8f9f66b5f222f5c8b526ab9dad16c85500aa5cbab60a8ea33",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T20-17-54-526Z_019ee188-6b5d-739c-abc4-7a695e11ec95.jsonl",
+          "bytes": 227503,
+          "sha256": "0b349d69293fc84d878744b24260721cd1abf8f12f9aead0685417270ed9305d",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T20-17-54-836Z_019ee188-6c93-709c-9a90-b72bfff48d3a.jsonl",
+          "bytes": 130091,
+          "sha256": "9fd75aff72a98e7d2a9f3b9dd9ee4bb959d292766f3b4b0fe243fa8795b5fc76",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T20-26-43-053Z_019ee190-7bed-7235-9acc-bbf17f0b6e46.jsonl",
+          "bytes": 357119,
+          "sha256": "35576b6935046d2ed0900e3294fbf8953b820e897b3a794a0933f2742a5525fb",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T20-30-31-086Z_019ee193-f6ad-726a-a910-1fc256893c5c.jsonl",
+          "bytes": 389323,
+          "sha256": "c1cd911a88874b60debc14fb64807397464b2a473cf4134cfb2252105a5c5331",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/AletheiaResearch__GLM-5.2-Agent/2026-06-19T20-40-06-176Z_019ee19c-bd20-74bd-bc18-a7db41554c6b.jsonl",
+          "bytes": 27018,
+          "sha256": "a0f3acaf3eaee95a3f4a343a1c81b65fc98f7072ab1ce341e7daea25a3c0be72",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive_parquet/AletheiaResearch__GLM-5.2-Agent/.gitattributes",
+          "bytes": 2504,
+          "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive_parquet/AletheiaResearch__GLM-5.2-Agent/default/train/0000.parquet",
+          "bytes": 141457047,
+          "sha256": "a72c38eaa8e6b92e11a2ae42bf6a768fa21df0339d1a0aca60d0c4bd6320416e",
+          "role": "canonical_parquet",
+          "included": true
+        }
+      ]
+    },
+    {
+      "repo_id": "Crownelius/Complete-FABLE.5-traces-2M",
+      "revision": "e9e7757647a0b51c86c5c7ad5425535ed62e0d08",
+      "revision_source": "refs/convert/parquet",
+      "hub_default_revision": "b9f20b5c2638b96311252d5894e3d010ba2a2715",
+      "upstream_rows": 228968,
+      "local_rows": 228968,
+      "completeness": 1.0,
+      "license": "mit",
+      "row_count_detail": {
+        "source_unit": "rows"
+      },
+      "files": [
+        {
+          "path": "data/archive/Crownelius__Complete-FABLE.5-traces-2M/.gitattributes",
+          "bytes": 55,
+          "sha256": "1ba02f320cee0765ede628ba0dcc077e4ab3117bd4252e5e91f1ed4b3dc5f534",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/Crownelius__Complete-FABLE.5-traces-2M/README.md",
+          "bytes": 12551,
+          "sha256": "65a830e9b39e44d26ef5e9677f4509dfaead90f8da346ac2d9ab404d15ef0cd5",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/Crownelius__Complete-FABLE.5-traces-2M/data/train.parquet",
+          "bytes": 307137038,
+          "sha256": "549b44692b2b76a072e539c04a012ddcac6b70766451beed047c05a0e974638d",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive_parquet/Crownelius__Complete-FABLE.5-traces-2M/.gitattributes",
+          "bytes": 2504,
+          "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive_parquet/Crownelius__Complete-FABLE.5-traces-2M/default/train/0000.parquet",
+          "bytes": 52982642,
+          "sha256": "139cc72ade6eb61ce28cd4812f8a0f985ad9c519c075c0cfac27586accc9e057",
+          "role": "canonical_parquet",
+          "included": true
+        },
+        {
+          "path": "data/archive_parquet/Crownelius__Complete-FABLE.5-traces-2M/default/train/0001.parquet",
+          "bytes": 54219252,
+          "sha256": "4cf80076b442e1780d8f29e7817aab19f7fd01b629723b6589302742ba8402a7",
+          "role": "canonical_parquet",
+          "included": true
+        },
+        {
+          "path": "data/archive_parquet/Crownelius__Complete-FABLE.5-traces-2M/default/train/0002.parquet",
+          "bytes": 44634638,
+          "sha256": "7c34e46d84b28fdac76b1fb9fde62bb8c4b380361e9035a3f03d90cda24ac8b5",
+          "role": "canonical_parquet",
+          "included": true
+        },
+        {
+          "path": "data/archive_parquet/Crownelius__Complete-FABLE.5-traces-2M/default/train/0003.parquet",
+          "bytes": 385821180,
+          "sha256": "9bea589182fe1698dcc08ec3352589945cca5436033778d837898a982d793025",
+          "role": "canonical_parquet",
+          "included": true
+        }
+      ]
+    },
+    {
+      "repo_id": "Glint-Research/Fable-5-traces",
+      "revision": "7c96478a42e0d5149e9b0bfa9cb966dcc007d3f1",
+      "revision_source": "refs/convert/parquet",
+      "hub_default_revision": "e05c417852fc59fd8da758e68b352732423ca0cb",
+      "upstream_rows": 4665,
+      "local_rows": 4665,
+      "completeness": 1.0,
+      "license": "agpl-3.0",
+      "row_count_detail": {
+        "source_unit": "rows"
+      },
+      "files": [
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/.gitattributes",
+          "bytes": 2676,
+          "sha256": "b022b31657bb7be98106f9b1c3b4a3c4f9bceb314eb891f39993b1f5c8ebe49f",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/README.md",
+          "bytes": 12795,
+          "sha256": "a5cd96fe39fc7e7f8fa3d37b1c5bd3f252ce879d70858a6269b73e875db46ff9",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/assets/glintresearchfableheader.png",
+          "bytes": 140048,
+          "sha256": "d18623c5245f7d5c1566ecc83682ab38b78404a3e07045c0bc883da3f8a88411",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/cache/changelog.md",
+          "bytes": 376655,
+          "sha256": "b5d79a5c32e70e4a056d14d56a749e464bd845c7b142d682472dab40f96b478a",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/history.jsonl",
+          "bytes": 559137,
+          "sha256": "f2c4a86c65a2bad153753499fcc687611705f21179ab326efa5b1245eae10476",
+          "role": "cli_history",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/paste-cache/26557a1291a691ff.txt",
+          "bytes": 6547,
+          "sha256": "26557a1291a691ff3cd9c627a1eb9264e8947b970880dd085a65c1564222033d",
+          "role": "security_scan_only",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/paste-cache/289d35ad600e9f18.txt",
+          "bytes": 2137,
+          "sha256": "289d35ad600e9f187fc422c30a42c41a5cb97655daf3ff4b2dc27753b9bd7d26",
+          "role": "security_scan_only",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/paste-cache/3d034111b3a0d851.txt",
+          "bytes": 5981,
+          "sha256": "3d034111b3a0d851c9d819ffcffb8d42ea481129a3c4b45ff32b705d664f7cfb",
+          "role": "security_scan_only",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/paste-cache/41cb0a6a3755cedb.txt",
+          "bytes": 4717,
+          "sha256": "41cb0a6a3755cedbbf0c1cac944ee7af0434f76263e9597d4623f79c731d601e",
+          "role": "security_scan_only",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/paste-cache/78b07ebdd0d0e57d.txt",
+          "bytes": 3298,
+          "sha256": "78b07ebdd0d0e57dee25ab796f4bd9260097d34c304c69349b6dafde14c6b7cb",
+          "role": "security_scan_only",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/paste-cache/9da7ea5b402849c6.txt",
+          "bytes": 3137,
+          "sha256": "9da7ea5b402849c6e8b179bda4d647d153cdf476a4da648b42a3424466de3144",
+          "role": "security_scan_only",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/paste-cache/c1c50157ecd007f0.txt",
+          "bytes": 5385,
+          "sha256": "c1c50157ecd007f0b41344fe5f56d06d69cefd68e98ee81bcefeb1f8bdbef3d6",
+          "role": "security_scan_only",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/paste-cache/c5c26f9df8ea3b6e.txt",
+          "bytes": 10738,
+          "sha256": "c5c26f9df8ea3b6ec515d1d0624be791ac626c697a265706469e2f344a5e16e3",
+          "role": "security_scan_only",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/paste-cache/c5daac8129574dfa.txt",
+          "bytes": 6602,
+          "sha256": "c5daac8129574dfa6179d069b2827fd34376f558189a29309a1c4c75eae2b0a0",
+          "role": "security_scan_only",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/paste-cache/d8636a4e02aaa5db.txt",
+          "bytes": 20533,
+          "sha256": "d8636a4e02aaa5db87d9165cd427e23a18c3251c3f11adf6e7151a15808d5e23",
+          "role": "security_scan_only",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-/07e6bf40-f5d6-4655-854d-787295d0aae2.jsonl",
+          "bytes": 27804,
+          "sha256": "916549d726fa0255ebcaef753fa5e5ae9e5ba9624186f26b7c77d9aed900d7f4",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-/311883ad-f031-4619-ab72-1aeb410a9123.jsonl",
+          "bytes": 23644,
+          "sha256": "583a9f3831abaf1094aa14c573c4b0eacc91bab4264f3a769d7b146842a3e592",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-/485078ae-64bc-4bf5-a385-2d65a1108dae.jsonl",
+          "bytes": 184845,
+          "sha256": "402a0a37c01ccd9a28843241d60bda760c9135fddf28564cd3978a95d73d54fb",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-/520a0eac-7b69-4436-a382-ee4ede7c9e43.jsonl",
+          "bytes": 17959,
+          "sha256": "1d6d06fba9f8a65a1d69f1937e7a11ca8be5fa557ba8bdc149d83c1ed5aa0bd2",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-/68396a0d-8585-4d00-9321-54b2b00c07f4.jsonl",
+          "bytes": 1642172,
+          "sha256": "46733f293b19254e5eac8ec1be3a96ddef5e7613adabc23ad23f7385031dc2fb",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-/6ab67974-013e-44ab-8ae8-3c64ef6cb770.jsonl",
+          "bytes": 1068774,
+          "sha256": "cd42839c603d240aac3ee6f2b134e53ceacb6af8bcac7d309058aa583e1d7fcd",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-/7c8e7f6e-c7e8-4d83-8152-9a9eb27cb20a.jsonl",
+          "bytes": 21026,
+          "sha256": "a4987fd1ce06deb62281f5c435d760c0afeb5416d618577df0cbad201d2760e0",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-/a56a4ec8-46f2-48e8-9de6-4ce79905f235.jsonl",
+          "bytes": 14389,
+          "sha256": "1f46c62c8c0ed46141d04f0db5038fd6763bfbeab58e140ffa09c3736d0d524f",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-/b8e5efcd-7cc7-46bd-a132-f823a61750af.jsonl",
+          "bytes": 17959,
+          "sha256": "cdba72f720b20365f349bce4123b78a85ecafd3abc31d55a1db2118ba128e7f2",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-/e8b69c49-ad36-49d0-8998-c50a1e83e457.jsonl",
+          "bytes": 205586,
+          "sha256": "0ca5b79d604f79d6b107e98c499dc18a8e47e506f58035f405858714e30197e6",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-/f05b4f88-ae83-48fa-85fc-f0fdcdf9d777.jsonl",
+          "bytes": 15296,
+          "sha256": "f64fcfaf74afbfc4986e8ece865951dfa26c6ea536d81cfae6fbf8833012853b",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-/f391e032-7761-40c2-b905-5ee55b6af358.jsonl",
+          "bytes": 22734,
+          "sha256": "fbe21be91b8722f7f2a434c1a7db6b8b1a312269159362bb24188ef23ec9aee0",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-AIArchives/85d33118-2852-4f64-ba6f-e8574a8ebcbb.jsonl",
+          "bytes": 9145,
+          "sha256": "a5f9d5926e195b4096f6625063668d1d88c6cfcf90dedff10e4fe4f8a3fa8802",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-AIArchives/f956721a-0af7-4bdc-8678-3a493d8fcd39.jsonl",
+          "bytes": 13760126,
+          "sha256": "883345040467bb4f206c4ab1b296640c165f6e96e084b85a28147091c7354e5b",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-AIArchives/f956721a-0af7-4bdc-8678-3a493d8fcd39/subagents/agent-a87ca9b22d0fee3f9.jsonl",
+          "bytes": 78714,
+          "sha256": "bb9b9d9d077ba6612c4e17be5c3c627c450646f83817a81d92f1a25f08633b1b",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-AIArchives/f956721a-0af7-4bdc-8678-3a493d8fcd39/subagents/agent-a8da0aea214c5e781.jsonl",
+          "bytes": 115222,
+          "sha256": "5a6eb5ee79893ff91a4ffe7b6b41753182d8f5585d863d998749b61b7ca1e3ff",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-AIArchives/f956721a-0af7-4bdc-8678-3a493d8fcd39/subagents/agent-a9153c2f83ba44a86.jsonl",
+          "bytes": 541500,
+          "sha256": "ed94b22ae189cd3bb51fa2265ddf5b7258adb881628f5166eb100be88f05aa93",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-AOTpy/539c47c6-0b8c-40ff-8947-bf3ebb30900a.jsonl",
+          "bytes": 487482,
+          "sha256": "733bae7f231ecf1c2bcd7b493ed744fad947745fa46b963ab702c9a28313d5b4",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/1192b9e9-bd79-48bd-b472-27b3e9c5ab6d.jsonl",
+          "bytes": 3201943,
+          "sha256": "c992b7116cab5126f1fcd9ab4cf88a46e93c6ae8e8a8094d63b167e26043ff09",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/1192b9e9-bd79-48bd-b472-27b3e9c5ab6d/subagents/agent-a4b3e67a203424add.jsonl",
+          "bytes": 191628,
+          "sha256": "6929960f4affa43bfe3089840a2def98d27d764b6b8501ee7df498ecd03cd96c",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/1192b9e9-bd79-48bd-b472-27b3e9c5ab6d/subagents/agent-a6b1b56dee063dcfe.jsonl",
+          "bytes": 141904,
+          "sha256": "feeb80dc48d4dd375e60b2d104c2917665a4b2da3387fb90f285bc5a5590b6cd",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/1192b9e9-bd79-48bd-b472-27b3e9c5ab6d/subagents/agent-a6bb1604eeeb9cb7e.jsonl",
+          "bytes": 125257,
+          "sha256": "8519f99517597f63f49ba15cf633921a7db4bdab81a9e421874febe524f13e1a",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/1192b9e9-bd79-48bd-b472-27b3e9c5ab6d/subagents/agent-a8d4324ac344d6a19.jsonl",
+          "bytes": 154147,
+          "sha256": "38783164dbd7d8787c12cfd8f7383e22c9656a2aad9d757df304fa2ae37535c8",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/1192b9e9-bd79-48bd-b472-27b3e9c5ab6d/subagents/agent-a8eff3ab4aa9febe0.jsonl",
+          "bytes": 136284,
+          "sha256": "fd02fa16af25e09333c9238f370c2793a9cbf83d71d9731e3f3daffff458194a",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/1192b9e9-bd79-48bd-b472-27b3e9c5ab6d/subagents/agent-a93add70150c60fd3.jsonl",
+          "bytes": 120374,
+          "sha256": "841a221cad1f5c5c8b2265ca8430ffebbf1ac2bb9f8e26d163a354bc605d10f7",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/1192b9e9-bd79-48bd-b472-27b3e9c5ab6d/subagents/agent-a9c1f64b3300617da.jsonl",
+          "bytes": 65808,
+          "sha256": "6078a3adf786ed9d21de97a9d400a3829d32c0cd767dcca5fcd2d75b8b5c1f76",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/1192b9e9-bd79-48bd-b472-27b3e9c5ab6d/subagents/agent-a9ce53e6346f71ead.jsonl",
+          "bytes": 138518,
+          "sha256": "60c66c0897253372d7ca8f05fce2439608db52e9da603af1141edb821a0cac77",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/1cf677bd-a98d-4600-9995-fc4384691db0.jsonl",
+          "bytes": 513748,
+          "sha256": "6e9b81649643b650f4509b6df35d4704cbfe03fa60e9e626be36d5e18236e904",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/36ca4bf3-ec01-452e-94c7-2881320f1749.jsonl",
+          "bytes": 20110,
+          "sha256": "28a31bbf0b7dbf5491876eb799d7bdf2aa2b1047516c3215c74c555b2db9175e",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/8127bf8a-f17f-43d1-86f8-3a32d6c58670.jsonl",
+          "bytes": 42613,
+          "sha256": "d856d8f195e100107ae1b7911f22c0d67dc08a5e14ae6f98dd139b6b86ebe8d2",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/c8264cd7-40ec-4d52-b3e8-e07a0d8a710f.jsonl",
+          "bytes": 117511,
+          "sha256": "bb3835778041ef4c28e278f2d09b15043de0eb9aa8ba7181eb570daef784d479",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/e1b4c95f-4884-49f5-b266-3f8b69929958.jsonl",
+          "bytes": 931986,
+          "sha256": "49e3150c5769e2798a4881edf02d500c304cfb4e1f411aad288b949e292d6883",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/e3d0c93f-5cf8-4067-9a49-657ba5c67c80.jsonl",
+          "bytes": 4489606,
+          "sha256": "40aa58812e81cb1096c637a96691999d15148dca7539bc4b8d20489be08b2fab",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/f08dfcab-8085-4d4b-94a1-e4b32eadd373.jsonl",
+          "bytes": 36532,
+          "sha256": "50dc29476c8e9fc1cf573846d7ace482a2860b1b7f06d729de8c9942802b1499",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-GR/f58f868d-629f-4611-a39b-26695028c7f0.jsonl",
+          "bytes": 923212,
+          "sha256": "1f146433b10d08447dfdb0e9ebd93dcc80fc844483e56d94abb74d0008088219",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/189f0549-c2fc-4fc7-b50d-37cd255eabf2.jsonl",
+          "bytes": 1389824,
+          "sha256": "f9f12f4e5ad638362b71096b7f56584e84f6acaa79cfa19ae9b0f389fe4cccbf",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/1c379b0d-e477-44fe-b10b-1b095e7e1e3e.jsonl",
+          "bytes": 20969,
+          "sha256": "2330e87ef7bc7d1abe705c706ad6806c7edb99665cf6e5dba38ea2ec63668ed0",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/27309bdd-e917-4b83-9d4c-f060cd2229b9.jsonl",
+          "bytes": 19345,
+          "sha256": "3854732ce37bc8f6043ddf95da49cd787c3bce3b32d0e92d08230bcd27049579",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/2939e800-ac05-471d-932c-9ea8796e553b.jsonl",
+          "bytes": 1232446,
+          "sha256": "b196114731eabeb31fd2a9692074ad59492b734fa6aa3d5d5a936d55878e96c2",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/32bd3eac-d079-4d7f-8f49-b34180656abd.jsonl",
+          "bytes": 939935,
+          "sha256": "926c9be391e3dee4decc1991f97036a772e1ab537ce38501c79fdbc4cc9d67b0",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/32c96eea-ab6f-4268-9f48-60fb2c8838e7.jsonl",
+          "bytes": 1555650,
+          "sha256": "1af7fb9ae241e075b5ee07bff321a7f850f2b70b414601dd6e2680668f2ed5b6",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/3c914a9d-bf01-44ef-8ab7-14169fd2425e.jsonl",
+          "bytes": 19516,
+          "sha256": "92a7d96bf19aa7b7d174a9b4de7d4f3ac3b26a5bff45a73d39395dec2882bc14",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/3cceb87c-bf16-42b4-952d-90334134117d.jsonl",
+          "bytes": 19335,
+          "sha256": "48568690cd791cb858933be439065d1954052b5653d1df0aaf1d6cfdcf21435f",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/471accf0-3df7-4e2e-a567-a094f8f8d585.jsonl",
+          "bytes": 278690,
+          "sha256": "bd183a5a70d41f02a38d74d9c60498110a5f1c847744ee85630cbc72cc0a4c7d",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/49e95a08-33ae-4b79-ad93-4cf9aa32e759.jsonl",
+          "bytes": 39035,
+          "sha256": "0e674501e29e275789b81333d10a95c5a6c32ec637c34f50bdc2d04fc0398a49",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/49e95a08-33ae-4b79-ad93-4cf9aa32e759/subagents/agent-af8a236e6d6dff218.jsonl",
+          "bytes": 178579,
+          "sha256": "2e4ddfb7feb4f8742d224d773391bafa29582c6e0f64208dcf52122eab13926b",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/4ab5071b-d8ef-48db-9e45-d4a091474cf7.jsonl",
+          "bytes": 19657,
+          "sha256": "69671450920eb0a4b7985315b803b1a9ea566f5b2c27dacc943a297047b30d5c",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/4b853fa6-aed6-494b-9a13-2cda8c3531ec.jsonl",
+          "bytes": 449200,
+          "sha256": "952358729cb2bf36ed37a8f19439ee4819970f5de6aede4d3090477c2e0eda37",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/554c2eb9-9cf9-4078-a6a2-82456a53f189.jsonl",
+          "bytes": 262809,
+          "sha256": "694e6915e44e40f45abecdfab603e5def65ca40a701bad9e546eab17db63545e",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/55d6c81b-dfc6-4210-9eea-52d32da9282a.jsonl",
+          "bytes": 17394,
+          "sha256": "67838dbb6b4e032e4e21394baea7caed901a1939e0a7e513ac1260e60aaaaaed",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/5eeb7e10-99a4-4d7d-a505-3ef47dcab480.jsonl",
+          "bytes": 2020869,
+          "sha256": "5bc96e803ae5c13565015911169e97d7d0c70d879e9e03250475a4016aad9524",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/5eeb7e10-99a4-4d7d-a505-3ef47dcab480/tool-results/b0cmcevm0.txt",
+          "bytes": 73748,
+          "sha256": "8e76fdfd750d7585a86a654d3372350ba1798e83da336b419214a3d39868a369",
+          "role": "security_scan_only",
+          "included": false
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b.jsonl",
+          "bytes": 3387881,
+          "sha256": "f4824810c472697a45d333814097345810c22b6e005a44fb735511c2a0d17bf2",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_ab579de4-b4a/agent-a0cffca3c85c55488.jsonl",
+          "bytes": 15418,
+          "sha256": "5980bbbf9c65246aee83eb725e535b5747c03c113724970365d1a4c6ab6b6041",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_ab579de4-b4a/agent-a324acce23c6f25e5.jsonl",
+          "bytes": 15479,
+          "sha256": "fd464432a2c4fa3902a2b89aa24f7b3c231be6188c19a62729aece95d2c37f5a",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_ab579de4-b4a/agent-a8c284e9b827147e5.jsonl",
+          "bytes": 15380,
+          "sha256": "f51cd3848adee151450ac929c5de3d4b44a690ba901d3f9f7af277c02494e984",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_ab579de4-b4a/agent-ab457c24a18df9a4e.jsonl",
+          "bytes": 15693,
+          "sha256": "ac379db50e80d02ffb551831b2968ec0978454ab7fd22e3852a6dd5229c44a80",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_ab579de4-b4a/agent-acd2c21b64564ee53.jsonl",
+          "bytes": 15196,
+          "sha256": "77e4c96fd4688aca328e00cad29509879d7168279065f28590eed7adb254d2fa",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_ab579de4-b4a/agent-af0ae3057aec94270.jsonl",
+          "bytes": 15617,
+          "sha256": "731b6b0cebe9371c3bb474961e039337146f2f3853676189dcc9c6425734a605",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-a208c6217dd66c3b0.jsonl",
+          "bytes": 16507,
+          "sha256": "79e36f17e92220fc3882ef57a7848f1d1222609e548eb5364129a4443b617a13",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-a34c902519740162b.jsonl",
+          "bytes": 16781,
+          "sha256": "07c02adec0d1154826355b45759a3ab9f5647d2652bd1161a6af4fae32948f7a",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-a3996a95c50b5ed77.jsonl",
+          "bytes": 15852,
+          "sha256": "636edf850687289b8e1ab56f76f16ec576fd7fa7ac77a0bc8bd9ade10bb22eea",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-a42fa1c5a2f0aedf9.jsonl",
+          "bytes": 16731,
+          "sha256": "ca3c08723b2b3c700ef1203e14b1fbcab3d94eb6cd238b821ff4abbf26e3bcbc",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-a4e88bff7bc098fba.jsonl",
+          "bytes": 16839,
+          "sha256": "f243fd6bbb869b37ec39df51bd1c37298312c3683c87f914c914cdfafaf57cc6",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-a68c3d43360a5ed83.jsonl",
+          "bytes": 267729,
+          "sha256": "cfda78fe28fedb91331df87872bc914adebd16a91456a7f2893cbf286a1bb38c",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-a7fa04d5e85bd5c0a.jsonl",
+          "bytes": 241758,
+          "sha256": "3c4086b0aba5af24a55a941cb41709c01b3d153334e9833ec9c09278520429b9",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-a8466eb290f99ea00.jsonl",
+          "bytes": 240553,
+          "sha256": "97c21e5146d5bd94088e84e9f6077b9a72686eeca9be0e7a9e4fd35fb75e1dd7",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-a8d979113b5d895ee.jsonl",
+          "bytes": 199386,
+          "sha256": "98280878393ea2db73e8638c32a9d19d653852a688a98d6279e9319e83f9aa01",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-a93f2cd3c99c3d4ed.jsonl",
+          "bytes": 201315,
+          "sha256": "8bb47db83802c69ed5d76ac7dbef7266bd1d8854fbac02bd2df4f22793c4f369",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-aa3612085487e6586.jsonl",
+          "bytes": 221519,
+          "sha256": "e92a9bad38a121aae011f356128ea0580f77b9e9f1b5ad3cb337e05f8ece1d9f",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-ab47ce767640df62b.jsonl",
+          "bytes": 16821,
+          "sha256": "799576d4d846c34384be8485d6e5a18a65a7963d7efcc29c0efe6efc1600bb1b",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-abfbcab2901b96e40.jsonl",
+          "bytes": 17027,
+          "sha256": "9f0e4e9cb9f89e8ca9db5621b74b2b88beb5cbec374571deba00a6a3ea124901",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive/Glint-Research__Fable-5-traces/claude/projects/-home-MythosMini/602033e7-dc55-4b7f-909f-1c67135d8f4b/subagents/workflows/wf_d9bc197e-dc1/agent-ac553bae77587b5a8.jsonl",
+          "bytes": 17034,
+          "sha256": "a7515e254287e0c6d05ff644b2c4c15ad9b4bee27edb4d9acecb82c3f4860683",
+          "role": "subagent_session",
+          "included": true
+        },
+        {
+          "path": "data/archive_parquet/Glint-Research__Fable-5-traces/.gitattributes",
+          "bytes": 2504,
+          "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive_parquet/Glint-Research__Fable-5-traces/pi_agent/train/0000.parquet",
+          "bytes": 76518803,
+          "sha256": "c1674ca976567ec37e34c6c993e8a79457501fc737b9c584bdcec54bc29036a3",
+          "role": "canonical_parquet",
+          "included": true
+        }
+      ]
+    },
+    {
+      "repo_id": "Infatoshi/kernelbench-hard-traces",
+      "revision": "6cae9dcb349c09c9b138b0a1cab7f34ef8b0ece3",
+      "revision_source": "refs/convert/parquet",
+      "hub_default_revision": "f498477de0f3b3cd08dc427d0c8d27da66e7d9de",
+      "upstream_rows": 383,
+      "local_rows": 383,
+      "completeness": 1.0,
+      "license": "mit",
+      "row_count_detail": {
+        "source_unit": "rows"
+      },
+      "files": [
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/.gitattributes",
+          "bytes": 2504,
+          "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260610_074342_claude_claude-fable-5_05_topk_bitonic.jsonl",
+          "bytes": 49073,
+          "sha256": "bda712b0e87405b4f3791719b67322b7efb53c0aeb4302185367ae7a059d5a19",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260610_075002_claude_claude-fable-5_02_kda_cutlass.jsonl",
+          "bytes": 224197,
+          "sha256": "186151468ebcfbeaa6d262c2852e69be27e767e46145a6b75ba14e3155cb1f9b",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260610_075022_claude_claude-fable-5_03_paged_attention.jsonl",
+          "bytes": 82821,
+          "sha256": "940fe2bab653f6045ed0144fce684f2fb8b594daa004603e711794e042af02fc",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260610_075042_claude_claude-fable-5_05_topk_bitonic.jsonl",
+          "bytes": 111292,
+          "sha256": "8c3f8ae4b6da54eabc8e809c6d882cde1fe275d4c0e6ff49071ce7187cc27024",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260610_075102_claude_claude-fable-5_06_sonic_moe_swiglu.jsonl",
+          "bytes": 188763,
+          "sha256": "5a913112cb1a63ccae6459f805f2df751df4924e4357e2d175f80e6ac4dd659f",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260610_075122_claude_claude-fable-5_07_w4a16_gemm.jsonl",
+          "bytes": 195589,
+          "sha256": "0c9d013db4e8a8d188e485ad43b67a01a6e961db4ba70dd051b1373f2d7f19d6",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260610_124220_claude_claude-fable-5_02_kda_cutlass.jsonl",
+          "bytes": 299333,
+          "sha256": "9443b37808ebdff055773bb61bad7d9a2d9c6283de688cd48f76cc2dece116fa",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260610_124240_claude_claude-fable-5_03_paged_attention.jsonl",
+          "bytes": 149287,
+          "sha256": "78579fbf925c2b304a7012aa25e865a446f37b8429450414646e49bcc8cce167",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260610_174700_claude_claude-fable-5_05_topk_bitonic.jsonl",
+          "bytes": 129397,
+          "sha256": "4ee692f789ea6133b1b3ef918c9209332a642b18aa7ba42560cd3264e80a4b51",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260610_174720_claude_claude-fable-5_06_sonic_moe_swiglu.jsonl",
+          "bytes": 173754,
+          "sha256": "4831ed56e8161aa38d62daaa8a93c40b28accc07d7a4b706df514f0b97bbbf8a",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260610_174740_claude_claude-fable-5_07_w4a16_gemm.jsonl",
+          "bytes": 170468,
+          "sha256": "5573ef93b0fb2cebe192cc7c858d3df8ea395a7f0875fe6b261307e9dc0a8283",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260610_220314_claude_claude-fable-5_02_kda_cutlass.jsonl",
+          "bytes": 246301,
+          "sha256": "92f322f60d7eb2c0abc767f1454070ab332ca44b10d68e5dc5f71d88adf0c719",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260610_224447_claude_claude-fable-5_07_w4a16_gemm.jsonl",
+          "bytes": 287798,
+          "sha256": "f389f3952f4134217e6dfdac445d29a41300d4cbcea7e840c414e083afde53f3",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260611_050147_claude_claude-fable-5_03_paged_attention.jsonl",
+          "bytes": 349462,
+          "sha256": "6bf702b397dcbe3eac49b0cf3e07be7f37f1994ce33ac92549bb7190ff2b4c89",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260611_050205_claude_claude-fable-5_06_sonic_moe_swiglu.jsonl",
+          "bytes": 319145,
+          "sha256": "b084efc04375d8fc37b3c8e187f0b381d3c63f2ccb8419449c08ca3f1fbb5c94",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260613_042257_claude_claude-opus-4-8_02_kda_cutlass.jsonl",
+          "bytes": 810123,
+          "sha256": "df20b225e294b34e143d4e3c3af1a55fc2d6e3fca343de846370561805127a34",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260613_042321_claude_claude-opus-4-8_06_sonic_moe_swiglu.jsonl",
+          "bytes": 389952,
+          "sha256": "15fd6c24d85385bca8847f380393d50b3433cee798a28c85eb5a5a33c526eebe",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260613_042345_codex_gpt-5.5_02_kda_cutlass.jsonl",
+          "bytes": 536046,
+          "sha256": "c0d22e1cea2cde74b3cba527335de7ef44bb3b8ead345b8bdb82d657add6f61a",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260613_044538_codex_gpt-5.5_03_paged_attention.jsonl",
+          "bytes": 440455,
+          "sha256": "f1ab2b506fed78c37bbd67363466e5c4970f128998352e88041142ad8d2e6850",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260613_050335_codex_gpt-5.5_05_topk_bitonic.jsonl",
+          "bytes": 609259,
+          "sha256": "87feaa7a1810bfc95302bfad4567a0216c4e5dba18ffb2fd36140abcddd213cd",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260613_051216_codex_gpt-5.5_06_sonic_moe_swiglu.jsonl",
+          "bytes": 235116,
+          "sha256": "32037cb73196651343d61b240dbb27787f0461939aaa95e4df748faf10178544",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260613_053815_codex_gpt-5.5_07_w4a16_gemm.jsonl",
+          "bytes": 313136,
+          "sha256": "703fc9341f85d64d2ca6e7f598a098018f63573021248d80624343c9b2905b0c",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260613_054111_zai-claude_glm-5.2_02_kda_cutlass.jsonl",
+          "bytes": 1320226,
+          "sha256": "ac1a107609b056f0fc9511692ad6c2796c1179a3909e0cbcad8d9f0f99ea539a",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-hard-traces/20260613_055815_zai-claude_glm-5.2_03_paged_attention.jsonl",
+          "bytes": 1519278,
+          "sha256": "43c1b3f55be81f5cebc1181b426d673890aeebcfc9fdb548489c2ab032c11094",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive_parquet/Infatoshi__kernelbench-hard-traces/.gitattributes",
+          "bytes": 2504,
+          "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive_parquet/Infatoshi__kernelbench-hard-traces/default/train/0000.parquet",
+          "bytes": 274648912,
+          "sha256": "b3f3abc2dcb5a3dc6d6466eeaef35cf4d24c8c8b42386dbb951d4b9b291d75cf",
+          "role": "kernelbench_excluded",
+          "included": false
+        }
+      ]
+    },
+    {
+      "repo_id": "Infatoshi/kernelbench-mega-traces",
+      "revision": "0f6b0d0ef5c76d64d4f51681412b514c53edc13e",
+      "revision_source": "refs/convert/parquet",
+      "hub_default_revision": "f276e89bb2a7e68cd70063e15cfad7fc49604c95",
+      "upstream_rows": 75,
+      "local_rows": 75,
+      "completeness": 1.0,
+      "license": "mit",
+      "row_count_detail": {
+        "source_unit": "rows"
+      },
+      "files": [
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/.gitattributes",
+          "bytes": 2504,
+          "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_021522_codex_gpt-5.5_02_kimi_linear_decode.jsonl",
+          "bytes": 500301,
+          "sha256": "deeb5e5993c5b63654ecea9797eb892be9ca10f55a5c16de7e04fc43f1fc0b7f",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_024321_claude_claude-opus-4-8_02_kimi_linear_decode.jsonl",
+          "bytes": 764716,
+          "sha256": "aea404dbfee72663be32136813ddc904e4a7d624f660b6caaaf709b19dd8ccf6",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_040852_codex_gpt-5.5_02_kimi_linear_decode.jsonl",
+          "bytes": 411927,
+          "sha256": "1fe91cf034dfad427e507954ea251d54ace86ac3a2560ae0ec55efb12ab43902",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_075926_claude_claude-opus-4-8_02_kimi_linear_decode.jsonl",
+          "bytes": 719850,
+          "sha256": "453a4b245b4d2b7bc5cce4d8ed86f36fe1841c3b694298f2a807dd589c981591",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_150545_kimi-claude_kimi-k2.7-code_02_kimi_linear_decode.jsonl",
+          "bytes": 695959,
+          "sha256": "a2feeb8497f891e7fce336dc6a3d9c76021eb941651830308241e3c30ecbbd6d",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_150605_deepseek-claude_deepseek-v4-pro_02_kimi_linear_decode.jsonl",
+          "bytes": 572037,
+          "sha256": "1ad0eabb1b4eff59c3de6723ee7340f1af7246cb91aab353c9a1ceb9c52562d3",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_151017_gemini_gemini-3.5-flash_02_kimi_linear_decode.jsonl",
+          "bytes": 223701,
+          "sha256": "a119d2171a3290a52943d3b1191e218dbb868a0ffec8664208ce96061d91bbce",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_162338_codex_gpt-5.5_02_kimi_linear_decode.jsonl",
+          "bytes": 558211,
+          "sha256": "3b5dd648ef3b4ae9ba87b640502767532c5bf1f08d61e3c8efc0b6bedee17feb",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_170335_claude_claude-opus-4-8_02_kimi_linear_decode.jsonl",
+          "bytes": 838604,
+          "sha256": "2fb756e9d6d72a981f579e40b8e0798464aff57272efc34b19c998f721ad22b0",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_211254_zai-claude_glm-5.2_02_kimi_linear_decode.jsonl",
+          "bytes": 961172,
+          "sha256": "c9d836077356b61014a2d075e47f03391278afb1f98913c1fe8eb2c328f226a7",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_211314_minimax-claude_MiniMax-M3_02_kimi_linear_decode.jsonl",
+          "bytes": 965701,
+          "sha256": "49bf65cdba4f3bd9c96ac6137dbd5bffeb54ec0f88959f705155549fb3d982f9",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_211334_kimi-claude_kimi-k2.7-code_02_kimi_linear_decode.jsonl",
+          "bytes": 330057,
+          "sha256": "c66bf9d917483453243b84b499956d1d90c5c60c0386689a62dfa5963590c861",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_211434_cursor_composer-2.5-fast_02_kimi_linear_decode.jsonl",
+          "bytes": 322909,
+          "sha256": "d5738c9e7082c5699b3e0d20bcbbf7b7735234cdd489b2e51c4b9041dddf5da0",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_211450_minimax-claude_MiniMax-M3_02_kimi_linear_decode.jsonl",
+          "bytes": 590902,
+          "sha256": "5e3a8b8ab0cb61e91d44ff378ee649695792c50f2894fd503f53a93345563f12",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260618_211510_kimi-claude_kimi-k2.7-code_02_kimi_linear_decode.jsonl",
+          "bytes": 227831,
+          "sha256": "911f9c3ae1bbb4b3cb211d8af3bbe2e17e9a42b5aa6742697b17f9622069301d",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260619_002627_gemini_gemini-3.5-flash_02_kimi_linear_decode.jsonl",
+          "bytes": 230105,
+          "sha256": "d8526e4ee69bc6e2d7ed27ab165061c82f571a313ebf688898adf90896125e55",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260619_002633_gemini_gemini-3.5-flash_02_kimi_linear_decode.jsonl",
+          "bytes": 173855,
+          "sha256": "9d4930540aa63f46220182ea48f2381d8e85fd18f702f2e346692d35a4c45623",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260619_062145_deepseek-claude_deepseek-v4-pro_02_kimi_linear_decode.jsonl",
+          "bytes": 677989,
+          "sha256": "0db266aa59caecdc49d5e74b8a4dfc3fdde4bd16d2843a65d8fdb0a7d668ec71",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260619_062205_cursor_composer-2.5-fast_02_kimi_linear_decode.jsonl",
+          "bytes": 221627,
+          "sha256": "1c3b9fc78ff9079be4405ec43fa8885910c2e60567a4247caf1980d6183205f4",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260619_084649_zai-claude_glm-5.2_02_kimi_linear_decode.jsonl",
+          "bytes": 915096,
+          "sha256": "b96f6839b37671781c80c5f24be4f4ffbf589b725591879112a6219209249cdf",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260619_084709_minimax-claude_MiniMax-M3_02_kimi_linear_decode.jsonl",
+          "bytes": 1201494,
+          "sha256": "6557518d550df2b814bb8d102f6d7c70683886b995f71f555f3d7f06bdb268bb",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260619_084729_cursor_composer-2.5-fast_02_kimi_linear_decode.jsonl",
+          "bytes": 278125,
+          "sha256": "9cadfb51dfb2eed93d6035688ace107ca009d96906e5ece588a563f45c446ec6",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260619_145058_deepseek-claude_deepseek-v4-pro_02_kimi_linear_decode.jsonl",
+          "bytes": 817075,
+          "sha256": "1070ec64925c18406cbc79fd6f9a60b89ede26560e594d8c713bc64c6403d488",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260630_202644_claude_claude-sonnet-5_02_kimi_linear_decode.jsonl",
+          "bytes": 646208,
+          "sha256": "5249a7b74acc35355bc54576229ebe156e617dcbe8702ce33ac511c17ee12c0a",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260701_172615_claude_claude-fable-5_02_kimi_linear_decode.jsonl",
+          "bytes": 834129,
+          "sha256": "080d1f4887b105864243002fd4ffd3066f0cb54a362a9431ff5ee7c11ed0e39e",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260701_172617_claude_claude-fable-5_01_rl_grid_ppo.jsonl",
+          "bytes": 304715,
+          "sha256": "ae3f77399dccfe44f168c266ca95996372250a844f155698c72d5473956f25bc",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_113200_claude_claude-fable-5_02_kimi_linear_decode.jsonl",
+          "bytes": 112453,
+          "sha256": "f150d74a67edeb793a4fcf29c1f3620401cbbdcc82cc9c26e372dea7123d2a2c",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_113220_claude_claude-fable-5_01_rl_grid_ppo.jsonl",
+          "bytes": 584526,
+          "sha256": "80b786861b787da7d7289c253da5a372fa4724417245c3c8a9ae5a7e9c1711fc",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_125431_claude_claude-fable-5_02_kimi_linear_decode.jsonl",
+          "bytes": 2034,
+          "sha256": "1aa3dbf94a847cff7ddcd350a0d5e6df66acb9f90782f45c75fd6961a24c40b5",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_125431_claude_claude-fable-5_02_kimi_linear_decode_86172_1.jsonl",
+          "bytes": 2074,
+          "sha256": "c7939b9826cbe9eb6d8b1f7c3d920e4a3f6c2657df82152188bed8a60402137a",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_125431_claude_claude-fable-5_02_kimi_linear_decode_86203_1.jsonl",
+          "bytes": 2074,
+          "sha256": "18409582212158c33e52171eab524760aa0941c9adca9e9a7eff994152c355df",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_125431_claude_claude-fable-5_02_kimi_linear_decode_86358_1.jsonl",
+          "bytes": 2074,
+          "sha256": "774c78d90b6f4336985289fb3f75b67ebbed6cdc12e1983a404283d17a8151cb",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_125504_claude_claude-fable-5_01_rl_grid_ppo.jsonl",
+          "bytes": 1960,
+          "sha256": "b6d8a1716a8be8bad9ed1405c2060175bc89c59f5850490443d463aeefb867ec",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_125504_claude_claude-fable-5_01_rl_grid_ppo_91147_1.jsonl",
+          "bytes": 2000,
+          "sha256": "8d04d459ab1e8138f3a9cb58d73b95a0dc086c3fedffe81c0cedfec822b23c23",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_125504_claude_claude-fable-5_01_rl_grid_ppo_91215_1.jsonl",
+          "bytes": 2000,
+          "sha256": "06f5ebf34fc9e510ef830eccdcbddf87a0c2f994c36c886e7293627f050b9f7f",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_125504_claude_claude-fable-5_01_rl_grid_ppo_91281_1.jsonl",
+          "bytes": 2000,
+          "sha256": "fa396c59e8acf99295e0c6c50824dae381c12ac2656bb50ad82edcca8ce61f37",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_170212_claude_claude-fable-5_02_kimi_linear_decode.jsonl",
+          "bytes": 175557,
+          "sha256": "710545cc1fac03fd0ef01e3a27e493ec1ac291760bfb12cfecbf1bb9e8aebf90",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_185949_claude_claude-fable-5_02_kimi_linear_decode.jsonl",
+          "bytes": 2034,
+          "sha256": "b11a80f45a26876a271fa861e365f4a174cfb534322a7eb609ac259c4c1821a0",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_191457_claude_claude-fable-5_02_kimi_linear_decode.jsonl",
+          "bytes": 2034,
+          "sha256": "942bbe29ea1bc47fe04d35fbe2f8494762d74918527078da6087fb916854c574",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_193005_claude_claude-fable-5_02_kimi_linear_decode.jsonl",
+          "bytes": 62960,
+          "sha256": "1ad0f667288aa1b01fa9e1eeadcb5feda8b7bc7f870d76496b3dbb38edbc9cf5",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_203022_claude_claude-fable-5_02_kimi_linear_decode.jsonl",
+          "bytes": 2075,
+          "sha256": "527742ee16f1fcc5b2b05275bce912ba5759ccd377e281f470d557788ae74385",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260702_204524_claude_claude-fable-5_02_kimi_linear_decode.jsonl",
+          "bytes": 2075,
+          "sha256": "62eacdaf852058afc2064f82483bd6ebb67e068d4ae1f05e28d12006923e029e",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260709_160953_codex_gpt-5.6-sol_02_kimi_linear_decode.jsonl",
+          "bytes": 446383,
+          "sha256": "cc9cb0064b213611332df7b70e8d9906e917254d21377710a6c405f336a7c98b",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/20260709_164856_codex_gpt-5.6-sol_01_rl_grid_ppo.jsonl",
+          "bytes": 492187,
+          "sha256": "a047aa3d1c84130095b27bbefac7f49ddc1f009beea4942f46c871aab4e5b944",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/README.md",
+          "bytes": 731,
+          "sha256": "54d0ab91050703947288fd112ea66042b1c386cb6206782a129d2e287d89d157",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/Infatoshi__kernelbench-mega-traces/manifest.csv",
+          "bytes": 4011,
+          "sha256": "154cfefcd2a250ddbdcca09bd8df1975e2e0a1f329431875d8be87890d1a8834",
+          "role": "kernelbench_excluded",
+          "included": false
+        },
+        {
+          "path": "data/archive_parquet/Infatoshi__kernelbench-mega-traces/.gitattributes",
+          "bytes": 2504,
+          "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive_parquet/Infatoshi__kernelbench-mega-traces/default/train/0000.parquet",
+          "bytes": 83666956,
+          "sha256": "25b60c3a7688943d781c4df13c0fe92b49b952c5b25057c1b7dc3b165b0d017e",
+          "role": "kernelbench_excluded",
+          "included": false
+        }
+      ]
+    },
+    {
+      "repo_id": "WithinUsAI/claude_mythos_distilled_25k",
+      "revision": "2c5e638c51a22b8b883def51bab685ae7e282c72",
+      "revision_source": "default",
+      "hub_default_revision": "2c5e638c51a22b8b883def51bab685ae7e282c72",
+      "upstream_rows": 25000,
+      "local_rows": 25000,
+      "completeness": 1.0,
+      "license": "apache-2.0",
+      "row_count_detail": {
+        "source_unit": "records"
+      },
+      "files": [
+        {
+          "path": "data/archive/WithinUsAI__claude_mythos_distilled_25k/.gitattributes",
+          "bytes": 2574,
+          "sha256": "c09351b3b047cecb511ce92fb2bbcc0a9db737cdf44ba2f2db9834b0714be4d4",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/WithinUsAI__claude_mythos_distilled_25k/README.md",
+          "bytes": 8318,
+          "sha256": "b5be51b149c8761e9b9d3ae4fc90eb88db2f41f7765140ea36c1a6dd07426282",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/WithinUsAI__claude_mythos_distilled_25k/claude_mythos_distilled_25k.jsonl",
+          "bytes": 55191861,
+          "sha256": "5e94ca487977c43f1c5c5dfda06b1d4a9ba4ac6591bc69b48202c7b44455be51",
+          "role": "session",
+          "included": true
+        }
+      ]
+    },
+    {
+      "repo_id": "armand0e/claude-opus-4.8-pi-traces",
+      "revision": "7014bac3ba1b23292469dab3dbb33d3a6f0acf93",
+      "revision_source": "refs/convert/parquet",
+      "hub_default_revision": "dd1f3e164086a360f40aff8e0630d069e63eb339",
+      "upstream_rows": 4,
+      "local_rows": 4,
+      "completeness": 1.0,
+      "license": "unlabeled",
+      "row_count_detail": {
+        "source_unit": "rows"
+      },
+      "files": [
+        {
+          "path": "data/archive/armand0e__claude-opus-4.8-pi-traces/.gitattributes",
+          "bytes": 2504,
+          "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/armand0e__claude-opus-4.8-pi-traces/2026-06-07T00-07-46-038Z_019e9f68-3075-7136-b429-c6b2c871ed67.jsonl",
+          "bytes": 301916,
+          "sha256": "9937014871ea9bfa84b8ea303ba5a082b04abb87c040d65f90113b53b06c870c",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/armand0e__claude-opus-4.8-pi-traces/2026-06-07T00-29-51-035Z_019e9f7c-683a-73c1-a3c8-b746ac4fac9c.jsonl",
+          "bytes": 97271,
+          "sha256": "db87fb461fd25b8ae48ae8aa173e025322008a57ef547b2dd57fc8b5228ad2f1",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/armand0e__claude-opus-4.8-pi-traces/2026-06-07T00-41-46-937Z_019e9f87-54b8-746f-aa0e-d9960d97db21.jsonl",
+          "bytes": 177702,
+          "sha256": "a060de18c398377ecd2e054fc28823419099cfd913e46e27c27a2e5edb879bc6",
+          "role": "superseded_partial_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/armand0e__claude-opus-4.8-pi-traces/README.md",
+          "bytes": 12448,
+          "sha256": "b10e9e03ea319082e16ff690700194bfc887f67ff5f32370387d102413ddb3df",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive_parquet/armand0e__claude-opus-4.8-pi-traces/.gitattributes",
+          "bytes": 2504,
+          "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive_parquet/armand0e__claude-opus-4.8-pi-traces/default/train/0000.parquet",
+          "bytes": 1195720,
+          "sha256": "e3b0b3a810df76f03235610112924a3af80c207dccf556b9838634c4ff1ef926",
+          "role": "canonical_parquet",
+          "included": true
+        }
+      ]
+    },
+    {
+      "repo_id": "armand0e/qwen3.7-max-pi-traces",
+      "revision": "bae934b1c4285b6d2ac720b9c2a127dad9c1c39a",
+      "revision_source": "default",
+      "hub_default_revision": "bae934b1c4285b6d2ac720b9c2a127dad9c1c39a",
+      "upstream_rows": 47,
+      "local_rows": 47,
+      "completeness": 1.0,
+      "license": "unlabeled",
+      "row_count_detail": {
+        "source_unit": "source_sessions",
+        "source_files": 47
+      },
+      "files": [
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/.gitattributes",
+          "bytes": 2504,
+          "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T00-38-18-409Z_019e4d1e-6629-7380-a70b-d758f08603fd.jsonl",
+          "bytes": 670312,
+          "sha256": "e4bd1b5d361b1e58eff53df73c422991d3005e5374873479fa26ed41d1887ec0",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T00-38-18-465Z_019e4d1e-6660-72c8-b0a0-b57d34f2e02d.jsonl",
+          "bytes": 331751,
+          "sha256": "9581881d4ccc4c6752ccb5995bfa9d4d3fd7e926e1be92f86f85beace95cc60e",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T00-38-18-477Z_019e4d1e-666c-77af-96ac-f2d36e5ac0d7.jsonl",
+          "bytes": 145307,
+          "sha256": "ad786cb315dbef2b2d0c30bf90b1408c312dff3bb081c8e232416a36edb58f5f",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T00-38-27-966Z_019e4d1e-8b7e-70df-83f9-100a55cbd735.jsonl",
+          "bytes": 585968,
+          "sha256": "dccfee69568c3612cb3cbb606c0c116a71da43c20b4d1ef6d9c752b555a88770",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T00-40-50-906Z_019e4d20-b9da-755c-9172-ca545fc1f82e.jsonl",
+          "bytes": 103432,
+          "sha256": "80e8674dedaa0b0c65e07a344ed86509e91e6bd8f1504d7e8be762db0118b352",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T00-43-23-999Z_019e4d23-0fdf-763b-b594-167f5b0c3d32.jsonl",
+          "bytes": 79142,
+          "sha256": "3ed5b626f548dbff826e59f9e199d574efd090e02cfbfa7deed2c8a8ce5a2818",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T00-46-20-486Z_019e4d25-c146-77fa-aae3-d756d6474b3e.jsonl",
+          "bytes": 26978,
+          "sha256": "33b15739d75451282236279afb5d60a3c6f26b088542cf34bf707fa14edc8064",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T00-47-13-574Z_019e4d26-90a6-71e2-a1bb-dccddea67f8e.jsonl",
+          "bytes": 75437,
+          "sha256": "b333ab5b3906a59c431fc0762a99fc636c7239c26c0101f10cc68ef69fd9eaa5",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T01-14-44-956Z_019e4d3f-c35c-760d-90c9-5bfc315724bc.jsonl",
+          "bytes": 6793,
+          "sha256": "bdbd202bf5ebfa6969b288f39cd2070e8e3e53d5a19f62f329c24d99058775c8",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T03-16-10-984Z_019e4dae-f067-732e-906c-505f514ac06f.jsonl",
+          "bytes": 74633,
+          "sha256": "1390760ea807ba5a4e220d3d418c9441b3543f2be85314e1cc536328c3bcf3d5",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T03-16-10-984Z_019e4dae-f067-74ee-bae0-7be39f45a141.jsonl",
+          "bytes": 121573,
+          "sha256": "301a9c6ce6a8633f3539221d65d4f5a27bc10e79921758744bca4ddc46b0d87e",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T03-16-10-984Z_019e4dae-f068-70ff-a010-34449772bd21.jsonl",
+          "bytes": 19142,
+          "sha256": "bc3e67939c1b157b1ed873561e97a55fa90eb55da66f12146b6c6a08e27d732a",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T03-16-10-985Z_019e4dae-f068-747f-a094-c9fc2eb6fcdb.jsonl",
+          "bytes": 51739,
+          "sha256": "8f15aa7c671ffb1efb63a6705dea1c1f3f70776b64c6873137c83b1300e922fc",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T03-19-59-695Z_019e4db2-6dcf-72ca-bfc3-a799634986f9.jsonl",
+          "bytes": 53197,
+          "sha256": "967418ce48e10ba7902004a8c277bc4519d19afd11555a1aee4b4504ecfa531d",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T03-23-39-655Z_019e4db5-c907-705c-afa8-892617cb3766.jsonl",
+          "bytes": 62328,
+          "sha256": "4d94b677c3a2455cd1791509a6b67ef3ca4449f6d47acc1ec03a5707e3c790e0",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T04-59-32-286Z_019e4e0d-903d-7033-99da-258aa42061bf.jsonl",
+          "bytes": 40857,
+          "sha256": "b563c3933120595cf7541349c55dacfeb97bac6886d0a7f89b9bd8b9515b6c68",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T04-59-32-286Z_019e4e0d-903d-713b-bb0c-ede7c698a961.jsonl",
+          "bytes": 121495,
+          "sha256": "9efc3728ed180df3d221ffeca1b2c731b470799e6821073d3bc90c8be3ce4175",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T04-59-32-286Z_019e4e0d-903d-755c-8314-4b7e3e2f595c.jsonl",
+          "bytes": 29878,
+          "sha256": "61f363e56b5e19189671cb493d439c086552f6f48bf687371584234faec92dfa",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T04-59-32-286Z_019e4e0d-903d-759b-ab1d-81ec11e929d4.jsonl",
+          "bytes": 364217,
+          "sha256": "4e601ab99854e6d07896eb2cc0792776affa43fde0514b441972513221357f6d",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T04-59-32-286Z_019e4e0d-903e-70b1-b563-407e6d896df7.jsonl",
+          "bytes": 116019,
+          "sha256": "16c4f6b1220748723ac61183db2fc421efd581fc36dff662e22dce428594389f",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T04-59-32-287Z_019e4e0d-903e-7209-a52c-6e4b1c419aa2.jsonl",
+          "bytes": 43081,
+          "sha256": "f00c4d141da2a1dc79794f5c6a9bbed3d3efe92ef151cbe62eefbeb55ca4f876",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T05-13-18-031Z_019e4e1a-29ce-74ab-9f1f-dd119d22cc41.jsonl",
+          "bytes": 67606,
+          "sha256": "f06c9b79070ed4b7f3dded688ce2adc86576e675d3986047062a264dc93b2b3f",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T05-13-18-054Z_019e4e1a-29e5-75cb-97a5-ae06a0dfe430.jsonl",
+          "bytes": 49567,
+          "sha256": "b5f17bc8082a1e0bd88216070c0b057493550780ee6c3c0b79dde0d042b68d2e",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T05-13-18-372Z_019e4e1a-2b23-75c9-bac3-fe9370dacd6b.jsonl",
+          "bytes": 245517,
+          "sha256": "1a343d2988ad67f4777834428d4944b4248797b1c368a52e5ef17386947913de",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T05-13-18-377Z_019e4e1a-2b28-741a-a261-af7c30361cc8.jsonl",
+          "bytes": 218640,
+          "sha256": "709489920402cae6743b3c61c13c903494ab412ddd1fc45993c8d0047c208e76",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T05-13-18-436Z_019e4e1a-2b63-722a-9bd3-de5cb996637d.jsonl",
+          "bytes": 159635,
+          "sha256": "078149eb793a716023cd7a1dc1c9895ab2e07b647f912279396dfb6e2c8ca195",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T05-13-18-531Z_019e4e1a-2bc2-731e-b9b3-355906691960.jsonl",
+          "bytes": 163002,
+          "sha256": "773b5ae3fefa15f7305d7c77d8b0a8c097026e54692d28265c3e854bc03e3798",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T05-39-53-203Z_019e4e32-80f3-756f-bce3-eeeef2143a66.jsonl",
+          "bytes": 302641,
+          "sha256": "e54847d0e5ff720ae5240cdfd58b3296e7ff2ff86216a870a036b4ee1497476d",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T05-39-53-300Z_019e4e32-8154-724c-9d4d-0af1c59dd3ba.jsonl",
+          "bytes": 345739,
+          "sha256": "60b9d6ed37c514eebfe812938341a280a8c4fde5e469d7ae5ed76de9d526c959",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T06-14-01-717Z_019e4e51-c2f5-7603-bf45-0ee45f2146cc.jsonl",
+          "bytes": 64405,
+          "sha256": "cf87eeee35949dcb3e0dc7062503a4d75a0928347726b777e2f1366e96e2c399",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T06-32-40-684Z_019e4e62-d5ec-7554-b9f0-ce432d22f36b.jsonl",
+          "bytes": 93187,
+          "sha256": "f989cc89c5f9c53d064b4938c1e815eb60e0caa2fe498599eb8b3c074ab17104",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T06-57-20-663Z_019e4e79-6b17-7042-b2fc-d40eb4b17bab.jsonl",
+          "bytes": 347423,
+          "sha256": "d8d6446d152fab63ede8741dc19126a71fd9f9843170cf9cbe542bef49d524bb",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T07-01-20-647Z_019e4e7d-1486-71f8-9136-37a5b495bcf9.jsonl",
+          "bytes": 534305,
+          "sha256": "a469c65b30e71750d10915f4b8009f5abea9394f989fac67a0a39c018d1dfe4d",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-22T07-04-08-933Z_019e4e7f-a5e4-7085-89a2-b04c8b57699a.jsonl",
+          "bytes": 36724,
+          "sha256": "418c6bcc0a6f8d90657a21e784a0b395034259e485c63add4825dabe20902e21",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-23T00-51-27-599Z_019e5250-ccee-7379-8a05-fab0a0e134bf.jsonl",
+          "bytes": 146809,
+          "sha256": "244498478c99f4f07cc5268715fe418935af34939b7095bc6ee2c54c03acff30",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-23T01-43-19-585Z_019e5280-4920-727b-9c4d-3e8b483ee47d.jsonl",
+          "bytes": 350658,
+          "sha256": "e55ed8a12122c2b5fc3e618cebcff5d72f477a2532fa4e53a73750b1860afb1b",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-23T01-43-19-585Z_019e5280-4920-736c-a3fc-dff5e54def9a.jsonl",
+          "bytes": 584067,
+          "sha256": "f02d677f5a258516d96edf8cf05d707c4668b76b445a48a9b45b1e39946e5169",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-23T01-43-19-585Z_019e5280-4920-767c-abca-ecc71df8cdcb.jsonl",
+          "bytes": 666775,
+          "sha256": "5c13eb41b3353a6b34915e52f29d2e2aacc1349f296251f616deb36e3e618793",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-23T01-43-19-586Z_019e5280-4921-735e-9779-eacdf1881e91.jsonl",
+          "bytes": 460407,
+          "sha256": "540463d5291832953a5ad6e61d3fce273f671857fd1f109e38e09ed4c19e54c1",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-23T02-17-34-201Z_019e529f-a2f9-70da-ad9e-ee24c934c4a4.jsonl",
+          "bytes": 105792,
+          "sha256": "5340ee2d538c7937a44d451e4ca2bdf450901f21017bf60d5ff55ddc1ddec67d",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-23T02-17-34-202Z_019e529f-a2f9-718b-b9a4-781debb72847.jsonl",
+          "bytes": 547321,
+          "sha256": "67dcc4290581de7701374840c358de6a0af3daa1c3942c145237ce78592a63a5",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-23T02-17-34-202Z_019e529f-a2f9-760d-a8e6-2ff33cb23127.jsonl",
+          "bytes": 695009,
+          "sha256": "fe2a00a336f743194d6aebe34136fb5cc0fd5430630bf080615a8dd0fe744cd4",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-23T02-23-04-795Z_019e52a4-ae5b-757a-98dd-3d7ecf8018ae.jsonl",
+          "bytes": 52447,
+          "sha256": "84c2ca6b71a56a6b3220fdeb334470a2d24b2cc1ee1333427940684e2e48cf23",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-23T02-30-02-397Z_019e52ab-0d9c-72d3-a778-db28b91fcc90.jsonl",
+          "bytes": 172318,
+          "sha256": "298792e17b46e70f4ba5fe0a0eff8d8b965cce9bc03742654881ae1f1a34b2a5",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-23T02-33-06-917Z_019e52ad-de64-71a5-abe1-15c990f9e865.jsonl",
+          "bytes": 50909,
+          "sha256": "e61599ffaf2721ab8c065e042df4af6c46a96794648d8e7cd10b62a239d6f088",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-23T02-34-55-407Z_019e52af-862f-70da-a3ff-fe1561bd67e7.jsonl",
+          "bytes": 273710,
+          "sha256": "5c6488c83817266011795e4cebb0479449ee5239472cd2961a73f97bbc0d79de",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/2026-05-23T02-36-25-732Z_019e52b0-e704-702f-8c6e-2c263f9a4b5d.jsonl",
+          "bytes": 55826,
+          "sha256": "c65d78dcef924d5991c63dcbbefcbb5acc6285fb4e9106775f473869b5f26e20",
+          "role": "session",
+          "included": true
+        },
+        {
+          "path": "data/archive/armand0e__qwen3.7-max-pi-traces/README.md",
+          "bytes": 10915,
+          "sha256": "107912ce0a17c49813d3291ae8857e3b219a53b3c6e901bd59b3f8ef20e38699",
+          "role": "repository_metadata",
+          "included": false
+        }
+      ]
+    },
+    {
+      "repo_id": "lambda/hermes-agent-reasoning-traces",
+      "revision": "b92885e4f0161d4b2536512710e004d4892cac6e",
+      "revision_source": "default",
+      "hub_default_revision": "b92885e4f0161d4b2536512710e004d4892cac6e",
+      "upstream_rows": 14701,
+      "local_rows": 14701,
+      "completeness": 1.0,
+      "license": "apache-2.0",
+      "row_count_detail": {
+        "source_unit": "records",
+        "config_files": [
+          "data/archive/lambda__hermes-agent-reasoning-traces/data/kimi/train.parquet",
+          "data/archive/lambda__hermes-agent-reasoning-traces/data/glm-5.1/train.parquet"
+        ],
+        "config_unique_ids": 14701,
+        "top_level_export_unique_ids": 7646,
+        "top_level_overlap_with_configs": 7646
+      },
+      "files": [
+        {
+          "path": "data/archive/lambda__hermes-agent-reasoning-traces/.gitattributes",
+          "bytes": 2504,
+          "sha256": "9e75dd981de037ec3769f24f790e126bc5a160b6871f510214e68dc70649aeeb",
+          "role": "repository_metadata",
+          "included": false
+        },
+        {
+          "path": "data/archive/lambda__hermes-agent-reasoning-traces/data/glm-5.1/train.parquet",
+          "bytes": 599571360,
+          "sha256": "d0344c77348cf092dce002256ed6ddbbd95bb568fbc90eb2cc8ffff3c9c3086d",
+          "role": "canonical_parquet",
+          "included": true
+        },
+        {
+          "path": "data/archive/lambda__hermes-agent-reasoning-traces/data/kimi/train.parquet",
+          "bytes": 508262558,
+          "sha256": "d4a53d84935d0bffe7054b12c0591c34fe31fc96115602394b3f517b4631dd02",
+          "role": "canonical_parquet",
+          "included": true
+        },
+        {
+          "path": "data/archive/lambda__hermes-agent-reasoning-traces/data/train-00000-of-00002.parquet",
+          "bytes": 304227899,
+          "sha256": "ffe791c00e824c3a27760a813f4fc500de0ff2e6b3733d3dfe461ee7ff0358e2",
+          "role": "duplicate_export",
+          "included": false
+        },
+        {
+          "path": "data/archive/lambda__hermes-agent-reasoning-traces/data/train-00001-of-00002.parquet",
+          "bytes": 204036725,
+          "sha256": "b113c314454af8afe1df244517eae5b64d43bf8599f74d81cf9299394d42c7e2",
+          "role": "duplicate_export",
+          "included": false
+        }
+      ]
+    }
+  ]
+}

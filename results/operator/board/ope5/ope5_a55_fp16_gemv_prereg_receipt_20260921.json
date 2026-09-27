@@ -1,0 +1,186 @@
+{
+  "analytic_account": {
+    "activation_read_bytes_per_call": 20480,
+    "interpretation": "Analytic bytes and ops are identical to OPE5-02. OPE0 is retained only as a shared platform upper bound; no A55-specific roofline or 42-call RKLLM component claim is produced.",
+    "ope0_floor_us_per_call": 2261.6556302413123,
+    "ope0_shared_platform_ceiling_gbps": 23.1951846685,
+    "ops_per_byte": 0.999414405621706,
+    "ops_per_call": 52428800,
+    "output_write_bytes_per_call": 10240,
+    "total_bytes_per_call": 52459520,
+    "weight_read_bytes_per_call": 52428800
+  },
+  "board_connection_performed": false,
+  "check_summary": {
+    "passed": 31,
+    "total": 31
+  },
+  "checks": {
+    "a55_topology_and_frequency_contract": true,
+    "analytic_account_exact": true,
+    "cluster_comparison_formulas_frozen": true,
+    "correctness_population_and_tolerances": true,
+    "four_a55_fixed_partition": true,
+    "git_sha_at_freeze": true,
+    "governor_and_telemetry_contract": true,
+    "immutable_a76_anchor_exact": true,
+    "implementation_absent_at_freeze": true,
+    "no_board_connection_or_formal_execution": true,
+    "no_smoke_or_a76_rerun": true,
+    "prereg_status": true,
+    "scope_identity": true,
+    "selected_identity_and_four_questions": true,
+    "semantic_and_shape_contract": true,
+    "single_segment_owner_waiver_no_retry": true,
+    "source_board_environment_identity_sha256": true,
+    "source_lineage_allowlist": true,
+    "source_ope0_bandwidth_ceiling_sha256": true,
+    "source_ope1_shape_manifest_sha256": true,
+    "source_ope4_receipt_sha256": true,
+    "source_ope5_02_benchmark_source_sha256": true,
+    "source_ope5_02_preregistration_sha256": true,
+    "source_ope5_02_receipt_sha256": true,
+    "source_ope5_02_source_lock_sha256": true,
+    "source_ope5_02_telemetry_sha256": true,
+    "source_ope5_backlog_triage_sha256": true,
+    "source_scope_freeze_sha256": true,
+    "three_distinct_a55_baselines": true,
+    "tier_b_contract_no_bus_multiplier": true,
+    "timing_population_and_working_set": true
+  },
+  "correctness_population": {
+    "distributions": 3,
+    "expected_element_comparisons": 69120,
+    "implementations": 3,
+    "outputs_per_case": 2560,
+    "seeds": 3
+  },
+  "formal_shape": {
+    "calls_per_model_forward": 42,
+    "cpu_cores": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "logical_mkn": [
+      1,
+      10240,
+      2560
+    ],
+    "observed_invocations": 911148,
+    "observed_model_forwards": 21694,
+    "output_partition": "Four fixed contiguous N/4=640-row partitions, one per pinned A55 worker; all variants use the same partition and synchronization path.",
+    "phase": "decode",
+    "shape_id": "decode_mlp_down_proj",
+    "threads": 4
+  },
+  "git_sha": "213460d88311cba5d84add4d3ee57aae26716c6d",
+  "immutable_a76_anchor": {
+    "candidate_analytic_gbps": 17.9466405846,
+    "candidate_cycles_per_invocation": 29466634.99509323,
+    "candidate_instructions_per_invocation": 30352204.90088322,
+    "candidate_ipc": 1.0300533096479274,
+    "compiler_target": "-mcpu=cortex-a76",
+    "cpu_cores": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "receipt_path": "results/operator/board/ope5/ope5_fp16_gemv_receipt_20260921.json",
+    "receipt_sha256": "221e26f63cfde04362ae6a718f9c85ea40331b4cca084bae385374ef8213421a",
+    "recorded_max_frequency_khz": 2352000,
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "reuse_policy": "Read-only receipt reuse. No A76 benchmark, correctness, perf, smoke, or formal segment may be rerun in OPE5-05.",
+    "status": "VALID_OPE5_02_SINGLE_SEGMENT_OWNER_WAIVER_ISOLATED_4XA76_FP16_GEMV",
+    "variant_p50_us": {
+      "autovec_o3": 5836.9795,
+      "neon_fp16_f32acc": 2923.083,
+      "scalar_fp32": 5836.3955
+    }
+  },
+  "implementation": {
+    "formal_execution_started": false,
+    "implemented": false,
+    "source_locked": false
+  },
+  "next_action": "Implement the allowlisted A55 source derivative and one-shot runner, complete read-only topology/codegen audit and source-lock, then execute exactly one A55 formal segment.",
+  "owner_variance": {
+    "a76_rerun_authorized": false,
+    "formal_segments": 1,
+    "instability_retry_authorized": false,
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "same_day_a55_retest_scheduled": false
+  },
+  "preregistration": {
+    "path": "configs/operator/board/ope5_a55_fp16_gemv_prereg.json",
+    "sha256": "98a3fe20f7982f7fb58fca01f1fe23fa483f4ca11f387d24767805f1e7fb43ce"
+  },
+  "recorded_at": "2026-09-21T17:08:50+08:00",
+  "schema_version": 1,
+  "scope": {
+    "path": "configs/operator/board/ope5_a55_fp16_gemv_scope.json",
+    "sha256": "8f3a2c6949980d04096a1e995ff2aafae653aed031fdf0960b1261c86059d1f4",
+    "status": "PASS_OPE5_05_FOUR_QUESTIONS_PREREG_AUTHORIZED"
+  },
+  "source_hashes_at_freeze": {
+    "board_environment_identity": {
+      "expected_sha256": "000cbc82dd1386871521ba22f1a73b20aba9e63bcbc5264f136b988847407028",
+      "observed_sha256": "000cbc82dd1386871521ba22f1a73b20aba9e63bcbc5264f136b988847407028",
+      "path": "results/operator/board/board_env_identity_20260917T2022+0800.json"
+    },
+    "ope0_bandwidth_ceiling": {
+      "expected_sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9",
+      "observed_sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9",
+      "path": "results/operator/board/bandwidth_ceiling.json"
+    },
+    "ope1_shape_manifest": {
+      "expected_sha256": "1b5f6a4690da92fcc2aa2213915280cda3ef866feab5fcbcfd06c702b781e05d",
+      "observed_sha256": "1b5f6a4690da92fcc2aa2213915280cda3ef866feab5fcbcfd06c702b781e05d",
+      "path": "configs/operator/board/ope1_shape_manifest.json"
+    },
+    "ope4_receipt": {
+      "expected_sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d",
+      "observed_sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d",
+      "path": "results/operator/board/ope4/ope4_receipt_20260921.json"
+    },
+    "ope5_02_benchmark_source": {
+      "expected_sha256": "7843a9f797bcf566eae34e9982b6ecab832a53060aaa8287403e42c10b132c9e",
+      "observed_sha256": "7843a9f797bcf566eae34e9982b6ecab832a53060aaa8287403e42c10b132c9e",
+      "path": "scripts/operator/board/ope5_fp16_gemv_bench.cpp"
+    },
+    "ope5_02_preregistration": {
+      "expected_sha256": "b89dc6e03bcae62ab817a0814f48541ff6c8526c4b23f60108bbd438434fb514",
+      "observed_sha256": "b89dc6e03bcae62ab817a0814f48541ff6c8526c4b23f60108bbd438434fb514",
+      "path": "configs/operator/board/ope5_fp16_gemv_prereg.json"
+    },
+    "ope5_02_receipt": {
+      "expected_sha256": "221e26f63cfde04362ae6a718f9c85ea40331b4cca084bae385374ef8213421a",
+      "observed_sha256": "221e26f63cfde04362ae6a718f9c85ea40331b4cca084bae385374ef8213421a",
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_receipt_20260921.json"
+    },
+    "ope5_02_source_lock": {
+      "expected_sha256": "cee44b4f4734655d44cf38bdadc106ec9ac0d956e02f3c5d8ff92f710638ad5b",
+      "observed_sha256": "cee44b4f4734655d44cf38bdadc106ec9ac0d956e02f3c5d8ff92f710638ad5b",
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_source_lock_20260921.json"
+    },
+    "ope5_02_telemetry": {
+      "expected_sha256": "d9a31f4d82a2636c7ba60353415c4cb9c016968901f3024a98b1334ea176ec65",
+      "observed_sha256": "d9a31f4d82a2636c7ba60353415c4cb9c016968901f3024a98b1334ea176ec65",
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/telemetry_1hz.csv"
+    },
+    "ope5_backlog_triage": {
+      "expected_sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539",
+      "observed_sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539",
+      "path": "configs/operator/board/ope5_backlog_triage.json"
+    },
+    "scope_freeze": {
+      "expected_sha256": "8f3a2c6949980d04096a1e995ff2aafae653aed031fdf0960b1261c86059d1f4",
+      "observed_sha256": "8f3a2c6949980d04096a1e995ff2aafae653aed031fdf0960b1261c86059d1f4",
+      "path": "configs/operator/board/ope5_a55_fp16_gemv_scope.json"
+    }
+  },
+  "stage": "OPE5-05-A55-FP16-GEMV-PREREG",
+  "status": "PASS_FROZEN_BEFORE_IMPLEMENTATION_NO_BOARD_EXECUTION"
+}

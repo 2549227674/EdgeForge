@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_RECONNECT_R4",
+  "status": "FAILED",
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "started_at": "2026-09-16T18:10:09+08:00",
+  "updated_at": "2026-09-16T18:19:18+08:00",
+  "completed_requests": 1,
+  "total_requests": 11,
+  "current": {
+    "error_type": "KeyError",
+    "error": "'edgeforge_k3_gqa'",
+    "failure_receipt": "/home/qbz415/piloop-edge-inference-profiler/results/operator/failures/k3_gqa_reconnect_r4_2026-09-16T181918_0800.json"
+  },
+  "completed": [
+    {
+      "tape_id": "regex-log__HM89SBD",
+      "request_id": "regex-log__HM89SBD:1",
+      "completion_tokens": 3206,
+      "exact_token_match": false,
+      "candidate_calls": 0,
+      "total_seconds": 451.0230875010002,
+      "completed_at": "2026-09-16T18:18:48+08:00"
+    }
+  ]
+}

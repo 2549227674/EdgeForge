@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_CURRENT_BACKLOG_CLOSE",
+  "timestamp": "2026-09-16T22:15:53+08:00",
+  "status": "OP5_CURRENT_BACKLOG_CLOSED_NO_REMAINING_EXECUTABLE_CANDIDATE",
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "all_current_items_disposed": true,
+  "items": [
+    {
+      "rank": 1,
+      "item": "NF4 double-quant decode GEMV",
+      "terminal_status": "K2_R2_CLOSED_DAY1_NOT_POSITIVE",
+      "disposition": "CLOSED_NEGATIVE_NO_DAY2_NCU_OR_RECONNECTION",
+      "evidence": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k2_r2_day1_receipt_20260916.json"
+    },
+    {
+      "rank": 2,
+      "item": "GQA decode attention (SWA 512 + full <=10k)",
+      "terminal_status": "K3_C02_RECONNECTION_FAIL_CLOSE_DEPLOYMENT_PATH",
+      "disposition": "CLOSED_C02_TOKEN_EQUIVALENCE_FAILURE",
+      "evidence": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_reconnect_r5_adjudication_receipt_20260916.json"
+    },
+    {
+      "rank": 3,
+      "item": "Inductor generated-code comparison",
+      "terminal_status": "SUPPORTING_BASELINE_NOT_STANDALONE_KERNEL",
+      "disposition": "COVERED_AS_K2_K3_SUPPORTING_BASELINE_NO_STANDALONE_KERNEL",
+      "evidence": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_k2_selection.json"
+    },
+    {
+      "rank": 4,
+      "item": "lm_head 262k vocab + softcap fusion",
+      "terminal_status": "LM_HEAD_C02_LOCKSTEP_RECONNECTION_PASS_LOCAL_PATH_AUTHORIZED_AFTER_CLOCK_GATE_ADJUDICATION",
+      "disposition": "LOCAL_C02_EAGER_CUDA_MIRROR_AUTHORIZED_NO_CUSTOM_KERNEL",
+      "evidence": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_lm_head_reconnect_r1_adjudication_receipt_20260916.json",
+      "constraints": [
+        "Use only with a dedicated local GPU and a runtime free-memory guard; the observed NVML margin to 7.5 GiB was narrow.",
+        "Keep the original CPU tied lm_head/embedding Parameter and state_dict unchanged; the CUDA weight is an external mirror.",
+        "Do not implement a custom lm_head kernel: the selection bottleneck gate failed.",
+        "Do not claim cross-day/independent replication or extrapolate to board, llama.cpp, sm_100, or sm_120."
+      ]
+    },
+    {
+      "rank": 5,
+      "item": "KV dequantization",
+      "terminal_status": "BLOCKED_AUTHENTICITY",
+      "disposition": "NO_QUANTIZED_KV_DEQUANT_OP_IN_CURRENT_CARRIER",
+      "evidence": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_k2_selection.json"
+    }
+  ],
+  "closure_gates": {
+    "k2_terminal": "PASS",
+    "k3_terminal": "PASS",
+    "inductor_not_a_standalone_candidate": "PASS",
+    "lm_head_terminal_local_path": "PASS",
+    "lm_head_custom_kernel_remains_closed": "PASS",
+    "kv_dequant_authenticity_block_preserved": "PASS",
+    "no_unresolved_current_backlog_item": "PASS"
+  },
+  "boundaries": [
+    "The lm_head authorization is limited to the frozen local C02 PyTorch eager-mirror path and depends on the separate post-run clock-gate adjudication.",
+    "The observed lm_head NVML margin to 7.5 GiB was narrow; deployment requires a dedicated GPU and runtime free-memory guard.",
+    "No OP5 result is a cross-day or independent replication claim.",
+    "KV dequant can reopen only after a carrier with an authentic quantized-KV dequant operation is observed and newly preregistered.",
+    "OP-E remains blocked and is not opened by this receipt."
+  ],
+  "next_action": "No further execution is authorized inside the current OP5 backlog. A new kernel requires new census/authenticity evidence and a new preregistration; OP-E still requires owner authorization and its own execution card."
+}

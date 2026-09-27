@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_RECONNECT_R5_POSTRUN_ADJUDICATION",
+  "timestamp": "2026-09-16T20:25:40+08:00",
+  "status": "K3_C02_RECONNECTION_FAIL_CLOSE_DEPLOYMENT_PATH",
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "source_result": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_reconnect_r5_20260916.json",
+  "source_status": "K3_C02_RECONNECTION_FAIL_CLOSE_DEPLOYMENT_PATH",
+  "correction": {
+    "field": "kv_cache_structure_22_of_22",
+    "original": "FAIL (0/22)",
+    "corrected": "PASS (22/22)",
+    "reason": "The original validator compared DynamicCache.layers against all 42 attention modules. The carrier declares num_kv_shared_layers=18, so only 24 layers own persistent KV state.",
+    "model_config_facts": {
+      "num_hidden_layers": 42,
+      "num_kv_shared_layers": 18,
+      "expected_persistent_cache_layers": 24
+    },
+    "raw_error_expected_on_all_runs": "cache layer count 24 != 42",
+    "raw_error_conformance": true,
+    "corrected_cache_runs_passing": 22,
+    "corrected_cache_runs_total": 22,
+    "a_b_pairwise_structure_equal": {
+      "regex-log__HM89SBD:1": true,
+      "regex-log__HM89SBD:2": true,
+      "openssl-selfsigned-cert__oCvmg5c:1": true,
+      "openssl-selfsigned-cert__oCvmg5c:2": true,
+      "multi-source-data-merger__bUyWMFa:1": true,
+      "multi-source-data-merger__bUyWMFa:2": true,
+      "constraints-scheduling__aaSRUnD:1": true,
+      "constraints-scheduling__aaSRUnD:2": true,
+      "sqlite-db-truncate__Z9iGbrN:1": true,
+      "sqlite-db-truncate__Z9iGbrN:2": true,
+      "sqlite-db-truncate__Z9iGbrN:3": true
+    },
+    "a_b_pairwise_structure_equal_count": 11,
+    "validation_errors": {}
+  },
+  "corrected_gates": {
+    "owner_no_sha_direction_honored": "PASS",
+    "upstream_ncu_authorization": "PASS",
+    "r4_invalid_attempt_excluded": "PASS",
+    "same_load_eager_oracle": "PASS",
+    "formal_c02_nf4_carrier_343_modules": "PASS",
+    "all_5_tapes_22_ab_runs_full_budget": "PASS",
+    "prefill_first_token_exact_11_of_11": "FAIL",
+    "all_greedy_token_ids_exact_11_of_11": "FAIL",
+    "dispatch_mask_and_invocation_reconciliation": "PASS",
+    "input_output_structure_unchanged_per_custom_op": "PASS",
+    "model_parameter_state_nf4_config_restored": "PASS",
+    "kv_cache_structure_22_of_22": "PASS",
+    "gpu_memory_below_7_5_gib": "PASS",
+    "telemetry_present": "PASS",
+    "thermal_hardware_throttle_absent": "PASS"
+  },
+  "corrected_hard_gates_pass": false,
+  "decision_unchanged": true,
+  "independent_failure_basis": {
+    "all_greedy_token_ids_exact_11_of_11": "FAIL",
+    "identical_requests": 0,
+    "requests": 11
+  },
+  "next_action": "Close the K3 deployment path at C02 reconnection; retain isolated and ncu evidence as bounded diagnostics only."
+}

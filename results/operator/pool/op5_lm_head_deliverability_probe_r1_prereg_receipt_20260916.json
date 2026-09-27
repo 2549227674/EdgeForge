@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_LM_HEAD_DELIVERABILITY_PROBE_R1_PREREG",
+  "target": "tied_cpu_lm_head_262144_vocab_softcap_30",
+  "timestamp": "2026-09-16T20:47:31+08:00",
+  "status": "FROZEN_BEFORE_FORMAL_PROBE",
+  "protocol": "configs/operator/op5_lm_head_deliverability_probe_r1.json",
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "formal_probe_started": false,
+  "preflight_revision": "Added the shared carrier loader's replay.seed field before any model load or measurement; seed value equals the already frozen measurement seed.",
+  "upstream_backlog_disposition": "HOLD_CURRENT_CARRIER_DELIVERABILITY",
+  "expected": {
+    "frozen_requests_considered": 11,
+    "projected_lm_head_calls": 21705,
+    "nf4_modules": 343,
+    "vocab_size": 262144,
+    "hidden_size": 2560,
+    "softcap": 30.0,
+    "gpu_budget_gib": 7.5
+  },
+  "authorization_boundary": "This receipt freezes a bounded carrier-deliverability probe only; it does not authorize a custom kernel."
+}

@@ -1,0 +1,1 @@
+{"event": "exception", "exception_type": "ValueError", "message": "cgroup memory.max is below the frozen 96 GiB floor: 98784247808 B (92.00 GiB); an explicit --allow-memory-variance plus --memory-variance-note is required"}

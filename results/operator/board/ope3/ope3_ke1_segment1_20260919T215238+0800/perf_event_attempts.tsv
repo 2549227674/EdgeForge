@@ -1,0 +1,4 @@
+variant	mode	event	exit_code
+scalar	group	cycles:u,instructions:u,l2d_cache_refill:u,bus_access:u	0
+autovec	group	cycles:u,instructions:u,l2d_cache_refill:u,bus_access:u	0
+neon_sdot	group	cycles:u,instructions:u,l2d_cache_refill:u,bus_access:u	0

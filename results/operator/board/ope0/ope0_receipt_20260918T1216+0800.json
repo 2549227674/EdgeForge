@@ -1,0 +1,322 @@
+{
+  "schema_version": "board-v1",
+  "stage": "OPE0",
+  "status": "PASS_SINGLE_SEGMENT_OWNER_WAIVER",
+  "measurement_config_ref": "configs/operator/board/ope0_measurement.json",
+  "run_manifest_ref": "results/operator/board/ope0/run_manifest_20260918.json",
+  "environment_identity_ref": "results/operator/board/board_env_identity_20260918T1154+0800.json",
+  "clock_authority": {
+    "absolute_time_authority": "controller_before_after_timestamps",
+    "elapsed_time_authority": "board_CLOCK_MONOTONIC_RAW",
+    "board_wall_clock": "advisory_only"
+  },
+  "git_sha": "213460d88311cba5d84add4d3ee57aae26716c6d",
+  "formal_segments": [
+    {
+      "label": "segment1_formal",
+      "path": "results/operator/board/ope0/raw/ope0_segment1_formal_20260918T1216+0800",
+      "controller_before": "2026-09-18T12:15:55,467457993+08:00",
+      "controller_after": "2026-09-18T12:17:22,651122532+08:00",
+      "board_monotonic_window_s": {
+        "start": 4108.21,
+        "end": 4194.65
+      },
+      "bandwidth": {
+        "sizes": {
+          "64": {
+            "reps": 200,
+            "gbps": {
+              "min": 21.891553587,
+              "p25": 23.18495906,
+              "p50": 23.23099836,
+              "p75": 23.26250879625,
+              "max": 23.348079685,
+              "iqr": 0.07754973624999906
+            }
+          },
+          "128": {
+            "reps": 200,
+            "gbps": {
+              "min": 21.994091766,
+              "p25": 23.12447154075,
+              "p50": 23.186322177500003,
+              "p75": 23.214102012,
+              "max": 23.273293585,
+              "iqr": 0.08963047125000045
+            }
+          },
+          "256": {
+            "reps": 200,
+            "gbps": {
+              "min": 21.604294019,
+              "p25": 23.15297717775,
+              "p50": 23.195184668499998,
+              "p75": 23.21512592825,
+              "max": 23.264272857,
+              "iqr": 0.06214875050000046
+            }
+          },
+          "512": {
+            "reps": 200,
+            "gbps": {
+              "min": 21.957448911,
+              "p25": 23.14257065825,
+              "p50": 23.209857002,
+              "p75": 23.225915852,
+              "max": 23.262606565,
+              "iqr": 0.08334519374999871
+            }
+          },
+          "1024": {
+            "reps": 200,
+            "gbps": {
+              "min": 22.074584547,
+              "p25": 23.000236443499997,
+              "p50": 23.188001438999997,
+              "p75": 23.2058702075,
+              "max": 23.23651973,
+              "iqr": 0.20563376400000166
+            }
+          }
+        },
+        "sample_count_gate_pass": true,
+        "stable_segment_sizes_mib": [
+          256,
+          512,
+          1024
+        ],
+        "stable_segment_span_fraction": 0.000942245699370668,
+        "stable_segment_gate_pass": true,
+        "ceiling_gbps": 23.195184668499998
+      },
+      "matmul_selfcal": {
+        "schema_version": 1,
+        "primitive": "rknn_matmul_run",
+        "type": "int8xint8_to_int32",
+        "shape_mkn": [
+          4,
+          64,
+          32
+        ],
+        "layouts": {
+          "A": "normal",
+          "B": "normal",
+          "C": "normal"
+        },
+        "core_mask": "RKNN_NPU_CORE_0",
+        "core_mask_ret": 0,
+        "io_sizes_bytes": {
+          "A": 256,
+          "B": 2048,
+          "C": 512
+        },
+        "warmup_reps": 50,
+        "timed_reps": 200,
+        "run_only_us": {
+          "p25": 12.25,
+          "p50": 12.250001,
+          "p75": 12.250001,
+          "iqr": 1e-06
+        },
+        "correctness": {
+          "oracle": "CPU_int32_exact",
+          "elements": 128,
+          "mismatch_count": 0,
+          "max_abs_diff": 0,
+          "pass": true
+        },
+        "load_window": {
+          "target_seconds": 8.0,
+          "elapsed_seconds": 8.00001,
+          "loop_count": 540826
+        },
+        "process_exit_code": 0,
+        "selfcal_gate_pass": true,
+        "rknpu_load_10hz_samples": 76,
+        "rknpu_load_max_by_core_pct": {
+          "npu_load_core0_pct": 68,
+          "npu_load_core1_pct": 0,
+          "npu_load_core2_pct": 0
+        },
+        "rknpu_load_gate_pass": true
+      },
+      "telemetry": {
+        "samples": 76,
+        "bandwidth_window_samples": 59,
+        "matmul_window_samples": 8,
+        "observed_cadence_seconds": {
+          "min": 1.0399999999999636,
+          "p25": 1.1499999999996362,
+          "p50": 1.1599999999998545,
+          "p75": 1.160000000000764,
+          "max": 1.180000000000291,
+          "iqr": 0.010000000001127773
+        },
+        "timed_window_governor_values": [
+          [
+            "performance",
+            "performance",
+            "performance"
+          ]
+        ],
+        "timed_window_governor_gate_pass": true,
+        "frequency_checks": {
+          "bandwidth_policy4": {
+            "samples": 59,
+            "min_fraction_of_max": 1.0,
+            "p50_fraction_of_max": 1.0,
+            "threshold": 0.95,
+            "pass": true
+          },
+          "bandwidth_policy6": {
+            "samples": 59,
+            "min_fraction_of_max": 1.0,
+            "p50_fraction_of_max": 1.0,
+            "threshold": 0.95,
+            "pass": true
+          },
+          "matmul_npu": {
+            "samples": 8,
+            "min_fraction_of_max": 1.0,
+            "p50_fraction_of_max": 1.0,
+            "threshold": 0.95,
+            "pass": true
+          }
+        },
+        "thermal_max_c": {
+          "thermal_zone0_soc_thermal": 71.153,
+          "thermal_zone1_bigcore0_thermal": 75.769,
+          "thermal_zone2_bigcore1_thermal": 74.846,
+          "thermal_zone3_littlecore_thermal": 73.0,
+          "thermal_zone4_center_thermal": 68.384,
+          "thermal_zone5_gpu_thermal": 66.538,
+          "thermal_zone6_npu_thermal": 68.384
+        }
+      },
+      "governor_guard": {
+        "before": {
+          "policy4_governor": "ondemand",
+          "policy6_governor": "ondemand",
+          "npu_governor": "rknpu_ondemand"
+        },
+        "after_set": {
+          "policy4_governor": "performance",
+          "policy6_governor": "performance",
+          "npu_governor": "performance"
+        },
+        "after_restore": {
+          "policy4_governor": "ondemand",
+          "policy6_governor": "ondemand",
+          "npu_governor": "rknpu_ondemand"
+        },
+        "performance_set_pass": true,
+        "exact_restore_pass": true
+      },
+      "run_meta": {
+        "segment_label": "segment1_formal",
+        "board_start_wall": "2026-09-18T12:15:55.036420304+08:00",
+        "board_start_uptime_s": "4108.21",
+        "uname": "Linux orangepi5 6.1.99-rockchip-rk3588 #1.2.2 SMP Thu Jun 26 14:42:53 CST 2025 aarch64 aarch64 aarch64 GNU/Linux",
+        "gcc": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+        "board_end_wall": "2026-09-18T12:17:21.468592480+08:00",
+        "board_end_uptime_s": "4194.65",
+        "run_exit_code": "0"
+      },
+      "segment_pass": true
+    }
+  ],
+  "replication": {
+    "status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "gap_seconds": null,
+    "minimum_gap_seconds": 1800,
+    "gap_gate_pass": false,
+    "segment_ceiling_gbps": [
+      23.195184668499998
+    ],
+    "relative_delta": null,
+    "maximum_relative_delta": 0.1,
+    "replication_gate_pass": false,
+    "owner_waiver": {
+      "recorded_at": "2026-09-18T12:21:16+08:00",
+      "skip_second_formal_segment": true,
+      "owner_direction": "If same-day dual-segment discipline means testing twice, do not do it.",
+      "execution_effect": "The queued second segment was cancelled before it began; only the single valid formal segment is adopted.",
+      "claim_limit": "Do not claim same-day replication or two-segment consistency."
+    },
+    "claim": "single formal segment only; same-day replication was not executed and is not claimed"
+  },
+  "bandwidth_ceiling": {
+    "status": "PASS_SINGLE_SEGMENT_OWNER_WAIVER",
+    "tier": "Tier-A",
+    "value_gbps": 23.195184668499998,
+    "definition": "single formal segment stable-size p50 after explicit owner waiver of the preregistered second segment",
+    "kernel": "STREAM-style NEON triad C=A+scalar*B",
+    "analytic_bytes_per_element": 24,
+    "stable_segment_sizes_mib": [
+      256,
+      512,
+      1024
+    ],
+    "taskset_cpus": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "threads": 4
+  },
+  "matmul_selfcal": {
+    "status": "PASS",
+    "shape_mkn": [
+      4,
+      64,
+      32
+    ],
+    "type": "RKNN_INT8_MM_INT8_TO_INT32",
+    "exact_mismatch_count_per_segment": [
+      0
+    ],
+    "run_only_p50_us_per_segment": [
+      12.250001
+    ],
+    "run_only_p50_us_median": 12.250001,
+    "rknpu_load_max_pct_per_segment": [
+      68
+    ]
+  },
+  "thermal_max_c": {
+    "thermal_zone0_soc_thermal": 71.153,
+    "thermal_zone1_bigcore0_thermal": 75.769,
+    "thermal_zone2_bigcore1_thermal": 74.846,
+    "thermal_zone3_littlecore_thermal": 73.0,
+    "thermal_zone4_center_thermal": 68.384,
+    "thermal_zone5_gpu_thermal": 66.538,
+    "thermal_zone6_npu_thermal": 68.384
+  },
+  "governor_restore_pass": true,
+  "invalid_harness_attempts": [
+    {
+      "label": "attempt1_invalid_csv",
+      "path": "results/operator/board/ope0/raw/ope0_segment1_20260918T1212+0800",
+      "controller_before": "2026-09-18T12:10:48,770381801+08:00",
+      "controller_after": "2026-09-18T12:12:15,186062960+08:00",
+      "reason": "GNU date --iso-8601=ns emitted a comma before fractional seconds, producing one extra CSV field in telemetry and NPU-load rows.",
+      "disposition": "INVALID_HARNESS_OUTPUT_NOT_ADOPTED"
+    },
+    {
+      "label": "attempt2_invalid_csv",
+      "path": "results/operator/board/ope0/raw/ope0_segment1_valid_20260918T1214+0800",
+      "controller_before": "2026-09-18T12:13:20,521998030+08:00",
+      "controller_after": "2026-09-18T12:14:48,390176940+08:00",
+      "reason": "Setting LC_ALL=C did not change this coreutils date output; the same extra CSV field remained.",
+      "disposition": "INVALID_HARNESS_OUTPUT_NOT_ADOPTED"
+    }
+  ],
+  "scope_guards": [
+    "no_driver_device_tree_kernel_or_shared_library_changes",
+    "no_multi_core_RKLLM_execution",
+    "no_model_quality_evaluation",
+    "no_write_to_frozen_model_directory"
+  ],
+  "negative_statement": "No driver, device tree, kernel, RKNN/RKLLM shared library, frozen model artifact, multi-core RKLLM path, or model-quality evaluation was modified or executed. The only temporary system changes were the preregistered CPU/NPU governors, restored exactly after every attempt."
+}

@@ -1,0 +1,2 @@
+# Keep every file byte-identical: experiment receipts record SHA-256 of their inputs.
+* -text

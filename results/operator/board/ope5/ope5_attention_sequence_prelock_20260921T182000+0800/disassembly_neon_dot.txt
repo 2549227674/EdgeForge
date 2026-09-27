@@ -1,0 +1,59 @@
+
+bin/ope5_attention_sequence_bench:     file format elf64-littleaarch64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .text:
+
+0000000000004a24 <ope5_attention_neon_dot>:
+    4a24:	71001c5f 	cmp	w2, #0x7
+    4a28:	5400054d 	b.le	4ad0 <ope5_attention_neon_dot+0xac>
+    4a2c:	4f000403 	movi	v3.4s, #0x0
+    4a30:	aa0003e4 	mov	x4, x0
+    4a34:	aa0103e5 	mov	x5, x1
+    4a38:	51002043 	sub	w3, w2, #0x8
+    4a3c:	91004006 	add	x6, x0, #0x10
+    4a40:	53037c63 	lsr	w3, w3, #3
+    4a44:	8b2350c6 	add	x6, x6, w3, uxtw #4
+    4a48:	4ea31c60 	mov	v0.16b, v3.16b
+    4a4c:	3cc10482 	ldr	q2, [x4], #16
+    4a50:	3cc104a1 	ldr	q1, [x5], #16
+    4a54:	0e217845 	fcvtl	v5.4s, v2.4h
+    4a58:	4e217842 	fcvtl2	v2.4s, v2.8h
+    4a5c:	0e217824 	fcvtl	v4.4s, v1.4h
+    4a60:	4e217821 	fcvtl2	v1.4s, v1.8h
+    4a64:	4e24cca0 	fmla	v0.4s, v5.4s, v4.4s
+    4a68:	4e21cc43 	fmla	v3.4s, v2.4s, v1.4s
+    4a6c:	eb0400df 	cmp	x6, x4
+    4a70:	54fffee1 	b.ne	4a4c <ope5_attention_neon_dot+0x28>  // b.any
+    4a74:	11000463 	add	w3, w3, #0x1
+    4a78:	531d7063 	lsl	w3, w3, #3
+    4a7c:	4e23d400 	fadd	v0.4s, v0.4s, v3.4s
+    4a80:	6e20d400 	faddp	v0.4s, v0.4s, v0.4s
+    4a84:	6e20d400 	faddp	v0.4s, v0.4s, v0.4s
+    4a88:	6b03005f 	cmp	w2, w3
+    4a8c:	5400020d 	b.le	4acc <ope5_attention_neon_dot+0xa8>
+    4a90:	51000442 	sub	w2, w2, #0x1
+    4a94:	93407c65 	sxtw	x5, w3
+    4a98:	4b030044 	sub	w4, w2, w3
+    4a9c:	910004a5 	add	x5, x5, #0x1
+    4aa0:	937f7c62 	sbfiz	x2, x3, #1, #32
+    4aa4:	8b050083 	add	x3, x4, x5
+    4aa8:	d37ff863 	lsl	x3, x3, #1
+    4aac:	7c626802 	ldr	h2, [x0, x2]
+    4ab0:	7c626821 	ldr	h1, [x1, x2]
+    4ab4:	91000842 	add	x2, x2, #0x2
+    4ab8:	1ee24042 	fcvt	s2, h2
+    4abc:	1ee24021 	fcvt	s1, h1
+    4ac0:	1f010040 	fmadd	s0, s2, s1, s0
+    4ac4:	eb02007f 	cmp	x3, x2
+    4ac8:	54ffff21 	b.ne	4aac <ope5_attention_neon_dot+0x88>  // b.any
+    4acc:	d65f03c0 	ret
+    4ad0:	4f000400 	movi	v0.4s, #0x0
+    4ad4:	52800003 	mov	w3, #0x0                   	// #0
+    4ad8:	17ffffea 	b	4a80 <ope5_attention_neon_dot+0x5c>
+
+Disassembly of section .fini:

@@ -1,0 +1,262 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-03-RMSNorm-FORMAL-EVIDENCE",
+  "status": "VALID_OPE5_SINGLE_SEGMENT_OWNER_WAIVER_ISOLATED_A76_RMSNORM",
+  "recorded_at": "2026-09-21T14:08:20.187662043+08:00",
+  "formal_segments": 1,
+  "same_day_retest_performed": false,
+  "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+  "files": [
+    {
+      "path": "configs/operator/board/ope5_backlog_triage.json",
+      "sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539",
+      "role": "frozen backlog adjudication"
+    },
+    {
+      "path": "configs/operator/board/ope5_rmsnorm_prereg.json",
+      "sha256": "971f97200383d341c0751d82b6c6b598804e95e4e80f5bdc00201381ea4cb224",
+      "role": "frozen RMSNorm preregistration"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_backlog_triage_receipt_20260921.json",
+      "sha256": "6dd1ea835d818eeb4b190e53fc1436d54ed7e4c9e177c7c80b90c0692eb8e82a",
+      "role": "selection verification receipt"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_prereg_receipt_20260921.json",
+      "sha256": "87400ceceb98165bc5e3a363a9eaf97de4deef632b0dc8a95fdfe42255f27593",
+      "role": "preregistration verification receipt"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_source_lock_20260921.json",
+      "sha256": "7f0d563b981883f3724c3cf1a61f5088588f0fbaa25ee583c45686962f47a1d9",
+      "role": "pre-execution source lock"
+    },
+    {
+      "path": "scripts/operator/board/ope5_rmsnorm_bench.cpp",
+      "sha256": "0900e6c5ec7bf9995e0453fb59974c38788f67b9c553c09e7b9ecec28d7c7e7c",
+      "role": "locked benchmark source"
+    },
+    {
+      "path": "scripts/operator/board/run_ope5_rmsnorm.sh",
+      "sha256": "9202122e6f9b6c651e3e97a7dd1a8228dfa2f10215258f043e6dbbf22f894b20",
+      "role": "locked formal runner"
+    },
+    {
+      "path": "scripts/operator/board/ope5_rmsnorm_measure_payload.sh",
+      "sha256": "d4c7598a14c3efc8b9d132b2888b0ae3badf71a9ef36d359cf15b10cc831fc94",
+      "role": "locked board payload"
+    },
+    {
+      "path": "scripts/operator/board/telemetry_sampler.sh",
+      "sha256": "74f8e8a85858c567206b7234dafe7015a59483c42d83300a04b3532a1368b84c",
+      "role": "locked telemetry dependency"
+    },
+    {
+      "path": "scripts/operator/board/summarize_ope5.py",
+      "sha256": "c36b1aaffb3ef585afcbc62bb9038bcdf40510657e8b5914920edb0f3f3258ce",
+      "role": "independent post-run validator"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_receipt_20260921.json",
+      "sha256": "0e4eb654fe51b73e8ea41f888effc19921376caacb5440da31a2b2bb77cfacab",
+      "role": "23-of-23 machine receipt"
+    },
+    {
+      "path": "docs/operator/EdgeForge_算子面_板端_OPE5_RMSNorm正式段报告_2026-09-21.md",
+      "sha256": "23d3b26b5889f4b8b97680d4e6af28ea2abf3658f2fc8ad0cb6a78d0f3c8efc6",
+      "role": "human-readable formal report"
+    },
+    {
+      "path": "results/operator/shape_census.json",
+      "sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f",
+      "role": "RMSNorm population authority"
+    },
+    {
+      "path": "results/operator/board/bandwidth_ceiling.json",
+      "sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9",
+      "role": "OPE0 Tier-A denominator"
+    },
+    {
+      "path": "results/operator/board/ope4/ope4_receipt_20260921.json",
+      "sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d",
+      "role": "OPE4 model-stage anchor"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/build.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/build.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/controller_meta.json",
+      "sha256": "86fd93d12eed9f541762c96389fbd0ff5778a54429a9e0ea0d83e8ca70495b55",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/correctness.csv",
+      "sha256": "3d3dcb4346d1f9db22eebccc56d7f9fa8365ebbadeed3996e0ac682c1e2ab39d",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/correctness.stderr.log",
+      "sha256": "cf42771f124739ae90872a513ea94a9918f238bb08ca01983a548da050f4d1f2",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/correctness_gate.txt",
+      "sha256": "603a5e0f95ba6d6bd44ff3adb00694feeff8e4a8c57016a11422985fb1a90834",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/disassembly_autovec_o3.txt",
+      "sha256": "2336a379ddd25cd7dcfe168e5ce9b0067ff73a8e3f565a1d62907f40b24ca571",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/disassembly_neon_fp16.txt",
+      "sha256": "67e0009467cf27424002dcbac9b26f1f314c23b5ac9f14d280f2d1b54ee55bf5",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/disassembly_scalar_ref.txt",
+      "sha256": "2da24a19a6432c9b48c1bbb1527aa56d9ec7669106333a1ed7c3bdcbac14ffef",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/governor_state.tsv",
+      "sha256": "8fa7dc026b6914d06080d9518631fa6f170a955909fb5d41f64fea775b680c2a",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/implementation_hash_checks.tsv",
+      "sha256": "cc4fb7ae7779365ec632174998683d7eb61fbaac87203eae10894b80900d2bca",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/implementation_hash_observed.tsv",
+      "sha256": "3d7b7c4e48f76f990bb8ff9ddd9f4f7d2c432aa26ff9224008b092b9cd3b25e0",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/perf_autovec_o3_population.bench.csv",
+      "sha256": "dfeb866681195c039a07cbf5f7392839610cabe91f77b8e066432304d89db4a6",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/perf_autovec_o3_population.exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/perf_autovec_o3_population.stat.csv",
+      "sha256": "cfd06ca72acf577720a1389ebcff0f3a1f6a42f515c425114c85e78a6f6e30b7",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/perf_autovec_o3_population.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/perf_event_attempts.tsv",
+      "sha256": "d71eb36594f7a260a184ca579e9b6e1c03ee5179d3e79f4ba1d68f7778644c88",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/perf_neon_fp16_population.bench.csv",
+      "sha256": "356aaaf5931ca444697d9c659d05bf7663ff61d88d1c7b4328bbd268257c533b",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/perf_neon_fp16_population.exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/perf_neon_fp16_population.stat.csv",
+      "sha256": "2303db077bedeab019ca67945e4491a1685b2d780ff5a775cfd282e45720a7cc",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/perf_neon_fp16_population.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/perf_scalar_ref_population.bench.csv",
+      "sha256": "8b7b927fe539404050ee42716ad1bd70080457828da629bba4e41bcac2d6a031",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/perf_scalar_ref_population.exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/perf_scalar_ref_population.stat.csv",
+      "sha256": "56d98273e4674344391bd4f1a917c79327a8cbf59f32de9c0008e2a4bd51a77a",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/perf_scalar_ref_population.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/phase.txt",
+      "sha256": "924b344ae63f8fa0189fcb62c1d2990ca75e450a89d2147adcba4167c3ca5aeb",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/run_meta.env",
+      "sha256": "ea90030184436a0bb8bcb84ca76cbecd020927b37276d89e62100dd09c808988",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/telemetry_1hz.csv",
+      "sha256": "9bef394e868008b7d4ca030b4ee7e3eef262dd5b2ea68af3ed0b2cd08abce0b4",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/thermal_trip_points.tsv",
+      "sha256": "80ec0be226f806978e85d41c00f23a0e40de7503080e8d33ecf9c7a033f96aa2",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/tier_b_gate.txt",
+      "sha256": "0c1a781dc4926ae8e5354b3be734bc8d48316c44056742d901ee395de52b3df1",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/timing_gate.txt",
+      "sha256": "c48875372b0ff873afb9138d112d4aa2f58c5251faf3122bc911373fe3eba2f7",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/timings.csv",
+      "sha256": "ff6e6f676d0642b0d2c611b6c903e857e53f7c63654e6fe26fdf59a28d89717c",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/timings.stderr.log",
+      "sha256": "93607ff9c95b448e33b571d09cd683c32656ffcd29d9509450547c6e8e29dff1",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_segment1_20260921T140743+0800/vectorization.log",
+      "sha256": "91d6dc281d2b2ea41fa974fa1608f14848ffde656ce09e9d9418353421b6d2b3",
+      "role": "raw single formal segment artifact"
+    }
+  ],
+  "claim_limits": [
+    "The measured 0.732084 ms is an isolated single-thread A76 population instrument, not an RKLLM internal RMSNorm component time.",
+    "The isolated ratio must not be subtracted from OPE4 TPOT or represented as model speedup.",
+    "bus_access count*8 is a preregistered hypothesis diagnostic only; count*64 remains rejected and neither is an analytic-backing gate.",
+    "Execution card, facts, handoff, this manifest, and archive checksum are mutable/index or self-referential artifacts and are not listed as hashed payload members."
+  ]
+}

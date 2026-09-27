@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K2_R2_ISOLATED_DAY1",
+  "calendar_day": "2026-09-16",
+  "timestamp": "2026-09-16T16:55:27+08:00",
+  "protocol": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k2_nf4_decode_gemv_prereg_r2.json",
+    "sha256": "86c3e13edaca148b4c7bcceddfe9d86806997155b285ca39408876e721e739ae"
+  },
+  "locked_candidate": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k2_nf4_gemv.py",
+    "sha256": "149b4b8c651cfa6530f320779687132f0bdb31f511282473250ffc80257d7c65"
+  },
+  "runner": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_r2_day1.py",
+    "sha256": "eefd7f7acc85628271368946622c668d4f4c5f81baa0cb6505c442206de802f6"
+  },
+  "correctness_precondition": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k2_r2_correctness_receipt_20260916.json",
+    "sha256": "32512ce603321d59f34d71a6d8cc9ca5272afc6f441731f291cb0579cb990360",
+    "result": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k2_r2_correctness_20260916.json",
+      "sha256": "890bef7a0200ce3a012427190a1b1e7d03ab1355f3e4e135dc14f4d9e29d9429"
+    },
+    "status": "PASS"
+  },
+  "result": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k2_r2_day1_20260916.json",
+    "sha256": "07c7006651254246a3023e8fad8b4652697f3b7c2c5711eebb89b5e82561dff0"
+  },
+  "gates": {
+    "r2_correctness_precondition": "PASS",
+    "protocol_immutable": "PASS",
+    "candidate_source_locked": "PASS",
+    "formal_c02_full_hash": "PASS",
+    "all_343_weights_and_14_variants": "PASS",
+    "same_day_bandwidth": "PASS",
+    "three_way_200_full_sequence_measurement": "PASS",
+    "frozen_autotune_space": "PASS",
+    "thermal_or_hardware_throttle_absent": "PASS",
+    "memory_clock_gate": "PASS",
+    "day1_positive_continuation_gate": "FAIL"
+  },
+  "performance_outcome": "NEGATIVE",
+  "candidate_speedup_vs_best_baseline": 0.17592884626820407,
+  "mlp_speedups_vs_best_baseline": {
+    "mlp_down_proj": 0.15044247844205202,
+    "mlp_gate_proj": 0.17015468641784223,
+    "mlp_up_proj": 0.17015468641784223
+  },
+  "bounded_conclusion": "K2_R2_CLOSED_BY_FROZEN_DAY1_GATE",
+  "next_authorized_action": "Do not run K2 Day-2, ncu, or reconnection; move the OP5 backlog decision to GQA decode attention.",
+  "status": "K2_R2_CLOSED_DAY1_NOT_POSITIVE"
+}

@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "stage": "T3_OPD_rank_4096_memory_gate",
+  "started_at": "2026-08-12T21:01:13.083111+08:00",
+  "argv": [
+    "scripts/m1/run_t3_rank4096_memory_gate.py",
+    "--model",
+    "models/C01-S-bf16-r1",
+    "--plan",
+    "results/t1/family_80_20_half_plan_r1/family_80_20.parquet",
+    "--teacher-url",
+    "http://127.0.0.1:8000",
+    "--rank",
+    "256",
+    "--alpha",
+    "16",
+    "--learning-rate",
+    "5e-5",
+    "--weight-decay",
+    "0",
+    "--prompt-length",
+    "1024",
+    "--completion-length",
+    "3072",
+    "--output",
+    "results/m1/t3_rank256_4096_p1024_c3072_memory_gate_receipt.json"
+  ],
+  "configuration": {
+    "rank": 256,
+    "alpha": 16,
+    "use_rslora": true,
+    "scaling": 1.0,
+    "learning_rate": 5e-05,
+    "weight_decay": 0.0,
+    "quantization": "bnb_nf4_double_quant_bf16_compute",
+    "attention": "sdpa",
+    "activation_checkpointing": false,
+    "use_cache": true,
+    "target_scope": "language_model_linear_only"
+  },
+  "inputs": {
+    "model": "/root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1",
+    "plan": "/root/autodl-tmp/edgeforge-m1/workspace/results/t1/family_80_20_half_plan_r1/family_80_20.parquet",
+    "plan_sha256": "61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e",
+    "rollout": {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee540-025c-73cb-9bd9-fda9b68a8b8f:145::segment:0002:part:0008",
+      "prompt_length": 1024,
+      "completion_length": 3072,
+      "sequence_sha256": "cb22b5c3c069f4d5cc631ed899dd112a847fc494c694cb4f24a1eb1dbe05e3b7"
+    },
+    "teacher_score_latency_seconds": 1.0366852529114112
+  },
+  "runtime": {
+    "packages": {
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "datasets": "5.0.1",
+      "numpy": "2.3.5",
+      "peft": "0.20.0",
+      "pyarrow": "25.0.1",
+      "torch": "2.13.0",
+      "transformers": "5.15.0",
+      "trl": "1.9.2",
+      "vllm": "0.27.0"
+    },
+    "cuda_visible_devices": "1",
+    "initial_gpu_inventory": [
+      {
+        "index": 0,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-8441031a-35d4-fc0b-d6c1-70adb534e305",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 78093,
+        "utilization_percent": 0
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-39160c7c-0272-9254-c171-be00298b0dfc",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 3,
+        "utilization_percent": 0
+      }
+    ],
+    "teacher_initial_health": {
+      "status": 200,
+      "latency_seconds": 0.0210981770651415,
+      "body": "{\"status\":\"ok\"}"
+    },
+    "final_gpu_inventory": [
+      {
+        "index": 0,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-8441031a-35d4-fc0b-d6c1-70adb534e305",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 78093,
+        "utilization_percent": 0
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-39160c7c-0272-9254-c171-be00298b0dfc",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 94487,
+        "utilization_percent": 13
+      }
+    ],
+    "teacher_final_health": {
+      "status": 200,
+      "latency_seconds": 0.002075669006444514,
+      "body": "{\"status\":\"ok\"}"
+    }
+  },
+  "status": "PASS",
+  "trainable_parameter_tensors": 686,
+  "trainable_parameters": 622067712,
+  "target_module_count": 343,
+  "loss": 0.5833761096000671,
+  "grad_norm_before_clipping": 1.7582900524139404,
+  "step_seconds": 2.811527954065241,
+  "peak_allocated_gib": 86.4699444770813,
+  "peak_reserved_gib": 91.5859375,
+  "finished_at": "2026-08-12T21:01:38.286010+08:00",
+  "wall_seconds": 25.202935650013387
+}

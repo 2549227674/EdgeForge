@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K2_R2_PREREGISTRATION",
+  "timestamp": "2026-09-16T16:34:39+08:00",
+  "protocol": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k2_nf4_decode_gemv_prereg_r2.json",
+    "sha256": "86c3e13edaca148b4c7bcceddfe9d86806997155b285ca39408876e721e739ae",
+    "revision": "R2"
+  },
+  "disclosure": {
+    "adaptive_followup_to_failed_r1": true,
+    "independent_replication_of_r1": false,
+    "r1_remains_failed_and_immutable": true,
+    "candidate_existed_before_r2_freeze": true,
+    "r2_holdout_inputs_evaluated_before_freeze": false,
+    "r2_performance_measured_before_freeze": false
+  },
+  "locked_candidate": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k2_nf4_gemv.py",
+    "sha256": "149b4b8c651cfa6530f320779687132f0bdb31f511282473250ffc80257d7c65"
+  },
+  "protocol_summary": {
+    "single_hard_correctness_oracle": "explicit_fp32_nf4_semantic_reference",
+    "bitsandbytes_eager_role": "non-gating numerical comparator and mandatory performance baseline",
+    "all_actual_weights": 343,
+    "all_actual_weight_seed": 20261001,
+    "representative_variants": 14,
+    "representative_distributions": 4,
+    "representative_seeds": [
+      20261001,
+      20261002,
+      20261003
+    ],
+    "representative_trials": 168,
+    "candidate_attempts": 1,
+    "day1_continuation_requires_positive": true,
+    "deployment_requires_exact_greedy_token_ids": true
+  },
+  "gates": {
+    "all_frozen_source_hashes": "PASS",
+    "git_identity": "PASS",
+    "r1_failure_disclosed": "PASS",
+    "single_consistent_correctness_oracle": "PASS",
+    "fresh_holdout_specification_frozen": "PASS",
+    "candidate_source_locked": "PASS",
+    "bounded_stop_rule_frozen": "PASS",
+    "r2_correctness": "NOT_STARTED",
+    "r2_day1_performance": "NOT_STARTED",
+    "cross_day_replication": "NOT_STARTED",
+    "ncu_tier_b": "NOT_STARTED",
+    "reconnection": "NOT_STARTED"
+  },
+  "next_authorized_action": "Author the R2 harness without changing the locked candidate, verify the protocol hash at process start/end, and run only the frozen R2 correctness gate.",
+  "status": "PASS"
+}

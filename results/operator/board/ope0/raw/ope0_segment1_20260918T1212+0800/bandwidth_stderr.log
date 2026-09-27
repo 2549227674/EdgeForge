@@ -1,0 +1,2 @@
+OPE0_TRIAD_METADATA threads=4 first_cpu=4 max_array_mib=1024 warmup=50 reps=200 analytic_bytes_per_element=24
+OPE0_TRIAD_OBSERVED 5066.875000000

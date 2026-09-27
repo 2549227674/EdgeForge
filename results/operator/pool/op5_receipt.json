@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "stage": "OP5",
+  "timestamp": "2026-09-16T13:11:02+08:00",
+  "config": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op5_k2_selection_probe.json",
+    "sha256": "455078161d9935388d19d5aae3ff48ae9da6ba66ffecb2cb347656981720b347"
+  },
+  "result": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_k2_selection.json",
+    "sha256": "cb83e67e8766d2e07e4267563ffd77875c49cc85a26fa93e55408c35e33fd43f"
+  },
+  "gates": {
+    "frozen_probe_config_immutable": "PASS",
+    "upstream_p0_op0_op1_op4": "PASS",
+    "formal_c02_full_hash": "PASS",
+    "all_343_nf4_layout_invariants": "PASS",
+    "same_day_bandwidth": "PASS",
+    "compile_fullgraph_no_break": "PASS",
+    "eager_compile_exact_all_343": "PASS",
+    "thermal_or_hardware_throttle_absent": "PASS",
+    "memory_clock_gate": "PASS",
+    "backlog_reordered": "PASS",
+    "k2_four_questions": "PASS"
+  },
+  "selected_k2": "k2_nf4_double_quant_decode_gemv",
+  "formal_k2_measurement_started": false,
+  "status": "PASS"
+}

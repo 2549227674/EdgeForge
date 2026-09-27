@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "candidate": "C01-S",
+  "optimizer_step": 512,
+  "verified_at_utc": "2026-08-11T16:26:04.388445+00:00",
+  "hostname": "autodl-container-atdlpbjbca-22473649",
+  "checkpoint": {
+    "path": "results/t2/c01_s_family_80_20_half_r1/checkpoints/step-00512",
+    "completed_steps": 512,
+    "evaluation_steps": [
+      0
+    ],
+    "rank_audits": [
+      {
+        "rank": 0,
+        "local_rank": 0,
+        "seed": 20260811,
+        "records": 5213,
+        "input_tokens": 9566248,
+        "supervised_tokens": 5707184,
+        "peak_allocated_gib": 86.65991306304932,
+        "peak_reserved_gib": 87.4453125
+      },
+      {
+        "rank": 1,
+        "local_rank": 1,
+        "seed": 20260812,
+        "records": 4965,
+        "input_tokens": 8988519,
+        "supervised_tokens": 5316093,
+        "peak_allocated_gib": 86.65991306304932,
+        "peak_reserved_gib": 87.908203125
+      }
+    ],
+    "rng_ranks": [
+      0,
+      1
+    ],
+    "scheduler_last_epoch": 512,
+    "files": [
+      {
+        "path": "READY",
+        "bytes": 9,
+        "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+      },
+      {
+        "path": "continuation_state.pt",
+        "bytes": 156128677,
+        "sha256": "a61e981cd56d20a3b3771845c388d8e99f32afa63a49d02fbfbea2adb185860e"
+      },
+      {
+        "path": "adapter/README.md",
+        "bytes": 5196,
+        "sha256": "6a369ffd0c2d8faf04f11e374228788bdb6d63f9d006215a273f8ad032301ec9"
+      },
+      {
+        "path": "adapter/adapter_config.json",
+        "bytes": 10162,
+        "sha256": "c3b3d2588b0d1eeea5aa84df262ed3cfca605306990e9c00aead78ef65c1fe4a"
+      },
+      {
+        "path": "adapter/adapter_model.safetensors",
+        "bytes": 101178872,
+        "sha256": "a7658d0e2f9b9660b234d94d66fce485f7c170a1a7d3a99be7a1526e2af0aba7"
+      }
+    ],
+    "artifact_set_sha256": "edba96e7e95bd76bcddf40a7a442b7ed9697a16c9b2db0e6b4697bb84af3028f",
+    "numeric_path_inventory": {
+      "ready_marker": "complete",
+      "adapter_config": {
+        "r": 8,
+        "lora_alpha": 16,
+        "lora_dropout": 0.0,
+        "bias": "none"
+      },
+      "adapter_tensor_count": 1184,
+      "adapter_dtype_numel": {
+        "torch.float32": 25249792
+      },
+      "adapter_nonfinite_values": 0,
+      "optimizer_state_entries": 686,
+      "optimizer_moment_dtype_numel": {
+        "exp_avg": {
+          "torch.float32": 19439616
+        },
+        "exp_avg_sq": {
+          "torch.float32": 19439616
+        }
+      },
+      "optimizer_moment_nonfinite_values": {
+        "exp_avg": 0,
+        "exp_avg_sq": 0
+      }
+    }
+  },
+  "holdout_evaluations": [
+    {
+      "records": 1948,
+      "input_tokens": 3483799,
+      "supervised_tokens": 1964016,
+      "sample_mean_loss": 1.8861029172470363,
+      "sample_loss_standard_error": 0.02209180513929917,
+      "token_weighted_loss": 1.6302139139329317,
+      "elapsed_seconds": 265.5615859730169,
+      "world_size": 2,
+      "optimizer_step": 0
+    }
+  ],
+  "numeric_path": {
+    "base_compute_dtype": "bfloat16",
+    "adapter_trainable_dtype": "float32",
+    "optimizer_moment_dtype": "float32",
+    "final_merge_required_dtype": "bfloat16",
+    "owner_decision_date": "2026-08-12"
+  },
+  "gates": {
+    "checkpoint_identity": "PASS",
+    "checkpoint_file_hashes": "PASS",
+    "scheduler_and_two_rank_rng": "PASS",
+    "fp32_adapter_and_optimizer_finite": "PASS_OWNER_ACCEPTED",
+    "holdout_identity_and_finite_losses": "PASS",
+    "end_to_end_resume_smoke": "WAIVED_BY_OWNER"
+  },
+  "verifier": "/root/autodl-tmp/edgeforge-m1/workspace/scripts/m1/verify_c01_s_intermediate.py",
+  "verifier_sha256": "332629a6bc2ccda9248fa23a1083c795fddb09f610f2cf11d89ef81c2895f3c4",
+  "completion_verifier_sha256": "cf9eb0a67bf1f91ce715f3661e3da8be7ce7e06b07c4a3bed7206e588503372a"
+}

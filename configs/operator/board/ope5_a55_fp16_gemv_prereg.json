@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-05-A55-FP16-GEMV",
+  "status": "PREREGISTERED_FROZEN_NOT_RUN",
+  "frozen_at": "2026-09-21T17:08:50+08:00",
+  "board_connection_performed": false,
+  "formal_execution_started": false,
+  "candidate_implemented": false,
+  "selection": {
+    "candidate_id": "OPE5-05",
+    "kernel_id": "ope5_a55_neon_fp16_gemv",
+    "decision": "FIRST_REMAINING_AFTER_VALID_OPE5_02_COMPLETION",
+    "scope_path": "configs/operator/board/ope5_a55_fp16_gemv_scope.json",
+    "scope_sha256": "8f3a2c6949980d04096a1e995ff2aafae653aed031fdf0960b1261c86059d1f4",
+    "scope": "One four-A55 comparator for the valid OPE5-02 FP16 GEMV semantics: M=1,K=10240,N=2560, CPU0-3, FP16 activation and row-major weights, FP32 accumulation/output. Reuse the immutable A76 receipt; do not rerun A76.",
+    "four_question_statuses": {
+      "A_authenticity": "PASS_COMPARATOR_ONLY",
+      "B_bottleneck": "PASS_BIG_LITTLE_METHOD_VALUE_ONLY",
+      "C_capability": "PASS_DESIGN_WITH_PRELOCK_TOPOLOGY_ASSERTION",
+      "D_deliverability": "PASS_SEPARATE_COMPARATOR_LANE"
+    }
+  },
+  "sources": {
+    "scope_freeze": {
+      "path": "configs/operator/board/ope5_a55_fp16_gemv_scope.json",
+      "sha256": "8f3a2c6949980d04096a1e995ff2aafae653aed031fdf0960b1261c86059d1f4"
+    },
+    "ope5_backlog_triage": {
+      "path": "configs/operator/board/ope5_backlog_triage.json",
+      "sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539"
+    },
+    "board_environment_identity": {
+      "path": "results/operator/board/board_env_identity_20260917T2022+0800.json",
+      "sha256": "000cbc82dd1386871521ba22f1a73b20aba9e63bcbc5264f136b988847407028"
+    },
+    "ope1_shape_manifest": {
+      "path": "configs/operator/board/ope1_shape_manifest.json",
+      "sha256": "1b5f6a4690da92fcc2aa2213915280cda3ef866feab5fcbcfd06c702b781e05d"
+    },
+    "ope0_bandwidth_ceiling": {
+      "path": "results/operator/board/bandwidth_ceiling.json",
+      "sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9",
+      "ceiling_gbps_decimal": 23.1951846685,
+      "evidence_limit": "Measured on four A76 cores in one owner-waived segment; shared platform ceiling only, not an A55-specific calibration."
+    },
+    "ope5_02_preregistration": {
+      "path": "configs/operator/board/ope5_fp16_gemv_prereg.json",
+      "sha256": "b89dc6e03bcae62ab817a0814f48541ff6c8526c4b23f60108bbd438434fb514"
+    },
+    "ope5_02_benchmark_source": {
+      "path": "scripts/operator/board/ope5_fp16_gemv_bench.cpp",
+      "sha256": "7843a9f797bcf566eae34e9982b6ecab832a53060aaa8287403e42c10b132c9e"
+    },
+    "ope5_02_source_lock": {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_source_lock_20260921.json",
+      "sha256": "cee44b4f4734655d44cf38bdadc106ec9ac0d956e02f3c5d8ff92f710638ad5b"
+    },
+    "ope5_02_receipt": {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_receipt_20260921.json",
+      "sha256": "221e26f63cfde04362ae6a718f9c85ea40331b4cca084bae385374ef8213421a"
+    },
+    "ope5_02_telemetry": {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/telemetry_1hz.csv",
+      "sha256": "d9a31f4d82a2636c7ba60353415c4cb9c016968901f3024a98b1334ea176ec65"
+    },
+    "ope4_receipt": {
+      "path": "results/operator/board/ope4/ope4_receipt_20260921.json",
+      "sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d"
+    },
+    "git_sha_at_freeze": "213460d88311cba5d84add4d3ee57aae26716c6d"
+  },
+  "semantic_contract": {
+    "operation": "For each output row n: y[n] = sum over k of float32(fp16(x[k])) * float32(fp16(w[n,k])).",
+    "m": 1,
+    "k": 10240,
+    "n": 2560,
+    "activation_dtype": "IEEE float16",
+    "weight_dtype": "IEEE float16",
+    "accumulator_dtype": "float32",
+    "output_dtype": "float32",
+    "bias": false,
+    "weight_layout": "row-major contiguous [N,K]",
+    "reduction_order": "Implementations may reassociate the reduction only within the frozen elementwise tolerance.",
+    "comparator_limit": "The A55 placement is synthetic and isolated. Only the semantics, M/K/N, frequency, layout, dtype contract, thread count, partition, and working set match OPE5-02; neither cluster is asserted to be the closed RKLLM execution site."
+  },
+  "formal_shape": {
+    "shape_id": "decode_mlp_down_proj",
+    "phase": "decode",
+    "logical_mkn": [1, 10240, 2560],
+    "calls_per_model_forward": 42,
+    "observed_model_forwards": 21694,
+    "observed_invocations": 911148,
+    "cpu_cores": [0, 1, 2, 3],
+    "threads": 4,
+    "output_partition": "Four fixed contiguous N/4=640-row partitions, one per pinned A55 worker; all variants use the same partition and synchronization path."
+  },
+  "analytic_account": {
+    "activation_read_bytes_per_call": 20480,
+    "weight_read_bytes_per_call": 52428800,
+    "output_write_bytes_per_call": 10240,
+    "total_bytes_per_call": 52459520,
+    "ops_per_call": 52428800,
+    "ops_per_byte": 0.999414405621706,
+    "ope0_shared_platform_ceiling_gbps": 23.1951846685,
+    "ope0_floor_us_per_call": 2261.6556302413123,
+    "interpretation": "Analytic bytes and ops are identical to OPE5-02. OPE0 is retained only as a shared platform upper bound; no A55-specific roofline or 42-call RKLLM component claim is produced."
+  },
+  "immutable_a76_anchor": {
+    "receipt_path": "results/operator/board/ope5/ope5_fp16_gemv_receipt_20260921.json",
+    "receipt_sha256": "221e26f63cfde04362ae6a718f9c85ea40331b4cca084bae385374ef8213421a",
+    "status": "VALID_OPE5_02_SINGLE_SEGMENT_OWNER_WAIVER_ISOLATED_4XA76_FP16_GEMV",
+    "cpu_cores": [4, 5, 6, 7],
+    "compiler_target": "-mcpu=cortex-a76",
+    "recorded_max_frequency_khz": 2352000,
+    "variant_p50_us": {
+      "scalar_fp32": 5836.3955,
+      "autovec_o3": 5836.9795,
+      "neon_fp16_f32acc": 2923.083
+    },
+    "candidate_analytic_gbps": 17.9466405846,
+    "candidate_cycles_per_invocation": 29466634.99509323,
+    "candidate_instructions_per_invocation": 30352204.90088322,
+    "candidate_ipc": 1.0300533096479274,
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "reuse_policy": "Read-only receipt reuse. No A76 benchmark, correctness, perf, smoke, or formal segment may be rerun in OPE5-05."
+  },
+  "a55_platform_contract": {
+    "cpu_cores": [0, 1, 2, 3],
+    "cpufreq_policy": "policy0",
+    "expected_max_frequency_khz": 1800000,
+    "compiler_target": "-mcpu=cortex-a55",
+    "required_features": ["asimd", "fphp", "asimdhp"],
+    "a76_to_a55_max_frequency_ratio": 1.3066666666666666,
+    "prelock_read_only_gates": [
+      "policy0 related_cpus is exactly 0 1 2 3",
+      "policy0 scaling_max_freq is exactly 1800000 kHz",
+      "CPU0-3 accept one-thread-per-core affinity",
+      "the first-core feature line contains asimd, fphp, and asimdhp",
+      "cycles:u, instructions:u, l2d_cache_refill:u, and bus_access:u are numeric for a non-benchmark true-process probe"
+    ],
+    "housekeeping_limit": "CPU0-3 remain normal OS housekeeping cores. Do not move system services, change isolcpus/cgroups, or modify the kernel; use median/IQR and retain scheduling noise as part of the practical A55 comparator."
+  },
+  "implementation_provenance": {
+    "a76_source_path": "scripts/operator/board/ope5_fp16_gemv_bench.cpp",
+    "a76_source_sha256": "7843a9f797bcf566eae34e9982b6ecab832a53060aaa8287403e42c10b132c9e",
+    "allowed_source_changes": [
+      "change kFirstCpu from 4 to 0",
+      "change the affinity failure message from CPU4 to CPU0",
+      "change stage-identifying diagnostic text from OPE5_FP16_GEMV to OPE5_A55_FP16_GEMV"
+    ],
+    "forbidden_source_changes": "Kernel bodies, variants, constants, RNG/distributions/seeds, FP64 oracle, tolerances, worker partition, warmup/repetition/time minima, permutation order, analytic account, and perf control must remain byte-equivalent after excluding the three allowed textual substitutions.",
+    "runner_change": "Compile the new source with -mcpu=cortex-a55, use taskset 0-3, and write/restore policy0 only. policy4, policy6, and NPU governors are read-only identities."
+  },
+  "baselines": {
+    "scalar_fp32": {
+      "role": "A55 timed scalar baseline",
+      "implementation": "Four pinned A55 workers with identical output partitioning; scalar FP32 multiply-accumulate inner loop with function-scoped vectorization disabled."
+    },
+    "autovec_o3": {
+      "role": "A55 compiler baseline",
+      "implementation": "The same semantic loop compiled with -O3 -mcpu=cortex-a55 and normal GCC auto-vectorization; retain diagnostics and disassembly, but vectorization is not a validity requirement."
+    },
+    "neon_fp16_f32acc": {
+      "role": "A55 candidate and cross-cluster primary row",
+      "implementation": "Explicit AArch64 NEON eight-half loads, low/high FP16-to-FP32 conversion, independent FP32 FMA accumulators, and horizontal reduction."
+    }
+  },
+  "correctness_protocol": {
+    "must_complete_before_timing": true,
+    "oracle": "Independent FP64 scalar reference, outside every timed region.",
+    "implementations_checked": ["scalar_fp32", "autovec_o3", "neon_fp16_f32acc"],
+    "input_distributions": [
+      {
+        "id": "quarter_grid_exact",
+        "definition": "Activation and weight values are FP16-exact multiples of 0.25 in [-2,2].",
+        "atol": 0.0,
+        "rtol": 0.0
+      },
+      {
+        "id": "unit_normal_clipped_3",
+        "definition": "Independent N(0,1) values clipped to [-3,3] and cast to FP16.",
+        "atol": 0.05,
+        "rtol": 0.001
+      },
+      {
+        "id": "wide_normal_std4_clipped_8",
+        "definition": "Independent N(0,4) values clipped to [-8,8] and cast to FP16.",
+        "atol": 0.05,
+        "rtol": 0.001
+      }
+    ],
+    "seeds": [20260924, 20260925, 20260926],
+    "outputs_checked_per_case": 2560,
+    "expected_element_comparisons": 69120,
+    "comparison_formula": "3 implementations * 3 distributions * 3 seeds * 2560 outputs",
+    "structural_assertions": [
+      "all 2560 outputs are finite",
+      "output shape and contiguous layout match",
+      "activation and weight buffers are byte-identical before and after every implementation",
+      "all workers cover disjoint row ranges whose union is [0,2560)",
+      "each worker remains pinned to its assigned CPU0-3 core"
+    ],
+    "repair_kill": "After three candidate correctness repair iterations, stop and retain the failing corpus. Harness-only faults may be fixed only with an explicit attempt receipt before formal timing."
+  },
+  "implementation_identity": {
+    "candidate_source_path": "scripts/operator/board/ope5_a55_fp16_gemv_bench.cpp",
+    "runner_path": "scripts/operator/board/run_ope5_a55_fp16_gemv.sh",
+    "measurement_payload_path": "scripts/operator/board/ope5_a55_fp16_gemv_measure_payload.sh",
+    "source_lock_rule": "Before formal execution, hash the three new files, this preregistration, the scope file, telemetry dependency, and the immutable A76 receipt. Record the topology assertions and the allowlisted source diff. Any later content change requires a transparent preregistration revision before another run.",
+    "formal_source_locked": false,
+    "codegen_gates": [
+      "scalar_fp32 disassembly must not contain vector floating-point multiply-accumulate in its inner kernel",
+      "neon_fp16_f32acc disassembly must show FP16-to-FP32 vector conversion and FP32 vector FMA instructions",
+      "autovec_o3 diagnostics and disassembly are retained, but lack of auto-vectorization does not invalidate the baseline",
+      "the A55 source diff against the locked OPE5-02 source contains only the three allowlisted substitutions"
+    ]
+  },
+  "measurement_protocol": {
+    "board": "Orange Pi 5 / RK3588S",
+    "primary_cpus": [0, 1, 2, 3],
+    "taskset": "0-3",
+    "threads": 4,
+    "thread_affinity": "Worker i is pinned to CPU i before correctness and remains fixed for all variants.",
+    "governors_during_window": {
+      "policy0": "performance",
+      "policy4": "unchanged/read-only",
+      "policy6": "unchanged/read-only",
+      "npu": "unchanged/read-only"
+    },
+    "warmup_repetitions_per_variant": 50,
+    "timed_repetitions_per_variant_minimum": 200,
+    "timed_window_minimum_seconds_per_variant": 3.0,
+    "working_set": "One immutable 52,428,800-byte FP16 weight matrix, one 20,480-byte FP16 activation, and separate FP32 outputs. Every invocation traverses the complete matrix; no reduced-size cache proxy.",
+    "interleave": "Use all six permutations of scalar_fp32/autovec_o3/neon_fp16_f32acc in round-robin blocks until every A55 variant independently satisfies both the repetition and time minima.",
+    "clock": "CLOCK_MONOTONIC_RAW",
+    "summary": ["p25_us", "p50_us", "p75_us", "iqr_us", "iqr_over_p50"],
+    "telemetry_hz": 1,
+    "frequency_gate": "Every timed-window policy0 sample must be at least 95% of its recorded max frequency; policy4/policy6/NPU governors must remain byte-identical to their before values.",
+    "thermal_gate": "No timed-window thermal sample may equal or exceed the lowest enabled trip point recorded for its zone.",
+    "stability_gate": "IQR/p50 must be <=0.30 for all three A55 variants. Instability invalidates the only formal segment; no automatic retry is authorized.",
+    "formal_segments": 1,
+    "owner_instruction": "不需要复测，取消同日复测，只测一次",
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "controller_clock": "Record controller timestamps immediately before and after the board process; use board CLOCK_MONOTONIC_RAW for durations.",
+    "smoke_policy": "No separate performance smoke, no reduced-shape timing, no A76 rerun, and no second A55 formal segment. Randomized correctness is the only pre-timing benchmark execution gate.",
+    "failure_policy": "A failed topology, correctness, source-diff, codegen, affinity, frequency, thermal, stability, perf-event, source-lock, or governor-restore gate yields a bounded invalid single-segment receipt. Do not silently rerun, change the core count, or fall back to another kernel."
+  },
+  "tier_a": {
+    "per_call_gops_formula": "52428800 / A55_p50_seconds / 1e9",
+    "per_call_gbps_formula": "52459520 / A55_p50_seconds / 1e9",
+    "shared_ope0_relative_formula": "A55_measured_gbps / 23.1951846685",
+    "a55_to_a76_latency_ratio_formula": "A55_variant_p50_us / immutable_A76_same_variant_p50_us",
+    "a55_to_a76_candidate_bandwidth_ratio_formula": "A55_candidate_gbps / 17.9466405846",
+    "max_frequency_ratio_context": "2352000 / 1800000 = 1.3066666666666666; report beside, but do not divide the wall-time result into a causal microarchitecture score.",
+    "cluster_direction_classification": {
+      "a55_faster": "A55/A76 candidate p50 ratio < 0.95",
+      "parity": "0.95 <= A55/A76 candidate p50 ratio <= 1.05",
+      "a55_slower": "A55/A76 candidate p50 ratio > 1.05"
+    },
+    "candidate_classification_vs_a55_autovec": {
+      "positive": "A55 autovec p50 / A55 candidate p50 >= 1.05",
+      "parity": "0.95 <= A55 autovec p50 / A55 candidate p50 < 1.05",
+      "negative": "A55 autovec p50 / A55 candidate p50 < 0.95"
+    }
+  },
+  "tier_b": {
+    "tool": "/home/orangepi/edgeforge_ope_r1/bin/perf",
+    "scope": "Collect once per A55 variant after valid timing using repeated full invocations in the same single formal segment.",
+    "stat_events": ["cycles:u", "instructions:u", "l2d_cache_refill:u", "bus_access:u"],
+    "variants": ["scalar_fp32", "autovec_o3", "neon_fp16_f32acc"],
+    "primary_cross_cluster_metric": "candidate cycles per invocation divided by immutable A76 candidate cycles per invocation (29466634.99509323)",
+    "cross_microarchitecture_policy": "cycles and instructions are reported per invocation; IPC is descriptive. L2D refill and bus_access counts are retained per invocation but are not directly ratioed across A55/A76 unless event semantics are independently established.",
+    "bus_access_policy": "Do not multiply A55 bus_access by 8 or 64 and do not use it as an analytic-byte gate. OPE3's rejected count*64 rule and OPE5-02's A76-only count*8 hypothesis do not transfer automatically to Cortex-A55.",
+    "required_gate": "All four named events must be numeric for all three A55 variants; no raw-event substitution or post-measurement normalization.",
+    "perf_record": "Not required; this stage is a bounded same-kernel cluster comparator."
+  },
+  "outcome_rules": {
+    "measurement_valid": "Scope/prereg/source-lock hashes, allowlisted source diff, read-only topology assertions, 69120 element comparisons, codegen, three A55 timing populations, affinity, telemetry, governor restoration, all named perf events, immutable A76 receipt identity, and one-segment identity must pass.",
+    "performance_gain_required": false,
+    "deliverable": "One lineage-separated A55 row plus raw A55/A76 candidate latency, bandwidth, and cycles-per-invocation ratios, with frequency and nonconcurrent-anchor limits adjacent.",
+    "major_gap_claim_prohibited": "No A55 result may be attributed to the OPE4 NPU/runtime gap or represented as RKLLM placement without a new carrier proving equivalent work is dispatched to A55.",
+    "time_kill": "Stop and write a bounded result if implementation plus the one formal segment exceeds one working day."
+  },
+  "claim_limits": [
+    "This protocol is frozen before OPE5-05 implementation, board connection, or benchmark execution.",
+    "A55 and A76 use the same semantics and source lineage but different compiler targets, clocks, cores, cache behavior, memory service, and scheduling environment.",
+    "The A76 anchor is immutable, owner-waived, and nonconcurrent; do not call the future comparison paired replication.",
+    "OPE0 is an A76-derived shared platform ceiling, not an A55-specific bandwidth roofline.",
+    "Do not convert A55 bus_access to bytes or compare cross-cluster L2D/bus counts as though PMU semantics were proven identical.",
+    "One A55 formal segment is authorized; no A76 retest, same-day A55 retest, performance smoke, instability retry, NPU/RKLLM run, quality evaluation, driver/kernel/shared-library change, or service-affinity tuning is authorized."
+  ]
+}

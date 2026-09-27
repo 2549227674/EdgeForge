@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K2_ISOLATED_DAY",
+  "implementation_fix_iteration": 1,
+  "started_at": "2026-09-16T16:02:02+08:00",
+  "failed_at": "2026-09-16T16:03:32+08:00",
+  "preregistration": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k2_nf4_decode_gemv_prereg.json",
+  "preregistration_sha256": "bb497bf4be20a922abbe6edbf8e4812d55b01e14d8db088371ec332ad61f299f",
+  "candidate": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k2_nf4_gemv.py",
+  "candidate_sha256": "149b4b8c651cfa6530f320779687132f0bdb31f511282473250ffc80257d7c65",
+  "runner": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_day.py",
+  "runner_sha256": "c9e9af9550f4be4bc275b5696c75549c4cc7b2e8244f7aaf2d7a5731550e3625",
+  "command": [
+    "scripts/operator/run_k2_day.py",
+    "--mode",
+    "correctness-only"
+  ],
+  "error_type": "AssertionError",
+  "error": "randomized correctness failed for k_proj_full_nonshared/wide_normal/20260916: eager={'max_abs': 0.125, 'max_rel': 7.772413730621338}, reference={'max_abs': 0.125, 'max_rel': 2.1459853649139404}",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_day.py\", line 1077, in main\n    receipt = execute(args)\n              ^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_day.py\", line 936, in execute\n    correctness = run_correctness(prereg, prepared, layout, args.device)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_day.py\", line 557, in run_correctness\n    raise AssertionError(\nAssertionError: randomized correctness failed for k_proj_full_nonshared/wide_normal/20260916: eager={'max_abs': 0.125, 'max_rel': 7.772413730621338}, reference={'max_abs': 0.125, 'max_rel': 2.1459853649139404}\n",
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0",
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0"
+    },
+    "cuda": {
+      "available": true,
+      "torch_cuda": "13.0",
+      "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "sm_89",
+      "total_memory_bytes": 8585216000,
+      "multi_processor_count": 24,
+      "l2_cache_size_bytes": 33554432
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 8001 MHz, 140.00 W"
+  },
+  "status": "FAIL"
+}

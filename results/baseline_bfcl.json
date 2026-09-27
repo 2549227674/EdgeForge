@@ -1,0 +1,27 @@
+{
+  "benchmark": "BFCL_v4",
+  "bfcl_eval_version": "2025.12.17",
+  "model_id": "edgeforge-gemma4-e4b-FC",
+  "endpoint_model": "gemma4-e4b",
+  "quantization": "Q4_K_M",
+  "base_url": "http://localhost:8080/v1",
+  "handler": "OpenAICompletionsHandler",
+  "handler_registration": "scripts/run_bfcl.py",
+  "native_tools": true,
+  "underscore_to_dot": true,
+  "categories": [
+    "simple_python"
+  ],
+  "category_scope": "non_live_single_turn_ast",
+  "temperature": 0.001,
+  "num_threads": 1,
+  "total_count": 400,
+  "correct_count": 363,
+  "incorrect_count": 37,
+  "accuracy": 0.9075,
+  "accuracy_percent": 90.75,
+  "raw_result": "results/bfcl/result/edgeforge-gemma4-e4b-FC/non_live/BFCL_v4_simple_python_result.json",
+  "score_detail": "results/bfcl/score/edgeforge-gemma4-e4b-FC/non_live/BFCL_v4_simple_python_score.json",
+  "generation_log": "logs/m0/m0_bfcl_simple_python.log",
+  "comparison_note": "This simple_python subset score is not the BFCL overall score and is not directly comparable to the 66.6% external overall anchor."
+}

@@ -1,0 +1,37 @@
+
+/home/orangepi/edgeforge_ope_r1/bin/ope5_a55_fp16_gemv_bench:     file format elf64-littleaarch64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .text:
+
+0000000000004540 <autovec_o3_rows>:
+    4540:	2a0403e5 	mov	w5, w4
+    4544:	6b04007f 	cmp	w3, w4
+    4548:	aa0203e6 	mov	x6, x2
+    454c:	aa0003e4 	mov	x4, x0
+    4550:	5400026a 	b.ge	459c <autovec_o3_rows+0x5c>  // b.tcont
+    4554:	528a0000 	mov	w0, #0x5000                	// #20480
+    4558:	93407c62 	sxtw	x2, w3
+    455c:	9b200461 	smaddl	x1, w3, w0, x1
+    4560:	0f000402 	movi	v2.2s, #0x0
+    4564:	d2800000 	mov	x0, #0x0                   	// #0
+    4568:	7c606881 	ldr	h1, [x4, x0]
+    456c:	7c606820 	ldr	h0, [x1, x0]
+    4570:	91000800 	add	x0, x0, #0x2
+    4574:	f140141f 	cmp	x0, #0x5, lsl #12
+    4578:	1ee24021 	fcvt	s1, h1
+    457c:	1ee24000 	fcvt	s0, h0
+    4580:	1f000822 	fmadd	s2, s1, s0, s2
+    4584:	54ffff21 	b.ne	4568 <autovec_o3_rows+0x28>  // b.any
+    4588:	bc2278c2 	str	s2, [x6, x2, lsl #2]
+    458c:	91000442 	add	x2, x2, #0x1
+    4590:	6b0200bf 	cmp	w5, w2
+    4594:	91401421 	add	x1, x1, #0x5, lsl #12
+    4598:	54fffe4c 	b.gt	4560 <autovec_o3_rows+0x20>
+    459c:	d65f03c0 	ret
+
+Disassembly of section .fini:

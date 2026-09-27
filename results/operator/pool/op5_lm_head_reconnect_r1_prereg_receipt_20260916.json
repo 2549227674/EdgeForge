@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_LM_HEAD_RECONNECT_R1_PREREG",
+  "target": "tied_lm_head_262144_vocab_softcap_30",
+  "timestamp": "2026-09-16T21:07:38+08:00",
+  "status": "FROZEN_BEFORE_FORMAL_REPLAY",
+  "protocol": "configs/operator/op5_lm_head_reconnect_r1.json",
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "formal_replay_started": false,
+  "custom_candidate_implemented_or_timed": false,
+  "upstream_status": "EXISTING_CUDA_LM_HEAD_MIRROR_RECONNECTION_PROBE_AUTHORIZED_NO_CUSTOM_KERNEL",
+  "expected": {
+    "tapes": 5,
+    "requests": 11,
+    "token_decisions_per_path": 21705,
+    "prefill_calls_per_path": 11,
+    "decode_calls_per_path": 21694,
+    "gpu_budget_gib": 7.5,
+    "minimum_counterfactual_end_to_end_speedup": 1.05
+  },
+  "fail_fast_boundary": "A first unequal CPU/CUDA token is a conclusive exact-equivalence failure; preserve its location and stop without spending the remaining replay budget.",
+  "authorization_boundary": "One same-load lockstep C02 reconnection probe only. Passing requires all 21705 tokens exact plus the frozen performance, structure, cache, memory, clock, and thermal gates."
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K2_R2_CORRECTNESS",
+  "timestamp": "2026-09-16T16:46:32+08:00",
+  "protocol": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k2_nf4_decode_gemv_prereg_r2.json",
+    "sha256": "86c3e13edaca148b4c7bcceddfe9d86806997155b285ca39408876e721e739ae"
+  },
+  "locked_candidate": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k2_nf4_gemv.py",
+    "sha256": "149b4b8c651cfa6530f320779687132f0bdb31f511282473250ffc80257d7c65"
+  },
+  "candidate_identity_attempt": 1,
+  "harness_execution_attempt": 2,
+  "prior_harness_interruption": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/failures/k2_r2_correctness_failure_20260916T164041.json",
+    "sha256": "cad059a35b9171158219d343b45d96817876423433849d3f8d31a0736eee40ad",
+    "classification": "HARNESS_ONLY_0D_OFFSET_EMPTY_TENSOR_CONSTRUCTION",
+    "candidate_source_changed_after_interruption": false,
+    "protocol_changed_after_interruption": false,
+    "formal_candidate_performance_started_before_interruption": false,
+    "original_runner_sha256": "341dbbf57d9d622f4ce894bd7d0a394c80e3aae9a13ca4f993db87c173ecb7a7",
+    "repair_scope": "R2 correctness runner fallback harness only"
+  },
+  "runner": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_r2_correctness.py",
+    "sha256": "7127cb08890ebb9ec864a9d2df8ff658fe1187d2e30533ea15d8e18a34637701"
+  },
+  "result": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k2_r2_correctness_20260916.json",
+    "sha256": "890bef7a0200ce3a012427190a1b1e7d03ab1355f3e4e135dc14f4d9e29d9429"
+  },
+  "gates": {
+    "adaptive_r1_disclosure": "PASS",
+    "prior_harness_failure_preserved_and_classified": "PASS",
+    "protocol_immutable": "PASS",
+    "candidate_source_locked": "PASS",
+    "source_and_git_identity": "PASS",
+    "semantic_microcase": "PASS",
+    "all_343_actual_weights_vs_single_primary_oracle": "PASS",
+    "fresh_14_x_4_x_3_holdout_vs_single_primary_oracle": "PASS",
+    "source_tensors_unmodified": "PASS",
+    "fallback_rejection_matrix": "PASS",
+    "frozen_autotune_space": "PASS",
+    "vendor_numerical_comparator_reported_non_gating": "PASS",
+    "r2_day1_performance": "NOT_STARTED"
+  },
+  "next_authorized_action": "Run R2 isolated day1 performance with the unchanged protocol, candidate, and correctness receipt; continue beyond day1 only if the frozen positive gate passes.",
+  "status": "PASS"
+}

@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "stage": "OP-P0-1",
+  "candidate": "C02-S.O",
+  "started_at": "2026-09-14T21:10:57+08:00",
+  "argv": [
+    "scripts/operator/merge_c02.py",
+    "--workspace",
+    "/root/autodl-tmp/edgeforge-m1/workspace",
+    "--base-model",
+    "/root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1",
+    "--adapter",
+    "/root/autodl-tmp/edgeforge-m1/workspace/results/t3/c02_s_opd_formal_r1_state/final_adapter",
+    "--source-training-receipt",
+    "/root/autodl-tmp/edgeforge-m1/workspace/results/m1/t3_opd_formal_r1_receipt.json",
+    "--output-dir",
+    "/root/autodl-tmp/edgeforge-m1/workspace/models/C02-S.O-bf16-r1",
+    "--receipt",
+    "/root/autodl-tmp/edgeforge-m1/workspace/results/operator/p0/c02_s_merge_receipt.json"
+  ],
+  "cwd": "/root/autodl-tmp/edgeforge-m1/workspace",
+  "environment": {
+    "hostname": "autodl-container-f79243921a-a9a8b753",
+    "platform": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+    "python": "3.12.3",
+    "python_executable": "/root/autodl-tmp/edgeforge-m1/t3-venv-py312/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "transformers": "5.15.0",
+      "peft": "0.20.0",
+      "safetensors": "0.8.0",
+      "accelerate": "1.14.0"
+    }
+  },
+  "merge_script": "/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/merge_c02.py",
+  "merge_script_sha256": "782188c5d644890b9e141e7c2a36837e3dcf4808b4b34f86b3012cc122afc2d7",
+  "status": "PASS",
+  "finished_at": "2026-09-14T21:12:21+08:00",
+  "assertions": {
+    "all_tensors_bf16": "PASS",
+    "no_lora_tensor_keys": "PASS",
+    "independent_subprocess_reload": "PASS",
+    "output_file_inventory_and_hashes": "PASS"
+  },
+  "sources": {
+    "base_model": "/root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1",
+    "base_manifest": "/root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1/artifact_manifest.json",
+    "base_manifest_sha256": "89fed9d97eeb95847d41a11ad55b751a69d6ce1d9df827852f56dc12bf0998d0",
+    "base_artifact_set_sha256": "1eebd3e1302a502ce41a9416267219e70cec63ac69ea20429dd97bd47ba9a133",
+    "base_tensor_inventory": {
+      "shard_count": 4,
+      "tensor_count": 2076,
+      "dtype_numel": {
+        "BF16": 7941101802
+      },
+      "all_tensors_bf16": true,
+      "lora_tensor_count": 0
+    },
+    "adapter": "/root/autodl-tmp/edgeforge-m1/workspace/results/t3/c02_s_opd_formal_r1_state/final_adapter",
+    "adapter_config_sha256": "bc89fa51f25acee6c123a11dc29c1159ab0bb59f00097cf34b757a014f6a9b06",
+    "adapter_model_bytes": 2488376152,
+    "adapter_model_sha256": "e1fddbeef0cfb338c89e7f37845545a490f7b062bb1290b757ed8a0c3c34326d",
+    "adapter_rank": 256,
+    "adapter_alpha": 16,
+    "adapter_use_rslora": true,
+    "source_training_receipt": "/root/autodl-tmp/edgeforge-m1/workspace/results/m1/t3_opd_formal_r1_receipt.json",
+    "source_training_receipt_sha256": "697b8b04284e71fab3bdbd90609f6458458de14ced3c6d11d6b7f603577e165d",
+    "processor_assets": [
+      {
+        "path": "chat_template.jinja",
+        "source": "C01-S frozen base",
+        "sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "adapter_copy_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "adapter_copy_matches": true
+      },
+      {
+        "path": "processor_config.json",
+        "source": "C01-S frozen base",
+        "sha256": "32bdf45d2ad4cc29a0822ddd157a182de76644f0419a6228d151495256e9813c"
+      },
+      {
+        "path": "tokenizer.json",
+        "source": "C01-S frozen base",
+        "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+        "adapter_copy_sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+        "adapter_copy_matches": true
+      },
+      {
+        "path": "tokenizer_config.json",
+        "source": "C01-S frozen base",
+        "sha256": "90c3a3ba5bf53818383a58e1a776cbcacd2a038d4812eaa373e1522f2d06f3df",
+        "adapter_copy_sha256": "080d9e1aff284e2f6043889cd05367966f7c7b80e025fbc0b06745e218158656",
+        "adapter_copy_matches": false
+      }
+    ]
+  },
+  "tensor_inventory": {
+    "shard_count": 4,
+    "tensor_count": 2076,
+    "dtype_numel": {
+      "BF16": 7941101802
+    },
+    "all_tensors_bf16": true,
+    "lora_tensor_count": 0,
+    "lora_tensor_names_sample": []
+  },
+  "processor_assets": [
+    {
+      "path": "chat_template.jinja",
+      "source": "/root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1/chat_template.jinja",
+      "bytes": 18569,
+      "sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5"
+    },
+    {
+      "path": "processor_config.json",
+      "source": "/root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1/processor_config.json",
+      "bytes": 1689,
+      "sha256": "32bdf45d2ad4cc29a0822ddd157a182de76644f0419a6228d151495256e9813c"
+    },
+    {
+      "path": "tokenizer.json",
+      "source": "/root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1/tokenizer.json",
+      "bytes": 32169626,
+      "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "source": "/root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1/tokenizer_config.json",
+      "bytes": 2095,
+      "sha256": "90c3a3ba5bf53818383a58e1a776cbcacd2a038d4812eaa373e1522f2d06f3df"
+    }
+  ],
+  "independent_reload": {
+    "buffer_numel": 2296,
+    "buffer_tensor_count": 991,
+    "meta_tensor_count": 0,
+    "model_class": "Gemma4ForConditionalGeneration",
+    "parameter_dtype_numel": {
+      "torch.bfloat16": 7941100832
+    },
+    "persisted_numel": 7941101802,
+    "persisted_tensor_count": 2076,
+    "status": "PASS",
+    "unique_parameter_numel": 7941100832,
+    "unique_parameter_tensor_count": 1106,
+    "unpersisted_tied_state_aliases": {
+      "lm_head.weight": "model.language_model.embed_tokens.weight"
+    },
+    "stderr_tail": "\nLoading weights:   0%|          | 0/2076 [00:00<?, ?it/s]\nLoading weights:  45%|████▍     | 926/2076 [00:00<00:00, 9228.74it/s]\nLoading weights:  89%|████████▉ | 1849/2076 [00:00<00:00, 8560.47it/s]\nLoading weights: 100%|██████████| 2076/2076 [00:00<00:00, 8442.20it/s]\n",
+    "command": [
+      "/root/autodl-tmp/edgeforge-m1/t3-venv-py312/bin/python",
+      "/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/merge_c02.py",
+      "--_reload-check",
+      "/root/autodl-tmp/edgeforge-m1/workspace/models/C02-S.O-bf16-r1.incomplete"
+    ]
+  },
+  "output_files": [
+    {
+      "path": "artifact_manifest.json",
+      "bytes": 5852,
+      "sha256": "ee7d426d1e912a6c53cad1cd52739f26d7fff45b4a4f7429a4c08656f68dc5f2"
+    },
+    {
+      "path": "chat_template.jinja",
+      "bytes": 18569,
+      "sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5"
+    },
+    {
+      "path": "config.json",
+      "bytes": 5469,
+      "sha256": "a866b497256661638db10c8d42e746f8ee2fc6434a637f00a032d00c6834a0f5"
+    },
+    {
+      "path": "generation_config.json",
+      "bytes": 204,
+      "sha256": "f980ee1dc9d6a30f92050e94eaf7511b95941ede02e9d7fcde002d8da6ef9523"
+    },
+    {
+      "path": "model-00001-of-00004.safetensors",
+      "bytes": 5637144744,
+      "sha256": "aa3e9d1e0443f9874260af4efbe8f0aa4c8fed25d41c9ca172e4c354d101c709"
+    },
+    {
+      "path": "model-00002-of-00004.safetensors",
+      "bytes": 4994573962,
+      "sha256": "b660eb3a46c0331996e88a8d6535193b1c50b5044c8a1e8ec387c821428a516d"
+    },
+    {
+      "path": "model-00003-of-00004.safetensors",
+      "bytes": 4996204630,
+      "sha256": "4a18747c2e717e7774534119f4499c596ca74abf1331c44d79f339da1388342e"
+    },
+    {
+      "path": "model-00004-of-00004.safetensors",
+      "bytes": 254550436,
+      "sha256": "8080cb1ab73a91528449fc238665f6a2938583e5f1dc877c099292a1f31f6144"
+    },
+    {
+      "path": "model.safetensors.index.json",
+      "bytes": 212437,
+      "sha256": "5e39c95dba0d7db21b506892fd57719b740f6934a93bb49bd0b8ba049ff9a61f"
+    },
+    {
+      "path": "processor_config.json",
+      "bytes": 1689,
+      "sha256": "32bdf45d2ad4cc29a0822ddd157a182de76644f0419a6228d151495256e9813c"
+    },
+    {
+      "path": "tokenizer.json",
+      "bytes": 32169626,
+      "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 2095,
+      "sha256": "90c3a3ba5bf53818383a58e1a776cbcacd2a038d4812eaa373e1522f2d06f3df"
+    }
+  ],
+  "output_total_bytes": 15914889713,
+  "output_artifact_set_sha256": "2b3400a64a87f6ada87bbc4b7ac895cb4be486fc346a01c0cfd3d07ab66225a7",
+  "output_dir": "/root/autodl-tmp/edgeforge-m1/workspace/models/C02-S.O-bf16-r1",
+  "receipt_path": "/root/autodl-tmp/edgeforge-m1/workspace/results/operator/p0/c02_s_merge_receipt.json"
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_LM_HEAD_SELECTION_R1_PREREG",
+  "target": "tied_lm_head_262144_vocab_softcap_30",
+  "timestamp": "2026-09-16T21:00:11+08:00",
+  "status": "FROZEN_BEFORE_FORMAL_SELECTION",
+  "protocol": "configs/operator/op5_lm_head_selection_r1.json",
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "attempt": 2,
+  "formal_selection_started": false,
+  "custom_candidate_implemented_or_timed": false,
+  "upstream_status": "LM_HEAD_DELIVERABILITY_HOLD_LIFTED_SELECTION_AUTHORIZED",
+  "supersedes_for_execution": "results/operator/pool/op5_lm_head_selection_r1_prereg_receipt_20260916.json",
+  "prior_execution_failure": "results/operator/failures/op5_lm_head_selection_r1_2026-09-16T205933_0800.json",
+  "bounded_remediation": "Materialize every captured last-token hidden state with clone(memory_format=torch.contiguous_format) before torch.compile. A plain contiguous() call is insufficient for size-one leading dimensions. The first attempt reached all 22 states but failed on prompt-dependent stride recompilation before producing any performance or decision result.",
+  "unchanged": [
+    "input tapes and 22-state population",
+    "CPU reference and eligible CUDA baselines",
+    "correctness, bottleneck, memory, telemetry, and decision gates",
+    "no custom candidate scope"
+  ],
+  "expected": {
+    "tapes": 5,
+    "requests": 11,
+    "real_hidden_states": 22,
+    "projected_calls": 21705,
+    "eligible_cuda_baselines": 2,
+    "diagnostic_cuda_comparators": 2,
+    "vocab_size": 262144,
+    "hidden_size": 2560,
+    "gpu_budget_gib": 7.5
+  },
+  "authorization_boundary": "Retry of the unchanged selection only; no custom candidate or deployment path is authorized before the result."
+}

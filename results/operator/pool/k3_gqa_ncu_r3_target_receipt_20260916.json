@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_NCU_R3_TARGET",
+  "timestamp": "2026-09-16T17:48:03+08:00",
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "protocol": {
+    "warmup_candidate_calls_per_case": 50,
+    "profiled_candidate_calls_per_case": 1,
+    "expected_profiled_kernel_launches": 9,
+    "input_seed": 20261011,
+    "cuda_profiler_start_status": "cudaError.success",
+    "cuda_profiler_stop_status": "cudaError.success"
+  },
+  "cases": [
+    {
+      "case": "sliding_k512_d256",
+      "day1_case": "sliding_k512_d256",
+      "family": "sliding",
+      "k_tokens": 512,
+      "head_dim": 256,
+      "projected_invocations": 759290,
+      "day1_candidate_p50_us": 188.928001,
+      "analytic_bytes": 1057792
+    },
+    {
+      "case": "full_k2897_d512",
+      "day1_case": "full_bin05_k2897_d512",
+      "family": "full",
+      "k_tokens": 2897,
+      "head_dim": 512,
+      "projected_invocations": 12656,
+      "day1_candidate_p50_us": 305.151999,
+      "analytic_bytes": 11888290
+    },
+    {
+      "case": "full_k6455_d512",
+      "day1_case": "full_bin11_k6455_d512",
+      "family": "full",
+      "k_tokens": 6455,
+      "head_dim": 512,
+      "projected_invocations": 12656,
+      "day1_candidate_p50_us": 629.248023,
+      "analytic_bytes": 26468974
+    }
+  ],
+  "output_witnesses": [
+    -0.62109375,
+    1.2578125,
+    0.005157470703125
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-05-A55-FP16-GEMV-SOURCE-LOCK",
+  "status": "LOCKED_BEFORE_FORMAL_EXECUTION",
+  "recorded_at": "2026-09-21T17:38:28+08:00",
+  "time_authority": "PC controller clock; board wall clock is non-authoritative",
+  "formal_execution_started": false,
+  "board_benchmark_process_started": false,
+  "scope": {
+    "path": "configs/operator/board/ope5_a55_fp16_gemv_scope.json",
+    "sha256": "8f3a2c6949980d04096a1e995ff2aafae653aed031fdf0960b1261c86059d1f4"
+  },
+  "preregistration": {
+    "path": "configs/operator/board/ope5_a55_fp16_gemv_prereg.json",
+    "sha256": "98a3fe20f7982f7fb58fca01f1fe23fa483f4ca11f387d24767805f1e7fb43ce"
+  },
+  "implementation_files": {
+    "candidate_source": {
+      "path": "scripts/operator/board/ope5_a55_fp16_gemv_bench.cpp",
+      "sha256": "a165327f49ff5a54fd25d15c2ef07bac7a90b6dd316a37a4089835248f629b7e"
+    },
+    "formal_runner": {
+      "path": "scripts/operator/board/run_ope5_a55_fp16_gemv.sh",
+      "sha256": "f08eaec416b70e9e3789949e25e600aa0f5942a415fecd577caeafef700c526e"
+    },
+    "measurement_payload": {
+      "path": "scripts/operator/board/ope5_a55_fp16_gemv_measure_payload.sh",
+      "sha256": "5b9d289e6d4f3c1d2e97420db38f2d7278c257ccfd7671b3b11bd0a9cc68f53f"
+    }
+  },
+  "runtime_dependencies": {
+    "telemetry_sampler": {
+      "path": "scripts/operator/board/telemetry_sampler.sh",
+      "sha256": "74f8e8a85858c567206b7234dafe7015a59483c42d83300a04b3532a1368b84c"
+    }
+  },
+  "reference_files": {
+    "prelock_audit_receipt": {
+      "path": "results/operator/board/ope5/ope5_a55_fp16_gemv_prelock_receipt_20260921.json",
+      "sha256": "5919fbde650a10124b8e4d50c783a48c4e84e97389df713a1e36a305b80d0b49"
+    },
+    "immutable_a76_receipt": {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_receipt_20260921.json",
+      "sha256": "221e26f63cfde04362ae6a718f9c85ea40331b4cca084bae385374ef8213421a"
+    },
+    "a76_source_parent": {
+      "path": "scripts/operator/board/ope5_fp16_gemv_bench.cpp",
+      "sha256": "7843a9f797bcf566eae34e9982b6ecab832a53060aaa8287403e42c10b132c9e"
+    }
+  },
+  "source_derivation": {
+    "exact_allowlist_match": true,
+    "allowed_change_categories": [
+      "kFirstCpu from 4 to 0",
+      "main-worker affinity error text from CPU4 to CPU0",
+      "diagnostic tag from OPE5_FP16_GEMV to OPE5_A55_FP16_GEMV"
+    ],
+    "kernel_bodies_constants_rng_oracle_tolerances_partition_and_timing_unchanged": true
+  },
+  "prelock_audit": {
+    "status": "PASS_A55_PRELOCK_NO_BENCHMARK_EXECUTION",
+    "receipt_path": "results/operator/board/ope5/ope5_a55_fp16_gemv_prelock_receipt_20260921.json",
+    "receipt_sha256": "5919fbde650a10124b8e4d50c783a48c4e84e97389df713a1e36a305b80d0b49",
+    "raw_directory": "results/operator/board/ope5/ope5_a55_fp16_gemv_prelock_20260921T173741+0800",
+    "checks": "13/13",
+    "policy0_related_cpus": [0, 1, 2, 3],
+    "policy0_max_frequency_khz": 1800000,
+    "single_cpu_affinity_checks": 4,
+    "required_features": [
+      "asimd",
+      "fphp",
+      "asimdhp"
+    ],
+    "perf_true_events_numeric": [
+      "cycles:u",
+      "instructions:u",
+      "l2d_cache_refill:u",
+      "bus_access:u"
+    ],
+    "compile_invocations": 1,
+    "compiler_target": "-mcpu=cortex-a55",
+    "scalar_vector_fmla_matches": 0,
+    "autovec_vector_fmla_matches": 0,
+    "candidate_fcvtl_matches": 16,
+    "candidate_vector_fmla_matches": 8,
+    "benchmark_execution_count": 0,
+    "temporary_binary_removed": true,
+    "board_wall_time_observed_non_authoritative": "2026-09-19T05:15:26.531742362+08:00"
+  },
+  "measurement_identity": {
+    "shape_mkn": [
+      1,
+      10240,
+      2560
+    ],
+    "primary_cpus": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "threads": 4,
+    "compiler_target": "-mcpu=cortex-a55",
+    "formal_segments": 1,
+    "same_day_retest_scheduled": false,
+    "a76_rerun_scheduled": false,
+    "performance_smoke_scheduled": false,
+    "instability_retry_authorized": false,
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "policy0_governor_policy": "PAIRED_WRITE_AND_RESTORE",
+    "policy4_policy6_npu_governor_policy": "READ_ONLY_UNCHANGED"
+  },
+  "claim_limits": [
+    "This lock precedes any A55 benchmark execution; the prelock perf true probe is a capability check, not a performance smoke.",
+    "The immutable A76 primary is reused without rerun and is not a concurrent paired segment.",
+    "Only one A55 formal segment is authorized; failure does not authorize an automatic retry or same-day retest."
+  ],
+  "git_sha": "213460d88311cba5d84add4d3ee57aae26716c6d"
+}

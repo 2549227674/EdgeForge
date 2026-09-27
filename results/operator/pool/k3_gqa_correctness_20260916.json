@@ -1,0 +1,2738 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_GQA_DECODE_ATTENTION_CORRECTNESS",
+  "timestamp": "2026-09-16T17:28:18+08:00",
+  "evidence_scope": "RTX 4060 Laptop GPU / sm_89 / WSL2 only",
+  "protocol": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k3_gqa_decode_attention_prereg.json",
+    "sha256_start": "fe427c9650aa929d18f72daaaa22ed918b7d33fd5b0af4da12386e0a86229626",
+    "sha256_end": "fe427c9650aa929d18f72daaaa22ed918b7d33fd5b0af4da12386e0a86229626"
+  },
+  "preregistration_receipt": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_prereg_receipt_20260916.json",
+    "sha256": "7516c79668bffb164101d3a80af2c2270dd69ff7a17b598cda57fd1193a57ebf"
+  },
+  "candidate_lock_receipt": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_candidate_lock_receipt_20260916.json",
+    "sha256": "261e6b443bb9adfb36403edc49d2328f6ac2426dc4af967c417794884ca8eb39"
+  },
+  "locked_candidate": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k3_gqa_attention.py",
+    "sha256_start": "3d3d57ac20e390e9f117ac763af7d5ffcfabe084fce861461e8e62e183ac76f0",
+    "sha256_end": "3d3d57ac20e390e9f117ac763af7d5ffcfabe084fce861461e8e62e183ac76f0"
+  },
+  "runner": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k3_correctness.py",
+    "sha256": "75aee702b7431516ff3e394616b695cd7231ce43c7410cde7ffeb4fc59e50d25"
+  },
+  "verified_sources": {
+    "gqa_selection_protocol": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op5_gqa_decode_selection_probe.json",
+      "sha256": "121ae0b4b4ad6858f1b497c1f6895073823519f17fe7ead93db94703f3d2617d",
+      "status": "PASS"
+    },
+    "gqa_selection_prereg_receipt": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_gqa_prereg_receipt_20260916.json",
+      "sha256": "6fd79a4fcaa47bd652b3e7f8b2174827ff348851e22e027d4ebd13f955c74c8f",
+      "status": "PASS"
+    },
+    "gqa_selection_result": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_gqa_selection_20260916.json",
+      "sha256": "0b83a210be8a061ce7572e9a71fc15d3814e7bcf050b09836826cdf41717c12d",
+      "status": "PASS"
+    },
+    "gqa_selection_receipt": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_gqa_selection_receipt_20260916.json",
+      "sha256": "9a5f231cedbe128973cad0c2ab09b888da9fff1eb4e5cb1e9168817f64c705bc",
+      "status": "PASS"
+    },
+    "shape_census": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/shape_census.json",
+      "sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f",
+      "status": "PASS"
+    },
+    "op1_channel_b_profiler": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op1/channel_b_profiler.json",
+      "sha256": "d1e9524cffc6c81c6ef401d7281e7ca353baf110ddc9d72a4a522a4ad81d278a",
+      "status": "PASS"
+    },
+    "transformers_gemma4_source": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/lib/python3.12/site-packages/transformers/models/gemma4/modeling_gemma4.py",
+      "sha256": "a0a5aaaeb61430bca1d13f3e8aed0bafb0d2ee9bef05135e16e7c84d7084db2c",
+      "status": "PASS"
+    }
+  },
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0",
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0"
+    },
+    "cuda": {
+      "available": true,
+      "torch_cuda": "13.0",
+      "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "sm_89",
+      "total_memory_bytes": 8585216000,
+      "multi_processor_count": 24,
+      "l2_cache_size_bytes": 33554432
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 8001 MHz, 140.00 W"
+  },
+  "correctness": {
+    "tolerance": {
+      "atol": 0.03125,
+      "rtol": 0.02
+    },
+    "all_length_cases": 26,
+    "representative_matrix_trials": 36,
+    "mask_matrix_trials": 12,
+    "semantic_microcases": 1,
+    "total_candidate_trials": 75,
+    "exact_output_trials": 64,
+    "maximum_absolute_error": 0.00390625,
+    "rows": [
+      {
+        "label": "all_length_k512_d256",
+        "category": "all_length",
+        "K": 512,
+        "D": 256,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 2048,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k807_d512",
+        "category": "all_length",
+        "K": 807,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k1264_d512",
+        "category": "all_length",
+        "K": 1264,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k1436_d512",
+        "category": "all_length",
+        "K": 1436,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k1569_d512",
+        "category": "all_length",
+        "K": 1569,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k1714_d512",
+        "category": "all_length",
+        "K": 1714,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k1843_d512",
+        "category": "all_length",
+        "K": 1843,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k1973_d512",
+        "category": "all_length",
+        "K": 1973,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k2153_d512",
+        "category": "all_length",
+        "K": 2153,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k2334_d512",
+        "category": "all_length",
+        "K": 2334,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k2514_d512",
+        "category": "all_length",
+        "K": 2514,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k2695_d512",
+        "category": "all_length",
+        "K": 2695,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k2897_d512",
+        "category": "all_length",
+        "K": 2897,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k3123_d512",
+        "category": "all_length",
+        "K": 3123,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k3349_d512",
+        "category": "all_length",
+        "K": 3349,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k3575_d512",
+        "category": "all_length",
+        "K": 3575,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k3801_d512",
+        "category": "all_length",
+        "K": 3801,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k4011_d512",
+        "category": "all_length",
+        "K": 4011,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k4191_d512",
+        "category": "all_length",
+        "K": 4191,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k4440_d512",
+        "category": "all_length",
+        "K": 4440,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k4728_d512",
+        "category": "all_length",
+        "K": 4728,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k5029_d512",
+        "category": "all_length",
+        "K": 5029,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k5331_d512",
+        "category": "all_length",
+        "K": 5331,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k5632_d512",
+        "category": "all_length",
+        "K": 5632,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0009765625,
+          "exact_elements": 4095,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k6455_d512",
+        "category": "all_length",
+        "K": 6455,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "all_length_k7359_d512",
+        "category": "all_length",
+        "K": 7359,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal FP32 generated then cast BF16",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_sliding_k512_d256_unit_normal_seed20261011",
+        "category": "representative_matrix",
+        "K": 512,
+        "D": 256,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 2048,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_sliding_k512_d256_unit_normal_seed20261012",
+        "category": "representative_matrix",
+        "K": 512,
+        "D": 256,
+        "seed": 20261012,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.00390625,
+          "exact_elements": 2046,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_sliding_k512_d256_unit_normal_seed20261013",
+        "category": "representative_matrix",
+        "K": 512,
+        "D": 256,
+        "seed": 20261013,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 2048,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_sliding_k512_d256_low_normal_seed20261011",
+        "category": "representative_matrix",
+        "K": 512,
+        "D": 256,
+        "seed": 20261011,
+        "distribution": "low_normal",
+        "scale": 0.1,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 2048,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_sliding_k512_d256_low_normal_seed20261012",
+        "category": "representative_matrix",
+        "K": 512,
+        "D": 256,
+        "seed": 20261012,
+        "distribution": "low_normal",
+        "scale": 0.1,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 7.450580596923828e-09,
+          "exact_elements": 2047,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_sliding_k512_d256_low_normal_seed20261013",
+        "category": "representative_matrix",
+        "K": 512,
+        "D": 256,
+        "seed": 20261013,
+        "distribution": "low_normal",
+        "scale": 0.1,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 2048,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_sliding_k512_d256_wide_normal_seed20261011",
+        "category": "representative_matrix",
+        "K": 512,
+        "D": 256,
+        "seed": 20261011,
+        "distribution": "wide_normal",
+        "scale": 2.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 2048,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_sliding_k512_d256_wide_normal_seed20261012",
+        "category": "representative_matrix",
+        "K": 512,
+        "D": 256,
+        "seed": 20261012,
+        "distribution": "wide_normal",
+        "scale": 2.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 2048,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_sliding_k512_d256_wide_normal_seed20261013",
+        "category": "representative_matrix",
+        "K": 512,
+        "D": 256,
+        "seed": 20261013,
+        "distribution": "wide_normal",
+        "scale": 2.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 2048,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k807_d512_unit_normal_seed20261011",
+        "category": "representative_matrix",
+        "K": 807,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k807_d512_unit_normal_seed20261012",
+        "category": "representative_matrix",
+        "K": 807,
+        "D": 512,
+        "seed": 20261012,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k807_d512_unit_normal_seed20261013",
+        "category": "representative_matrix",
+        "K": 807,
+        "D": 512,
+        "seed": 20261013,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k807_d512_low_normal_seed20261011",
+        "category": "representative_matrix",
+        "K": 807,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "low_normal",
+        "scale": 0.1,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 2.384185791015625e-07,
+          "exact_elements": 4095,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k807_d512_low_normal_seed20261012",
+        "category": "representative_matrix",
+        "K": 807,
+        "D": 512,
+        "seed": 20261012,
+        "distribution": "low_normal",
+        "scale": 0.1,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k807_d512_low_normal_seed20261013",
+        "category": "representative_matrix",
+        "K": 807,
+        "D": 512,
+        "seed": 20261013,
+        "distribution": "low_normal",
+        "scale": 0.1,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k807_d512_wide_normal_seed20261011",
+        "category": "representative_matrix",
+        "K": 807,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "wide_normal",
+        "scale": 2.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k807_d512_wide_normal_seed20261012",
+        "category": "representative_matrix",
+        "K": 807,
+        "D": 512,
+        "seed": 20261012,
+        "distribution": "wide_normal",
+        "scale": 2.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k807_d512_wide_normal_seed20261013",
+        "category": "representative_matrix",
+        "K": 807,
+        "D": 512,
+        "seed": 20261013,
+        "distribution": "wide_normal",
+        "scale": 2.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k2897_d512_unit_normal_seed20261011",
+        "category": "representative_matrix",
+        "K": 2897,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k2897_d512_unit_normal_seed20261012",
+        "category": "representative_matrix",
+        "K": 2897,
+        "D": 512,
+        "seed": 20261012,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k2897_d512_unit_normal_seed20261013",
+        "category": "representative_matrix",
+        "K": 2897,
+        "D": 512,
+        "seed": 20261013,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k2897_d512_low_normal_seed20261011",
+        "category": "representative_matrix",
+        "K": 2897,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "low_normal",
+        "scale": 0.1,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 1.52587890625e-05,
+          "exact_elements": 4057,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k2897_d512_low_normal_seed20261012",
+        "category": "representative_matrix",
+        "K": 2897,
+        "D": 512,
+        "seed": 20261012,
+        "distribution": "low_normal",
+        "scale": 0.1,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k2897_d512_low_normal_seed20261013",
+        "category": "representative_matrix",
+        "K": 2897,
+        "D": 512,
+        "seed": 20261013,
+        "distribution": "low_normal",
+        "scale": 0.1,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k2897_d512_wide_normal_seed20261011",
+        "category": "representative_matrix",
+        "K": 2897,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "wide_normal",
+        "scale": 2.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k2897_d512_wide_normal_seed20261012",
+        "category": "representative_matrix",
+        "K": 2897,
+        "D": 512,
+        "seed": 20261012,
+        "distribution": "wide_normal",
+        "scale": 2.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k2897_d512_wide_normal_seed20261013",
+        "category": "representative_matrix",
+        "K": 2897,
+        "D": 512,
+        "seed": 20261013,
+        "distribution": "wide_normal",
+        "scale": 2.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 1.4154011296341196e-11,
+          "exact_elements": 4095,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k7359_d512_unit_normal_seed20261011",
+        "category": "representative_matrix",
+        "K": 7359,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k7359_d512_unit_normal_seed20261012",
+        "category": "representative_matrix",
+        "K": 7359,
+        "D": 512,
+        "seed": 20261012,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 5.960464477539063e-08,
+          "exact_elements": 4095,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k7359_d512_unit_normal_seed20261013",
+        "category": "representative_matrix",
+        "K": 7359,
+        "D": 512,
+        "seed": 20261013,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k7359_d512_low_normal_seed20261011",
+        "category": "representative_matrix",
+        "K": 7359,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "low_normal",
+        "scale": 0.1,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 7.62939453125e-06,
+          "exact_elements": 4059,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k7359_d512_low_normal_seed20261012",
+        "category": "representative_matrix",
+        "K": 7359,
+        "D": 512,
+        "seed": 20261012,
+        "distribution": "low_normal",
+        "scale": 0.1,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 7.62939453125e-06,
+          "exact_elements": 4068,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k7359_d512_low_normal_seed20261013",
+        "category": "representative_matrix",
+        "K": 7359,
+        "D": 512,
+        "seed": 20261013,
+        "distribution": "low_normal",
+        "scale": 0.1,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 3.814697265625e-06,
+          "exact_elements": 4095,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k7359_d512_wide_normal_seed20261011",
+        "category": "representative_matrix",
+        "K": 7359,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "wide_normal",
+        "scale": 2.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k7359_d512_wide_normal_seed20261012",
+        "category": "representative_matrix",
+        "K": 7359,
+        "D": 512,
+        "seed": 20261012,
+        "distribution": "wide_normal",
+        "scale": 2.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 4.314574075076592e-21,
+          "exact_elements": 4095,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "matrix_full_k7359_d512_wide_normal_seed20261013",
+        "category": "representative_matrix",
+        "K": 7359,
+        "D": 512,
+        "seed": 20261013,
+        "distribution": "wide_normal",
+        "scale": 2.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "mask_sliding_k512_all-zero visible mask",
+        "category": "mask_matrix",
+        "K": 512,
+        "D": 256,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 2048,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "mask_sliding_k512_first element set to BF16 minimum",
+        "category": "mask_matrix",
+        "K": 512,
+        "D": 256,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "first element set to BF16 minimum",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 2048,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "mask_sliding_k512_last element set to BF16 minimum",
+        "category": "mask_matrix",
+        "K": 512,
+        "D": 256,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "last element set to BF16 minimum",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 2048,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "mask_full_k807_all-zero visible mask",
+        "category": "mask_matrix",
+        "K": 807,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "mask_full_k807_first element set to BF16 minimum",
+        "category": "mask_matrix",
+        "K": 807,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "first element set to BF16 minimum",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "mask_full_k807_last element set to BF16 minimum",
+        "category": "mask_matrix",
+        "K": 807,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "last element set to BF16 minimum",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "mask_full_k2897_all-zero visible mask",
+        "category": "mask_matrix",
+        "K": 2897,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "mask_full_k2897_first element set to BF16 minimum",
+        "category": "mask_matrix",
+        "K": 2897,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "first element set to BF16 minimum",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "mask_full_k2897_last element set to BF16 minimum",
+        "category": "mask_matrix",
+        "K": 2897,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "last element set to BF16 minimum",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "mask_full_k7359_all-zero visible mask",
+        "category": "mask_matrix",
+        "K": 7359,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "mask_full_k7359_first element set to BF16 minimum",
+        "category": "mask_matrix",
+        "K": 7359,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "first element set to BF16 minimum",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "mask_full_k7359_last element set to BF16 minimum",
+        "category": "mask_matrix",
+        "K": 7359,
+        "D": 512,
+        "seed": 20261011,
+        "distribution": "unit_normal",
+        "scale": 1.0,
+        "mask": "last element set to BF16 minimum",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 4096,
+          "allclose_elements": 4096,
+          "non_allclose_elements": 0,
+          "output_elements": 4096
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true
+      },
+      {
+        "label": "gqa_head_mapping_0_3_to_kv0_4_7_to_kv1",
+        "category": "semantic_microcase",
+        "K": 512,
+        "D": 256,
+        "seed": null,
+        "distribution": "deterministic_zero_qk_constant_v",
+        "scale": 0.0,
+        "mask": "all-zero visible mask",
+        "comparison_vs_transformers_eager": {
+          "allclose": true,
+          "max_abs": 0.0,
+          "exact_elements": 2048,
+          "allclose_elements": 2048,
+          "non_allclose_elements": 0,
+          "output_elements": 2048
+        },
+        "output_contract": true,
+        "source_tensors_unmodified": true,
+        "head_mapping": {
+          "query_heads_0_through_3_expected_kv_head": 0,
+          "query_heads_4_through_7_expected_kv_head": 1,
+          "status": "PASS"
+        }
+      }
+    ],
+    "status": "PASS"
+  },
+  "fallback": {
+    "cases": 13,
+    "rows": [
+      {
+        "case": "grad_enabled",
+        "eligible": false,
+        "exact_eager_fallback": true
+      },
+      {
+        "case": "module_training",
+        "eligible": false,
+        "exact_eager_fallback": true
+      },
+      {
+        "case": "dropout_nonzero",
+        "eligible": false,
+        "exact_eager_fallback": true
+      },
+      {
+        "case": "scaling_not_one",
+        "eligible": false,
+        "exact_eager_fallback": true
+      },
+      {
+        "case": "softcap_present",
+        "eligible": false,
+        "exact_eager_fallback": true
+      },
+      {
+        "case": "output_attentions_true",
+        "eligible": false,
+        "exact_eager_fallback": true
+      },
+      {
+        "case": "attention_mask_none",
+        "eligible": false,
+        "exact_eager_fallback": true
+      },
+      {
+        "case": "query_noncontiguous",
+        "eligible": false,
+        "exact_eager_fallback": true
+      },
+      {
+        "case": "mask_noncontiguous",
+        "eligible": false,
+        "exact_eager_fallback": true
+      },
+      {
+        "case": "float32_dtype",
+        "eligible": false,
+        "exact_eager_fallback": true
+      },
+      {
+        "case": "unsupported_k_for_d256",
+        "eligible": false,
+        "exact_eager_fallback": true
+      },
+      {
+        "case": "unsupported_head_dim",
+        "eligible": false,
+        "exact_eager_fallback": true
+      },
+      {
+        "case": "non_frozen_gqa_group",
+        "eligible": false,
+        "exact_eager_fallback": true
+      }
+    ],
+    "status": "PASS"
+  },
+  "autotune": {
+    "choices": {
+      "score": [
+        {
+          "key": [
+            1264,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1436,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1569,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1714,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1843,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1973,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2153,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2334,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2514,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2695,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2897,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            3123,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            3349,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 32,
+          "BLOCK_D": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            3575,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            3801,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            4011,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            4191,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 32,
+          "BLOCK_D": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            4440,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            4728,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 32,
+          "BLOCK_D": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            5029,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            512,
+            256,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            5331,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 32,
+          "BLOCK_D": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            5632,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            6455,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 32,
+          "BLOCK_D": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            7359,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            807,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        }
+      ],
+      "softmax": [
+        {
+          "key": [
+            1264,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            1436,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            1569,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            1714,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            1843,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            1973,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            2153,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            2334,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            2514,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            2695,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            2897,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            3123,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            3349,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            3575,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            3801,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            4011,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            4191,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            4440,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            4728,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            5029,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            512,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            5331,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            5632,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            6455,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            7359,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            807,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        }
+      ],
+      "pv": [
+        {
+          "key": [
+            1264,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1436,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1569,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1714,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1843,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1973,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2153,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2334,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2514,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2695,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2897,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            3123,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            3349,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            3575,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            3801,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            4011,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            4191,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            4440,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            4728,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            5029,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            512,
+            256,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            5331,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            5632,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            6455,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            7359,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            807,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        }
+      ]
+    },
+    "expected_geometries": [
+      {
+        "K": 512,
+        "D": 256
+      },
+      {
+        "K": 807,
+        "D": 512
+      },
+      {
+        "K": 1264,
+        "D": 512
+      },
+      {
+        "K": 1436,
+        "D": 512
+      },
+      {
+        "K": 1569,
+        "D": 512
+      },
+      {
+        "K": 1714,
+        "D": 512
+      },
+      {
+        "K": 1843,
+        "D": 512
+      },
+      {
+        "K": 1973,
+        "D": 512
+      },
+      {
+        "K": 2153,
+        "D": 512
+      },
+      {
+        "K": 2334,
+        "D": 512
+      },
+      {
+        "K": 2514,
+        "D": 512
+      },
+      {
+        "K": 2695,
+        "D": 512
+      },
+      {
+        "K": 2897,
+        "D": 512
+      },
+      {
+        "K": 3123,
+        "D": 512
+      },
+      {
+        "K": 3349,
+        "D": 512
+      },
+      {
+        "K": 3575,
+        "D": 512
+      },
+      {
+        "K": 3801,
+        "D": 512
+      },
+      {
+        "K": 4011,
+        "D": 512
+      },
+      {
+        "K": 4191,
+        "D": 512
+      },
+      {
+        "K": 4440,
+        "D": 512
+      },
+      {
+        "K": 4728,
+        "D": 512
+      },
+      {
+        "K": 5029,
+        "D": 512
+      },
+      {
+        "K": 5331,
+        "D": 512
+      },
+      {
+        "K": 5632,
+        "D": 512
+      },
+      {
+        "K": 6455,
+        "D": 512
+      },
+      {
+        "K": 7359,
+        "D": 512
+      }
+    ],
+    "status": "PASS"
+  },
+  "formal_candidate_performance_started": false,
+  "next_authorized_action": "Run K3 isolated Day-1 performance with the unchanged protocol, candidate, and correctness receipt; apply the frozen bounded continuation gate.",
+  "status": "PASS"
+}

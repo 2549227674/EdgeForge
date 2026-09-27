@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_GQA_DECODE_SELECTION",
+  "started_at": "2026-09-16T17:09:45+08:00",
+  "failed_at": "2026-09-16T17:09:52+08:00",
+  "protocol": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op5_gqa_decode_selection_probe.json",
+  "protocol_sha256": "121ae0b4b4ad6858f1b497c1f6895073823519f17fe7ead93db94703f3d2617d",
+  "runner": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_gqa_selection.py",
+  "runner_sha256": "3e52b1902d2df559f268790545d4b6f98a35dd88fa8b6ae66be97922fcf58957",
+  "command": [
+    "scripts/operator/run_op5_gqa_selection.py"
+  ],
+  "error_type": "RuntimeError",
+  "error": "Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_gqa_selection.py\", line 105, in eager_operation\n    output, _ = eager_attention_forward(\n                ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/lib/python3.12/site-packages/transformers/models/gemma4/modeling_gemma4.py\", line 848, in eager_attention_forward\n    attn_output = attn_output.transpose(1, 2).contiguous()\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^. To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_gqa_selection.py\", line 779, in main\n    receipt = execute(args)\n              ^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_gqa_selection.py\", line 608, in execute\n    correctness = run_correctness(protocol, cases, operations, args.device)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_gqa_selection.py\", line 360, in run_correctness\n    and torch.isfinite(output).all().item()\n        ^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Error: accessing tensor output of CUDAGraphs that has been overwritten by a subsequent run. Stack trace: File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_gqa_selection.py\", line 105, in eager_operation\n    output, _ = eager_attention_forward(\n                ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/lib/python3.12/site-packages/transformers/models/gemma4/modeling_gemma4.py\", line 848, in eager_attention_forward\n    attn_output = attn_output.transpose(1, 2).contiguous()\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^. To prevent overwriting, clone the tensor outside of torch.compile() or call torch.compiler.cudagraph_mark_step_begin() before each model invocation.\n",
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0",
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0"
+    },
+    "cuda": {
+      "available": true,
+      "torch_cuda": "13.0",
+      "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "sm_89",
+      "total_memory_bytes": 8585216000,
+      "multi_processor_count": 24,
+      "l2_cache_size_bytes": 33554432
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 8001 MHz, 140.00 W"
+  },
+  "custom_candidate_implemented_or_timed": false,
+  "status": "FAIL"
+}

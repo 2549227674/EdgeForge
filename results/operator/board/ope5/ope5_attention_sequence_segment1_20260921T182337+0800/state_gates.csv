@@ -1,0 +1,9 @@
+gate,pass
+gqa_head_mapping,1
+swa_ring_wrap,1
+full_prefix_append,1
+qk_padding_mask,1
+pv_padding_zero,1
+softmax_row_sums,1
+source_mutation_boundary,1
+output_contract,1

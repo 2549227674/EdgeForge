@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "stage": "OPE3-K-E1-formal-run-manifest",
+  "prereg_ref": "configs/operator/board/ke1_neon_prereg.json",
+  "prereg_sha256": "c6e3d043b3f86635ba47578d96d4477ded470747c222660bb53e99d48a459a30",
+  "controller_timezone": "Asia/Shanghai",
+  "time_authority": {
+    "absolute_order_and_gap": "controller before/after timestamps",
+    "board_duration": "board monotonic uptime",
+    "board_wall_clock": "recorded but non-authoritative because the board clock is not synchronized"
+  },
+  "formal_segments": [
+    {
+      "label": "segment1",
+      "path": "results/operator/board/ope3/ope3_ke1_segment1_20260919T215238+0800",
+      "remote_path": "/home/orangepi/edgeforge_ope_r1/receipts/ope3_ke1_segment1_20260919T215238+0800",
+      "controller_before": "2026-09-19T21:52:38.093379772+08:00",
+      "controller_after": "2026-09-19T21:53:46.799996905+08:00",
+      "correctness": "RUN",
+      "tier_b": "RUN"
+    },
+    {
+      "label": "segment2",
+      "path": "results/operator/board/ope3/ope3_ke1_segment2_20260919T222436+0800",
+      "remote_path": "/home/orangepi/edgeforge_ope_r1/receipts/ope3_ke1_segment2_20260919T222436+0800",
+      "controller_before": "2026-09-19T22:24:36.181494534+08:00",
+      "controller_after": "2026-09-19T22:24:55.129748510+08:00",
+      "correctness": "NOT_RUN_REUSED_FROM_SEGMENT1",
+      "tier_b": "NOT_RUN_FIRST_VALID_SEGMENT_ONLY"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "edgeforge-ope-c0-5-board-smoke/v1",
+  "stage": "C0-5",
+  "status": "PASS",
+  "scope": "1-core init plus one prompt with at most 64 generated tokens; non-degeneration gate only, no quality evaluation",
+  "controller_time_window": {
+    "started_at": "2026-09-18T11:37:37+08:00",
+    "ended_at": "2026-09-18T11:39:29+08:00"
+  },
+  "board_clock": {
+    "trusted": false,
+    "started_at": "2026-08-13T11:47:42+08:00",
+    "ended_at": "2026-08-13T11:48:23+08:00",
+    "started_uptime_seconds": 1844.99,
+    "ended_uptime_seconds": 1885.56,
+    "elapsed_uptime_seconds": 40.57
+  },
+  "transfer": {
+    "method": "rsync to a hidden temporary filename followed by a same-filesystem atomic rename",
+    "completed": true,
+    "post_transfer_full_file_identity_check": "SKIPPED_BY_CURRENT_OWNER_INSTRUCTION",
+    "source_identity_reference": "results/operator/board/c0/c0_4_local_download_receipt_20260918.json"
+  },
+  "runner": {
+    "path": "/home/orangepi/edgeforge_ope_r1/bin/rkllm_c02_smoke",
+    "sha256": "4ef2854f73c8c2c47216f48da7fe71173201015f18ac729d77aa6a0aede6712b",
+    "source_path": "scripts/operator/board/rkllm_c02_smoke.cpp",
+    "source_sha256": "0be057a52f5224dd58927af6b9c7e30f1356b18a90e15961decdd994299a4cb5"
+  },
+  "model": {
+    "path": "/home/orangepi/edgeforge_ope_r1/models/C02-S.O-w8a8-rk3588-16k-1core-A2.rkllm",
+    "expected_build_receipt_sha256": "61d2fedd5ce1a0c5cbd785b5198550254bea26d685bc49cabe98558ae0fa2c62",
+    "board_sha256_reverified": false
+  },
+  "contract": {
+    "max_new_tokens": 64,
+    "max_context_len": 16384,
+    "top_k": 1,
+    "template": "manual frozen Gemma 4 single-turn",
+    "prompt": "请用一句话解释什么是模型量化。"
+  },
+  "runtime_observed": {
+    "rkllm_runtime": "1.3.0",
+    "rkllm_toolkit": "1.3.0",
+    "rknpu_driver": "0.9.8",
+    "platform": "RK3588",
+    "model_dtype": "W8A8",
+    "max_context_limit": 16384,
+    "npu_core_num": 1
+  },
+  "checks": {
+    "runner_exit": 0,
+    "init_success": true,
+    "manual_template_success": true,
+    "utf8_valid": true,
+    "nonempty_output": true,
+    "pad_token_seen": false,
+    "replacement_character_seen": false
+  },
+  "transcript": {
+    "path": "results/operator/board/c0/c0_5_board_smoke_20260918T113737+0800/transcript.log",
+    "bytes": 1095,
+    "sha256": "8f9be25b6e17c14b1e9ad9d13271f577f2f588af363d7856a237792585d9ea7f"
+  },
+  "interpretation": "PASS proves that this C02 W8A8 artifact initializes and produces nonempty UTF-8 output on the 1-core RKLLM path. The 64-token transcript is truncated and is not assessed for semantic quality. It does not resolve how RKLLM internally treats the 54 transplanted redundant keys."
+}

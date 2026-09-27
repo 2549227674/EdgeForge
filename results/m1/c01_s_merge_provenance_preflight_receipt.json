@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "verified_at_utc": "2026-08-11T16:56:56Z",
+  "updated_at_utc": "2026-08-12T00:07:41Z",
+  "update_reason": "the completion verifier was corrected to validate the final run root as a strict core checkpoint plus its exact top-level run entries; the corrected verifier passed the full step-4096, merge-provenance, BF16 tensor and CPU-reload audit",
+  "scope": "post-disk-preflight provenance-manifest augmentation",
+  "weight_merge_algorithm_changed": false,
+  "augmentation": [
+    "freeze the complete source adapter file inventory and artifact-set SHA-256",
+    "freeze the source training-report SHA-256",
+    "freeze the merge-script SHA-256",
+    "make the completion verifier recompute all three identities",
+    "make the completion verifier hash the base weights and four processor assets directly from the source model"
+  ],
+  "prior_full_disk_preflight": {
+    "receipt": "results/m1/c01_s_merge_disk_preflight_receipt.json",
+    "receipt_sha256": "d2ad6287ba514f78840e029996ea99b9161e91893234e0621257a43e8866b02c",
+    "merge_script_sha256": "6aa2a98a9cd2586d9b24472ff4c59fe8e5c0d1ea68ee6191f6d60021ecc72b57",
+    "status": "PASS"
+  },
+  "current_scripts": {
+    "merge_script": "scripts/m1/merge_lora_candidate.py",
+    "merge_script_sha256": "804c9392405715e8949c470a6213c4fc3891241a45a168faf7d7d3fd87c548e2",
+    "completion_verifier": "scripts/m1/verify_c01_s_completion.py",
+    "completion_verifier_sha256": "a7a58bcad8edd4a4d741c59eb9cf5d5ab761cd0f7db4c8a5a5beebd343927a61",
+    "local_cloud_sha256_match": true,
+    "python_compile": "PASS"
+  },
+  "source_checkpoint_test": {
+    "path": "results/t2/c01_s_family_80_20_half_r1/checkpoints/step-00512/adapter",
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 5196,
+        "sha256": "6a369ffd0c2d8faf04f11e374228788bdb6d63f9d006215a273f8ad032301ec9"
+      },
+      {
+        "path": "adapter_config.json",
+        "bytes": 10162,
+        "sha256": "c3b3d2588b0d1eeea5aa84df262ed3cfca605306990e9c00aead78ef65c1fe4a"
+      },
+      {
+        "path": "adapter_model.safetensors",
+        "bytes": 101178872,
+        "sha256": "a7658d0e2f9b9660b234d94d66fce485f7c170a1a7d3a99be7a1526e2af0aba7"
+      }
+    ],
+    "total_bytes": 101194230,
+    "artifact_set_sha256": "a373835e49a6296908fe4228bfcdd9eb59e9f6ade5833ab67211d3e36ed21d92",
+    "exact_expected_file_set": "PASS"
+  },
+  "final_completion_audit": {
+    "path": "results/m1/c01_s_completion_audit.json",
+    "sha256": "d1c2a2ca192b5ffe6f1637e83759a75388e49d356d5611a52d49355ca2902a7d",
+    "verified_at_utc": "2026-08-12T00:07:40.670532+00:00",
+    "status": "PASS",
+    "candidate_manifest_sha256": "89fed9d97eeb95847d41a11ad55b751a69d6ce1d9df827852f56dc12bf0998d0",
+    "candidate_artifact_set_sha256": "1eebd3e1302a502ce41a9416267219e70cec63ac69ea20429dd97bd47ba9a133"
+  },
+  "gates": {
+    "prior_full_bf16_disk_merge_preflight": "PASS",
+    "provenance_inventory_code_compile": "PASS",
+    "real_checkpoint_adapter_inventory": "PASS",
+    "local_cloud_script_identity": "PASS",
+    "final_step_4096_manifest_and_candidate": "PASS"
+  }
+}

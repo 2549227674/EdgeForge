@@ -1,0 +1,293 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "candidate": "C01-S",
+  "captured_at_utc": "2026-08-11T17:11:10.929271+00:00",
+  "hostname": "autodl-container-atdlpbjbca-22473649",
+  "scope": "live process, command, environment, input and runtime identity",
+  "limitation": "File hashes were observed while the already-running ranks were alive; this is not a cryptographic attestation of pre-exec file contents.",
+  "processes": [
+    {
+      "pid": 4602,
+      "ppid": 1,
+      "process_group": 4601,
+      "session": 4601,
+      "tty_nr": 0,
+      "state": "S",
+      "started_at_utc": "2026-08-11T14:40:15.380000+00:00",
+      "cwd": "/root/autodl-tmp/edgeforge-m1/workspace",
+      "executable": "/usr/bin/bash",
+      "cmdline": [
+        "bash",
+        "-c",
+        "cd /root/autodl-tmp/edgeforge-m1/workspace && test ! -e results/t2/c01_s_family_80_20_half_r1 && mkdir -p results/t2 && setsid env OMP_NUM_THREADS=4 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True ../venv/bin/torchrun --standalone --nproc_per_node=2 scripts/m1/train_recipe_race.py --model models/gemma-4-E4B-it --plan results/t1/family_80_20_half_plan_r1/family_80_20.parquet --holdout results/t1/family_80_20_half_plan_r1/holdout.parquet --output-dir results/t2/c01_s_family_80_20_half_r1 --recipe family_80_20 --run-kind full --race-steps 4096 --full-steps 4096 --eval-every 1024 --checkpoint-every 512 --expected-world-size 2 --expected-plan-sha256 61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e --expected-holdout-sha256 0a28a7f7b52a01f7a73ccdf927f98ac21902f8037ef236db4f86d5024a67d73b --expected-template-sha256 0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5 --expected-input-tokens 148425311 > results/t2/c01_s_family_80_20_half_r1.launch.log 2>&1 < /dev/null & echo $!"
+      ],
+      "selected_environment": {},
+      "file_descriptors": {
+        "0": "/dev/null",
+        "1": "pipe:[759409300]",
+        "2": "pipe:[759409301]"
+      }
+    },
+    {
+      "pid": 4604,
+      "ppid": 4602,
+      "process_group": 4604,
+      "session": 4604,
+      "tty_nr": 0,
+      "state": "S",
+      "started_at_utc": "2026-08-11T14:40:15.380000+00:00",
+      "cwd": "/root/autodl-tmp/edgeforge-m1/workspace",
+      "executable": "/usr/bin/python3.10",
+      "cmdline": [
+        "/root/autodl-tmp/edgeforge-m1/venv/bin/python",
+        "../venv/bin/torchrun",
+        "--standalone",
+        "--nproc_per_node=2",
+        "scripts/m1/train_recipe_race.py",
+        "--model",
+        "models/gemma-4-E4B-it",
+        "--plan",
+        "results/t1/family_80_20_half_plan_r1/family_80_20.parquet",
+        "--holdout",
+        "results/t1/family_80_20_half_plan_r1/holdout.parquet",
+        "--output-dir",
+        "results/t2/c01_s_family_80_20_half_r1",
+        "--recipe",
+        "family_80_20",
+        "--run-kind",
+        "full",
+        "--race-steps",
+        "4096",
+        "--full-steps",
+        "4096",
+        "--eval-every",
+        "1024",
+        "--checkpoint-every",
+        "512",
+        "--expected-world-size",
+        "2",
+        "--expected-plan-sha256",
+        "61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e",
+        "--expected-holdout-sha256",
+        "0a28a7f7b52a01f7a73ccdf927f98ac21902f8037ef236db4f86d5024a67d73b",
+        "--expected-template-sha256",
+        "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "--expected-input-tokens",
+        "148425311"
+      ],
+      "selected_environment": {
+        "OMP_NUM_THREADS": "4",
+        "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"
+      },
+      "file_descriptors": {
+        "0": "/dev/null",
+        "1": "/root/autodl-tmp/edgeforge-m1/workspace/results/t2/c01_s_family_80_20_half_r1.launch.log",
+        "2": "/root/autodl-tmp/edgeforge-m1/workspace/results/t2/c01_s_family_80_20_half_r1.launch.log"
+      }
+    },
+    {
+      "pid": 4612,
+      "ppid": 4604,
+      "process_group": 4612,
+      "session": 4612,
+      "tty_nr": 0,
+      "state": "S",
+      "started_at_utc": "2026-08-11T14:40:16.800000+00:00",
+      "cwd": "/root/autodl-tmp/edgeforge-m1/workspace",
+      "executable": "/usr/bin/python3.10",
+      "cmdline": [
+        "/root/autodl-tmp/edgeforge-m1/venv/bin/python",
+        "-u",
+        "scripts/m1/train_recipe_race.py",
+        "--model",
+        "models/gemma-4-E4B-it",
+        "--plan",
+        "results/t1/family_80_20_half_plan_r1/family_80_20.parquet",
+        "--holdout",
+        "results/t1/family_80_20_half_plan_r1/holdout.parquet",
+        "--output-dir",
+        "results/t2/c01_s_family_80_20_half_r1",
+        "--recipe",
+        "family_80_20",
+        "--run-kind",
+        "full",
+        "--race-steps",
+        "4096",
+        "--full-steps",
+        "4096",
+        "--eval-every",
+        "1024",
+        "--checkpoint-every",
+        "512",
+        "--expected-world-size",
+        "2",
+        "--expected-plan-sha256",
+        "61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e",
+        "--expected-holdout-sha256",
+        "0a28a7f7b52a01f7a73ccdf927f98ac21902f8037ef236db4f86d5024a67d73b",
+        "--expected-template-sha256",
+        "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "--expected-input-tokens",
+        "148425311"
+      ],
+      "selected_environment": {
+        "OMP_NUM_THREADS": "4",
+        "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True",
+        "RANK": "0",
+        "GROUP_RANK": "0",
+        "ROLE_RANK": "0",
+        "LOCAL_WORLD_SIZE": "2",
+        "WORLD_SIZE": "2",
+        "MASTER_ADDR": "localhost",
+        "MASTER_PORT": "35365",
+        "LOCAL_RANK": "0"
+      },
+      "file_descriptors": {
+        "0": "/dev/null",
+        "1": "/root/autodl-tmp/edgeforge-m1/workspace/results/t2/c01_s_family_80_20_half_r1.launch.log",
+        "2": "/root/autodl-tmp/edgeforge-m1/workspace/results/t2/c01_s_family_80_20_half_r1.launch.log"
+      }
+    },
+    {
+      "pid": 4613,
+      "ppid": 4604,
+      "process_group": 4613,
+      "session": 4613,
+      "tty_nr": 0,
+      "state": "S",
+      "started_at_utc": "2026-08-11T14:40:16.800000+00:00",
+      "cwd": "/root/autodl-tmp/edgeforge-m1/workspace",
+      "executable": "/usr/bin/python3.10",
+      "cmdline": [
+        "/root/autodl-tmp/edgeforge-m1/venv/bin/python",
+        "-u",
+        "scripts/m1/train_recipe_race.py",
+        "--model",
+        "models/gemma-4-E4B-it",
+        "--plan",
+        "results/t1/family_80_20_half_plan_r1/family_80_20.parquet",
+        "--holdout",
+        "results/t1/family_80_20_half_plan_r1/holdout.parquet",
+        "--output-dir",
+        "results/t2/c01_s_family_80_20_half_r1",
+        "--recipe",
+        "family_80_20",
+        "--run-kind",
+        "full",
+        "--race-steps",
+        "4096",
+        "--full-steps",
+        "4096",
+        "--eval-every",
+        "1024",
+        "--checkpoint-every",
+        "512",
+        "--expected-world-size",
+        "2",
+        "--expected-plan-sha256",
+        "61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e",
+        "--expected-holdout-sha256",
+        "0a28a7f7b52a01f7a73ccdf927f98ac21902f8037ef236db4f86d5024a67d73b",
+        "--expected-template-sha256",
+        "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "--expected-input-tokens",
+        "148425311"
+      ],
+      "selected_environment": {
+        "OMP_NUM_THREADS": "4",
+        "PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True",
+        "RANK": "1",
+        "GROUP_RANK": "0",
+        "ROLE_RANK": "1",
+        "LOCAL_WORLD_SIZE": "2",
+        "WORLD_SIZE": "2",
+        "MASTER_ADDR": "localhost",
+        "MASTER_PORT": "35365",
+        "LOCAL_RANK": "1"
+      },
+      "file_descriptors": {
+        "0": "/dev/null",
+        "1": "/root/autodl-tmp/edgeforge-m1/workspace/results/t2/c01_s_family_80_20_half_r1.launch.log",
+        "2": "/root/autodl-tmp/edgeforge-m1/workspace/results/t2/c01_s_family_80_20_half_r1.launch.log"
+      }
+    }
+  ],
+  "rank_pids": [
+    4612,
+    4613
+  ],
+  "file_identities": [
+    {
+      "path": "scripts/m1/train_recipe_race.py",
+      "bytes": 25587,
+      "sha256": "f82e51b964df452911f5d42b792e63b667266f0378d00b6115147a9d5b8d456a"
+    },
+    {
+      "path": "results/t1/family_80_20_half_plan_r1/family_80_20.parquet",
+      "bytes": 383731021,
+      "sha256": "61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e"
+    },
+    {
+      "path": "results/t1/family_80_20_half_plan_r1/holdout.parquet",
+      "bytes": 6248152,
+      "sha256": "0a28a7f7b52a01f7a73ccdf927f98ac21902f8037ef236db4f86d5024a67d73b"
+    },
+    {
+      "path": "models/gemma-4-E4B-it/chat_template.jinja",
+      "bytes": 18569,
+      "sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5"
+    },
+    {
+      "path": "models/gemma-4-E4B-it/config.json",
+      "bytes": 5145,
+      "sha256": "33b10c02df3c2e8536cf323d29d53262aaa2f4d11dbe19bc729373fbe90295d4"
+    }
+  ],
+  "model_shape": {
+    "model_type": "gemma4",
+    "num_hidden_layers": 42,
+    "hidden_size": 2560,
+    "sliding_window": 512
+  },
+  "packages": {
+    "torch": "2.11.0+cu128",
+    "transformers": "5.14.1",
+    "peft": "0.20.0",
+    "bitsandbytes": "0.50.0",
+    "accelerate": "1.14.0",
+    "pyarrow": "25.0.1",
+    "safetensors": "0.8.0"
+  },
+  "gpus": [
+    "0, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-a3fac8bd-e875-cb24-ab61-fd2381e5fd6c, 595.71.05, 97887",
+    "1, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-85cfd8ef-1f32-1cc8-16ff-6f1c5767e183, 595.71.05, 97887"
+  ],
+  "train_log": {
+    "path": "results/t2/c01_s_family_80_20_half_r1/train_log.jsonl",
+    "sha256_at_capture": "49a9dfe262766bdbf06118060cdfecbe92c4e43656ae57f03cf6345ef74e2fe8",
+    "event_count": 1078,
+    "last_optimizer_step": 1074,
+    "validation_steps": [
+      0,
+      1024
+    ],
+    "checkpoint_steps": [
+      512,
+      1024
+    ],
+    "all_observed_losses_finite": true
+  },
+  "gates": {
+    "two_live_ranks": "PASS",
+    "rank_world_size_and_environment": "PASS",
+    "detached_stdio": "PASS",
+    "frozen_plan_holdout_template_identities": "PASS",
+    "training_script_and_model_config_hashes": "PASS_AT_CAPTURE",
+    "model_42_layers_hidden_2560_sliding_512": "PASS",
+    "two_rtx_pro_6000_devices": "PASS",
+    "contiguous_finite_log_at_capture": "PASS"
+  },
+  "generator": "/root/autodl-tmp/edgeforge-m1/workspace/scripts/m1/capture_c01_s_live_process_identity.py",
+  "generator_sha256": "20df0714f41a3e1956b0c0daa24883705219f2b6e9f9e34f89fba4d157d8bdac"
+}

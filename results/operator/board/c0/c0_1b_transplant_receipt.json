@@ -1,0 +1,1068 @@
+{
+  "schema_version": 1,
+  "stage": "C0-1b",
+  "card": "docs/operator/EdgeForge_算子面_板端_执行卡_R2.md",
+  "timestamp_start": "2026-09-17T20:09:47+08:00",
+  "argv": [
+    "scripts/operator/board/backfill_c02_kv_keys.py"
+  ],
+  "cwd": "/home/qbz415/piloop-edge-inference-profiler",
+  "args": {
+    "c02_dir": "models/C02-S.O-bf16-r1",
+    "c02_manifest_sha256": "ee7d426d1e912a6c53cad1cd52739f26d7fff45b4a4f7429a4c08656f68dc5f2",
+    "official_safetensors": "models/gemma-4-E4B-it/model.safetensors",
+    "official_manifest": "manifests/gemma4_e4b_rkllm_frozen_input_sha256.json",
+    "out_dir": "models/C02-S.O-rkllm-input-r1",
+    "manifest": "configs/operator/board/c02_rkllm_input_manifest.json",
+    "receipt": "results/operator/board/c0/c0_1b_transplant_receipt.json",
+    "force": false
+  },
+  "git_sha": "213460d88311cba5d84add4d3ee57aae26716c6d",
+  "status": "PASS",
+  "source_identity": {
+    "c02": {
+      "manifest": "models/C02-S.O-bf16-r1/artifact_manifest.json",
+      "manifest_sha256": "ee7d426d1e912a6c53cad1cd52739f26d7fff45b4a4f7429a4c08656f68dc5f2",
+      "artifact_set_sha256": "89578279a5f391e44628086a332cd0c119203f53b5d6d739c5aa9f0fe1717b0a",
+      "file_count": 11,
+      "status": "PASS"
+    },
+    "official": {
+      "manifest": "manifests/gemma4_e4b_rkllm_frozen_input_sha256.json",
+      "safetensors": "models/gemma-4-E4B-it/model.safetensors",
+      "safetensors_bytes": 15992595884,
+      "safetensors_sha256": "cfbd3d2f1cd71bd471c37fe2bf8546d5028d41e5736f64e1ca6c6b8893125503",
+      "status": "PASS"
+    }
+  },
+  "timestamp_end": "2026-09-17T20:19:08+08:00",
+  "audit": {
+    "c02_missing_key_count": 54,
+    "official_present_key_count": 54,
+    "output_keyset_equals_official": true,
+    "common_tensor_geometry_equals_official": true,
+    "verified_output_tensor_count": 2130,
+    "source_layer_copy_audit": {
+      "mapping": "sliding_attention->22; full_attention->23",
+      "counts": {
+        "k_proj": {
+          "equal": 0,
+          "different": 18
+        },
+        "v_proj": {
+          "equal": 0,
+          "different": 18
+        },
+        "k_norm": {
+          "equal": 18,
+          "different": 0
+        }
+      },
+      "source_layer_copy_hypothesis": "REJECTED",
+      "observed_pattern": "all 36 k_proj/v_proj tensors differ from their official runtime source-layer tensor; all 18 k_norm tensors are byte-identical"
+    }
+  },
+  "transplant_count": 54,
+  "transplant_table": [
+    {
+      "target_key": "model.language_model.layers.24.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.24.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 24,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.24.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.24.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "c5e72f2b84676e84c247dcda02562512fdd03cbf4c4b9f2724a436219dd6a9ef",
+      "target_layer": 24,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.24.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.24.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "6e5b7b2e244aea0790b4bf15c7d5a6e5b0394a69f33ab578ea647e2818a1c34c",
+      "target_layer": 24,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.25.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.25.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 25,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.25.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.25.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "12ced4743989f7c19eeb15b45b8c81fa8db01e08d6059862d9b0eff3c76e7dc4",
+      "target_layer": 25,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.25.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.25.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "fb515693f7957ef4d98c1350d0e101c29c03627faae393a1d8c8a5e664639527",
+      "target_layer": 25,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.26.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.26.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 26,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.26.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.26.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "3cf2d186d73544723161725c258372a14ef12c8f4a417c454abeb7ea3da1d9c8",
+      "target_layer": 26,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.26.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.26.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "0c23b084acca03078fc53834baa1ed57d6ae64c8a639787bc3af1c66dbe0e61b",
+      "target_layer": 26,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.27.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.27.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 27,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.27.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.27.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "77648853f4891f6cfaeaa41188cd5d9b8f262c20f3ba89dd408b39447bfd7191",
+      "target_layer": 27,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.27.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.27.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "f7e630f1b7ed61ee5e927a5c55427169ef3d01949ec3859da64804250c8a5083",
+      "target_layer": 27,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.28.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.28.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 28,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.28.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.28.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "c729d1f2018c2766c6ba15cf9c8a5106b21b96aa4a872b583a72ad31a9388dd6",
+      "target_layer": 28,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.28.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.28.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "b2d71681930abfda34150821644d174b1f78ad691532ef99a5421f091d350832",
+      "target_layer": 28,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.29.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.29.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512
+      ],
+      "nbytes": 1024,
+      "sha256": "afabf88facaef68176e3dd9551965d08e579fe70f6d25d6ba1adb963d05131e3",
+      "target_layer": 29,
+      "attention_type": "full_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 23,
+      "runtime_source_key": "model.language_model.layers.23.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.29.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.29.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        1024,
+        2560
+      ],
+      "nbytes": 5242880,
+      "sha256": "f5d67884ba33017421f509cc69e5e25b846f8480099edb3bbb2edad90931fd5d",
+      "target_layer": 29,
+      "attention_type": "full_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 23,
+      "runtime_source_key": "model.language_model.layers.23.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.29.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.29.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        1024,
+        2560
+      ],
+      "nbytes": 5242880,
+      "sha256": "7a621fe4dda13c436e5feb574045d0140438e37106614fd0d238f5b708c59f82",
+      "target_layer": 29,
+      "attention_type": "full_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 23,
+      "runtime_source_key": "model.language_model.layers.23.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.30.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.30.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 30,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.30.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.30.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "18ecffcb8bbe80226e56058176d97dd4683abbda3d82b55fe98faa65b6fb9ef7",
+      "target_layer": 30,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.30.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.30.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "1ae6e8167f7b96fe9d0e13c9ac58eb8116aae84bc2d1963550a87d9d3a80e885",
+      "target_layer": 30,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.31.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.31.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 31,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.31.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.31.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "a8eac5a3918e0f8b7e8d3055643072e0de45f05cfdbbc16f9d38cfdb348e73f2",
+      "target_layer": 31,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.31.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.31.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "7f7e438fcfb1ea80887836b72075865aa618c93123fd8d9b4ec6a8865fca1219",
+      "target_layer": 31,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.32.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.32.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 32,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.32.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.32.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "3c6cc57f71de96c3dc038da7a245d7f135090383cdcb349d7795b01e56243993",
+      "target_layer": 32,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.32.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.32.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "4941ce9ffd92f653230ef0fee7f25ffa415b4c423f7446b119e90e562ec01ddf",
+      "target_layer": 32,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.33.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.33.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 33,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.33.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.33.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "cd787e04c99c79751a1936777510cfe331297df8939546b19873299871ea2c44",
+      "target_layer": 33,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.33.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.33.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "d4a87ea399b4f3768a19af5c46896fb4d79ecb832e04be12b3ce25598583b638",
+      "target_layer": 33,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.34.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.34.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 34,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.34.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.34.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "6bfa0be21af64ab83dac2baaf952bb5c805a85f79934a2d4b502c21824125f46",
+      "target_layer": 34,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.34.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.34.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "62a034690f66d929fc75786e094d16ae91669fde418b6fd9fc2cad304ea66a29",
+      "target_layer": 34,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.35.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.35.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512
+      ],
+      "nbytes": 1024,
+      "sha256": "afabf88facaef68176e3dd9551965d08e579fe70f6d25d6ba1adb963d05131e3",
+      "target_layer": 35,
+      "attention_type": "full_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 23,
+      "runtime_source_key": "model.language_model.layers.23.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.35.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.35.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        1024,
+        2560
+      ],
+      "nbytes": 5242880,
+      "sha256": "28fdd21b74848445433115de1a4b1113c698ae116742542d3c24425306368e91",
+      "target_layer": 35,
+      "attention_type": "full_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 23,
+      "runtime_source_key": "model.language_model.layers.23.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.35.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.35.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        1024,
+        2560
+      ],
+      "nbytes": 5242880,
+      "sha256": "fe4e660395bb6ea7eb34e42139b3242eaca1d5d09bb179457922478d46a966b1",
+      "target_layer": 35,
+      "attention_type": "full_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 23,
+      "runtime_source_key": "model.language_model.layers.23.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.36.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.36.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 36,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.36.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.36.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "6e89159c88d3c40b74ca2e5d4b85c2c6ee167136653a5feeecbdafbb6c9cf128",
+      "target_layer": 36,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.36.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.36.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "6eaef8b4ecca20d696317ac2ebda999836eafa3e78065f28bf5eec64f2a71870",
+      "target_layer": 36,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.37.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.37.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 37,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.37.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.37.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "aa02195fedc3f8aa586fdd88b96f7e40564c24f06b21f78712d74c9cb2b38d4a",
+      "target_layer": 37,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.37.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.37.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "e585a7d92ce45e9b01b287d6d4cc6ae758fb1590474efa8f26b4862ae5a78b28",
+      "target_layer": 37,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.38.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.38.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 38,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.38.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.38.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "fa016e3dacd2ac8ed83375e641c5278f3ac475ad00be810f2494dca963bd55db",
+      "target_layer": 38,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.38.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.38.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "9de5e6ef3d6606f42f358181f502c94fd99d74df19ca767005bc885f946e1124",
+      "target_layer": 38,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.39.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.39.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 39,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.39.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.39.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "2940f7437740752a45d26d82467782a395b9743543fcbf9334cd2e35aabb5d13",
+      "target_layer": 39,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.39.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.39.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "65e1c33c0b4b1d8decdb7dfc31e4c7c721d46a082defed04f76af866c5084686",
+      "target_layer": 39,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.40.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.40.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        256
+      ],
+      "nbytes": 512,
+      "sha256": "626d2837d8926e88ac61d1d53ea00a998ed1384aea5bf039c04f190274703768",
+      "target_layer": 40,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.40.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.40.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "a507a0d274fa3844a84e3c527ebc625251a2723f0e380e807ac7352d3ff2ef88",
+      "target_layer": 40,
+      "attention_type": "sliding_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.40.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.40.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512,
+        2560
+      ],
+      "nbytes": 2621440,
+      "sha256": "0ce635029eb89124974d45e899751366ba1fe343bd865a41a7da13cb3327d5a2",
+      "target_layer": 40,
+      "attention_type": "sliding_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 22,
+      "runtime_source_key": "model.language_model.layers.22.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.41.self_attn.k_norm.weight",
+      "source_key": "model.language_model.layers.41.self_attn.k_norm.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        512
+      ],
+      "nbytes": 1024,
+      "sha256": "afabf88facaef68176e3dd9551965d08e579fe70f6d25d6ba1adb963d05131e3",
+      "target_layer": 41,
+      "attention_type": "full_attention",
+      "tensor_role": "k_norm",
+      "runtime_source_layer": 23,
+      "runtime_source_key": "model.language_model.layers.23.self_attn.k_norm.weight",
+      "equals_official_runtime_source_tensor": true
+    },
+    {
+      "target_key": "model.language_model.layers.41.self_attn.k_proj.weight",
+      "source_key": "model.language_model.layers.41.self_attn.k_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        1024,
+        2560
+      ],
+      "nbytes": 5242880,
+      "sha256": "0453111cb1fb344f77e9e42f239e3b3931f67ff3bf63d5cd51948958403f51b9",
+      "target_layer": 41,
+      "attention_type": "full_attention",
+      "tensor_role": "k_proj",
+      "runtime_source_layer": 23,
+      "runtime_source_key": "model.language_model.layers.23.self_attn.k_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    },
+    {
+      "target_key": "model.language_model.layers.41.self_attn.v_proj.weight",
+      "source_key": "model.language_model.layers.41.self_attn.v_proj.weight",
+      "source_file": "models/gemma-4-E4B-it/model.safetensors",
+      "dtype": "BF16",
+      "shape": [
+        1024,
+        2560
+      ],
+      "nbytes": 5242880,
+      "sha256": "4bffe3f01d20a2d7df2371061c916fa534abffa8a5deb30257f7fa78b1c5ad96",
+      "target_layer": 41,
+      "attention_type": "full_attention",
+      "tensor_role": "v_proj",
+      "runtime_source_layer": 23,
+      "runtime_source_key": "model.language_model.layers.23.self_attn.v_proj.weight",
+      "equals_official_runtime_source_tensor": false
+    }
+  ],
+  "output": {
+    "directory": "models/C02-S.O-rkllm-input-r1",
+    "files": [
+      {
+        "path": "chat_template.jinja",
+        "bytes": 18569,
+        "sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5"
+      },
+      {
+        "path": "config.json",
+        "bytes": 5469,
+        "sha256": "a866b497256661638db10c8d42e746f8ee2fc6434a637f00a032d00c6834a0f5"
+      },
+      {
+        "path": "generation_config.json",
+        "bytes": 204,
+        "sha256": "f980ee1dc9d6a30f92050e94eaf7511b95941ede02e9d7fcde002d8da6ef9523"
+      },
+      {
+        "path": "model.safetensors",
+        "bytes": 15992595884,
+        "sha256": "40469f7bd93b6f16dba63081ca5f430d6bdaa7f518d1ffab37f8b9a7be331d0f"
+      },
+      {
+        "path": "processor_config.json",
+        "bytes": 1689,
+        "sha256": "32bdf45d2ad4cc29a0822ddd157a182de76644f0419a6228d151495256e9813c"
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 32169626,
+        "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f"
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 2095,
+        "sha256": "90c3a3ba5bf53818383a58e1a776cbcacd2a038d4812eaa373e1522f2d06f3df"
+      }
+    ],
+    "artifact_set_sha256": "e8fbfb93f6bd5b8405816ba3eacf3786a0778f1f286c204a71cd249edf42e2b7"
+  },
+  "manifest": {
+    "path": "configs/operator/board/c02_rkllm_input_manifest.json",
+    "sha256": "39cb2a50a4e1ce6bec0b6cb056cab8b5912401494bf5a1419caa6e69282e12cf"
+  },
+  "note": "The conversion input is C02 plus an exact transplant of the 54 official tensors. Transformers discards those unexpected keys; the logits-equivalence gate must pass before C0-3."
+}

@@ -1,0 +1,7 @@
+# started on Sat Sep 19 06:04:52 2026
+
+1293695751,,cycles:u,570705623,100.00,2.267,GHz
+2919499249,,instructions:u,570705623,100.00,2.26,insn per cycle
+570.70,msec,task-clock,570702706,100.00,0.850,CPUs utilized
+3,,context-switches,570702706,100.00,5.257,/sec
+1,,cpu-migrations,570702706,100.00,1.752,/sec

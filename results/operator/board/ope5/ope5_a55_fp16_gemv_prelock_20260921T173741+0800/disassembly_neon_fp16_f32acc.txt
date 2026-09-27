@@ -1,0 +1,80 @@
+
+/home/orangepi/edgeforge_ope_r1/results/operator/board/ope5/ope5_a55_fp16_gemv_prelock_20260921T173741+0800/ope5_a55_fp16_gemv_audit.bin:     file format elf64-littleaarch64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .text:
+
+00000000000045a0 <neon_fp16_f32acc_rows>:
+    45a0:	2a0303e5 	mov	w5, w3
+    45a4:	2a0403e7 	mov	w7, w4
+    45a8:	6b04007f 	cmp	w3, w4
+    45ac:	aa0003e6 	mov	x6, x0
+    45b0:	aa0203e8 	mov	x8, x2
+    45b4:	540007aa 	b.ge	46a8 <neon_fp16_f32acc_rows+0x108>  // b.tcont
+    45b8:	528a0000 	mov	w0, #0x5000                	// #20480
+    45bc:	93407c63 	sxtw	x3, w3
+    45c0:	914014c2 	add	x2, x6, #0x5, lsl #12
+    45c4:	9b2004a4 	smaddl	x4, w5, w0, x1
+    45c8:	4f000411 	movi	v17.4s, #0x0
+    45cc:	aa0603e0 	mov	x0, x6
+    45d0:	aa0403e1 	mov	x1, x4
+    45d4:	4eb11e30 	mov	v16.16b, v17.16b
+    45d8:	4eb11e37 	mov	v23.16b, v17.16b
+    45dc:	4eb11e34 	mov	v20.16b, v17.16b
+    45e0:	4eb11e36 	mov	v22.16b, v17.16b
+    45e4:	4eb11e32 	mov	v18.16b, v17.16b
+    45e8:	4eb11e33 	mov	v19.16b, v17.16b
+    45ec:	4eb11e35 	mov	v21.16b, v17.16b
+    45f0:	ad401407 	ldp	q7, q5, [x0]
+    45f4:	ad401026 	ldp	q6, q4, [x1]
+    45f8:	ad410403 	ldp	q3, q1, [x0, #32]
+    45fc:	91010000 	add	x0, x0, #0x40
+    4600:	ad410022 	ldp	q2, q0, [x1, #32]
+    4604:	eb00005f 	cmp	x2, x0
+    4608:	0e2178ff 	fcvtl	v31.4s, v7.4h
+    460c:	91010021 	add	x1, x1, #0x40
+    4610:	0e2178bd 	fcvtl	v29.4s, v5.4h
+    4614:	0e21787b 	fcvtl	v27.4s, v3.4h
+    4618:	0e217839 	fcvtl	v25.4s, v1.4h
+    461c:	0e2178de 	fcvtl	v30.4s, v6.4h
+    4620:	0e21789c 	fcvtl	v28.4s, v4.4h
+    4624:	0e21785a 	fcvtl	v26.4s, v2.4h
+    4628:	0e217818 	fcvtl	v24.4s, v0.4h
+    462c:	4e2178e7 	fcvtl2	v7.4s, v7.8h
+    4630:	4e2178a5 	fcvtl2	v5.4s, v5.8h
+    4634:	4e217863 	fcvtl2	v3.4s, v3.8h
+    4638:	4e217821 	fcvtl2	v1.4s, v1.8h
+    463c:	4e2178c6 	fcvtl2	v6.4s, v6.8h
+    4640:	4e217884 	fcvtl2	v4.4s, v4.8h
+    4644:	4e217842 	fcvtl2	v2.4s, v2.8h
+    4648:	4e217800 	fcvtl2	v0.4s, v0.8h
+    464c:	4e3ecff5 	fmla	v21.4s, v31.4s, v30.4s
+    4650:	4e26ccf3 	fmla	v19.4s, v7.4s, v6.4s
+    4654:	4e3ccfb2 	fmla	v18.4s, v29.4s, v28.4s
+    4658:	4e24ccb6 	fmla	v22.4s, v5.4s, v4.4s
+    465c:	4e3acf74 	fmla	v20.4s, v27.4s, v26.4s
+    4660:	4e22cc77 	fmla	v23.4s, v3.4s, v2.4s
+    4664:	4e38cf30 	fmla	v16.4s, v25.4s, v24.4s
+    4668:	4e20cc31 	fmla	v17.4s, v1.4s, v0.4s
+    466c:	54fffc21 	b.ne	45f0 <neon_fp16_f32acc_rows+0x50>  // b.any
+    4670:	4e31d600 	fadd	v0.4s, v16.4s, v17.4s
+    4674:	91401484 	add	x4, x4, #0x5, lsl #12
+    4678:	4e37d694 	fadd	v20.4s, v20.4s, v23.4s
+    467c:	4e36d641 	fadd	v1.4s, v18.4s, v22.4s
+    4680:	4e35d673 	fadd	v19.4s, v19.4s, v21.4s
+    4684:	4e34d400 	fadd	v0.4s, v0.4s, v20.4s
+    4688:	4e33d421 	fadd	v1.4s, v1.4s, v19.4s
+    468c:	4e21d400 	fadd	v0.4s, v0.4s, v1.4s
+    4690:	6e20d400 	faddp	v0.4s, v0.4s, v0.4s
+    4694:	6e20d400 	faddp	v0.4s, v0.4s, v0.4s
+    4698:	bc237900 	str	s0, [x8, x3, lsl #2]
+    469c:	91000463 	add	x3, x3, #0x1
+    46a0:	6b0300ff 	cmp	w7, w3
+    46a4:	54fff92c 	b.gt	45c8 <neon_fp16_f32acc_rows+0x28>
+    46a8:	d65f03c0 	ret
+
+Disassembly of section .fini:

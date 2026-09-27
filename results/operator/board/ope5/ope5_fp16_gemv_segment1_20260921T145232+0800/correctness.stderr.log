@@ -1,0 +1,1 @@
+OPE5_FP16_GEMV_CORRECTNESS rows=27 element_comparisons=69120 failures=0 sink=11400714820468801286

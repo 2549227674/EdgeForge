@@ -1,0 +1,6044 @@
+{
+  "schema_version": 1,
+  "stage": "OP4",
+  "kernel": "k1_gemma4_rmsnorm",
+  "timestamp": "2026-09-15T22:07:20+08:00",
+  "status": "PASS",
+  "preregistration": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op4_ncu_attribution.json",
+    "sha256_at_start": "aa9dac98c6f23aa5b1e245a3021265f6df646e3cf9f1218fb01c024d4a87f077",
+    "sha256_at_end": "aa9dac98c6f23aa5b1e245a3021265f6df646e3cf9f1218fb01c024d4a87f077",
+    "immutable_during_measurement": true,
+    "frozen_at": "2026-09-15T22:05:18+08:00"
+  },
+  "source_verification": {
+    "artifacts": {
+      "shape_census": {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/shape_census.json",
+        "sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f",
+        "status": "PASS"
+      },
+      "op2_preregistration": {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k1_rmsnorm_prereg.json",
+        "sha256": "c5867a31d27f24ea411bd592af7648e9fc10a313ee74cc1425e829487cca2411",
+        "status": "PASS"
+      },
+      "op2_result": {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/k1_rmsnorm_op2.json",
+        "sha256": "f4a4c4f192a49fa17930d7b6d8b066e43a1fc0775e58c155ab122a70b2d7fd98",
+        "status": "PASS"
+      },
+      "op2_receipt": {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/op2_receipt.json",
+        "sha256": "414bfa626414aef041c20529ca49303f1545accd405e24cbb1a3c6ab9eead813",
+        "status": "PASS"
+      },
+      "op3_preregistration": {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op3_reconnect.json",
+        "sha256": "d4917b82fecc894a69db63e258e921a165eee8db395c7c1590bfe3416a96e8c6",
+        "status": "PASS"
+      },
+      "op3_result": {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/k1_rmsnorm_op3.json",
+        "sha256": "9eeb431a8d543ef1da0de06b2c29d4d174e6f2a299cc599309b19108fda3808e",
+        "status": "PASS"
+      },
+      "op3_receipt": {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/op3_receipt.json",
+        "sha256": "80c32bd466e2db199882affc3690b566eeb5f22ecc5ed58534c396ea18c5b210",
+        "status": "PASS"
+      },
+      "bandwidth_ceiling": {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/bandwidth_ceiling.json",
+        "sha256": "772a80293900f9ac81349cf08e2d6a9791c4ec53a1f3c04cbf79ee0cf40727c9",
+        "status": "PASS"
+      },
+      "environment_identity": {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/env_identity_20260915.json",
+        "sha256": "202652237243151468e600efc056bd8876ae0df64651ad0231a4b889a22d613c",
+        "status": "PASS"
+      },
+      "implementation": {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k1_rmsnorm.py",
+        "sha256": "6e1d282bc174e9f91210281c086c0928820e7b3e8782f7bf02e8f94ed31d7ca1",
+        "status": "PASS"
+      },
+      "op2_runner": {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op2.py",
+        "sha256": "720c7b9dc5ddae8f34b996d2e8dc5e34a96acea170f76c4a56569df53cac9353",
+        "status": "PASS"
+      },
+      "op4_runner": {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op4.py",
+        "sha256": "b9423fc55bd6528d8079e59c9c0ea7982e5f458cb7f65eae8e500b2215128d4d",
+        "status": "PASS"
+      },
+      "op4_readiness_receipt": {
+        "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/op4_readiness_receipt.json",
+        "sha256": "8d5911129e3a625ca1c3b5b69e080ad5b16cb4055697b5856360ceed398cec2a",
+        "status": "PASS"
+      }
+    },
+    "device": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "sm_89",
+      "total_memory_bytes": 8585216000
+    },
+    "ncu": {
+      "path": "/usr/local/cuda/bin/ncu",
+      "version": "2025.1.1.0",
+      "build": "35528883",
+      "raw": "NVIDIA (R) Nsight Compute Command Line Profiler\nCopyright (c) 2018-2025 NVIDIA Corporation\nVersion 2025.1.1.0 (build 35528883) (public-release)"
+    },
+    "metrics": {
+      "required": [
+        "dram__bytes.sum",
+        "dram__bytes_read.sum",
+        "dram__bytes_write.sum",
+        "gpu__time_duration.sum"
+      ],
+      "missing": [],
+      "status": "PASS"
+    }
+  },
+  "protocol": {
+    "kernel_name": "k1_gemma4_rmsnorm_kernel",
+    "formal_dtype": "bfloat16",
+    "formal_element_bytes": 2,
+    "input_distribution": "normal(mean=0, std=1)",
+    "input_seed_base": 20260915,
+    "warmup_launches_per_case": 50,
+    "profiled_launches_per_case": 1,
+    "profiled_launch_rationale": "Hardware byte counters are collected for one post-warmup launch per formal case. Performance p50/IQR remain the frozen OP2 200-repetition interleaved CUDA-event results; ncu replay duration is not used as timing.",
+    "metrics": [
+      "dram__bytes.sum",
+      "dram__bytes_read.sum",
+      "dram__bytes_write.sum",
+      "gpu__time_duration.sum"
+    ],
+    "primary_metric": "dram__bytes.sum",
+    "analytic_tolerance_fraction": 0.15,
+    "within_tolerance_rule": "abs(dram__bytes.sum / analytic_bytes - 1) <= 0.15",
+    "outside_tolerance_rule": "Use measured dram__bytes.sum as the authoritative per-case byte account without changing the immutable OP2 artifact.",
+    "cache_control": "all",
+    "cache_control_meaning": "Nsight Compute flushes all GPU caches before each profiled replay pass.",
+    "replay_mode": "kernel",
+    "profile_control": "--profile-from-start off plus cudaProfilerStart/Stop around exactly the 96 formal launches",
+    "expected_replayer_passes": 1,
+    "timeout_seconds": 3600
+  },
+  "formal_case_measurements": [
+    {
+      "case_id": "k1_000_scaled",
+      "source_census_row": 0,
+      "source_variant": "decoder_hidden_norms",
+      "variant": "decoder_hidden_norms",
+      "with_scale": true,
+      "dims": [
+        995,
+        2560
+      ],
+      "phase": "prefill",
+      "token_count": 995,
+      "invocations": 211,
+      "weight": 3.2189611e-05,
+      "work_weight": 0.017464385946,
+      "analytic_bytes": 10193920,
+      "ncu": {
+        "ncu_id": 0,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(256, 1, 1)",
+        "grid_size": "(995, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 5105152,
+          "dram__bytes_read.sum": 5105152,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 24352
+        },
+        "launch_grid_size": 995,
+        "launch_block_size": 256,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 5105152,
+      "measured_dram_read_bytes": 5105152,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500803616,
+      "relative_delta": -0.499196384,
+      "absolute_relative_delta": 0.499196384,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 5105152,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 69.632001,
+        "candidate_iqr_us": 18.087998,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 5105152,
+        "candidate_gbps_decimal": 73.316175,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.312692787
+      }
+    },
+    {
+      "case_id": "k1_001_scaled",
+      "source_census_row": 1,
+      "source_variant": "q_norm_sliding",
+      "variant": "q_norm_sliding",
+      "with_scale": true,
+      "dims": [
+        7960,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 995,
+      "invocations": 35,
+      "weight": 5.339509e-06,
+      "work_weight": 0.002317548846,
+      "analytic_bytes": 8151552,
+      "ncu": {
+        "ncu_id": 1,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(7960, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 4079488,
+          "dram__bytes_read.sum": 4079488,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 26400
+        },
+        "launch_grid_size": 7960,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 4079488,
+      "measured_dram_read_bytes": 4079488,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500455373,
+      "relative_delta": -0.499544627,
+      "absolute_relative_delta": 0.499544627,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 4079488,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 80.640003,
+        "candidate_iqr_us": 24.576001,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 4079488,
+        "candidate_gbps_decimal": 50.588887,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.21576112
+      }
+    },
+    {
+      "case_id": "k1_002_scaled",
+      "source_census_row": 2,
+      "source_variant": "q_norm_full",
+      "variant": "q_norm_full",
+      "with_scale": true,
+      "dims": [
+        7960,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 995,
+      "invocations": 7,
+      "weight": 1.067902e-06,
+      "work_weight": 0.000927019538,
+      "analytic_bytes": 16303104,
+      "ncu": {
+        "ncu_id": 2,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(7960, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 8155776,
+          "dram__bytes_read.sum": 8155776,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 35264
+        },
+        "launch_grid_size": 7960,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 8155776,
+      "measured_dram_read_bytes": 8155776,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500259092,
+      "relative_delta": -0.499740908,
+      "absolute_relative_delta": 0.499740908,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 8155776,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 24.576001,
+        "candidate_iqr_us": 18.431999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 8155776,
+        "candidate_gbps_decimal": 331.859361,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 1.415377005
+      }
+    },
+    {
+      "case_id": "k1_003_scale_free",
+      "source_census_row": 3,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "v_norm_sliding_nonshared",
+      "with_scale": false,
+      "dims": [
+        1990,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 995,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0003310784065,
+      "analytic_bytes": 2037760,
+      "ncu": {
+        "ncu_id": 3,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(1990, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1022336,
+          "dram__bytes_read.sum": 1022336,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 8000
+        },
+        "launch_grid_size": 1990,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1022336,
+      "measured_dram_read_bytes": 1022336,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.50169598,
+      "relative_delta": -0.49830402,
+      "absolute_relative_delta": 0.49830402,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1022336,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 80.895998,
+        "candidate_iqr_us": 33.024004,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1022336,
+        "candidate_gbps_decimal": 12.637659,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.053899493
+      }
+    },
+    {
+      "case_id": "k1_003_scaled",
+      "source_census_row": 3,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "k_norm_sliding_nonshared",
+      "with_scale": true,
+      "dims": [
+        1990,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 995,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0003310784065,
+      "analytic_bytes": 2038272,
+      "ncu": {
+        "ncu_id": 4,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(1990, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1022848,
+          "dram__bytes_read.sum": 1022848,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 8352
+        },
+        "launch_grid_size": 1990,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1022848,
+      "measured_dram_read_bytes": 1022848,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.50182115,
+      "relative_delta": -0.49817885,
+      "absolute_relative_delta": 0.49817885,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1022848,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 40.959999,
+        "candidate_iqr_us": 41.983999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1022848,
+        "candidate_gbps_decimal": 24.971876,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.106504811
+      }
+    },
+    {
+      "case_id": "k1_004_scale_free",
+      "source_census_row": 4,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "v_norm_full_nonshared",
+      "with_scale": false,
+      "dims": [
+        1990,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 995,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0001324313625,
+      "analytic_bytes": 4075520,
+      "ncu": {
+        "ncu_id": 5,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(1990, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 2041728,
+          "dram__bytes_read.sum": 2041728,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 10368
+        },
+        "launch_grid_size": 1990,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 2041728,
+      "measured_dram_read_bytes": 2041728,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500973618,
+      "relative_delta": -0.499026382,
+      "absolute_relative_delta": 0.499026382,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 2041728,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 116.208002,
+        "candidate_iqr_us": 70.448,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 2041728,
+        "candidate_gbps_decimal": 17.569599,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.074934172
+      }
+    },
+    {
+      "case_id": "k1_004_scaled",
+      "source_census_row": 4,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "k_norm_full_nonshared",
+      "with_scale": true,
+      "dims": [
+        1990,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 995,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0001324313625,
+      "analytic_bytes": 4076544,
+      "ncu": {
+        "ncu_id": 6,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(1990, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 2042496,
+          "dram__bytes_read.sum": 2042496,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 11008
+        },
+        "launch_grid_size": 1990,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 2042496,
+      "measured_dram_read_bytes": 2042496,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501036172,
+      "relative_delta": -0.498963828,
+      "absolute_relative_delta": 0.498963828,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 2042496,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 59.904002,
+        "candidate_iqr_us": 52.223997,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 2042496,
+        "candidate_gbps_decimal": 34.096153,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.145419765
+      }
+    },
+    {
+      "case_id": "k1_005_scaled",
+      "source_census_row": 5,
+      "source_variant": "ple_projection_norm",
+      "variant": "ple_projection_norm",
+      "with_scale": true,
+      "dims": [
+        41790,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 995,
+      "invocations": 1,
+      "weight": 1.52557e-07,
+      "work_weight": 0.000347632327,
+      "analytic_bytes": 42793472,
+      "ncu": {
+        "ncu_id": 7,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(41790, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 27185792,
+          "dram__bytes_read.sum": 21400960,
+          "dram__bytes_write.sum": 5784832,
+          "gpu__time_duration.sum": 141952
+        },
+        "launch_grid_size": 41790,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 27185792,
+      "measured_dram_read_bytes": 21400960,
+      "measured_dram_write_bytes": 5784832,
+      "measured_to_analytic_ratio": 0.635278951,
+      "relative_delta": -0.364721049,
+      "absolute_relative_delta": 0.364721049,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 27185792,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 186.368003,
+        "candidate_iqr_us": 4.096001,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 27185792,
+        "candidate_gbps_decimal": 145.871564,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.622140824
+      }
+    },
+    {
+      "case_id": "k1_006_scaled",
+      "source_census_row": 6,
+      "source_variant": "decoder_hidden_norms",
+      "variant": "decoder_hidden_norms",
+      "with_scale": true,
+      "dims": [
+        1295,
+        2560
+      ],
+      "phase": "prefill",
+      "token_count": 1295,
+      "invocations": 211,
+      "weight": 3.2189611e-05,
+      "work_weight": 0.022730029949,
+      "analytic_bytes": 13265920,
+      "ncu": {
+        "ncu_id": 8,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(256, 1, 1)",
+        "grid_size": "(1295, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 6640512,
+          "dram__bytes_read.sum": 6640512,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 29792
+        },
+        "launch_grid_size": 1295,
+        "launch_block_size": 256,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 6640512,
+      "measured_dram_read_bytes": 6640512,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500569278,
+      "relative_delta": -0.499430722,
+      "absolute_relative_delta": 0.499430722,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 6640512,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 67.584001,
+        "candidate_iqr_us": 33.239998,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 6640512,
+        "candidate_gbps_decimal": 98.25568,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.419059538
+      }
+    },
+    {
+      "case_id": "k1_007_scaled",
+      "source_census_row": 7,
+      "source_variant": "q_norm_sliding",
+      "variant": "q_norm_sliding",
+      "with_scale": true,
+      "dims": [
+        10360,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1295,
+      "invocations": 35,
+      "weight": 5.339509e-06,
+      "work_weight": 0.003016307292,
+      "analytic_bytes": 10609152,
+      "ncu": {
+        "ncu_id": 9,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(10360, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 5308544,
+          "dram__bytes_read.sum": 5308544,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 33952
+        },
+        "launch_grid_size": 10360,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 5308544,
+      "measured_dram_read_bytes": 5308544,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500374017,
+      "relative_delta": -0.499625983,
+      "absolute_relative_delta": 0.499625983,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 5308544,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 88.064,
+        "candidate_iqr_us": 64.151997,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 5308544,
+        "candidate_gbps_decimal": 60.280523,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.257095855
+      }
+    },
+    {
+      "case_id": "k1_008_scaled",
+      "source_census_row": 8,
+      "source_variant": "q_norm_full",
+      "variant": "q_norm_full",
+      "with_scale": true,
+      "dims": [
+        10360,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1295,
+      "invocations": 7,
+      "weight": 1.067902e-06,
+      "work_weight": 0.001206522917,
+      "analytic_bytes": 21218304,
+      "ncu": {
+        "ncu_id": 10,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(10360, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 10613376,
+          "dram__bytes_read.sum": 10613376,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 45024
+        },
+        "launch_grid_size": 10360,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 10613376,
+      "measured_dram_read_bytes": 10613376,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500199073,
+      "relative_delta": -0.499800927,
+      "absolute_relative_delta": 0.499800927,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 10613376,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 67.584001,
+        "candidate_iqr_us": 9.216003,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 10613376,
+        "candidate_gbps_decimal": 157.03977,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.66977312
+      }
+    },
+    {
+      "case_id": "k1_009_scale_free",
+      "source_census_row": 9,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "v_norm_sliding_nonshared",
+      "with_scale": false,
+      "dims": [
+        2590,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1295,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0004309010415,
+      "analytic_bytes": 2652160,
+      "ncu": {
+        "ncu_id": 11,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2590, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1329280,
+          "dram__bytes_read.sum": 1329280,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 9600
+        },
+        "launch_grid_size": 2590,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1329280,
+      "measured_dram_read_bytes": 1329280,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501206564,
+      "relative_delta": -0.498793436,
+      "absolute_relative_delta": 0.498793436,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1329280,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 91.136001,
+        "candidate_iqr_us": 57.856003,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1329280,
+        "candidate_gbps_decimal": 14.585674,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.06220776
+      }
+    },
+    {
+      "case_id": "k1_009_scaled",
+      "source_census_row": 9,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "k_norm_sliding_nonshared",
+      "with_scale": true,
+      "dims": [
+        2590,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1295,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0004309010415,
+      "analytic_bytes": 2652672,
+      "ncu": {
+        "ncu_id": 12,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2590, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1330048,
+          "dram__bytes_read.sum": 1330048,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 10272
+        },
+        "launch_grid_size": 2590,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1330048,
+      "measured_dram_read_bytes": 1330048,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501399344,
+      "relative_delta": -0.498600656,
+      "absolute_relative_delta": 0.498600656,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1330048,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 77.823997,
+        "candidate_iqr_us": 41.472003,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1330048,
+        "candidate_gbps_decimal": 17.090461,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.072890654
+      }
+    },
+    {
+      "case_id": "k1_010_scale_free",
+      "source_census_row": 10,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "v_norm_full_nonshared",
+      "with_scale": false,
+      "dims": [
+        2590,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1295,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0001723604165,
+      "analytic_bytes": 5304320,
+      "ncu": {
+        "ncu_id": 13,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2590, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 2655744,
+          "dram__bytes_read.sum": 2655744,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 12640
+        },
+        "launch_grid_size": 2590,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 2655744,
+      "measured_dram_read_bytes": 2655744,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500675676,
+      "relative_delta": -0.499324324,
+      "absolute_relative_delta": 0.499324324,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 2655744,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 72.192002,
+        "candidate_iqr_us": 62.720003,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 2655744,
+        "candidate_gbps_decimal": 36.787233,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.156897197
+      }
+    },
+    {
+      "case_id": "k1_010_scaled",
+      "source_census_row": 10,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "k_norm_full_nonshared",
+      "with_scale": true,
+      "dims": [
+        2590,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1295,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0001723604165,
+      "analytic_bytes": 5305344,
+      "ncu": {
+        "ncu_id": 14,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2590, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 2656896,
+          "dram__bytes_read.sum": 2656896,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 13280
+        },
+        "launch_grid_size": 2590,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 2656896,
+      "measured_dram_read_bytes": 2656896,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500796178,
+      "relative_delta": -0.499203822,
+      "absolute_relative_delta": 0.499203822,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 2656896,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 68.608001,
+        "candidate_iqr_us": 29.951999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 2656896,
+        "candidate_gbps_decimal": 38.725746,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.165164935
+      }
+    },
+    {
+      "case_id": "k1_011_scaled",
+      "source_census_row": 11,
+      "source_variant": "ple_projection_norm",
+      "variant": "ple_projection_norm",
+      "with_scale": true,
+      "dims": [
+        54390,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1295,
+      "invocations": 1,
+      "weight": 1.52557e-07,
+      "work_weight": 0.000452446094,
+      "analytic_bytes": 55695872,
+      "ncu": {
+        "ncu_id": 15,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(54390, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 39548416,
+          "dram__bytes_read.sum": 27854464,
+          "dram__bytes_write.sum": 11693952,
+          "gpu__time_duration.sum": 192480
+        },
+        "launch_grid_size": 54390,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 39548416,
+      "measured_dram_read_bytes": 27854464,
+      "measured_dram_write_bytes": 11693952,
+      "measured_to_analytic_ratio": 0.710078047,
+      "relative_delta": -0.289921953,
+      "absolute_relative_delta": 0.289921953,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 39548416,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 236.543998,
+        "candidate_iqr_us": 3.071994,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 39548416,
+        "candidate_gbps_decimal": 167.192642,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.71307502
+      }
+    },
+    {
+      "case_id": "k1_012_scaled",
+      "source_census_row": 12,
+      "source_variant": "decoder_hidden_norms",
+      "variant": "decoder_hidden_norms",
+      "with_scale": true,
+      "dims": [
+        1088,
+        2560
+      ],
+      "phase": "prefill",
+      "token_count": 1088,
+      "invocations": 211,
+      "weight": 3.2189611e-05,
+      "work_weight": 0.019096735587,
+      "analytic_bytes": 11146240,
+      "ncu": {
+        "ncu_id": 16,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(256, 1, 1)",
+        "grid_size": "(1088, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 5580800,
+          "dram__bytes_read.sum": 5580672,
+          "dram__bytes_write.sum": 128,
+          "gpu__time_duration.sum": 25440
+        },
+        "launch_grid_size": 1088,
+        "launch_block_size": 256,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 5580800,
+      "measured_dram_read_bytes": 5580672,
+      "measured_dram_write_bytes": 128,
+      "measured_to_analytic_ratio": 0.500689022,
+      "relative_delta": -0.499310978,
+      "absolute_relative_delta": 0.499310978,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 5580800,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 74.752003,
+        "candidate_iqr_us": 29.448004,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 5580800,
+        "candidate_gbps_decimal": 74.657531,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.318413657
+      }
+    },
+    {
+      "case_id": "k1_013_scaled",
+      "source_census_row": 13,
+      "source_variant": "q_norm_sliding",
+      "variant": "q_norm_sliding",
+      "with_scale": true,
+      "dims": [
+        8704,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1088,
+      "invocations": 35,
+      "weight": 5.339509e-06,
+      "work_weight": 0.002534163964,
+      "analytic_bytes": 8913408,
+      "ncu": {
+        "ncu_id": 17,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(8704, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 4460416,
+          "dram__bytes_read.sum": 4460416,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 28160
+        },
+        "launch_grid_size": 8704,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 4460416,
+      "measured_dram_read_bytes": 4460416,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500416451,
+      "relative_delta": -0.499583549,
+      "absolute_relative_delta": 0.499583549,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 4460416,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 91.136001,
+        "candidate_iqr_us": 36.615999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 4460416,
+        "candidate_gbps_decimal": 48.942415,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.208738933
+      }
+    },
+    {
+      "case_id": "k1_014_scaled",
+      "source_census_row": 14,
+      "source_variant": "q_norm_full",
+      "variant": "q_norm_full",
+      "with_scale": true,
+      "dims": [
+        8704,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1088,
+      "invocations": 7,
+      "weight": 1.067902e-06,
+      "work_weight": 0.001013665586,
+      "analytic_bytes": 17826816,
+      "ncu": {
+        "ncu_id": 18,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(8704, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 8917632,
+          "dram__bytes_read.sum": 8917632,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 38304
+        },
+        "launch_grid_size": 8704,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 8917632,
+      "measured_dram_read_bytes": 8917632,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500236946,
+      "relative_delta": -0.499763054,
+      "absolute_relative_delta": 0.499763054,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 8917632,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 34.816001,
+        "candidate_iqr_us": 15.360001,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 8917632,
+        "candidate_gbps_decimal": 256.136022,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 1.092417686
+      }
+    },
+    {
+      "case_id": "k1_015_scale_free",
+      "source_census_row": 15,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "v_norm_sliding_nonshared",
+      "with_scale": false,
+      "dims": [
+        2176,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1088,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0003620234235,
+      "analytic_bytes": 2228224,
+      "ncu": {
+        "ncu_id": 19,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2176, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1117312,
+          "dram__bytes_read.sum": 1117312,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 8288
+        },
+        "launch_grid_size": 2176,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1117312,
+      "measured_dram_read_bytes": 1117312,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501436121,
+      "relative_delta": -0.498563879,
+      "absolute_relative_delta": 0.498563879,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1117312,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 79.871997,
+        "candidate_iqr_us": 58.112001,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1117312,
+        "candidate_gbps_decimal": 13.988783,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.059662024
+      }
+    },
+    {
+      "case_id": "k1_015_scaled",
+      "source_census_row": 15,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "k_norm_sliding_nonshared",
+      "with_scale": true,
+      "dims": [
+        2176,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1088,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0003620234235,
+      "analytic_bytes": 2228736,
+      "ncu": {
+        "ncu_id": 20,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2176, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1118080,
+          "dram__bytes_read.sum": 1118080,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 8768
+        },
+        "launch_grid_size": 2176,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1118080,
+      "measured_dram_read_bytes": 1118080,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501665518,
+      "relative_delta": -0.498334482,
+      "absolute_relative_delta": 0.498334482,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1118080,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 77.823997,
+        "candidate_iqr_us": 29.951999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1118080,
+        "candidate_gbps_decimal": 14.366777,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.061274166
+      }
+    },
+    {
+      "case_id": "k1_016_scale_free",
+      "source_census_row": 16,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "v_norm_full_nonshared",
+      "with_scale": false,
+      "dims": [
+        2176,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1088,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0001448093695,
+      "analytic_bytes": 4456448,
+      "ncu": {
+        "ncu_id": 21,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2176, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 2231680,
+          "dram__bytes_read.sum": 2231680,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 10912
+        },
+        "launch_grid_size": 2176,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 2231680,
+      "measured_dram_read_bytes": 2231680,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500775506,
+      "relative_delta": -0.499224494,
+      "absolute_relative_delta": 0.499224494,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 2231680,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 71.616001,
+        "candidate_iqr_us": 40.448003,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 2231680,
+        "candidate_gbps_decimal": 31.161751,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.132904571
+      }
+    },
+    {
+      "case_id": "k1_016_scaled",
+      "source_census_row": 16,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "k_norm_full_nonshared",
+      "with_scale": true,
+      "dims": [
+        2176,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1088,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0001448093695,
+      "analytic_bytes": 4457472,
+      "ncu": {
+        "ncu_id": 22,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2176, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 2232960,
+          "dram__bytes_read.sum": 2232960,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 11584
+        },
+        "launch_grid_size": 2176,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 2232960,
+      "measured_dram_read_bytes": 2232960,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500947622,
+      "relative_delta": -0.499052378,
+      "absolute_relative_delta": 0.499052378,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 2232960,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 76.800004,
+        "candidate_iqr_us": 62.463999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 2232960,
+        "candidate_gbps_decimal": 29.074998,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.124004591
+      }
+    },
+    {
+      "case_id": "k1_017_scaled",
+      "source_census_row": 17,
+      "source_variant": "ple_projection_norm",
+      "variant": "ple_projection_norm",
+      "with_scale": true,
+      "dims": [
+        45696,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1088,
+      "invocations": 1,
+      "weight": 1.52557e-07,
+      "work_weight": 0.000380124595,
+      "analytic_bytes": 46793216,
+      "ncu": {
+        "ncu_id": 23,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(45696, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 31070720,
+          "dram__bytes_read.sum": 23401600,
+          "dram__bytes_write.sum": 7669120,
+          "gpu__time_duration.sum": 157760
+        },
+        "launch_grid_size": 45696,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 31070720,
+      "measured_dram_read_bytes": 23401600,
+      "measured_dram_write_bytes": 7669120,
+      "measured_to_analytic_ratio": 0.664000525,
+      "relative_delta": -0.335999475,
+      "absolute_relative_delta": 0.335999475,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 31070720,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 204.799995,
+        "candidate_iqr_us": 3.072008,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 31070720,
+        "candidate_gbps_decimal": 151.712504,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.647052378
+      }
+    },
+    {
+      "case_id": "k1_018_scaled",
+      "source_census_row": 18,
+      "source_variant": "decoder_hidden_norms",
+      "variant": "decoder_hidden_norms",
+      "with_scale": true,
+      "dims": [
+        5142,
+        2560
+      ],
+      "phase": "prefill",
+      "token_count": 5142,
+      "invocations": 211,
+      "weight": 3.2189611e-05,
+      "work_weight": 0.090253138224,
+      "analytic_bytes": 52659200,
+      "ncu": {
+        "ncu_id": 24,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(256, 1, 1)",
+        "grid_size": "(5142, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 33227648,
+          "dram__bytes_read.sum": 26340224,
+          "dram__bytes_write.sum": 6887424,
+          "gpu__time_duration.sum": 140288
+        },
+        "launch_grid_size": 5142,
+        "launch_block_size": 256,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 33227648,
+      "measured_dram_read_bytes": 26340224,
+      "measured_dram_write_bytes": 6887424,
+      "measured_to_analytic_ratio": 0.630994166,
+      "relative_delta": -0.369005834,
+      "absolute_relative_delta": 0.369005834,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 33227648,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 215.039998,
+        "candidate_iqr_us": 8.192003,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 33227648,
+        "candidate_gbps_decimal": 154.518454,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.659019729
+      }
+    },
+    {
+      "case_id": "k1_019_scaled",
+      "source_census_row": 19,
+      "source_variant": "q_norm_sliding",
+      "variant": "q_norm_sliding",
+      "with_scale": true,
+      "dims": [
+        41136,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 5142,
+      "invocations": 35,
+      "weight": 5.339509e-06,
+      "work_weight": 0.011976719764,
+      "analytic_bytes": 42123776,
+      "ncu": {
+        "ncu_id": 25,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(41136, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 26098688,
+          "dram__bytes_read.sum": 21066624,
+          "dram__bytes_write.sum": 5032064,
+          "gpu__time_duration.sum": 137408
+        },
+        "launch_grid_size": 41136,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 26098688,
+      "measured_dram_read_bytes": 21066624,
+      "measured_dram_write_bytes": 5032064,
+      "measured_to_analytic_ratio": 0.619571427,
+      "relative_delta": -0.380428573,
+      "absolute_relative_delta": 0.380428573,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 26098688,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 185.343996,
+        "candidate_iqr_us": 2.048001,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 26098688,
+        "candidate_gbps_decimal": 140.812158,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.600562507
+      }
+    },
+    {
+      "case_id": "k1_020_scaled",
+      "source_census_row": 20,
+      "source_variant": "q_norm_full",
+      "variant": "q_norm_full",
+      "with_scale": true,
+      "dims": [
+        41136,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 5142,
+      "invocations": 7,
+      "weight": 1.067902e-06,
+      "work_weight": 0.004790687906,
+      "analytic_bytes": 84247552,
+      "ncu": {
+        "ncu_id": 26,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(41136, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 63015296,
+          "dram__bytes_read.sum": 42137856,
+          "dram__bytes_write.sum": 20877440,
+          "gpu__time_duration.sum": 270816
+        },
+        "launch_grid_size": 41136,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 63015296,
+      "measured_dram_read_bytes": 42137856,
+      "measured_dram_write_bytes": 20877440,
+      "measured_to_analytic_ratio": 0.747977769,
+      "relative_delta": -0.252022231,
+      "absolute_relative_delta": 0.252022231,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 63015296,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 360.448003,
+        "candidate_iqr_us": 3.087997,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 63015296,
+        "candidate_gbps_decimal": 174.824928,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.745626645
+      }
+    },
+    {
+      "case_id": "k1_021_scale_free",
+      "source_census_row": 21,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "v_norm_sliding_nonshared",
+      "with_scale": false,
+      "dims": [
+        10284,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 5142,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0017109599665,
+      "analytic_bytes": 10530816,
+      "ncu": {
+        "ncu_id": 27,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(10284, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 5276800,
+          "dram__bytes_read.sum": 5276800,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 31712
+        },
+        "launch_grid_size": 10284,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 5276800,
+      "measured_dram_read_bytes": 5276800,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501081778,
+      "relative_delta": -0.498918222,
+      "absolute_relative_delta": 0.498918222,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 5276800,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 73.600002,
+        "candidate_iqr_us": 21.575999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 5276800,
+        "candidate_gbps_decimal": 71.69565,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.305781263
+      }
+    },
+    {
+      "case_id": "k1_021_scaled",
+      "source_census_row": 21,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "k_norm_sliding_nonshared",
+      "with_scale": true,
+      "dims": [
+        10284,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 5142,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0017109599665,
+      "analytic_bytes": 10531328,
+      "ncu": {
+        "ncu_id": 28,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(10284, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 5269632,
+          "dram__bytes_read.sum": 5269632,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 33248
+        },
+        "launch_grid_size": 10284,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 5269632,
+      "measured_dram_read_bytes": 5269632,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500376781,
+      "relative_delta": -0.499623219,
+      "absolute_relative_delta": 0.499623219,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 5269632,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 72.704002,
+        "candidate_iqr_us": 18.664001,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 5269632,
+        "candidate_gbps_decimal": 72.480632,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.309129202
+      }
+    },
+    {
+      "case_id": "k1_022_scale_free",
+      "source_census_row": 22,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "v_norm_full_nonshared",
+      "with_scale": false,
+      "dims": [
+        10284,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 5142,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0006843839865,
+      "analytic_bytes": 21061632,
+      "ncu": {
+        "ncu_id": 29,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(10284, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 10534784,
+          "dram__bytes_read.sum": 10534784,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 44512
+        },
+        "launch_grid_size": 10284,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 10534784,
+      "measured_dram_read_bytes": 10534784,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500188399,
+      "relative_delta": -0.499811601,
+      "absolute_relative_delta": 0.499811601,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 10534784,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 64.511999,
+        "candidate_iqr_us": 7.168002,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 10534784,
+        "candidate_gbps_decimal": 163.299606,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.696471257
+      }
+    },
+    {
+      "case_id": "k1_022_scaled",
+      "source_census_row": 22,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "k_norm_full_nonshared",
+      "with_scale": true,
+      "dims": [
+        10284,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 5142,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0006843839865,
+      "analytic_bytes": 21062656,
+      "ncu": {
+        "ncu_id": 30,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(10284, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 10536576,
+          "dram__bytes_read.sum": 10536576,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 45696
+        },
+        "launch_grid_size": 10284,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 10536576,
+      "measured_dram_read_bytes": 10536576,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500249161,
+      "relative_delta": -0.499750839,
+      "absolute_relative_delta": 0.499750839,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 10536576,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 66.56,
+        "candidate_iqr_us": 9.216003,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 10536576,
+        "candidate_gbps_decimal": 158.301923,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.675156189
+      }
+    },
+    {
+      "case_id": "k1_023_scaled",
+      "source_census_row": 23,
+      "source_variant": "ple_projection_norm",
+      "variant": "ple_projection_norm",
+      "with_scale": true,
+      "dims": [
+        215964,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 5142,
+      "invocations": 1,
+      "weight": 1.52557e-07,
+      "work_weight": 0.001796507965,
+      "analytic_bytes": 221147648,
+      "ncu": {
+        "ncu_id": 31,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(215964, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 205367424,
+          "dram__bytes_read.sum": 110586240,
+          "dram__bytes_write.sum": 94781184,
+          "gpu__time_duration.sum": 881120
+        },
+        "launch_grid_size": 215964,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 205367424,
+      "measured_dram_read_bytes": 110586240,
+      "measured_dram_write_bytes": 94781184,
+      "measured_to_analytic_ratio": 0.928643944,
+      "relative_delta": -0.071356056,
+      "absolute_relative_delta": 0.071356056,
+      "within_analytic_tolerance": true,
+      "accounting_bytes": 221147648,
+      "accounting_source": "Tier-A analytic (ncu-backed within ±15%)",
+      "op2_timing": {
+        "candidate_p50_us": 962.559998,
+        "candidate_iqr_us": 8.168042,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 221147648,
+        "candidate_gbps_decimal": 229.749469,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.979879287
+      }
+    },
+    {
+      "case_id": "k1_024_scaled",
+      "source_census_row": 24,
+      "source_variant": "decoder_hidden_norms",
+      "variant": "decoder_hidden_norms",
+      "with_scale": true,
+      "dims": [
+        1263,
+        2560
+      ],
+      "phase": "prefill",
+      "token_count": 1263,
+      "invocations": 211,
+      "weight": 3.2189611e-05,
+      "work_weight": 0.022168361256,
+      "analytic_bytes": 12938240,
+      "ncu": {
+        "ncu_id": 32,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(256, 1, 1)",
+        "grid_size": "(1263, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 6477184,
+          "dram__bytes_read.sum": 6477184,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 29728
+        },
+        "launch_grid_size": 1263,
+        "launch_block_size": 256,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 6477184,
+      "measured_dram_read_bytes": 6477184,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500623269,
+      "relative_delta": -0.499376731,
+      "absolute_relative_delta": 0.499376731,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 6477184,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 69.680002,
+        "candidate_iqr_us": 30.303997,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 6477184,
+        "candidate_gbps_decimal": 92.95614,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.396457047
+      }
+    },
+    {
+      "case_id": "k1_025_scaled",
+      "source_census_row": 25,
+      "source_variant": "q_norm_sliding",
+      "variant": "q_norm_sliding",
+      "with_scale": true,
+      "dims": [
+        10104,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1263,
+      "invocations": 35,
+      "weight": 5.339509e-06,
+      "work_weight": 0.002941773058,
+      "analytic_bytes": 10347008,
+      "ncu": {
+        "ncu_id": 33,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(10104, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 5182336,
+          "dram__bytes_read.sum": 5182336,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 33600
+        },
+        "launch_grid_size": 10104,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 5182336,
+      "measured_dram_read_bytes": 5182336,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.50085358,
+      "relative_delta": -0.49914642,
+      "absolute_relative_delta": 0.49914642,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 5182336,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 93.696002,
+        "candidate_iqr_us": 55.296004,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 5182336,
+        "candidate_gbps_decimal": 55.310108,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.235897082
+      }
+    },
+    {
+      "case_id": "k1_026_scaled",
+      "source_census_row": 26,
+      "source_variant": "q_norm_full",
+      "variant": "q_norm_full",
+      "with_scale": true,
+      "dims": [
+        10104,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1263,
+      "invocations": 7,
+      "weight": 1.067902e-06,
+      "work_weight": 0.001176709223,
+      "analytic_bytes": 20694016,
+      "ncu": {
+        "ncu_id": 34,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(10104, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 10357376,
+          "dram__bytes_read.sum": 10357376,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 43968
+        },
+        "launch_grid_size": 10104,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 10357376,
+      "measured_dram_read_bytes": 10357376,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500501014,
+      "relative_delta": -0.499498986,
+      "absolute_relative_delta": 0.499498986,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 10357376,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 64.015999,
+        "candidate_iqr_us": 9.215999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 10357376,
+        "candidate_gbps_decimal": 161.793554,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.690047962
+      }
+    },
+    {
+      "case_id": "k1_027_scale_free",
+      "source_census_row": 27,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "v_norm_sliding_nonshared",
+      "with_scale": false,
+      "dims": [
+        2526,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1263,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.000420253294,
+      "analytic_bytes": 2586624,
+      "ncu": {
+        "ncu_id": 35,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2526, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1297024,
+          "dram__bytes_read.sum": 1297024,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 9760
+        },
+        "launch_grid_size": 2526,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1297024,
+      "measured_dram_read_bytes": 1297024,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501435075,
+      "relative_delta": -0.498564925,
+      "absolute_relative_delta": 0.498564925,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1297024,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 73.728003,
+        "candidate_iqr_us": 30.719999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1297024,
+        "candidate_gbps_decimal": 17.592013,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.075029768
+      }
+    },
+    {
+      "case_id": "k1_027_scaled",
+      "source_census_row": 27,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "k_norm_sliding_nonshared",
+      "with_scale": true,
+      "dims": [
+        2526,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1263,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.000420253294,
+      "analytic_bytes": 2587136,
+      "ncu": {
+        "ncu_id": 36,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2526, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1297792,
+          "dram__bytes_read.sum": 1297792,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 10496
+        },
+        "launch_grid_size": 2526,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1297792,
+      "measured_dram_read_bytes": 1297792,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501632693,
+      "relative_delta": -0.498367307,
+      "absolute_relative_delta": 0.498367307,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1297792,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 84.991999,
+        "candidate_iqr_us": 81.919994,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1297792,
+        "candidate_gbps_decimal": 15.269578,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.065124606
+      }
+    },
+    {
+      "case_id": "k1_028_scale_free",
+      "source_census_row": 28,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "v_norm_full_nonshared",
+      "with_scale": false,
+      "dims": [
+        2526,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1263,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0001681013175,
+      "analytic_bytes": 5173248,
+      "ncu": {
+        "ncu_id": 37,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2526, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 2590080,
+          "dram__bytes_read.sum": 2590080,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 12320
+        },
+        "launch_grid_size": 2526,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 2590080,
+      "measured_dram_read_bytes": 2590080,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500668052,
+      "relative_delta": -0.499331948,
+      "absolute_relative_delta": 0.499331948,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 2590080,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 62.463999,
+        "candidate_iqr_us": 30.672003,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 2590080,
+        "candidate_gbps_decimal": 41.465165,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.176848531
+      }
+    },
+    {
+      "case_id": "k1_028_scaled",
+      "source_census_row": 28,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "k_norm_full_nonshared",
+      "with_scale": true,
+      "dims": [
+        2526,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1263,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0001681013175,
+      "analytic_bytes": 5174272,
+      "ncu": {
+        "ncu_id": 38,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2526, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 2591360,
+          "dram__bytes_read.sum": 2591360,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 13056
+        },
+        "launch_grid_size": 2526,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 2591360,
+      "measured_dram_read_bytes": 2591360,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500816347,
+      "relative_delta": -0.499183653,
+      "absolute_relative_delta": 0.499183653,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 2591360,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 72.704002,
+        "candidate_iqr_us": 63.231999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 2591360,
+        "candidate_gbps_decimal": 35.642605,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.152015368
+      }
+    },
+    {
+      "case_id": "k1_029_scaled",
+      "source_census_row": 29,
+      "source_variant": "ple_projection_norm",
+      "variant": "ple_projection_norm",
+      "with_scale": true,
+      "dims": [
+        53046,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1263,
+      "invocations": 1,
+      "weight": 1.52557e-07,
+      "work_weight": 0.000441265959,
+      "analytic_bytes": 54319616,
+      "ncu": {
+        "ncu_id": 39,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(53046, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 38595840,
+          "dram__bytes_read.sum": 27164288,
+          "dram__bytes_write.sum": 11431552,
+          "gpu__time_duration.sum": 188320
+        },
+        "launch_grid_size": 53046,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 38595840,
+      "measured_dram_read_bytes": 27164288,
+      "measured_dram_write_bytes": 11431552,
+      "measured_to_analytic_ratio": 0.710532269,
+      "relative_delta": -0.289467731,
+      "absolute_relative_delta": 0.289467731,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 38595840,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 234.495997,
+        "candidate_iqr_us": 5.120009,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 38595840,
+        "candidate_gbps_decimal": 164.590613,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.701977393
+      }
+    },
+    {
+      "case_id": "k1_030_scaled",
+      "source_census_row": 30,
+      "source_variant": "decoder_hidden_norms",
+      "variant": "decoder_hidden_norms",
+      "with_scale": true,
+      "dims": [
+        3945,
+        2560
+      ],
+      "phase": "prefill",
+      "token_count": 3945,
+      "invocations": 211,
+      "weight": 3.2189611e-05,
+      "work_weight": 0.069243218649,
+      "analytic_bytes": 40401920,
+      "ncu": {
+        "ncu_id": 40,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(256, 1, 1)",
+        "grid_size": "(3945, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 22665728,
+          "dram__bytes_read.sum": 20210304,
+          "dram__bytes_write.sum": 2455424,
+          "gpu__time_duration.sum": 93536
+        },
+        "launch_grid_size": 3945,
+        "launch_block_size": 256,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 22665728,
+      "measured_dram_read_bytes": 20210304,
+      "measured_dram_write_bytes": 2455424,
+      "measured_to_analytic_ratio": 0.56100621,
+      "relative_delta": -0.43899379,
+      "absolute_relative_delta": 0.43899379,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 22665728,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 165.887997,
+        "candidate_iqr_us": 2.976008,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 22665728,
+        "candidate_gbps_decimal": 136.632719,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.582737238
+      }
+    },
+    {
+      "case_id": "k1_031_scaled",
+      "source_census_row": 31,
+      "source_variant": "q_norm_sliding",
+      "variant": "q_norm_sliding",
+      "with_scale": true,
+      "dims": [
+        31560,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 3945,
+      "invocations": 35,
+      "weight": 5.339509e-06,
+      "work_weight": 0.009188673565,
+      "analytic_bytes": 32317952,
+      "ncu": {
+        "ncu_id": 41,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(31560, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 16501760,
+          "dram__bytes_read.sum": 16163712,
+          "dram__bytes_write.sum": 338048,
+          "gpu__time_duration.sum": 97472
+        },
+        "launch_grid_size": 31560,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 16501760,
+      "measured_dram_read_bytes": 16163712,
+      "measured_dram_write_bytes": 338048,
+      "measured_to_analytic_ratio": 0.510606613,
+      "relative_delta": -0.489393387,
+      "absolute_relative_delta": 0.489393387,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 16501760,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 138.239995,
+        "candidate_iqr_us": 1.023993,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 16501760,
+        "candidate_gbps_decimal": 119.370375,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.509113507
+      }
+    },
+    {
+      "case_id": "k1_032_scaled",
+      "source_census_row": 32,
+      "source_variant": "q_norm_full",
+      "variant": "q_norm_full",
+      "with_scale": true,
+      "dims": [
+        31560,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 3945,
+      "invocations": 7,
+      "weight": 1.067902e-06,
+      "work_weight": 0.003675469426,
+      "analytic_bytes": 64635904,
+      "ncu": {
+        "ncu_id": 42,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(31560, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 44185344,
+          "dram__bytes_read.sum": 32323456,
+          "dram__bytes_write.sum": 11861888,
+          "gpu__time_duration.sum": 188928
+        },
+        "launch_grid_size": 31560,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 44185344,
+      "measured_dram_read_bytes": 32323456,
+      "measured_dram_write_bytes": 11861888,
+      "measured_to_analytic_ratio": 0.683603714,
+      "relative_delta": -0.316396286,
+      "absolute_relative_delta": 0.316396286,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 44185344,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 276.479989,
+        "candidate_iqr_us": 3.071994,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 44185344,
+        "candidate_gbps_decimal": 159.813895,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.681604736
+      }
+    },
+    {
+      "case_id": "k1_033_scale_free",
+      "source_census_row": 33,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "v_norm_sliding_nonshared",
+      "with_scale": false,
+      "dims": [
+        7890,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 3945,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.001312667652,
+      "analytic_bytes": 8079360,
+      "ncu": {
+        "ncu_id": 43,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(7890, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 4043648,
+          "dram__bytes_read.sum": 4043648,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 25248
+        },
+        "launch_grid_size": 7890,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 4043648,
+      "measured_dram_read_bytes": 4043648,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500491128,
+      "relative_delta": -0.499508872,
+      "absolute_relative_delta": 0.499508872,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 4043648,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 87.04,
+        "candidate_iqr_us": 49.415994,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 4043648,
+        "candidate_gbps_decimal": 46.457353,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.198140166
+      }
+    },
+    {
+      "case_id": "k1_033_scaled",
+      "source_census_row": 33,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "k_norm_sliding_nonshared",
+      "with_scale": true,
+      "dims": [
+        7890,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 3945,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.001312667652,
+      "analytic_bytes": 8079872,
+      "ncu": {
+        "ncu_id": 44,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(7890, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 4043904,
+          "dram__bytes_read.sum": 4043904,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 26016
+        },
+        "launch_grid_size": 7890,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 4043904,
+      "measured_dram_read_bytes": 4043904,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500491097,
+      "relative_delta": -0.499508903,
+      "absolute_relative_delta": 0.499508903,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 4043904,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 80.895998,
+        "candidate_iqr_us": 29.504001,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 4043904,
+        "candidate_gbps_decimal": 49.988925,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.213202289
+      }
+    },
+    {
+      "case_id": "k1_034_scale_free",
+      "source_census_row": 34,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "v_norm_full_nonshared",
+      "with_scale": false,
+      "dims": [
+        7890,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 3945,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.000525067061,
+      "analytic_bytes": 16158720,
+      "ncu": {
+        "ncu_id": 45,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(7890, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 8083072,
+          "dram__bytes_read.sum": 8083072,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 34656
+        },
+        "launch_grid_size": 7890,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 8083072,
+      "measured_dram_read_bytes": 8083072,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500229721,
+      "relative_delta": -0.499770279,
+      "absolute_relative_delta": 0.499770279,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 8083072,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 26.272,
+        "candidate_iqr_us": 19.455999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 8083072,
+        "candidate_gbps_decimal": 307.668697,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 1.312204051
+      }
+    },
+    {
+      "case_id": "k1_034_scaled",
+      "source_census_row": 34,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "k_norm_full_nonshared",
+      "with_scale": true,
+      "dims": [
+        7890,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 3945,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.000525067061,
+      "analytic_bytes": 16159744,
+      "ncu": {
+        "ncu_id": 46,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(7890, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 8084864,
+          "dram__bytes_read.sum": 8084864,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 35520
+        },
+        "launch_grid_size": 7890,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 8084864,
+      "measured_dram_read_bytes": 8084864,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500308916,
+      "relative_delta": -0.499691084,
+      "absolute_relative_delta": 0.499691084,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 8084864,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 23.552001,
+        "candidate_iqr_us": 19.455999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 8084864,
+        "candidate_gbps_decimal": 343.277159,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 1.464073803
+      }
+    },
+    {
+      "case_id": "k1_035_scaled",
+      "source_census_row": 35,
+      "source_variant": "ple_projection_norm",
+      "variant": "ple_projection_norm",
+      "with_scale": true,
+      "dims": [
+        165690,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 3945,
+      "invocations": 1,
+      "weight": 1.52557e-07,
+      "work_weight": 0.001378301035,
+      "analytic_bytes": 169667072,
+      "ncu": {
+        "ncu_id": 47,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(165690, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 154067072,
+          "dram__bytes_read.sum": 84839040,
+          "dram__bytes_write.sum": 69228032,
+          "gpu__time_duration.sum": 668448
+        },
+        "launch_grid_size": 165690,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 154067072,
+      "measured_dram_read_bytes": 84839040,
+      "measured_dram_write_bytes": 69228032,
+      "measured_to_analytic_ratio": 0.908055229,
+      "relative_delta": -0.091944771,
+      "absolute_relative_delta": 0.091944771,
+      "within_analytic_tolerance": true,
+      "accounting_bytes": 169667072,
+      "accounting_source": "Tier-A analytic (ncu-backed within ±15%)",
+      "op2_timing": {
+        "candidate_p50_us": 733.18398,
+        "candidate_iqr_us": 7.167995,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 169667072,
+        "candidate_gbps_decimal": 231.411319,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.986967064
+      }
+    },
+    {
+      "case_id": "k1_036_scaled",
+      "source_census_row": 36,
+      "source_variant": "decoder_hidden_norms",
+      "variant": "decoder_hidden_norms",
+      "with_scale": true,
+      "dims": [
+        1358,
+        2560
+      ],
+      "phase": "prefill",
+      "token_count": 1358,
+      "invocations": 211,
+      "weight": 3.2189611e-05,
+      "work_weight": 0.02383581519,
+      "analytic_bytes": 13911040,
+      "ncu": {
+        "ncu_id": 48,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(256, 1, 1)",
+        "grid_size": "(1358, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 6963584,
+          "dram__bytes_read.sum": 6963584,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 31808
+        },
+        "launch_grid_size": 1358,
+        "launch_block_size": 256,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 6963584,
+      "measured_dram_read_bytes": 6963584,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500579683,
+      "relative_delta": -0.499420317,
+      "absolute_relative_delta": 0.499420317,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 6963584,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 71.024001,
+        "candidate_iqr_us": 43.264,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 6963584,
+        "candidate_gbps_decimal": 98.045504,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.418163139
+      }
+    },
+    {
+      "case_id": "k1_037_scaled",
+      "source_census_row": 37,
+      "source_variant": "q_norm_sliding",
+      "variant": "q_norm_sliding",
+      "with_scale": true,
+      "dims": [
+        10864,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1358,
+      "invocations": 35,
+      "weight": 5.339509e-06,
+      "work_weight": 0.003163046566,
+      "analytic_bytes": 11125248,
+      "ncu": {
+        "ncu_id": 49,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(10864, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 5566592,
+          "dram__bytes_read.sum": 5566592,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 35008
+        },
+        "launch_grid_size": 10864,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 5566592,
+      "measured_dram_read_bytes": 5566592,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500356666,
+      "relative_delta": -0.499643334,
+      "absolute_relative_delta": 0.499643334,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 5566592,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 75.760003,
+        "candidate_iqr_us": 22.464,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 5566592,
+        "candidate_gbps_decimal": 73.47666,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.313377254
+      }
+    },
+    {
+      "case_id": "k1_038_scaled",
+      "source_census_row": 38,
+      "source_variant": "q_norm_full",
+      "variant": "q_norm_full",
+      "with_scale": true,
+      "dims": [
+        10864,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1358,
+      "invocations": 7,
+      "weight": 1.067902e-06,
+      "work_weight": 0.001265218626,
+      "analytic_bytes": 22250496,
+      "ncu": {
+        "ncu_id": 50,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(10864, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 11130752,
+          "dram__bytes_read.sum": 11130752,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 47872
+        },
+        "launch_grid_size": 10864,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 11130752,
+      "measured_dram_read_bytes": 11130752,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500247365,
+      "relative_delta": -0.499752635,
+      "absolute_relative_delta": 0.499752635,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 11130752,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 74.752003,
+        "candidate_iqr_us": 5.120002,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 11130752,
+        "candidate_gbps_decimal": 148.902391,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.635067276
+      }
+    },
+    {
+      "case_id": "k1_039_scale_free",
+      "source_census_row": 39,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "v_norm_sliding_nonshared",
+      "with_scale": false,
+      "dims": [
+        2716,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1358,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.000451863795,
+      "analytic_bytes": 2781184,
+      "ncu": {
+        "ncu_id": 51,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2716, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1394048,
+          "dram__bytes_read.sum": 1394048,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 10368
+        },
+        "launch_grid_size": 2716,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1394048,
+      "measured_dram_read_bytes": 1394048,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501242636,
+      "relative_delta": -0.498757364,
+      "absolute_relative_delta": 0.498757364,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1394048,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 80.383997,
+        "candidate_iqr_us": 34.304,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1394048,
+        "candidate_gbps_decimal": 17.342357,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.073964988
+      }
+    },
+    {
+      "case_id": "k1_039_scaled",
+      "source_census_row": 39,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "k_norm_sliding_nonshared",
+      "with_scale": true,
+      "dims": [
+        2716,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1358,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.000451863795,
+      "analytic_bytes": 2781696,
+      "ncu": {
+        "ncu_id": 52,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2716, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1395072,
+          "dram__bytes_read.sum": 1395072,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 11040
+        },
+        "launch_grid_size": 2716,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1395072,
+      "measured_dram_read_bytes": 1395072,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501518498,
+      "relative_delta": -0.498481502,
+      "absolute_relative_delta": 0.498481502,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1395072,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 75.776003,
+        "candidate_iqr_us": 46.080001,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1395072,
+        "candidate_gbps_decimal": 18.410472,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.078520488
+      }
+    },
+    {
+      "case_id": "k1_040_scale_free",
+      "source_census_row": 40,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "v_norm_full_nonshared",
+      "with_scale": false,
+      "dims": [
+        2716,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1358,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.000180745518,
+      "analytic_bytes": 5562368,
+      "ncu": {
+        "ncu_id": 53,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2716, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 2786944,
+          "dram__bytes_read.sum": 2786944,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 13280
+        },
+        "launch_grid_size": 2716,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 2786944,
+      "measured_dram_read_bytes": 2786944,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.50103553,
+      "relative_delta": -0.49896447,
+      "absolute_relative_delta": 0.49896447,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 2786944,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 69.632001,
+        "candidate_iqr_us": 27.903998,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 2786944,
+        "candidate_gbps_decimal": 40.023896,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.170701536
+      }
+    },
+    {
+      "case_id": "k1_040_scaled",
+      "source_census_row": 40,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "k_norm_full_nonshared",
+      "with_scale": true,
+      "dims": [
+        2716,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1358,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.000180745518,
+      "analytic_bytes": 5563392,
+      "ncu": {
+        "ncu_id": 54,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2716, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 2786688,
+          "dram__bytes_read.sum": 2786688,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 14624
+        },
+        "launch_grid_size": 2716,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 2786688,
+      "measured_dram_read_bytes": 2786688,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500897294,
+      "relative_delta": -0.499102706,
+      "absolute_relative_delta": 0.499102706,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 2786688,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 69.632001,
+        "candidate_iqr_us": 33.792,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 2786688,
+        "candidate_gbps_decimal": 40.02022,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.170685856
+      }
+    },
+    {
+      "case_id": "k1_041_scaled",
+      "source_census_row": 41,
+      "source_variant": "ple_projection_norm",
+      "variant": "ple_projection_norm",
+      "with_scale": true,
+      "dims": [
+        57036,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1358,
+      "invocations": 1,
+      "weight": 1.52557e-07,
+      "work_weight": 0.000474456985,
+      "analytic_bytes": 58405376,
+      "ncu": {
+        "ncu_id": 55,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(57036, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 42537216,
+          "dram__bytes_read.sum": 29242240,
+          "dram__bytes_write.sum": 13294976,
+          "gpu__time_duration.sum": 204352
+        },
+        "launch_grid_size": 57036,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 42537216,
+      "measured_dram_read_bytes": 29242240,
+      "measured_dram_write_bytes": 13294976,
+      "measured_to_analytic_ratio": 0.728309942,
+      "relative_delta": -0.271690058,
+      "absolute_relative_delta": 0.271690058,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 42537216,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 249.855995,
+        "candidate_iqr_us": 4.096016,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 42537216,
+        "candidate_gbps_decimal": 170.24693,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.726101528
+      }
+    },
+    {
+      "case_id": "k1_042_scaled",
+      "source_census_row": 42,
+      "source_variant": "decoder_hidden_norms",
+      "variant": "decoder_hidden_norms",
+      "with_scale": true,
+      "dims": [
+        4511,
+        2560
+      ],
+      "phase": "prefill",
+      "token_count": 4511,
+      "invocations": 211,
+      "weight": 3.2189611e-05,
+      "work_weight": 0.079177733669,
+      "analytic_bytes": 46197760,
+      "ncu": {
+        "ncu_id": 56,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(256, 1, 1)",
+        "grid_size": "(4511, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 27439488,
+          "dram__bytes_read.sum": 23127296,
+          "dram__bytes_write.sum": 4312192,
+          "gpu__time_duration.sum": 114272
+        },
+        "launch_grid_size": 4511,
+        "launch_block_size": 256,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 27439488,
+      "measured_dram_read_bytes": 23127296,
+      "measured_dram_write_bytes": 4312192,
+      "measured_to_analytic_ratio": 0.59395711,
+      "relative_delta": -0.40604289,
+      "absolute_relative_delta": 0.40604289,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 27439488,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 191.487998,
+        "candidate_iqr_us": 3.071994,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 27439488,
+        "candidate_gbps_decimal": 143.296124,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.611156601
+      }
+    },
+    {
+      "case_id": "k1_043_scaled",
+      "source_census_row": 43,
+      "source_variant": "q_norm_sliding",
+      "variant": "q_norm_sliding",
+      "with_scale": true,
+      "dims": [
+        36088,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 4511,
+      "invocations": 35,
+      "weight": 5.339509e-06,
+      "work_weight": 0.010506997833,
+      "analytic_bytes": 36954624,
+      "ncu": {
+        "ncu_id": 57,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(36088, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 21227392,
+          "dram__bytes_read.sum": 18482048,
+          "dram__bytes_write.sum": 2745344,
+          "gpu__time_duration.sum": 116992
+        },
+        "launch_grid_size": 36088,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 21227392,
+      "measured_dram_read_bytes": 18482048,
+      "measured_dram_write_bytes": 2745344,
+      "measured_to_analytic_ratio": 0.574417751,
+      "relative_delta": -0.425582249,
+      "absolute_relative_delta": 0.425582249,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 21227392,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 163.839996,
+        "candidate_iqr_us": 4.096001,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 21227392,
+        "candidate_gbps_decimal": 129.561722,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.552579506
+      }
+    },
+    {
+      "case_id": "k1_044_scaled",
+      "source_census_row": 44,
+      "source_variant": "q_norm_full",
+      "variant": "q_norm_full",
+      "with_scale": true,
+      "dims": [
+        36088,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 4511,
+      "invocations": 7,
+      "weight": 1.067902e-06,
+      "work_weight": 0.004202799133,
+      "analytic_bytes": 73909248,
+      "ncu": {
+        "ncu_id": 58,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(36088, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 52538112,
+          "dram__bytes_read.sum": 36960384,
+          "dram__bytes_write.sum": 15577728,
+          "gpu__time_duration.sum": 223840
+        },
+        "launch_grid_size": 36088,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 52538112,
+      "measured_dram_read_bytes": 36960384,
+      "measured_dram_write_bytes": 15577728,
+      "measured_to_analytic_ratio": 0.710846253,
+      "relative_delta": -0.289153747,
+      "absolute_relative_delta": 0.289153747,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 52538112,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 318.464011,
+        "candidate_iqr_us": 3.071994,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 52538112,
+        "candidate_gbps_decimal": 164.973467,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.70361026
+      }
+    },
+    {
+      "case_id": "k1_045_scale_free",
+      "source_census_row": 45,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "v_norm_sliding_nonshared",
+      "with_scale": false,
+      "dims": [
+        9022,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 4511,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0015009996905,
+      "analytic_bytes": 9238528,
+      "ncu": {
+        "ncu_id": 59,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(9022, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 4622976,
+          "dram__bytes_read.sum": 4622976,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 28224
+        },
+        "launch_grid_size": 9022,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 4622976,
+      "measured_dram_read_bytes": 4622976,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500401796,
+      "relative_delta": -0.499598204,
+      "absolute_relative_delta": 0.499598204,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 4622976,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 69.632001,
+        "candidate_iqr_us": 19.479998,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 4622976,
+        "candidate_gbps_decimal": 66.391543,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.283159297
+      }
+    },
+    {
+      "case_id": "k1_045_scaled",
+      "source_census_row": 45,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "k_norm_sliding_nonshared",
+      "with_scale": true,
+      "dims": [
+        9022,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 4511,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0015009996905,
+      "analytic_bytes": 9239040,
+      "ncu": {
+        "ncu_id": 60,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(9022, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 4623232,
+          "dram__bytes_read.sum": 4623232,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 29120
+        },
+        "launch_grid_size": 9022,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 4623232,
+      "measured_dram_read_bytes": 4623232,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500401773,
+      "relative_delta": -0.499598227,
+      "absolute_relative_delta": 0.499598227,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 4623232,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 82.943998,
+        "candidate_iqr_us": 20.048,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 4623232,
+        "candidate_gbps_decimal": 55.739199,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.23772715
+      }
+    },
+    {
+      "case_id": "k1_046_scale_free",
+      "source_census_row": 46,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "v_norm_full_nonshared",
+      "with_scale": false,
+      "dims": [
+        9022,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 4511,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.000600399876,
+      "analytic_bytes": 18477056,
+      "ncu": {
+        "ncu_id": 61,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(9022, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 9242752,
+          "dram__bytes_read.sum": 9242752,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 39232
+        },
+        "launch_grid_size": 9022,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 9242752,
+      "measured_dram_read_bytes": 9242752,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500228608,
+      "relative_delta": -0.499771392,
+      "absolute_relative_delta": 0.499771392,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 9242752,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 43.52,
+        "candidate_iqr_us": 11.264,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 9242752,
+        "candidate_gbps_decimal": 212.379412,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.905796161
+      }
+    },
+    {
+      "case_id": "k1_046_scaled",
+      "source_census_row": 46,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "k_norm_full_nonshared",
+      "with_scale": true,
+      "dims": [
+        9022,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 4511,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.000600399876,
+      "analytic_bytes": 18478080,
+      "ncu": {
+        "ncu_id": 62,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(9022, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 9243520,
+          "dram__bytes_read.sum": 9243520,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 39552
+        },
+        "launch_grid_size": 9022,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 9243520,
+      "measured_dram_read_bytes": 9243520,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500242449,
+      "relative_delta": -0.499757551,
+      "absolute_relative_delta": 0.499757551,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 9243520,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 45.056,
+        "candidate_iqr_us": 12.288,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 9243520,
+        "candidate_gbps_decimal": 205.15625,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.874989445
+      }
+    },
+    {
+      "case_id": "k1_047_scaled",
+      "source_census_row": 47,
+      "source_variant": "ple_projection_norm",
+      "variant": "ple_projection_norm",
+      "with_scale": true,
+      "dims": [
+        189462,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 4511,
+      "invocations": 1,
+      "weight": 1.52557e-07,
+      "work_weight": 0.001576049675,
+      "analytic_bytes": 194009600,
+      "ncu": {
+        "ncu_id": 63,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(189462, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 177387648,
+          "dram__bytes_read.sum": 97014912,
+          "dram__bytes_write.sum": 80372736,
+          "gpu__time_duration.sum": 768544
+        },
+        "launch_grid_size": 189462,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 177387648,
+      "measured_dram_read_bytes": 97014912,
+      "measured_dram_write_bytes": 80372736,
+      "measured_to_analytic_ratio": 0.914324075,
+      "relative_delta": -0.085675925,
+      "absolute_relative_delta": 0.085675925,
+      "within_analytic_tolerance": true,
+      "accounting_bytes": 194009600,
+      "accounting_source": "Tier-A analytic (ncu-backed within ±15%)",
+      "op2_timing": {
+        "candidate_p50_us": 839.680016,
+        "candidate_iqr_us": 7.167995,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 194009600,
+        "candidate_gbps_decimal": 231.051825,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.985433824
+      }
+    },
+    {
+      "case_id": "k1_048_scaled",
+      "source_census_row": 48,
+      "source_variant": "decoder_hidden_norms",
+      "variant": "decoder_hidden_norms",
+      "with_scale": true,
+      "dims": [
+        806,
+        2560
+      ],
+      "phase": "prefill",
+      "token_count": 806,
+      "invocations": 211,
+      "weight": 3.2189611e-05,
+      "work_weight": 0.014147030223,
+      "analytic_bytes": 8258560,
+      "ncu": {
+        "ncu_id": 64,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(256, 1, 1)",
+        "grid_size": "(806, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 4137344,
+          "dram__bytes_read.sum": 4137344,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 20480
+        },
+        "launch_grid_size": 806,
+        "launch_block_size": 256,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 4137344,
+      "measured_dram_read_bytes": 4137344,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500976441,
+      "relative_delta": -0.499023559,
+      "absolute_relative_delta": 0.499023559,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 4137344,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 73.664002,
+        "candidate_iqr_us": 33.840001,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 4137344,
+        "candidate_gbps_decimal": 56.165072,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.239543497
+      }
+    },
+    {
+      "case_id": "k1_049_scaled",
+      "source_census_row": 49,
+      "source_variant": "q_norm_sliding",
+      "variant": "q_norm_sliding",
+      "with_scale": true,
+      "dims": [
+        6448,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 806,
+      "invocations": 35,
+      "weight": 5.339509e-06,
+      "work_weight": 0.001877331025,
+      "analytic_bytes": 6603264,
+      "ncu": {
+        "ncu_id": 65,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(6448, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 3309696,
+          "dram__bytes_read.sum": 3309696,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 21856
+        },
+        "launch_grid_size": 6448,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 3309696,
+      "measured_dram_read_bytes": 3309696,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501221214,
+      "relative_delta": -0.498778786,
+      "absolute_relative_delta": 0.498778786,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 3309696,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 83.967999,
+        "candidate_iqr_us": 37.119998,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 3309696,
+        "candidate_gbps_decimal": 39.416159,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.168109541
+      }
+    },
+    {
+      "case_id": "k1_050_scaled",
+      "source_census_row": 50,
+      "source_variant": "q_norm_full",
+      "variant": "q_norm_full",
+      "with_scale": true,
+      "dims": [
+        6448,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 806,
+      "invocations": 7,
+      "weight": 1.067902e-06,
+      "work_weight": 0.00075093241,
+      "analytic_bytes": 13206528,
+      "ncu": {
+        "ncu_id": 66,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(6448, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 6608256,
+          "dram__bytes_read.sum": 6608256,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 29856
+        },
+        "launch_grid_size": 6448,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 6608256,
+      "measured_dram_read_bytes": 6608256,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500377995,
+      "relative_delta": -0.499622005,
+      "absolute_relative_delta": 0.499622005,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 6608256,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 72.704002,
+        "candidate_iqr_us": 34.096001,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 6608256,
+        "candidate_gbps_decimal": 90.892603,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.387656084
+      }
+    },
+    {
+      "case_id": "k1_051_scale_free",
+      "source_census_row": 51,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "v_norm_sliding_nonshared",
+      "with_scale": false,
+      "dims": [
+        1612,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 806,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0002681901465,
+      "analytic_bytes": 1650688,
+      "ncu": {
+        "ncu_id": 67,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(1612, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 829056,
+          "dram__bytes_read.sum": 829056,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 7328
+        },
+        "launch_grid_size": 1612,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 829056,
+      "measured_dram_read_bytes": 829056,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.502248759,
+      "relative_delta": -0.497751241,
+      "absolute_relative_delta": 0.497751241,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 829056,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 74.752003,
+        "candidate_iqr_us": 31.231999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 829056,
+        "candidate_gbps_decimal": 11.090753,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.047301955
+      }
+    },
+    {
+      "case_id": "k1_051_scaled",
+      "source_census_row": 51,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "k_norm_sliding_nonshared",
+      "with_scale": true,
+      "dims": [
+        1612,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 806,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0002681901465,
+      "analytic_bytes": 1651200,
+      "ncu": {
+        "ncu_id": 68,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(1612, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 829568,
+          "dram__bytes_read.sum": 829568,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 7456
+        },
+        "launch_grid_size": 1612,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 829568,
+      "measured_dram_read_bytes": 829568,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.502403101,
+      "relative_delta": -0.497596899,
+      "absolute_relative_delta": 0.497596899,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 829568,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 75.264003,
+        "candidate_iqr_us": 41.215999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 829568,
+        "candidate_gbps_decimal": 11.022108,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.047009187
+      }
+    },
+    {
+      "case_id": "k1_052_scale_free",
+      "source_census_row": 52,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "v_norm_full_nonshared",
+      "with_scale": false,
+      "dims": [
+        1612,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 806,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0001072760585,
+      "analytic_bytes": 3301376,
+      "ncu": {
+        "ncu_id": 69,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(1612, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1656704,
+          "dram__bytes_read.sum": 1656704,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 9024
+        },
+        "launch_grid_size": 1612,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1656704,
+      "measured_dram_read_bytes": 1656704,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.50182227,
+      "relative_delta": -0.49817773,
+      "absolute_relative_delta": 0.49817773,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1656704,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 70.656002,
+        "candidate_iqr_us": 29.951998,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1656704,
+        "candidate_gbps_decimal": 23.447463,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.100003206
+      }
+    },
+    {
+      "case_id": "k1_052_scaled",
+      "source_census_row": 52,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "k_norm_full_nonshared",
+      "with_scale": true,
+      "dims": [
+        1612,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 806,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0001072760585,
+      "analytic_bytes": 3302400,
+      "ncu": {
+        "ncu_id": 70,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(1612, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1657728,
+          "dram__bytes_read.sum": 1657728,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 9568
+        },
+        "launch_grid_size": 1612,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1657728,
+      "measured_dram_read_bytes": 1657728,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501976744,
+      "relative_delta": -0.498023256,
+      "absolute_relative_delta": 0.498023256,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1657728,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 75.776003,
+        "candidate_iqr_us": 54.271996,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1657728,
+        "candidate_gbps_decimal": 21.876688,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.093303867
+      }
+    },
+    {
+      "case_id": "k1_053_scaled",
+      "source_census_row": 53,
+      "source_variant": "ple_projection_norm",
+      "variant": "ple_projection_norm",
+      "with_scale": true,
+      "dims": [
+        33852,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 806,
+      "invocations": 1,
+      "weight": 1.52557e-07,
+      "work_weight": 0.000281599654,
+      "analytic_bytes": 34664960,
+      "ncu": {
+        "ncu_id": 71,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(33852, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 18693376,
+          "dram__bytes_read.sum": 17337216,
+          "dram__bytes_write.sum": 1356160,
+          "gpu__time_duration.sum": 106784
+        },
+        "launch_grid_size": 33852,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 18693376,
+      "measured_dram_read_bytes": 17337216,
+      "measured_dram_write_bytes": 1356160,
+      "measured_to_analytic_ratio": 0.539258548,
+      "relative_delta": -0.460741452,
+      "absolute_relative_delta": 0.460741452,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 18693376,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 150.527999,
+        "candidate_iqr_us": 3.072008,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 18693376,
+        "candidate_gbps_decimal": 124.185375,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.529649437
+      }
+    },
+    {
+      "case_id": "k1_054_scaled",
+      "source_census_row": 54,
+      "source_variant": "decoder_hidden_norms",
+      "variant": "decoder_hidden_norms",
+      "with_scale": true,
+      "dims": [
+        1464,
+        2560
+      ],
+      "phase": "prefill",
+      "token_count": 1464,
+      "invocations": 211,
+      "weight": 3.2189611e-05,
+      "work_weight": 0.025696342738,
+      "analytic_bytes": 14996480,
+      "ncu": {
+        "ncu_id": 72,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(256, 1, 1)",
+        "grid_size": "(1464, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 7506048,
+          "dram__bytes_read.sum": 7506048,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 33568
+        },
+        "launch_grid_size": 1464,
+        "launch_block_size": 256,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 7506048,
+      "measured_dram_read_bytes": 7506048,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500520656,
+      "relative_delta": -0.499479344,
+      "absolute_relative_delta": 0.499479344,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 7506048,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 43.008,
+        "candidate_iqr_us": 37.143998,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 7506048,
+        "candidate_gbps_decimal": 174.526786,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.744355073
+      }
+    },
+    {
+      "case_id": "k1_055_scaled",
+      "source_census_row": 55,
+      "source_variant": "q_norm_sliding",
+      "variant": "q_norm_sliding",
+      "with_scale": true,
+      "dims": [
+        11712,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1464,
+      "invocations": 35,
+      "weight": 5.339509e-06,
+      "work_weight": 0.003409941216,
+      "analytic_bytes": 11993600,
+      "ncu": {
+        "ncu_id": 73,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(11712, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 6000512,
+          "dram__bytes_read.sum": 6000512,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 37088
+        },
+        "launch_grid_size": 11712,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 6000512,
+      "measured_dram_read_bytes": 6000512,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500309498,
+      "relative_delta": -0.499690502,
+      "absolute_relative_delta": 0.499690502,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 6000512,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 77.391997,
+        "candidate_iqr_us": 25.239998,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 6000512,
+        "candidate_gbps_decimal": 77.534012,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.330681819
+      }
+    },
+    {
+      "case_id": "k1_056_scaled",
+      "source_census_row": 56,
+      "source_variant": "q_norm_full",
+      "variant": "q_norm_full",
+      "with_scale": true,
+      "dims": [
+        11712,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1464,
+      "invocations": 7,
+      "weight": 1.067902e-06,
+      "work_weight": 0.001363976487,
+      "analytic_bytes": 23987200,
+      "ncu": {
+        "ncu_id": 74,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(11712, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 11999104,
+          "dram__bytes_read.sum": 11999104,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 51520
+        },
+        "launch_grid_size": 11712,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 11999104,
+      "measured_dram_read_bytes": 11999104,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500229456,
+      "relative_delta": -0.499770544,
+      "absolute_relative_delta": 0.499770544,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 11999104,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 86.015999,
+        "candidate_iqr_us": 2.048001,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 11999104,
+        "candidate_gbps_decimal": 139.498514,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.594959827
+      }
+    },
+    {
+      "case_id": "k1_057_scale_free",
+      "source_census_row": 57,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "v_norm_sliding_nonshared",
+      "with_scale": false,
+      "dims": [
+        2928,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1464,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0004871344595,
+      "analytic_bytes": 2998272,
+      "ncu": {
+        "ncu_id": 75,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2928, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1502848,
+          "dram__bytes_read.sum": 1502848,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 10912
+        },
+        "launch_grid_size": 2928,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1502848,
+      "measured_dram_read_bytes": 1502848,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501238046,
+      "relative_delta": -0.498761954,
+      "absolute_relative_delta": 0.498761954,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1502848,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 82.943998,
+        "candidate_iqr_us": 22.784,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1502848,
+        "candidate_gbps_decimal": 18.118828,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.077276627
+      }
+    },
+    {
+      "case_id": "k1_057_scaled",
+      "source_census_row": 57,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "k_norm_sliding_nonshared",
+      "with_scale": true,
+      "dims": [
+        2928,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1464,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.0004871344595,
+      "analytic_bytes": 2998784,
+      "ncu": {
+        "ncu_id": 76,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2928, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1503104,
+          "dram__bytes_read.sum": 1503104,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 11040
+        },
+        "launch_grid_size": 2928,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1503104,
+      "measured_dram_read_bytes": 1503104,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501237835,
+      "relative_delta": -0.498762165,
+      "absolute_relative_delta": 0.498762165,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1503104,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 83.455998,
+        "candidate_iqr_us": 37.375998,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1503104,
+        "candidate_gbps_decimal": 18.010737,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.07681562
+      }
+    },
+    {
+      "case_id": "k1_058_scale_free",
+      "source_census_row": 58,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "v_norm_full_nonshared",
+      "with_scale": false,
+      "dims": [
+        2928,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1464,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.000194853784,
+      "analytic_bytes": 5996544,
+      "ncu": {
+        "ncu_id": 77,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2928, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 3002240,
+          "dram__bytes_read.sum": 3002240,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 14432
+        },
+        "launch_grid_size": 2928,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 3002240,
+      "measured_dram_read_bytes": 3002240,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500661714,
+      "relative_delta": -0.499338286,
+      "absolute_relative_delta": 0.499338286,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 3002240,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 63.487999,
+        "candidate_iqr_us": 30.719999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 3002240,
+        "candidate_gbps_decimal": 47.288307,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.201684178
+      }
+    },
+    {
+      "case_id": "k1_058_scaled",
+      "source_census_row": 58,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "k_norm_full_nonshared",
+      "with_scale": true,
+      "dims": [
+        2928,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1464,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.000194853784,
+      "analytic_bytes": 5997568,
+      "ncu": {
+        "ncu_id": 78,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2928, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 3003264,
+          "dram__bytes_read.sum": 3003264,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 14624
+        },
+        "launch_grid_size": 2928,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 3003264,
+      "measured_dram_read_bytes": 3003264,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500746969,
+      "relative_delta": -0.499253031,
+      "absolute_relative_delta": 0.499253031,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 3003264,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 66.56,
+        "candidate_iqr_us": 22.736004,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 3003264,
+        "candidate_gbps_decimal": 45.121154,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.19244129
+      }
+    },
+    {
+      "case_id": "k1_059_scaled",
+      "source_census_row": 59,
+      "source_variant": "ple_projection_norm",
+      "variant": "ple_projection_norm",
+      "with_scale": true,
+      "dims": [
+        61488,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1464,
+      "invocations": 1,
+      "weight": 1.52557e-07,
+      "work_weight": 0.000511491182,
+      "analytic_bytes": 62964224,
+      "ncu": {
+        "ncu_id": 79,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(61488, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 47222656,
+          "dram__bytes_read.sum": 31487104,
+          "dram__bytes_write.sum": 15735552,
+          "gpu__time_duration.sum": 224352
+        },
+        "launch_grid_size": 61488,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 47222656,
+      "measured_dram_read_bytes": 31487104,
+      "measured_dram_write_bytes": 15735552,
+      "measured_to_analytic_ratio": 0.749991868,
+      "relative_delta": -0.250008132,
+      "absolute_relative_delta": 0.250008132,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 47222656,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 269.311994,
+        "candidate_iqr_us": 3.072023,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 47222656,
+        "candidate_gbps_decimal": 175.345536,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.747847036
+      }
+    },
+    {
+      "case_id": "k1_060_scaled",
+      "source_census_row": 60,
+      "source_variant": "decoder_hidden_norms",
+      "variant": "decoder_hidden_norms",
+      "with_scale": true,
+      "dims": [
+        1700,
+        2560
+      ],
+      "phase": "prefill",
+      "token_count": 1700,
+      "invocations": 211,
+      "weight": 3.2189611e-05,
+      "work_weight": 0.029838649354,
+      "analytic_bytes": 17413120,
+      "ncu": {
+        "ncu_id": 80,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(256, 1, 1)",
+        "grid_size": "(1700, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 8715648,
+          "dram__bytes_read.sum": 8714112,
+          "dram__bytes_write.sum": 1536,
+          "gpu__time_duration.sum": 37888
+        },
+        "launch_grid_size": 1700,
+        "launch_block_size": 256,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 8715648,
+      "measured_dram_read_bytes": 8714112,
+      "measured_dram_write_bytes": 1536,
+      "measured_to_analytic_ratio": 0.500521905,
+      "relative_delta": -0.499478095,
+      "absolute_relative_delta": 0.499478095,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 8715648,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 47.104001,
+        "candidate_iqr_us": 65.792002,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 8715648,
+        "candidate_gbps_decimal": 185.029887,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.789150701
+      }
+    },
+    {
+      "case_id": "k1_061_scaled",
+      "source_census_row": 61,
+      "source_variant": "q_norm_sliding",
+      "variant": "q_norm_sliding",
+      "with_scale": true,
+      "dims": [
+        13600,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1700,
+      "invocations": 35,
+      "weight": 5.339509e-06,
+      "work_weight": 0.003959631194,
+      "analytic_bytes": 13926912,
+      "ncu": {
+        "ncu_id": 81,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(13600, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 6968192,
+          "dram__bytes_read.sum": 6968192,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 43872
+        },
+        "launch_grid_size": 13600,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 6968192,
+      "measured_dram_read_bytes": 6968192,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500340061,
+      "relative_delta": -0.499659939,
+      "absolute_relative_delta": 0.499659939,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 6968192,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 70.096001,
+        "candidate_iqr_us": 36.863998,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 6968192,
+        "candidate_gbps_decimal": 99.409266,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.423979569
+      }
+    },
+    {
+      "case_id": "k1_062_scaled",
+      "source_census_row": 62,
+      "source_variant": "q_norm_full",
+      "variant": "q_norm_full",
+      "with_scale": true,
+      "dims": [
+        13600,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1700,
+      "invocations": 7,
+      "weight": 1.067902e-06,
+      "work_weight": 0.001583852478,
+      "analytic_bytes": 27853824,
+      "ncu": {
+        "ncu_id": 82,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(13600, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 13931648,
+          "dram__bytes_read.sum": 13931648,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 58592
+        },
+        "launch_grid_size": 13600,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 13931648,
+      "measured_dram_read_bytes": 13931648,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500170031,
+      "relative_delta": -0.499829969,
+      "absolute_relative_delta": 0.499829969,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 13931648,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 111.616001,
+        "candidate_iqr_us": 9.240003,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 13931648,
+        "candidate_gbps_decimal": 124.817659,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.532346124
+      }
+    },
+    {
+      "case_id": "k1_063_scale_free",
+      "source_census_row": 63,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "v_norm_sliding_nonshared",
+      "with_scale": false,
+      "dims": [
+        3400,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1700,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.000565661599,
+      "analytic_bytes": 3481600,
+      "ncu": {
+        "ncu_id": 83,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(3400, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1744512,
+          "dram__bytes_read.sum": 1744512,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 12160
+        },
+        "launch_grid_size": 3400,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1744512,
+      "measured_dram_read_bytes": 1744512,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501066176,
+      "relative_delta": -0.498933824,
+      "absolute_relative_delta": 0.498933824,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1744512,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 94.208002,
+        "candidate_iqr_us": 58.367997,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1744512,
+        "candidate_gbps_decimal": 18.517663,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.078977654
+      }
+    },
+    {
+      "case_id": "k1_063_scaled",
+      "source_census_row": 63,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "k_norm_sliding_nonshared",
+      "with_scale": true,
+      "dims": [
+        3400,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1700,
+      "invocations": 20,
+      "weight": 3.051148e-06,
+      "work_weight": 0.000565661599,
+      "analytic_bytes": 3482112,
+      "ncu": {
+        "ncu_id": 84,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(3400, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 1745024,
+          "dram__bytes_read.sum": 1745024,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 12736
+        },
+        "launch_grid_size": 3400,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 1745024,
+      "measured_dram_read_bytes": 1745024,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.501139538,
+      "relative_delta": -0.498860462,
+      "absolute_relative_delta": 0.498860462,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 1745024,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 81.407998,
+        "candidate_iqr_us": 29.952003,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 1745024,
+        "candidate_gbps_decimal": 21.435535,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.091422352
+      }
+    },
+    {
+      "case_id": "k1_064_scale_free",
+      "source_census_row": 64,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "v_norm_full_nonshared",
+      "with_scale": false,
+      "dims": [
+        3400,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1700,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0002262646395,
+      "analytic_bytes": 6963200,
+      "ncu": {
+        "ncu_id": 85,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(3400, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 3485312,
+          "dram__bytes_read.sum": 3485312,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 15968
+        },
+        "launch_grid_size": 3400,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 3485312,
+      "measured_dram_read_bytes": 3485312,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500533088,
+      "relative_delta": -0.499466912,
+      "absolute_relative_delta": 0.499466912,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 3485312,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 94.208002,
+        "candidate_iqr_us": 75.327996,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 3485312,
+        "candidate_gbps_decimal": 36.995923,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.157787259
+      }
+    },
+    {
+      "case_id": "k1_064_scaled",
+      "source_census_row": 64,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "k_norm_full_nonshared",
+      "with_scale": true,
+      "dims": [
+        3400,
+        512
+      ],
+      "phase": "prefill",
+      "token_count": 1700,
+      "invocations": 4,
+      "weight": 6.102295e-07,
+      "work_weight": 0.0002262646395,
+      "analytic_bytes": 6964224,
+      "ncu": {
+        "ncu_id": 86,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(3400, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 3487104,
+          "dram__bytes_read.sum": 3487104,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 17504
+        },
+        "launch_grid_size": 3400,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 3487104,
+      "measured_dram_read_bytes": 3487104,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.500716806,
+      "relative_delta": -0.499283194,
+      "absolute_relative_delta": 0.499283194,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 3487104,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 102.479998,
+        "candidate_iqr_us": 84.343992,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 3487104,
+        "candidate_gbps_decimal": 34.027167,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.145125542
+      }
+    },
+    {
+      "case_id": "k1_065_scaled",
+      "source_census_row": 65,
+      "source_variant": "ple_projection_norm",
+      "variant": "ple_projection_norm",
+      "with_scale": true,
+      "dims": [
+        71400,
+        256
+      ],
+      "phase": "prefill",
+      "token_count": 1700,
+      "invocations": 1,
+      "weight": 1.52557e-07,
+      "work_weight": 0.000593944679,
+      "analytic_bytes": 73114112,
+      "ncu": {
+        "ncu_id": 87,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(71400, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 56987776,
+          "dram__bytes_read.sum": 36562048,
+          "dram__bytes_write.sum": 20425728,
+          "gpu__time_duration.sum": 266208
+        },
+        "launch_grid_size": 71400,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 56987776,
+      "measured_dram_read_bytes": 36562048,
+      "measured_dram_write_bytes": 20425728,
+      "measured_to_analytic_ratio": 0.779436068,
+      "relative_delta": -0.220563932,
+      "absolute_relative_delta": 0.220563932,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 56987776,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 311.295986,
+        "candidate_iqr_us": 2.047986,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 56987776,
+        "candidate_gbps_decimal": 183.066209,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.780775631
+      }
+    },
+    {
+      "case_id": "k1_066_scaled",
+      "source_census_row": 66,
+      "source_variant": "decoder_hidden_norms",
+      "variant": "decoder_hidden_norms",
+      "with_scale": true,
+      "dims": [
+        1,
+        2560
+      ],
+      "phase": "decode",
+      "token_count": 1,
+      "invocations": 4577434,
+      "weight": 0.698321410973,
+      "work_weight": 0.380776270057,
+      "analytic_bytes": 15360,
+      "ncu": {
+        "ncu_id": 88,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(256, 1, 1)",
+        "grid_size": "(1, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 15232,
+          "dram__bytes_read.sum": 15232,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 2592
+        },
+        "launch_grid_size": 1,
+        "launch_block_size": 256,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 15232,
+      "measured_dram_read_bytes": 15232,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.991666667,
+      "relative_delta": -0.008333333,
+      "absolute_relative_delta": 0.008333333,
+      "within_analytic_tolerance": true,
+      "accounting_bytes": 15360,
+      "accounting_source": "Tier-A analytic (ncu-backed within ±15%)",
+      "op2_timing": {
+        "candidate_p50_us": 82.431998,
+        "candidate_iqr_us": 67.072005,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 15360,
+        "candidate_gbps_decimal": 0.186335,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.000794719
+      }
+    },
+    {
+      "case_id": "k1_067_scaled",
+      "source_census_row": 67,
+      "source_variant": "q_norm_sliding",
+      "variant": "q_norm_sliding",
+      "with_scale": true,
+      "dims": [
+        8,
+        256
+      ],
+      "phase": "decode",
+      "token_count": 1,
+      "invocations": 759290,
+      "weight": 0.115835305138,
+      "work_weight": 0.050529552425,
+      "analytic_bytes": 8704,
+      "ncu": {
+        "ncu_id": 89,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(8, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 8320,
+          "dram__bytes_read.sum": 8320,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 2496
+        },
+        "launch_grid_size": 8,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 8320,
+      "measured_dram_read_bytes": 8320,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.955882353,
+      "relative_delta": -0.044117647,
+      "absolute_relative_delta": 0.044117647,
+      "within_analytic_tolerance": true,
+      "accounting_bytes": 8704,
+      "accounting_source": "Tier-A analytic (ncu-backed within ±15%)",
+      "op2_timing": {
+        "candidate_p50_us": 56.32,
+        "candidate_iqr_us": 31.232003,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 8704,
+        "candidate_gbps_decimal": 0.154545,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.000659135
+      }
+    },
+    {
+      "case_id": "k1_068_scaled",
+      "source_census_row": 68,
+      "source_variant": "q_norm_full",
+      "variant": "q_norm_full",
+      "with_scale": true,
+      "dims": [
+        8,
+        512
+      ],
+      "phase": "decode",
+      "token_count": 1,
+      "invocations": 151858,
+      "weight": 0.023167061028,
+      "work_weight": 0.02021182097,
+      "analytic_bytes": 17408,
+      "ncu": {
+        "ncu_id": 90,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(8, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 12928,
+          "dram__bytes_read.sum": 12928,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 2272
+        },
+        "launch_grid_size": 8,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 12928,
+      "measured_dram_read_bytes": 12928,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.742647059,
+      "relative_delta": -0.257352941,
+      "absolute_relative_delta": 0.257352941,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 12928,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 76.800004,
+        "candidate_iqr_us": 41.727999,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 12928,
+        "candidate_gbps_decimal": 0.168333,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.00071794
+      }
+    },
+    {
+      "case_id": "k1_069_scale_free",
+      "source_census_row": 69,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "v_norm_sliding_nonshared",
+      "with_scale": false,
+      "dims": [
+        2,
+        256
+      ],
+      "phase": "decode",
+      "token_count": 1,
+      "invocations": 433880,
+      "weight": 0.066191602936,
+      "work_weight": 0.007218507489,
+      "analytic_bytes": 2048,
+      "ncu": {
+        "ncu_id": 91,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 4224,
+          "dram__bytes_read.sum": 4224,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 2016
+        },
+        "launch_grid_size": 2,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 4224,
+      "measured_dram_read_bytes": 4224,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 2.0625,
+      "relative_delta": 1.0625,
+      "absolute_relative_delta": 1.0625,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 4224,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 64.511999,
+        "candidate_iqr_us": 17.408002,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 4224,
+        "candidate_gbps_decimal": 0.065476,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.000279255
+      }
+    },
+    {
+      "case_id": "k1_069_scaled",
+      "source_census_row": 69,
+      "source_variant": "kv_norm_sliding_nonshared",
+      "variant": "k_norm_sliding_nonshared",
+      "with_scale": true,
+      "dims": [
+        2,
+        256
+      ],
+      "phase": "decode",
+      "token_count": 1,
+      "invocations": 433880,
+      "weight": 0.066191602936,
+      "work_weight": 0.007218507489,
+      "analytic_bytes": 2560,
+      "ncu": {
+        "ncu_id": 92,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 4992,
+          "dram__bytes_read.sum": 4992,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 2432
+        },
+        "launch_grid_size": 2,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 4992,
+      "measured_dram_read_bytes": 4992,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 1.95,
+      "relative_delta": 0.95,
+      "absolute_relative_delta": 0.95,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 4992,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 63.487999,
+        "candidate_iqr_us": 22.784004,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 4992,
+        "candidate_gbps_decimal": 0.078629,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.000335352
+      }
+    },
+    {
+      "case_id": "k1_070_scale_free",
+      "source_census_row": 70,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "v_norm_full_nonshared",
+      "with_scale": false,
+      "dims": [
+        2,
+        512
+      ],
+      "phase": "decode",
+      "token_count": 1,
+      "invocations": 86776,
+      "weight": 0.013238320587,
+      "work_weight": 0.0028874029955,
+      "analytic_bytes": 4096,
+      "ncu": {
+        "ncu_id": 93,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 5504,
+          "dram__bytes_read.sum": 5504,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 2016
+        },
+        "launch_grid_size": 2,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 5504,
+      "measured_dram_read_bytes": 5504,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 1.34375,
+      "relative_delta": 0.34375,
+      "absolute_relative_delta": 0.34375,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 5504,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 63.999999,
+        "candidate_iqr_us": 22.016004,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 5504,
+        "candidate_gbps_decimal": 0.086,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.000366789
+      }
+    },
+    {
+      "case_id": "k1_070_scaled",
+      "source_census_row": 70,
+      "source_variant": "kv_norm_full_nonshared",
+      "variant": "k_norm_full_nonshared",
+      "with_scale": true,
+      "dims": [
+        2,
+        512
+      ],
+      "phase": "decode",
+      "token_count": 1,
+      "invocations": 86776,
+      "weight": 0.013238320587,
+      "work_weight": 0.0028874029955,
+      "analytic_bytes": 5120,
+      "ncu": {
+        "ncu_id": 94,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(2, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 6784,
+          "dram__bytes_read.sum": 6784,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 2336
+        },
+        "launch_grid_size": 2,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 6784,
+      "measured_dram_read_bytes": 6784,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 1.325,
+      "relative_delta": 0.325,
+      "absolute_relative_delta": 0.325,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 6784,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 56.832001,
+        "candidate_iqr_us": 25.856001,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 6784,
+        "candidate_gbps_decimal": 0.119369,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.000509109
+      }
+    },
+    {
+      "case_id": "k1_071_scaled",
+      "source_census_row": 71,
+      "source_variant": "ple_projection_norm",
+      "variant": "ple_projection_norm",
+      "with_scale": true,
+      "dims": [
+        42,
+        256
+      ],
+      "phase": "decode",
+      "token_count": 1,
+      "invocations": 21694,
+      "weight": 0.003309580147,
+      "work_weight": 0.007579432864,
+      "analytic_bytes": 43520,
+      "ncu": {
+        "ncu_id": 95,
+        "process_id": 76192,
+        "kernel_name": "k1_gemma4_rmsnorm_kernel",
+        "context": 1,
+        "stream": 7,
+        "block_size": "(128, 1, 1)",
+        "grid_size": "(42, 1, 1)",
+        "device": "0",
+        "compute_capability": "8.9",
+        "metrics": {
+          "dram__bytes.sum": 25472,
+          "dram__bytes_read.sum": 25472,
+          "dram__bytes_write.sum": 0,
+          "gpu__time_duration.sum": 2432
+        },
+        "launch_grid_size": 42,
+        "launch_block_size": 128,
+        "replayer_passes": 1
+      },
+      "measured_dram_bytes": 25472,
+      "measured_dram_read_bytes": 25472,
+      "measured_dram_write_bytes": 0,
+      "measured_to_analytic_ratio": 0.585294118,
+      "relative_delta": -0.414705882,
+      "absolute_relative_delta": 0.414705882,
+      "within_analytic_tolerance": false,
+      "accounting_bytes": 25472,
+      "accounting_source": "Tier-B ncu measured (supersedes analytic)",
+      "op2_timing": {
+        "candidate_p50_us": 71.168002,
+        "candidate_iqr_us": 43.264003,
+        "source": "frozen OP2; ncu duration is not used as performance timing"
+      },
+      "corrected_roofline": {
+        "bytes": 25472,
+        "candidate_gbps_decimal": 0.357914,
+        "ceiling_gbps_decimal": 234.467114,
+        "relative_score": 0.001526498
+      }
+    }
+  ],
+  "aggregate": {
+    "formal_cases": 96,
+    "analytic_tolerance_fraction": 0.15,
+    "analytic_backed_cases": 5,
+    "ncu_superseded_cases": 91,
+    "all_cases_within_analytic_tolerance": false,
+    "superseded_case_ids": [
+      "k1_000_scaled",
+      "k1_001_scaled",
+      "k1_002_scaled",
+      "k1_003_scale_free",
+      "k1_003_scaled",
+      "k1_004_scale_free",
+      "k1_004_scaled",
+      "k1_005_scaled",
+      "k1_006_scaled",
+      "k1_007_scaled",
+      "k1_008_scaled",
+      "k1_009_scale_free",
+      "k1_009_scaled",
+      "k1_010_scale_free",
+      "k1_010_scaled",
+      "k1_011_scaled",
+      "k1_012_scaled",
+      "k1_013_scaled",
+      "k1_014_scaled",
+      "k1_015_scale_free",
+      "k1_015_scaled",
+      "k1_016_scale_free",
+      "k1_016_scaled",
+      "k1_017_scaled",
+      "k1_018_scaled",
+      "k1_019_scaled",
+      "k1_020_scaled",
+      "k1_021_scale_free",
+      "k1_021_scaled",
+      "k1_022_scale_free",
+      "k1_022_scaled",
+      "k1_024_scaled",
+      "k1_025_scaled",
+      "k1_026_scaled",
+      "k1_027_scale_free",
+      "k1_027_scaled",
+      "k1_028_scale_free",
+      "k1_028_scaled",
+      "k1_029_scaled",
+      "k1_030_scaled",
+      "k1_031_scaled",
+      "k1_032_scaled",
+      "k1_033_scale_free",
+      "k1_033_scaled",
+      "k1_034_scale_free",
+      "k1_034_scaled",
+      "k1_036_scaled",
+      "k1_037_scaled",
+      "k1_038_scaled",
+      "k1_039_scale_free",
+      "k1_039_scaled",
+      "k1_040_scale_free",
+      "k1_040_scaled",
+      "k1_041_scaled",
+      "k1_042_scaled",
+      "k1_043_scaled",
+      "k1_044_scaled",
+      "k1_045_scale_free",
+      "k1_045_scaled",
+      "k1_046_scale_free",
+      "k1_046_scaled",
+      "k1_048_scaled",
+      "k1_049_scaled",
+      "k1_050_scaled",
+      "k1_051_scale_free",
+      "k1_051_scaled",
+      "k1_052_scale_free",
+      "k1_052_scaled",
+      "k1_053_scaled",
+      "k1_054_scaled",
+      "k1_055_scaled",
+      "k1_056_scaled",
+      "k1_057_scale_free",
+      "k1_057_scaled",
+      "k1_058_scale_free",
+      "k1_058_scaled",
+      "k1_059_scaled",
+      "k1_060_scaled",
+      "k1_061_scaled",
+      "k1_062_scaled",
+      "k1_063_scale_free",
+      "k1_063_scaled",
+      "k1_064_scale_free",
+      "k1_064_scaled",
+      "k1_065_scaled",
+      "k1_068_scaled",
+      "k1_069_scale_free",
+      "k1_069_scaled",
+      "k1_070_scale_free",
+      "k1_070_scaled",
+      "k1_071_scaled"
+    ],
+    "max_absolute_relative_delta": 1.0625,
+    "projected_workload": {
+      "invocations": 6554910,
+      "analytic_bytes": 147413489664,
+      "measured_dram_bytes": 119539556608,
+      "accounting_bytes": 120465037696,
+      "accounting_rule": "analytic when within ±15%; otherwise per-case ncu measured bytes",
+      "candidate_gpu_seconds_from_op2_p50": 499.643943,
+      "analytic_gbps_decimal": 0.295037,
+      "measured_dram_gbps_decimal": 0.239249,
+      "corrected_accounting_gbps_decimal": 0.241102,
+      "corrected_relative_score": 0.001028297,
+      "ceiling_gbps_decimal": 234.467114
+    },
+    "by_phase": {
+      "prefill": {
+        "formal_cases": 88,
+        "analytic_backed_cases": 3,
+        "ncu_superseded_cases": 85,
+        "projected_invocations": 3322,
+        "projected_analytic_bytes": 64108529664,
+        "projected_measured_dram_bytes": 35918037760,
+        "projected_accounting_bytes": 35966039936
+      },
+      "decode": {
+        "formal_cases": 8,
+        "analytic_backed_cases": 2,
+        "ncu_superseded_cases": 6,
+        "projected_invocations": 6551588,
+        "projected_analytic_bytes": 83304960000,
+        "projected_measured_dram_bytes": 83621518848,
+        "projected_accounting_bytes": 84498997760
+      }
+    },
+    "interpretation": {
+      "performance_timing_source": "OP2 CUDA-event 200-repetition interleaved p50/IQR",
+      "ncu_duration_use": "diagnostic only; excluded from throughput and roofline timing",
+      "counter_repetitions": "one profiled launch per formal case after 50 warmups; Nsight kernel replay collected the requested deterministic counters",
+      "disagreement_policy": "A >15% difference does not fail OP4; it makes the measured ncu byte count authoritative for that case."
+    }
+  },
+  "measurement_receipt": {
+    "command": [
+      "/usr/local/cuda/bin/ncu",
+      "--csv",
+      "--page",
+      "raw",
+      "--metrics",
+      "dram__bytes.sum,dram__bytes_read.sum,dram__bytes_write.sum,gpu__time_duration.sum",
+      "--disable-extra-suffixes",
+      "--cache-control",
+      "all",
+      "--replay-mode",
+      "kernel",
+      "--profile-from-start",
+      "off",
+      "--kernel-name",
+      "regex:^k1_gemma4_rmsnorm_kernel$",
+      "--launch-count",
+      "96",
+      "--target-processes",
+      "application-only",
+      "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+      "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op4.py",
+      "--target",
+      "--config",
+      "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op4_ncu_attribution.json",
+      "--expected-config-sha",
+      "aa9dac98c6f23aa5b1e245a3021265f6df646e3cf9f1218fb01c024d4a87f077",
+      "--target-receipt",
+      "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/op4_target_receipt.json"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 5.243892,
+    "raw_output": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/op4_ncu_raw.csv",
+      "sha256": "2fb8f4e2c0a2747c341c3f0d8ccc508b7fc4954e70837a08ead9746601b66dcf"
+    },
+    "target_receipt": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/op4_target_receipt.json",
+      "sha256": "a3902a44c4ea368074c40601bfb26e17f1a99ad58ebc2fa44ce2b144c7e015c3"
+    },
+    "ncu_launch_rows": 96,
+    "ncu_replayer_passes": [
+      1
+    ],
+    "power_supply_start": {
+      "ac_online": 1,
+      "battery_status": "Full",
+      "battery_capacity_percent": 100,
+      "captured_at": "2026-09-15T22:07:15+08:00"
+    },
+    "power_supply_end": {
+      "ac_online": 1,
+      "battery_status": "Full",
+      "battery_capacity_percent": 100,
+      "captured_at": "2026-09-15T22:07:20+08:00"
+    },
+    "telemetry": {
+      "interval_seconds": 1.0,
+      "sample_count": 8,
+      "errors": [],
+      "numeric": {
+        "sm_mhz": {
+          "count": 8,
+          "min": 1920.0,
+          "q1": 2250.0,
+          "p50": 2250.0,
+          "q3": 2325.0,
+          "max": 2550.0,
+          "mean": 2283.75,
+          "iqr": 75.0
+        },
+        "memory_mhz": {
+          "count": 8,
+          "min": 8000.0,
+          "q1": 8000.0,
+          "p50": 8000.0,
+          "q3": 8000.0,
+          "max": 8000.0,
+          "mean": 8000.0,
+          "iqr": 0.0
+        },
+        "temperature_c": {
+          "count": 8,
+          "min": 67.0,
+          "q1": 67.0,
+          "p50": 67.0,
+          "q3": 68.0,
+          "max": 70.0,
+          "mean": 67.625,
+          "iqr": 1.0
+        },
+        "power_w": {
+          "count": 8,
+          "min": 19.82,
+          "q1": 19.913,
+          "p50": 19.96,
+          "q3": 22.485,
+          "max": 39.61,
+          "mean": 23.207,
+          "iqr": 2.572
+        }
+      },
+      "pstates": {
+        "P0": 8
+      },
+      "throttle_flags": {
+        "clocks_event_reasons.sw_power_cap": false,
+        "clocks_event_reasons.sw_thermal_slowdown": false,
+        "clocks_event_reasons.hw_thermal_slowdown": false,
+        "clocks_event_reasons.hw_power_brake_slowdown": false
+      },
+      "thermal_or_hardware_throttle": false,
+      "samples": [
+        {
+          "timestamp": "2026/09/15 22:07:15.269",
+          "pstate": "P0",
+          "clocks.current.sm": "2250",
+          "clocks.current.memory": "8000",
+          "temperature.gpu": "67",
+          "power.draw": "19.82",
+          "clocks_event_reasons.sw_power_cap": "Not Active",
+          "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+          "captured_at": "2026-09-15T22:07:15+08:00",
+          "phase": "op4_ncu_formal"
+        },
+        {
+          "timestamp": "2026/09/15 22:07:15.396",
+          "pstate": "P0",
+          "clocks.current.sm": "2250",
+          "clocks.current.memory": "8000",
+          "temperature.gpu": "67",
+          "power.draw": "19.89",
+          "clocks_event_reasons.sw_power_cap": "Not Active",
+          "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+          "captured_at": "2026-09-15T22:07:15+08:00",
+          "phase": "op4_ncu_formal"
+        },
+        {
+          "timestamp": "2026/09/15 22:07:16.280",
+          "pstate": "P0",
+          "clocks.current.sm": "2250",
+          "clocks.current.memory": "8000",
+          "temperature.gpu": "67",
+          "power.draw": "19.95",
+          "clocks_event_reasons.sw_power_cap": "Not Active",
+          "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+          "captured_at": "2026-09-15T22:07:16+08:00",
+          "phase": "op4_ncu_formal"
+        },
+        {
+          "timestamp": "2026/09/15 22:07:17.260",
+          "pstate": "P0",
+          "clocks.current.sm": "2250",
+          "clocks.current.memory": "8000",
+          "temperature.gpu": "67",
+          "power.draw": "19.97",
+          "clocks_event_reasons.sw_power_cap": "Not Active",
+          "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+          "captured_at": "2026-09-15T22:07:17+08:00",
+          "phase": "op4_ncu_formal"
+        },
+        {
+          "timestamp": "2026/09/15 22:07:18.254",
+          "pstate": "P0",
+          "clocks.current.sm": "2250",
+          "clocks.current.memory": "8000",
+          "temperature.gpu": "67",
+          "power.draw": "19.92",
+          "clocks_event_reasons.sw_power_cap": "Not Active",
+          "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+          "captured_at": "2026-09-15T22:07:18+08:00",
+          "phase": "op4_ncu_formal"
+        },
+        {
+          "timestamp": "2026/09/15 22:07:19.251",
+          "pstate": "P0",
+          "clocks.current.sm": "2550",
+          "clocks.current.memory": "8000",
+          "temperature.gpu": "70",
+          "power.draw": "39.61",
+          "clocks_event_reasons.sw_power_cap": "Not Active",
+          "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+          "captured_at": "2026-09-15T22:07:19+08:00",
+          "phase": "op4_ncu_formal"
+        },
+        {
+          "timestamp": "2026/09/15 22:07:20.251",
+          "pstate": "P0",
+          "clocks.current.sm": "1920",
+          "clocks.current.memory": "8000",
+          "temperature.gpu": "68",
+          "power.draw": "24.78",
+          "clocks_event_reasons.sw_power_cap": "Not Active",
+          "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+          "captured_at": "2026-09-15T22:07:20+08:00",
+          "phase": "op4_ncu_formal"
+        },
+        {
+          "timestamp": "2026/09/15 22:07:20.686",
+          "pstate": "P0",
+          "clocks.current.sm": "2550",
+          "clocks.current.memory": "8000",
+          "temperature.gpu": "68",
+          "power.draw": "21.72",
+          "clocks_event_reasons.sw_power_cap": "Not Active",
+          "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+          "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+          "captured_at": "2026-09-15T22:07:20+08:00",
+          "phase": "op4_ncu_formal"
+        }
+      ]
+    },
+    "clocks": {
+      "sample_count": 8,
+      "interval_seconds": 1.0,
+      "sm_mhz_p50": 2250.0,
+      "sm_mhz_min": 1920.0,
+      "memory_mhz_p50": 8000.0,
+      "memory_mhz_min": 8000.0,
+      "temperature_c_max": 70.0,
+      "power_w_p50": 19.96,
+      "pstates": {
+        "P0": 8
+      },
+      "throttle_flags": {
+        "clocks_event_reasons.sw_power_cap": false,
+        "clocks_event_reasons.sw_thermal_slowdown": false,
+        "clocks_event_reasons.hw_thermal_slowdown": false,
+        "clocks_event_reasons.hw_power_brake_slowdown": false
+      },
+      "thermal_or_hardware_throttle": false,
+      "errors": []
+    },
+    "memory_clock_comparability": {
+      "op0_memory_mhz_p50": 8000.0,
+      "op4_memory_mhz_p50": 8000.0,
+      "observed_ratio": 1.0,
+      "minimum_ratio": 0.95,
+      "pass": true
+    }
+  },
+  "accounting_effect": {
+    "upstream_op2_result_is_immutable": true,
+    "op2_tier_a_status": "preserved as historical analytic result",
+    "op4_tier_b_status": "authoritative correction layer for cases outside ±15%",
+    "consumer_rule": "Use formal_case_measurements[].accounting_bytes and aggregate.projected_workload.accounting_bytes for post-OP4 K1 roofline reporting."
+  },
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "torch": "2.13.0+cu130",
+    "torch_cuda": "13.0",
+    "triton": "3.7.1",
+    "cuda_device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "cuda_capability": [
+      8,
+      9
+    ]
+  },
+  "implementation": {
+    "kernel_source": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k1_rmsnorm.py",
+    "kernel_source_sha256": "6e1d282bc174e9f91210281c086c0928820e7b3e8782f7bf02e8f94ed31d7ca1",
+    "runner_source": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op4.py",
+    "runner_source_sha256": "b9423fc55bd6528d8079e59c9c0ea7982e5f458cb7f65eae8e500b2215128d4d"
+  },
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0",
+  "gates": {
+    "readiness_counter_smoke": "PASS",
+    "frozen_source_identity": "PASS",
+    "config_immutable_during_measurement": "PASS",
+    "formal_population_all_96_cases": "PASS",
+    "warmup_at_least_50_per_case": "PASS",
+    "ncu_required_metrics_complete": "PASS",
+    "ncu_single_replay_pass": "PASS",
+    "analytic_plus_minus_15_percent_closed": "SUPERSEDED_BY_NCU_PER_PROTOCOL",
+    "ac_power": "PASS",
+    "telemetry_1hz": "PASS",
+    "memory_clock_comparability": "PASS",
+    "thermal_hardware_throttle": "PASS",
+    "op2_performance_timing_inherited": "PASS",
+    "op3_formal_reconnection_inherited": "PASS"
+  }
+}

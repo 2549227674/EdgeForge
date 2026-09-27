@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_LM_HEAD_RECONNECT_R1",
+  "target": "tied_lm_head_262144_vocab_softcap_30",
+  "frozen_at": "2026-09-16T21:07:38+08:00",
+  "frozen_before_formal_replay": true,
+  "host_scope": "RTX 4060 Laptop GPU / sm_89 / WSL2 only",
+  "authority": {
+    "owner_direction": "Continue to the next stage and do not perform SHA verification.",
+    "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+    "upstream_selection_status": "EXISTING_CUDA_LM_HEAD_MIRROR_RECONNECTION_PROBE_AUTHORIZED_NO_CUSTOM_KERNEL",
+    "scope": "Test only the selected eager CUDA BF16 lm_head mirror in the full C02 token population; no custom kernel is authorized.",
+    "replication_disclosure": "The owner waived repeat testing earlier in OP5. This is a single same-load lockstep deployment-equivalence replay, not cross-day or independent replication."
+  },
+  "inputs": {
+    "model": "models/C02-S.O-bf16-r1",
+    "tapes_manifest": "traces/tapes/manifest.json",
+    "shape_census": "results/operator/shape_census.json",
+    "archived_baseline_metadata": "results/operator/k1/k1_rmsnorm_op3.json",
+    "deliverability_receipt": "results/operator/pool/op5_lm_head_deliverability_probe_r1_receipt_20260916.json",
+    "selection_result": "results/operator/pool/op5_lm_head_selection_r1_20260916.json",
+    "selection_receipt": "results/operator/pool/op5_lm_head_selection_r1_receipt_20260916.json",
+    "runner": "scripts/operator/run_op5_lm_head_reconnect_r1.py"
+  },
+  "carrier": {
+    "model_class": "AutoModelForImageTextToText",
+    "dtype": "torch.bfloat16",
+    "attention_implementation_at_load": "eager",
+    "quantization": {
+      "load_in_4bit": true,
+      "bnb_4bit_quant_type": "nf4",
+      "bnb_4bit_use_double_quant": true,
+      "bnb_4bit_compute_dtype": "torch.bfloat16",
+      "llm_int8_enable_fp32_cpu_offload": true,
+      "expected_language_linear4bit_modules": 343
+    },
+    "gpu_budget_gib": 7.5,
+    "mirror_policy": "Allocate one external, unregistered BF16 CUDA copy of the tied CPU lm_head weight. Never replace or move the original Parameter, token embedding, state_dict entry, or device map."
+  },
+  "replay": {
+    "method": "same-load, same-hidden-state, per-token lockstep A/B",
+    "equivalence_induction": "Until A and B select the same token, their next input and common Transformer/cache trajectory are identical. The first unequal token conclusively fails deployment equivalence and triggers fail-fast; if all 21705 decisions match, the separate greedy trajectories are identical by induction.",
+    "path_A": "Current formal CPU tied BF16 lm_head, tanh(logits/30)*30, argmax.",
+    "path_B": "Selected external BF16 CUDA mirror with eager torch.nn.functional.linear, tanh(logits/30)*30, argmax.",
+    "rendering": "AutoTokenizer.apply_chat_template(messages, tokenize=true, add_generation_prompt=true)",
+    "seed": 20260915,
+    "expected_tapes": 5,
+    "expected_requests": 11,
+    "expected_completion_tokens": 21705,
+    "expected_prefill_calls": 11,
+    "expected_decode_calls": 21694,
+    "eos_policy": "Record EOS positions but do not truncate; execute the frozen completion budget.",
+    "kv_policy": "Fresh cache per request; no cache crosses request boundaries.",
+    "fail_fast_on_first_token_divergence": true,
+    "progress_interval_tokens": 256,
+    "telemetry_interval_seconds": 1.0
+  },
+  "measurement": {
+    "paired_order": "Alternate CPU-first and CUDA-first by global token index.",
+    "common_time": "Wall time for CPU embeddings, transfers, and the common NF4 Transformer forward, bounded by CUDA synchronizations.",
+    "head_time": "Wall time for each head path from the common hidden state through softcap and scalar argmax; CUDA .item synchronizes the selected token.",
+    "counterfactual_path_time": "For each token, common_time + the corresponding measured head_time. The two path aggregates are paired counterfactuals, not two independent wall-clock replays.",
+    "cpu_head_warmup": 5,
+    "cuda_head_warmup": 20,
+    "minimum_end_to_end_speedup": 1.05,
+    "memory_clock_reference_mhz": 8000.0,
+    "minimum_memory_clock_ratio": 0.95
+  },
+  "correctness": {
+    "hard_gate": "CPU and CUDA softcap-preserving argmax token IDs must be identical at every one of the 21705 real decisions.",
+    "direct_fail": [
+      "NaN or Inf in hidden state or either head output",
+      "head shape, dtype, or device drift",
+      "CPU embedding CUDA allocation delta",
+      "cache geometry, dtype, device, or logical-length drift",
+      "original tied CPU Parameter, state_dict, NF4 topology, module identity, or device-map drift",
+      "CUDA OOM or peak allocated memory at or above 7.5 GiB"
+    ]
+  },
+  "no_sha_policy": {
+    "calculate_or_compare_sha": false,
+    "replacement_checks": [
+      "required input presence and model manifest byte sizes",
+      "direct 5-tape, 11-request, 21705-call census reconciliation",
+      "same-hidden-state exact token comparison for every executed decision",
+      "direct Parameter/tied-storage, state_dict, NF4 topology, device-map, cache, memory, and telemetry checks"
+    ]
+  },
+  "decision": {
+    "on_pass": "LM_HEAD_C02_LOCKSTEP_RECONNECTION_PASS_LOCAL_PATH_AUTHORIZED",
+    "on_token_fail": "LM_HEAD_C02_RECONNECTION_FAIL_CLOSE_TOKEN_EQUIVALENCE",
+    "on_performance_fail": "LM_HEAD_C02_RECONNECTION_FAIL_CLOSE_NO_END_TO_END_VALUE",
+    "on_invalid": "LM_HEAD_C02_RECONNECTION_INVALID_NO_DECISION",
+    "non_authorizations": [
+      "custom lm_head kernel implementation",
+      "cross-day or independent replication claims",
+      "board, llama.cpp, sm_100, or sm_120 extrapolation",
+      "moving or replacing the original tied CPU lm_head/embedding Parameter"
+    ]
+  }
+}

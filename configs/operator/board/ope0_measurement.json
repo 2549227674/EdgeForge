@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "stage": "OPE0",
+  "status": "PREREGISTERED_BEFORE_MEASUREMENT",
+  "date": "2026-09-18",
+  "environment_identity_ref": "results/operator/board/board_env_identity_20260918T1154+0800.json",
+  "clock_protocol": {
+    "absolute_time_authority": "controller_before_after_timestamps",
+    "elapsed_time_authority": "board_CLOCK_MONOTONIC_RAW",
+    "board_wall_clock": "advisory_only"
+  },
+  "telemetry": {
+    "interval_seconds": 1,
+    "fields": [
+      "cpufreq_policy0",
+      "cpufreq_policy4",
+      "cpufreq_policy6",
+      "npu_devfreq",
+      "dmc_devfreq",
+      "all_thermal_zones",
+      "governors",
+      "rknpu_load"
+    ],
+    "npu_load_crosscheck_interval_seconds": 0.1
+  },
+  "governor_protocol": {
+    "set": {
+      "cpufreq_policy4": "performance",
+      "cpufreq_policy6": "performance",
+      "npu_devfreq": "performance"
+    },
+    "leave_unchanged": [
+      "cpufreq_policy0",
+      "dmc_devfreq"
+    ],
+    "restore": "trap_to_exact_pre_run_values",
+    "receipt": "record_before_set_and_after_restore"
+  },
+  "bandwidth_ceiling": {
+    "kernel": "STREAM-style NEON triad C=A+scalar*B",
+    "element_dtype": "float64",
+    "analytic_bytes_per_element": 24,
+    "size_definition": "bytes_per_array",
+    "sizes_mib": [
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "threads": 4,
+    "taskset_cpus": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "compiler_baseline": "gcc -O3 -mcpu=cortex-a76 -fopenmp",
+    "warmup_repetitions_per_size": 50,
+    "measured_repetitions_per_size": 200,
+    "stable_segment_sizes_mib": [
+      256,
+      512,
+      1024
+    ],
+    "per_size_statistic": "p50_GB_per_s",
+    "ceiling_statistic": "median_of_stable_segment_per_size_p50",
+    "stable_segment_max_span_fraction": 0.15,
+    "formal_segments": 2,
+    "minimum_gap_seconds": 1800,
+    "between_segment_max_relative_delta": 0.1,
+    "tier_a_denominator": "median_of_two_segment_ceilings_after_both_segments_pass"
+  },
+  "matmul_selfcal": {
+    "api": "rknn_matmul_run",
+    "type": "RKNN_INT8_MM_INT8_TO_INT32",
+    "shape_mkn": [
+      4,
+      64,
+      32
+    ],
+    "a_layout": "normal",
+    "b_layout": "normal",
+    "c_layout": "normal",
+    "core_mask": "RKNN_NPU_CORE_0",
+    "input_pattern": "deterministic_bounded_int8",
+    "oracle": "CPU_int32_triple_loop",
+    "tolerance": "exact_elementwise",
+    "warmup_repetitions": 50,
+    "measured_repetitions": 200,
+    "load_crosscheck_hold_seconds": 8,
+    "timing_scope": "CPU_CLOCK_MONOTONIC_RAW_around_rknn_matmul_run_only"
+  },
+  "validity_gates": {
+    "telemetry_rows_required_in_every_timed_window": true,
+    "a76_frequency_min_fraction_of_policy_max": 0.95,
+    "npu_frequency_min_fraction_of_max_during_matmul": 0.95,
+    "rknpu_load_max_percent_must_exceed": 0,
+    "matmul_exact_mismatch_count": 0,
+    "governors_must_restore_exactly": true,
+    "thermal_zone_trip_observation": "report_all_zone_maxima_and_invalidate_on_observed_frequency_gate_failure"
+  },
+  "scope_guards": [
+    "no_driver_device_tree_kernel_or_shared_library_changes",
+    "no_multi_core_RKLLM_execution",
+    "no_model_quality_evaluation",
+    "no_write_to_frozen_model_directory"
+  ]
+}

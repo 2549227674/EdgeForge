@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-02-FP16-GEMV",
+  "status": "PREREGISTERED_FROZEN_NOT_RUN",
+  "frozen_at": "2026-09-21T14:27:00+08:00",
+  "formal_execution_started": false,
+  "candidate_implemented": false,
+  "selection": {
+    "candidate_id": "OPE5-02",
+    "kernel_id": "ope5_neon_fp16_gemv",
+    "decision": "FIRST_REMAINING_AFTER_VALID_OPE5_03_COMPLETION",
+    "scope_path": "configs/operator/board/ope5_fp16_gemv_scope.json",
+    "scope_sha256": "51c6d942cbd7fcd494ea076a48b434cbebb870365897ab7da965978e13c07068",
+    "scope": "One authentic decode down-projection geometry on four A76 cores: M=1,K=10240,N=2560, FP16 activation and row-major FP16 weights, FP32 accumulation/output. Measure one full-matrix invocation and derive, but do not measure, a 42-call projection.",
+    "four_question_statuses": {
+      "A_authenticity": "PASS_SHAPE_AND_FREQUENCY_ONLY",
+      "B_bottleneck": "PASS_DIAGNOSTIC_NOT_DEPLOYMENT_ATTRIBUTION",
+      "C_capability": "PASS_DESIGN",
+      "D_deliverability": "PASS_ISOLATED_LINEAGE_TABLE"
+    }
+  },
+  "sources": {
+    "scope_freeze": {
+      "path": "configs/operator/board/ope5_fp16_gemv_scope.json",
+      "sha256": "51c6d942cbd7fcd494ea076a48b434cbebb870365897ab7da965978e13c07068"
+    },
+    "ope5_backlog_triage": {
+      "path": "configs/operator/board/ope5_backlog_triage.json",
+      "sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539"
+    },
+    "ope1_shape_manifest": {
+      "path": "configs/operator/board/ope1_shape_manifest.json",
+      "sha256": "1b5f6a4690da92fcc2aa2213915280cda3ef866feab5fcbcfd06c702b781e05d"
+    },
+    "ope0_bandwidth_ceiling": {
+      "path": "results/operator/board/bandwidth_ceiling.json",
+      "sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9",
+      "ceiling_gbps_decimal": 23.1951846685,
+      "evidence_limit": "Single formal OPE0 segment; owner waived replication."
+    },
+    "ope2_receipt": {
+      "path": "results/operator/board/ope2/ope2_receipt_20260918.json",
+      "sha256": "b408e1aacff736ac2f40d46af6613953a7ae74e43a2bbb81b4874a12358b8819"
+    },
+    "ope2_cells": {
+      "path": "results/operator/board/ope2/ope2_cells_20260918.csv",
+      "sha256": "fa021d9d2c3057a07f6b6eadfa48116bccd3b783d074f7e0a54c0914e8f34fd7"
+    },
+    "ope3_receipt": {
+      "path": "results/operator/board/ope3/ope3_receipt_20260919.json",
+      "sha256": "5a3e96c095888b7ea9d96d93aee8463351affd05f8d77da8351dcee09f3e489e"
+    },
+    "ope3_three_horizontal": {
+      "path": "results/operator/board/ope3/ope3_three_horizontal_20260919.json",
+      "sha256": "53b7fbe41327d0b8809299af0e24fe33446724f84b12a5ba7e909f0abdff9531"
+    },
+    "ope4_receipt": {
+      "path": "results/operator/board/ope4/ope4_receipt_20260921.json",
+      "sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d"
+    },
+    "ope5_03_receipt": {
+      "path": "results/operator/board/ope5/ope5_receipt_20260921.json",
+      "sha256": "0e4eb654fe51b73e8ea41f888effc19921376caacb5440da31a2b2bb77cfacab"
+    },
+    "git_sha_at_freeze": "213460d88311cba5d84add4d3ee57aae26716c6d"
+  },
+  "semantic_contract": {
+    "operation": "For each output row n: y[n] = sum over k of float32(fp16(x[k])) * float32(fp16(w[n,k])).",
+    "m": 1,
+    "k": 10240,
+    "n": 2560,
+    "activation_dtype": "IEEE float16",
+    "weight_dtype": "IEEE float16",
+    "accumulator_dtype": "float32",
+    "output_dtype": "float32",
+    "bias": false,
+    "weight_layout": "row-major contiguous [N,K]",
+    "reduction_order": "Implementations may reassociate the reduction only within the frozen elementwise tolerance.",
+    "deployment_limit": "Only M/K/N and call frequency are deployment-authentic. FP16 CPU execution and row-major storage are cross-ISA comparator choices, not assertions about the closed W8A8 carrier."
+  },
+  "formal_shape": {
+    "shape_id": "decode_mlp_down_proj",
+    "phase": "decode",
+    "logical_mkn": [
+      1,
+      10240,
+      2560
+    ],
+    "calls_per_model_forward": 42,
+    "observed_model_forwards": 21694,
+    "observed_invocations": 911148,
+    "cpu_cores": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "threads": 4,
+    "output_partition": "Four fixed contiguous N/4=640-row partitions, one per pinned A76 worker; all variants use the same partition and synchronization path."
+  },
+  "analytic_account": {
+    "activation_read_bytes_per_call": 20480,
+    "weight_read_bytes_per_call": 52428800,
+    "output_write_bytes_per_call": 10240,
+    "total_bytes_per_call": 52459520,
+    "ops_per_call": 52428800,
+    "ops_per_byte": 0.999414405621706,
+    "bytes_for_42_call_projection": 2203299840,
+    "ops_for_42_call_projection": 2202009600,
+    "ope0_ceiling_gbps": 23.1951846685,
+    "roofline_floor_us_per_call": 2261.6556302413123,
+    "roofline_floor_ms_for_42_calls": 94.98953647013512,
+    "roofline_floor_percent_of_ope4_tpot": 21.2920746327831,
+    "int8_anchor_bytes_per_call": 26234880,
+    "fp16_to_int8_analytic_byte_ratio": 1.999609679937549,
+    "interpretation": "One FP16 call traverses a complete 52.4 MB matrix. The 42-call number is an arithmetic counterfactual with the same shape repeated, not a measured population and not 42 distinct layer weights."
+  },
+  "baselines": {
+    "scalar_fp32": {
+      "role": "timed scalar baseline",
+      "implementation": "Four pinned workers with identical output partitioning; scalar FP32 multiply-accumulate inner loop with function-scoped vectorization disabled."
+    },
+    "autovec_o3": {
+      "role": "compiler baseline",
+      "implementation": "The same four-worker semantic loop compiled with -O3 -mcpu=cortex-a76 and normal GCC auto-vectorization; retain vectorization diagnostics and disassembly, but vectorization is not a validity requirement."
+    },
+    "neon_fp16_f32acc": {
+      "role": "candidate",
+      "implementation": "Explicit AArch64 NEON eight-half loads, low/high FP16-to-FP32 conversion, and independent FP32 FMA accumulators; horizontal reduction produces one FP32 output. FP16 FMLAL is not required."
+    }
+  },
+  "correctness_protocol": {
+    "must_complete_before_timing": true,
+    "oracle": "Independent FP64 scalar reference, outside every timed region.",
+    "implementations_checked": [
+      "scalar_fp32",
+      "autovec_o3",
+      "neon_fp16_f32acc"
+    ],
+    "input_distributions": [
+      {
+        "id": "quarter_grid_exact",
+        "definition": "Activation and weight values are FP16-exact multiples of 0.25 in [-2,2].",
+        "atol": 0.0,
+        "rtol": 0.0,
+        "reason": "Products and the bounded K=10240 sum are exactly representable in FP32, so this corpus detects semantic or indexing errors without a tolerance escape."
+      },
+      {
+        "id": "unit_normal_clipped_3",
+        "definition": "Independent N(0,1) values clipped to [-3,3] and cast to FP16.",
+        "atol": 0.05,
+        "rtol": 0.001
+      },
+      {
+        "id": "wide_normal_std4_clipped_8",
+        "definition": "Independent N(0,4) values clipped to [-8,8] and cast to FP16.",
+        "atol": 0.05,
+        "rtol": 0.001
+      }
+    ],
+    "seeds": [
+      20260924,
+      20260925,
+      20260926
+    ],
+    "outputs_checked_per_case": 2560,
+    "expected_element_comparisons": 69120,
+    "comparison_formula": "3 implementations * 3 distributions * 3 seeds * 2560 outputs",
+    "structural_assertions": [
+      "all 2560 outputs are finite",
+      "output shape and contiguous layout match",
+      "activation and weight buffers are byte-identical before and after every implementation",
+      "all workers cover disjoint row ranges whose union is [0,2560)"
+    ],
+    "repair_kill": "After three candidate correctness repair iterations, stop and retain the failing corpus. Harness-only faults may be fixed only with an explicit attempt receipt before formal timing."
+  },
+  "implementation_identity": {
+    "candidate_source_path": "scripts/operator/board/ope5_fp16_gemv_bench.cpp",
+    "runner_path": "scripts/operator/board/run_ope5_fp16_gemv.sh",
+    "measurement_payload_path": "scripts/operator/board/ope5_fp16_gemv_measure_payload.sh",
+    "source_lock_rule": "These files do not exist at preregistration freeze. Before formal execution, hash all three plus this preregistration and the scope file into a source-lock receipt. Any later content change requires a transparent preregistration revision before another run.",
+    "formal_source_locked": false,
+    "codegen_gates": [
+      "scalar_fp32 disassembly must not contain vector floating-point multiply-accumulate in its inner kernel",
+      "neon_fp16_f32acc disassembly must show FP16-to-FP32 vector conversion and FP32 vector FMA instructions",
+      "autovec_o3 vectorization diagnostics and disassembly are retained, but lack of auto-vectorization does not invalidate the baseline"
+    ]
+  },
+  "measurement_protocol": {
+    "board": "Orange Pi 5 / RK3588S",
+    "primary_cpus": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "taskset": "4-7",
+    "threads": 4,
+    "thread_affinity": "Worker i is pinned to CPU 4+i before correctness and remains fixed for all variants.",
+    "governors_during_window": {
+      "policy4": "performance",
+      "policy6": "performance",
+      "npu": "unchanged/read-only"
+    },
+    "warmup_repetitions_per_variant": 50,
+    "timed_repetitions_per_variant_minimum": 200,
+    "timed_window_minimum_seconds_per_variant": 3.0,
+    "working_set": "One immutable 52,428,800-byte FP16 weight matrix, one 20,480-byte FP16 activation, and separate FP32 outputs. Every invocation traverses the complete matrix; no reduced-size cache proxy and no 42-matrix allocation.",
+    "interleave": "Use all six permutations of scalar_fp32/autovec_o3/neon_fp16_f32acc in round-robin blocks until every variant independently satisfies both the repetition and time minima.",
+    "clock": "CLOCK_MONOTONIC_RAW",
+    "summary": [
+      "p25_us",
+      "p50_us",
+      "p75_us",
+      "iqr_us",
+      "iqr_over_p50"
+    ],
+    "telemetry_hz": 1,
+    "frequency_gate": "Every timed-window sample for policy4 and policy6 must be at least 95% of that policy's recorded max frequency.",
+    "thermal_gate": "No timed-window thermal sample may equal or exceed the lowest enabled trip point recorded for its zone.",
+    "stability_gate": "IQR/p50 must be <=0.30 for all three variants. Instability invalidates the only formal segment; no automatic retry is authorized.",
+    "formal_segments": 1,
+    "owner_instruction": "不需要复测，取消同日复测，只测一次",
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "controller_clock": "Record controller timestamps immediately before and after the board process; use board CLOCK_MONOTONIC_RAW for durations.",
+    "smoke_policy": "No separate performance smoke, no reduced-shape timing, and no second formal segment. Randomized correctness is the only pre-timing execution gate.",
+    "failure_policy": "A failed correctness, codegen, affinity, frequency, thermal, stability, perf-event, source-lock, or governor-restore gate yields a bounded invalid single-segment receipt. Do not silently rerun or change the shape."
+  },
+  "tier_a": {
+    "per_call_gops_formula": "52428800 / p50_seconds / 1e9",
+    "per_call_gbps_formula": "52459520 / p50_seconds / 1e9",
+    "relative_score_formula": "measured_gbps / 23.1951846685",
+    "projection_42_calls_ms_formula": "42 * p50_us / 1000",
+    "projection_fraction_of_ope4_formula": "projection_42_calls_ms / 446.1262611013072",
+    "scope": "Report each variant per call. Only the candidate receives the explicit 42-call counterfactual projection."
+  },
+  "tier_b": {
+    "tool": "/home/orangepi/edgeforge_ope_r1/bin/perf",
+    "scope": "Collect once per variant after valid timing using repeated full invocations in the same single formal segment.",
+    "stat_events": [
+      "cycles:u",
+      "instructions:u",
+      "l2d_cache_refill:u",
+      "bus_access:u"
+    ],
+    "variants": [
+      "scalar_fp32",
+      "autovec_o3",
+      "neon_fp16_f32acc"
+    ],
+    "bus_access_policy": "Preserve the OPE3 rejection of bus_access count*64. Report count*8 only as a transferred-beat hypothesis diagnostic; it is not an analytic-byte acceptance gate.",
+    "required_gate": "All four named events must be numeric for all three variants; no raw-event substitution or post-measurement normalization.",
+    "perf_record": "Not required; this stage asks a same-shape dtype/ISA timing question, not a new symbol-hotspot question."
+  },
+  "anchors": {
+    "ope3_a76_int8": {
+      "lineage": "OPE3 int8 row-major [N,K], four A76 cores, neon_sdot",
+      "shape_mkn": [
+        1,
+        10240,
+        2560
+      ],
+      "p50_us": 944.7080005,
+      "analytic_bytes_per_call": 26234880,
+      "measured_gbps": 27.770358656976356,
+      "use": "Primary same-geometry CPU anchor. Report candidate p50/int8 p50 together with the 1.999609679937549 analytic-byte ratio; do not interpret the latency ratio as a pure dtype causal effect."
+    },
+    "ope2_npu_fp16": {
+      "lineage": "OPE2 rknn_matmul_run core0 normal-layout FP16 primitive",
+      "cell_id": "formal__decode_mlp_down_proj__fp16xfp16_to_fp32__core0__normal",
+      "p50_us": 4728.208,
+      "iqr_us": 0.583999,
+      "measured_gops": 11.088513872,
+      "measured_gbps": 11.095011048,
+      "memory_relative_to_ope0": 0.478332516,
+      "correctness_pass": true,
+      "use": "Reused context only; do not rerun and do not construct a hardware leaderboard."
+    },
+    "ope4": {
+      "metric": "C02 aggregate consecutive NORMAL callback interval",
+      "primary_decode_ms_per_token": 446.1262611013072,
+      "primary_process_cpu_cores_utilized": 0.6071224229634761,
+      "use": "Denominator for a counterfactual isolated 42-call ratio only; no component attribution or subtraction from TPOT."
+    }
+  },
+  "outcome_rules": {
+    "measurement_valid": "Scope/prereg/source-lock hashes, 69120 element comparisons, codegen, three timing populations, affinity, telemetry, governor restoration, all named perf events, and the one-segment identity must pass.",
+    "candidate_classification_vs_autovec": {
+      "positive": "autovec_p50 / candidate_p50 >= 1.05",
+      "parity": "0.95 <= autovec_p50 / candidate_p50 < 1.05",
+      "negative": "autovec_p50 / candidate_p50 < 0.95"
+    },
+    "cpu_dtype_path_ratio": "candidate_fp16_p50_us / 944.7080005; always co-report the 1.999609679937549 analytic-byte ratio and all lineage differences.",
+    "counterfactual_42_call_classification": {
+      "small": "projection < 10% of OPE4 TPOT",
+      "material": "10% <= projection <= 30% of OPE4 TPOT",
+      "large": "projection > 30% of OPE4 TPOT"
+    },
+    "performance_gain_required": false,
+    "major_gap_claim_prohibited": "No isolated result may be attributed to the OPE4 gap without a new carrier proving equivalent FP16 GEMV work is dispatched to CPU in the closed runtime.",
+    "time_kill": "Stop and write a bounded result if implementation plus the one formal segment exceeds two working days."
+  },
+  "claim_limits": [
+    "This protocol is frozen before candidate implementation and before any OPE5-02 board execution.",
+    "Only geometry and frequency are deployment-authentic; CPU FP16 dtype, row-major layout, and execution are isolated comparator choices.",
+    "The 42-call result is a p50 multiplication, not a measured full linear population, not 42 distinct layer weights, and not RKLLM component time.",
+    "OPE2 NPU FP16, OPE3 A76 int8, OPE4 model-stage, and any PC row remain lineage-separated and are not a hardware leaderboard.",
+    "OPE3 bus_access*64 remains rejected; count*8 is a diagnostic hypothesis only.",
+    "One formal segment is authorized; replication remains explicitly unsatisfied and no same-day retest or instability retry is scheduled.",
+    "No gate/up shape, prefill, A55 lane, NPU rerun, RKLLM model run, quality evaluation, driver/kernel/shared-library change, or frozen artifact mutation is authorized."
+  ]
+}

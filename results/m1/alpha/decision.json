@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "milestone": "M1",
+  "stage": "alpha_qualification",
+  "date": "2026-08-11",
+  "decision": "fail_branch_2",
+  "gradient_checkpointing_qualified": false,
+  "failed_gates": ["G1", "G2"],
+  "passed_gates": ["G3", "G4"],
+  "record_only_gates": ["G5"],
+  "g1_max_loss_relative_difference": 0.14986658406347417,
+  "g2_max_loss_relative_difference": 0.0015631681310589653,
+  "g3_top1_agreement": 1.0,
+  "g3_mean_abs_delta_logprob": 0.0,
+  "g4_checkpoint_on_peak_allocated_gib": 37.54615068435669,
+  "g5_throughput_ratio_2048": 0.8010665243120595,
+  "g5_throughput_ratio_4096": 0.8218714210058057,
+  "alpha3_checkpointed_long_ladder": "skipped_by_preregistered_semantic_failure_rule",
+  "next_stage": "T1_branch_2_render_4096_turn_level_segmentation",
+  "qualification_report": "results/m1/alpha_qualification.md"
+}

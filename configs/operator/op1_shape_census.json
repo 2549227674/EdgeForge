@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "stage": "OP1",
+  "frozen_at": "2026-09-15T16:01:29+08:00",
+  "carrier": "C02-S.O loaded with bitsandbytes NF4 on RTX 4060 Laptop GPU / sm_89 / WSL2",
+  "inputs": {
+    "tapes_manifest": "traces/tapes/manifest.json",
+    "tapes_manifest_sha256": "d0e98b875ae6aa6de1bc7122b75e6dc86fd2037e651832735b9f64c57c45091d",
+    "model": "models/C02-S.O-bf16-r1",
+    "model_manifest_sha256": "ee7d426d1e912a6c53cad1cd52739f26d7fff45b4a4f7429a4c08656f68dc5f2",
+    "model_config_sha256": "a866b497256661638db10c8d42e746f8ee2fc6434a637f00a032d00c6834a0f5",
+    "chat_template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+    "tokenizer_sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+    "p0_nf4_receipt": "results/operator/p0/c02_s_nf4_smoke_receipt.json",
+    "p0_nf4_receipt_sha256": "364d7fc93fe104bf4f3543ada7c2476e93ffd4ae4d8f5d8b7bccccea66053d4b",
+    "op0_receipt": "results/operator/op0/op0_receipt.json",
+    "op0_receipt_sha256": "86c3a2fa42b5a0c157e3880a4861efce330fb453025001f9c8752b387930261d"
+  },
+  "channel_a": {
+    "rendering": "AutoTokenizer.apply_chat_template(messages, tokenize=true, add_generation_prompt=true)",
+    "prompt_authorities": {
+      "formal_torch_carrier": "C02 frozen-template rendered token count",
+      "parallel_systems_reference": "frozen B0 reference_prompt_tokens; never silently substituted for C02 rendering"
+    },
+    "decode_accounting": "reference_completion_tokens includes the first token emitted by the prefill forward; incremental decode forwards = completion_tokens - 1",
+    "expected_card_facts": {
+      "tapes": 5,
+      "requests": 11,
+      "b0_prompt_min": 813,
+      "b0_prompt_median": 1445,
+      "b0_prompt_max": 7082,
+      "completion_min": 273,
+      "completion_median": 1987,
+      "completion_max": 4314,
+      "cached_min": 7,
+      "cached_median": 851,
+      "cached_max": 2010,
+      "b0_deepest_prompt_plus_completion": 9931
+    }
+  },
+  "channel_b": {
+    "selected_requests": [
+      {
+        "request_id": "sqlite-db-truncate__Z9iGbrN:1",
+        "selection_reason": "minimum frozen B0 prompt length (813)"
+      },
+      {
+        "request_id": "constraints-scheduling__aaSRUnD:2",
+        "selection_reason": "deepest frozen B0 prompt+completion envelope (9,931)"
+      }
+    ],
+    "profiled_incremental_decode_steps_per_request": 1,
+    "attention_implementation": "eager",
+    "torch_profiler": {
+      "activities": ["CPU", "CUDA"],
+      "record_shapes": true,
+      "profile_memory": false,
+      "with_stack": false,
+      "export_chrome_trace": false
+    },
+    "gpu_budget_gib": 7.5,
+    "seed": 20260915
+  },
+  "topology_assertions": {
+    "hidden_size": 2560,
+    "intermediate_size": 10240,
+    "num_hidden_layers": 42,
+    "num_attention_heads": 8,
+    "num_key_value_heads": 2,
+    "num_kv_shared_layers": 18,
+    "first_kv_shared_layer": 24,
+    "sliding_window": 512,
+    "sliding_layers_all": 35,
+    "full_layers_all": 7,
+    "nonshared_sliding_layers": 20,
+    "nonshared_full_layers": 4,
+    "sliding_head_dim": 256,
+    "full_head_dim": 512,
+    "vocab_size": 262144,
+    "hidden_size_per_layer_input": 256,
+    "linear4bit_calls_per_forward": 343,
+    "rmsnorm_calls_per_forward": 302,
+    "attention_calls_per_forward": 42,
+    "lm_head_calls_per_output_token": 1
+  }
+}

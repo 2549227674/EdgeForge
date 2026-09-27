@@ -1,0 +1,829 @@
+{
+  "schema_version": 1,
+  "milestone": "M1",
+  "candidate": "C01-S",
+  "status": "PASS",
+  "verified_at_utc": "2026-08-12T00:07:40.670532+00:00",
+  "hostname": "autodl-container-atdlpbjbca-22473649",
+  "verifier": "/root/autodl-tmp/edgeforge-m1/workspace/scripts/m1/verify_c01_s_completion.py",
+  "verifier_sha256": "a7a58bcad8edd4a4d741c59eb9cf5d5ab761cd0f7db4c8a5a5beebd343927a61",
+  "training": {
+    "report_path": "results/t2/c01_s_family_80_20_half_r1/report.json",
+    "report_sha256": "a950394e75a5f36db5030aac2c9b94c20f370229dada2e4fdc35d309cfbb7512",
+    "train_log": {
+      "path": "results/t2/c01_s_family_80_20_half_r1/train_log.jsonl",
+      "sha256": "dea532169fce287a3fcc685bb06434af508dcd9b4a54da78ef7cf837cf03c4e9",
+      "event_count": 4108,
+      "train_step_count": 4096,
+      "first_optimizer_step": 1,
+      "last_optimizer_step": 4096,
+      "validation_steps": [
+        0,
+        1024,
+        2048,
+        3072,
+        4096
+      ],
+      "checkpoint_steps": [
+        512,
+        1024,
+        1536,
+        2048,
+        2560,
+        3072,
+        3584
+      ],
+      "all_losses_finite_nonnegative": true,
+      "mean_weighted_loss": 0.8728151239794933,
+      "last_100_mean_weighted_loss": 0.8434060633556669,
+      "last_100_median_weighted_loss": 0.8351435790536925,
+      "min_weighted_loss": 0.43851943069603294,
+      "max_weighted_loss": 2.2492614139337093,
+      "elapsed_seconds_at_last_step": 33079.936185634695,
+      "learning_rate_at_last_step": 0.0,
+      "expected_learning_rate_at_last_step": 0.0,
+      "maximum_absolute_learning_rate_error": 2.710505431213761e-20
+    },
+    "frozen_input_reverification": {
+      "path": "results/t2/c01_s_frozen_inputs_reverification.json",
+      "sha256": "3a85a355dec4b198e12b8d579bfcdbcd00293b5fb4b723a7d8f6fefe09ef89b0",
+      "verifier_sha256": "60936d67007ea938ab9ec709f8e31e6157c32f44f21b1086ae64d81d72738832",
+      "rank_audits": [
+        {
+          "rank": 0,
+          "records": 41901,
+          "input_tokens": 75994420,
+          "supervised_tokens": 45422524
+        },
+        {
+          "rank": 1,
+          "records": 39856,
+          "input_tokens": 72430891,
+          "supervised_tokens": 43063738
+        }
+      ],
+      "plan_payload_totals": {
+        "records": 81757,
+        "input_tokens": 148425311,
+        "supervised_tokens": 88486262
+      },
+      "holdout_payload_totals": {
+        "records": 1948,
+        "unique_uids": 1948,
+        "input_tokens_from_offsets": 3483799,
+        "shifted_supervised_tokens_from_labels": 1964016
+      },
+      "training_holdout_intersection": 0
+    },
+    "live_process_identity": {
+      "path": "results/m1/c01_s_live_process_identity_receipt.json",
+      "sha256": "bcf075b0df664bba1dc6c68eca16a5c5d6d5284f4e245b85a1643b2f44d6b685",
+      "captured_at_utc": "2026-08-11T17:11:10.929271+00:00",
+      "rank_pids": [
+        4612,
+        4613
+      ],
+      "model_shape": {
+        "model_type": "gemma4",
+        "num_hidden_layers": 42,
+        "hidden_size": 2560,
+        "sliding_window": 512
+      },
+      "packages": {
+        "torch": "2.11.0+cu128",
+        "transformers": "5.14.1",
+        "peft": "0.20.0",
+        "bitsandbytes": "0.50.0",
+        "accelerate": "1.14.0",
+        "pyarrow": "25.0.1",
+        "safetensors": "0.8.0"
+      },
+      "gpus": [
+        "0, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-a3fac8bd-e875-cb24-ab61-fd2381e5fd6c, 595.71.05, 97887",
+        "1, NVIDIA RTX PRO 6000 Blackwell Server Edition, GPU-85cfd8ef-1f32-1cc8-16ff-6f1c5767e183, 595.71.05, 97887"
+      ],
+      "file_identities": {
+        "scripts/m1/train_recipe_race.py": "f82e51b964df452911f5d42b792e63b667266f0378d00b6115147a9d5b8d456a",
+        "results/t1/family_80_20_half_plan_r1/family_80_20.parquet": "61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e",
+        "results/t1/family_80_20_half_plan_r1/holdout.parquet": "0a28a7f7b52a01f7a73ccdf927f98ac21902f8037ef236db4f86d5024a67d73b",
+        "models/gemma-4-E4B-it/chat_template.jinja": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "models/gemma-4-E4B-it/config.json": "33b10c02df3c2e8536cf323d29d53262aaa2f4d11dbe19bc729373fbe90295d4"
+      },
+      "train_log_snapshot": {
+        "path": "results/t2/c01_s_family_80_20_half_r1/train_log.jsonl",
+        "sha256_at_capture": "49a9dfe262766bdbf06118060cdfecbe92c4e43656ae57f03cf6345ef74e2fe8",
+        "event_count": 1078,
+        "last_optimizer_step": 1074,
+        "validation_steps": [
+          0,
+          1024
+        ],
+        "checkpoint_steps": [
+          512,
+          1024
+        ],
+        "all_observed_losses_finite": true
+      },
+      "scope": "live process, command, environment, input and runtime identity",
+      "limitation": "File hashes were observed while the already-running ranks were alive; this is not a cryptographic attestation of pre-exec file contents.",
+      "generator_sha256": "20df0714f41a3e1956b0c0daa24883705219f2b6e9f9e34f89fba4d157d8bdac"
+    },
+    "numeric_path": {
+      "base_compute_dtype": "bfloat16",
+      "adapter_trainable_dtype": "float32",
+      "optimizer_moment_dtype": "float32",
+      "final_merge_required_dtype": "bfloat16",
+      "owner_decision_date": "2026-08-12"
+    },
+    "intermediate_checkpoint_steps": [
+      512,
+      1024,
+      1536,
+      2048,
+      2560,
+      3072,
+      3584
+    ],
+    "intermediate_checkpoints": [
+      {
+        "path": "results/t2/c01_s_family_80_20_half_r1/checkpoints/step-00512",
+        "completed_steps": 512,
+        "evaluation_steps": [
+          0
+        ],
+        "rank_audits": [
+          {
+            "rank": 0,
+            "local_rank": 0,
+            "seed": 20260811,
+            "records": 5213,
+            "input_tokens": 9566248,
+            "supervised_tokens": 5707184,
+            "peak_allocated_gib": 86.65991306304932,
+            "peak_reserved_gib": 87.4453125
+          },
+          {
+            "rank": 1,
+            "local_rank": 1,
+            "seed": 20260812,
+            "records": 4965,
+            "input_tokens": 8988519,
+            "supervised_tokens": 5316093,
+            "peak_allocated_gib": 86.65991306304932,
+            "peak_reserved_gib": 87.908203125
+          }
+        ],
+        "rng_ranks": [
+          0,
+          1
+        ],
+        "scheduler_last_epoch": 512,
+        "files": [
+          {
+            "path": "READY",
+            "bytes": 9,
+            "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+          },
+          {
+            "path": "adapter/README.md",
+            "bytes": 5196,
+            "sha256": "6a369ffd0c2d8faf04f11e374228788bdb6d63f9d006215a273f8ad032301ec9"
+          },
+          {
+            "path": "adapter/adapter_config.json",
+            "bytes": 10162,
+            "sha256": "c3b3d2588b0d1eeea5aa84df262ed3cfca605306990e9c00aead78ef65c1fe4a"
+          },
+          {
+            "path": "adapter/adapter_model.safetensors",
+            "bytes": 101178872,
+            "sha256": "a7658d0e2f9b9660b234d94d66fce485f7c170a1a7d3a99be7a1526e2af0aba7"
+          },
+          {
+            "path": "continuation_state.pt",
+            "bytes": 156128677,
+            "sha256": "a61e981cd56d20a3b3771845c388d8e99f32afa63a49d02fbfbea2adb185860e"
+          }
+        ],
+        "artifact_set_sha256": "b9ae6b7a8c489a36259a2ecc115476c903d99c935c537e677ba13fdbafa8156d",
+        "numeric_path_inventory": {
+          "ready_marker": "complete",
+          "adapter_config": {
+            "r": 8,
+            "lora_alpha": 16,
+            "lora_dropout": 0.0,
+            "bias": "none"
+          },
+          "adapter_tensor_count": 1184,
+          "adapter_dtype_numel": {
+            "torch.float32": 25249792
+          },
+          "adapter_nonfinite_values": 0,
+          "optimizer_state_entries": 686,
+          "optimizer_moment_dtype_numel": {
+            "exp_avg": {
+              "torch.float32": 19439616
+            },
+            "exp_avg_sq": {
+              "torch.float32": 19439616
+            }
+          },
+          "optimizer_moment_nonfinite_values": {
+            "exp_avg": 0,
+            "exp_avg_sq": 0
+          }
+        }
+      },
+      {
+        "path": "results/t2/c01_s_family_80_20_half_r1/checkpoints/step-01024",
+        "completed_steps": 1024,
+        "evaluation_steps": [
+          0,
+          1024
+        ],
+        "rank_audits": [
+          {
+            "rank": 0,
+            "local_rank": 0,
+            "seed": 20260811,
+            "records": 10444,
+            "input_tokens": 19030950,
+            "supervised_tokens": 11364753,
+            "peak_allocated_gib": 86.65991353988647,
+            "peak_reserved_gib": 87.77734375
+          },
+          {
+            "rank": 1,
+            "local_rank": 1,
+            "seed": 20260812,
+            "records": 9941,
+            "input_tokens": 18075606,
+            "supervised_tokens": 10790325,
+            "peak_allocated_gib": 86.65991353988647,
+            "peak_reserved_gib": 87.912109375
+          }
+        ],
+        "rng_ranks": [
+          0,
+          1
+        ],
+        "scheduler_last_epoch": 1024,
+        "files": [
+          {
+            "path": "READY",
+            "bytes": 9,
+            "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+          },
+          {
+            "path": "adapter/README.md",
+            "bytes": 5196,
+            "sha256": "6a369ffd0c2d8faf04f11e374228788bdb6d63f9d006215a273f8ad032301ec9"
+          },
+          {
+            "path": "adapter/adapter_config.json",
+            "bytes": 10162,
+            "sha256": "c3b3d2588b0d1eeea5aa84df262ed3cfca605306990e9c00aead78ef65c1fe4a"
+          },
+          {
+            "path": "adapter/adapter_model.safetensors",
+            "bytes": 101178872,
+            "sha256": "b38a14985adac1b49e05f42018a81c07808ee23daef54d59d9271ea3764ff702"
+          },
+          {
+            "path": "continuation_state.pt",
+            "bytes": 156128741,
+            "sha256": "e30ceab6734be48950618e8e00f5f596f18d2f2c47ccbac13d96671c25730bdf"
+          }
+        ],
+        "artifact_set_sha256": "60459f608aef49304e8a4f093d0d17be8efc2c31f6084873aa3d99aaa6d7afd3"
+      },
+      {
+        "path": "results/t2/c01_s_family_80_20_half_r1/checkpoints/step-01536",
+        "completed_steps": 1536,
+        "evaluation_steps": [
+          0,
+          1024
+        ],
+        "rank_audits": [
+          {
+            "rank": 0,
+            "local_rank": 0,
+            "seed": 20260811,
+            "records": 15723,
+            "input_tokens": 28481794,
+            "supervised_tokens": 16972304,
+            "peak_allocated_gib": 86.65991353988647,
+            "peak_reserved_gib": 87.896484375
+          },
+          {
+            "rank": 1,
+            "local_rank": 1,
+            "seed": 20260812,
+            "records": 14987,
+            "input_tokens": 27177991,
+            "supervised_tokens": 16322371,
+            "peak_allocated_gib": 86.65991353988647,
+            "peak_reserved_gib": 87.912109375
+          }
+        ],
+        "rng_ranks": [
+          0,
+          1
+        ],
+        "scheduler_last_epoch": 1536,
+        "files": [
+          {
+            "path": "READY",
+            "bytes": 9,
+            "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+          },
+          {
+            "path": "adapter/README.md",
+            "bytes": 5196,
+            "sha256": "6a369ffd0c2d8faf04f11e374228788bdb6d63f9d006215a273f8ad032301ec9"
+          },
+          {
+            "path": "adapter/adapter_config.json",
+            "bytes": 10162,
+            "sha256": "c3b3d2588b0d1eeea5aa84df262ed3cfca605306990e9c00aead78ef65c1fe4a"
+          },
+          {
+            "path": "adapter/adapter_model.safetensors",
+            "bytes": 101178872,
+            "sha256": "20804f7b0904eeba2efe90253e3488f7a62f2ebdadda0d6e2405aa03afa2a1c2"
+          },
+          {
+            "path": "continuation_state.pt",
+            "bytes": 156128741,
+            "sha256": "3bd754e60633bee70288ac5609bc34ca15d19a02a48184f26dcb7a2ecab9b184"
+          }
+        ],
+        "artifact_set_sha256": "b395ca8469554dad694b4ff0744184c12706e324d43c8820df2fa8fa257760a8"
+      },
+      {
+        "path": "results/t2/c01_s_family_80_20_half_r1/checkpoints/step-02048",
+        "completed_steps": 2048,
+        "evaluation_steps": [
+          0,
+          1024,
+          2048
+        ],
+        "rank_audits": [
+          {
+            "rank": 0,
+            "local_rank": 0,
+            "seed": 20260811,
+            "records": 20887,
+            "input_tokens": 37971956,
+            "supervised_tokens": 22750618,
+            "peak_allocated_gib": 86.65991353988647,
+            "peak_reserved_gib": 87.896484375
+          },
+          {
+            "rank": 1,
+            "local_rank": 1,
+            "seed": 20260812,
+            "records": 19889,
+            "input_tokens": 36244107,
+            "supervised_tokens": 21630987,
+            "peak_allocated_gib": 86.65991353988647,
+            "peak_reserved_gib": 87.9140625
+          }
+        ],
+        "rng_ranks": [
+          0,
+          1
+        ],
+        "scheduler_last_epoch": 2048,
+        "files": [
+          {
+            "path": "READY",
+            "bytes": 9,
+            "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+          },
+          {
+            "path": "adapter/README.md",
+            "bytes": 5196,
+            "sha256": "6a369ffd0c2d8faf04f11e374228788bdb6d63f9d006215a273f8ad032301ec9"
+          },
+          {
+            "path": "adapter/adapter_config.json",
+            "bytes": 10162,
+            "sha256": "c3b3d2588b0d1eeea5aa84df262ed3cfca605306990e9c00aead78ef65c1fe4a"
+          },
+          {
+            "path": "adapter/adapter_model.safetensors",
+            "bytes": 101178872,
+            "sha256": "5f4bf9fab862c053ccf327d08333eff1ed21ab442b8af6b8faf22c42cf66b944"
+          },
+          {
+            "path": "continuation_state.pt",
+            "bytes": 156128869,
+            "sha256": "b9cd8453cf2e064c9fe6964658e021bfebf79abe8a30cae98ed99858862068ed"
+          }
+        ],
+        "artifact_set_sha256": "cf5f7658b958b5128a016665c94b8bdb26ca5adb5c8fb2916fade884d99f2526"
+      },
+      {
+        "path": "results/t2/c01_s_family_80_20_half_r1/checkpoints/step-02560",
+        "completed_steps": 2560,
+        "evaluation_steps": [
+          0,
+          1024,
+          2048
+        ],
+        "rank_audits": [
+          {
+            "rank": 0,
+            "local_rank": 0,
+            "seed": 20260811,
+            "records": 26188,
+            "input_tokens": 47499159,
+            "supervised_tokens": 28389680,
+            "peak_allocated_gib": 86.65991353988647,
+            "peak_reserved_gib": 87.916015625
+          },
+          {
+            "rank": 1,
+            "local_rank": 1,
+            "seed": 20260812,
+            "records": 24918,
+            "input_tokens": 45266870,
+            "supervised_tokens": 26959328,
+            "peak_allocated_gib": 86.65991353988647,
+            "peak_reserved_gib": 87.9140625
+          }
+        ],
+        "rng_ranks": [
+          0,
+          1
+        ],
+        "scheduler_last_epoch": 2560,
+        "files": [
+          {
+            "path": "READY",
+            "bytes": 9,
+            "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+          },
+          {
+            "path": "adapter/README.md",
+            "bytes": 5196,
+            "sha256": "6a369ffd0c2d8faf04f11e374228788bdb6d63f9d006215a273f8ad032301ec9"
+          },
+          {
+            "path": "adapter/adapter_config.json",
+            "bytes": 10162,
+            "sha256": "c3b3d2588b0d1eeea5aa84df262ed3cfca605306990e9c00aead78ef65c1fe4a"
+          },
+          {
+            "path": "adapter/adapter_model.safetensors",
+            "bytes": 101178872,
+            "sha256": "9bb6cf02421b67c487342432dcd499e120840d9f96b0f01764ac9e6979bc803f"
+          },
+          {
+            "path": "continuation_state.pt",
+            "bytes": 156128869,
+            "sha256": "e96283787e785495f88c5bc85471de23e4674a0c8e63b646b07fc2e9e61b3fed"
+          }
+        ],
+        "artifact_set_sha256": "2ea5fa9516e74a2032ad259fd4f092241f877b07cd0d6fa258c1dc8d21bad00c"
+      },
+      {
+        "path": "results/t2/c01_s_family_80_20_half_r1/checkpoints/step-03072",
+        "completed_steps": 3072,
+        "evaluation_steps": [
+          0,
+          1024,
+          2048,
+          3072
+        ],
+        "rank_audits": [
+          {
+            "rank": 0,
+            "local_rank": 0,
+            "seed": 20260811,
+            "records": 31384,
+            "input_tokens": 56975801,
+            "supervised_tokens": 34053930,
+            "peak_allocated_gib": 86.65991353988647,
+            "peak_reserved_gib": 87.916015625
+          },
+          {
+            "rank": 1,
+            "local_rank": 1,
+            "seed": 20260812,
+            "records": 29848,
+            "input_tokens": 54343257,
+            "supervised_tokens": 32392076,
+            "peak_allocated_gib": 86.65991353988647,
+            "peak_reserved_gib": 87.9140625
+          }
+        ],
+        "rng_ranks": [
+          0,
+          1
+        ],
+        "scheduler_last_epoch": 3072,
+        "files": [
+          {
+            "path": "READY",
+            "bytes": 9,
+            "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+          },
+          {
+            "path": "adapter/README.md",
+            "bytes": 5196,
+            "sha256": "6a369ffd0c2d8faf04f11e374228788bdb6d63f9d006215a273f8ad032301ec9"
+          },
+          {
+            "path": "adapter/adapter_config.json",
+            "bytes": 10162,
+            "sha256": "c3b3d2588b0d1eeea5aa84df262ed3cfca605306990e9c00aead78ef65c1fe4a"
+          },
+          {
+            "path": "adapter/adapter_model.safetensors",
+            "bytes": 101178872,
+            "sha256": "8bd266cfd015274cfd8308ef63c43c8887a8ac5c9f54178160610c3942012478"
+          },
+          {
+            "path": "continuation_state.pt",
+            "bytes": 156128997,
+            "sha256": "56372d22d971cb8273aeb82fc9813d147c5e18242fb9bcb83dc2a998bb39e48e"
+          }
+        ],
+        "artifact_set_sha256": "4cda6ee58db6ac120d9f1d7ff5236da76afc0501d8201071754d8f9ed5b82660"
+      },
+      {
+        "path": "results/t2/c01_s_family_80_20_half_r1/checkpoints/step-03584",
+        "completed_steps": 3584,
+        "evaluation_steps": [
+          0,
+          1024,
+          2048,
+          3072
+        ],
+        "rank_audits": [
+          {
+            "rank": 0,
+            "local_rank": 0,
+            "seed": 20260811,
+            "records": 36610,
+            "input_tokens": 66546487,
+            "supervised_tokens": 39693429,
+            "peak_allocated_gib": 86.65991353988647,
+            "peak_reserved_gib": 87.916015625
+          },
+          {
+            "rank": 1,
+            "local_rank": 1,
+            "seed": 20260812,
+            "records": 34824,
+            "input_tokens": 63325713,
+            "supervised_tokens": 37732296,
+            "peak_allocated_gib": 86.65991353988647,
+            "peak_reserved_gib": 87.9140625
+          }
+        ],
+        "rng_ranks": [
+          0,
+          1
+        ],
+        "scheduler_last_epoch": 3584,
+        "files": [
+          {
+            "path": "READY",
+            "bytes": 9,
+            "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+          },
+          {
+            "path": "adapter/README.md",
+            "bytes": 5196,
+            "sha256": "6a369ffd0c2d8faf04f11e374228788bdb6d63f9d006215a273f8ad032301ec9"
+          },
+          {
+            "path": "adapter/adapter_config.json",
+            "bytes": 10162,
+            "sha256": "c3b3d2588b0d1eeea5aa84df262ed3cfca605306990e9c00aead78ef65c1fe4a"
+          },
+          {
+            "path": "adapter/adapter_model.safetensors",
+            "bytes": 101178872,
+            "sha256": "71692034f3b28eda3db02fe6460f8146305f009d29ead2c1543053b6bc35177c"
+          },
+          {
+            "path": "continuation_state.pt",
+            "bytes": 156128997,
+            "sha256": "a7f766a2f345faa761e2de077108cd53cd4470580d7e44b007e4a44c9ea59820"
+          }
+        ],
+        "artifact_set_sha256": "496f9667c6582c0c6b7eddcc5aecfc94376d643767b92adefae2dd1c92cceb6e"
+      }
+    ],
+    "final_checkpoint": {
+      "path": "results/t2/c01_s_family_80_20_half_r1",
+      "completed_steps": 4096,
+      "evaluation_steps": [
+        0,
+        1024,
+        2048,
+        3072,
+        4096
+      ],
+      "rank_audits": [
+        {
+          "rank": 0,
+          "local_rank": 0,
+          "seed": 20260811,
+          "records": 41901,
+          "input_tokens": 75994420,
+          "supervised_tokens": 45422524,
+          "peak_allocated_gib": 86.65991353988647,
+          "peak_reserved_gib": 87.916015625
+        },
+        {
+          "rank": 1,
+          "local_rank": 1,
+          "seed": 20260812,
+          "records": 39856,
+          "input_tokens": 72430891,
+          "supervised_tokens": 43063738,
+          "peak_allocated_gib": 86.65991353988647,
+          "peak_reserved_gib": 87.9140625
+        }
+      ],
+      "rng_ranks": [
+        0,
+        1
+      ],
+      "scheduler_last_epoch": 4096,
+      "files": [
+        {
+          "path": "READY",
+          "bytes": 9,
+          "sha256": "37a40f08d8548dba289b9b0bb35bcf63b359f6d37ee86044ebc6b6da080b9ec1"
+        },
+        {
+          "path": "adapter/README.md",
+          "bytes": 5196,
+          "sha256": "6a369ffd0c2d8faf04f11e374228788bdb6d63f9d006215a273f8ad032301ec9"
+        },
+        {
+          "path": "adapter/adapter_config.json",
+          "bytes": 10162,
+          "sha256": "c3b3d2588b0d1eeea5aa84df262ed3cfca605306990e9c00aead78ef65c1fe4a"
+        },
+        {
+          "path": "adapter/adapter_model.safetensors",
+          "bytes": 101178872,
+          "sha256": "686ff4871947ba86c9830aaa2a33ad0f53cc09fc23db7feb10fa06473251c417"
+        },
+        {
+          "path": "continuation_state.pt",
+          "bytes": 156129637,
+          "sha256": "6777e64807385f43fbf65095707d10135a0d463eb41794b1afe6b23c67a36cba"
+        }
+      ],
+      "artifact_set_sha256": "fed86daa47959cdc7d923f6b39b522a89f7ba05401659f0ca84360d081ed6a99",
+      "run_directory_entries": [
+        "READY",
+        "adapter",
+        "checkpoints",
+        "continuation_state.pt",
+        "report.json",
+        "train_log.jsonl"
+      ],
+      "numeric_path_inventory": {
+        "ready_marker": "complete",
+        "adapter_config": {
+          "r": 8,
+          "lora_alpha": 16,
+          "lora_dropout": 0.0,
+          "bias": "none"
+        },
+        "adapter_tensor_count": 1184,
+        "adapter_dtype_numel": {
+          "torch.float32": 25249792
+        },
+        "adapter_nonfinite_values": 0,
+        "optimizer_state_entries": 686,
+        "optimizer_moment_dtype_numel": {
+          "exp_avg": {
+            "torch.float32": 19439616
+          },
+          "exp_avg_sq": {
+            "torch.float32": 19439616
+          }
+        },
+        "optimizer_moment_nonfinite_values": {
+          "exp_avg": 0,
+          "exp_avg_sq": 0
+        }
+      }
+    },
+    "evaluation_steps": [
+      0,
+      1024,
+      2048,
+      3072,
+      4096
+    ],
+    "rank_audits": [
+      {
+        "rank": 0,
+        "local_rank": 0,
+        "seed": 20260811,
+        "records": 41901,
+        "input_tokens": 75994420,
+        "supervised_tokens": 45422524,
+        "peak_allocated_gib": 86.65991353988647,
+        "peak_reserved_gib": 87.916015625
+      },
+      {
+        "rank": 1,
+        "local_rank": 1,
+        "seed": 20260812,
+        "records": 39856,
+        "input_tokens": 72430891,
+        "supervised_tokens": 43063738,
+        "peak_allocated_gib": 86.65991353988647,
+        "peak_reserved_gib": 87.9140625
+      }
+    ]
+  },
+  "candidate_artifact": {
+    "path": "models/C01-S-bf16-r1",
+    "merge_script_sha256": "804c9392405715e8949c470a6213c4fc3891241a45a168faf7d7d3fd87c548e2",
+    "training_report_sha256": "a950394e75a5f36db5030aac2c9b94c20f370229dada2e4fdc35d309cfbb7512",
+    "adapter_artifact_set_sha256": "132e98e2dcc28851894c4295981d0e08708a7dde11384b21ec583bb58d3646c4",
+    "base_model": "models/gemma-4-E4B-it",
+    "base_model_safetensors_sha256": "cfbd3d2f1cd71bd471c37fe2bf8546d5028d41e5736f64e1ca6c6b8893125503",
+    "manifest_sha256": "89fed9d97eeb95847d41a11ad55b751a69d6ce1d9df827852f56dc12bf0998d0",
+    "artifact_set_sha256": "1eebd3e1302a502ce41a9416267219e70cec63ac69ea20429dd97bd47ba9a133",
+    "total_bytes": 15914883568,
+    "file_count_excluding_manifest": 11,
+    "tensor_inventory": {
+      "shard_count": 4,
+      "tensor_count": 2076,
+      "dtype_numel": {
+        "BF16": 7941101802
+      },
+      "all_tensors_bf16": true,
+      "lora_tensor_count": 0
+    },
+    "cpu_reload": {
+      "model_class": "Gemma4ForConditionalGeneration",
+      "parameter_tensors": 1106,
+      "parameter_dtype_numel": {
+        "torch.bfloat16": 7941100832
+      },
+      "lora_parameter_count": 0
+    },
+    "processor_assets": [
+      {
+        "path": "chat_template.jinja",
+        "bytes": 18569,
+        "source_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+        "candidate_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5"
+      },
+      {
+        "path": "processor_config.json",
+        "bytes": 1689,
+        "source_sha256": "32bdf45d2ad4cc29a0822ddd157a182de76644f0419a6228d151495256e9813c",
+        "candidate_sha256": "32bdf45d2ad4cc29a0822ddd157a182de76644f0419a6228d151495256e9813c"
+      },
+      {
+        "path": "tokenizer.json",
+        "bytes": 32169626,
+        "source_sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+        "candidate_sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f"
+      },
+      {
+        "path": "tokenizer_config.json",
+        "bytes": 2095,
+        "source_sha256": "90c3a3ba5bf53818383a58e1a776cbcacd2a038d4812eaa373e1522f2d06f3df",
+        "candidate_sha256": "90c3a3ba5bf53818383a58e1a776cbcacd2a038d4812eaa373e1522f2d06f3df"
+      }
+    ]
+  },
+  "gates": {
+    "family_80_20_half_plan_identity": "PASS",
+    "plan_offsets_labels_and_rank_allocation": "PASS",
+    "two_rank_4096_step_training": "PASS",
+    "live_two_rank_runtime_identity": "PASS",
+    "contiguous_finite_train_log_and_exact_lr_schedule": "PASS",
+    "exact_148425311_input_tokens": "PASS",
+    "exact_88486262_supervised_tokens": "PASS",
+    "five_finite_full_holdout_evaluations": "PASS",
+    "step_00512_checkpoint_integrity_and_loadability": "PASS",
+    "all_512_step_intermediate_checkpoints": "PASS",
+    "final_4096_checkpoint": "PASS",
+    "end_to_end_resume_smoke": "WAIVED_BY_OWNER",
+    "fp32_lora_and_optimizer_dtype": "PASS_OWNER_ACCEPTED",
+    "rank_consumption_audit": "PASS",
+    "complete_candidate_file_hashes": "PASS",
+    "all_merged_tensors_bf16": "PASS",
+    "zero_residual_lora_tensors": "PASS",
+    "merged_model_cpu_reload": "PASS",
+    "processor_assets_byte_identical": "PASS"
+  }
+}

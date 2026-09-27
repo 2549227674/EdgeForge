@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_NCU_R3",
+  "frozen_at": "2026-09-16T17:40:08+08:00",
+  "revision_type": "OWNER_AUTHORIZED_ADAPTIVE_OVERRIDE_AFTER_POSITIVE_DAY1",
+  "owner_instruction": "确认，执行，顺便整理那些历史台账，如果没有保留价值可以删去",
+  "disclosure": "The original K3 R1 cross-day replication and the subsequently prepared R2 same-day replication are both waived by explicit owner direction after the positive Day-1 result. R2 measurement never started. R3 authorizes ncu attribution directly from the single valid positive Day-1 evidence and must not be described as satisfying a replication gate.",
+  "identity_policy": {
+    "sha256_calculation": "SKIPPED_BY_OWNER_DIRECTION",
+    "sha256_comparison": "SKIPPED_BY_OWNER_DIRECTION",
+    "required_status_checks": [
+      "formal correctness receipt is PASS",
+      "Day-1 result and receipt are K3_PROVISIONAL_DAY1_POSITIVE",
+      "R2 replication receipt is SUPERSEDED_UNEXECUTED_BY_OWNER",
+      "CUDA device is sm_89",
+      "ncu exits successfully with all requested metrics"
+    ]
+  },
+  "sources": {
+    "original_protocol_path": "configs/operator/k3_gqa_decode_attention_prereg.json",
+    "candidate_path": "scripts/operator/k3_gqa_attention.py",
+    "correctness_receipt_path": "results/operator/pool/k3_gqa_correctness_receipt_20260916.json",
+    "day1_result_path": "results/operator/pool/k3_gqa_day1_20260916.json",
+    "day1_receipt_path": "results/operator/pool/k3_gqa_day1_receipt_20260916.json",
+    "r2_replication_receipt_path": "results/operator/pool/k3_gqa_replication_override_r2_receipt_20260916.json"
+  },
+  "toolchain": {
+    "ncu_path": "/usr/local/cuda/bin/ncu",
+    "expected_version": "2025.1.1.0",
+    "counter_permission": "PASS inherited from OP4 readiness and successful OP4 formal attribution"
+  },
+  "formal_cases": [
+    {"case": "sliding_k512_d256", "family": "sliding", "K": 512, "D": 256},
+    {"case": "full_k2897_d512", "family": "full", "K": 2897, "D": 512},
+    {"case": "full_k6455_d512", "family": "full", "K": 6455, "D": 512}
+  ],
+  "attribution_protocol": {
+    "input_seed": 20261011,
+    "warmup_candidate_calls_per_case": 50,
+    "profiled_candidate_calls_per_case": 1,
+    "expected_kernels_per_candidate_call": 3,
+    "expected_profiled_kernel_launches": 9,
+    "kernel_order_per_case": ["_gqa_score_kernel", "_gqa_softmax_kernel", "_gqa_pv_kernel"],
+    "metrics": [
+      "dram__bytes.sum",
+      "dram__throughput.avg.pct_of_peak_sustained_elapsed",
+      "sm__throughput.avg.pct_of_peak_sustained_elapsed",
+      "gpu__time_duration.sum"
+    ],
+    "primary_metric": "dram__bytes.sum",
+    "cache_control": "all",
+    "replay_mode": "kernel",
+    "profile_control": "--profile-from-start off with cudaProfilerStart/Stop around exactly one candidate call for each case",
+    "ncu_duration_use": "diagnostic only; Day-1 CUDA-event p50 remains the performance timing",
+    "analytic_tolerance_fraction": 0.15,
+    "tier_b_override": "When total measured dram__bytes.sum across the three kernels differs from Tier-A compulsory unique bytes by more than 15%, measured bytes become authoritative for that case."
+  },
+  "telemetry_gate": {
+    "interval_seconds": 1.0,
+    "minimum_samples": 2,
+    "op0_memory_clock_mhz_p50": 8000.0,
+    "minimum_memory_clock_ratio_vs_op0": 0.95,
+    "invalidate_on_thermal_or_hardware_throttle": true
+  },
+  "success_policy": {
+    "required": [
+      "exactly 9 profiled Triton kernel launches map in the frozen three-stage order",
+      "all requested metrics are present",
+      "every kernel has positive DRAM bytes and duration",
+      "all three cases receive a closed Tier-A-or-Tier-B byte account",
+      "telemetry and memory-clock gates pass with no thermal/hardware throttle"
+    ],
+    "pass_status": "K3_R3_NCU_PASS_RECONNECTION_AUTHORIZED",
+    "invalid_status": "K3_R3_NCU_INVALID",
+    "on_pass": "C02 output-attentions-false reconnection becomes the next authorized stage; no reconnection is executed inside this ncu stage."
+  }
+}

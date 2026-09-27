@@ -1,0 +1,737 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_LM_HEAD_DELIVERABILITY_PROBE_R1",
+  "target": "tied_cpu_lm_head_262144_vocab_softcap_30",
+  "status": "LM_HEAD_DELIVERABILITY_HOLD_LIFTED_SELECTION_AUTHORIZED",
+  "hard_gates_pass": true,
+  "started_at": "2026-09-16T20:48:19+08:00",
+  "finished_at": "2026-09-16T20:48:50+08:00",
+  "wall_seconds": 30.13773863499955,
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.22.2"
+    },
+    "cuda": {
+      "available": true,
+      "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": [
+        8,
+        9
+      ],
+      "torch_cuda": "13.0"
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 140.00 W",
+    "git_and_file_sha": "SKIPPED_BY_OWNER_DIRECTION"
+  },
+  "protocol": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op5_lm_head_deliverability_probe_r1.json",
+    "preregistration": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_lm_head_deliverability_probe_r1_prereg_receipt_20260916.json"
+  },
+  "validated_inputs": {
+    "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+    "preregistration": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_lm_head_deliverability_probe_r1_prereg_receipt_20260916.json",
+      "status": "FROZEN_BEFORE_FORMAL_PROBE"
+    },
+    "model_inventory": {
+      "mode": "presence_and_byte_size_only",
+      "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+      "manifest_path": "/home/qbz415/piloop-edge-inference-profiler/models/C02-S.O-bf16-r1/artifact_manifest.json",
+      "file_count": 11,
+      "total_bytes": 15914883861,
+      "status": "PASS"
+    },
+    "backlog": {
+      "rank": 4,
+      "item": "lm_head 262k vocab + softcap fusion",
+      "disposition": "HOLD_CURRENT_CARRIER_DELIVERABILITY",
+      "evidence": "Real path (21705 projected calls) but the tied BF16 lm_head is intentionally CPU-resident under the 8 GiB carrier contract; GPU Triton reconnection is not presently deliverable."
+    },
+    "census": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/shape_census.json",
+      "status": "PASS",
+      "projected_calls": 21705,
+      "final_logit_softcap": 30.0,
+      "shapes": [
+        {
+          "variant": "tied_cpu_lm_head",
+          "dims": [
+            1,
+            2560,
+            262144
+          ],
+          "dimension_order": [
+            "M_rows",
+            "K_reduction",
+            "N_vocab"
+          ],
+          "dtype": "bfloat16 CPU",
+          "phase": "prefill",
+          "source_request_ids": [
+            "regex-log__HM89SBD:1",
+            "regex-log__HM89SBD:2",
+            "openssl-selfsigned-cert__oCvmg5c:1",
+            "openssl-selfsigned-cert__oCvmg5c:2",
+            "multi-source-data-merger__bUyWMFa:1",
+            "multi-source-data-merger__bUyWMFa:2",
+            "constraints-scheduling__aaSRUnD:1",
+            "constraints-scheduling__aaSRUnD:2",
+            "sqlite-db-truncate__Z9iGbrN:1",
+            "sqlite-db-truncate__Z9iGbrN:2",
+            "sqlite-db-truncate__Z9iGbrN:3"
+          ],
+          "trigger_prompt_tokens_range": [
+            806,
+            5142
+          ],
+          "calls_per_forward": 1,
+          "forward_count": 11,
+          "invocations": 11,
+          "analytic_flops": 14763950080,
+          "weight": 0.000506795669,
+          "work_weight": 0.000506795669
+        },
+        {
+          "variant": "tied_cpu_lm_head",
+          "dims": [
+            1,
+            2560,
+            262144
+          ],
+          "dimension_order": [
+            "M_rows",
+            "K_reduction",
+            "N_vocab"
+          ],
+          "dtype": "bfloat16 CPU",
+          "phase": "decode",
+          "source_request_ids": [
+            "regex-log__HM89SBD:1",
+            "regex-log__HM89SBD:2",
+            "openssl-selfsigned-cert__oCvmg5c:1",
+            "openssl-selfsigned-cert__oCvmg5c:2",
+            "multi-source-data-merger__bUyWMFa:1",
+            "multi-source-data-merger__bUyWMFa:2",
+            "constraints-scheduling__aaSRUnD:1",
+            "constraints-scheduling__aaSRUnD:2",
+            "sqlite-db-truncate__Z9iGbrN:1",
+            "sqlite-db-truncate__Z9iGbrN:2",
+            "sqlite-db-truncate__Z9iGbrN:3"
+          ],
+          "calls_per_forward": 1,
+          "forward_count": 21694,
+          "invocations": 21694,
+          "analytic_flops": 29117193912320,
+          "weight": 0.999493204331,
+          "work_weight": 0.999493204331
+        }
+      ]
+    },
+    "k3_r5": {
+      "result": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_reconnect_r5_20260916.json",
+      "status": "K3_C02_RECONNECTION_FAIL_CLOSE_DEPLOYMENT_PATH",
+      "peak_cuda_allocated_bytes": 5023133696,
+      "adjudication": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_reconnect_r5_adjudication_receipt_20260916.json"
+    }
+  },
+  "carrier": {
+    "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+    "load_seconds": 12.154501091001293,
+    "load_count": 1,
+    "device_map_requested": {
+      "model.vision_tower": "cpu",
+      "model.audio_tower": "cpu",
+      "model.embed_vision": "cpu",
+      "model.embed_audio": "cpu",
+      "model.language_model.embed_tokens": "cpu",
+      "model.language_model.embed_tokens_per_layer": "cpu",
+      "lm_head": "cpu",
+      "model.language_model.layers": 0,
+      "model.language_model.norm": 0,
+      "model.language_model.rotary_emb": 0,
+      "model.language_model.per_layer_model_projection": 0,
+      "model.language_model.per_layer_projection_norm": 0
+    },
+    "hf_device_map_observed": {
+      "model.vision_tower": "cpu",
+      "model.audio_tower": "cpu",
+      "model.embed_vision": "cpu",
+      "model.embed_audio": "cpu",
+      "model.language_model.embed_tokens": "cpu",
+      "model.language_model.embed_tokens_per_layer": "cpu",
+      "lm_head": "cpu",
+      "model.language_model.layers": 0,
+      "model.language_model.norm": 0,
+      "model.language_model.rotary_emb": 0,
+      "model.language_model.per_layer_model_projection": 0,
+      "model.language_model.per_layer_projection_norm": 0
+    },
+    "cpu_materialization": {
+      "strategy": "detach_leaf_offload_hooks_and_retie_lm_head",
+      "before": {
+        "model.language_model.embed_tokens": {
+          "hook": {
+            "present": true,
+            "type": "AlignDevicesHook",
+            "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+            "execution_device": "0",
+            "offload": true
+          },
+          "storage": {
+            "weight": {
+              "device": "meta",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                2560
+              ],
+              "numel": 671088640,
+              "data_ptr": null
+            },
+            "embed_scale": {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "shape": [],
+              "numel": 1,
+              "data_ptr": 32276682752
+            }
+          }
+        },
+        "model.language_model.embed_tokens_per_layer": {
+          "hook": {
+            "present": true,
+            "type": "AlignDevicesHook",
+            "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+            "execution_device": "0",
+            "offload": true
+          },
+          "storage": {
+            "weight": {
+              "device": "meta",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                10752
+              ],
+              "numel": 2818572288,
+              "data_ptr": null
+            },
+            "embed_scale": {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "shape": [],
+              "numel": 1,
+              "data_ptr": 32276683264
+            }
+          }
+        },
+        "lm_head": {
+          "hook": {
+            "present": true,
+            "type": "AlignDevicesHook",
+            "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+            "execution_device": "0",
+            "offload": true
+          },
+          "storage": {
+            "weight": {
+              "device": "meta",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                2560
+              ],
+              "numel": 671088640,
+              "data_ptr": null
+            }
+          }
+        }
+      },
+      "after": {
+        "model.language_model.embed_tokens": {
+          "hook": {
+            "present": false,
+            "type": null,
+            "repr": null,
+            "execution_device": "None",
+            "offload": null
+          },
+          "storage": {
+            "weight": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                2560
+              ],
+              "numel": 671088640,
+              "data_ptr": 126356378389096
+            },
+            "embed_scale": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [],
+              "numel": 1,
+              "data_ptr": 1235372928
+            }
+          }
+        },
+        "model.language_model.embed_tokens_per_layer": {
+          "hook": {
+            "present": false,
+            "type": null,
+            "repr": null,
+            "execution_device": "None",
+            "offload": null
+          },
+          "storage": {
+            "weight": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                10752
+              ],
+              "numel": 2818572288,
+              "data_ptr": 126360752226472
+            },
+            "embed_scale": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [],
+              "numel": 1,
+              "data_ptr": 1235361088
+            }
+          }
+        },
+        "lm_head": {
+          "hook": {
+            "present": false,
+            "type": null,
+            "repr": null,
+            "execution_device": "None",
+            "offload": null
+          },
+          "storage": {
+            "weight": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                2560
+              ],
+              "numel": 671088640,
+              "data_ptr": 126356378389096
+            }
+          }
+        }
+      },
+      "lm_head_tied_to_token_embedding": true,
+      "persistent_cpu_bytes_unique": 6979321856
+    },
+    "quantization": {
+      "active_language_linear4bit_count": 343,
+      "quant_types": {
+        "nf4": 343
+      },
+      "weight_devices": {
+        "cuda:0": 343
+      }
+    },
+    "memory_after_load": {
+      "allocated_bytes": 2052518912,
+      "reserved_bytes": 2107637760,
+      "peak_allocated_bytes": 2110522880,
+      "peak_reserved_bytes": 2166358016,
+      "device_used_bytes": 3264741376,
+      "device_free_bytes": 5320474624,
+      "device_total_bytes": 8585216000,
+      "peak_allocated_mib": 2012.751,
+      "peak_reserved_mib": 2066.0,
+      "device_used_mib": 3113.5
+    }
+  },
+  "capture": {
+    "request_id": "openssl-selfsigned-cert__oCvmg5c:2",
+    "request_number": 2,
+    "rendered_prompt_tokens": 5142,
+    "all_rendered_prompt_lengths": [
+      806,
+      995,
+      1088,
+      1263,
+      1295,
+      1358,
+      1464,
+      1700,
+      3945,
+      4511,
+      5142
+    ],
+    "selection": "maximum rendered_prompt_tokens across all 11 frozen requests",
+    "hidden": {
+      "data_ptr": 32601383936,
+      "shape": [
+        1,
+        1,
+        2560
+      ],
+      "stride": [
+        13163520,
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "requires_grad": false
+    },
+    "cache_sequence_length": 5142
+  },
+  "mirror": {
+    "identity": {
+      "data_ptr": 35672555520,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "requires_grad": false
+    },
+    "bytes": 1342177280,
+    "unregistered_tensor": true,
+    "original_parameter_moved": false
+  },
+  "correctness": {
+    "cpu_raw_token_id": 35434,
+    "cpu_softcapped_token_id": 35434,
+    "cuda_raw_token_id": 35434,
+    "cuda_softcapped_token_id": 35434,
+    "cpu_top2_raw_logit_margin": 1.0,
+    "softcapped_logits_max_abs_cpu_vs_cuda": 0.0625,
+    "softcapped_logits_mean_abs_cpu_vs_cuda": 8.531496860086918e-07,
+    "softcapped_logits_allclose_atol_0_5_rtol_0_02": true,
+    "token_exact": true,
+    "softcap_elision_exact": true
+  },
+  "memory": {
+    "gpu_budget_bytes": 8053063680,
+    "upstream_r5_peak_allocated_bytes": 5023133696,
+    "projected_peak_plus_mirror_bytes": 6365310976,
+    "projected_margin_bytes": 1687752704,
+    "before_mirror": {
+      "allocated_bytes": 2383542272,
+      "reserved_bytes": 5486149632,
+      "peak_allocated_bytes": 5021724672,
+      "peak_reserved_bytes": 5486149632,
+      "device_used_bytes": 6660030464,
+      "device_free_bytes": 1925185536,
+      "device_total_bytes": 8585216000,
+      "peak_allocated_mib": 4789.09,
+      "peak_reserved_mib": 5232.0,
+      "device_used_mib": 6351.5
+    },
+    "after_mirror": {
+      "allocated_bytes": 3725719552,
+      "reserved_bytes": 6828326912,
+      "peak_allocated_bytes": 3725719552,
+      "peak_reserved_bytes": 6828326912,
+      "device_used_bytes": 8002207744,
+      "device_free_bytes": 583008256,
+      "device_total_bytes": 8585216000,
+      "peak_allocated_mib": 3553.123,
+      "peak_reserved_mib": 6512.0,
+      "device_used_mib": 7631.5
+    },
+    "live_peak_allocated_bytes": 3727292416,
+    "live_peak_reserved_bytes": 6828326912,
+    "live_margin_bytes": 4325771264,
+    "after_cleanup": {
+      "allocated_bytes": 2061417472,
+      "reserved_bytes": 2107637760,
+      "peak_allocated_bytes": 3728340992,
+      "peak_reserved_bytes": 6830424064,
+      "device_used_bytes": 3281518592,
+      "device_free_bytes": 5303697408,
+      "device_total_bytes": 8585216000,
+      "peak_allocated_mib": 3555.623,
+      "peak_reserved_mib": 6514.0,
+      "device_used_mib": 3129.5
+    }
+  },
+  "diagnostic_performance": {
+    "hard_gate": false,
+    "cpu_tied_lm_head_softcap_argmax": {
+      "warmup": 20,
+      "repetitions": 50,
+      "token_id": 35434,
+      "latency_ms": {
+        "count": 50,
+        "min": 29.507577,
+        "q1": 38.391812,
+        "p50": 42.401599,
+        "q3": 47.362024,
+        "max": 58.843336,
+        "mean": 42.321049,
+        "iqr": 8.970212
+      }
+    },
+    "cuda_bf16_mirror_linear_softcap_argmax": {
+      "warmup": 20,
+      "repetitions": 50,
+      "token_id": 35434,
+      "latency_ms": {
+        "count": 50,
+        "min": 5.899222,
+        "q1": 5.987186,
+        "p50": 6.047262,
+        "q3": 6.181261,
+        "max": 6.52263,
+        "mean": 6.082861,
+        "iqr": 0.194075
+      }
+    },
+    "cuda_vs_cpu_p50_speedup": 7.011701990090722
+  },
+  "structure": {
+    "original_head_before": {
+      "data_ptr": 126356378389096,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu",
+      "requires_grad": true
+    },
+    "original_head_during_mirror": {
+      "data_ptr": 126356378389096,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu",
+      "requires_grad": true
+    },
+    "original_head_after_cleanup": {
+      "data_ptr": 126356378389096,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu",
+      "requires_grad": true
+    },
+    "embedding_before": {
+      "data_ptr": 126356378389096,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu",
+      "requires_grad": true
+    },
+    "embedding_during_mirror": {
+      "data_ptr": 126356378389096,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu",
+      "requires_grad": true
+    },
+    "embedding_after_cleanup": {
+      "data_ptr": 126356378389096,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu",
+      "requires_grad": true
+    },
+    "tied_after_cleanup": true,
+    "original_identity_unchanged": true,
+    "model_structure": {
+      "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+      "comparison": "direct structural equality",
+      "checks": {
+        "modules": {
+          "before_count": 1758,
+          "after_count": 1758,
+          "missing": [],
+          "added": [],
+          "changed": [],
+          "pass": true
+        },
+        "parameters": {
+          "before_count": 1106,
+          "after_count": 1106,
+          "missing": [],
+          "added": [],
+          "changed": [],
+          "pass": true
+        },
+        "nf4": {
+          "before_count": 343,
+          "after_count": 343,
+          "missing": [],
+          "added": [],
+          "changed": [],
+          "pass": true
+        },
+        "attention_configs": {
+          "before_count": 42,
+          "after_count": 42,
+          "missing": [],
+          "added": [],
+          "changed": [],
+          "pass": true
+        },
+        "state_dict_keys": {
+          "before_count": 3792,
+          "after_count": 3792,
+          "exact_ordered_equality": true
+        },
+        "persistent_cpu": {
+          "exact_equality": true
+        },
+        "hf_device_map": {
+          "exact_equality": true
+        }
+      },
+      "pass": true
+    }
+  },
+  "telemetry": {
+    "interval_seconds": 1.0,
+    "raw_jsonl": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_lm_head_deliverability_probe_r1_telemetry_20260916.jsonl",
+      "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+      "samples": 29
+    },
+    "summary": {
+      "interval_seconds": 1.0,
+      "sample_count": 29,
+      "errors": [],
+      "numeric": {
+        "sm_mhz": {
+          "count": 29,
+          "min": 210.0,
+          "q1": 360.0,
+          "p50": 780.0,
+          "q3": 780.0,
+          "max": 2460.0,
+          "mean": 716.897,
+          "iqr": 420.0
+        },
+        "memory_mhz": {
+          "count": 29,
+          "min": 405.0,
+          "q1": 405.0,
+          "p50": 8000.0,
+          "q3": 8000.0,
+          "max": 8000.0,
+          "mean": 4913.103,
+          "iqr": 7595.0
+        },
+        "temperature_c": {
+          "count": 29,
+          "min": 56.0,
+          "q1": 57.0,
+          "p50": 58.0,
+          "q3": 60.0,
+          "max": 67.0,
+          "mean": 58.966,
+          "iqr": 3.0
+        },
+        "power_w": {
+          "count": 29,
+          "min": 1.99,
+          "q1": 5.65,
+          "p50": 10.1,
+          "q3": 11.92,
+          "max": 69.26,
+          "mean": 14.699,
+          "iqr": 6.27
+        }
+      },
+      "pstates": {
+        "P0": 17,
+        "P5": 4,
+        "P8": 8
+      },
+      "throttle_flags": {
+        "clocks_event_reasons.sw_power_cap": true,
+        "clocks_event_reasons.sw_thermal_slowdown": false,
+        "clocks_event_reasons.hw_thermal_slowdown": false,
+        "clocks_event_reasons.hw_power_brake_slowdown": false
+      },
+      "thermal_or_hardware_throttle": false
+    }
+  },
+  "gates": {
+    "owner_no_sha_direction_honored": "PASS",
+    "formal_c02_nf4_carrier_343_modules": "PASS",
+    "longest_of_11_frozen_prompts_real_hidden_finite": "PASS",
+    "static_r5_peak_plus_exact_mirror_below_7_5_gib": "PASS",
+    "live_longest_prompt_cache_plus_mirror_below_7_5_gib": "PASS",
+    "same_load_cpu_cuda_softcapped_greedy_token_exact": "PASS",
+    "softcap_elision_argmax_exact_cpu_and_cuda": "PASS",
+    "original_tied_cpu_weight_and_model_structure_unchanged": "PASS",
+    "telemetry_present": "PASS",
+    "thermal_hardware_throttle_absent": "PASS"
+  },
+  "decision_boundary": "A PASS authorizes a separate, freshly frozen lm_head A/B/C/D selection probe only. It does not authorize candidate implementation, performance claims, C02 reconnection, or deployment.",
+  "non_authorizations": [
+    "custom lm_head candidate",
+    "Bottleneck PASS",
+    "lm_head performance benefit",
+    "C02 deployment equivalence",
+    "cross-day repeatability",
+    "board, llama.cpp, sm_100, or sm_120 extrapolation"
+  ]
+}

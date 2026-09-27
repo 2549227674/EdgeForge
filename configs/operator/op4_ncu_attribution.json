@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "stage": "OP4",
+  "kernel": "k1_gemma4_rmsnorm",
+  "frozen_at": "2026-09-15T22:05:18+08:00",
+  "frozen_before_formal_measurement": true,
+  "purpose": "Close K1-b by comparing Nsight Compute dram__bytes.sum with the frozen OP2 Tier-A analytic byte account for every formal case.",
+  "source_identity": {
+    "shape_census": {
+      "path": "results/operator/shape_census.json",
+      "sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f"
+    },
+    "op2_preregistration": {
+      "path": "configs/operator/k1_rmsnorm_prereg.json",
+      "sha256": "c5867a31d27f24ea411bd592af7648e9fc10a313ee74cc1425e829487cca2411"
+    },
+    "op2_result": {
+      "path": "results/operator/k1/k1_rmsnorm_op2.json",
+      "sha256": "f4a4c4f192a49fa17930d7b6d8b066e43a1fc0775e58c155ab122a70b2d7fd98"
+    },
+    "op2_receipt": {
+      "path": "results/operator/k1/op2_receipt.json",
+      "sha256": "414bfa626414aef041c20529ca49303f1545accd405e24cbb1a3c6ab9eead813"
+    },
+    "op3_preregistration": {
+      "path": "configs/operator/op3_reconnect.json",
+      "sha256": "d4917b82fecc894a69db63e258e921a165eee8db395c7c1590bfe3416a96e8c6"
+    },
+    "op3_result": {
+      "path": "results/operator/k1/k1_rmsnorm_op3.json",
+      "sha256": "9eeb431a8d543ef1da0de06b2c29d4d174e6f2a299cc599309b19108fda3808e"
+    },
+    "op3_receipt": {
+      "path": "results/operator/k1/op3_receipt.json",
+      "sha256": "80c32bd466e2db199882affc3690b566eeb5f22ecc5ed58534c396ea18c5b210"
+    },
+    "bandwidth_ceiling": {
+      "path": "results/operator/op0/bandwidth_ceiling.json",
+      "sha256": "772a80293900f9ac81349cf08e2d6a9791c4ec53a1f3c04cbf79ee0cf40727c9"
+    },
+    "environment_identity": {
+      "path": "results/operator/op0/env_identity_20260915.json",
+      "sha256": "202652237243151468e600efc056bd8876ae0df64651ad0231a4b889a22d613c"
+    },
+    "implementation": {
+      "path": "scripts/operator/k1_rmsnorm.py",
+      "sha256": "6e1d282bc174e9f91210281c086c0928820e7b3e8782f7bf02e8f94ed31d7ca1"
+    },
+    "op2_runner": {
+      "path": "scripts/operator/run_op2.py",
+      "sha256": "720c7b9dc5ddae8f34b996d2e8dc5e34a96acea170f76c4a56569df53cac9353"
+    },
+    "op4_runner": {
+      "path": "scripts/operator/run_op4.py",
+      "sha256": "b9423fc55bd6528d8079e59c9c0ea7982e5f458cb7f65eae8e500b2215128d4d"
+    },
+    "op4_readiness_receipt": {
+      "path": "results/operator/k1/op4_readiness_receipt.json",
+      "sha256": "8d5911129e3a625ca1c3b5b69e080ad5b16cb4055697b5856360ceed398cec2a"
+    }
+  },
+  "host_scope": {
+    "platform": "WSL2",
+    "cuda_device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "compute_capability": "sm_89",
+    "formal_numbers_must_not_be_extrapolated": [
+      "sm_100",
+      "sm_120",
+      "board targets"
+    ]
+  },
+  "toolchain": {
+    "ncu_path": "/usr/local/cuda/bin/ncu",
+    "ncu_version": "2025.1.1.0",
+    "ncu_build": "35528883",
+    "permission_gate": "PASS per results/operator/k1/op4_readiness_receipt.json"
+  },
+  "formal_population": {
+    "selection": "All 96 formal OP2 cases in lexicographic case_id order; no sampling and no synthetic shapes.",
+    "source_pointer": "results/operator/k1/k1_rmsnorm_op2.json#/formal_case_measurements",
+    "expected_case_count": 96,
+    "expected_prefill_cases": 88,
+    "expected_decode_cases": 8,
+    "case_projection_fields": [
+      "case_id",
+      "source_census_row",
+      "source_variant",
+      "variant",
+      "with_scale",
+      "dims",
+      "phase",
+      "token_count",
+      "invocations",
+      "weight",
+      "work_weight"
+    ],
+    "case_projection_sha256": "ad8593b5cdc607efb97065183b751fba5daec7a40a9078463e186debb1de7aba",
+    "launch_mapping": "ncu result IDs sorted ascending map one-to-one to the target receipt launch_manifest; launch grid size must equal each case M dimension."
+  },
+  "attribution_protocol": {
+    "kernel_name": "k1_gemma4_rmsnorm_kernel",
+    "formal_dtype": "bfloat16",
+    "formal_element_bytes": 2,
+    "input_distribution": "normal(mean=0, std=1)",
+    "input_seed_base": 20260915,
+    "warmup_launches_per_case": 50,
+    "profiled_launches_per_case": 1,
+    "profiled_launch_rationale": "Hardware byte counters are collected for one post-warmup launch per formal case. Performance p50/IQR remain the frozen OP2 200-repetition interleaved CUDA-event results; ncu replay duration is not used as timing.",
+    "metrics": [
+      "dram__bytes.sum",
+      "dram__bytes_read.sum",
+      "dram__bytes_write.sum",
+      "gpu__time_duration.sum"
+    ],
+    "primary_metric": "dram__bytes.sum",
+    "analytic_tolerance_fraction": 0.15,
+    "within_tolerance_rule": "abs(dram__bytes.sum / analytic_bytes - 1) <= 0.15",
+    "outside_tolerance_rule": "Use measured dram__bytes.sum as the authoritative per-case byte account without changing the immutable OP2 artifact.",
+    "cache_control": "all",
+    "cache_control_meaning": "Nsight Compute flushes all GPU caches before each profiled replay pass.",
+    "replay_mode": "kernel",
+    "profile_control": "--profile-from-start off plus cudaProfilerStart/Stop around exactly the 96 formal launches",
+    "expected_replayer_passes": 1,
+    "timeout_seconds": 3600
+  },
+  "power_protocol": {
+    "fixed_power_mode": "Windows host remains on the owner-selected plugged-in performance mode used for the valid OP3 rerun.",
+    "require_ac_online": true,
+    "ac_online_path": "/sys/class/power_supply/AC1/online",
+    "gpu_telemetry_interval_seconds": 1.0,
+    "minimum_telemetry_samples": 2,
+    "invalidate_on_thermal_or_hardware_throttle": true,
+    "record_software_power_cap_without_invalidating": true,
+    "op0_memory_clock_mhz_p50": 8000.0,
+    "minimum_memory_clock_ratio_vs_op0": 0.95
+  },
+  "roofline": {
+    "ceiling_gbps_decimal": 234.467114,
+    "ceiling_source_pointer": "results/operator/op0/bandwidth_ceiling.json#/ceiling/p50_across_stable_sizes_gbps_decimal",
+    "timing_source": "results/operator/k1/k1_rmsnorm_op2.json per-case candidate p50/IQR",
+    "tier_a_formula_scaled": "4*M*N + 2*N bytes",
+    "tier_a_formula_scale_free": "4*M*N bytes",
+    "tier_b_correction": "Use analytic bytes when ncu is within ±15%; otherwise use ncu dram__bytes.sum for the post-OP4 accounting layer."
+  },
+  "success_policy": {
+    "op4_pass_requires": [
+      "the frozen config and all bound artifacts remain hash-identical",
+      "the readiness receipt is PASS and the exact required ncu metrics are available",
+      "all 96 OP2 formal cases map to exactly one K1 ncu launch",
+      "every case has positive dram__bytes.sum and read+write equals total",
+      "cases outside ±15% are explicitly superseded by measured ncu bytes",
+      "AC remains online, 1 Hz telemetry is present, memory-clock comparability passes, and no thermal/hardware throttle is observed"
+    ],
+    "analytic_disagreement_is_not_failure": true,
+    "performance_gain_required": false,
+    "op2_and_op3_are_immutable_upstream_evidence": true
+  }
+}

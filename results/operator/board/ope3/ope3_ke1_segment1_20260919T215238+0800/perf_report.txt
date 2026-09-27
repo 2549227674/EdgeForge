@@ -1,0 +1,62 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 78  of event 'cycles:u'
+# Event count (approx.): 2544612323
+#
+# Overhead  Command         Shared Object          Symbol                    
+# ........  ..............  .....................  ..........................
+#
+    88.61%  ke1_gemv_bench  ke1_gemv_bench         [.] dot_neon_sdot
+            |
+            ---dot_neon_sdot
+               run_kernel._omp_fn.0
+               |          
+               |--66.46%--0x7f8ae8ba2b
+               |          0x7f8ad40397
+               |          0x7f8ada9e9b
+               |          
+                --22.14%--GOMP_parallel
+                          main
+                          0x7f8ace73ff
+                          __libc_start_main
+                          _start
+
+    10.48%  ke1_gemv_bench  ke1_gemv_bench         [.] initialize_inputs
+            |
+            ---initialize_inputs
+               main
+               0x7f8ace73ff
+               __libc_start_main
+               _start
+
+     0.92%  ke1_gemv_bench  libgomp.so.1.0.0       [.] 0x000000000001e72c
+            |
+            ---0x7f8ae8e72c
+               0x7f8ae8ba33
+               0x7f8ad40397
+               0x7f8ada9e9b
+
+     0.00%  taskset         ld-linux-aarch64.so.1  [.] 0x000000000000edf4
+     0.00%  ke1_gemv_bench  libgomp.so.1.0.0       [.] 0x000000000001e47c
+     0.00%  ke1_gemv_bench  [unknown]              [k] 0xffffffc008023b8c
+     0.00%  ke1_gemv_bench  libgomp.so.1.0.0       [.] getenv@plt
+     0.00%  taskset         ld-linux-aarch64.so.1  [.] 0x0000000000018648
+     0.00%  ke1_gemv_bench  [unknown]              [k] 0xffffffc00949aea0
+     0.00%  ke1_gemv_bench  libc.so.6              [.] __clone
+     0.00%  ke1_gemv_bench  libc.so.6              [.] pthread_setaffinity_np
+     0.00%  ke1_gemv_bench  libc.so.6              [.] 0x00000000000800c0
+     0.00%  ke1_gemv_bench  libc.so.6              [.] 0x00000000000800e8
+     0.00%  ke1_gemv_bench  libc.so.6              [.] 0x0000000000135af4
+     0.00%  ke1_gemv_bench  libgomp.so.1.0.0       [.] 0x000000000000b13c
+     0.00%  ke1_gemv_bench  libgomp.so.1.0.0       [.] 0x0000000000020a5c
+     0.00%  taskset         ld-linux-aarch64.so.1  [.] 0x0000000000017c40
+     0.00%  taskset         ld-linux-aarch64.so.1  [.] 0x0000000000018610
+     0.00%  taskset         [unknown]              [k] 0xffffffc00949b18c
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

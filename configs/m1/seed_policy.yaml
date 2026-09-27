@@ -1,0 +1,11 @@
+schema_version: 1
+milestone: M1
+base_seed: 20260811
+data_sampling_seed: 20260811
+initialization_seed: 20260811
+rollout_seed: 20260811
+trainer_data_seed: 20260811
+determinism_claim: recorded_seeds_only
+notes:
+  - Every candidate snapshot must copy these values or record an explicit override.
+  - Bitwise determinism is not claimed across CUDA, kernel, or dependency changes.

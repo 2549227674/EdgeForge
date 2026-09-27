@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "stage": "OP2",
+  "kernel": "k1_gemma4_rmsnorm",
+  "timestamp": "2026-09-15T16:37:04+08:00",
+  "artifacts": {
+    "preregistration": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k1_rmsnorm_prereg.json",
+      "sha256": "c5867a31d27f24ea411bd592af7648e9fc10a313ee74cc1425e829487cca2411"
+    },
+    "implementation": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k1_rmsnorm.py",
+      "sha256": "1754647e45de310bcb2cb3c7b42ceeb842f89b0ee3887dc5602ae254b7b04e26"
+    },
+    "result": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/k1_rmsnorm_op2.json",
+      "sha256": "f4a4c4f192a49fa17930d7b6d8b066e43a1fc0775e58c155ab122a70b2d7fd98"
+    }
+  },
+  "gates": {
+    "preregistration_frozen_before_measurement": "PASS",
+    "preregistration_hash_immutable": "PASS",
+    "upstream_identity": "PASS",
+    "direct_scale_semantics": "PASS",
+    "formal_shape_expansion": "PASS",
+    "randomized_correctness": "PASS",
+    "three_timed_implementations": "PASS",
+    "tier_a_roofline": "PASS",
+    "memory_clock_comparability": "PASS",
+    "thermal_hardware_throttle": "PASS",
+    "formal_reconnection": "DEFERRED_TO_OP3",
+    "ncu_tier_b": "BLOCKED_WINDOWS_ERR_NVGPUCTRPERM_DEFERRED_TO_OP4"
+  },
+  "summary": {
+    "source_census_rows": 72,
+    "formal_cases": 96,
+    "correctness_trials": 576,
+    "correctness_max_abs_by_dtype_implementation": {
+      "bfloat16": {
+        "eager": 0.0,
+        "compile": 2.0,
+        "candidate": 2.0
+      },
+      "float32": {
+        "eager": 0.0,
+        "compile": 0.0001220703125,
+        "candidate": 9.1552734375e-05
+      }
+    },
+    "candidate_weighted_p50_us": 76.224379,
+    "compile_weighted_p50_us": 263.066013,
+    "candidate_speedup_vs_eager": 2.513462,
+    "candidate_speedup_vs_compile": 3.451206,
+    "performance_classification": "POSITIVE",
+    "tier_a_relative_score": 0.001258,
+    "memory_clock_ratio_vs_op0": 1.0,
+    "thermal_or_hardware_throttle": false
+  },
+  "scope": {
+    "op2_complete": true,
+    "op3_formal_reconnection_pending": true,
+    "op4_ncu_tier_b_soft_blocked": true,
+    "performance_gain_required": false
+  },
+  "git_sha": "354d2c1b086a1809c256309f56bca420de243f92",
+  "status": "PASS"
+}

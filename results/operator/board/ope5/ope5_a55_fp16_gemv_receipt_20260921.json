@@ -1,0 +1,432 @@
+{
+  "check_summary": {
+    "failed": [],
+    "passed": 32,
+    "total": 32
+  },
+  "checks": {
+    "a55_bus_access_has_no_byte_multiplier": true,
+    "a55_policy0_frequency_gate": true,
+    "all_board_locked_files_match": true,
+    "all_local_locked_files_match": true,
+    "clock_domains_recorded": true,
+    "cluster_comparison_arithmetic": true,
+    "codegen_gates": true,
+    "comparison_and_npu_governors_unchanged": true,
+    "correctness_69120_of_69120": true,
+    "correctness_frozen_tolerances": true,
+    "correctness_structural_assertions": true,
+    "exactly_one_formal_segment_no_retest": true,
+    "formal_process_exit_and_restore_zero": true,
+    "four_a55_fixed_topology": true,
+    "immutable_a76_anchor_identity": true,
+    "no_a76_rerun_or_performance_smoke": true,
+    "policy0_performance_and_restored": true,
+    "prelock_passed_without_benchmark": true,
+    "prereg_frozen_identity": true,
+    "prereg_single_segment_owner_waiver": true,
+    "scope_frozen_identity": true,
+    "source_exact_allowlist_derivative": true,
+    "source_lock_frozen_identity": true,
+    "source_lock_precedes_formal_execution": true,
+    "telemetry_approximately_1hz": true,
+    "telemetry_read_only_governors_unchanged": true,
+    "thermal_gate": true,
+    "tier_b_all_events_numeric": true,
+    "timed_window_governor_gate": true,
+    "timing_arithmetic_reproduces": true,
+    "timing_population_complete": true,
+    "timing_stability_gate": true
+  },
+  "claim_limits": [
+    "A55 placement is a synthetic isolated comparator and does not prove closed RKLLM placement on A55 or CPU.",
+    "The A55/A76 ratios combine clock, microarchitecture, cache, memory service, compiler target, and scheduling effects.",
+    "The A76 anchor is one owner-waived nonconcurrent segment; this is not paired replication.",
+    "OPE0 is a shared A76-derived platform ceiling, not an A55-specific roofline.",
+    "No A55 bus_access byte conversion, cross-cluster L2D/bus ratio, OPE4 attribution, deployment-speed, quality, energy, or cost claim is made."
+  ],
+  "cluster_comparison": {
+    "a55_candidate_analytic_gbps": 7.23176502587,
+    "a55_candidate_cycles_per_invocation": 45370197.92359932,
+    "a55_candidate_instructions_per_invocation": 33305109.251273345,
+    "a55_candidate_ipc": 0.7340745858626656,
+    "a55_candidate_p50_us": 7254.041,
+    "a55_to_a76_candidate_bandwidth_ratio": 0.40295926091457873,
+    "a55_to_a76_candidate_cycles_ratio": 1.5397142541438593,
+    "a55_to_a76_candidate_latency_ratio": 2.4816404460632833,
+    "a76_candidate_analytic_gbps": 17.9466405846,
+    "a76_candidate_cycles_per_invocation": 29466634.99509323,
+    "a76_candidate_instructions_per_invocation": 30352204.90088322,
+    "a76_candidate_ipc": 1.0300533096479274,
+    "a76_candidate_p50_us": 2923.083,
+    "a76_to_a55_max_frequency_ratio": 1.3066666666666666,
+    "classification": "A55_SLOWER",
+    "guard": "System-level nonconcurrent cluster comparison; not a frequency-normalized single-variable microarchitecture causal score."
+  },
+  "codegen": {
+    "candidate_fcvtl_matches": 16,
+    "candidate_vector_fmla_matches": 8,
+    "scalar_vector_fmla_matches": 0
+  },
+  "correctness": {
+    "by_variant": {
+      "autovec_o3": {
+        "cases": 9,
+        "comparisons": 23040,
+        "max_abs_error": 0.0174730247818,
+        "max_rel_error": 0.0793260595086,
+        "mismatch_elements": 0,
+        "passing_cases": 9
+      },
+      "neon_fp16_f32acc": {
+        "cases": 9,
+        "comparisons": 23040,
+        "max_abs_error": 0.00184857216664,
+        "max_rel_error": 0.0387506776809,
+        "mismatch_elements": 0,
+        "passing_cases": 9
+      },
+      "scalar_fp32": {
+        "cases": 9,
+        "comparisons": 23040,
+        "max_abs_error": 0.0174730247818,
+        "max_rel_error": 0.0793260595086,
+        "mismatch_elements": 0,
+        "passing_cases": 9
+      }
+    },
+    "case_rows": 27,
+    "expected_element_comparisons": 69120,
+    "mismatch_elements": 0,
+    "observed_element_comparisons": 69120,
+    "oracle": "independent FP64 scalar reference",
+    "passing_case_rows": 27
+  },
+  "evidence_strength": {
+    "a76_rerun_performed": false,
+    "automatic_retry_performed": false,
+    "formal_segments": 1,
+    "performance_smoke_performed": false,
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "same_day_retest_performed": false,
+    "same_day_retest_scheduled": false
+  },
+  "governors": {
+    "after_restore": {
+      "board_wall_time": "2026-09-19T05:19:17.412107970+08:00",
+      "event": "after_restore",
+      "npu_governor": "rknpu_ondemand",
+      "policy0_governor": "ondemand",
+      "policy4_governor": "ondemand",
+      "policy6_governor": "ondemand",
+      "uptime_s": "18140.61"
+    },
+    "after_set": {
+      "board_wall_time": "2026-09-19T05:17:52.742593068+08:00",
+      "event": "after_set",
+      "npu_governor": "rknpu_ondemand",
+      "policy0_governor": "performance",
+      "policy4_governor": "ondemand",
+      "policy6_governor": "ondemand",
+      "uptime_s": "18055.94"
+    },
+    "before": {
+      "board_wall_time": "2026-09-19T05:17:52.717373396+08:00",
+      "event": "before",
+      "npu_governor": "rknpu_ondemand",
+      "policy0_governor": "ondemand",
+      "policy4_governor": "ondemand",
+      "policy6_governor": "ondemand",
+      "uptime_s": "18055.91"
+    },
+    "policy0_write_performed": true,
+    "policy4_policy6_npu_write_performed": false
+  },
+  "identity": {
+    "board_run_meta": {
+      "bench_binary_sha256": "e0f846a38743d11c9104a2f2d741e9791059e06fca38a6404dede8baebcaacc9",
+      "board_end_monotonic_raw_ns": "18140983444628",
+      "board_end_uptime_s": "18140.63",
+      "board_end_wall": "2026-09-19T05:19:17.436604238+08:00",
+      "board_start_boot_id": "d71ea52f-ab16-411f-a329-6544feac0d45",
+      "board_start_monotonic_raw_ns": "18056043183087",
+      "board_start_uptime_s": "18055.68",
+      "board_start_wall": "2026-09-19T05:17:52.481488130+08:00",
+      "candidate_source_sha256": "a165327f49ff5a54fd25d15c2ef07bac7a90b6dd316a37a4089835248f629b7e",
+      "comparison_governor_policy": "READ_ONLY_UNCHANGED",
+      "formal_runner_sha256": "f08eaec416b70e9e3789949e25e600aa0f5942a415fecd577caeafef700c526e",
+      "formal_segments": "1",
+      "governor_restore_exit_code": "0",
+      "gxx": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+      "measurement_payload_sha256": "5b9d289e6d4f3c1d2e97420db38f2d7278c257ccfd7671b3b11bd0a9cc68f53f",
+      "npu_governor_policy": "READ_ONLY_UNCHANGED",
+      "perf_binary_sha256": "27a3ab8b3bcb8b2372f6e0604674f1e3df13abcf5535ffd5a124e6400551afa3",
+      "policy0_expected_max_khz": "1800000",
+      "prereg_sha256": "98a3fe20f7982f7fb58fca01f1fe23fa483f4ca11f387d24767805f1e7fb43ce",
+      "primary_cpus": "0,1,2,3",
+      "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+      "run_exit_code": "0",
+      "segment_label": "segment1",
+      "source_lock_sha256": "40fe76d2ce6f411247f88be4efc2494ed08055ef1c7beb0689a03842c9185483",
+      "telemetry_sampler_sha256": "74f8e8a85858c567206b7234dafe7015a59483c42d83300a04b3532a1368b84c",
+      "threads": "4",
+      "uname": "Linux orangepi5 6.1.99-rockchip-rk3588 #1.2.2 SMP Thu Jun 26 14:42:53 CST 2025 aarch64 aarch64 aarch64 GNU/Linux"
+    },
+    "controller_meta": {
+      "a76_rerun_performed": false,
+      "additional_segment_scheduled": false,
+      "clock_domain_note": "PC controller timestamps bound the process; board CLOCK_MONOTONIC_RAW supplies durations. Board and controller wall clocks are not subtracted.",
+      "controller_after": "2026-09-21T17:41:37.995532870+08:00",
+      "controller_before": "2026-09-21T17:40:08.557437910+08:00",
+      "controller_elapsed_seconds": 88.574254813,
+      "formal_segment_ordinal": 1,
+      "instability_retry_authorized": false,
+      "performance_smoke_performed": false,
+      "same_day_retest_scheduled": false,
+      "schema_version": 1,
+      "segment_label": "ope5_a55_fp16_gemv_segment1_20260921T174008+0800",
+      "ssh_exit_code": 0,
+      "stage": "OPE5-05-A55-FP16-GEMV"
+    },
+    "locked_files": {
+      "a76_source_parent": {
+        "expected_sha256": "7843a9f797bcf566eae34e9982b6ecab832a53060aaa8287403e42c10b132c9e",
+        "observed_sha256": "7843a9f797bcf566eae34e9982b6ecab832a53060aaa8287403e42c10b132c9e",
+        "path": "scripts/operator/board/ope5_fp16_gemv_bench.cpp"
+      },
+      "candidate_source": {
+        "expected_sha256": "a165327f49ff5a54fd25d15c2ef07bac7a90b6dd316a37a4089835248f629b7e",
+        "observed_sha256": "a165327f49ff5a54fd25d15c2ef07bac7a90b6dd316a37a4089835248f629b7e",
+        "path": "scripts/operator/board/ope5_a55_fp16_gemv_bench.cpp"
+      },
+      "formal_runner": {
+        "expected_sha256": "f08eaec416b70e9e3789949e25e600aa0f5942a415fecd577caeafef700c526e",
+        "observed_sha256": "f08eaec416b70e9e3789949e25e600aa0f5942a415fecd577caeafef700c526e",
+        "path": "scripts/operator/board/run_ope5_a55_fp16_gemv.sh"
+      },
+      "immutable_a76_receipt": {
+        "expected_sha256": "221e26f63cfde04362ae6a718f9c85ea40331b4cca084bae385374ef8213421a",
+        "observed_sha256": "221e26f63cfde04362ae6a718f9c85ea40331b4cca084bae385374ef8213421a",
+        "path": "results/operator/board/ope5/ope5_fp16_gemv_receipt_20260921.json"
+      },
+      "measurement_payload": {
+        "expected_sha256": "5b9d289e6d4f3c1d2e97420db38f2d7278c257ccfd7671b3b11bd0a9cc68f53f",
+        "observed_sha256": "5b9d289e6d4f3c1d2e97420db38f2d7278c257ccfd7671b3b11bd0a9cc68f53f",
+        "path": "scripts/operator/board/ope5_a55_fp16_gemv_measure_payload.sh"
+      },
+      "prelock_audit_receipt": {
+        "expected_sha256": "5919fbde650a10124b8e4d50c783a48c4e84e97389df713a1e36a305b80d0b49",
+        "observed_sha256": "5919fbde650a10124b8e4d50c783a48c4e84e97389df713a1e36a305b80d0b49",
+        "path": "results/operator/board/ope5/ope5_a55_fp16_gemv_prelock_receipt_20260921.json"
+      },
+      "telemetry_sampler": {
+        "expected_sha256": "74f8e8a85858c567206b7234dafe7015a59483c42d83300a04b3532a1368b84c",
+        "observed_sha256": "74f8e8a85858c567206b7234dafe7015a59483c42d83300a04b3532a1368b84c",
+        "path": "scripts/operator/board/telemetry_sampler.sh"
+      }
+    },
+    "prelock_receipt": {
+      "path": "results/operator/board/ope5/ope5_a55_fp16_gemv_prelock_receipt_20260921.json",
+      "sha256": "5919fbde650a10124b8e4d50c783a48c4e84e97389df713a1e36a305b80d0b49"
+    },
+    "preregistration": {
+      "path": "configs/operator/board/ope5_a55_fp16_gemv_prereg.json",
+      "sha256": "98a3fe20f7982f7fb58fca01f1fe23fa483f4ca11f387d24767805f1e7fb43ce"
+    },
+    "scope": {
+      "path": "configs/operator/board/ope5_a55_fp16_gemv_scope.json",
+      "sha256": "8f3a2c6949980d04096a1e995ff2aafae653aed031fdf0960b1261c86059d1f4"
+    },
+    "segment": "results/operator/board/ope5/ope5_a55_fp16_gemv_segment1_20260921T174008+0800",
+    "source_lock": {
+      "path": "results/operator/board/ope5/ope5_a55_fp16_gemv_source_lock_20260921.json",
+      "sha256": "40fe76d2ce6f411247f88be4efc2494ed08055ef1c7beb0689a03842c9185483"
+    }
+  },
+  "immutable_a76_anchor": {
+    "candidate_analytic_gbps": 17.9466405846,
+    "candidate_cycles_per_invocation": 29466634.99509323,
+    "candidate_instructions_per_invocation": 30352204.90088322,
+    "candidate_ipc": 1.0300533096479274,
+    "candidate_p50_us": 2923.083,
+    "receipt_path": "results/operator/board/ope5/ope5_fp16_gemv_receipt_20260921.json",
+    "receipt_sha256": "221e26f63cfde04362ae6a718f9c85ea40331b4cca084bae385374ef8213421a",
+    "recorded_max_frequency_khz": 2352000,
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "status": "VALID_OPE5_02_SINGLE_SEGMENT_OWNER_WAIVER_ISOLATED_4XA76_FP16_GEMV"
+  },
+  "measurement_valid": true,
+  "recorded_at": "2026-09-21T17:41:37.995532870+08:00",
+  "schema_version": 1,
+  "stage": "OPE5-05-A55-FP16-GEMV",
+  "status": "VALID_OPE5_05_SINGLE_SEGMENT_OWNER_WAIVER_ISOLATED_4XA55_FP16_GEMV_COMPARATOR",
+  "telemetry": {
+    "max_interval_seconds": 1.1000000000021828,
+    "minimum_policy0_frequency_ratio": 1.0,
+    "minimum_thermal_headroom_mC": 20462,
+    "samples": 79,
+    "thermal_by_zone": {
+      "0": {
+        "headroom_mC": 20462,
+        "lowest_enabled_trip_mC": 75000,
+        "maximum_timed_temperature_mC": 54538,
+        "name": "soc-thermal"
+      },
+      "1": {
+        "headroom_mC": 62308,
+        "lowest_enabled_trip_mC": 115000,
+        "maximum_timed_temperature_mC": 52692,
+        "name": "bigcore0-thermal"
+      },
+      "2": {
+        "headroom_mC": 61385,
+        "lowest_enabled_trip_mC": 115000,
+        "maximum_timed_temperature_mC": 53615,
+        "name": "bigcore1-thermal"
+      },
+      "3": {
+        "headroom_mC": 60462,
+        "lowest_enabled_trip_mC": 115000,
+        "maximum_timed_temperature_mC": 54538,
+        "name": "littlecore-thermal"
+      },
+      "4": {
+        "headroom_mC": 64154,
+        "lowest_enabled_trip_mC": 115000,
+        "maximum_timed_temperature_mC": 50846,
+        "name": "center-thermal"
+      },
+      "5": {
+        "headroom_mC": 65077,
+        "lowest_enabled_trip_mC": 115000,
+        "maximum_timed_temperature_mC": 49923,
+        "name": "gpu-thermal"
+      },
+      "6": {
+        "headroom_mC": 63231,
+        "lowest_enabled_trip_mC": 115000,
+        "maximum_timed_temperature_mC": 51769,
+        "name": "npu-thermal"
+      }
+    },
+    "timed_window_samples": 59
+  },
+  "tier_b": {
+    "bus_access_policy": "Raw count and count per invocation only. No x8/x64 byte conversion and no direct A55/A76 L2D or bus ratio.",
+    "events": [
+      "cycles:u",
+      "instructions:u",
+      "l2d_cache_refill:u",
+      "bus_access:u"
+    ],
+    "primary_cross_cluster_metric": "candidate cycles per invocation ratio",
+    "variants": {
+      "autovec_o3": {
+        "counts": {
+          "bus_access:u": 1654122594,
+          "cycles:u": 63261170964,
+          "instructions:u": 55259383999,
+          "l2d_cache_refill:u": 206549648
+        },
+        "elapsed_ms": 6762.828628,
+        "invocations": 200,
+        "ipc": 0.8735118739810622,
+        "per_invocation": {
+          "bus_access:u": 8270612.97,
+          "cycles:u": 316305854.82,
+          "instructions:u": 276296919.995,
+          "l2d_cache_refill:u": 1032748.24
+        }
+      },
+      "neon_fp16_f32acc": {
+        "counts": {
+          "bus_access:u": 4213282054,
+          "cycles:u": 26723046577,
+          "instructions:u": 19616709349,
+          "l2d_cache_refill:u": 526496062
+        },
+        "elapsed_ms": 3002.839293,
+        "invocations": 589,
+        "ipc": 0.7340745858626656,
+        "per_invocation": {
+          "bus_access:u": 7153280.227504244,
+          "cycles:u": 45370197.92359932,
+          "instructions:u": 33305109.251273345,
+          "l2d_cache_refill:u": 893881.259762309
+        }
+      },
+      "scalar_fp32": {
+        "counts": {
+          "bus_access:u": 1654473389,
+          "cycles:u": 63343340105,
+          "instructions:u": 55259384414,
+          "l2d_cache_refill:u": 206611148
+        },
+        "elapsed_ms": 6771.179045,
+        "invocations": 200,
+        "ipc": 0.8723787587203363,
+        "per_invocation": {
+          "bus_access:u": 8272366.945,
+          "cycles:u": 316716700.525,
+          "instructions:u": 276296922.07,
+          "l2d_cache_refill:u": 1033055.74
+        }
+      }
+    }
+  },
+  "timing": {
+    "analytic_bytes_per_invocation": 52459520,
+    "candidate_classification_vs_autovec": "POSITIVE",
+    "candidate_speedup_vs_autovec": 4.649954142801233,
+    "candidate_speedup_vs_scalar": 4.6500747652239625,
+    "clock": "CLOCK_MONOTONIC_RAW",
+    "cpu_cores": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "ops_per_invocation": 52428800,
+    "shape_mkn": [
+      1,
+      10240,
+      2560
+    ],
+    "threads": 4,
+    "variants": {
+      "autovec_o3": {
+        "analytic_gbps": 1.55523362248,
+        "iqr_over_p50": 0.00357979752606,
+        "iqr_us": 120.75,
+        "measured_gops": 1.55432288641,
+        "p25_us": 33670.875,
+        "p50_us": 33730.958,
+        "p75_us": 33791.625,
+        "repetitions": 421,
+        "shared_ope0_relative_context": 0.0670498486951
+      },
+      "neon_fp16_f32acc": {
+        "analytic_gbps": 7.23176502587,
+        "iqr_over_p50": 0.0175303668672,
+        "iqr_us": 127.166,
+        "measured_gops": 7.22753014492,
+        "p25_us": 7198.625,
+        "p50_us": 7254.041,
+        "p75_us": 7325.791,
+        "repetitions": 421,
+        "shared_ope0_relative_context": 0.311778721714
+      },
+      "scalar_fp32": {
+        "analytic_gbps": 1.55519327989,
+        "iqr_over_p50": 0.00274959857651,
+        "iqr_us": 92.749,
+        "measured_gops": 1.55428256745,
+        "p25_us": 33681.667,
+        "p50_us": 33731.833,
+        "p75_us": 33774.416,
+        "repetitions": 421,
+        "shared_ope0_relative_context": 0.0670481094295
+      }
+    }
+  }
+}

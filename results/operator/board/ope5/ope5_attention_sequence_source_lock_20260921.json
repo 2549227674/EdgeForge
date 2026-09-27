@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-01-DECODE-ATTENTION-SEQUENCE-SOURCE-LOCK",
+  "status": "LOCKED_BEFORE_SOLE_FORMAL_SEGMENT",
+  "locked_at": "2026-09-21T18:21:51+08:00",
+  "formal_execution_started": false,
+  "board_benchmark_execution_count": 0,
+  "scope": {
+    "path": "configs/operator/board/ope5_attention_sequence_scope.json",
+    "sha256": "ac238bc0abdd9ed0d11c631969bcfd50c73de306d633b13196fe4226554a83f8"
+  },
+  "preregistration": {
+    "path": "configs/operator/board/ope5_attention_sequence_prereg.json",
+    "sha256": "a0cc5d0c516f1b9e12028debec03743c386980041e4a5c6e2502e3d110cff464"
+  },
+  "prelock_receipt": {
+    "path": "results/operator/board/ope5/ope5_attention_sequence_prelock_receipt_20260921.json",
+    "sha256": "e052a158e811068f05e2d12ac45b25d736a51fbace6806e2b4a6a4aa673710ee"
+  },
+  "implementation_files": {
+    "candidate": {
+      "path": "scripts/operator/board/ope5_attention_sequence_bench.cpp",
+      "sha256": "d78f4b19bbb25d4185a4ba9c0aa98f5f343a3870e3d4037b309125a8cd845c95"
+    },
+    "formal_runner": {
+      "path": "scripts/operator/board/run_ope5_attention_sequence.sh",
+      "sha256": "ef0c6c511e37e8c4cf82d9ce0d75e3a0097d1445b555f536b4dd24256e3a392d"
+    },
+    "measurement_payload": {
+      "path": "scripts/operator/board/ope5_attention_sequence_measure_payload.sh",
+      "sha256": "e9588278f8023e91e1129a2685d8e539d677505f820d8484b8817a5d88fb43ea"
+    }
+  },
+  "runtime_dependencies": {
+    "telemetry_sampler": {
+      "path": "scripts/operator/board/telemetry_sampler.sh",
+      "sha256": "74f8e8a85858c567206b7234dafe7015a59483c42d83300a04b3532a1368b84c"
+    },
+    "npu_load_sampler": {
+      "path": "scripts/operator/board/npu_load_sampler.py",
+      "sha256": "52f7bc03d3e6b5f13a3b2db1c740fb15d019fcb10a6e1aedccecda5a2e2b8301"
+    }
+  },
+  "board_binary": {
+    "path": "/home/orangepi/edgeforge_ope_r1/bin/ope5_attention_sequence_bench",
+    "sha256": "84102719f63ac23349b5467f7ea68cde8b1297a1c32a171b92051bd9a47bb4ef",
+    "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "compiler_target": "-mcpu=cortex-a76"
+  },
+  "board_runtime_identity": {
+    "rknn_api_header_sha256": "c48e11a6f41b451a5fd1e4ad774ea60252d3d94f78bee9b21ea3d21b21deba9a",
+    "rknn_matmul_api_header_sha256": "aaadd9a7118de30a06b222996b6731db77095d00f5931a7a98c83a67f14a4d42",
+    "librknnrt_sha256": "d31fc19c85b85f6091b2bd0f6af9d962d5264a4e410bfb536402ec92bac738e8",
+    "perf_binary_sha256": "27a3ab8b3bcb8b2372f6e0604674f1e3df13abcf5535ffd5a124e6400551afa3"
+  },
+  "frozen_execution": {
+    "formal_segments": 1,
+    "performance_smoke": false,
+    "automatic_retry": false,
+    "same_day_retest": false,
+    "cross_day_retest": false,
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED"
+  },
+  "next_action": "Copy this source-lock to the board and start segment1 exactly once. No implementation file may change after this lock."
+}

@@ -1,0 +1,234 @@
+schema_version: 1
+milestone: M1
+stage: T3_OPD
+status: formal_training_complete_adapter_saved_merge_pending
+updated_at: 2026-09-14T16:10:24+08:00
+
+topology:
+  mode: dedicated_two_gpu_localhost
+  teacher:
+    gpu_index: 0
+    gpu_uuid: GPU-8441031a-35d4-fc0b-d6c1-70adb534e305
+  student:
+    gpu_index: 1
+    gpu_uuid: GPU-39160c7c-0272-9254-c171-be00298b0dfc
+
+runtime:
+  environment: /root/autodl-tmp/edgeforge-m1/t3-venv-py312
+  python: 3.12.3
+  packages:
+    torch: 2.13.0
+    transformers: 5.15.0
+    trl: 1.9.2
+    peft: 0.20.0
+    bitsandbytes: 0.50.0
+    accelerate: 1.14.0
+    datasets: 5.0.1
+    vllm: 0.27.0
+  cuda_toolkits:
+    pytorch_runtime: "13.0"
+    system_cuda_home: /usr/local/cuda
+    system_nvcc: "12.8"
+    venv_cuda_home: /root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/nvidia/cu13
+    venv_nvcc: "13.3"
+
+teacher:
+  model: /root/autodl-tmp/edgeforge-m1/workspace/models/gemma-4-31B-it
+  artifact_set_sha256: d36ce1b4da4dfd476c42a3cf3130c31999931ee8b205ec43ed7702ffd3ca9ee6
+  precision: bfloat16
+  full_multimodal_checkpoint_loaded: true
+  opd_request_path: pretokenized_text_token_ids
+  server_url: http://127.0.0.1:8000
+  max_model_len: 8192
+  workload_max_length: 4096
+  endpoint_extra_token_reserve: 1
+  loss_top_k: 1
+
+student:
+  model: /root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1
+  artifact_set_sha256: 1eebd3e1302a502ce41a9416267219e70cec63ac69ea20429dd97bd47ba9a133
+  loader: AutoModelForImageTextToText
+  base_precision: bfloat16
+  quantization:
+    enabled: false
+    reason: same_64_prompt_window_bf16_generation_was_28.7_percent_faster_than_nf4_and_fit_memory
+  attention: sdpa
+  use_cache: true
+  gradient_checkpointing: false
+  generation_backend:
+    selected: transformers
+    vllm_colocate_status: rejected
+    audit: results/m1/t3_student_vllm_compatibility_audit.md
+    reasons:
+      - flashinfer_sampler_initially_resolved_system_nvcc_12_8_and_misclassified_sm120
+      - venv_cuda_13_3_correctly_resolves_compute_120f_but_only_repairs_sampler_jit
+      - native_vllm_gemma4_requires_missing_k_v_k_norm_for_18_kv_shared_layers
+      - native_vllm_gemma4_dummy_forward_splits_q_only_2048_as_qkv_3072
+      - transformers_model_impl_rejects_heterogeneous_per_layer_head_dim
+      - no_hf_vllm_logits_alignment_gate_could_run
+  adapter:
+    method: rsLoRA
+    rank: 256
+    alpha: 16
+    scaling_rule: alpha_over_sqrt_rank
+    effective_scaling: 1.0
+    dropout: 0.0
+    bias: none
+    target_scope: language_model_linear_only
+    target_module_count: 343
+    trainable_parameter_tensors: 686
+    trainable_parameters_fp32: 622067712
+    exclude:
+      - vision_tower
+      - audio_tower
+      - multimodal_projectors
+
+trainer:
+  class: trl.experimental.server_distillation.ServerDistillationTrainer
+  config_class: trl.experimental.server_distillation.ServerDistillationConfig
+  external_teacher:
+    teacher_model_server_url: http://127.0.0.1:8000
+    beta: 1.0
+    loss_top_k: 1
+    loss_add_tail: true
+    reverse_kl_top_1_mode: sampled
+  generation:
+    num_generations: 1
+    rollout_buffer_size: 64
+    optimizer_batch_size: 4
+    trainer_generation_batch_size: 4
+    rollout_semantics: generate_once_then_consume_each_of_64_slices_exactly_once_across_16_optimizer_steps
+    top_p: 0.95
+    top_k: 0
+    temperature: 1.0
+  lengths:
+    max_length: 4096
+    max_prompt_length: 3072
+    max_completion_length: 3072
+    completion_rule: min_3072_or_4096_minus_real_prompt_width
+  optimization:
+    per_device_train_batch_size: 1
+    gradient_accumulation_steps: 4
+    optimizer: adamw_torch
+    learning_rate: 0.00005
+    weight_decay: 0.0
+    max_grad_norm: 1.0
+    lr_scheduler_type: cosine
+    max_steps: 960
+    warmup_steps: 29
+  persistence:
+    state_output_dir: results/t3/c02_s_opd_formal_r1_state
+    save_steps: 320
+    save_total_limit: 2
+    final_adapter: results/t3/c02_s_opd_formal_r1_state/final_adapter
+  seed: 20260811
+
+inputs:
+  source_plan: /root/autodl-tmp/edgeforge-m1/workspace/results/t1/family_80_20_half_plan_r1/family_80_20.parquet
+  source_plan_sha256: 61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e
+  formal_prompt_pool: /root/autodl-tmp/edgeforge-m1/workspace/results/t3/opd_prompt_pool_formal_3840/prompts.parquet
+  formal_prompt_pool_sha256: e005b5f0f7ed4e01a1f2317f4821787cfed7a48e7a6ec46c84547666f2e5d5ca
+  formal_prompt_manifest: /root/autodl-tmp/edgeforge-m1/workspace/manifests/m1_t3_opd_prompt_pool_formal_3840.json
+  formal_prompt_manifest_sha256: b299687af3fc3de9beb619800bff4ed6ee343be454ada46fe0b3af625a05397c
+  prompts: 3840
+  unique_sources: 3840
+  holdout_intersection: 0
+  family_mix: 80_20
+  rollout_windows: 60
+  optimizer_steps: 960
+  retained_reference_completion_tokens: 3803833
+  maximum_rollout_tokens_under_dynamic_caps: 11591424
+
+owner_overrides:
+  formal_t3_wall_clock_hours: "6-7"
+  effective_date: 2026-08-12
+  quality_rule: preserve_objective_adapter_and_unique_non_holdout_data_quality_before_reducing_prompt_count
+  prompt_count_rule: choose_the_largest_frozen_unique_prompt_manifest_that_a_representative_end_to_end_probe_projects_within_7_hours
+
+formal_run:
+  status: PASS
+  started_at: 2026-08-13T00:08:26.293797+08:00
+  finished_at: 2026-08-13T05:46:48.686669+08:00
+  wall_seconds: 20302.392910112045
+  train_runtime_seconds: 20286.4796
+  pid_file: results/m1/t3_opd_formal_r1.pid
+  log: results/m1/t3_opd_formal_r1.log
+  receipt: results/m1/t3_opd_formal_r1_receipt.json
+  receipt_location: cloud_only
+  receipt_sha256: 697b8b04284e71fab3bdbd90609f6458458de14ced3c6d11d6b7f603577e165d
+  repository_summary: results/m1/t3_opd_formal_summary.json
+  launch_receipt: results/m1/t3_opd_formal_launch_receipt.json
+  launch_receipt_sha256: 7feed1871d385f17891f55bb81955f8f42eba904c70eb53c50d95b91832bf4ad
+  terminal_metrics:
+    optimizer_steps: 960
+    rollout_windows: 60
+    consumed_slices: 3840
+    duplicate_or_skipped_slices: 0
+    generated_tokens: 7316638
+    train_loss: 0.12659115966628937
+    last_step_loss: 0.16710934042930603
+    peak_allocated_gib: 71.54798936843872
+    peak_reserved_gib: 92.240234375
+  final_adapter:
+    path: results/t3/c02_s_opd_formal_r1_state/final_adapter
+    bytes: 2488376152
+    model_sha256: e1fddbeef0cfb338c89e7f37845545a490f7b062bb1290b757ed8a0c3c34326d
+    checkpoint_960_model_sha256: e1fddbeef0cfb338c89e7f37845545a490f7b062bb1290b757ed8a0c3c34326d
+    config_sha256: bc89fa51f25acee6c123a11dc29c1159ab0bb59f00097cf34b757a014f6a9b06
+  artifactization:
+    merged_bf16_c02_s_o: NOT_DONE
+    independent_reload_and_tensor_audit: NOT_DONE
+    q4_k_m_carrier: NOT_DONE
+    post_opd_quality_evaluation: NOT_DONE
+  projection:
+    receipt: results/m1/t3_rollout64_optimizer4_bf16_end_to_end_projection_receipt.json
+    receipt_sha256: a4331843c5f60c160f0807abb484c146fc5f83dfc7e05cb19ddba58caa2a01ad
+    representative_window_train_seconds: 409.8013
+    representative_window_wall_seconds: 423.2187
+    projected_training_hours: 6.8300
+    projected_wall_hours_before_checkpoint_overhead: 6.8337
+    selection_basis: training_runtime_controls_the_6_to_7_hour_budget_and_3840_is_the_largest_64_aligned_schedule_with_roughly_10_minutes_reserved_for_loading_checkpoints_and_final_save
+
+selection_evidence:
+  rank_gate:
+    design: independent_rsLoRA_ranks_on_shared_train_and_heldout_rollouts
+    ranks: [8, 16, 32, 64, 128, 256]
+    heldout_divergence:
+      8: 0.8587780706584454
+      16: 0.8253447990864515
+      32: 0.7479135980829597
+      64: 0.6832541301846504
+      128: 0.6264152005314827
+      256: 0.5866712583228946
+    selected_rank: 256
+    receipt: results/m1/t3_lora_rank_rslora_wd0_gate_receipt.json
+    receipt_sha256: e6910181dc09078bb4ea59d3f40e2719e12b4be161fefb14fbd69aa3ced0bc04
+  alpha_lr_gate:
+    design: 5_alpha_by_3_learning_rate_grid_on_shared_32_train_and_32_heldout_rollouts
+    empirical_best_and_only_eligible: alpha16_lr5e-5
+    heldout_divergence: 0.43662213161587715
+    selected_alpha: 16
+    selected_learning_rate: 0.00005
+    receipt: results/m1/t3_rslora_rank256_alpha_lr_gate_receipt.json
+    receipt_sha256: 1b577a6d170a16a8d0bb9fc636cba5cd3a086d3a9742fcf207af9a16024af1d6
+  full_length_memory_gate:
+    sequence_length: 4096
+    prompt_length: 3072
+    completion_length: 1024
+    status: PASS
+    loss: 1.1889605522155762
+    gradient_norm_before_clipping: 1.998049020767212
+    step_seconds: 2.7803363929269835
+    peak_allocated_gib: 81.46987962722778
+    peak_reserved_gib: 85.5859375
+    receipt: results/m1/t3_rank256_4096_memory_gate_receipt.json
+    receipt_sha256: 924003e057975bb08f673e0a638ab1699c4cd562a599b7bc67b053447f9484ab
+  bf16_rollout_projection:
+    prompts: 64
+    optimizer_steps: 16
+    generated_tokens: 187662
+    generation_seconds: 269.1965
+    train_runtime_seconds: 409.8013
+    peak_allocated_gib: 71.4911
+    peak_reserved_gib: 73.2871
+    status: PASS

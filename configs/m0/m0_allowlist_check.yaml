@@ -1,0 +1,46 @@
+# §3.3 selection-only diagnostic.  These local task copies differ from the
+# frozen packages solely by an empty network allowlist; do not use this job's
+# lock or scores as the official baseline.
+job_name: m0_allowlist_check
+jobs_dir: results/
+n_attempts: 1
+n_concurrent_trials: 1
+retry:
+  max_retries: 0
+timeout_multiplier: 1.0
+agent_setup_timeout_multiplier: 3.0
+
+tasks:
+  - path: results/m0_allowlist_tasks/overfull-hbox
+  - path: results/m0_allowlist_tasks/regex-log
+  - path: results/m0_allowlist_tasks/constraints-scheduling
+  - path: results/m0_allowlist_tasks/break-filter-js-from-html
+  - path: results/m0_allowlist_tasks/nginx-request-logging
+  - path: results/m0_allowlist_tasks/openssl-selfsigned-cert
+  - path: results/m0_allowlist_tasks/polyglot-c-py
+  - path: results/m0_allowlist_tasks/count-dataset-tokens
+  - path: results/m0_allowlist_tasks/dna-insert
+  - path: results/m0_allowlist_tasks/multi-source-data-merger
+  - path: results/m0_allowlist_tasks/sanitize-git-repo
+  - path: results/m0_allowlist_tasks/filter-js-from-html
+  - path: results/m0_allowlist_tasks/build-cython-ext
+  - path: results/m0_allowlist_tasks/gcode-to-text
+  - path: results/m0_allowlist_tasks/largest-eigenval
+  - path: results/m0_allowlist_tasks/mailman
+  - path: results/m0_allowlist_tasks/pypi-server
+  - path: results/m0_allowlist_tasks/sqlite-db-truncate
+  - path: results/m0_allowlist_tasks/log-summary-date-ranges
+  - path: results/m0_allowlist_tasks/build-pmars
+
+agents:
+  - name: terminus-2
+    model_name: openai/gemma4-e4b
+    kwargs:
+      api_base: http://localhost:8080/v1
+      temperature: 1.0
+      max_turns: 30
+      parser_name: json
+      enable_summarize: false
+
+verifier:
+  disable: false

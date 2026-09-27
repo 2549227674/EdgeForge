@@ -1,0 +1,3 @@
+timestamp_epoch_s	root_pid	process_count	root_rss_kib	root_hwm_kib	tree_rss_kib	mem_available_kib	gpu_used_mib
+1789651917.756344	1934	1	10500	10500	10500	631283632	0
+1789651918.838894	1934	1	0	0	0	631468480	0

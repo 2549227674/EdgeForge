@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_GQA_DECODE_SELECTION_PREREG",
+  "timestamp": "2026-09-16T17:04:06+08:00",
+  "protocol": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op5_gqa_decode_selection_probe.json",
+    "sha256": "121ae0b4b4ad6858f1b497c1f6895073823519f17fe7ead93db94703f3d2617d"
+  },
+  "verified_sources": {
+    "shape_census": "PASS",
+    "op1_receipt": "PASS",
+    "op1_channel_b_profiler": "PASS",
+    "k2_r2_closure_receipt": "PASS",
+    "op0_receipt": "PASS",
+    "same_day_bandwidth_config": "PASS",
+    "transformers_gemma4_source": "PASS",
+    "transformers_sdpa_source": "PASS",
+    "git_sha": "PASS"
+  },
+  "freeze_assertions": {
+    "before_formal_probe_measurement": true,
+    "before_gqa_candidate_implementation": true,
+    "exact_911148_decode_invocations_accounted": true,
+    "sliding_and_full_shapes_accounted": true,
+    "four_existing_baselines_frozen": true,
+    "correctness_and_selection_thresholds_frozen": true
+  },
+  "next_authorized_action": "Author the probe runner without changing this protocol, then execute only the GQA decode selection probe.",
+  "status": "PASS"
+}

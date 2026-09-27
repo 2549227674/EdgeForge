@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-02-FP16-GEMV-FORMAL-EVIDENCE",
+  "status": "VALID_OPE5_02_SINGLE_SEGMENT_OWNER_WAIVER_ISOLATED_4XA76_FP16_GEMV",
+  "recorded_at": "2026-09-21T14:53:15.538703367+08:00",
+  "formal_segments": 1,
+  "same_day_retest_performed": false,
+  "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+  "payload_file_count": 52,
+  "archive_member_count_including_manifest": 53,
+  "files": [
+    {
+      "path": "configs/operator/board/ope5_backlog_triage.json",
+      "sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539",
+      "role": "frozen backlog adjudication"
+    },
+    {
+      "path": "configs/operator/board/ope5_fp16_gemv_scope.json",
+      "sha256": "51c6d942cbd7fcd494ea076a48b434cbebb870365897ab7da965978e13c07068",
+      "role": "frozen four-question scope"
+    },
+    {
+      "path": "configs/operator/board/ope5_fp16_gemv_prereg.json",
+      "sha256": "b89dc6e03bcae62ab817a0814f48541ff6c8526c4b23f60108bbd438434fb514",
+      "role": "frozen FP16 GEMV preregistration"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_scope_receipt_20260921.json",
+      "sha256": "a09b2812c73b5e463bb007e40a0843d523b5c8a1bdc43426dbaaba506accbf9c",
+      "role": "scope verification receipt"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_prereg_receipt_20260921.json",
+      "sha256": "508175407b43da499c57535f3973245ca765b7d86b5f49b642d4e760fd3323f0",
+      "role": "preregistration verification receipt"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_source_lock_20260921.json",
+      "sha256": "cee44b4f4734655d44cf38bdadc106ec9ac0d956e02f3c5d8ff92f710638ad5b",
+      "role": "pre-execution source lock"
+    },
+    {
+      "path": "scripts/operator/board/ope5_fp16_gemv_bench.cpp",
+      "sha256": "7843a9f797bcf566eae34e9982b6ecab832a53060aaa8287403e42c10b132c9e",
+      "role": "locked benchmark source"
+    },
+    {
+      "path": "scripts/operator/board/run_ope5_fp16_gemv.sh",
+      "sha256": "529b1e1100cffdc5fc92176661b02587a88b3ef4fab829a53c27c46954110ba9",
+      "role": "locked formal runner"
+    },
+    {
+      "path": "scripts/operator/board/ope5_fp16_gemv_measure_payload.sh",
+      "sha256": "aef17168a7b6dce1d7cb870a136bf3621d399ae94b64819e6a0b01403d275ab4",
+      "role": "locked board payload"
+    },
+    {
+      "path": "scripts/operator/board/telemetry_sampler.sh",
+      "sha256": "74f8e8a85858c567206b7234dafe7015a59483c42d83300a04b3532a1368b84c",
+      "role": "locked telemetry dependency"
+    },
+    {
+      "path": "scripts/operator/board/summarize_ope5_fp16_gemv.py",
+      "sha256": "2a5cb09702720358524929e2d67d4d3f38b02a63176bffe02c7d88ae30bde804",
+      "role": "independent post-run validator"
+    },
+    {
+      "path": "scripts/operator/board/package_ope5_fp16_gemv_evidence.py",
+      "sha256": "b26761d1d6ca98646b615b89d7a5582ff21718bcec6ee7c7381ae9c1e656772c",
+      "role": "deterministic evidence packager"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_receipt_20260921.json",
+      "sha256": "221e26f63cfde04362ae6a718f9c85ea40331b4cca084bae385374ef8213421a",
+      "role": "28-of-28 machine receipt"
+    },
+    {
+      "path": "docs/operator/EdgeForge_算子面_板端_OPE5_FP16_GEMV正式段报告_2026-09-21.md",
+      "sha256": "6341c53380fddd03413c3908e474eed9b86682f91c97ab1fff5cc33cc4e3732e",
+      "role": "human-readable formal report"
+    },
+    {
+      "path": "results/operator/board/bandwidth_ceiling.json",
+      "sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9",
+      "role": "OPE0 Tier-A denominator"
+    },
+    {
+      "path": "results/operator/board/ope3/ope3_receipt_20260919.json",
+      "sha256": "5a3e96c095888b7ea9d96d93aee8463351affd05f8d77da8351dcee09f3e489e",
+      "role": "OPE3 same-geometry int8 anchor"
+    },
+    {
+      "path": "results/operator/board/ope3/ope3_three_horizontal_20260919.json",
+      "sha256": "53b7fbe41327d0b8809299af0e24fe33446724f84b12a5ba7e909f0abdff9531",
+      "role": "OPE3 lineage-separated comparison context"
+    },
+    {
+      "path": "results/operator/board/ope4/ope4_receipt_20260921.json",
+      "sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d",
+      "role": "OPE4 model-stage anchor"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/build.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/build.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/controller_meta.json",
+      "sha256": "eed03f6ef1f8875f16c6d04a0b6a6e4a277065da240b651937a4882f902568a6",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/correctness.csv",
+      "sha256": "b4f97f6c7e992463e09182ddd0cc815212bc09cd8e72dca36f0b08cb12fd68b6",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/correctness.stderr.log",
+      "sha256": "5e39f4300ca64ff5b8527009cfc902f843b2c453ce40b4da21aed08d3a97e360",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/correctness_gate.txt",
+      "sha256": "bfea6612d0d6b50f771f82cde59fb662b01aa1fd99983261a637e86489d8f2d6",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/disassembly_autovec_o3.txt",
+      "sha256": "74353a3e7445f621cce1d12091ae2f1efb42d13cd8c8e2b0428ebae78812868e",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/disassembly_neon_fp16_f32acc.txt",
+      "sha256": "d990e498809f650afd43a01ad32fbd2ae2d8f89114d14513502a21c43b4ced96",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/disassembly_scalar_fp32.txt",
+      "sha256": "ca41d66d0d541953c0842f9341deaa0f1e927373bc19f37a4c84572fc4710ea7",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/governor_state.tsv",
+      "sha256": "a0cea4b414b2395438a17706efd187893f3da22623bc5923e53973b116108197",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/implementation_hash_checks.tsv",
+      "sha256": "7257bf7f89c130431d3358caddb5a2bcf2ec71054f8a74cde469c85f09f9bb84",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/implementation_hash_observed.tsv",
+      "sha256": "393b9917ff838c2941f39f03878bab33f184aae5bb8dfba37b36d1f76d14692d",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/perf_autovec_o3_invocation.bench.csv",
+      "sha256": "bd7120e63b9fdfa065039daa407be4bbb7f6e11199f2205d25bcb10d2a930312",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/perf_autovec_o3_invocation.exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/perf_autovec_o3_invocation.stat.csv",
+      "sha256": "2d3c184c208624ebbffb6b1a363a9cb70ab275a6e9e1421f28ee9fcaa683bfa4",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/perf_autovec_o3_invocation.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/perf_event_attempts.tsv",
+      "sha256": "69fec5efafebf37a0191a60c28337eaf892b37d438eb2cd01930d1140a15c043",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/perf_neon_fp16_f32acc_invocation.bench.csv",
+      "sha256": "e26f0c67ff9f5b5806c8545de2f052afab3d398bca9bf2a5612db178a7f15757",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/perf_neon_fp16_f32acc_invocation.exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/perf_neon_fp16_f32acc_invocation.stat.csv",
+      "sha256": "61f45989509534ad28e4f74cee5676e87e03015eef07f9ba845f9b97bdfdaf3f",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/perf_neon_fp16_f32acc_invocation.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/perf_scalar_fp32_invocation.bench.csv",
+      "sha256": "07c016d78683bfec4c54d02bac6410c91fad109162f955b501f2b751133897c4",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/perf_scalar_fp32_invocation.exit_code.txt",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/perf_scalar_fp32_invocation.stat.csv",
+      "sha256": "4c7d5a693c7e4e466593bea562d9a9e73beca6069c0c0eefd494374cfe42bda2",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/perf_scalar_fp32_invocation.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/phase.txt",
+      "sha256": "924b344ae63f8fa0189fcb62c1d2990ca75e450a89d2147adcba4167c3ca5aeb",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/run_meta.env",
+      "sha256": "5d8caf3c70e80b0e6831b8ee108c298b634ef79e34af1e95651c6414c9d7ea58",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/telemetry_1hz.csv",
+      "sha256": "d9a31f4d82a2636c7ba60353415c4cb9c016968901f3024a98b1334ea176ec65",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/thermal_trip_points.tsv",
+      "sha256": "80ec0be226f806978e85d41c00f23a0e40de7503080e8d33ecf9c7a033f96aa2",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/tier_b_gate.txt",
+      "sha256": "0c1a781dc4926ae8e5354b3be734bc8d48316c44056742d901ee395de52b3df1",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/timing_gate.txt",
+      "sha256": "e468408c4089d8cc5c681bf078c8f90b8ae250f47a9d6a1b7ced1e107c9265dd",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/timings.csv",
+      "sha256": "eead1cc6da6815fd8f155b24c979eb4c9a8a7432ff76aa5c8a8af675efc8df27",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/timings.stderr.log",
+      "sha256": "468e9dd953a1d5117262ae63dcb9770d3ef4c6ea8f8f32f5de865dda3c249c4a",
+      "role": "raw single formal segment artifact"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_segment1_20260921T145232+0800/vectorization.log",
+      "sha256": "05df1b763d4e36eeeb60fd264819f4b0ae04fe8ac033c609a230dc9be5412d44",
+      "role": "raw single formal segment artifact"
+    }
+  ],
+  "claim_limits": [
+    "The measured FP16 GEMV is an isolated four-A76 comparator, not proof of RKLLM CPU dispatch or a deployment speedup.",
+    "The 42-call result is a p50 multiplication, not a measured population or subtractable RKLLM TPOT component.",
+    "bus_access count*8 is a preregistered hypothesis diagnostic only; count*64 remains rejected and neither is an acceptance gate.",
+    "Execution card, facts, handoff, this manifest, archive checksum, and the archive itself are mutable/index or self-referential artifacts and are not hashed as payload members."
+  ]
+}

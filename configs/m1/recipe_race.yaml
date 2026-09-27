@@ -1,0 +1,98 @@
+schema_version: 2
+milestone: M1
+stage: T1_recipe_race_abandoned
+status: superseded_by_owner_override_and_family_80_20_half
+frozen_at: 2026-08-11
+
+identity:
+  mix_yaml_sha256: aca2c86b8b8ff0318dd2462efc22a5cac8a65c36b224c0ddffca033376393a96
+  mix_records_manifest_sha256: cb3168198af82795315f5ae5fec355e74ca4affd171ba5e3b595ea3f2152bcf9
+  holdout_manifest_sha256: c6ae96e93474b639ee4217a0d14506e383d1f406320b01a0b0aa1ec75c1b9374
+  long_holdout_manifest_sha256: 8dfc17d2af0edf52ba2aff940e126bf1299b25a232764bb5f5c89890e2d97af6
+  template_sha256: 0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5
+  rendered_report_sha256: 0694e87c5b75185adff702929d6f03f8fdd3098d7059e16fb95db83866b2bb02
+  segment_audit_sha256: 01de75a2c26a80d55676fe76997a7435ca876601f5dcbdfa7a3787f391696d15
+  recipe_plan_manifest_sha256: 4161035534a486be093413c88a081b05e2ee253444de1f1a3573476a0046e00f
+
+data:
+  renderer: scripts/m0/data/render_linec_samples.py
+  renderer_driver: scripts/m1/render_m1_dataset.py
+  alpha_branch: 2
+  max_seq_length: 4096
+  segmentation:
+    unit: user_started_message_round
+    context: maximal_complete_preceding_round_suffix
+    loss: target_round_assistant_spans_only
+    oversized_target: quarter_window_input_overlap_with_disjoint_target_labels
+    deduplication: source_uid_target_round_target_part
+  source_records: 154097
+  rendered_windows: 188095
+  dropped_source_records: 0
+  render_failures: 0
+  post_segment_input_tokens: 300334422
+  post_segment_supervised_tokens: 198630117
+  holdout_manifest_records: 1500
+  holdout_rendered_windows: 1948
+  holdout_rendered_source_records: 1500
+  long_holdout_source_records: 72
+  training_windows: 186147
+  training_source_records: 152597
+  post_segment_training_tokens: 296850623
+  race_token_budget_per_recipe: 37106327
+  d9:
+    record_retention_gate: 0.90
+    supervised_token_retention_gate: 0.70
+    minimum_family_record_retention: 1.0
+    minimum_family_supervised_token_retention: 0.9999852101386624
+    pass: true
+
+recipes:
+  raw_uniform:
+    selection: uniform_rendered_window
+    plan_records: 23267
+    plan_input_tokens: 37106327
+    plan_shifted_supervised_tokens: 24492290
+    plan_sha256: 310460f77d4531b80085207c08b975d65f0b6d1954d08b01a9ef2cff7f909483
+  family_80_20:
+    selection: family_probability_then_uniform_rendered_window
+    anthropic_style_probability: 0.8
+    other_family_probability: 0.2
+    plan_records: 20385
+    plan_input_tokens: 37106327
+    plan_shifted_supervised_tokens: 22154013
+    plan_sha256: 15137a7d45753349ed95f07aa107ad4bdf1d2374df7df80e77191f6f23fdde07
+
+training:
+  base_model: gemma-4-E4B-it
+  seed: 20260811
+  attention_implementation: sdpa
+  dtype: bf16
+  use_cache: true
+  activation_checkpointing: false
+  quantization: bnb_nf4_double_quant_bf16_compute
+  lora:
+    rank: 8
+    alpha: 16
+    dropout: 0.0
+    bias: none
+    target_modules: all-linear
+  micro_batch_size: 1
+  optimizer: AdamW
+  learning_rate: 0.0002
+  scheduler: cosine
+  full_schedule_optimizer_steps: 8192
+  race_optimizer_steps: 1024
+  warmup_ratio: 0.03
+  warmup_steps: 246
+  validation_interval_optimizer_steps: 64
+  gradient_accumulation: variable_records_token_weighted
+  restart_from_optimizer_step: 0
+  forbid_old_4096_checkpoint_resume: true
+
+judgment:
+  actual_status: abandoned_without_winner
+  owner_override: configs/m1/family_80_20_half.yaml
+  primary: holdout_sample_mean_loss
+  win_threshold: absolute_loss_difference_gte_2x_standard_error
+  tie_breaker: raw_uniform
+  checkpoint_policy: keep_both_and_continue_winner_from_its_1_8_state

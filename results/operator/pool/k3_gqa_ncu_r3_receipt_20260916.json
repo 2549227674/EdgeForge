@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_NCU_R3",
+  "timestamp": "2026-09-16T17:48:05+08:00",
+  "status": "K3_R3_NCU_PASS_RECONNECTION_AUTHORIZED",
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "config_path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k3_gqa_ncu_override_r3.json",
+  "runner_path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k3_ncu_r3.py",
+  "result_path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_ncu_r3_20260916.json",
+  "raw_ncu_csv_path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_ncu_r3_raw_20260916.csv",
+  "gates": {
+    "correctness_precondition": "PASS",
+    "positive_day1_precondition": "PASS",
+    "replication_waiver_recorded": "PASS",
+    "exactly_nine_profiled_kernels": "PASS",
+    "required_metrics": "PASS",
+    "three_case_byte_accounts_closed": "PASS",
+    "telemetry_samples": "PASS",
+    "memory_clock": "PASS",
+    "thermal_hardware_throttle_absent": "PASS"
+  },
+  "aggregate": {
+    "cases": 3,
+    "analytic_backed_cases": 3,
+    "ncu_superseded_cases": 0,
+    "all_cases_closed": true,
+    "max_absolute_relative_delta": 0.034002904162633074,
+    "ncu_duration_use": "diagnostic only; Day-1 CUDA-event p50 remains the performance timing"
+  },
+  "case_accounts": [
+    {
+      "case": "sliding_k512_d256",
+      "analytic_bytes": 1057792,
+      "measured_dram_bytes": 1093760,
+      "measured_to_analytic_ratio": 1.034002904162633,
+      "accounting_source": "Tier-A analytic (ncu-backed within ±15%)"
+    },
+    {
+      "case": "full_k2897_d512",
+      "analytic_bytes": 11888290,
+      "measured_dram_bytes": 12038656,
+      "measured_to_analytic_ratio": 1.012648244617182,
+      "accounting_source": "Tier-A analytic (ncu-backed within ±15%)"
+    },
+    {
+      "case": "full_k6455_d512",
+      "analytic_bytes": 26468974,
+      "measured_dram_bytes": 26808320,
+      "measured_to_analytic_ratio": 1.0128205196015532,
+      "accounting_source": "Tier-A analytic (ncu-backed within ±15%)"
+    }
+  ],
+  "reconnection": "AUTHORIZED_AS_NEXT_STAGE_BY_R3_OWNER_OVERRIDE",
+  "next_authorized_action": "C02 output-attentions-false reconnection becomes the next authorized stage; no reconnection is executed inside this ncu stage."
+}

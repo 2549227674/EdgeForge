@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_RECONNECT_R4_PREREG",
+  "kernel": "k3_gqa_decode_attention",
+  "timestamp": "2026-09-16T17:56:02+08:00",
+  "status": "FROZEN_BEFORE_FORMAL_REPLAY",
+  "protocol": "configs/operator/k3_gqa_reconnect_override_r4.json",
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "baseline": {
+    "source": "results/operator/k1/k1_rmsnorm_op3.json",
+    "selection": "path A / pass 2 / 11 requests",
+    "qualification": "Inherited receipt reports baseline_self_repeat_tokens=PASS; no unchanged eager rerun is scheduled."
+  },
+  "formal_candidate_replay_started": false,
+  "length_bucket_adapter_frozen_before_formal_replay": true,
+  "length_bucket_count": {
+    "sliding": 1,
+    "full": 25
+  },
+  "expected": {
+    "tapes": 5,
+    "requests": 11,
+    "completion_tokens": 21705,
+    "candidate_calls": 911148,
+    "prefill_eager_calls": 462,
+    "attention_modules": 42,
+    "nf4_modules": 343
+  },
+  "replication_disclosure": "Owner waived both the original cross-day replication and the prepared R2 same-day replication after Day-1; R4 cannot establish replication PASS."
+}

@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "source": "results/t1/rendered_4096_r2",
+  "selection": "sorted parquet shards then row order; prefix truncation",
+  "count": 32,
+  "max_length": 512,
+  "output": "results/m1/alpha/fingerprint_samples.jsonl",
+  "output_sha256": "73277c8ac0620873350574edc3fd59c5de8d25fdc6a732ff3bcd16a23c9fbec0",
+  "samples": [
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee172-2f9f-7341-8125-4e5d535d9e56:0",
+      "length": 512,
+      "supervised_tokens": 136,
+      "token_label_sha256": "85385cbf23cc0d965ebb2e4acf35e1d38e5c43becdf2302f8e82663b28868165"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee173-6fff-7300-ab06-cf89fc97744b:1",
+      "length": 512,
+      "supervised_tokens": 133,
+      "token_label_sha256": "de1ad7bced1db3c176e36160d7bc1aa82a88325117be18581a77d1a63a372eb3"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee174-28a3-76b2-bae6-f6679665530c:2",
+      "length": 512,
+      "supervised_tokens": 135,
+      "token_label_sha256": "396bc419bc4ecf185f4da27b41e62084c3d931d310d35f4ab43c03bf159f2ef2"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee177-4aa8-7439-af33-649141f0e2c6:4",
+      "length": 512,
+      "supervised_tokens": 139,
+      "token_label_sha256": "769ecb25b5580d28eb8741eaef01a8b10f5013135cdbd07409741ae7a0223ca1"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-695b-729e-9bcb-9192fc451d25:5",
+      "length": 512,
+      "supervised_tokens": 132,
+      "token_label_sha256": "ac508f009f373ce22347ae468f85f4781ee075a821e1ee4f1274946ce01a96dc"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-699b-710a-9553-087aa3830843:6",
+      "length": 512,
+      "supervised_tokens": 138,
+      "token_label_sha256": "12c622014d39a58c5e6334f0c4e3fad72ad072ebe8e2d037d805544507eed74c"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6abe-722c-864e-046c1eb5e1e9:7",
+      "length": 512,
+      "supervised_tokens": 135,
+      "token_label_sha256": "82084dd95fbfa7f99f1197dbb86c6aeec174c6789f46699e6c5f57b59d428f03"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b34-7106-a681-f5d68ade46b5:9",
+      "length": 512,
+      "supervised_tokens": 129,
+      "token_label_sha256": "65b72fd3eff734ff82a80495abf2b6088bcf660f635129e7162792a9f3016f69"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b49-74fe-acdf-7db962bf91cf:10",
+      "length": 512,
+      "supervised_tokens": 137,
+      "token_label_sha256": "604672ef9f89e5d4b5b2261e42bc9262a615e60d6edf28d0b3d57fb1e387dc5c"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b5d-739c-abc4-7a695e11ec95:11",
+      "length": 512,
+      "supervised_tokens": 136,
+      "token_label_sha256": "49849173f20d88273ffe98e7a33f5d736deebee3bafee10a6e56faf93d3476f5"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6c93-709c-9a90-b72bfff48d3a:12",
+      "length": 512,
+      "supervised_tokens": 111,
+      "token_label_sha256": "738fed57e57e0ad45ab3d8491b2e546aa7f1c88f83d2bc71ab55b582a47ac45c"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee190-7bed-7235-9acc-bbf17f0b6e46:13",
+      "length": 512,
+      "supervised_tokens": 123,
+      "token_label_sha256": "ee16bf43c42b5a07bf76d7decc3f8839a241973f6a5f9f0628f28be728de6386"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee193-f6ad-726a-a910-1fc256893c5c:14",
+      "length": 512,
+      "supervised_tokens": 121,
+      "token_label_sha256": "055cf333f453773a29b59ad59b28300b9d48cada2499c56eff2ab2fbd30417c4"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee19c-bd20-74bd-bc18-a7db41554c6b:15",
+      "length": 512,
+      "supervised_tokens": 117,
+      "token_label_sha256": "a152426bb2f5309db48740c973a145982924ec79c8249a997bdeb9dc9ee1acd2"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1a1-ba56-75ce-a3a8-38e71f97a846:16",
+      "length": 512,
+      "supervised_tokens": 136,
+      "token_label_sha256": "194fee92079d01d8e885613307a97b67037fe9dcdda8492118b1c4919ca18a65"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a3b7-761b-abc4-5f78a747b2a9:17",
+      "length": 512,
+      "supervised_tokens": 138,
+      "token_label_sha256": "b89e044e01c220f4d413bacd215d7d5a9e0f77e8fa796ad0f63f061c5e0b97f0"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a4be-7752-a155-1c26f2d31f34:19",
+      "length": 512,
+      "supervised_tokens": 138,
+      "token_label_sha256": "90acd871dfeb5de0d1ec8e6295f23136f319380d2b22f393b190b0e4937df565"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a5e7-72bb-b81b-cef030975684:20",
+      "length": 512,
+      "supervised_tokens": 138,
+      "token_label_sha256": "eb5539d0ba57a45d405ced6626595c1096f2c264f3d6d8407848c3a1214e2df1"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a6a5-7549-92e7-0ed6e20877cd:21",
+      "length": 512,
+      "supervised_tokens": 126,
+      "token_label_sha256": "6146868324de75c817c26db270772dce604a3caeae0d65d929a27b9e188b4efc"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a74c-715a-9c4e-8ac650001d81:22",
+      "length": 512,
+      "supervised_tokens": 76,
+      "token_label_sha256": "ca003bcfd6dff92500a6723318366a507ff1fb2b5f4caaf8f1447bcd0ca73511"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a78f-7244-b496-dfd5ad479dcf:23",
+      "length": 512,
+      "supervised_tokens": 122,
+      "token_label_sha256": "d16cf47342afd097b4c955bd5167d507a6d8e2513fbc55c93d086d980d70bb4f"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a92d-70ce-8d35-a2ea793b536a:24",
+      "length": 512,
+      "supervised_tokens": 123,
+      "token_label_sha256": "9be43fcd12f8882899ba6f7e9082ba5945da1c83508d979a4c0253175bd42e17"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a988-72c7-a9a1-b8aecef227c1:25",
+      "length": 512,
+      "supervised_tokens": 102,
+      "token_label_sha256": "fd6023893b30e2ac497695e837063498fb2022961a467ed3bb14f4110a0470ee"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a9a1-72ce-a534-3c563906f079:26",
+      "length": 512,
+      "supervised_tokens": 122,
+      "token_label_sha256": "26f5a9cdc35b3c8520ce3a0946d6cb0a23fb6953885e76d5864fe5d49215b2a2"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a9f1-74d9-bed7-0a3950776dc5:27",
+      "length": 512,
+      "supervised_tokens": 119,
+      "token_label_sha256": "b9d7e22929de189008007efdb7f46bf3c2db42b4cc95b76851da19e10239663a"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-aad4-739b-9e12-2329a26d882c:28",
+      "length": 512,
+      "supervised_tokens": 122,
+      "token_label_sha256": "ca358f9aa98ae58389959ba13d4ea2b0448084ffde89ba3ff53a9dacdab10ede"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-ad2b-70db-be90-3755399f696c:29",
+      "length": 512,
+      "supervised_tokens": 136,
+      "token_label_sha256": "493db4079e2d294f9c65a38df9ecb19212b8d4f4bee9cb0b8c49b7abab091b30"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-ad76-7025-bd60-872a919488f8:30",
+      "length": 512,
+      "supervised_tokens": 124,
+      "token_label_sha256": "4865b9cda5a5447903509e5ed39184fcfbe8e4dd7decc8bbdf762c8a34ca8c3a"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-aeb3-726d-842c-4729148399b0:31",
+      "length": 512,
+      "supervised_tokens": 138,
+      "token_label_sha256": "21d470270fdb46d2c9bd68f8f97810a0e50313df3e7d75170441e024adfad38a"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-af2c-700b-b19b-c33c49b832af:32",
+      "length": 512,
+      "supervised_tokens": 121,
+      "token_label_sha256": "df9efc776e4886f32fc56a12f2f71e910e0dd0497d4ee0b5f3a74ce5f493ce48"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-af91-73fd-a1a2-04795a7b5060:33",
+      "length": 512,
+      "supervised_tokens": 138,
+      "token_label_sha256": "7e2f0eae0e3a05f37fbd1a75cf9b3a8f558bed3a1305b1f841e464a665371443"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-b15e-7351-ac5f-720726095082:34",
+      "length": 512,
+      "supervised_tokens": 124,
+      "token_label_sha256": "7250932ebb56fdc157fd89d1023294094842418cba788bd858f396b8d86d3492"
+    }
+  ]
+}

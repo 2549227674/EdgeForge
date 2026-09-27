@@ -1,0 +1,1088 @@
+{
+  "schema_version": 1,
+  "stage": "OP0-b",
+  "kernel": "bandwidth_memcpy_and_triad",
+  "op_semantics_sha": "3214d3e2777fa866ba40ddd2ac77941b5a432ed14bdb3430e06a2db2e2b203be",
+  "carrier": "RTX_4060_Laptop_GPU_sm89_WSL2",
+  "dtype": "float32",
+  "byte_accounting": "read plus write DRAM traffic; decimal GB/s",
+  "sizes": [
+    {
+      "array_size_mib": 16,
+      "array_bytes": 16777216,
+      "numel": 4194304,
+      "operations": {
+        "memcpy": {
+          "analytic_bytes": 33554432,
+          "latency_us": {
+            "count": 200,
+            "min": 43.008,
+            "q1": 56.32,
+            "p50": 120.832004,
+            "q3": 123.903997,
+            "max": 177.151993,
+            "mean": 90.691519,
+            "iqr": 67.583997
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 189.410412,
+            "q1": 270.809923,
+            "p50": 277.694907,
+            "q3": 595.781814,
+            "max": 780.190482,
+            "mean": 431.342654,
+            "iqr": 324.97189
+          },
+          "latency_iqr_fraction": 0.559322
+        },
+        "triad": {
+          "analytic_bytes": 50331648,
+          "latency_us": {
+            "count": 200,
+            "min": 186.368003,
+            "q1": 191.487998,
+            "p50": 202.240005,
+            "q3": 211.968005,
+            "max": 238.591999,
+            "mean": 201.765601,
+            "iqr": 20.480007
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 210.952791,
+            "q1": 237.44927,
+            "p50": 249.064033,
+            "q3": 262.844923,
+            "max": 270.065929,
+            "mean": 250.18272,
+            "iqr": 25.395653
+          },
+          "latency_iqr_fraction": 0.101266
+        }
+      },
+      "correctness": {
+        "sample_indices": [
+          0,
+          2097152,
+          4194303
+        ],
+        "memcpy_observed": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "memcpy_expected": 1.0,
+        "triad_observed": [
+          2.0,
+          2.0,
+          2.0
+        ],
+        "triad_expected": 2.0,
+        "pass": true
+      }
+    },
+    {
+      "array_size_mib": 32,
+      "array_bytes": 33554432,
+      "numel": 8388608,
+      "operations": {
+        "memcpy": {
+          "analytic_bytes": 67108864,
+          "latency_us": {
+            "count": 200,
+            "min": 276.479989,
+            "q1": 281.599998,
+            "p50": 287.231997,
+            "q3": 292.863995,
+            "max": 337.92001,
+            "mean": 287.330881,
+            "iqr": 11.263996
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 198.593933,
+            "q1": 229.146857,
+            "p50": 233.640674,
+            "q3": 238.312729,
+            "max": 242.725935,
+            "mean": 233.69097,
+            "iqr": 9.165871
+          },
+          "latency_iqr_fraction": 0.039216
+        },
+        "triad": {
+          "analytic_bytes": 100663296,
+          "latency_us": {
+            "count": 200,
+            "min": 428.032011,
+            "q1": 433.15199,
+            "p50": 436.224014,
+            "q3": 440.319985,
+            "max": 446.464002,
+            "mean": 436.661761,
+            "iqr": 7.167995
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 225.467889,
+            "q1": 228.613961,
+            "p50": 230.760556,
+            "q3": 232.397168,
+            "max": 235.177028,
+            "mean": 230.552045,
+            "iqr": 3.783207
+          },
+          "latency_iqr_fraction": 0.016432
+        }
+      },
+      "correctness": {
+        "sample_indices": [
+          0,
+          4194304,
+          8388607
+        ],
+        "memcpy_observed": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "memcpy_expected": 1.0,
+        "triad_observed": [
+          2.0,
+          2.0,
+          2.0
+        ],
+        "triad_expected": 2.0,
+        "pass": true
+      }
+    },
+    {
+      "array_size_mib": 64,
+      "array_bytes": 67108864,
+      "numel": 16777216,
+      "operations": {
+        "memcpy": {
+          "analytic_bytes": 134217728,
+          "latency_us": {
+            "count": 200,
+            "min": 570.367992,
+            "q1": 576.511979,
+            "p50": 582.656026,
+            "q3": 588.800013,
+            "max": 596.992016,
+            "mean": 582.694239,
+            "iqr": 12.288034
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 224.823322,
+            "q1": 227.951299,
+            "p50": 230.354999,
+            "q3": 232.809955,
+            "max": 235.317777,
+            "mean": 230.375562,
+            "iqr": 4.858656
+          },
+          "latency_iqr_fraction": 0.02109
+        },
+        "triad": {
+          "analytic_bytes": 201326592,
+          "latency_us": {
+            "count": 200,
+            "min": 850.943983,
+            "q1": 862.208009,
+            "p50": 868.351996,
+            "q3": 874.495983,
+            "max": 884.736001,
+            "mean": 868.429919,
+            "iqr": 12.287974
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 227.555555,
+            "q1": 230.220145,
+            "p50": 231.849058,
+            "q3": 233.501185,
+            "max": 236.592063,
+            "mean": 231.845147,
+            "iqr": 3.28104
+          },
+          "latency_iqr_fraction": 0.014151
+        }
+      },
+      "correctness": {
+        "sample_indices": [
+          0,
+          8388608,
+          16777215
+        ],
+        "memcpy_observed": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "memcpy_expected": 1.0,
+        "triad_observed": [
+          2.0,
+          2.0,
+          2.0
+        ],
+        "triad_expected": 2.0,
+        "pass": true
+      }
+    },
+    {
+      "array_size_mib": 128,
+      "array_bytes": 134217728,
+      "numel": 33554432,
+      "operations": {
+        "memcpy": {
+          "analytic_bytes": 268435456,
+          "latency_us": {
+            "count": 200,
+            "min": 1159.168005,
+            "q1": 1169.407964,
+            "p50": 1176.576018,
+            "q3": 1182.719946,
+            "max": 1266.687989,
+            "mean": 1176.552477,
+            "iqr": 13.311982
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 211.919161,
+            "q1": 226.964513,
+            "p50": 228.149692,
+            "q3": 229.548168,
+            "max": 231.575971,
+            "mean": 228.169235,
+            "iqr": 2.583656
+          },
+          "latency_iqr_fraction": 0.011314
+        },
+        "triad": {
+          "analytic_bytes": 402653184,
+          "latency_us": {
+            "count": 200,
+            "min": 1708.032012,
+            "q1": 1720.063984,
+            "p50": 1730.559945,
+            "q3": 1739.776015,
+            "max": 1751.039982,
+            "mean": 1729.922236,
+            "iqr": 19.712031
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 229.95088,
+            "q1": 231.439668,
+            "p50": 232.672197,
+            "q3": 234.091996,
+            "max": 235.741006,
+            "mean": 232.767486,
+            "iqr": 2.652327
+          },
+          "latency_iqr_fraction": 0.011391
+        }
+      },
+      "correctness": {
+        "sample_indices": [
+          0,
+          16777216,
+          33554431
+        ],
+        "memcpy_observed": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "memcpy_expected": 1.0,
+        "triad_observed": [
+          2.0,
+          2.0,
+          2.0
+        ],
+        "triad_expected": 2.0,
+        "pass": true
+      }
+    },
+    {
+      "array_size_mib": 256,
+      "array_bytes": 268435456,
+      "numel": 67108864,
+      "operations": {
+        "memcpy": {
+          "analytic_bytes": 536870912,
+          "latency_us": {
+            "count": 200,
+            "min": 2336.767912,
+            "q1": 2352.128029,
+            "p50": 2359.296083,
+            "q3": 2364.415884,
+            "max": 2416.640043,
+            "mean": 2358.370409,
+            "iqr": 12.287855
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 222.155928,
+            "q1": 227.062809,
+            "p50": 227.555548,
+            "q3": 228.249018,
+            "max": 229.749351,
+            "mean": 227.648331,
+            "iqr": 1.186209
+          },
+          "latency_iqr_fraction": 0.005208
+        },
+        "triad": {
+          "analytic_bytes": 805306368,
+          "latency_us": {
+            "count": 200,
+            "min": 3417.088032,
+            "q1": 3432.44791,
+            "p50": 3442.175984,
+            "q3": 3454.976082,
+            "max": 3471.359968,
+            "mean": 3443.513607,
+            "iqr": 22.528172
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 231.985843,
+            "q1": 233.085946,
+            "p50": 233.952706,
+            "q3": 234.615758,
+            "max": 235.67036,
+            "mean": 233.865095,
+            "iqr": 1.529812
+          },
+          "latency_iqr_fraction": 0.006545
+        }
+      },
+      "correctness": {
+        "sample_indices": [
+          0,
+          33554432,
+          67108863
+        ],
+        "memcpy_observed": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "memcpy_expected": 1.0,
+        "triad_observed": [
+          2.0,
+          2.0,
+          2.0
+        ],
+        "triad_expected": 2.0,
+        "pass": true
+      }
+    },
+    {
+      "array_size_mib": 512,
+      "array_bytes": 536870912,
+      "numel": 134217728,
+      "operations": {
+        "memcpy": {
+          "analytic_bytes": 1073741824,
+          "latency_us": {
+            "count": 200,
+            "min": 4703.231812,
+            "q1": 4719.615936,
+            "p50": 4727.807999,
+            "q3": 4736.000061,
+            "max": 4779.007912,
+            "mean": 4728.060963,
+            "iqr": 16.384125
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 224.678813,
+            "q1": 226.719132,
+            "p50": 227.111978,
+            "q3": 227.506187,
+            "max": 228.298725,
+            "mean": 227.101235,
+            "iqr": 0.787054
+          },
+          "latency_iqr_fraction": 0.003465
+        },
+        "triad": {
+          "analytic_bytes": 1610612736,
+          "latency_us": {
+            "count": 200,
+            "min": 6824.960232,
+            "q1": 6846.464157,
+            "p50": 6857.728004,
+            "q3": 6873.087883,
+            "max": 6898.68784,
+            "mean": 6859.382086,
+            "iqr": 26.623726
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 233.466534,
+            "q1": 234.336118,
+            "p50": 234.860982,
+            "q3": 235.247377,
+            "max": 235.988589,
+            "mean": 234.805693,
+            "iqr": 0.911259
+          },
+          "latency_iqr_fraction": 0.003882
+        }
+      },
+      "correctness": {
+        "sample_indices": [
+          0,
+          67108864,
+          134217727
+        ],
+        "memcpy_observed": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "memcpy_expected": 1.0,
+        "triad_observed": [
+          2.0,
+          2.0,
+          2.0
+        ],
+        "triad_expected": 2.0,
+        "pass": true
+      }
+    },
+    {
+      "array_size_mib": 1024,
+      "array_bytes": 1073741824,
+      "numel": 268435456,
+      "operations": {
+        "memcpy": {
+          "analytic_bytes": 2147483648,
+          "latency_us": {
+            "count": 200,
+            "min": 9335.8078,
+            "q1": 9476.864338,
+            "p50": 9488.384247,
+            "q3": 9498.623848,
+            "max": 9592.767715,
+            "mean": 9486.397419,
+            "iqr": 21.75951
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 223.864865,
+            "q1": 226.08366,
+            "p50": 226.327644,
+            "q3": 226.602764,
+            "max": 230.026549,
+            "mean": 226.376358,
+            "iqr": 0.519104
+          },
+          "latency_iqr_fraction": 0.002293
+        },
+        "triad": {
+          "analytic_bytes": 3221225472,
+          "latency_us": {
+            "count": 200,
+            "min": 13747.200012,
+            "q1": 13775.872231,
+            "p50": 13787.648201,
+            "q3": 13802.495956,
+            "max": 13938.688278,
+            "mean": 13789.75986,
+            "iqr": 26.623726
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 231.099613,
+            "q1": 233.379925,
+            "p50": 233.631249,
+            "q3": 233.830963,
+            "max": 234.318659,
+            "mean": 233.596072,
+            "iqr": 0.451038
+          },
+          "latency_iqr_fraction": 0.001931
+        }
+      },
+      "correctness": {
+        "sample_indices": [
+          0,
+          134217728,
+          268435455
+        ],
+        "memcpy_observed": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "memcpy_expected": 1.0,
+        "triad_observed": [
+          2.0,
+          2.0,
+          2.0
+        ],
+        "triad_expected": 2.0,
+        "pass": true
+      }
+    },
+    {
+      "array_size_mib": 2048,
+      "array_bytes": 2147483648,
+      "numel": 536870912,
+      "operations": {
+        "memcpy": {
+          "analytic_bytes": 4294967296,
+          "latency_us": {
+            "count": 200,
+            "min": 18710.52742,
+            "q1": 18907.136917,
+            "p50": 18920.448303,
+            "q3": 18934.015751,
+            "max": 18971.744537,
+            "mean": 18919.443073,
+            "iqr": 26.878834
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 226.387578,
+            "q1": 226.838688,
+            "p50": 227.001349,
+            "q3": 227.161167,
+            "max": 229.548168,
+            "mean": 227.013882,
+            "iqr": 0.322479
+          },
+          "latency_iqr_fraction": 0.001421
+        },
+        "triad": {
+          "analytic_bytes": 6442450944,
+          "latency_us": {
+            "count": 200,
+            "min": 27413.503647,
+            "q1": 27458.560944,
+            "p50": 27476.991653,
+            "q3": 27492.351532,
+            "max": 28061.695099,
+            "mean": 27481.203051,
+            "iqr": 33.790588
+          },
+          "gbps_decimal": {
+            "count": 200,
+            "min": 229.581674,
+            "q1": 234.336118,
+            "p50": 234.467114,
+            "q3": 234.624493,
+            "max": 235.010126,
+            "mean": 234.432071,
+            "iqr": 0.288375
+          },
+          "latency_iqr_fraction": 0.00123
+        }
+      },
+      "correctness": {
+        "sample_indices": [
+          0,
+          268435456,
+          536870911
+        ],
+        "memcpy_observed": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "memcpy_expected": 1.0,
+        "triad_observed": [
+          2.0,
+          2.0,
+          2.0
+        ],
+        "triad_expected": 2.0,
+        "pass": true
+      }
+    }
+  ],
+  "stable_segment": {
+    "sizes_mib": [
+      512,
+      1024,
+      2048
+    ],
+    "maximum_latency_iqr_fraction": 0.05,
+    "checks": {
+      "512": {
+        "memcpy": true,
+        "triad": true
+      },
+      "1024": {
+        "memcpy": true,
+        "triad": true
+      },
+      "2048": {
+        "memcpy": true,
+        "triad": true
+      }
+    },
+    "pass": true
+  },
+  "ceiling": {
+    "operation": "triad",
+    "per_size_p50_gbps_decimal": [
+      234.860982,
+      233.631249,
+      234.467114
+    ],
+    "p50_across_stable_sizes_gbps_decimal": 234.467114
+  },
+  "datasheet_crosscheck": {
+    "reference_gbps_decimal": 256.0,
+    "observed_to_reference_ratio": 0.915887,
+    "interpretation": "same scale and within ±20% of the 256 GB/s cross-check",
+    "is_acceptance_gate": false
+  },
+  "correctness": {
+    "pass": true
+  },
+  "memory": {
+    "peak_allocated_bytes": 6442451968,
+    "peak_reserved_bytes": 6444548096
+  },
+  "clocks": {
+    "sm_mhz_p50": 2535.0,
+    "sm_mhz_min": 2250.0,
+    "memory_mhz_p50": 8000.0,
+    "temp_c_max": 75.0,
+    "power_w_p50": 56.34,
+    "throttle_flags": {
+      "clocks_event_reasons.sw_power_cap": false,
+      "clocks_event_reasons.sw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_power_brake_slowdown": false
+    }
+  },
+  "telemetry": {
+    "interval_seconds": 1.0,
+    "sample_count": 25,
+    "errors": [],
+    "numeric": {
+      "sm_mhz": {
+        "count": 25,
+        "min": 2250.0,
+        "q1": 2535.0,
+        "p50": 2535.0,
+        "q3": 2550.0,
+        "max": 2550.0,
+        "mean": 2529.0,
+        "iqr": 15.0
+      },
+      "memory_mhz": {
+        "count": 25,
+        "min": 8000.0,
+        "q1": 8000.0,
+        "p50": 8000.0,
+        "q3": 8000.0,
+        "max": 8000.0,
+        "mean": 8000.0,
+        "iqr": 0.0
+      },
+      "temperature_c": {
+        "count": 25,
+        "min": 62.0,
+        "q1": 68.0,
+        "p50": 71.0,
+        "q3": 74.0,
+        "max": 75.0,
+        "mean": 70.64,
+        "iqr": 6.0
+      },
+      "power_w": {
+        "count": 25,
+        "min": 18.25,
+        "q1": 55.34,
+        "p50": 56.34,
+        "q3": 57.49,
+        "max": 58.41,
+        "mean": 54.158,
+        "iqr": 2.15
+      }
+    },
+    "pstates": {
+      "P0": 25
+    },
+    "throttle_flags": {
+      "clocks_event_reasons.sw_power_cap": false,
+      "clocks_event_reasons.sw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_power_brake_slowdown": false
+    },
+    "thermal_or_hardware_throttle": false,
+    "samples": [
+      {
+        "timestamp": "2026/09/15 15:38:56.859",
+        "pstate": "P0",
+        "clocks.current.sm": "2250",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "62",
+        "power.draw": "18.25",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:38:56+08:00",
+        "phase": "bandwidth_16_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:38:57.872",
+        "pstate": "P0",
+        "clocks.current.sm": "2550",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "34.71",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:38:57+08:00",
+        "phase": "bandwidth_64_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:38:58.868",
+        "pstate": "P0",
+        "clocks.current.sm": "2550",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "54.69",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:38:58+08:00",
+        "phase": "bandwidth_256_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:38:59.918",
+        "pstate": "P0",
+        "clocks.current.sm": "2550",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "67",
+        "power.draw": "54.76",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:38:59+08:00",
+        "phase": "bandwidth_256_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:00.867",
+        "pstate": "P0",
+        "clocks.current.sm": "2550",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "67",
+        "power.draw": "54.97",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:00+08:00",
+        "phase": "bandwidth_512_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:01.873",
+        "pstate": "P0",
+        "clocks.current.sm": "2550",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "68",
+        "power.draw": "55.19",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:01+08:00",
+        "phase": "bandwidth_512_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:02.873",
+        "pstate": "P0",
+        "clocks.current.sm": "2550",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "68",
+        "power.draw": "55.34",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:02+08:00",
+        "phase": "bandwidth_512_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:03.879",
+        "pstate": "P0",
+        "clocks.current.sm": "2550",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "69",
+        "power.draw": "55.51",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:03+08:00",
+        "phase": "bandwidth_1024_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:04.879",
+        "pstate": "P0",
+        "clocks.current.sm": "2550",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "69",
+        "power.draw": "55.59",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:04+08:00",
+        "phase": "bandwidth_1024_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:05.873",
+        "pstate": "P0",
+        "clocks.current.sm": "2550",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "70",
+        "power.draw": "55.80",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:05+08:00",
+        "phase": "bandwidth_1024_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:06.865",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "70",
+        "power.draw": "55.96",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:06+08:00",
+        "phase": "bandwidth_1024_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:07.871",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "71",
+        "power.draw": "56.12",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:07+08:00",
+        "phase": "bandwidth_1024_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:08.876",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "71",
+        "power.draw": "56.34",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:08+08:00",
+        "phase": "bandwidth_1024_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:09.876",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "71",
+        "power.draw": "56.53",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:09+08:00",
+        "phase": "bandwidth_2048_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:10.865",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "72",
+        "power.draw": "56.79",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:10+08:00",
+        "phase": "bandwidth_2048_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:11.876",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "72",
+        "power.draw": "56.96",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:11+08:00",
+        "phase": "bandwidth_2048_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:12.870",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "73",
+        "power.draw": "57.11",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:12+08:00",
+        "phase": "bandwidth_2048_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:13.870",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "73",
+        "power.draw": "57.30",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:13+08:00",
+        "phase": "bandwidth_2048_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:14.870",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "74",
+        "power.draw": "57.49",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:14+08:00",
+        "phase": "bandwidth_2048_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:15.873",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "74",
+        "power.draw": "57.67",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:15+08:00",
+        "phase": "bandwidth_2048_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:16.879",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "74",
+        "power.draw": "57.83",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:16+08:00",
+        "phase": "bandwidth_2048_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:17.883",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "75",
+        "power.draw": "58.01",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:17+08:00",
+        "phase": "bandwidth_2048_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:18.877",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "75",
+        "power.draw": "58.22",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:18+08:00",
+        "phase": "bandwidth_2048_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:19.876",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "75",
+        "power.draw": "58.40",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:19+08:00",
+        "phase": "bandwidth_2048_mib"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:20.874",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "75",
+        "power.draw": "58.41",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:20+08:00",
+        "phase": "bandwidth_2048_mib"
+      }
+    ]
+  },
+  "env_identity_ref": "results/operator/op0/env_identity_20260915.json",
+  "git_sha": "354d2c1b086a1809c256309f56bca420de243f92",
+  "timestamp": "2026-09-15T15:39:20+08:00",
+  "receipt": {
+    "warmup_repetitions_per_operation": 50,
+    "measured_repetitions_per_operation": 200,
+    "interleave_order": "even rep memcpy/triad; odd rep triad/memcpy",
+    "thermal_or_hardware_throttle": false,
+    "status": "PASS"
+  }
+}

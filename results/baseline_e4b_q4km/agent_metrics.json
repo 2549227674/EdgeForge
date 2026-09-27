@@ -1,0 +1,2095 @@
+{
+  "cached_tokens_missing": {
+    "count": 1,
+    "policy": "treated_as_zero_denominator_835",
+    "steps": [
+      "pypi-server__H4HV8jE:step2"
+    ]
+  },
+  "cluster_statistics": {
+    "m1_comparison_design": "task_paired_over_20_locked_tasks",
+    "parser_hard_error_rate": {
+      "bootstrap_draws": 4000,
+      "cluster_se": 0.05928809903738477,
+      "design_effect": 20.063693200877402,
+      "n_clusters": 20,
+      "naive_binomial_se_do_not_cite": 0.013236162385268792,
+      "point": 0.17822966507177032,
+      "seed": 0
+    },
+    "power_note": "Clustered SE ~5.9pp gives a resolvable difference near +/-12pp, the same order as the TB success SE, not an order of magnitude better. The parser column's real advantage over success is that it is off the floor (17.8% has headroom; 0% does not).",
+    "unit": "task"
+  },
+  "denominators": {
+    "agent_responses": 836,
+    "responses_with_reasoning": 711,
+    "tasks": 20,
+    "trials": 100
+  },
+  "input_verification": {
+    "all_match": true,
+    "files_checked": 100,
+    "manifest": "traces/trajectories_sha256.txt"
+  },
+  "per_task": [
+    {
+      "cached_tokens": 101394,
+      "completion_tokens": 19696,
+      "hard": 0,
+      "prompt_tokens": 115837,
+      "task": "break-filter-js-from-html",
+      "trials": 5,
+      "turns": 42
+    },
+    {
+      "cached_tokens": 355456,
+      "completion_tokens": 33088,
+      "hard": 0,
+      "prompt_tokens": 381927,
+      "task": "build-cython-ext",
+      "trials": 5,
+      "turns": 88
+    },
+    {
+      "cached_tokens": 293917,
+      "completion_tokens": 32760,
+      "hard": 0,
+      "prompt_tokens": 350556,
+      "task": "build-pmars",
+      "trials": 5,
+      "turns": 54
+    },
+    {
+      "cached_tokens": 43069,
+      "completion_tokens": 35079,
+      "hard": 4,
+      "prompt_tokens": 79910,
+      "task": "constraints-scheduling",
+      "trials": 5,
+      "turns": 17
+    },
+    {
+      "cached_tokens": 218993,
+      "completion_tokens": 25313,
+      "hard": 2,
+      "prompt_tokens": 245943,
+      "task": "count-dataset-tokens",
+      "trials": 5,
+      "turns": 55
+    },
+    {
+      "cached_tokens": 389286,
+      "completion_tokens": 25663,
+      "hard": 0,
+      "prompt_tokens": 414926,
+      "task": "dna-insert",
+      "trials": 5,
+      "turns": 79
+    },
+    {
+      "cached_tokens": 207956,
+      "completion_tokens": 49354,
+      "hard": 23,
+      "prompt_tokens": 251712,
+      "task": "filter-js-from-html",
+      "trials": 5,
+      "turns": 39
+    },
+    {
+      "cached_tokens": 62144,
+      "completion_tokens": 21982,
+      "hard": 0,
+      "prompt_tokens": 82419,
+      "task": "gcode-to-text",
+      "trials": 5,
+      "turns": 33
+    },
+    {
+      "cached_tokens": 163242,
+      "completion_tokens": 39831,
+      "hard": 10,
+      "prompt_tokens": 200050,
+      "task": "largest-eigenval",
+      "trials": 5,
+      "turns": 45
+    },
+    {
+      "cached_tokens": 349181,
+      "completion_tokens": 55996,
+      "hard": 12,
+      "prompt_tokens": 438824,
+      "task": "log-summary-date-ranges",
+      "trials": 5,
+      "turns": 37
+    },
+    {
+      "cached_tokens": 40534,
+      "completion_tokens": 14984,
+      "hard": 1,
+      "prompt_tokens": 59418,
+      "task": "mailman",
+      "trials": 5,
+      "turns": 23
+    },
+    {
+      "cached_tokens": 64924,
+      "completion_tokens": 54109,
+      "hard": 7,
+      "prompt_tokens": 122546,
+      "task": "multi-source-data-merger",
+      "trials": 5,
+      "turns": 16
+    },
+    {
+      "cached_tokens": 531377,
+      "completion_tokens": 58615,
+      "hard": 35,
+      "prompt_tokens": 582822,
+      "task": "nginx-request-logging",
+      "trials": 5,
+      "turns": 48
+    },
+    {
+      "cached_tokens": 83847,
+      "completion_tokens": 27133,
+      "hard": 2,
+      "prompt_tokens": 118060,
+      "task": "openssl-selfsigned-cert",
+      "trials": 5,
+      "turns": 26
+    },
+    {
+      "cached_tokens": 244369,
+      "completion_tokens": 40941,
+      "hard": 3,
+      "prompt_tokens": 295958,
+      "task": "overfull-hbox",
+      "trials": 5,
+      "turns": 51
+    },
+    {
+      "cached_tokens": 378081,
+      "completion_tokens": 63949,
+      "hard": 17,
+      "prompt_tokens": 437793,
+      "task": "polyglot-c-py",
+      "trials": 5,
+      "turns": 55
+    },
+    {
+      "cached_tokens": 51947,
+      "completion_tokens": 21084,
+      "hard": 0,
+      "prompt_tokens": 75442,
+      "task": "pypi-server",
+      "trials": 5,
+      "turns": 25
+    },
+    {
+      "cached_tokens": 20844,
+      "completion_tokens": 29792,
+      "hard": 0,
+      "prompt_tokens": 32243,
+      "task": "regex-log",
+      "trials": 5,
+      "turns": 16
+    },
+    {
+      "cached_tokens": 339963,
+      "completion_tokens": 35393,
+      "hard": 32,
+      "prompt_tokens": 375602,
+      "task": "sanitize-git-repo",
+      "trials": 5,
+      "turns": 49
+    },
+    {
+      "cached_tokens": 103206,
+      "completion_tokens": 22557,
+      "hard": 1,
+      "prompt_tokens": 129378,
+      "task": "sqlite-db-truncate",
+      "trials": 5,
+      "turns": 38
+    }
+  ],
+  "per_trial": [
+    {
+      "cached_tokens": 6361,
+      "completion_tokens": 4377,
+      "hard_errors": 0,
+      "prompt_tokens": 8570,
+      "task": "break-filter-js-from-html",
+      "trial": "break-filter-js-from-html__EdXhMaL",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 72500,
+      "completion_tokens": 6588,
+      "hard_errors": 0,
+      "prompt_tokens": 77275,
+      "task": "break-filter-js-from-html",
+      "trial": "break-filter-js-from-html__Y9UrrmV",
+      "turns": 20
+    },
+    {
+      "cached_tokens": 10121,
+      "completion_tokens": 3881,
+      "hard_errors": 0,
+      "prompt_tokens": 12778,
+      "task": "break-filter-js-from-html",
+      "trial": "break-filter-js-from-html__ZHoVFfH",
+      "turns": 7
+    },
+    {
+      "cached_tokens": 5727,
+      "completion_tokens": 2284,
+      "hard_errors": 0,
+      "prompt_tokens": 7962,
+      "task": "break-filter-js-from-html",
+      "trial": "break-filter-js-from-html__ourtkpe",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 6685,
+      "completion_tokens": 2566,
+      "hard_errors": 0,
+      "prompt_tokens": 9252,
+      "task": "break-filter-js-from-html",
+      "trial": "break-filter-js-from-html__t8FQHKf",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 144452,
+      "completion_tokens": 7855,
+      "hard_errors": 0,
+      "prompt_tokens": 150575,
+      "task": "build-cython-ext",
+      "trial": "build-cython-ext__7vDKk3Q",
+      "turns": 30
+    },
+    {
+      "cached_tokens": 13817,
+      "completion_tokens": 4227,
+      "hard_errors": 0,
+      "prompt_tokens": 17895,
+      "task": "build-cython-ext",
+      "trial": "build-cython-ext__9S86eU3",
+      "turns": 7
+    },
+    {
+      "cached_tokens": 137713,
+      "completion_tokens": 6763,
+      "hard_errors": 0,
+      "prompt_tokens": 143459,
+      "task": "build-cython-ext",
+      "trial": "build-cython-ext__D5zRS3y",
+      "turns": 30
+    },
+    {
+      "cached_tokens": 45775,
+      "completion_tokens": 8837,
+      "hard_errors": 0,
+      "prompt_tokens": 52223,
+      "task": "build-cython-ext",
+      "trial": "build-cython-ext__aut5JXa",
+      "turns": 14
+    },
+    {
+      "cached_tokens": 13699,
+      "completion_tokens": 5406,
+      "hard_errors": 0,
+      "prompt_tokens": 17775,
+      "task": "build-cython-ext",
+      "trial": "build-cython-ext__z4cRHu3",
+      "turns": 7
+    },
+    {
+      "cached_tokens": 31071,
+      "completion_tokens": 8343,
+      "hard_errors": 0,
+      "prompt_tokens": 40235,
+      "task": "build-pmars",
+      "trial": "build-pmars__JRb8rAR",
+      "turns": 11
+    },
+    {
+      "cached_tokens": 8960,
+      "completion_tokens": 4317,
+      "hard_errors": 0,
+      "prompt_tokens": 12272,
+      "task": "build-pmars",
+      "trial": "build-pmars__RPJywgr",
+      "turns": 6
+    },
+    {
+      "cached_tokens": 45657,
+      "completion_tokens": 6303,
+      "hard_errors": 0,
+      "prompt_tokens": 57038,
+      "task": "build-pmars",
+      "trial": "build-pmars__VMQyyeJ",
+      "turns": 12
+    },
+    {
+      "cached_tokens": 25784,
+      "completion_tokens": 5932,
+      "hard_errors": 0,
+      "prompt_tokens": 34416,
+      "task": "build-pmars",
+      "trial": "build-pmars__czwQWom",
+      "turns": 9
+    },
+    {
+      "cached_tokens": 182445,
+      "completion_tokens": 7865,
+      "hard_errors": 0,
+      "prompt_tokens": 206595,
+      "task": "build-pmars",
+      "trial": "build-pmars__nCu3Fik",
+      "turns": 16
+    },
+    {
+      "cached_tokens": 8856,
+      "completion_tokens": 4700,
+      "hard_errors": 0,
+      "prompt_tokens": 14995,
+      "task": "constraints-scheduling",
+      "trial": "constraints-scheduling__S2DdAT2",
+      "turns": 3
+    },
+    {
+      "cached_tokens": 3246,
+      "completion_tokens": 5335,
+      "hard_errors": 1,
+      "prompt_tokens": 8475,
+      "task": "constraints-scheduling",
+      "trial": "constraints-scheduling__SAGWsZK",
+      "turns": 3
+    },
+    {
+      "cached_tokens": 2211,
+      "completion_tokens": 7163,
+      "hard_errors": 0,
+      "prompt_tokens": 8447,
+      "task": "constraints-scheduling",
+      "trial": "constraints-scheduling__aaSRUnD",
+      "turns": 2
+    },
+    {
+      "cached_tokens": 11718,
+      "completion_tokens": 6010,
+      "hard_errors": 0,
+      "prompt_tokens": 20515,
+      "task": "constraints-scheduling",
+      "trial": "constraints-scheduling__oUYSzDP",
+      "turns": 4
+    },
+    {
+      "cached_tokens": 17038,
+      "completion_tokens": 11871,
+      "hard_errors": 3,
+      "prompt_tokens": 27478,
+      "task": "constraints-scheduling",
+      "trial": "constraints-scheduling__zvRwPcq",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 4247,
+      "completion_tokens": 2554,
+      "hard_errors": 0,
+      "prompt_tokens": 6780,
+      "task": "count-dataset-tokens",
+      "trial": "count-dataset-tokens__7e2PsqF",
+      "turns": 4
+    },
+    {
+      "cached_tokens": 5808,
+      "completion_tokens": 4149,
+      "hard_errors": 2,
+      "prompt_tokens": 10007,
+      "task": "count-dataset-tokens",
+      "trial": "count-dataset-tokens__JHmVxiV",
+      "turns": 4
+    },
+    {
+      "cached_tokens": 150821,
+      "completion_tokens": 7840,
+      "hard_errors": 0,
+      "prompt_tokens": 156832,
+      "task": "count-dataset-tokens",
+      "trial": "count-dataset-tokens__U3KGG6G",
+      "turns": 30
+    },
+    {
+      "cached_tokens": 14781,
+      "completion_tokens": 4018,
+      "hard_errors": 0,
+      "prompt_tokens": 20342,
+      "task": "count-dataset-tokens",
+      "trial": "count-dataset-tokens__mqB4S53",
+      "turns": 6
+    },
+    {
+      "cached_tokens": 43336,
+      "completion_tokens": 6752,
+      "hard_errors": 0,
+      "prompt_tokens": 51982,
+      "task": "count-dataset-tokens",
+      "trial": "count-dataset-tokens__uGtLKt8",
+      "turns": 11
+    },
+    {
+      "cached_tokens": 13765,
+      "completion_tokens": 4516,
+      "hard_errors": 0,
+      "prompt_tokens": 17972,
+      "task": "dna-insert",
+      "trial": "dna-insert__JZEyirP",
+      "turns": 7
+    },
+    {
+      "cached_tokens": 240285,
+      "completion_tokens": 8200,
+      "hard_errors": 0,
+      "prompt_tokens": 250457,
+      "task": "dna-insert",
+      "trial": "dna-insert__JwrA43o",
+      "turns": 30
+    },
+    {
+      "cached_tokens": 116975,
+      "completion_tokens": 5815,
+      "hard_errors": 0,
+      "prompt_tokens": 121623,
+      "task": "dna-insert",
+      "trial": "dna-insert__fqXSQsR",
+      "turns": 30
+    },
+    {
+      "cached_tokens": 8425,
+      "completion_tokens": 3599,
+      "hard_errors": 0,
+      "prompt_tokens": 11171,
+      "task": "dna-insert",
+      "trial": "dna-insert__hZoTzse",
+      "turns": 6
+    },
+    {
+      "cached_tokens": 9836,
+      "completion_tokens": 3533,
+      "hard_errors": 0,
+      "prompt_tokens": 13703,
+      "task": "dna-insert",
+      "trial": "dna-insert__iKDZyRt",
+      "turns": 6
+    },
+    {
+      "cached_tokens": 129217,
+      "completion_tokens": 22547,
+      "hard_errors": 12,
+      "prompt_tokens": 148781,
+      "task": "filter-js-from-html",
+      "trial": "filter-js-from-html__6zYGT8J",
+      "turns": 14
+    },
+    {
+      "cached_tokens": 39523,
+      "completion_tokens": 10813,
+      "hard_errors": 5,
+      "prompt_tokens": 49840,
+      "task": "filter-js-from-html",
+      "trial": "filter-js-from-html__8xUy33S",
+      "turns": 8
+    },
+    {
+      "cached_tokens": 14453,
+      "completion_tokens": 5787,
+      "hard_errors": 1,
+      "prompt_tokens": 19793,
+      "task": "filter-js-from-html",
+      "trial": "filter-js-from-html__GtzPGJS",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 16656,
+      "completion_tokens": 5160,
+      "hard_errors": 2,
+      "prompt_tokens": 21702,
+      "task": "filter-js-from-html",
+      "trial": "filter-js-from-html__RxLkBwc",
+      "turns": 7
+    },
+    {
+      "cached_tokens": 8107,
+      "completion_tokens": 5047,
+      "hard_errors": 3,
+      "prompt_tokens": 11596,
+      "task": "filter-js-from-html",
+      "trial": "filter-js-from-html__zUqEvme",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 7769,
+      "completion_tokens": 3665,
+      "hard_errors": 0,
+      "prompt_tokens": 9997,
+      "task": "gcode-to-text",
+      "trial": "gcode-to-text__72mLGjS",
+      "turns": 6
+    },
+    {
+      "cached_tokens": 9470,
+      "completion_tokens": 4599,
+      "hard_errors": 0,
+      "prompt_tokens": 13549,
+      "task": "gcode-to-text",
+      "trial": "gcode-to-text__8TKSB7k",
+      "turns": 7
+    },
+    {
+      "cached_tokens": 16598,
+      "completion_tokens": 6693,
+      "hard_errors": 0,
+      "prompt_tokens": 20801,
+      "task": "gcode-to-text",
+      "trial": "gcode-to-text__Npsoy8f",
+      "turns": 9
+    },
+    {
+      "cached_tokens": 23404,
+      "completion_tokens": 4763,
+      "hard_errors": 0,
+      "prompt_tokens": 31310,
+      "task": "gcode-to-text",
+      "trial": "gcode-to-text__eRpDUNj",
+      "turns": 6
+    },
+    {
+      "cached_tokens": 4903,
+      "completion_tokens": 2262,
+      "hard_errors": 0,
+      "prompt_tokens": 6762,
+      "task": "gcode-to-text",
+      "trial": "gcode-to-text__fWJxd9R",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 15377,
+      "completion_tokens": 5277,
+      "hard_errors": 1,
+      "prompt_tokens": 19870,
+      "task": "largest-eigenval",
+      "trial": "largest-eigenval__H9Jan46",
+      "turns": 8
+    },
+    {
+      "cached_tokens": 18691,
+      "completion_tokens": 7443,
+      "hard_errors": 3,
+      "prompt_tokens": 23549,
+      "task": "largest-eigenval",
+      "trial": "largest-eigenval__KtBrGYy",
+      "turns": 8
+    },
+    {
+      "cached_tokens": 89308,
+      "completion_tokens": 13865,
+      "hard_errors": 3,
+      "prompt_tokens": 105825,
+      "task": "largest-eigenval",
+      "trial": "largest-eigenval__YV7H2nq",
+      "turns": 13
+    },
+    {
+      "cached_tokens": 12817,
+      "completion_tokens": 7267,
+      "hard_errors": 3,
+      "prompt_tokens": 16791,
+      "task": "largest-eigenval",
+      "trial": "largest-eigenval__sXi2Twi",
+      "turns": 7
+    },
+    {
+      "cached_tokens": 27049,
+      "completion_tokens": 5979,
+      "hard_errors": 0,
+      "prompt_tokens": 34015,
+      "task": "largest-eigenval",
+      "trial": "largest-eigenval__xE9xqoe",
+      "turns": 9
+    },
+    {
+      "cached_tokens": 30282,
+      "completion_tokens": 9940,
+      "hard_errors": 1,
+      "prompt_tokens": 44488,
+      "task": "log-summary-date-ranges",
+      "trial": "log-summary-date-ranges__5Mv7SFL",
+      "turns": 6
+    },
+    {
+      "cached_tokens": 38443,
+      "completion_tokens": 6119,
+      "hard_errors": 0,
+      "prompt_tokens": 55032,
+      "task": "log-summary-date-ranges",
+      "trial": "log-summary-date-ranges__QgQLWyv",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 33640,
+      "completion_tokens": 11256,
+      "hard_errors": 2,
+      "prompt_tokens": 46655,
+      "task": "log-summary-date-ranges",
+      "trial": "log-summary-date-ranges__WUaHgQQ",
+      "turns": 7
+    },
+    {
+      "cached_tokens": 113131,
+      "completion_tokens": 13778,
+      "hard_errors": 4,
+      "prompt_tokens": 135269,
+      "task": "log-summary-date-ranges",
+      "trial": "log-summary-date-ranges__XDXQjAz",
+      "turns": 9
+    },
+    {
+      "cached_tokens": 133685,
+      "completion_tokens": 14903,
+      "hard_errors": 5,
+      "prompt_tokens": 157380,
+      "task": "log-summary-date-ranges",
+      "trial": "log-summary-date-ranges__agz4EK6",
+      "turns": 10
+    },
+    {
+      "cached_tokens": 14302,
+      "completion_tokens": 3292,
+      "hard_errors": 0,
+      "prompt_tokens": 18716,
+      "task": "mailman",
+      "trial": "mailman__CeRPakz",
+      "turns": 6
+    },
+    {
+      "cached_tokens": 2876,
+      "completion_tokens": 2335,
+      "hard_errors": 0,
+      "prompt_tokens": 5174,
+      "task": "mailman",
+      "trial": "mailman__LmYCHp9",
+      "turns": 3
+    },
+    {
+      "cached_tokens": 2991,
+      "completion_tokens": 2873,
+      "hard_errors": 0,
+      "prompt_tokens": 5401,
+      "task": "mailman",
+      "trial": "mailman__Rj4tH5R",
+      "turns": 3
+    },
+    {
+      "cached_tokens": 7325,
+      "completion_tokens": 3194,
+      "hard_errors": 1,
+      "prompt_tokens": 12373,
+      "task": "mailman",
+      "trial": "mailman__XpDnHEK",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 13040,
+      "completion_tokens": 3290,
+      "hard_errors": 0,
+      "prompt_tokens": 17754,
+      "task": "mailman",
+      "trial": "mailman__wo64Z6A",
+      "turns": 6
+    },
+    {
+      "cached_tokens": 5413,
+      "completion_tokens": 6301,
+      "hard_errors": 1,
+      "prompt_tokens": 13987,
+      "task": "multi-source-data-merger",
+      "trial": "multi-source-data-merger__PcKipxP",
+      "turns": 3
+    },
+    {
+      "cached_tokens": 44106,
+      "completion_tokens": 31874,
+      "hard_errors": 5,
+      "prompt_tokens": 70306,
+      "task": "multi-source-data-merger",
+      "trial": "multi-source-data-merger__TtBNkhW",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 7132,
+      "completion_tokens": 3654,
+      "hard_errors": 0,
+      "prompt_tokens": 13254,
+      "task": "multi-source-data-merger",
+      "trial": "multi-source-data-merger__XXMasCX",
+      "turns": 3
+    },
+    {
+      "cached_tokens": 1272,
+      "completion_tokens": 4272,
+      "hard_errors": 0,
+      "prompt_tokens": 7988,
+      "task": "multi-source-data-merger",
+      "trial": "multi-source-data-merger__bUyWMFa",
+      "turns": 2
+    },
+    {
+      "cached_tokens": 7001,
+      "completion_tokens": 8008,
+      "hard_errors": 1,
+      "prompt_tokens": 17011,
+      "task": "multi-source-data-merger",
+      "trial": "multi-source-data-merger__taYJ85T",
+      "turns": 3
+    },
+    {
+      "cached_tokens": 10998,
+      "completion_tokens": 5058,
+      "hard_errors": 0,
+      "prompt_tokens": 16063,
+      "task": "nginx-request-logging",
+      "trial": "nginx-request-logging__27di6WX",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 9103,
+      "completion_tokens": 6530,
+      "hard_errors": 2,
+      "prompt_tokens": 14564,
+      "task": "nginx-request-logging",
+      "trial": "nginx-request-logging__AjYzhEr",
+      "turns": 4
+    },
+    {
+      "cached_tokens": 486560,
+      "completion_tokens": 36280,
+      "hard_errors": 30,
+      "prompt_tokens": 513716,
+      "task": "nginx-request-logging",
+      "trial": "nginx-request-logging__F3MC8eY",
+      "turns": 30
+    },
+    {
+      "cached_tokens": 20545,
+      "completion_tokens": 6463,
+      "hard_errors": 2,
+      "prompt_tokens": 32028,
+      "task": "nginx-request-logging",
+      "trial": "nginx-request-logging__XmaGAYN",
+      "turns": 6
+    },
+    {
+      "cached_tokens": 4171,
+      "completion_tokens": 4284,
+      "hard_errors": 1,
+      "prompt_tokens": 6451,
+      "task": "nginx-request-logging",
+      "trial": "nginx-request-logging__xHoYi3c",
+      "turns": 3
+    },
+    {
+      "cached_tokens": 50918,
+      "completion_tokens": 9011,
+      "hard_errors": 0,
+      "prompt_tokens": 61659,
+      "task": "openssl-selfsigned-cert",
+      "trial": "openssl-selfsigned-cert__EbWfNda",
+      "turns": 9
+    },
+    {
+      "cached_tokens": 12175,
+      "completion_tokens": 2941,
+      "hard_errors": 0,
+      "prompt_tokens": 18603,
+      "task": "openssl-selfsigned-cert",
+      "trial": "openssl-selfsigned-cert__FAZDVAm",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 8154,
+      "completion_tokens": 6244,
+      "hard_errors": 1,
+      "prompt_tokens": 14540,
+      "task": "openssl-selfsigned-cert",
+      "trial": "openssl-selfsigned-cert__Hn89tKd",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 10935,
+      "completion_tokens": 4939,
+      "hard_errors": 1,
+      "prompt_tokens": 15889,
+      "task": "openssl-selfsigned-cert",
+      "trial": "openssl-selfsigned-cert__o97BZCd",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 1665,
+      "completion_tokens": 3998,
+      "hard_errors": 0,
+      "prompt_tokens": 7369,
+      "task": "openssl-selfsigned-cert",
+      "trial": "openssl-selfsigned-cert__oCvmg5c",
+      "turns": 2
+    },
+    {
+      "cached_tokens": 23429,
+      "completion_tokens": 5719,
+      "hard_errors": 1,
+      "prompt_tokens": 29864,
+      "task": "overfull-hbox",
+      "trial": "overfull-hbox__h8Ef7RK",
+      "turns": 8
+    },
+    {
+      "cached_tokens": 33010,
+      "completion_tokens": 9625,
+      "hard_errors": 1,
+      "prompt_tokens": 44354,
+      "task": "overfull-hbox",
+      "trial": "overfull-hbox__mpmwYBD",
+      "turns": 8
+    },
+    {
+      "cached_tokens": 91402,
+      "completion_tokens": 7553,
+      "hard_errors": 0,
+      "prompt_tokens": 100381,
+      "task": "overfull-hbox",
+      "trial": "overfull-hbox__q9FTfu4",
+      "turns": 16
+    },
+    {
+      "cached_tokens": 43897,
+      "completion_tokens": 10627,
+      "hard_errors": 0,
+      "prompt_tokens": 59314,
+      "task": "overfull-hbox",
+      "trial": "overfull-hbox__qcMmigJ",
+      "turns": 8
+    },
+    {
+      "cached_tokens": 52631,
+      "completion_tokens": 7417,
+      "hard_errors": 1,
+      "prompt_tokens": 62045,
+      "task": "overfull-hbox",
+      "trial": "overfull-hbox__wHX39ZV",
+      "turns": 11
+    },
+    {
+      "cached_tokens": 37238,
+      "completion_tokens": 8048,
+      "hard_errors": 0,
+      "prompt_tokens": 44749,
+      "task": "polyglot-c-py",
+      "trial": "polyglot-c-py__VHmULmv",
+      "turns": 10
+    },
+    {
+      "cached_tokens": 218887,
+      "completion_tokens": 27353,
+      "hard_errors": 13,
+      "prompt_tokens": 243660,
+      "task": "polyglot-c-py",
+      "trial": "polyglot-c-py__a6wo8ZC",
+      "turns": 18
+    },
+    {
+      "cached_tokens": 21455,
+      "completion_tokens": 6698,
+      "hard_errors": 0,
+      "prompt_tokens": 27663,
+      "task": "polyglot-c-py",
+      "trial": "polyglot-c-py__cnbdNTR",
+      "turns": 7
+    },
+    {
+      "cached_tokens": 28154,
+      "completion_tokens": 9225,
+      "hard_errors": 4,
+      "prompt_tokens": 37313,
+      "task": "polyglot-c-py",
+      "trial": "polyglot-c-py__fqbT6tE",
+      "turns": 7
+    },
+    {
+      "cached_tokens": 72347,
+      "completion_tokens": 12625,
+      "hard_errors": 0,
+      "prompt_tokens": 84408,
+      "task": "polyglot-c-py",
+      "trial": "polyglot-c-py__ohZpowR",
+      "turns": 13
+    },
+    {
+      "cached_tokens": 5694,
+      "completion_tokens": 3138,
+      "hard_errors": 0,
+      "prompt_tokens": 10363,
+      "task": "pypi-server",
+      "trial": "pypi-server__H4HV8jE",
+      "turns": 4
+    },
+    {
+      "cached_tokens": 8310,
+      "completion_tokens": 3612,
+      "hard_errors": 0,
+      "prompt_tokens": 12174,
+      "task": "pypi-server",
+      "trial": "pypi-server__RTCJyZ2",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 27306,
+      "completion_tokens": 8164,
+      "hard_errors": 0,
+      "prompt_tokens": 35110,
+      "task": "pypi-server",
+      "trial": "pypi-server__ZVPezUD",
+      "turns": 8
+    },
+    {
+      "cached_tokens": 2963,
+      "completion_tokens": 2983,
+      "hard_errors": 0,
+      "prompt_tokens": 5978,
+      "task": "pypi-server",
+      "trial": "pypi-server__mjUUF8T",
+      "turns": 3
+    },
+    {
+      "cached_tokens": 7674,
+      "completion_tokens": 3187,
+      "hard_errors": 0,
+      "prompt_tokens": 11817,
+      "task": "pypi-server",
+      "trial": "pypi-server__xtB7Gwr",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 1004,
+      "completion_tokens": 3500,
+      "hard_errors": 0,
+      "prompt_tokens": 2447,
+      "task": "regex-log",
+      "trial": "regex-log__HM89SBD",
+      "turns": 2
+    },
+    {
+      "cached_tokens": 1003,
+      "completion_tokens": 5263,
+      "hard_errors": 0,
+      "prompt_tokens": 2807,
+      "task": "regex-log",
+      "trial": "regex-log__YBaWeXt",
+      "turns": 2
+    },
+    {
+      "cached_tokens": 15130,
+      "completion_tokens": 10519,
+      "hard_errors": 0,
+      "prompt_tokens": 19476,
+      "task": "regex-log",
+      "trial": "regex-log__ZYC2ry5",
+      "turns": 7
+    },
+    {
+      "cached_tokens": 2702,
+      "completion_tokens": 6009,
+      "hard_errors": 0,
+      "prompt_tokens": 4799,
+      "task": "regex-log",
+      "trial": "regex-log__sQLwB2x",
+      "turns": 3
+    },
+    {
+      "cached_tokens": 1005,
+      "completion_tokens": 4501,
+      "hard_errors": 0,
+      "prompt_tokens": 2714,
+      "task": "regex-log",
+      "trial": "regex-log__ybgHkH5",
+      "turns": 2
+    },
+    {
+      "cached_tokens": 297289,
+      "completion_tokens": 20532,
+      "hard_errors": 29,
+      "prompt_tokens": 313287,
+      "task": "sanitize-git-repo",
+      "trial": "sanitize-git-repo__Fqp9QrY",
+      "turns": 30
+    },
+    {
+      "cached_tokens": 5586,
+      "completion_tokens": 3374,
+      "hard_errors": 1,
+      "prompt_tokens": 8724,
+      "task": "sanitize-git-repo",
+      "trial": "sanitize-git-repo__NnKgMiL",
+      "turns": 4
+    },
+    {
+      "cached_tokens": 14062,
+      "completion_tokens": 3191,
+      "hard_errors": 1,
+      "prompt_tokens": 21523,
+      "task": "sanitize-git-repo",
+      "trial": "sanitize-git-repo__Ym8VPb4",
+      "turns": 4
+    },
+    {
+      "cached_tokens": 8049,
+      "completion_tokens": 2987,
+      "hard_errors": 1,
+      "prompt_tokens": 11300,
+      "task": "sanitize-git-repo",
+      "trial": "sanitize-git-repo__gn3nAb5",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 14977,
+      "completion_tokens": 5309,
+      "hard_errors": 0,
+      "prompt_tokens": 20768,
+      "task": "sanitize-git-repo",
+      "trial": "sanitize-git-repo__tBTMjmz",
+      "turns": 6
+    },
+    {
+      "cached_tokens": 40489,
+      "completion_tokens": 6836,
+      "hard_errors": 0,
+      "prompt_tokens": 47664,
+      "task": "sqlite-db-truncate",
+      "trial": "sqlite-db-truncate__2YteJy5",
+      "turns": 12
+    },
+    {
+      "cached_tokens": 24390,
+      "completion_tokens": 6217,
+      "hard_errors": 0,
+      "prompt_tokens": 29490,
+      "task": "sqlite-db-truncate",
+      "trial": "sqlite-db-truncate__S3c6tEq",
+      "turns": 10
+    },
+    {
+      "cached_tokens": 2825,
+      "completion_tokens": 2772,
+      "hard_errors": 0,
+      "prompt_tokens": 5164,
+      "task": "sqlite-db-truncate",
+      "trial": "sqlite-db-truncate__Z9iGbrN",
+      "turns": 3
+    },
+    {
+      "cached_tokens": 7432,
+      "completion_tokens": 3395,
+      "hard_errors": 1,
+      "prompt_tokens": 11039,
+      "task": "sqlite-db-truncate",
+      "trial": "sqlite-db-truncate__bS6xBk5",
+      "turns": 5
+    },
+    {
+      "cached_tokens": 28070,
+      "completion_tokens": 3337,
+      "hard_errors": 0,
+      "prompt_tokens": 36021,
+      "task": "sqlite-db-truncate",
+      "trial": "sqlite-db-truncate__t8CTfkM",
+      "turns": 8
+    }
+  ],
+  "reasoning_absence": {
+    "denominator": 836,
+    "evidence": {
+      "completion_tokens_absent_accepted": {
+        "max": 498,
+        "mean": 137.58,
+        "median": 110,
+        "min": 71,
+        "n": 111,
+        "p25": 96.0,
+        "p75": 152.0
+      },
+      "completion_tokens_absent_hard": {
+        "max": 949,
+        "mean": 694.5,
+        "median": 521.0,
+        "min": 498,
+        "n": 14,
+        "p25": 511.0,
+        "p75": 938.0
+      },
+      "completion_tokens_with_reasoning": {
+        "max": 7428,
+        "mean": 959.67,
+        "median": 677,
+        "min": 129,
+        "n": 711,
+        "p25": 412.5,
+        "p75": 1135.0
+      },
+      "note": "Absent-accepted responses have ~6x lower completion tokens than responses with reasoning, so the absence reflects turns the model answered without thinking, not unlogged thinking. thinking-token stats are therefore conditional on responses_with_reasoning."
+    },
+    "interpretation": "model_behavior_not_logging_gap",
+    "no_reasoning_count": 125,
+    "no_reasoning_rate": 0.14952153110047847
+  },
+  "recovery": {
+    "definition": "A recovery event is a maximal run of consecutive hard-error turns followed by an accepted turn; its length is the run length. Runs that reach the end of the trial are counted as lock-ins, not recoveries.",
+    "hard_error_events_recovered": 42,
+    "recovery_turns": {
+      "max": 12,
+      "mean": 2.02,
+      "median": 1.0,
+      "min": 1,
+      "n": 42,
+      "p25": 1.0,
+      "p75": 2.0
+    },
+    "unrecovered_lockin_trials": 3
+  },
+  "response_level": {
+    "hard_soft_disjoint_note": "Both use 836 responses as denominator; the 125 hard errors that also carried an extra-text warning are excluded from the soft column, so the columns do not add.",
+    "parser_hard_error_rate": 0.17822966507177032,
+    "parser_hard_error_rate_per_trial_median": 0.0,
+    "parser_soft_warning_rate": 0.5956937799043063,
+    "trials_with_zero_hard_errors": 64
+  },
+  "schema_branch": "B",
+  "schema_version": "edgeforge-agent-metrics/v2",
+  "token_usage": {
+    "cached_token_share_denominator": 835,
+    "cached_token_share_note": "cached_tokens / prompt_tokens for the 835 responses where cached_tokens was persisted; the one missing value is treated as zero in per-trial cached-token totals.",
+    "cached_token_share_per_response": {
+      "max": 0.9965505464480874,
+      "mean": 0.73,
+      "median": 0.8161302731119374,
+      "min": 0.005113221329437546,
+      "n": 835,
+      "p25": 0.6635281863518717,
+      "p75": 0.942708290674282
+    },
+    "completion_tokens_per_trial": {
+      "max": 36280,
+      "mean": 7073.19,
+      "median": 5801.0,
+      "min": 2262,
+      "n": 100,
+      "p25": 3827.0,
+      "p75": 7857.5
+    },
+    "prompt_tokens_per_trial": {
+      "max": 513716,
+      "mean": 47913.66,
+      "median": 19831.5,
+      "min": 2447,
+      "n": 100,
+      "p25": 11522.0,
+      "p75": 48208.0
+    }
+  },
+  "tokens": {
+    "note": "message and command_content are harbor-normalized views, not the original model JSON body; message_tokens is a lower bound on non-thinking prose.",
+    "per_trial": [
+      {
+        "command": 205,
+        "completion": 4377,
+        "message": 806,
+        "residual": 434,
+        "thinking": 2932,
+        "trial": "break-filter-js-from-html__EdXhMaL"
+      },
+      {
+        "command": 394,
+        "completion": 6588,
+        "message": 2782,
+        "residual": 1068,
+        "thinking": 2344,
+        "trial": "break-filter-js-from-html__Y9UrrmV"
+      },
+      {
+        "command": 157,
+        "completion": 3881,
+        "message": 823,
+        "residual": 435,
+        "thinking": 2466,
+        "trial": "break-filter-js-from-html__ZHoVFfH"
+      },
+      {
+        "command": 120,
+        "completion": 2284,
+        "message": 571,
+        "residual": 309,
+        "thinking": 1284,
+        "trial": "break-filter-js-from-html__ourtkpe"
+      },
+      {
+        "command": 128,
+        "completion": 2566,
+        "message": 622,
+        "residual": 272,
+        "thinking": 1544,
+        "trial": "break-filter-js-from-html__t8FQHKf"
+      },
+      {
+        "command": 116,
+        "completion": 7855,
+        "message": 3213,
+        "residual": 1155,
+        "thinking": 3371,
+        "trial": "build-cython-ext__7vDKk3Q"
+      },
+      {
+        "command": 339,
+        "completion": 4227,
+        "message": 1017,
+        "residual": 526,
+        "thinking": 2345,
+        "trial": "build-cython-ext__9S86eU3"
+      },
+      {
+        "command": 103,
+        "completion": 6763,
+        "message": 3238,
+        "residual": 1077,
+        "thinking": 2345,
+        "trial": "build-cython-ext__D5zRS3y"
+      },
+      {
+        "command": 288,
+        "completion": 8837,
+        "message": 2383,
+        "residual": 972,
+        "thinking": 5194,
+        "trial": "build-cython-ext__aut5JXa"
+      },
+      {
+        "command": 310,
+        "completion": 5406,
+        "message": 1262,
+        "residual": 505,
+        "thinking": 3329,
+        "trial": "build-cython-ext__z4cRHu3"
+      },
+      {
+        "command": 163,
+        "completion": 8343,
+        "message": 2083,
+        "residual": 844,
+        "thinking": 5253,
+        "trial": "build-pmars__JRb8rAR"
+      },
+      {
+        "command": 97,
+        "completion": 4317,
+        "message": 1329,
+        "residual": 420,
+        "thinking": 2471,
+        "trial": "build-pmars__RPJywgr"
+      },
+      {
+        "command": 148,
+        "completion": 6303,
+        "message": 1967,
+        "residual": 887,
+        "thinking": 3301,
+        "trial": "build-pmars__VMQyyeJ"
+      },
+      {
+        "command": 136,
+        "completion": 5932,
+        "message": 1573,
+        "residual": 768,
+        "thinking": 3455,
+        "trial": "build-pmars__czwQWom"
+      },
+      {
+        "command": 269,
+        "completion": 7865,
+        "message": 2554,
+        "residual": 1441,
+        "thinking": 3601,
+        "trial": "build-pmars__nCu3Fik"
+      },
+      {
+        "command": 2374,
+        "completion": 4700,
+        "message": 562,
+        "residual": 338,
+        "thinking": 1426,
+        "trial": "constraints-scheduling__S2DdAT2"
+      },
+      {
+        "command": 8,
+        "completion": 5335,
+        "message": 3657,
+        "residual": 106,
+        "thinking": 1564,
+        "trial": "constraints-scheduling__SAGWsZK"
+      },
+      {
+        "command": 4603,
+        "completion": 7163,
+        "message": 640,
+        "residual": 465,
+        "thinking": 1455,
+        "trial": "constraints-scheduling__aaSRUnD"
+      },
+      {
+        "command": 3201,
+        "completion": 6010,
+        "message": 637,
+        "residual": 532,
+        "thinking": 1640,
+        "trial": "constraints-scheduling__oUYSzDP"
+      },
+      {
+        "command": 16,
+        "completion": 11871,
+        "message": 8952,
+        "residual": 144,
+        "thinking": 2759,
+        "trial": "constraints-scheduling__zvRwPcq"
+      },
+      {
+        "command": 325,
+        "completion": 2554,
+        "message": 695,
+        "residual": 298,
+        "thinking": 1236,
+        "trial": "count-dataset-tokens__7e2PsqF"
+      },
+      {
+        "command": 487,
+        "completion": 4149,
+        "message": 2177,
+        "residual": 124,
+        "thinking": 1361,
+        "trial": "count-dataset-tokens__JHmVxiV"
+      },
+      {
+        "command": 686,
+        "completion": 7840,
+        "message": 3128,
+        "residual": 1176,
+        "thinking": 2850,
+        "trial": "count-dataset-tokens__U3KGG6G"
+      },
+      {
+        "command": 1375,
+        "completion": 4018,
+        "message": 812,
+        "residual": 356,
+        "thinking": 1475,
+        "trial": "count-dataset-tokens__mqB4S53"
+      },
+      {
+        "command": 1511,
+        "completion": 6752,
+        "message": 1726,
+        "residual": 633,
+        "thinking": 2882,
+        "trial": "count-dataset-tokens__uGtLKt8"
+      },
+      {
+        "command": 156,
+        "completion": 4516,
+        "message": 1048,
+        "residual": 435,
+        "thinking": 2877,
+        "trial": "dna-insert__JZEyirP"
+      },
+      {
+        "command": 121,
+        "completion": 8200,
+        "message": 3061,
+        "residual": 1172,
+        "thinking": 3846,
+        "trial": "dna-insert__JwrA43o"
+      },
+      {
+        "command": 88,
+        "completion": 5815,
+        "message": 2467,
+        "residual": 1031,
+        "thinking": 2229,
+        "trial": "dna-insert__fqXSQsR"
+      },
+      {
+        "command": 95,
+        "completion": 3599,
+        "message": 965,
+        "residual": 288,
+        "thinking": 2251,
+        "trial": "dna-insert__hZoTzse"
+      },
+      {
+        "command": 109,
+        "completion": 3533,
+        "message": 1008,
+        "residual": 378,
+        "thinking": 2038,
+        "trial": "dna-insert__iKDZyRt"
+      },
+      {
+        "command": 0,
+        "completion": 22547,
+        "message": 17014,
+        "residual": 1083,
+        "thinking": 4450,
+        "trial": "filter-js-from-html__6zYGT8J"
+      },
+      {
+        "command": 289,
+        "completion": 10813,
+        "message": 7687,
+        "residual": 825,
+        "thinking": 2012,
+        "trial": "filter-js-from-html__8xUy33S"
+      },
+      {
+        "command": 509,
+        "completion": 5787,
+        "message": 2322,
+        "residual": 1454,
+        "thinking": 1502,
+        "trial": "filter-js-from-html__GtzPGJS"
+      },
+      {
+        "command": 609,
+        "completion": 5160,
+        "message": 2617,
+        "residual": 361,
+        "thinking": 1573,
+        "trial": "filter-js-from-html__RxLkBwc"
+      },
+      {
+        "command": 8,
+        "completion": 5047,
+        "message": 2607,
+        "residual": 139,
+        "thinking": 2293,
+        "trial": "filter-js-from-html__zUqEvme"
+      },
+      {
+        "command": 34,
+        "completion": 3665,
+        "message": 1009,
+        "residual": 291,
+        "thinking": 2331,
+        "trial": "gcode-to-text__72mLGjS"
+      },
+      {
+        "command": 44,
+        "completion": 4599,
+        "message": 1135,
+        "residual": 373,
+        "thinking": 3047,
+        "trial": "gcode-to-text__8TKSB7k"
+      },
+      {
+        "command": 62,
+        "completion": 6693,
+        "message": 1511,
+        "residual": 491,
+        "thinking": 4629,
+        "trial": "gcode-to-text__Npsoy8f"
+      },
+      {
+        "command": 45,
+        "completion": 4763,
+        "message": 1137,
+        "residual": 341,
+        "thinking": 3240,
+        "trial": "gcode-to-text__eRpDUNj"
+      },
+      {
+        "command": 25,
+        "completion": 2262,
+        "message": 635,
+        "residual": 229,
+        "thinking": 1373,
+        "trial": "gcode-to-text__fWJxd9R"
+      },
+      {
+        "command": 284,
+        "completion": 5277,
+        "message": 1552,
+        "residual": 593,
+        "thinking": 2848,
+        "trial": "largest-eigenval__H9Jan46"
+      },
+      {
+        "command": 451,
+        "completion": 7443,
+        "message": 2267,
+        "residual": 300,
+        "thinking": 4425,
+        "trial": "largest-eigenval__KtBrGYy"
+      },
+      {
+        "command": 1724,
+        "completion": 13865,
+        "message": 5910,
+        "residual": 2824,
+        "thinking": 3407,
+        "trial": "largest-eigenval__YV7H2nq"
+      },
+      {
+        "command": 97,
+        "completion": 7267,
+        "message": 2072,
+        "residual": 219,
+        "thinking": 4879,
+        "trial": "largest-eigenval__sXi2Twi"
+      },
+      {
+        "command": 712,
+        "completion": 5979,
+        "message": 1677,
+        "residual": 660,
+        "thinking": 2930,
+        "trial": "largest-eigenval__xE9xqoe"
+      },
+      {
+        "command": 3449,
+        "completion": 9940,
+        "message": 3574,
+        "residual": 591,
+        "thinking": 2326,
+        "trial": "log-summary-date-ranges__5Mv7SFL"
+      },
+      {
+        "command": 2333,
+        "completion": 6119,
+        "message": 934,
+        "residual": 437,
+        "thinking": 2415,
+        "trial": "log-summary-date-ranges__QgQLWyv"
+      },
+      {
+        "command": 2210,
+        "completion": 11256,
+        "message": 4275,
+        "residual": 528,
+        "thinking": 4243,
+        "trial": "log-summary-date-ranges__WUaHgQQ"
+      },
+      {
+        "command": 2150,
+        "completion": 13778,
+        "message": 7296,
+        "residual": 373,
+        "thinking": 3959,
+        "trial": "log-summary-date-ranges__XDXQjAz"
+      },
+      {
+        "command": 2375,
+        "completion": 14903,
+        "message": 6975,
+        "residual": 1056,
+        "thinking": 4497,
+        "trial": "log-summary-date-ranges__agz4EK6"
+      },
+      {
+        "command": 167,
+        "completion": 3292,
+        "message": 673,
+        "residual": 344,
+        "thinking": 2108,
+        "trial": "mailman__CeRPakz"
+      },
+      {
+        "command": 205,
+        "completion": 2335,
+        "message": 381,
+        "residual": 236,
+        "thinking": 1513,
+        "trial": "mailman__LmYCHp9"
+      },
+      {
+        "command": 178,
+        "completion": 2873,
+        "message": 348,
+        "residual": 700,
+        "thinking": 1647,
+        "trial": "mailman__Rj4tH5R"
+      },
+      {
+        "command": 30,
+        "completion": 3194,
+        "message": 1362,
+        "residual": 240,
+        "thinking": 1562,
+        "trial": "mailman__XpDnHEK"
+      },
+      {
+        "command": 117,
+        "completion": 3290,
+        "message": 957,
+        "residual": 551,
+        "thinking": 1665,
+        "trial": "mailman__wo64Z6A"
+      },
+      {
+        "command": 1973,
+        "completion": 6301,
+        "message": 3094,
+        "residual": 301,
+        "thinking": 933,
+        "trial": "multi-source-data-merger__PcKipxP"
+      },
+      {
+        "command": 0,
+        "completion": 31874,
+        "message": 30524,
+        "residual": 25,
+        "thinking": 1325,
+        "trial": "multi-source-data-merger__TtBNkhW"
+      },
+      {
+        "command": 2063,
+        "completion": 3654,
+        "message": 490,
+        "residual": 315,
+        "thinking": 786,
+        "trial": "multi-source-data-merger__XXMasCX"
+      },
+      {
+        "command": 2476,
+        "completion": 4272,
+        "message": 310,
+        "residual": 329,
+        "thinking": 1157,
+        "trial": "multi-source-data-merger__bUyWMFa"
+      },
+      {
+        "command": 2668,
+        "completion": 8008,
+        "message": 3927,
+        "residual": 133,
+        "thinking": 1280,
+        "trial": "multi-source-data-merger__taYJ85T"
+      },
+      {
+        "command": 853,
+        "completion": 5058,
+        "message": 908,
+        "residual": 696,
+        "thinking": 2601,
+        "trial": "nginx-request-logging__27di6WX"
+      },
+      {
+        "command": 453,
+        "completion": 6530,
+        "message": 3310,
+        "residual": 454,
+        "thinking": 2313,
+        "trial": "nginx-request-logging__AjYzhEr"
+      },
+      {
+        "command": 0,
+        "completion": 36280,
+        "message": 29217,
+        "residual": 1043,
+        "thinking": 6020,
+        "trial": "nginx-request-logging__F3MC8eY"
+      },
+      {
+        "command": 640,
+        "completion": 6463,
+        "message": 1986,
+        "residual": 879,
+        "thinking": 2958,
+        "trial": "nginx-request-logging__XmaGAYN"
+      },
+      {
+        "command": 92,
+        "completion": 4284,
+        "message": 1231,
+        "residual": 308,
+        "thinking": 2653,
+        "trial": "nginx-request-logging__xHoYi3c"
+      },
+      {
+        "command": 2890,
+        "completion": 9011,
+        "message": 1456,
+        "residual": 1180,
+        "thinking": 3485,
+        "trial": "openssl-selfsigned-cert__EbWfNda"
+      },
+      {
+        "command": 619,
+        "completion": 2941,
+        "message": 656,
+        "residual": 518,
+        "thinking": 1148,
+        "trial": "openssl-selfsigned-cert__FAZDVAm"
+      },
+      {
+        "command": 823,
+        "completion": 6244,
+        "message": 2226,
+        "residual": 1163,
+        "thinking": 2032,
+        "trial": "openssl-selfsigned-cert__Hn89tKd"
+      },
+      {
+        "command": 640,
+        "completion": 4939,
+        "message": 1890,
+        "residual": 349,
+        "thinking": 2060,
+        "trial": "openssl-selfsigned-cert__o97BZCd"
+      },
+      {
+        "command": 827,
+        "completion": 3998,
+        "message": 385,
+        "residual": 337,
+        "thinking": 2449,
+        "trial": "openssl-selfsigned-cert__oCvmg5c"
+      },
+      {
+        "command": 135,
+        "completion": 5719,
+        "message": 1478,
+        "residual": 425,
+        "thinking": 3681,
+        "trial": "overfull-hbox__h8Ef7RK"
+      },
+      {
+        "command": 1259,
+        "completion": 9625,
+        "message": 1748,
+        "residual": 598,
+        "thinking": 6020,
+        "trial": "overfull-hbox__mpmwYBD"
+      },
+      {
+        "command": 407,
+        "completion": 7553,
+        "message": 2327,
+        "residual": 819,
+        "thinking": 4000,
+        "trial": "overfull-hbox__q9FTfu4"
+      },
+      {
+        "command": 3479,
+        "completion": 10627,
+        "message": 1514,
+        "residual": 529,
+        "thinking": 5105,
+        "trial": "overfull-hbox__qcMmigJ"
+      },
+      {
+        "command": 302,
+        "completion": 7417,
+        "message": 1795,
+        "residual": 845,
+        "thinking": 4475,
+        "trial": "overfull-hbox__wHX39ZV"
+      },
+      {
+        "command": 1659,
+        "completion": 8048,
+        "message": 1308,
+        "residual": 747,
+        "thinking": 4334,
+        "trial": "polyglot-c-py__VHmULmv"
+      },
+      {
+        "command": 83,
+        "completion": 27353,
+        "message": 21002,
+        "residual": 1945,
+        "thinking": 4323,
+        "trial": "polyglot-c-py__a6wo8ZC"
+      },
+      {
+        "command": 1522,
+        "completion": 6698,
+        "message": 1143,
+        "residual": 613,
+        "thinking": 3420,
+        "trial": "polyglot-c-py__cnbdNTR"
+      },
+      {
+        "command": 343,
+        "completion": 9225,
+        "message": 6089,
+        "residual": 1158,
+        "thinking": 1635,
+        "trial": "polyglot-c-py__fqbT6tE"
+      },
+      {
+        "command": 3403,
+        "completion": 12625,
+        "message": 2234,
+        "residual": 1253,
+        "thinking": 5735,
+        "trial": "polyglot-c-py__ohZpowR"
+      },
+      {
+        "command": 214,
+        "completion": 3138,
+        "message": 692,
+        "residual": 393,
+        "thinking": 1839,
+        "trial": "pypi-server__H4HV8jE"
+      },
+      {
+        "command": 228,
+        "completion": 3612,
+        "message": 967,
+        "residual": 386,
+        "thinking": 2031,
+        "trial": "pypi-server__RTCJyZ2"
+      },
+      {
+        "command": 1146,
+        "completion": 8164,
+        "message": 1516,
+        "residual": 2044,
+        "thinking": 3458,
+        "trial": "pypi-server__ZVPezUD"
+      },
+      {
+        "command": 352,
+        "completion": 2983,
+        "message": 690,
+        "residual": 520,
+        "thinking": 1421,
+        "trial": "pypi-server__mjUUF8T"
+      },
+      {
+        "command": 261,
+        "completion": 3187,
+        "message": 931,
+        "residual": 445,
+        "thinking": 1550,
+        "trial": "pypi-server__xtB7Gwr"
+      },
+      {
+        "command": 79,
+        "completion": 3500,
+        "message": 203,
+        "residual": 103,
+        "thinking": 3115,
+        "trial": "regex-log__HM89SBD"
+      },
+      {
+        "command": 84,
+        "completion": 5263,
+        "message": 436,
+        "residual": 131,
+        "thinking": 4612,
+        "trial": "regex-log__YBaWeXt"
+      },
+      {
+        "command": 768,
+        "completion": 10519,
+        "message": 1135,
+        "residual": 392,
+        "thinking": 8224,
+        "trial": "regex-log__ZYC2ry5"
+      },
+      {
+        "command": 157,
+        "completion": 6009,
+        "message": 433,
+        "residual": 165,
+        "thinking": 5254,
+        "trial": "regex-log__sQLwB2x"
+      },
+      {
+        "command": 140,
+        "completion": 4501,
+        "message": 321,
+        "residual": 150,
+        "thinking": 3890,
+        "trial": "regex-log__ybgHkH5"
+      },
+      {
+        "command": 4,
+        "completion": 20532,
+        "message": 15580,
+        "residual": 680,
+        "thinking": 4268,
+        "trial": "sanitize-git-repo__Fqp9QrY"
+      },
+      {
+        "command": 21,
+        "completion": 3374,
+        "message": 1263,
+        "residual": 156,
+        "thinking": 1934,
+        "trial": "sanitize-git-repo__NnKgMiL"
+      },
+      {
+        "command": 22,
+        "completion": 3191,
+        "message": 1220,
+        "residual": 183,
+        "thinking": 1766,
+        "trial": "sanitize-git-repo__Ym8VPb4"
+      },
+      {
+        "command": 140,
+        "completion": 2987,
+        "message": 875,
+        "residual": 243,
+        "thinking": 1729,
+        "trial": "sanitize-git-repo__gn3nAb5"
+      },
+      {
+        "command": 705,
+        "completion": 5309,
+        "message": 1040,
+        "residual": 520,
+        "thinking": 3044,
+        "trial": "sanitize-git-repo__tBTMjmz"
+      },
+      {
+        "command": 497,
+        "completion": 6836,
+        "message": 1919,
+        "residual": 869,
+        "thinking": 3551,
+        "trial": "sqlite-db-truncate__2YteJy5"
+      },
+      {
+        "command": 520,
+        "completion": 6217,
+        "message": 1631,
+        "residual": 608,
+        "thinking": 3458,
+        "trial": "sqlite-db-truncate__S3c6tEq"
+      },
+      {
+        "command": 404,
+        "completion": 2772,
+        "message": 458,
+        "residual": 275,
+        "thinking": 1635,
+        "trial": "sqlite-db-truncate__Z9iGbrN"
+      },
+      {
+        "command": 447,
+        "completion": 3395,
+        "message": 1434,
+        "residual": 298,
+        "thinking": 1216,
+        "trial": "sqlite-db-truncate__bS6xBk5"
+      },
+      {
+        "command": 44,
+        "completion": 3337,
+        "message": 1078,
+        "residual": 394,
+        "thinking": 1821,
+        "trial": "sqlite-db-truncate__t8CTfkM"
+      }
+    ],
+    "residual_check": {
+      "definition": "completion_tokens - (thinking + message + command); positive and non-constant under branch B because the original JSON envelope is not persisted. Stability, not near-zero, is the acceptance criterion.",
+      "max": 1624,
+      "mean": 71.47,
+      "median": 54.0,
+      "min": 1,
+      "n": 836,
+      "p25": 30.0,
+      "p75": 65.25,
+      "stable": true
+    },
+    "schema_branch": "B",
+    "split": {
+      "command_content_tokens_harbor_normalized": {
+        "max": 3187,
+        "mean": 86.22,
+        "median": 4.0,
+        "min": 0,
+        "n": 836,
+        "p25": 0.0,
+        "p75": 33.5
+      },
+      "message_tokens_harbor_normalized": {
+        "max": 6929,
+        "mean": 348.99,
+        "median": 159.0,
+        "min": 41,
+        "n": 836,
+        "p25": 115.0,
+        "p75": 217.25
+      },
+      "thinking_tokens_conditional_on_reasoning": {
+        "max": 4993,
+        "mean": 399.07,
+        "median": 273,
+        "min": 35,
+        "n": 711,
+        "p25": 172.0,
+        "p75": 478.0
+      }
+    },
+    "tokenizer": {
+      "endpoint": "http://localhost:8080",
+      "mode": "endpoint",
+      "probe_hello_world_tokens": 2
+    },
+    "tool_call_usage": {
+      "tool_calls_per_turn": 2.3971377459749554,
+      "tool_calls_total": 1340,
+      "turns_with_keystrokes": 446,
+      "turns_with_tool_calls": 559
+    }
+  },
+  "trial_level": {
+    "failure_breakdown": {
+      "f1_verifier_zero": 92,
+      "f2_turn_exhausted": 7,
+      "f3_agent_timeout": 1,
+      "f4_infrastructure_rerun": 0,
+      "note": "F1 = zero-reward trials that neither exhausted the 30-turn guard nor hit the agent timeout. No persisted task_complete field exists, so no premature-complete rate is derived from these."
+    },
+    "success_rate": 0.0,
+    "success_rate_zero_ci": {
+      "method": "rule_of_three",
+      "note": "Wald SE is 0 at p_hat=0 and must not be used. Report the task-level rule-of-three bound (~0.15).",
+      "upper_95_over_tasks": 0.15,
+      "upper_95_over_trials_optimistic_do_not_cite": 0.03
+    },
+    "successes": 0,
+    "turns": {
+      "censored_at_max_turns": 7,
+      "censored_by_agent_timeout": 1,
+      "headline_statistic": "median",
+      "max": 30,
+      "mean": 8.36,
+      "median": 6.0,
+      "min": 2,
+      "n": 100,
+      "p25": 5.0,
+      "p75": 9.0,
+      "restricted_mean_at_30": 8.36
+    }
+  }
+}

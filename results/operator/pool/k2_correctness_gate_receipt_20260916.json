@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K2_CORRECTNESS_GATE",
+  "timestamp": "2026-09-16T16:17:28+08:00",
+  "preregistration": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k2_nf4_decode_gemv_prereg.json",
+    "sha256": "bb497bf4be20a922abbe6edbf8e4812d55b01e14d8db088371ec332ad61f299f",
+    "immutable_through_failure_and_audit": true
+  },
+  "implementation": {
+    "candidate": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k2_nf4_gemv.py",
+      "sha256": "149b4b8c651cfa6530f320779687132f0bdb31f511282473250ffc80257d7c65"
+    },
+    "day_runner": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k2_day.py",
+      "sha256": "c9e9af9550f4be4bc275b5696c75549c4cc7b2e8244f7aaf2d7a5731550e3625"
+    },
+    "oracle_audit_runner": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/audit_k2_oracle_consistency.py",
+      "sha256": "3e2807a8d945b71475fad8cfa9e5b7c6a8ac9a7613e9732a12fcb9120033a697"
+    }
+  },
+  "evidence": {
+    "first_formal_correctness_failure": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/failures/k2_day_failure_20260916T160332.json",
+      "sha256": "670627b9a38ef60be8c80160245d07bfd482182939b40a05321a74b1e0102f6d"
+    },
+    "frozen_oracle_consistency_audit": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/failures/k2_oracle_consistency_audit_20260916.json",
+      "sha256": "0158290477f8f8d45cb0419e7e0f4daa5edc9048d239ce9edc585d9aa3901573"
+    },
+    "external_host_restart_before_correctness": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/failures/k2_correctness_external_host_restart_20260916T160001.json",
+      "sha256": "af3bba5c323b7609ec168cd6bda2567e7b5ba1587c0c043a41c688435a5ee7a2"
+    }
+  },
+  "oracle_audit_summary": {
+    "frozen_cases_checked": 126,
+    "cases_with_disjoint_eager_and_reference_allowed_intervals": 35,
+    "output_elements_with_disjoint_allowed_intervals": 297,
+    "affected_distribution": "wide_normal",
+    "affected_variants": 13,
+    "maximum_uncovered_interval_gap": 0.10308104753494263,
+    "mathematical_conclusion": "No real-valued candidate output can simultaneously satisfy both frozen allclose assertions for every preregistered case. BF16 output cannot satisfy them either."
+  },
+  "gates": {
+    "frozen_preregistration_immutable": "PASS",
+    "upstream_source_identity": "PASS",
+    "candidate_implemented_without_full_weight_materialization": "PASS",
+    "formal_correctness": "FAIL",
+    "frozen_eager_reference_oracle_consistency": "FAIL_UNSATISFIABLE",
+    "isolated_day1_performance": "NOT_STARTED",
+    "cross_day_replication": "NOT_STARTED",
+    "ncu_tier_b": "NOT_STARTED",
+    "reconnection": "NOT_STARTED"
+  },
+  "decision": {
+    "performance_measurement_allowed": false,
+    "post_hoc_tolerance_or_oracle_change_allowed_under_this_preregistration": false,
+    "automatic_transition_to_next_backlog_item": false,
+    "required_owner_choice": "Either close K2 under this frozen preregistration and start the next backlog candidate, or explicitly authorize a new transparently versioned K2 protocol with a single internally consistent correctness oracle and fresh holdout inputs."
+  },
+  "status": "BLOCKED_FROZEN_CORRECTNESS_ORACLE_CONFLICT"
+}

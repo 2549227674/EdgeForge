@@ -1,0 +1,61 @@
+{
+  "dataset_summary": {
+    "build_truncation_count": 0,
+    "bytes": 386373,
+    "max_sample_tokens": 1024,
+    "max_tokens": 827,
+    "max_total_tokens": 105865,
+    "min_tokens": 827,
+    "p50_tokens": 827.0,
+    "p90_tokens": 827.0,
+    "p95_tokens": 827.0,
+    "path": "data/operator/board/a2_calibration/data_quant.json",
+    "records": 128,
+    "schema": "list[{input: materialized_window_text, target: empty_string}]",
+    "selected_uid_set_sha256": "7e789d83b773be1735bee3bb5fa9408f6e20a8cdb3ebe6500df99c5e5900ab55",
+    "sha256": "5dc2002203096ff4a78fee176a9c963da87227cf8ba792c88ded4e6b8f5c8c98",
+    "source_window_extraction_count": 128,
+    "total_tokens": 105856,
+    "unique_source_sessions": 128,
+    "unique_uids": 128,
+    "zero_build_truncation": true
+  },
+  "declared_files": {
+    "/home/qbz415/piloop-edge-inference-profiler/configs/operator/board/a2_calibration_manifest.json": "3eafe5323bee64f72e4cffaa222dc54ca2c34014dccbfa3c4a60d36e8c1c0113",
+    "/home/qbz415/piloop-edge-inference-profiler/configs/operator/board/a2_calibration_rule.json": "04ba555b3983333264f5a6c28e564efe0fba14ba42db9499dc742f39ad6787a8",
+    "/home/qbz415/piloop-edge-inference-profiler/data/operator/board/a2_calibration/data_quant.json": "5dc2002203096ff4a78fee176a9c963da87227cf8ba792c88ded4e6b8f5c8c98",
+    "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/board/select_a2_calibration.py": "60b48f79b240839fafc89acd4083421edc56b818cb5991b4ec45d08a417474be"
+  },
+  "disclosure": "The 1024-token gate was infeasible for source-diverse whole-record selection: outside Crown, only two GLM-5.2 full records were <=1024 and Hermes/Qwen/Glint had none. A2 therefore uses deterministic windows from complete frozen-template renders. Every emitted input is <=1024 before RKLLM, so converter/build truncation is zero; source-window extraction is separately explicit.",
+  "gates": {
+    "holdout_intersection_zero": true,
+    "kernelbench_hits_zero": true,
+    "max_sample_tokens_within_1024": true,
+    "quota_exact": true,
+    "records_128": true,
+    "total_tokens_within_105865": true,
+    "zero_build_truncation": true
+  },
+  "privacy": "No private source or calibration body is present in this receipt or in process output.",
+  "quota_summary": {
+    "AletheiaResearch__GLM-5.2-Agent": 16,
+    "Crownelius__Complete-FABLE.5-traces-2M": 64,
+    "Glint-Research__Fable-5-traces": 0,
+    "armand0e__qwen3.7-max-pi-traces": 16,
+    "lambda__hermes-agent-reasoning-traces": 32
+  },
+  "runtime": {
+    "cgroup_cpu_max": "unknown",
+    "cgroup_memory_max": "unknown",
+    "cuda_visible_devices": "",
+    "hostname": "LAPTOP-OBAD8432",
+    "logical_cpus": 20,
+    "max_rss_kib": 1338796,
+    "omp_num_threads": "1",
+    "python": "3.12.3",
+    "wall_seconds": 17.892
+  },
+  "schema": "edgeforge-ope-c0-2-a2-calibration-receipt/v1",
+  "scope": "selection, source-window materialization, and freeze only; no RKLLM build or quality evaluation",
+  "status": "PASS"
+}

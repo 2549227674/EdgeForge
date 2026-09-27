@@ -1,0 +1,154 @@
+{
+  "calibration": {
+    "build_truncations": 0,
+    "identities": {
+      "dataset": {
+        "bytes": 386373,
+        "path": "/root/autodl-tmp/edgeforge-m1/workspace/data/operator/board/a2_calibration/data_quant.json",
+        "sha256": "5dc2002203096ff4a78fee176a9c963da87227cf8ba792c88ded4e6b8f5c8c98"
+      },
+      "manifest": {
+        "bytes": 146389,
+        "path": "/root/autodl-tmp/edgeforge-m1/workspace/configs/operator/board/a2_calibration_manifest.json",
+        "sha256": "3eafe5323bee64f72e4cffaa222dc54ca2c34014dccbfa3c4a60d36e8c1c0113"
+      },
+      "rule": {
+        "bytes": 6496,
+        "path": "/root/autodl-tmp/edgeforge-m1/workspace/configs/operator/board/a2_calibration_rule.json",
+        "sha256": "04ba555b3983333264f5a6c28e564efe0fba14ba42db9499dc742f39ad6787a8"
+      },
+      "selection_receipt": {
+        "bytes": 2967,
+        "path": "/root/autodl-tmp/edgeforge-m1/workspace/results/operator/board/c0/c0_2_a2_calibration_receipt.json",
+        "sha256": "7419f1d8189a99d76c029d9e122856dca5784804fee18b8eb6560c94e377e455"
+      }
+    },
+    "max_tokens": 827,
+    "records": 128,
+    "source_windows": 128,
+    "strata": {
+      "crown_chat": 32,
+      "crown_tool": 32,
+      "glm52_tool": 16,
+      "hermes_glm51_agent_tools": 2,
+      "hermes_glm51_browser": 2,
+      "hermes_glm51_file": 2,
+      "hermes_glm51_multi": 2,
+      "hermes_glm51_planning": 2,
+      "hermes_glm51_repo": 2,
+      "hermes_glm51_terminal": 2,
+      "hermes_kimi_agent_tools": 2,
+      "hermes_kimi_browser": 2,
+      "hermes_kimi_conversational": 2,
+      "hermes_kimi_file": 2,
+      "hermes_kimi_multi": 2,
+      "hermes_kimi_planning": 2,
+      "hermes_kimi_repo": 2,
+      "hermes_kimi_scheduling": 2,
+      "hermes_kimi_terminal": 2,
+      "qwen37_tool": 16
+    },
+    "tokens": 105856
+  },
+  "contract": {
+    "device": "cuda",
+    "dtype": "bfloat16",
+    "hybrid_rate": 0,
+    "max_context": 16384,
+    "num_npu_core": 1,
+    "optimization_level": 1,
+    "quantized_algorithm": "normal",
+    "quantized_dtype": "w8a8",
+    "target_platform": "RK3588"
+  },
+  "cwd": "/autodl-fs/data/edgeforge-c0-3/run-20260917T2135+0800",
+  "host": "autodl-container-z7m72ul12w-4c2b02f8",
+  "model": {
+    "files": [
+      {
+        "bytes": 18569,
+        "path": "chat_template.jinja",
+        "sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5"
+      },
+      {
+        "bytes": 5469,
+        "path": "config.json",
+        "sha256": "a866b497256661638db10c8d42e746f8ee2fc6434a637f00a032d00c6834a0f5"
+      },
+      {
+        "bytes": 204,
+        "path": "generation_config.json",
+        "sha256": "f980ee1dc9d6a30f92050e94eaf7511b95941ede02e9d7fcde002d8da6ef9523"
+      },
+      {
+        "bytes": 15992595884,
+        "path": "model.safetensors",
+        "sha256": "40469f7bd93b6f16dba63081ca5f430d6bdaa7f518d1ffab37f8b9a7be331d0f"
+      },
+      {
+        "bytes": 1689,
+        "path": "processor_config.json",
+        "sha256": "32bdf45d2ad4cc29a0822ddd157a182de76644f0419a6228d151495256e9813c"
+      },
+      {
+        "bytes": 32169626,
+        "path": "tokenizer.json",
+        "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f"
+      },
+      {
+        "bytes": 2095,
+        "path": "tokenizer_config.json",
+        "sha256": "90c3a3ba5bf53818383a58e1a776cbcacd2a038d4812eaa373e1522f2d06f3df"
+      }
+    ],
+    "manifest": {
+      "bytes": 3346,
+      "path": "/root/autodl-tmp/edgeforge-m1/workspace/configs/operator/board/c02_rkllm_input_manifest.json",
+      "sha256": "39cb2a50a4e1ce6bec0b6cb056cab8b5912401494bf5a1419caa6e69282e12cf"
+    },
+    "tensor_count": 2130,
+    "transplant_tensor_count": 54
+  },
+  "observed_at": "2026-09-17T21:34:39+08:00",
+  "platform": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+  "resources": {
+    "cgroup_memory_high_bytes": 96636764160,
+    "cgroup_memory_max_bytes": 98784247808,
+    "cgroup_memory_max_gib": 92.0,
+    "frozen_memory_floor_bytes": 103079215104,
+    "frozen_memory_floor_gib": 96,
+    "gpu_memory_floor_mib": 48000,
+    "gpu_memory_floor_pass": true,
+    "gpu_memory_total_mib": 49140,
+    "memory_floor_pass": false,
+    "memory_variance_authorized": true,
+    "memory_variance_note": "Owner supplied the 92 GiB instance and delegated cloud/local execution choice; one build is accepted because the same-geometry X4 N=128 peak was 58.7 GiB, leaving 33.3 GiB to memory.max. No calibration cap or build setting is changed.",
+    "status": "PASS_WITH_OWNER_MEMORY_VARIANCE"
+  },
+  "schema": "edgeforge-ope-c0-3-rkllm-build/v1",
+  "scratch": {
+    "length_bytes": 26214400,
+    "offset_bytes": 13107200,
+    "run_filesystem_free_bytes": 211850084352,
+    "status": "PASS",
+    "total_bytes": 39321600
+  },
+  "stage": "preflight",
+  "status": "PASS",
+  "temporary_directories": {
+    "TEMP": "/autodl-fs/data/edgeforge-c0-3/run-20260917T2135+0800/tmp",
+    "TMP": "/autodl-fs/data/edgeforge-c0-3/run-20260917T2135+0800/tmp",
+    "TMPDIR": "/autodl-fs/data/edgeforge-c0-3/run-20260917T2135+0800/tmp"
+  },
+  "versions": {
+    "accelerate": "1.5.2",
+    "datasets": "4.1.1",
+    "numpy": "1.26.4",
+    "pyarrow": "21.0.0",
+    "python": "3.10.12",
+    "rkllm_toolkit": "1.3.0",
+    "safetensors": "0.5.3",
+    "torch": "2.6.0",
+    "transformers": "5.8.0"
+  }
+}

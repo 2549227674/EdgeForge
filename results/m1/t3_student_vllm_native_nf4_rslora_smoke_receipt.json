@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "stage": "T3_OPD_dynamic_length_native_trainer_smoke",
+  "status": "FAIL",
+  "started_at": "2026-08-12T21:29:23.949750+08:00",
+  "argv": [
+    "scripts/m1/run_t3_dynamic_length_smoke.py",
+    "--model",
+    "models/C01-S-bf16-r1",
+    "--plan",
+    "results/t1/family_80_20_half_plan_r1/family_80_20.parquet",
+    "--teacher-url",
+    "http://127.0.0.1:8000",
+    "--rank",
+    "256",
+    "--alpha",
+    "16",
+    "--learning-rate",
+    "5e-5",
+    "--weight-decay",
+    "0",
+    "--total-length-cap",
+    "64",
+    "--prompt-length-cap",
+    "32",
+    "--completion-length-cap",
+    "32",
+    "--target-prompt-length",
+    "24",
+    "--target-prompt-length",
+    "26",
+    "--target-prompt-length",
+    "28",
+    "--target-prompt-length",
+    "32",
+    "--use-student-vllm",
+    "--vllm-model-impl",
+    "vllm",
+    "--vllm-gpu-memory-utilization",
+    "0.2",
+    "--vllm-enable-sleep-mode",
+    "--output",
+    "results/m1/t3_student_vllm_native_nf4_rslora_smoke_receipt.json"
+  ],
+  "inputs": {
+    "model": "/root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1",
+    "plan": "/root/autodl-tmp/edgeforge-m1/workspace/results/t1/family_80_20_half_plan_r1/family_80_20.parquet",
+    "plan_sha256": "61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e",
+    "prompts": [
+      {
+        "uid": "Crownelius__Complete-FABLE.5-traces-2M:942f0d8e4d74d121198cbaf7d898af3c0e53111f6438343290dacdac1b12200b:0::segment:0000",
+        "source_uid": "Crownelius__Complete-FABLE.5-traces-2M:942f0d8e4d74d121198cbaf7d898af3c0e53111f6438343290dacdac1b12200b:0",
+        "family": "claimed_anthropic_from_source_label",
+        "task_type": "chat_or_reasoning",
+        "prompt_length": 24,
+        "prompt_ids_sha256": "51f5793cfea030a2122b28572ae3c5022e3dca561773ac665922c16cfb5c6b19"
+      },
+      {
+        "uid": "Crownelius__Complete-FABLE.5-traces-2M:4206a8b7449b4c5d057871dc1418eeacaaafd477ec921a812ace6a52c17801e5:0::segment:0000",
+        "source_uid": "Crownelius__Complete-FABLE.5-traces-2M:4206a8b7449b4c5d057871dc1418eeacaaafd477ec921a812ace6a52c17801e5:0",
+        "family": "claimed_anthropic_from_source_label",
+        "task_type": "chat_or_reasoning",
+        "prompt_length": 26,
+        "prompt_ids_sha256": "d1f1a5af80923eb4715df93b24673942f10de9633ece8a7771a2355c3562a2ac"
+      },
+      {
+        "uid": "Crownelius__Complete-FABLE.5-traces-2M:f21ef665442eb1fea84c1471effbb0e48d798a7f9d5cb444593df3b876506d5c:0::segment:0000",
+        "source_uid": "Crownelius__Complete-FABLE.5-traces-2M:f21ef665442eb1fea84c1471effbb0e48d798a7f9d5cb444593df3b876506d5c:0",
+        "family": "claimed_anthropic_from_source_label",
+        "task_type": "chat_or_reasoning",
+        "prompt_length": 28,
+        "prompt_ids_sha256": "45a37e729f6a2056835e49976d45a77e414594bce0efb7800f38884503b97dcb"
+      },
+      {
+        "uid": "Crownelius__Complete-FABLE.5-traces-2M:a1c8140d177fdd13d13315d471b5e5d3d23986cbebcc3cb5f6e376eac2ffd37f:0::segment:0000",
+        "source_uid": "Crownelius__Complete-FABLE.5-traces-2M:a1c8140d177fdd13d13315d471b5e5d3d23986cbebcc3cb5f6e376eac2ffd37f:0",
+        "family": "claimed_anthropic_from_source_label",
+        "task_type": "chat_or_reasoning",
+        "prompt_length": 32,
+        "prompt_ids_sha256": "f4629e90c1d8c051e9963029ea0791dc606c6d22bfbc6389d8dc82bbd251a926"
+      }
+    ]
+  },
+  "configuration": {
+    "trainer": "t3_dynamic_length.DynamicLengthServerDistillationTrainer",
+    "rank": 256,
+    "alpha": 16,
+    "use_rslora": true,
+    "scaling": 1.0,
+    "learning_rate": 5e-05,
+    "weight_decay": 0.0,
+    "per_device_train_batch_size": 1,
+    "gradient_accumulation_steps": 4,
+    "generation_batch_size": 4,
+    "num_generations": 1,
+    "total_length_cap": 64,
+    "prompt_length_cap": 32,
+    "completion_length_cap": 32,
+    "completion_rule": "min(completion_length_cap,total_length_cap-real_prompt_width)",
+    "student_generation_backend": "vllm_colocate",
+    "vllm_gpu_memory_utilization": 0.2,
+    "vllm_enable_sleep_mode": true,
+    "vllm_model_impl": "vllm"
+  },
+  "runtime": {
+    "packages": {
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "datasets": "5.0.1",
+      "numpy": "2.3.5",
+      "peft": "0.20.0",
+      "pyarrow": "25.0.1",
+      "torch": "2.13.0",
+      "transformers": "5.15.0",
+      "trl": "1.9.2",
+      "vllm": "0.27.0"
+    },
+    "cuda_visible_devices": "1",
+    "initial_gpu_inventory": [
+      {
+        "index": 0,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-8441031a-35d4-fc0b-d6c1-70adb534e305",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 78095,
+        "utilization_percent": 0
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-39160c7c-0272-9254-c171-be00298b0dfc",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 3,
+        "utilization_percent": 0
+      }
+    ],
+    "teacher_initial_health": {
+      "status": 200,
+      "latency_seconds": 0.03911933000199497,
+      "body": "{\"status\":\"ok\"}"
+    },
+    "final_gpu_inventory": [
+      {
+        "index": 0,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-8441031a-35d4-fc0b-d6c1-70adb534e305",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 78095,
+        "utilization_percent": 0
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-39160c7c-0272-9254-c171-be00298b0dfc",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 23087,
+        "utilization_percent": 0
+      }
+    ],
+    "teacher_final_health": {
+      "status": 200,
+      "latency_seconds": 0.002849985030479729,
+      "body": "{\"status\":\"ok\"}"
+    }
+  },
+  "error_type": "AmbiguousGlobalPerLayerAttributeError",
+  "error": "'head_dim' is a per-layer attribute and may vary across layers. Access it via the individual layer configs instead (e.g. config.per_layer_config[i].head_dim). To read the global config value from config.head_dim anyway, set `allow_global_per_layer_attribute_access` to `True` on the config. Warning: only do this if the caller can safely handle heterogeneous configs; code that assumes a homogeneous model may use the global value incorrectly.",
+  "traceback": "Traceback (most recent call last):\n  File \"/root/autodl-tmp/edgeforge-m1/workspace/scripts/m1/run_t3_dynamic_length_smoke.py\", line 240, in main\n    trainer = DynamicLengthServerDistillationTrainer(\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/edgeforge-m1/workspace/scripts/m1/t3_dynamic_length.py\", line 26, in __init__\n    super().__init__(*args, **kwargs)\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/trl/experimental/server_distillation/server_distillation_trainer.py\", line 113, in __init__\n    super().__init__(\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/trl/experimental/distillation/distillation_trainer.py\", line 574, in __init__\n    self.vllm_generation = VLLMGeneration(\n                           ^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/trl/generation/vllm_generation.py\", line 291, in __init__\n    self._init_vllm()\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/trl/generation/vllm_generation.py\", line 351, in _init_vllm\n    self.llm = LLM(\n               ^^^^\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/vllm/entrypoints/llm.py\", line 339, in __init__\n    self.llm_engine = LLMEngine.from_engine_args(\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py\", line 171, in from_engine_args\n    vllm_config = engine_args.create_engine_config(usage_context)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/vllm/engine/arg_utils.py\", line 1929, in create_engine_config\n    model_config = self.create_model_config()\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/vllm/engine/arg_utils.py\", line 1686, in create_model_config\n    return ModelConfig(\n           ^^^^^^^^^^^^\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/pydantic/_internal/_dataclasses.py\", line 121, in __init__\n    s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/vllm/config/model.py\", line 595, in __post_init__\n    self.model_arch_config = self.get_model_arch_config()\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/vllm/config/model.py\", line 856, in get_model_arch_config\n    return convertor.convert(\n           ^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/vllm/transformers_utils/model_arch_config_convertor.py\", line 378, in convert\n    head_size=self.get_head_size(),\n              ^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/vllm/transformers_utils/model_arch_config_convertor.py\", line 608, in get_head_size\n    head_dim = getattr(self.hf_text_config, \"head_dim\", 0)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/transformers/configuration_utils.py\", line 482, in __getattribute__\n    return super().__getattribute__(key)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/edgeforge-m1/t3-venv-py312/lib/python3.12/site-packages/transformers/integrations/heterogeneity/configuration_utils.py\", line 298, in __getattribute__\n    raise AmbiguousGlobalPerLayerAttributeError(\ntransformers.integrations.heterogeneity.configuration_utils.AmbiguousGlobalPerLayerAttributeError: 'head_dim' is a per-layer attribute and may vary across layers. Access it via the individual layer configs instead (e.g. config.per_layer_config[i].head_dim). To read the global config value from config.head_dim anyway, set `allow_global_per_layer_attribute_access` to `True` on the config. Warning: only do this if the caller can safely handle heterogeneous configs; code that assumes a homogeneous model may use the global value incorrectly.\n",
+  "finished_at": "2026-08-12T21:29:51.672510+08:00",
+  "wall_seconds": 27.722791531938128
+}

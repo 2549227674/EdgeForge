@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "stage": "OP-P0-1",
+  "candidate": "C02-S.O",
+  "started_at": "2026-09-14T21:04:31+08:00",
+  "argv": [
+    "scripts/operator/merge_c02.py",
+    "--workspace",
+    "/root/autodl-tmp/edgeforge-m1/workspace",
+    "--base-model",
+    "/root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1",
+    "--adapter",
+    "/root/autodl-tmp/edgeforge-m1/workspace/results/t3/c02_s_opd_formal_r1_state/final_adapter",
+    "--source-training-receipt",
+    "/root/autodl-tmp/edgeforge-m1/workspace/results/m1/t3_opd_formal_r1_receipt.json",
+    "--output-dir",
+    "/root/autodl-tmp/edgeforge-m1/workspace/models/C02-S.O-bf16-r1",
+    "--receipt",
+    "/root/autodl-tmp/edgeforge-m1/workspace/results/operator/p0/c02_s_merge_receipt.json"
+  ],
+  "cwd": "/root/autodl-tmp/edgeforge-m1/workspace",
+  "environment": {
+    "hostname": "autodl-container-f79243921a-a9a8b753",
+    "platform": "Linux-5.15.0-78-generic-x86_64-with-glibc2.35",
+    "python": "3.12.3",
+    "python_executable": "/root/autodl-tmp/edgeforge-m1/t3-venv-py312/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "transformers": "5.15.0",
+      "peft": "0.20.0",
+      "safetensors": "0.8.0",
+      "accelerate": "1.14.0"
+    }
+  },
+  "merge_script": "/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/merge_c02.py",
+  "merge_script_sha256": "778785a9e2e6538c4878e5cd861f03e86ad49275ec52debac16358110ed1954b",
+  "status": "FAIL",
+  "finished_at": "2026-09-14T21:05:38+08:00",
+  "error_type": "ValueError",
+  "error": "independent reload parameter count differs from safetensors inventory",
+  "stderr": "Traceback (most recent call last):\n  File \"/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/merge_c02.py\", line 484, in main\n    result = execute(args)\n             ^^^^^^^^^^^^^\n  File \"/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/merge_c02.py\", line 441, in execute\n    raise ValueError(\nValueError: independent reload parameter count differs from safetensors inventory\n",
+  "output_dir": "/root/autodl-tmp/edgeforge-m1/workspace/models/C02-S.O-bf16-r1",
+  "incomplete_output_dir": "/root/autodl-tmp/edgeforge-m1/workspace/models/C02-S.O-bf16-r1.incomplete"
+}

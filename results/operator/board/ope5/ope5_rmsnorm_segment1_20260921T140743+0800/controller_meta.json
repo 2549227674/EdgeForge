@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "segment_id": "ope5_rmsnorm_segment1_20260921T140743+0800",
+  "controller_before": "2026-09-21T14:07:43.365958442+08:00",
+  "controller_after": "2026-09-21T14:08:20.187662043+08:00",
+  "controller_elapsed_seconds": 36.821704,
+  "ssh_exit_code": 0,
+  "board_target": "orangepi@192.168.137.66",
+  "formal_segment_ordinal": 1,
+  "additional_segment_scheduled": false,
+  "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+  "clock_domain_note": "Controller timestamps identify the formal run. Board wall time is separately retained from the board RTC, while every measured duration uses board CLOCK_MONOTONIC_RAW; the two wall-clock domains are not subtracted from each other."
+}

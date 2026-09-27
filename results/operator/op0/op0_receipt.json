@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "stage": "OP0",
+  "timestamp": "2026-09-15T15:39:32+08:00",
+  "config": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op0_measurement.json",
+    "sha256": "e5207099d9d415fa58d8ff4cb6228525f02c32ed3653ab247028177468b92998"
+  },
+  "artifacts": {
+    "environment_identity": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/env_identity_20260915.json",
+    "toolchain_probe": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/toolchain_probe.json",
+    "bandwidth_ceiling": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/bandwidth_ceiling.json",
+    "k0_harness": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/k0_harness_selfcheck.json",
+    "k0_nsys_crosscheck": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/k0_nsys_crosscheck.json",
+    "k0_timeline": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/k0_timeline.nsys-rep"
+  },
+  "gates": {
+    "environment_identity": "PASS",
+    "cuda_path": "PASS",
+    "bandwidth": "PASS",
+    "k0_correctness": "PASS",
+    "k0_measurement": "PASS",
+    "k0_nsys_relative_bias": "PASS",
+    "ncu_op4_soft_gate": "BLOCKED_WINDOWS_PERFORMANCE_COUNTER_PERMISSION"
+  },
+  "summary": {
+    "bandwidth_ceiling_gbps_decimal": 234.467114,
+    "bandwidth_crosscheck_ratio": 0.915887,
+    "k0_candidate_p50_us": 215.039998,
+    "k0_nsys_p50_us": 201.617,
+    "k0_event_to_nsys_relative_bias": 0.012930482
+  },
+  "scope": {
+    "formal_host": "RTX 4060 Laptop GPU / sm_89 / WSL2 only",
+    "synthetic_k0_excluded_from_carrier_conclusions": true,
+    "ncu_is_op4_soft_gate_and_does_not_block_op0": true
+  },
+  "git_sha": "354d2c1b086a1809c256309f56bca420de243f92",
+  "status": "PASS"
+}

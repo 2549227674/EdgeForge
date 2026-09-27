@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "stage": "OPE0",
+  "status": "CLOSED_HARNESS_FAILURES_EXCLUDED_FROM_RESULT",
+  "attempts": [
+    {
+      "label": "attempt1_invalid_csv",
+      "raw_ref": "results/operator/board/ope0/raw/ope0_segment1_20260918T1212+0800",
+      "failure": "date --iso-8601=ns inserted a comma before fractional seconds, so telemetry CSV rows had one more field than the header"
+    },
+    {
+      "label": "attempt2_invalid_csv",
+      "raw_ref": "results/operator/board/ope0/raw/ope0_segment1_valid_20260918T1214+0800",
+      "failure": "LC_ALL=C did not alter the same coreutils date formatting behavior, so the CSV remained malformed"
+    }
+  ],
+  "resolution": {
+    "change": "Use date '+%Y-%m-%dT%H:%M:%S.%N%:z' for an explicit dot separator.",
+    "targeted_check": "The board-side one-row check reported 27 header columns and 27 data columns.",
+    "adopted_run_ref": "results/operator/board/ope0/raw/ope0_segment1_formal_20260918T1216+0800",
+    "result_ref": "results/operator/board/ope0/ope0_receipt_20260918T1216+0800.json"
+  },
+  "claim": "Neither failed harness attempt contributes to the frozen Tier-A denominator or formal matmul result."
+}

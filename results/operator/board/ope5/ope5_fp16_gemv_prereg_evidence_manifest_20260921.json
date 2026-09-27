@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-02-FP16-GEMV-SCOPE-AND-PREREG",
+  "status": "PASS_SELECTION_AND_PREREG_NO_BOARD_EXECUTION",
+  "recorded_at": "2026-09-21T14:27:00+08:00",
+  "board_execution_started": false,
+  "candidate_implemented": false,
+  "files": [
+    {
+      "path": "configs/operator/board/ope5_fp16_gemv_scope.json",
+      "sha256": "51c6d942cbd7fcd494ea076a48b434cbebb870365897ab7da965978e13c07068",
+      "role": "frozen four-question scope audit"
+    },
+    {
+      "path": "configs/operator/board/ope5_fp16_gemv_prereg.json",
+      "sha256": "b89dc6e03bcae62ab817a0814f48541ff6c8526c4b23f60108bbd438434fb514",
+      "role": "frozen pre-implementation measurement protocol"
+    },
+    {
+      "path": "scripts/operator/board/verify_ope5_fp16_gemv_prereg.py",
+      "sha256": "4ebecc6366bf54db3190ba087ea9304e0d30ddeeccb1cfa45117114879726fac",
+      "role": "deterministic independent verifier"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_scope_receipt_20260921.json",
+      "sha256": "a09b2812c73b5e463bb007e40a0843d523b5c8a1bdc43426dbaaba506accbf9c",
+      "role": "21-of-21 scope verification receipt"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_fp16_gemv_prereg_receipt_20260921.json",
+      "sha256": "508175407b43da499c57535f3973245ca765b7d86b5f49b642d4e760fd3323f0",
+      "role": "26-of-26 preregistration verification receipt"
+    },
+    {
+      "path": "docs/operator/EdgeForge_算子面_板端_OPE5_FP16_GEMV立项与测前冻结_2026-09-21.md",
+      "sha256": "d8f5c0349d2aa67c49eaec1802908320b02c810634d244a78538974dda4ec7f2",
+      "role": "human-readable scope and preregistration report"
+    },
+    {
+      "path": "configs/operator/board/ope5_backlog_triage.json",
+      "sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539",
+      "role": "backlog rank and OPE5-02 original four-question authority"
+    },
+    {
+      "path": "configs/operator/board/ope1_shape_manifest.json",
+      "sha256": "1b5f6a4690da92fcc2aa2213915280cda3ef866feab5fcbcfd06c702b781e05d",
+      "role": "shape, frequency, dtype analytic-byte and op authority"
+    },
+    {
+      "path": "results/operator/board/bandwidth_ceiling.json",
+      "sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9",
+      "role": "OPE0 Tier-A denominator"
+    },
+    {
+      "path": "results/operator/board/ope2/ope2_receipt_20260918.json",
+      "sha256": "b408e1aacff736ac2f40d46af6613953a7ae74e43a2bbb81b4874a12358b8819",
+      "role": "OPE2 matrix terminal authority"
+    },
+    {
+      "path": "results/operator/board/ope2/ope2_cells_20260918.csv",
+      "sha256": "fa021d9d2c3057a07f6b6eadfa48116bccd3b783d074f7e0a54c0914e8f34fd7",
+      "role": "same-shape NPU FP16 primitive anchor"
+    },
+    {
+      "path": "results/operator/board/ope3/ope3_receipt_20260919.json",
+      "sha256": "5a3e96c095888b7ea9d96d93aee8463351affd05f8d77da8351dcee09f3e489e",
+      "role": "same-shape four-A76 int8 measurement authority"
+    },
+    {
+      "path": "results/operator/board/ope3/ope3_three_horizontal_20260919.json",
+      "sha256": "53b7fbe41327d0b8809299af0e24fe33446724f84b12a5ba7e909f0abdff9531",
+      "role": "lineage-separated same-shape context table"
+    },
+    {
+      "path": "results/operator/board/ope4/ope4_receipt_20260921.json",
+      "sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d",
+      "role": "OPE4 model-stage anchor and CPU participation"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_receipt_20260921.json",
+      "sha256": "0e4eb654fe51b73e8ea41f888effc19921376caacb5440da31a2b2bb77cfacab",
+      "role": "prior OPE5-03 completion authority"
+    }
+  ],
+  "claim_limits": [
+    "This archive contains a scope and preregistration result, not a board performance run.",
+    "Only M/K/N and call frequency are deployment-authentic; CPU FP16 dtype, row-major layout, and execution remain isolated comparator choices.",
+    "The 94.989536 ms value is an analytic 42-call roofline floor, not measured RKLLM component time.",
+    "Execution card, facts, handoff, this manifest, and archive checksum are mutable/index or self-referential artifacts and are not listed as hashed payload members.",
+    "Future implementation files require a separate source-lock receipt before exactly one formal board segment."
+  ]
+}

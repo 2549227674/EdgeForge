@@ -1,0 +1,1747 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_LM_HEAD_SELECTION_R1",
+  "target": "tied_lm_head_262144_vocab_softcap_30",
+  "status": "EXISTING_CUDA_LM_HEAD_MIRROR_RECONNECTION_PROBE_AUTHORIZED_NO_CUSTOM_KERNEL",
+  "probe_valid": true,
+  "custom_candidate_implemented_or_timed": false,
+  "started_at": "2026-09-16T21:01:53+08:00",
+  "finished_at": "2026-09-16T21:03:45+08:00",
+  "wall_seconds": 108.6048701639993,
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.22.2"
+    },
+    "cuda": {
+      "available": true,
+      "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": [
+        8,
+        9
+      ],
+      "torch_cuda": "13.0"
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 140.00 W",
+    "git_and_file_sha": "SKIPPED_BY_OWNER_DIRECTION"
+  },
+  "protocol": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op5_lm_head_selection_r1.json",
+    "preregistration": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_lm_head_selection_r1_retry2_prereg_receipt_20260916.json"
+  },
+  "validated_inputs": {
+    "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+    "preregistration": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_lm_head_selection_r1_retry2_prereg_receipt_20260916.json",
+      "status": "FROZEN_BEFORE_FORMAL_SELECTION"
+    },
+    "model_inventory": {
+      "mode": "presence_and_byte_size_only",
+      "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+      "manifest_path": "/home/qbz415/piloop-edge-inference-profiler/models/C02-S.O-bf16-r1/artifact_manifest.json",
+      "file_count": 11,
+      "total_bytes": 15914883861,
+      "status": "PASS"
+    },
+    "backlog": {
+      "rank": 4,
+      "item": "lm_head 262k vocab + softcap fusion",
+      "disposition": "HOLD_CURRENT_CARRIER_DELIVERABILITY",
+      "evidence": "Real path (21705 projected calls) but the tied BF16 lm_head is intentionally CPU-resident under the 8 GiB carrier contract; GPU Triton reconnection is not presently deliverable."
+    },
+    "deliverability": {
+      "result": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_lm_head_deliverability_probe_r1_20260916.json",
+      "receipt": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_lm_head_deliverability_probe_r1_receipt_20260916.json",
+      "status": "LM_HEAD_DELIVERABILITY_HOLD_LIFTED_SELECTION_AUTHORIZED",
+      "live_peak_allocated_bytes": 3727292416
+    },
+    "census": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/shape_census.json",
+      "status": "PASS",
+      "projected_calls": 21705,
+      "shapes": [
+        {
+          "variant": "tied_cpu_lm_head",
+          "dims": [
+            1,
+            2560,
+            262144
+          ],
+          "dimension_order": [
+            "M_rows",
+            "K_reduction",
+            "N_vocab"
+          ],
+          "dtype": "bfloat16 CPU",
+          "phase": "prefill",
+          "source_request_ids": [
+            "regex-log__HM89SBD:1",
+            "regex-log__HM89SBD:2",
+            "openssl-selfsigned-cert__oCvmg5c:1",
+            "openssl-selfsigned-cert__oCvmg5c:2",
+            "multi-source-data-merger__bUyWMFa:1",
+            "multi-source-data-merger__bUyWMFa:2",
+            "constraints-scheduling__aaSRUnD:1",
+            "constraints-scheduling__aaSRUnD:2",
+            "sqlite-db-truncate__Z9iGbrN:1",
+            "sqlite-db-truncate__Z9iGbrN:2",
+            "sqlite-db-truncate__Z9iGbrN:3"
+          ],
+          "trigger_prompt_tokens_range": [
+            806,
+            5142
+          ],
+          "calls_per_forward": 1,
+          "forward_count": 11,
+          "invocations": 11,
+          "analytic_flops": 14763950080,
+          "weight": 0.000506795669,
+          "work_weight": 0.000506795669
+        },
+        {
+          "variant": "tied_cpu_lm_head",
+          "dims": [
+            1,
+            2560,
+            262144
+          ],
+          "dimension_order": [
+            "M_rows",
+            "K_reduction",
+            "N_vocab"
+          ],
+          "dtype": "bfloat16 CPU",
+          "phase": "decode",
+          "source_request_ids": [
+            "regex-log__HM89SBD:1",
+            "regex-log__HM89SBD:2",
+            "openssl-selfsigned-cert__oCvmg5c:1",
+            "openssl-selfsigned-cert__oCvmg5c:2",
+            "multi-source-data-merger__bUyWMFa:1",
+            "multi-source-data-merger__bUyWMFa:2",
+            "constraints-scheduling__aaSRUnD:1",
+            "constraints-scheduling__aaSRUnD:2",
+            "sqlite-db-truncate__Z9iGbrN:1",
+            "sqlite-db-truncate__Z9iGbrN:2",
+            "sqlite-db-truncate__Z9iGbrN:3"
+          ],
+          "calls_per_forward": 1,
+          "forward_count": 21694,
+          "invocations": 21694,
+          "analytic_flops": 29117193912320,
+          "weight": 0.999493204331,
+          "work_weight": 0.999493204331
+        }
+      ]
+    }
+  },
+  "carrier": {
+    "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+    "load_seconds": 48.962753176998376,
+    "load_count": 1,
+    "device_map_requested": {
+      "model.vision_tower": "cpu",
+      "model.audio_tower": "cpu",
+      "model.embed_vision": "cpu",
+      "model.embed_audio": "cpu",
+      "model.language_model.embed_tokens": "cpu",
+      "model.language_model.embed_tokens_per_layer": "cpu",
+      "lm_head": "cpu",
+      "model.language_model.layers": 0,
+      "model.language_model.norm": 0,
+      "model.language_model.rotary_emb": 0,
+      "model.language_model.per_layer_model_projection": 0,
+      "model.language_model.per_layer_projection_norm": 0
+    },
+    "hf_device_map_observed": {
+      "model.vision_tower": "cpu",
+      "model.audio_tower": "cpu",
+      "model.embed_vision": "cpu",
+      "model.embed_audio": "cpu",
+      "model.language_model.embed_tokens": "cpu",
+      "model.language_model.embed_tokens_per_layer": "cpu",
+      "lm_head": "cpu",
+      "model.language_model.layers": 0,
+      "model.language_model.norm": 0,
+      "model.language_model.rotary_emb": 0,
+      "model.language_model.per_layer_model_projection": 0,
+      "model.language_model.per_layer_projection_norm": 0
+    },
+    "cpu_materialization": {
+      "strategy": "detach_leaf_offload_hooks_and_retie_lm_head",
+      "before": {
+        "model.language_model.embed_tokens": {
+          "hook": {
+            "present": true,
+            "type": "AlignDevicesHook",
+            "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+            "execution_device": "0",
+            "offload": true
+          },
+          "storage": {
+            "weight": {
+              "device": "meta",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                2560
+              ],
+              "numel": 671088640,
+              "data_ptr": null
+            },
+            "embed_scale": {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "shape": [],
+              "numel": 1,
+              "data_ptr": 30215182336
+            }
+          }
+        },
+        "model.language_model.embed_tokens_per_layer": {
+          "hook": {
+            "present": true,
+            "type": "AlignDevicesHook",
+            "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+            "execution_device": "0",
+            "offload": true
+          },
+          "storage": {
+            "weight": {
+              "device": "meta",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                10752
+              ],
+              "numel": 2818572288,
+              "data_ptr": null
+            },
+            "embed_scale": {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "shape": [],
+              "numel": 1,
+              "data_ptr": 30215182848
+            }
+          }
+        },
+        "lm_head": {
+          "hook": {
+            "present": true,
+            "type": "AlignDevicesHook",
+            "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+            "execution_device": "0",
+            "offload": true
+          },
+          "storage": {
+            "weight": {
+              "device": "meta",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                2560
+              ],
+              "numel": 671088640,
+              "data_ptr": null
+            }
+          }
+        }
+      },
+      "after": {
+        "model.language_model.embed_tokens": {
+          "hook": {
+            "present": false,
+            "type": null,
+            "repr": null,
+            "execution_device": "None",
+            "offload": null
+          },
+          "storage": {
+            "weight": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                2560
+              ],
+              "numel": 671088640,
+              "data_ptr": 125148475460200
+            },
+            "embed_scale": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [],
+              "numel": 1,
+              "data_ptr": 991585024
+            }
+          }
+        },
+        "model.language_model.embed_tokens_per_layer": {
+          "hook": {
+            "present": false,
+            "type": null,
+            "repr": null,
+            "execution_device": "None",
+            "offload": null
+          },
+          "storage": {
+            "weight": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                10752
+              ],
+              "numel": 2818572288,
+              "data_ptr": 125152849297576
+            },
+            "embed_scale": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [],
+              "numel": 1,
+              "data_ptr": 991580224
+            }
+          }
+        },
+        "lm_head": {
+          "hook": {
+            "present": false,
+            "type": null,
+            "repr": null,
+            "execution_device": "None",
+            "offload": null
+          },
+          "storage": {
+            "weight": {
+              "device": "cpu",
+              "dtype": "torch.bfloat16",
+              "shape": [
+                262144,
+                2560
+              ],
+              "numel": 671088640,
+              "data_ptr": 125148475460200
+            }
+          }
+        }
+      },
+      "lm_head_tied_to_token_embedding": true,
+      "persistent_cpu_bytes_unique": 6979321856
+    },
+    "quantization": {
+      "active_language_linear4bit_count": 343,
+      "quant_types": {
+        "nf4": 343
+      },
+      "weight_devices": {
+        "cuda:0": 343
+      }
+    },
+    "memory_after_load": {
+      "allocated_bytes": 2052518912,
+      "reserved_bytes": 2107637760,
+      "peak_allocated_bytes": 2110522880,
+      "peak_reserved_bytes": 2166358016,
+      "device_used_bytes": 3264741376,
+      "device_free_bytes": 5320474624,
+      "device_total_bytes": 8585216000,
+      "peak_allocated_mib": 2012.751,
+      "peak_reserved_mib": 2066.0,
+      "device_used_mib": 3113.5
+    }
+  },
+  "same_day_bandwidth": {
+    "operation": "Triton float32 triad",
+    "array_size_mib": 512,
+    "analytic_bytes_per_repetition": 1610612736,
+    "latency_us": {
+      "count": 200,
+      "min": 6639.616013,
+      "q1": 6652.927876,
+      "p50": 6658.048153,
+      "q3": 6663.167953,
+      "max": 6724.607944,
+      "mean": 6658.38593,
+      "iqr": 10.240078
+    },
+    "gbps_decimal": {
+      "count": 200,
+      "min": 239.510281,
+      "q1": 241.718766,
+      "p50": 241.904639,
+      "q3": 242.090816,
+      "max": 242.576187,
+      "mean": 241.892757,
+      "iqr": 0.37205
+    },
+    "ceiling_gbps_decimal": 241.904639,
+    "correctness": {
+      "sample_indices": [
+        0,
+        67108864,
+        134217727
+      ],
+      "observed": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "pass": true
+    },
+    "protocol": {
+      "warmup_repetitions": 50,
+      "measured_repetitions": 200,
+      "block_size": 256
+    }
+  },
+  "real_state_capture": {
+    "count": 22,
+    "records": [
+      {
+        "request_id": "regex-log__HM89SBD:1",
+        "request_number": 1,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 995,
+        "cache_sequence_length": 995,
+        "cpu_reference_token_id": 100
+      },
+      {
+        "request_id": "regex-log__HM89SBD:1",
+        "request_number": 1,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 995,
+        "cache_sequence_length": 996,
+        "cpu_reference_token_id": 45518
+      },
+      {
+        "request_id": "regex-log__HM89SBD:2",
+        "request_number": 2,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 1295,
+        "cache_sequence_length": 1295,
+        "cpu_reference_token_id": 35434
+      },
+      {
+        "request_id": "regex-log__HM89SBD:2",
+        "request_number": 2,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 1295,
+        "cache_sequence_length": 1296,
+        "cpu_reference_token_id": 236787
+      },
+      {
+        "request_id": "openssl-selfsigned-cert__oCvmg5c:1",
+        "request_number": 1,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 1088,
+        "cache_sequence_length": 1088,
+        "cpu_reference_token_id": 100
+      },
+      {
+        "request_id": "openssl-selfsigned-cert__oCvmg5c:1",
+        "request_number": 1,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 1088,
+        "cache_sequence_length": 1089,
+        "cpu_reference_token_id": 45518
+      },
+      {
+        "request_id": "openssl-selfsigned-cert__oCvmg5c:2",
+        "request_number": 2,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 5142,
+        "cache_sequence_length": 5142,
+        "cpu_reference_token_id": 35434
+      },
+      {
+        "request_id": "openssl-selfsigned-cert__oCvmg5c:2",
+        "request_number": 2,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 5142,
+        "cache_sequence_length": 5143,
+        "cpu_reference_token_id": 236787
+      },
+      {
+        "request_id": "multi-source-data-merger__bUyWMFa:1",
+        "request_number": 1,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 1263,
+        "cache_sequence_length": 1263,
+        "cpu_reference_token_id": 100
+      },
+      {
+        "request_id": "multi-source-data-merger__bUyWMFa:1",
+        "request_number": 1,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 1263,
+        "cache_sequence_length": 1264,
+        "cpu_reference_token_id": 45518
+      },
+      {
+        "request_id": "multi-source-data-merger__bUyWMFa:2",
+        "request_number": 2,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 3945,
+        "cache_sequence_length": 3945,
+        "cpu_reference_token_id": 100
+      },
+      {
+        "request_id": "multi-source-data-merger__bUyWMFa:2",
+        "request_number": 2,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 3945,
+        "cache_sequence_length": 3946,
+        "cpu_reference_token_id": 45518
+      },
+      {
+        "request_id": "constraints-scheduling__aaSRUnD:1",
+        "request_number": 1,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 1358,
+        "cache_sequence_length": 1358,
+        "cpu_reference_token_id": 100
+      },
+      {
+        "request_id": "constraints-scheduling__aaSRUnD:1",
+        "request_number": 1,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 1358,
+        "cache_sequence_length": 1359,
+        "cpu_reference_token_id": 45518
+      },
+      {
+        "request_id": "constraints-scheduling__aaSRUnD:2",
+        "request_number": 2,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 4511,
+        "cache_sequence_length": 4511,
+        "cpu_reference_token_id": 100
+      },
+      {
+        "request_id": "constraints-scheduling__aaSRUnD:2",
+        "request_number": 2,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 4511,
+        "cache_sequence_length": 4512,
+        "cpu_reference_token_id": 45518
+      },
+      {
+        "request_id": "sqlite-db-truncate__Z9iGbrN:1",
+        "request_number": 1,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 806,
+        "cache_sequence_length": 806,
+        "cpu_reference_token_id": 100
+      },
+      {
+        "request_id": "sqlite-db-truncate__Z9iGbrN:1",
+        "request_number": 1,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 806,
+        "cache_sequence_length": 807,
+        "cpu_reference_token_id": 45518
+      },
+      {
+        "request_id": "sqlite-db-truncate__Z9iGbrN:2",
+        "request_number": 2,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 1464,
+        "cache_sequence_length": 1464,
+        "cpu_reference_token_id": 35434
+      },
+      {
+        "request_id": "sqlite-db-truncate__Z9iGbrN:2",
+        "request_number": 2,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 1464,
+        "cache_sequence_length": 1465,
+        "cpu_reference_token_id": 236787
+      },
+      {
+        "request_id": "sqlite-db-truncate__Z9iGbrN:3",
+        "request_number": 3,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 1700,
+        "cache_sequence_length": 1700,
+        "cpu_reference_token_id": 35434
+      },
+      {
+        "request_id": "sqlite-db-truncate__Z9iGbrN:3",
+        "request_number": 3,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 1700,
+        "cache_sequence_length": 1701,
+        "cpu_reference_token_id": 236787
+      }
+    ]
+  },
+  "correctness": {
+    "reference": "CPU tied BF16 lm_head followed by tanh(logits/30)*30 and argmax",
+    "exact_counts_of_22": {
+      "cuda_eager_softcap_argmax": 22,
+      "cuda_compile_softcap_argmax": 22,
+      "cuda_eager_raw_argmax": 22,
+      "cuda_compile_raw_argmax": 22
+    },
+    "eligible_softcap_baselines": {
+      "cuda_eager_softcap_argmax": true,
+      "cuda_compile_softcap_argmax": true
+    },
+    "raw_argmax_is_diagnostic_only": true,
+    "cuda_eager_softcapped_logit_allclose_count": 22,
+    "cuda_eager_softcapped_logit_max_abs": 0.125,
+    "rows": [
+      {
+        "request_id": "regex-log__HM89SBD:1",
+        "request_number": 1,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 995,
+        "cache_sequence_length": 995,
+        "cpu_reference_token_id": 100,
+        "tokens": {
+          "cpu_reference": 100,
+          "cuda_eager_softcap_argmax": 100,
+          "cuda_compile_softcap_argmax": 100,
+          "cuda_eager_raw_argmax": 100,
+          "cuda_compile_raw_argmax": 100
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.015625,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "regex-log__HM89SBD:1",
+        "request_number": 1,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 995,
+        "cache_sequence_length": 996,
+        "cpu_reference_token_id": 45518,
+        "tokens": {
+          "cpu_reference": 45518,
+          "cuda_eager_softcap_argmax": 45518,
+          "cuda_compile_softcap_argmax": 45518,
+          "cuda_eager_raw_argmax": 45518,
+          "cuda_compile_raw_argmax": 45518
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.0,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "regex-log__HM89SBD:2",
+        "request_number": 2,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 1295,
+        "cache_sequence_length": 1295,
+        "cpu_reference_token_id": 35434,
+        "tokens": {
+          "cpu_reference": 35434,
+          "cuda_eager_softcap_argmax": 35434,
+          "cuda_compile_softcap_argmax": 35434,
+          "cuda_eager_raw_argmax": 35434,
+          "cuda_compile_raw_argmax": 35434
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.0625,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "regex-log__HM89SBD:2",
+        "request_number": 2,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 1295,
+        "cache_sequence_length": 1296,
+        "cpu_reference_token_id": 236787,
+        "tokens": {
+          "cpu_reference": 236787,
+          "cuda_eager_softcap_argmax": 236787,
+          "cuda_compile_softcap_argmax": 236787,
+          "cuda_eager_raw_argmax": 236787,
+          "cuda_compile_raw_argmax": 236787
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.03125,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "openssl-selfsigned-cert__oCvmg5c:1",
+        "request_number": 1,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 1088,
+        "cache_sequence_length": 1088,
+        "cpu_reference_token_id": 100,
+        "tokens": {
+          "cpu_reference": 100,
+          "cuda_eager_softcap_argmax": 100,
+          "cuda_compile_softcap_argmax": 100,
+          "cuda_eager_raw_argmax": 100,
+          "cuda_compile_raw_argmax": 100
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.015625,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "openssl-selfsigned-cert__oCvmg5c:1",
+        "request_number": 1,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 1088,
+        "cache_sequence_length": 1089,
+        "cpu_reference_token_id": 45518,
+        "tokens": {
+          "cpu_reference": 45518,
+          "cuda_eager_softcap_argmax": 45518,
+          "cuda_compile_softcap_argmax": 45518,
+          "cuda_eager_raw_argmax": 45518,
+          "cuda_compile_raw_argmax": 45518
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.125,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "openssl-selfsigned-cert__oCvmg5c:2",
+        "request_number": 2,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 5142,
+        "cache_sequence_length": 5142,
+        "cpu_reference_token_id": 35434,
+        "tokens": {
+          "cpu_reference": 35434,
+          "cuda_eager_softcap_argmax": 35434,
+          "cuda_compile_softcap_argmax": 35434,
+          "cuda_eager_raw_argmax": 35434,
+          "cuda_compile_raw_argmax": 35434
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.0625,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "openssl-selfsigned-cert__oCvmg5c:2",
+        "request_number": 2,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 5142,
+        "cache_sequence_length": 5143,
+        "cpu_reference_token_id": 236787,
+        "tokens": {
+          "cpu_reference": 236787,
+          "cuda_eager_softcap_argmax": 236787,
+          "cuda_compile_softcap_argmax": 236787,
+          "cuda_eager_raw_argmax": 236787,
+          "cuda_compile_raw_argmax": 236787
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.03125,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "multi-source-data-merger__bUyWMFa:1",
+        "request_number": 1,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 1263,
+        "cache_sequence_length": 1263,
+        "cpu_reference_token_id": 100,
+        "tokens": {
+          "cpu_reference": 100,
+          "cuda_eager_softcap_argmax": 100,
+          "cuda_compile_softcap_argmax": 100,
+          "cuda_eager_raw_argmax": 100,
+          "cuda_compile_raw_argmax": 100
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.015625,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "multi-source-data-merger__bUyWMFa:1",
+        "request_number": 1,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 1263,
+        "cache_sequence_length": 1264,
+        "cpu_reference_token_id": 45518,
+        "tokens": {
+          "cpu_reference": 45518,
+          "cuda_eager_softcap_argmax": 45518,
+          "cuda_compile_softcap_argmax": 45518,
+          "cuda_eager_raw_argmax": 45518,
+          "cuda_compile_raw_argmax": 45518
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.125,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "multi-source-data-merger__bUyWMFa:2",
+        "request_number": 2,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 3945,
+        "cache_sequence_length": 3945,
+        "cpu_reference_token_id": 100,
+        "tokens": {
+          "cpu_reference": 100,
+          "cuda_eager_softcap_argmax": 100,
+          "cuda_compile_softcap_argmax": 100,
+          "cuda_eager_raw_argmax": 100,
+          "cuda_compile_raw_argmax": 100
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.0625,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "multi-source-data-merger__bUyWMFa:2",
+        "request_number": 2,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 3945,
+        "cache_sequence_length": 3946,
+        "cpu_reference_token_id": 45518,
+        "tokens": {
+          "cpu_reference": 45518,
+          "cuda_eager_softcap_argmax": 45518,
+          "cuda_compile_softcap_argmax": 45518,
+          "cuda_eager_raw_argmax": 45518,
+          "cuda_compile_raw_argmax": 45518
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.125,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "constraints-scheduling__aaSRUnD:1",
+        "request_number": 1,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 1358,
+        "cache_sequence_length": 1358,
+        "cpu_reference_token_id": 100,
+        "tokens": {
+          "cpu_reference": 100,
+          "cuda_eager_softcap_argmax": 100,
+          "cuda_compile_softcap_argmax": 100,
+          "cuda_eager_raw_argmax": 100,
+          "cuda_compile_raw_argmax": 100
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.03125,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "constraints-scheduling__aaSRUnD:1",
+        "request_number": 1,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 1358,
+        "cache_sequence_length": 1359,
+        "cpu_reference_token_id": 45518,
+        "tokens": {
+          "cpu_reference": 45518,
+          "cuda_eager_softcap_argmax": 45518,
+          "cuda_compile_softcap_argmax": 45518,
+          "cuda_eager_raw_argmax": 45518,
+          "cuda_compile_raw_argmax": 45518
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.125,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "constraints-scheduling__aaSRUnD:2",
+        "request_number": 2,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 4511,
+        "cache_sequence_length": 4511,
+        "cpu_reference_token_id": 100,
+        "tokens": {
+          "cpu_reference": 100,
+          "cuda_eager_softcap_argmax": 100,
+          "cuda_compile_softcap_argmax": 100,
+          "cuda_eager_raw_argmax": 100,
+          "cuda_compile_raw_argmax": 100
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.0625,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "constraints-scheduling__aaSRUnD:2",
+        "request_number": 2,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 4511,
+        "cache_sequence_length": 4512,
+        "cpu_reference_token_id": 45518,
+        "tokens": {
+          "cpu_reference": 45518,
+          "cuda_eager_softcap_argmax": 45518,
+          "cuda_compile_softcap_argmax": 45518,
+          "cuda_eager_raw_argmax": 45518,
+          "cuda_compile_raw_argmax": 45518
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.125,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "sqlite-db-truncate__Z9iGbrN:1",
+        "request_number": 1,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 806,
+        "cache_sequence_length": 806,
+        "cpu_reference_token_id": 100,
+        "tokens": {
+          "cpu_reference": 100,
+          "cuda_eager_softcap_argmax": 100,
+          "cuda_compile_softcap_argmax": 100,
+          "cuda_eager_raw_argmax": 100,
+          "cuda_compile_raw_argmax": 100
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.03125,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "sqlite-db-truncate__Z9iGbrN:1",
+        "request_number": 1,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 806,
+        "cache_sequence_length": 807,
+        "cpu_reference_token_id": 45518,
+        "tokens": {
+          "cpu_reference": 45518,
+          "cuda_eager_softcap_argmax": 45518,
+          "cuda_compile_softcap_argmax": 45518,
+          "cuda_eager_raw_argmax": 45518,
+          "cuda_compile_raw_argmax": 45518
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.125,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "sqlite-db-truncate__Z9iGbrN:2",
+        "request_number": 2,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 1464,
+        "cache_sequence_length": 1464,
+        "cpu_reference_token_id": 35434,
+        "tokens": {
+          "cpu_reference": 35434,
+          "cuda_eager_softcap_argmax": 35434,
+          "cuda_compile_softcap_argmax": 35434,
+          "cuda_eager_raw_argmax": 35434,
+          "cuda_compile_raw_argmax": 35434
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.03125,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "sqlite-db-truncate__Z9iGbrN:2",
+        "request_number": 2,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 1464,
+        "cache_sequence_length": 1465,
+        "cpu_reference_token_id": 236787,
+        "tokens": {
+          "cpu_reference": 236787,
+          "cuda_eager_softcap_argmax": 236787,
+          "cuda_compile_softcap_argmax": 236787,
+          "cuda_eager_raw_argmax": 236787,
+          "cuda_compile_raw_argmax": 236787
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.0625,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "sqlite-db-truncate__Z9iGbrN:3",
+        "request_number": 3,
+        "phase": "prefill",
+        "rendered_prompt_tokens": 1700,
+        "cache_sequence_length": 1700,
+        "cpu_reference_token_id": 35434,
+        "tokens": {
+          "cpu_reference": 35434,
+          "cuda_eager_softcap_argmax": 35434,
+          "cuda_compile_softcap_argmax": 35434,
+          "cuda_eager_raw_argmax": 35434,
+          "cuda_compile_raw_argmax": 35434
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.0625,
+          "allclose": true
+        }
+      },
+      {
+        "request_id": "sqlite-db-truncate__Z9iGbrN:3",
+        "request_number": 3,
+        "phase": "first_decode",
+        "rendered_prompt_tokens": 1700,
+        "cache_sequence_length": 1701,
+        "cpu_reference_token_id": 236787,
+        "tokens": {
+          "cpu_reference": 236787,
+          "cuda_eager_softcap_argmax": 236787,
+          "cuda_compile_softcap_argmax": 236787,
+          "cuda_eager_raw_argmax": 236787,
+          "cuda_compile_raw_argmax": 236787
+        },
+        "exact_vs_cpu": {
+          "cuda_eager_softcap_argmax": true,
+          "cuda_compile_softcap_argmax": true,
+          "cuda_eager_raw_argmax": true,
+          "cuda_compile_raw_argmax": true
+        },
+        "cuda_eager_softcapped_logits": {
+          "max_abs_vs_cpu": 0.0,
+          "allclose": true
+        }
+      }
+    ]
+  },
+  "performance": {
+    "cpu": {
+      "warmup": 20,
+      "repetitions": 200,
+      "latency_ms": {
+        "count": 200,
+        "min": 28.33462,
+        "q1": 30.141174,
+        "p50": 30.983353,
+        "q3": 32.857579,
+        "max": 39.947903,
+        "mean": 31.656319,
+        "iqr": 2.716405
+      },
+      "distinct_token_ids": 4
+    },
+    "gpu": {
+      "cuda_eager_softcap_argmax": {
+        "latency_ms": {
+          "count": 200,
+          "min": 5.34016,
+          "q1": 5.343232,
+          "p50": 5.34528,
+          "q3": 5.381584,
+          "max": 5.748416,
+          "mean": 5.406391,
+          "iqr": 0.038352
+        }
+      },
+      "cuda_compile_softcap_argmax": {
+        "latency_ms": {
+          "count": 200,
+          "min": 16.953344,
+          "q1": 17.074177,
+          "p50": 17.137153,
+          "q3": 17.313025,
+          "max": 18.334368,
+          "mean": 17.226108,
+          "iqr": 0.238848
+        }
+      },
+      "cuda_eager_raw_argmax": {
+        "latency_ms": {
+          "count": 200,
+          "min": 5.330944,
+          "q1": 5.33504,
+          "p50": 5.336064,
+          "q3": 5.374208,
+          "max": 5.772064,
+          "mean": 5.397159,
+          "iqr": 0.039168
+        }
+      },
+      "cuda_compile_raw_argmax": {
+        "latency_ms": {
+          "count": 200,
+          "min": 16.915457,
+          "q1": 17.043455,
+          "p50": 17.101824,
+          "q3": 17.30688,
+          "max": 17.963009,
+          "mean": 17.192254,
+          "iqr": 0.263425
+        }
+      }
+    },
+    "best_correctness_eligible_cuda_baseline": "cuda_eager_softcap_argmax",
+    "best_p50_ms": 5.34528,
+    "analytic_bytes_per_call": 1342182408,
+    "best_measured_gbps_decimal": 251.09674479166668,
+    "best_tier_a_relative_score": 1.037998881830731,
+    "bottleneck_threshold_max_relative_score": 0.8,
+    "bottleneck_gate": "FAIL",
+    "best_cuda_vs_cpu_p50_speedup": 5.7963947632303645
+  },
+  "memory": {
+    "gpu_budget_bytes": 8053063680,
+    "peak_allocated_bytes": 5023468544,
+    "peak_reserved_bytes": 5534384128,
+    "mirror": {
+      "data_ptr": 32755417088,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cuda:0",
+      "requires_grad": false
+    },
+    "during_measurement": {
+      "allocated_bytes": 3403331584,
+      "reserved_bytes": 4817158144,
+      "peak_allocated_bytes": 5023468544,
+      "peak_reserved_bytes": 5534384128,
+      "device_used_bytes": 6003621888,
+      "device_free_bytes": 2581594112,
+      "device_total_bytes": 8585216000,
+      "peak_allocated_mib": 4790.753,
+      "peak_reserved_mib": 5278.0,
+      "device_used_mib": 5725.5
+    },
+    "after_cleanup": {
+      "allocated_bytes": 2061043712,
+      "reserved_bytes": 2109734912,
+      "peak_allocated_bytes": 5023468544,
+      "peak_reserved_bytes": 5534384128,
+      "device_used_bytes": 3296198656,
+      "device_free_bytes": 5289017344,
+      "device_total_bytes": 8585216000,
+      "peak_allocated_mib": 4790.753,
+      "peak_reserved_mib": 5278.0,
+      "device_used_mib": 3143.5
+    }
+  },
+  "structure": {
+    "head_before": {
+      "data_ptr": 125148475460200,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu",
+      "requires_grad": true
+    },
+    "head_during": {
+      "data_ptr": 125148475460200,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu",
+      "requires_grad": true
+    },
+    "head_after": {
+      "data_ptr": 125148475460200,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu",
+      "requires_grad": true
+    },
+    "embedding_before": {
+      "data_ptr": 125148475460200,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu",
+      "requires_grad": true
+    },
+    "embedding_during": {
+      "data_ptr": 125148475460200,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu",
+      "requires_grad": true
+    },
+    "embedding_after": {
+      "data_ptr": 125148475460200,
+      "shape": [
+        262144,
+        2560
+      ],
+      "stride": [
+        2560,
+        1
+      ],
+      "dtype": "torch.bfloat16",
+      "device": "cpu",
+      "requires_grad": true
+    },
+    "original_identity_unchanged": true,
+    "model_structure": {
+      "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+      "comparison": "direct structural equality",
+      "checks": {
+        "modules": {
+          "before_count": 1758,
+          "after_count": 1758,
+          "missing": [],
+          "added": [],
+          "changed": [],
+          "pass": true
+        },
+        "parameters": {
+          "before_count": 1106,
+          "after_count": 1106,
+          "missing": [],
+          "added": [],
+          "changed": [],
+          "pass": true
+        },
+        "nf4": {
+          "before_count": 343,
+          "after_count": 343,
+          "missing": [],
+          "added": [],
+          "changed": [],
+          "pass": true
+        },
+        "attention_configs": {
+          "before_count": 42,
+          "after_count": 42,
+          "missing": [],
+          "added": [],
+          "changed": [],
+          "pass": true
+        },
+        "state_dict_keys": {
+          "before_count": 3792,
+          "after_count": 3792,
+          "exact_ordered_equality": true
+        },
+        "persistent_cpu": {
+          "exact_equality": true
+        },
+        "hf_device_map": {
+          "exact_equality": true
+        }
+      },
+      "pass": true
+    }
+  },
+  "telemetry": {
+    "interval_seconds": 1.0,
+    "raw_jsonl": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_lm_head_selection_r1_telemetry_20260916.jsonl",
+      "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+      "samples": 112
+    },
+    "summary": {
+      "interval_seconds": 1.0,
+      "sample_count": 112,
+      "errors": [],
+      "numeric": {
+        "sm_mhz": {
+          "count": 112,
+          "min": 210.0,
+          "q1": 210.0,
+          "p50": 210.0,
+          "q3": 971.25,
+          "max": 2550.0,
+          "mean": 746.25,
+          "iqr": 761.25
+        },
+        "memory_mhz": {
+          "count": 112,
+          "min": 405.0,
+          "q1": 405.0,
+          "p50": 6000.0,
+          "q3": 8000.0,
+          "max": 8000.0,
+          "mean": 4291.786,
+          "iqr": 7595.0
+        },
+        "temperature_c": {
+          "count": 112,
+          "min": 57.0,
+          "q1": 58.0,
+          "p50": 60.0,
+          "q3": 62.0,
+          "max": 71.0,
+          "mean": 60.795,
+          "iqr": 4.0
+        },
+        "power_w": {
+          "count": 112,
+          "min": 2.18,
+          "q1": 3.67,
+          "p50": 8.3,
+          "q3": 27.242,
+          "max": 77.3,
+          "mean": 19.212,
+          "iqr": 23.572
+        }
+      },
+      "pstates": {
+        "P0": 52,
+        "P4": 7,
+        "P5": 3,
+        "P8": 50
+      },
+      "throttle_flags": {
+        "clocks_event_reasons.sw_power_cap": true,
+        "clocks_event_reasons.sw_thermal_slowdown": false,
+        "clocks_event_reasons.hw_thermal_slowdown": false,
+        "clocks_event_reasons.hw_power_brake_slowdown": false
+      },
+      "thermal_or_hardware_throttle": false
+    }
+  },
+  "measurement_telemetry": {
+    "interval_seconds": 1.0,
+    "sample_count": 13,
+    "errors": [],
+    "numeric": {
+      "sm_mhz": {
+        "count": 13,
+        "min": 210.0,
+        "q1": 1440.0,
+        "p50": 2460.0,
+        "q3": 2550.0,
+        "max": 2550.0,
+        "mean": 1954.615,
+        "iqr": 1110.0
+      },
+      "memory_mhz": {
+        "count": 13,
+        "min": 810.0,
+        "q1": 8000.0,
+        "p50": 8000.0,
+        "q3": 8000.0,
+        "max": 8000.0,
+        "mean": 7446.923,
+        "iqr": 0.0
+      },
+      "temperature_c": {
+        "count": 13,
+        "min": 61.0,
+        "q1": 64.0,
+        "p50": 69.0,
+        "q3": 69.0,
+        "max": 71.0,
+        "mean": 66.923,
+        "iqr": 5.0
+      },
+      "power_w": {
+        "count": 13,
+        "min": 6.14,
+        "q1": 46.06,
+        "p50": 74.14,
+        "q3": 75.49,
+        "max": 77.3,
+        "mean": 57.437,
+        "iqr": 29.43
+      }
+    },
+    "pstates": {
+      "P0": 12,
+      "P5": 1
+    },
+    "throttle_flags": {
+      "clocks_event_reasons.sw_power_cap": true,
+      "clocks_event_reasons.sw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_power_brake_slowdown": false
+    },
+    "thermal_or_hardware_throttle": false,
+    "samples": [
+      {
+        "timestamp": "2026/09/16 21:03:34.002",
+        "pstate": "P5",
+        "clocks.current.sm": "210",
+        "clocks.current.memory": "810",
+        "temperature.gpu": "61",
+        "power.draw": "7.61",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T21:03:34+08:00",
+        "phase": "lm_head_gpu_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 21:03:34.644",
+        "pstate": "P0",
+        "clocks.current.sm": "825",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "61",
+        "power.draw": "6.14",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T21:03:34+08:00",
+        "phase": "lm_head_gpu_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 21:03:35.658",
+        "pstate": "P0",
+        "clocks.current.sm": "1095",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "64",
+        "power.draw": "43.53",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T21:03:35+08:00",
+        "phase": "lm_head_gpu_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 21:03:36.641",
+        "pstate": "P0",
+        "clocks.current.sm": "1440",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "64",
+        "power.draw": "46.06",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T21:03:36+08:00",
+        "phase": "lm_head_gpu_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 21:03:37.655",
+        "pstate": "P0",
+        "clocks.current.sm": "1860",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "51.42",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T21:03:37+08:00",
+        "phase": "lm_head_gpu_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 21:03:38.642",
+        "pstate": "P0",
+        "clocks.current.sm": "2280",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "68",
+        "power.draw": "63.33",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T21:03:38+08:00",
+        "phase": "lm_head_gpu_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 21:03:39.653",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "69",
+        "power.draw": "74.14",
+        "clocks_event_reasons.sw_power_cap": "Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T21:03:39+08:00",
+        "phase": "lm_head_gpu_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 21:03:40.654",
+        "pstate": "P0",
+        "clocks.current.sm": "2460",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "69",
+        "power.draw": "75.16",
+        "clocks_event_reasons.sw_power_cap": "Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T21:03:40+08:00",
+        "phase": "lm_head_gpu_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 21:03:41.655",
+        "pstate": "P0",
+        "clocks.current.sm": "2550",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "69",
+        "power.draw": "75.49",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T21:03:41+08:00",
+        "phase": "lm_head_gpu_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 21:03:42.646",
+        "pstate": "P0",
+        "clocks.current.sm": "2550",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "69",
+        "power.draw": "76.46",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T21:03:42+08:00",
+        "phase": "lm_head_gpu_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 21:03:43.648",
+        "pstate": "P0",
+        "clocks.current.sm": "2505",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "70",
+        "power.draw": "77.30",
+        "clocks_event_reasons.sw_power_cap": "Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T21:03:43+08:00",
+        "phase": "lm_head_gpu_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 21:03:44.659",
+        "pstate": "P0",
+        "clocks.current.sm": "2550",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "71",
+        "power.draw": "75.75",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T21:03:44+08:00",
+        "phase": "lm_head_gpu_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 21:03:45.493",
+        "pstate": "P0",
+        "clocks.current.sm": "2550",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "70",
+        "power.draw": "74.29",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T21:03:45+08:00",
+        "phase": "lm_head_gpu_measurement"
+      }
+    ]
+  },
+  "memory_clock_ratio_vs_op0": 1.0,
+  "validity_gates": {
+    "owner_no_sha_direction_honored": "PASS",
+    "upstream_deliverability": "PASS",
+    "authenticity": "PASS",
+    "formal_c02_nf4_carrier_343_modules": "PASS",
+    "all_22_real_states_captured": "PASS",
+    "softcap_cuda_baselines_exact_22_of_22": "PASS",
+    "same_day_bandwidth": "PASS",
+    "gpu_memory_below_7_5_gib": "PASS",
+    "original_tied_cpu_weight_and_model_structure_unchanged": "PASS",
+    "telemetry_present": "PASS",
+    "memory_clock_gate": "PASS",
+    "thermal_hardware_throttle_absent": "PASS"
+  },
+  "bottleneck_gate": "FAIL",
+  "existing_path_eligible": true,
+  "decision": "EXISTING_CUDA_LM_HEAD_MIRROR_RECONNECTION_PROBE_AUTHORIZED_NO_CUSTOM_KERNEL",
+  "non_authorizations": [
+    "custom candidate implementation unless custom_path is selected",
+    "C02 deployment equivalence",
+    "cross-day repeatability",
+    "board, llama.cpp, sm_100, or sm_120 extrapolation"
+  ]
+}

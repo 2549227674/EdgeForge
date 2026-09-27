@@ -1,0 +1,12 @@
+{
+  "schema": "edgeforge-ope4-controller-time-v1",
+  "controller_before": "2026-09-21T13:05:50.693724485+08:00",
+  "controller_after": "2026-09-21T13:11:02.012268031+08:00",
+  "controller_elapsed_seconds": 311.318544,
+  "controller_exit_code": 0,
+  "board_wall_clock_authoritative": false,
+  "absolute_time_authority": "controller",
+  "duration_authority": "board CLOCK_MONOTONIC_RAW with controller elapsed as cross-check",
+  "board_boot_id": "d71ea52f-ab16-411f-a329-6544feac0d45",
+  "note": "The board rebooted before formal execution; the formal segment itself stayed on one boot and completed without reconnect or resume."
+}

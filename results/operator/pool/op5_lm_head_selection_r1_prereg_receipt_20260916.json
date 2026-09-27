@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_LM_HEAD_SELECTION_R1_PREREG",
+  "target": "tied_lm_head_262144_vocab_softcap_30",
+  "timestamp": "2026-09-16T20:56:57+08:00",
+  "status": "FROZEN_BEFORE_FORMAL_SELECTION",
+  "protocol": "configs/operator/op5_lm_head_selection_r1.json",
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "formal_selection_started": false,
+  "custom_candidate_implemented_or_timed": false,
+  "preflight_revision": "Before formal measurement, the textual bottleneck threshold was duplicated as a numeric frozen field and the runner was extended to retain the live device-memory snapshot; the decision rule and candidate scope are unchanged.",
+  "upstream_status": "LM_HEAD_DELIVERABILITY_HOLD_LIFTED_SELECTION_AUTHORIZED",
+  "expected": {
+    "tapes": 5,
+    "requests": 11,
+    "real_hidden_states": 22,
+    "projected_calls": 21705,
+    "eligible_cuda_baselines": 2,
+    "diagnostic_cuda_comparators": 2,
+    "vocab_size": 262144,
+    "hidden_size": 2560,
+    "gpu_budget_gib": 7.5
+  },
+  "authorization_boundary": "Selection only; no custom candidate or deployment path is authorized before the result."
+}

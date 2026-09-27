@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_GQA_DECODE_SELECTION",
+  "started_at": "2026-09-16T17:08:29+08:00",
+  "failed_at": "2026-09-16T17:08:32+08:00",
+  "protocol": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op5_gqa_decode_selection_probe.json",
+  "protocol_sha256": "121ae0b4b4ad6858f1b497c1f6895073823519f17fe7ead93db94703f3d2617d",
+  "runner": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_gqa_selection.py",
+  "runner_sha256": "08e9583d70e4c625e899a14f1ff5e088817db608045b08c5e1bb453f34e9ba1c",
+  "command": [
+    "scripts/operator/run_op5_gqa_selection.py"
+  ],
+  "error_type": "RuntimeError",
+  "error": "Inference tensors do not track version counter.",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_gqa_selection.py\", line 737, in main\n    receipt = execute(args)\n              ^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_gqa_selection.py\", line 571, in execute\n    correctness = run_correctness(protocol, cases, operations, args.device)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_gqa_selection.py\", line 310, in run_correctness\n    versions = [tensor._version for tensor in inputs]\n                ^^^^^^^^^^^^^^^\nRuntimeError: Inference tensors do not track version counter.\n",
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0",
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0"
+    },
+    "cuda": {
+      "available": true,
+      "torch_cuda": "13.0",
+      "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "sm_89",
+      "total_memory_bytes": 8585216000,
+      "multi_processor_count": 24,
+      "l2_cache_size_bytes": 33554432
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 8001 MHz, 140.00 W"
+  },
+  "custom_candidate_implemented_or_timed": false,
+  "status": "FAIL"
+}

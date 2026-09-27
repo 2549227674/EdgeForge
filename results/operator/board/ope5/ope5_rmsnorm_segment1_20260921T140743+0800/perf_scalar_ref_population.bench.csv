@@ -1,0 +1,2 @@
+scope,variant,population_sequences,population_calls,analytic_bytes_per_sequence,elapsed_ms,ring_frames,sink
+perf_population,scalar_ref,1742,526084,3840000,3001.426168,16,0

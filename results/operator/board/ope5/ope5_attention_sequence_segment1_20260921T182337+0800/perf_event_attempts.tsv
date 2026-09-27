@@ -1,0 +1,5 @@
+case_id	variant	events	exit_code
+sliding_k512_d256	cpu_scalar_sequence	cycles:u,instructions:u,task-clock,context-switches,cpu-migrations	0
+sliding_k512_d256	cpu_neon_sequence	cycles:u,instructions:u,task-clock,context-switches,cpu-migrations	0
+sliding_k512_d256	hybrid_rknpu_sequence	cycles:u,instructions:u,task-clock,context-switches,cpu-migrations	0
+full_k3123_d512	cpu_scalar_sequence	cycles:u,instructions:u,task-clock,context-switches,cpu-migrations	90

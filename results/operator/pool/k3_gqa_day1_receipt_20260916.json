@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_GQA_DECODE_ATTENTION_ISOLATED_DAY1",
+  "calendar_day": "2026-09-16",
+  "timestamp": "2026-09-16T17:32:16+08:00",
+  "protocol": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k3_gqa_decode_attention_prereg.json",
+    "sha256": "fe427c9650aa929d18f72daaaa22ed918b7d33fd5b0af4da12386e0a86229626"
+  },
+  "locked_candidate": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k3_gqa_attention.py",
+    "sha256": "3d3d57ac20e390e9f117ac763af7d5ffcfabe084fce861461e8e62e183ac76f0"
+  },
+  "runner": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k3_day1.py",
+    "sha256": "0d26582d7ec5bdbd6477f81198d04d7178de2ba08b573eb339e3df79eb933ed1"
+  },
+  "correctness_precondition": {
+    "receipt": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_correctness_receipt_20260916.json",
+      "sha256": "ac8e9834ccfd32d731ef6374c962989486b3779caa9fa90e848a1392b8f7cf32"
+    },
+    "result": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_correctness_20260916.json",
+      "sha256": "8ba0bca4ee44af54d7da368b72a61833adaba0a0ebcfbe8fa700d376129df514"
+    },
+    "status": "PASS"
+  },
+  "result": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_day1_20260916.json",
+    "sha256": "17fead290b82258c49a530424bb907999b6b1665a4819b542c2cd084ba208ef3"
+  },
+  "gates": {
+    "correctness_precondition": "PASS",
+    "protocol_immutable": "PASS",
+    "candidate_source_locked": "PASS",
+    "same_day_bandwidth": "PASS",
+    "three_way_13_case_50_warmup_200_repetition_measurement": "PASS",
+    "frozen_autotune_space": "PASS",
+    "thermal_or_hardware_throttle_absent": "PASS",
+    "memory_clock_gate": "PASS",
+    "day1_positive_continuation_gate": "PASS"
+  },
+  "performance_outcome": "POSITIVE",
+  "candidate_speedup_vs_best_baseline": 1.2750024353857878,
+  "family_speedups_vs_best_baseline": {
+    "sliding": 1.1165311435227647,
+    "full": 1.7140642276370235
+  },
+  "bounded_conclusion": "PENDING_SECOND_VALID_CALENDAR_DAY",
+  "next_authorized_action": "Run the unchanged K3 measurement on a later calendar day; ncu and reconnection remain unauthorized until the two-day consistency gate passes.",
+  "status": "K3_PROVISIONAL_DAY1_POSITIVE"
+}

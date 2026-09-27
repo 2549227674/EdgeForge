@@ -1,0 +1,249 @@
+{
+  "schema_version": 1,
+  "stage": "OP3",
+  "kernel": "k1_gemma4_rmsnorm",
+  "frozen_at": "2026-09-15T17:21:36+08:00",
+  "frozen_before_any_op3_formal_replay": true,
+  "host_scope": "RTX 4060 Laptop GPU / sm_89 / WSL2 only",
+  "scope": {
+    "authorized": [
+      "torch.library K1 custom-op registration",
+      "reversible replacement of Gemma4 RMSNorm forward methods under model.language_model",
+      "C02-S.O bitsandbytes NF4 replay of the frozen 5 tapes / 11 requests",
+      "kernel-level and token/request-level OP3 reporting"
+    ],
+    "excluded": [
+      "OP4",
+      "OP5",
+      "P0-3b",
+      "training",
+      "board execution",
+      "remote instance release"
+    ],
+    "formal_numbers_must_not_be_extrapolated": [
+      "sm_100",
+      "sm_120",
+      "board targets",
+      "llama.cpp",
+      "Q4_K_M"
+    ]
+  },
+  "source_identity": {
+    "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0",
+    "model": {
+      "path": "models/C02-S.O-bf16-r1",
+      "manifest_path": "results/operator/p0/c02_s_artifact_manifest.json",
+      "manifest_sha256": "ee7d426d1e912a6c53cad1cd52739f26d7fff45b4a4f7429a4c08656f68dc5f2"
+    },
+    "p0_nf4_receipt": {
+      "path": "results/operator/p0/c02_s_nf4_smoke_receipt.json",
+      "sha256": "364d7fc93fe104bf4f3543ada7c2476e93ffd4ae4d8f5d8b7bccccea66053d4b"
+    },
+    "shape_census": {
+      "path": "results/operator/shape_census.json",
+      "sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f"
+    },
+    "op1_receipt": {
+      "path": "results/operator/op1/op1_receipt.json",
+      "sha256": "e07ab8594314f171d38cd50bcedd0acd7dae2b09b17a2c3e272c720d3965ae60"
+    },
+    "op2_preregistration": {
+      "path": "configs/operator/k1_rmsnorm_prereg.json",
+      "sha256": "c5867a31d27f24ea411bd592af7648e9fc10a313ee74cc1425e829487cca2411",
+      "must_remain_read_only": true
+    },
+    "op2_receipt": {
+      "path": "results/operator/k1/op2_receipt.json",
+      "sha256": "414bfa626414aef041c20529ca49303f1545accd405e24cbb1a3c6ab9eead813"
+    },
+    "tapes_manifest": {
+      "path": "traces/tapes/manifest.json",
+      "sha256": "d0e98b875ae6aa6de1bc7122b75e6dc86fd2037e651832735b9f64c57c45091d",
+      "tapes": 5,
+      "requests": 11
+    },
+    "chat_template": {
+      "path": "models/C02-S.O-bf16-r1/chat_template.jinja",
+      "sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5"
+    },
+    "tokenizer": {
+      "path": "models/C02-S.O-bf16-r1/tokenizer.json",
+      "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f"
+    }
+  },
+  "semantics": {
+    "epsilon": 1e-06,
+    "scaled_formula": "output = cast_input_dtype(float32(x) * pow(mean(float32(x)^2) + 1e-6, -0.5) * float32(weight))",
+    "scale_free_formula": "output = cast_input_dtype(float32(x) * pow(mean(float32(x)^2) + 1e-6, -0.5))",
+    "weight_semantics": "direct scale; no implicit +1",
+    "v_norm_semantics": "no learned scale and no weight tensor",
+    "formal_input_output_dtype": "torch.bfloat16",
+    "reduction_dtype": "torch.float32",
+    "layout": "contiguous storage and final-axis stride 1"
+  },
+  "custom_op": {
+    "qualified_name": "edgeforge::k1_gemma4_rmsnorm",
+    "schema": "k1_gemma4_rmsnorm(Tensor hidden_states, Tensor? weight, float epsilon) -> Tensor",
+    "cuda_implementation": "scripts/operator/k1_rmsnorm.py::candidate_rmsnorm",
+    "fake_meta_implementation": "returns empty_like(hidden_states) after shape/dtype contract checks",
+    "fallback_boundary": {
+      "cpu": "semantic eager fallback for non-formal tests only; every CPU dispatch is counted and makes a formal run fail",
+      "formal_cuda": "BF16 CUDA, contiguous, final-axis stride 1, optional same-device/same-dtype direct scale",
+      "unsupported": "raise; never silently fall back during formal replay"
+    },
+    "autograd": "not registered; OP3 runs under torch.inference_mode() only"
+  },
+  "reconnection": {
+    "path_prefix": "model.language_model.",
+    "module_class": "transformers.models.gemma4.modeling_gemma4.Gemma4RMSNorm",
+    "method": "temporarily bind an instance forward that calls torch.ops.edgeforge.k1_gemma4_rmsnorm.default; delete the instance override on restore",
+    "expected_modules": 302,
+    "expected_scaled_modules": 278,
+    "expected_scale_free_modules": 24,
+    "expected_calls_per_model_forward": 302,
+    "forbidden_prefixes": [
+      "model.vision_tower.",
+      "model.audio_tower."
+    ],
+    "invariants": [
+      "named module names, types, and object identities do not change",
+      "state_dict keys do not change",
+      "named parameter names, object identities, data pointers, shapes, dtypes, and devices do not change",
+      "all RMSNorm weight object identities remain unchanged",
+      "hf_device_map does not change",
+      "persistent CPU embedding storage and tied lm_head identity do not change",
+      "the original forward resolution is restored before process exit"
+    ]
+  },
+  "carrier": {
+    "model_class": "AutoModelForImageTextToText",
+    "dtype": "torch.bfloat16",
+    "attention_implementation": "eager",
+    "quantization": {
+      "load_in_4bit": true,
+      "bnb_4bit_quant_type": "nf4",
+      "bnb_4bit_use_double_quant": true,
+      "bnb_4bit_compute_dtype": "torch.bfloat16",
+      "llm_int8_enable_fp32_cpu_offload": true,
+      "expected_language_linear4bit_modules": 343
+    },
+    "persistent_cpu_modules": [
+      "model.language_model.embed_tokens",
+      "model.language_model.embed_tokens_per_layer",
+      "lm_head"
+    ],
+    "gpu_budget_gib": 7.5,
+    "load_once": true
+  },
+  "replay": {
+    "rendering": "AutoTokenizer.apply_chat_template(messages, tokenize=true, add_generation_prompt=true)",
+    "decoding": {
+      "strategy": "greedy argmax",
+      "do_sample": false,
+      "seed": 20260915,
+      "completion_budget_field": "reference_completion_tokens",
+      "tokens_per_path_per_pass": 21705,
+      "eos_policy": "record EOS positions but do not truncate; generate the exact frozen completion budget so OP1 frequency accounting remains comparable",
+      "kv_policy": "fresh cache per request; no cache crosses request boundaries"
+    },
+    "paths": {
+      "A": "unmodified Transformers 5.15 Gemma4RMSNorm eager forward",
+      "B": "torch.library edgeforge::k1_gemma4_rmsnorm CUDA custom op"
+    },
+    "passes_per_path": 2,
+    "measured_pass": 2,
+    "schedule_per_tape": [
+      "A1",
+      "A2",
+      "B1",
+      "B2"
+    ],
+    "measurement_convention": "replay all requests of one tape in each pass; pass 1 primes code/data caches and pass 2 alone contributes end-to-end metrics",
+    "baseline_stability_precedes_ab_attribution": true,
+    "random_seed_reset_before_every_request": true
+  },
+  "measurement": {
+    "request_metrics": [
+      "TTFT wall milliseconds from CPU embedding start through first greedy token",
+      "incremental TPOT wall milliseconds excluding the first token",
+      "incremental tokens per second",
+      "total request wall seconds",
+      "per-step wall seconds",
+      "peak CUDA allocated bytes",
+      "peak CUDA reserved bytes",
+      "final NVML-visible device-used bytes"
+    ],
+    "kernel_metrics": {
+      "invocations": "count every B custom-op CUDA implementation dispatch by request, pass, phase, runtime shape, module name, and scale variant",
+      "cuda_event_sampling_pass": 1,
+      "cuda_event_samples_per_signature": 32,
+      "signature": "phase + flattened rows + normalized width + input dtype + with_scale",
+      "timing_excluded_from_end_to_end_pass": true,
+      "report": [
+        "p50_us",
+        "iqr_us",
+        "sample_count",
+        "analytic_bytes",
+        "analytic_gbps"
+      ]
+    },
+    "telemetry_interval_seconds": 1.0,
+    "thermal_protocol": {
+      "continuous_from_post_load_preflight_through_all_replays": true,
+      "phase_label_every_request": true,
+      "invalidate_on_thermal_or_hardware_throttle": true,
+      "record_software_power_cap_without_invalidating": true,
+      "memory_clock_is_reported_but_not_a_hard_gate": "hybrid CPU lm_head creates expected GPU-idle gaps unlike the OP0 continuous bandwidth loop"
+    }
+  },
+  "correctness": {
+    "comparison_order": [
+      "A1 versus A2 baseline self-repeat",
+      "A2 versus B2 only after reporting A1/A2"
+    ],
+    "strong_pass": "all generated token IDs match position-by-position for every request",
+    "divergence_record": [
+      "first differing generated-token index",
+      "absolute context position = rendered prompt length + generated-token index",
+      "both token IDs at the first differing position",
+      "eight-token prefix context before the difference",
+      "both generated lengths and remaining suffix lengths"
+    ],
+    "bnb_nondeterminism_rule": "if A1/A2 diverges, report A/B as confounded and do not attribute all A/B divergence to K1",
+    "direct_fail": [
+      "NaN or Inf",
+      "shape, dtype, or device drift",
+      "CPU embedding remigration",
+      "CUDA OOM",
+      "state_dict, parameter, module, device_map, or RMSNorm weight identity drift",
+      "unexpected custom-op CPU fallback",
+      "custom-op invocation reconciliation mismatch"
+    ]
+  },
+  "gates": {
+    "upstream_receipts_must_be_pass": [
+      "OP-P0-3",
+      "OP1",
+      "OP2"
+    ],
+    "expected_b_invocations_per_pass": 6554910,
+    "expected_b_invocations_both_passes": 13109820,
+    "performance_improvement_required": false,
+    "pass_requires": [
+      "config hash unchanged from process start through final receipt write",
+      "all frozen input hashes match",
+      "all reconnect and carrier invariants pass",
+      "all 5 tapes / 11 requests finish twice on A and twice on B",
+      "only pass-2 A/B records contribute end-to-end aggregates",
+      "all B calls dispatch through the CUDA custom op with exact census-frequency reconciliation",
+      "no direct-fail condition or thermal/hardware throttle occurs",
+      "A/A and A/B token comparisons are fully recorded; token divergence alone is reportable and does not fail if tensor contracts and baseline confounding rules are honored"
+    ]
+  },
+  "outputs": {
+    "result": "results/operator/k1/k1_rmsnorm_op3.json",
+    "receipt": "results/operator/k1/op3_receipt.json",
+    "progress": "results/operator/k1/op3_progress.json",
+    "failure_prefix": "results/operator/failures/k1_op3_"
+  }
+}

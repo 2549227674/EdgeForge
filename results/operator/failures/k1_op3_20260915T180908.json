@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "stage": "OP3",
+  "status": "FAIL",
+  "timestamp": "2026-09-15T18:09:08+08:00",
+  "config": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op3_reconnect.json",
+    "sha256": "d4917b82fecc894a69db63e258e921a165eee8db395c7c1590bfe3416a96e8c6"
+  },
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0",
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.22.2"
+    },
+    "cuda": {
+      "available": true,
+      "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": [
+        8,
+        9
+      ],
+      "torch_cuda": "13.0"
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 140.00 W"
+  },
+  "artifacts": {
+    "config": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op3_reconnect.json",
+      "sha256": "d4917b82fecc894a69db63e258e921a165eee8db395c7c1590bfe3416a96e8c6"
+    },
+    "custom_op": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k1_custom_op.py",
+      "sha256": "5548bf8dff8289e0cef3977099a34827cb295dd126bf0897860f6281d430d0ae"
+    },
+    "replay": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/replay_tapes_torch.py",
+      "sha256": "a46343f3f3590b89e6c183f8aa53e72b9063e9ae30b517517896566d5dc315ea"
+    },
+    "runner": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op3.py",
+      "sha256": "69661f96d80e3977cb12f5d7be93eead617d9ad7b2da0658da54ecd3c5d03fbe"
+    },
+    "op2_candidate": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k1_rmsnorm.py",
+      "sha256": "6e1d282bc174e9f91210281c086c0928820e7b3e8782f7bf02e8f94ed31d7ca1"
+    }
+  },
+  "error_type": "KeyboardInterrupt",
+  "error": "",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op3.py\", line 1134, in main\n    result = run_formal(\n             ^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op3.py\", line 846, in run_formal\n    record = run_greedy_request(\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/replay_tapes_torch.py\", line 222, in run_greedy_request\n    last_hidden_cpu = output.last_hidden_state[:, -1:, :].to(\"cpu\")\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nKeyboardInterrupt\n",
+  "progress_path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/k1/op3_progress.json",
+  "memory_at_failure": {
+    "allocated_bytes": 2177744384,
+    "reserved_bytes": 2445279232,
+    "peak_allocated_bytes": 2390268416,
+    "peak_reserved_bytes": 2445279232,
+    "device_used_bytes": 3619160064,
+    "device_free_bytes": 4966055936,
+    "device_total_bytes": 8585216000,
+    "peak_allocated_mib": 2279.538,
+    "peak_reserved_mib": 2332.0,
+    "device_used_mib": 3451.5
+  }
+}

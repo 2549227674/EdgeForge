@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_LM_HEAD_SELECTION_R1",
+  "target": "tied_lm_head_262144_vocab_softcap_30",
+  "timestamp": "2026-09-16T21:03:45+08:00",
+  "status": "EXISTING_CUDA_LM_HEAD_MIRROR_RECONNECTION_PROBE_AUTHORIZED_NO_CUSTOM_KERNEL",
+  "probe_valid": true,
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "custom_candidate_implemented_or_timed": false,
+  "result": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_lm_head_selection_r1_20260916.json",
+  "validity_gates": {
+    "owner_no_sha_direction_honored": "PASS",
+    "upstream_deliverability": "PASS",
+    "authenticity": "PASS",
+    "formal_c02_nf4_carrier_343_modules": "PASS",
+    "all_22_real_states_captured": "PASS",
+    "softcap_cuda_baselines_exact_22_of_22": "PASS",
+    "same_day_bandwidth": "PASS",
+    "gpu_memory_below_7_5_gib": "PASS",
+    "original_tied_cpu_weight_and_model_structure_unchanged": "PASS",
+    "telemetry_present": "PASS",
+    "memory_clock_gate": "PASS",
+    "thermal_hardware_throttle_absent": "PASS"
+  },
+  "bottleneck_gate": "FAIL",
+  "existing_path_eligible": true,
+  "summary": {
+    "real_states": 22,
+    "softcap_eager_exact": 22,
+    "softcap_compile_exact": 22,
+    "best_cuda_baseline": "cuda_eager_softcap_argmax",
+    "cpu_p50_ms": 30.983353,
+    "best_cuda_p50_ms": 5.34528,
+    "best_cuda_vs_cpu_speedup": 5.7963947632303645,
+    "same_day_ceiling_gbps": 241.904639,
+    "best_tier_a_relative_score": 1.037998881830731,
+    "peak_cuda_allocated_bytes": 5023468544,
+    "memory_clock_ratio_vs_op0": 1.0,
+    "thermal_or_hardware_throttle": false
+  },
+  "next_action": "Freeze a same-load full C02 A/B reconnection protocol for the existing CUDA mirror path; do not implement a custom lm_head kernel."
+}

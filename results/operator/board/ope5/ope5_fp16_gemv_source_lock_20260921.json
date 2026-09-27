@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-02-FP16-GEMV-SOURCE-LOCK",
+  "status": "LOCKED_BEFORE_FORMAL_EXECUTION",
+  "recorded_at": "2026-09-21T14:50:11+08:00",
+  "formal_execution_started": false,
+  "board_process_started": false,
+  "scope": {
+    "path": "configs/operator/board/ope5_fp16_gemv_scope.json",
+    "sha256": "51c6d942cbd7fcd494ea076a48b434cbebb870365897ab7da965978e13c07068"
+  },
+  "preregistration": {
+    "path": "configs/operator/board/ope5_fp16_gemv_prereg.json",
+    "sha256": "b89dc6e03bcae62ab817a0814f48541ff6c8526c4b23f60108bbd438434fb514"
+  },
+  "implementation_files": {
+    "candidate_source": {
+      "path": "scripts/operator/board/ope5_fp16_gemv_bench.cpp",
+      "sha256": "7843a9f797bcf566eae34e9982b6ecab832a53060aaa8287403e42c10b132c9e"
+    },
+    "formal_runner": {
+      "path": "scripts/operator/board/run_ope5_fp16_gemv.sh",
+      "sha256": "529b1e1100cffdc5fc92176661b02587a88b3ef4fab829a53c27c46954110ba9"
+    },
+    "measurement_payload": {
+      "path": "scripts/operator/board/ope5_fp16_gemv_measure_payload.sh",
+      "sha256": "aef17168a7b6dce1d7cb870a136bf3621d399ae94b64819e6a0b01403d275ab4"
+    }
+  },
+  "runtime_dependencies": {
+    "telemetry_sampler": {
+      "path": "scripts/operator/board/telemetry_sampler.sh",
+      "sha256": "74f8e8a85858c567206b7234dafe7015a59483c42d83300a04b3532a1368b84c"
+    }
+  },
+  "prelock_audit": {
+    "board": "orangepi@192.168.137.66",
+    "execution_scope": "compile-and-disassembly-only; benchmark binary was not executed",
+    "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "compile": "PASS",
+    "compiler_invocations": 1,
+    "initial_temp_parent_missing_recovered_before_compiler_invocation": true,
+    "scalar_vector_fmla_matches": 0,
+    "autovec_vector_fmla_matches": 0,
+    "autovec_vectorization_required": false,
+    "neon_fcvtl_matches": 16,
+    "neon_vector_fmla_matches": 8,
+    "benchmark_execution_count": 0,
+    "temporary_files_removed": true,
+    "pc_board_hash_identity": true
+  },
+  "measurement_identity": {
+    "shape_mkn": [
+      1,
+      10240,
+      2560
+    ],
+    "primary_cpus": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "threads": 4,
+    "formal_segments": 1,
+    "same_day_retest_scheduled": false,
+    "instability_retry_authorized": false,
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "npu_governor_policy": "READ_ONLY_UNCHANGED"
+  },
+  "git_sha": "213460d88311cba5d84add4d3ee57aae26716c6d"
+}

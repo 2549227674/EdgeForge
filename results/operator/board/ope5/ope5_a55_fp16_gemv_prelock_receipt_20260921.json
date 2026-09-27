@@ -1,0 +1,104 @@
+{
+  "benchmark_execution_count": 0,
+  "board": "orangepi@192.168.137.66",
+  "check_summary": {
+    "failed": [],
+    "passed": 13,
+    "total": 13
+  },
+  "checks": {
+    "base_source_identity": true,
+    "board_source_hash_matches": true,
+    "codegen_gates": true,
+    "compile_once_no_benchmark": true,
+    "compiler_target": true,
+    "first_core_features": true,
+    "four_single_cpu_affinities": true,
+    "frozen_scope_and_prereg_identity": true,
+    "perf_true_all_events_numeric": true,
+    "policy0_max_frequency": true,
+    "policy0_topology": true,
+    "source_exact_three_category_derivative": true,
+    "temporary_binary_removed": true
+  },
+  "claim_limits": [
+    "The benchmark binary was compiled and disassembled but not executed.",
+    "The perf probe used true and is a capability check, not a performance smoke."
+  ],
+  "codegen": {
+    "autovec_vector_fmla_matches": 0,
+    "candidate_fcvtl_matches": 16,
+    "candidate_vector_fmla_matches": 8,
+    "scalar_vector_fmla_matches": 0
+  },
+  "execution_scope": "read-only topology/perf true probe plus compile/disassembly-only",
+  "formal_segment_count": 0,
+  "perf_true_counts": {
+    "bus_access:u": 52831,
+    "cycles:u": 658521,
+    "instructions:u": 242759,
+    "l2d_cache_refill:u": 6675
+  },
+  "raw_artifact_sha256": {
+    "affinity.tsv": "0ef53c1a8e2634b2244f0a0c18be73b4fb28eb2b875032eb0b6a59277a9f15bd",
+    "audit_meta.env": "e2ac79f611bd40b5bf46f869ddb47be975c08c3270c257f1b13d864a6ba63d6c",
+    "build.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "disassembly_autovec_o3.txt": "273b6dea1f40fcdd3c46b79327dd7e47dee3a189374fccb7070accfc8b7b6d84",
+    "disassembly_neon_fp16_f32acc.txt": "34462d15eafb56f568c83359baf2101cbe0106dd2e772a45d1d047af1a21142e",
+    "disassembly_scalar_fp32.txt": "698b4cae7e944c8410e66133de3622e248296924e12de5ca2012b554dae4c18c",
+    "perf_true.exit_code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "perf_true.stat.csv": "b9897d24c0a24b6a280631b1e435b8c8fa3597e0f66d22e5dad6066ca18fc39d",
+    "perf_true.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "perf_true.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "vectorization.log": "2b7376252a94daa12c1753c1ccd495c4c31c0d563be981c2bb9a01046faed1d7"
+  },
+  "raw_audit_directory": "results/operator/board/ope5/ope5_a55_fp16_gemv_prelock_20260921T173741+0800",
+  "recorded_at": "2026-09-19T05:15:26.531742362+08:00",
+  "schema_version": 1,
+  "source_derivation": {
+    "allowed_change_categories": [
+      "kFirstCpu 4 to 0",
+      "main-worker affinity error CPU4 to CPU0",
+      "OPE5_FP16_GEMV diagnostic tag to OPE5_A55_FP16_GEMV"
+    ],
+    "base_path": "scripts/operator/board/ope5_fp16_gemv_bench.cpp",
+    "base_sha256": "7843a9f797bcf566eae34e9982b6ecab832a53060aaa8287403e42c10b132c9e",
+    "candidate_path": "scripts/operator/board/ope5_a55_fp16_gemv_bench.cpp",
+    "candidate_sha256": "a165327f49ff5a54fd25d15c2ef07bac7a90b6dd316a37a4089835248f629b7e",
+    "exact_allowlist_match": true
+  },
+  "stage": "OPE5-05-A55-FP16-GEMV-PRELOCK-AUDIT",
+  "status": "PASS_A55_PRELOCK_NO_BENCHMARK_EXECUTION",
+  "topology": {
+    "affinity": [
+      {
+        "cpu": "0",
+        "observed_allowed_list": "0",
+        "pass": "yes"
+      },
+      {
+        "cpu": "1",
+        "observed_allowed_list": "1",
+        "pass": "yes"
+      },
+      {
+        "cpu": "2",
+        "observed_allowed_list": "2",
+        "pass": "yes"
+      },
+      {
+        "cpu": "3",
+        "observed_allowed_list": "3",
+        "pass": "yes"
+      }
+    ],
+    "policy0_max_khz": 1800000,
+    "policy0_related_cpus": "0 1 2 3",
+    "required_features": [
+      "asimd",
+      "fphp",
+      "asimdhp"
+    ]
+  }
+}

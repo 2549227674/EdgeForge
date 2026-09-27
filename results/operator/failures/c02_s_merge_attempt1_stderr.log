@@ -1,0 +1,18 @@
+nohup: ignoring input
+[2026-09-14T21:04:31+08:00] validating frozen C01-S and C02 adapter lineage
+Failed to load CPU gemm_4bit_forward from kernels-community: No module named 'kernels'. Please make sure you already `pip install kernels` and the kernels >= 0.11.1
+[2026-09-14T21:04:38+08:00] loading C01-S on CPU
+Loading weights:   0%|          | 0/2076 [00:00<?, ?it/s]Loading weights:  43%|████▎     | 900/2076 [00:00<00:00, 8987.49it/s]Loading weights:  87%|████████▋ | 1799/2076 [00:00<00:00, 8576.38it/s]Loading weights: 100%|██████████| 2076/2076 [00:00<00:00, 8240.74it/s]
+[2026-09-14T21:04:39+08:00] attaching frozen rsLoRA adapter
+[2026-09-14T21:04:43+08:00] merging adapter with safe_merge=True
+[2026-09-14T21:04:50+08:00] saving staged BF16 checkpoint
+Writing model shards:   0%|          | 0/4 [00:00<?, ?it/s]Writing model shards:  25%|██▌       | 1/4 [00:02<00:08,  2.99s/it]Writing model shards:  50%|█████     | 2/4 [00:15<00:17,  8.83s/it]Writing model shards:  75%|███████▌  | 3/4 [00:27<00:10, 10.14s/it]Writing model shards: 100%|██████████| 4/4 [00:28<00:00,  6.39s/it]Writing model shards: 100%|██████████| 4/4 [00:28<00:00,  7.06s/it]
+[2026-09-14T21:05:20+08:00] auditing tensor metadata
+[2026-09-14T21:05:33+08:00] starting independent subprocess reload
+Traceback (most recent call last):
+  File "/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/merge_c02.py", line 484, in main
+    result = execute(args)
+             ^^^^^^^^^^^^^
+  File "/root/autodl-tmp/edgeforge-m1/workspace/scripts/operator/merge_c02.py", line 441, in execute
+    raise ValueError(
+ValueError: independent reload parameter count differs from safetensors inventory

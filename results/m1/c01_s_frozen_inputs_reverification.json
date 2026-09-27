@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "verified_at_utc": "2026-08-11T16:33:33.729158+00:00",
+  "hostname": "autodl-container-atdlpbjbca-22473649",
+  "identities": {
+    "plan_sha256": "61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e",
+    "holdout_sha256": "0a28a7f7b52a01f7a73ccdf927f98ac21902f8037ef236db4f86d5024a67d73b",
+    "template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+    "holdout_manifest_sha256": "c6ae96e93474b639ee4217a0d14506e383d1f406320b01a0b0aa1ec75c1b9374"
+  },
+  "plan": {
+    "records": 81757,
+    "unique_uids": 81757,
+    "input_tokens_from_offsets": 148425311,
+    "shifted_supervised_tokens_from_labels": 88486262,
+    "optimizer_steps": 4096,
+    "plan_index_contiguous": true,
+    "rows_per_step_min": 10,
+    "rows_per_step_max": 35,
+    "step_supervised_tokens_min": 7102,
+    "step_supervised_tokens_max": 34086,
+    "declared_step_supervision_matches_labels": true,
+    "family_group_records": {
+      "anthropic": 65362,
+      "other": 16395
+    },
+    "rank_audits": [
+      {
+        "rank": 0,
+        "records": 41901,
+        "input_tokens": 75994420,
+        "supervised_tokens": 45422524
+      },
+      {
+        "rank": 1,
+        "records": 39856,
+        "input_tokens": 72430891,
+        "supervised_tokens": 43063738
+      }
+    ]
+  },
+  "holdout": {
+    "records": 1948,
+    "unique_uids": 1948,
+    "input_tokens_from_offsets": 3483799,
+    "shifted_supervised_tokens_from_labels": 1964016
+  },
+  "holdout_manifest_source_uids": 1500,
+  "training_holdout_intersection": 0,
+  "gates": {
+    "plan_records": "PASS",
+    "plan_unique_uids": "PASS",
+    "plan_input_tokens": "PASS",
+    "plan_supervised_tokens": "PASS",
+    "plan_steps": "PASS",
+    "family_group_records": "PASS",
+    "holdout_records": "PASS",
+    "holdout_unique_uids": "PASS",
+    "holdout_source_uids": "PASS",
+    "holdout_input_tokens": "PASS",
+    "holdout_supervised_tokens": "PASS",
+    "holdout_manifest_identity": "PASS",
+    "training_holdout_exclusion": "PASS",
+    "all_numeric_totals_finite": "PASS"
+  },
+  "verifier": "/root/autodl-tmp/edgeforge-m1/workspace/scripts/m1/verify_c01_s_frozen_inputs.py",
+  "verifier_sha256": "60936d67007ea938ab9ec709f8e31e6157c32f44f21b1086ae64d81d72738832"
+}

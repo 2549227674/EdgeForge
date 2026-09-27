@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "stage": "OP0-c-timer-crosscheck",
+  "kernel": "k0_vector_add",
+  "timestamp": "2026-09-15T15:39:32+08:00",
+  "nvtx_range": "edgeforge_k0_nsys_measure",
+  "cuda_event_us": {
+    "count": 200,
+    "min": 195.999995,
+    "q1": 200.687993,
+    "p50": 204.224005,
+    "q3": 207.479995,
+    "max": 378.271997,
+    "mean": 204.8392,
+    "iqr": 6.792001
+  },
+  "nsys_gpu_timeline_us": {
+    "count": 200,
+    "min": 192.637,
+    "q1": 197.929,
+    "p50": 201.617,
+    "q3": 204.824,
+    "max": 209.699,
+    "mean": 201.267,
+    "iqr": 6.895
+  },
+  "kernel_launch_count": {
+    "expected": 200,
+    "observed": 200,
+    "pass": true
+  },
+  "relative_bias": 0.012930482,
+  "relative_bias_formula": "abs(cuda_event_p50 - nsys_p50) / nsys_p50",
+  "relative_bias_limit": 0.05,
+  "bias_pass": true,
+  "timeline_artifact": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/k0_timeline.nsys-rep",
+    "bytes": 512484,
+    "sha256": "92b930c4dab31331667951ff1d5e0361cf1f1b95346b8b35c5d142df2424c67b",
+    "version": {
+      "command": [
+        "/home/qbz415/.local/opt/nvidia/nsight-systems-2026.5.1-cli/opt/nvidia/nsight-systems-cli/2026.5.1/target-linux-x64/nsys",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "NVIDIA Nsight Systems version 2026.5.1.161-265138896106v0",
+      "stderr": "",
+      "timed_out": false
+    }
+  },
+  "commands": {
+    "profile": {
+      "command": [
+        "/home/qbz415/.local/opt/nvidia/nsight-systems-2026.5.1-cli/opt/nvidia/nsight-systems-cli/2026.5.1/target-linux-x64/nsys",
+        "profile",
+        "--force-overwrite=true",
+        "--trace=cuda,nvtx",
+        "--sample=none",
+        "--cpuctxsw=none",
+        "--output=/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/k0_timeline",
+        "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+        "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k0_harness.py",
+        "--config",
+        "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op0_measurement.json",
+        "--nsys-target",
+        "--output",
+        "/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/k0_nsys_target.json"
+      ],
+      "exit_code": 0,
+      "stdout": "Collecting data...\nGenerating '/tmp/nsys-qbz415/nsys-report-e318.qdstrm'\n\n[1/1] [0%                          ] k0_timeline.nsys-rep\n[1/1] [0%                          ] k0_timeline.nsys-rep\n[1/1] [1%                          ] k0_timeline.nsys-rep\n[1/1] [2%                          ] k0_timeline.nsys-rep\n[1/1] [5%                          ] k0_timeline.nsys-rep\n[1/1] [=16%                        ] k0_timeline.nsys-rep\n[1/1] [==19%                       ] k0_timeline.nsys-rep\n[1/1] [==20%                       ] k0_timeline.nsys-rep\n[1/1] [======================92%   ] k0_timeline.nsys-rep\n[1/1] [=======================96%  ] k0_timeline.nsys-rep\n[1/1] [========================98% ] k0_timeline.nsys-rep\n[1/1] [========================100%] k0_timeline.nsys-rep\n[1/1] [========================100%] k0_timeline.nsys-rep\nGenerated:\n\t/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/k0_timeline.nsys-rep",
+      "stderr": "",
+      "timed_out": false
+    },
+    "stats": {
+      "command": [
+        "/home/qbz415/.local/opt/nvidia/nsight-systems-2026.5.1-cli/opt/nvidia/nsight-systems-cli/2026.5.1/target-linux-x64/nsys",
+        "stats",
+        "--force-export=true",
+        "--quiet",
+        "--filter-nvtx",
+        "edgeforge_k0_nsys_measure",
+        "--report",
+        "cuda_gpu_trace",
+        "--format",
+        "csv",
+        "--output",
+        "-",
+        "/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/k0_timeline.nsys-rep"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdout_sha256": "fcc834856a7e33266872c992c801430b69e6d466250eba7dc6cae03d6ec016fa"
+    }
+  },
+  "target_receipt_ref": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op0/k0_nsys_target.json",
+  "target_telemetry": {
+    "interval_seconds": 1.0,
+    "sample_count": 5,
+    "errors": [],
+    "numeric": {
+      "sm_mhz": {
+        "count": 5,
+        "min": 465.0,
+        "q1": 2250.0,
+        "p50": 2535.0,
+        "q3": 2535.0,
+        "max": 2535.0,
+        "mean": 2064.0,
+        "iqr": 285.0
+      },
+      "memory_mhz": {
+        "count": 5,
+        "min": 8000.0,
+        "q1": 8000.0,
+        "p50": 8000.0,
+        "q3": 8000.0,
+        "max": 8000.0,
+        "mean": 8000.0,
+        "iqr": 0.0
+      },
+      "temperature_c": {
+        "count": 5,
+        "min": 72.0,
+        "q1": 73.0,
+        "p50": 75.0,
+        "q3": 75.0,
+        "max": 75.0,
+        "mean": 74.0,
+        "iqr": 2.0
+      },
+      "power_w": {
+        "count": 5,
+        "min": 17.1,
+        "q1": 21.9,
+        "p50": 45.28,
+        "q3": 54.88,
+        "max": 58.27,
+        "mean": 39.486,
+        "iqr": 32.98
+      }
+    },
+    "pstates": {
+      "P0": 5
+    },
+    "throttle_flags": {
+      "clocks_event_reasons.sw_power_cap": false,
+      "clocks_event_reasons.sw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_power_brake_slowdown": false
+    },
+    "thermal_or_hardware_throttle": false,
+    "samples": [
+      {
+        "timestamp": "2026/09/15 15:39:27.295",
+        "pstate": "P0",
+        "clocks.current.sm": "465",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "73",
+        "power.draw": "21.90",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:27+08:00",
+        "phase": "k0_nsys_stabilization"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:28.216",
+        "pstate": "P0",
+        "clocks.current.sm": "2250",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "72",
+        "power.draw": "17.10",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:28+08:00",
+        "phase": "k0_nsys_stabilization"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:29.202",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "75",
+        "power.draw": "45.28",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:29+08:00",
+        "phase": "k0_nsys_stabilization"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:30.250",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "75",
+        "power.draw": "58.27",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:30+08:00",
+        "phase": "k0_nsys_stabilization"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:30.621",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "75",
+        "power.draw": "54.88",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:30+08:00",
+        "phase": "k0_nsys_measure"
+      }
+    ]
+  },
+  "thermal_or_hardware_throttle": false,
+  "status": "PASS"
+}

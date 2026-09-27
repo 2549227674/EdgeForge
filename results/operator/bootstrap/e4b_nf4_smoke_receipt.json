@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "stage": "OP-P0-3",
+  "started_at": "2026-09-15T14:58:09+08:00",
+  "argv": [
+    "scripts/operator/load_smoke_nf4.py",
+    "--model",
+    "models/gemma-4-E4B-it",
+    "--carrier",
+    "bootstrap",
+    "--receipt",
+    "results/operator/bootstrap/e4b_nf4_smoke_receipt.json",
+    "--prefill-tokens",
+    "8",
+    "--decode-tokens",
+    "2"
+  ],
+  "cwd": "/home/qbz415/piloop-edge-inference-profiler",
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0",
+      "tokenizers": "0.22.2",
+      "sentencepiece": "0.2.2",
+      "protobuf": "6.33.6"
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 140.00 W"
+  },
+  "script": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/load_smoke_nf4.py",
+  "script_sha256": "55a8ead8f380fcb3d6048fba8603f009bf47785804c07980576fe5983fdc4a09",
+  "status": "PASS",
+  "finished_at": "2026-09-15T14:59:15+08:00",
+  "assertions": {
+    "transfer_integrity": "PASS",
+    "nf4_carrier": "PASS",
+    "prefill_512_decode_32": "PASS",
+    "gpu_memory_below_7_5_gib": "PASS",
+    "embedding_no_remigration": "PASS"
+  },
+  "integrity": {
+    "mode": "bootstrap_nonformal",
+    "config_sha256": "33b10c02df3c2e8536cf323d29d53262aaa2f4d11dbe19bc729373fbe90295d4",
+    "weight_files": [
+      {
+        "path": "model.safetensors",
+        "bytes": 15992595884
+      }
+    ],
+    "formal_evidence_eligible": false,
+    "status": "PASS"
+  },
+  "carrier": "bootstrap",
+  "formal_evidence_eligible": false,
+  "model_path": "/home/qbz415/piloop-edge-inference-profiler/models/gemma-4-E4B-it",
+  "quantization": {
+    "load_in_4bit": true,
+    "quant_type": "nf4",
+    "double_quant": true,
+    "compute_dtype": "torch.bfloat16",
+    "linear4bit_module_count_all": 343,
+    "linear4bit_module_count_active_language": 343,
+    "observed_quant_types_all": {
+      "nf4": 343
+    },
+    "observed_quant_types_active_language": {
+      "nf4": 343
+    },
+    "active_language_weight_devices": {
+      "cuda:0": 343
+    }
+  },
+  "device_map_requested": {
+    "model.vision_tower": "cpu",
+    "model.audio_tower": "cpu",
+    "model.embed_vision": "cpu",
+    "model.embed_audio": "cpu",
+    "model.language_model.embed_tokens": "cpu",
+    "model.language_model.embed_tokens_per_layer": "cpu",
+    "lm_head": "cpu",
+    "model.language_model.layers": 0,
+    "model.language_model.norm": 0,
+    "model.language_model.rotary_emb": 0,
+    "model.language_model.per_layer_model_projection": 0,
+    "model.language_model.per_layer_projection_norm": 0
+  },
+  "hf_device_map_observed": {
+    "model.vision_tower": "cpu",
+    "model.audio_tower": "cpu",
+    "model.embed_vision": "cpu",
+    "model.embed_audio": "cpu",
+    "model.language_model.embed_tokens": "cpu",
+    "model.language_model.embed_tokens_per_layer": "cpu",
+    "lm_head": "cpu",
+    "model.language_model.layers": 0,
+    "model.language_model.norm": 0,
+    "model.language_model.rotary_emb": 0,
+    "model.language_model.per_layer_model_projection": 0,
+    "model.language_model.per_layer_projection_norm": 0
+  },
+  "cpu_materialization": {
+    "strategy": "detach_leaf_offload_hooks_and_retie_lm_head",
+    "before": {
+      "model.language_model.embed_tokens": {
+        "hook": {
+          "present": true,
+          "type": "AlignDevicesHook",
+          "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+          "execution_device": "0",
+          "offload": true
+        },
+        "storage": {
+          "weight": {
+            "device": "meta",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              262144,
+              2560
+            ],
+            "numel": 671088640,
+            "data_ptr": null
+          },
+          "embed_scale": {
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "shape": [],
+            "numel": 1,
+            "data_ptr": 52765530112
+          }
+        }
+      },
+      "model.language_model.embed_tokens_per_layer": {
+        "hook": {
+          "present": true,
+          "type": "AlignDevicesHook",
+          "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+          "execution_device": "0",
+          "offload": true
+        },
+        "storage": {
+          "weight": {
+            "device": "meta",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              262144,
+              10752
+            ],
+            "numel": 2818572288,
+            "data_ptr": null
+          },
+          "embed_scale": {
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "shape": [],
+            "numel": 1,
+            "data_ptr": 52765530624
+          }
+        }
+      },
+      "lm_head": {
+        "hook": {
+          "present": true,
+          "type": "AlignDevicesHook",
+          "repr": "AlignDevicesHook(execution_device=0, offload=True, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+          "execution_device": "0",
+          "offload": true
+        },
+        "storage": {
+          "weight": {
+            "device": "meta",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              262144,
+              2560
+            ],
+            "numel": 671088640,
+            "data_ptr": null
+          }
+        }
+      }
+    },
+    "after": {
+      "model.language_model.embed_tokens": {
+        "hook": {
+          "present": false,
+          "type": null,
+          "repr": null,
+          "execution_device": "None",
+          "offload": null
+        },
+        "storage": {
+          "weight": {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              262144,
+              2560
+            ],
+            "numel": 671088640,
+            "data_ptr": 127375552466904
+          },
+          "embed_scale": {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [],
+            "numel": 1,
+            "data_ptr": 426040960
+          }
+        }
+      },
+      "model.language_model.embed_tokens_per_layer": {
+        "hook": {
+          "present": false,
+          "type": null,
+          "repr": null,
+          "execution_device": "None",
+          "offload": null
+        },
+        "storage": {
+          "weight": {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              262144,
+              10752
+            ],
+            "numel": 2818572288,
+            "data_ptr": 127376894644184
+          },
+          "embed_scale": {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [],
+            "numel": 1,
+            "data_ptr": 426654656
+          }
+        }
+      },
+      "lm_head": {
+        "hook": {
+          "present": false,
+          "type": null,
+          "repr": null,
+          "execution_device": "None",
+          "offload": null
+        },
+        "storage": {
+          "weight": {
+            "device": "cpu",
+            "dtype": "torch.bfloat16",
+            "shape": [
+              262144,
+              2560
+            ],
+            "numel": 671088640,
+            "data_ptr": 127375552466904
+          }
+        }
+      }
+    },
+    "lm_head_tied_to_token_embedding": true,
+    "persistent_cpu_bytes_unique": 6979321856
+  },
+  "persistent_cpu_storage_before_generation": {
+    "model.language_model.embed_tokens": {
+      "weight": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          262144,
+          2560
+        ],
+        "numel": 671088640,
+        "data_ptr": 127375552466904
+      },
+      "embed_scale": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [],
+        "numel": 1,
+        "data_ptr": 426040960
+      }
+    },
+    "model.language_model.embed_tokens_per_layer": {
+      "weight": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          262144,
+          10752
+        ],
+        "numel": 2818572288,
+        "data_ptr": 127376894644184
+      },
+      "embed_scale": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [],
+        "numel": 1,
+        "data_ptr": 426654656
+      }
+    },
+    "lm_head": {
+      "weight": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          262144,
+          2560
+        ],
+        "numel": 671088640,
+        "data_ptr": 127375552466904
+      }
+    }
+  },
+  "persistent_cpu_storage_after_generation": {
+    "model.language_model.embed_tokens": {
+      "weight": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          262144,
+          2560
+        ],
+        "numel": 671088640,
+        "data_ptr": 127375552466904
+      },
+      "embed_scale": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [],
+        "numel": 1,
+        "data_ptr": 426040960
+      }
+    },
+    "model.language_model.embed_tokens_per_layer": {
+      "weight": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          262144,
+          10752
+        ],
+        "numel": 2818572288,
+        "data_ptr": 127376894644184
+      },
+      "embed_scale": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [],
+        "numel": 1,
+        "data_ptr": 426654656
+      }
+    },
+    "lm_head": {
+      "weight": {
+        "device": "cpu",
+        "dtype": "torch.bfloat16",
+        "shape": [
+          262144,
+          2560
+        ],
+        "numel": 671088640,
+        "data_ptr": 127375552466904
+      }
+    }
+  },
+  "unused_multimodal_offload_state": {
+    "model.vision_tower": {
+      "hook": {
+        "present": true,
+        "type": "AlignDevicesHook",
+        "repr": "AlignDevicesHook(execution_device=0, offload=False, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+        "execution_device": "0",
+        "offload": false
+      },
+      "devices_recursive": [
+        "cuda:0",
+        "meta"
+      ]
+    },
+    "model.audio_tower": {
+      "hook": {
+        "present": true,
+        "type": "AlignDevicesHook",
+        "repr": "AlignDevicesHook(execution_device=0, offload=False, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+        "execution_device": "0",
+        "offload": false
+      },
+      "devices_recursive": [
+        "cuda:0",
+        "meta"
+      ]
+    },
+    "model.embed_vision": {
+      "hook": {
+        "present": true,
+        "type": "AlignDevicesHook",
+        "repr": "AlignDevicesHook(execution_device=0, offload=False, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+        "execution_device": "0",
+        "offload": false
+      },
+      "devices_recursive": [
+        "meta"
+      ]
+    },
+    "model.embed_audio": {
+      "hook": {
+        "present": true,
+        "type": "AlignDevicesHook",
+        "repr": "AlignDevicesHook(execution_device=0, offload=False, io_same_device=False, offload_buffers=False, place_submodules=False, skip_keys={'past_key_values', 'shared_kv_states'})",
+        "execution_device": "0",
+        "offload": false
+      },
+      "devices_recursive": [
+        "meta"
+      ]
+    }
+  },
+  "embedding_no_remigration": true,
+  "load_seconds": 46.25240613100004,
+  "generation": {
+    "prefill_tokens": 8,
+    "decode_tokens": 2,
+    "greedy": true,
+    "seed": 20260914,
+    "generated_token_ids": [
+      121019,
+      64745
+    ],
+    "generated_token_ids_sha256": "689c44be2d3fc7c215b470878d973aca1b3fae3499f764c1129c56275b82fd4e",
+    "seconds": 6.193946197999935,
+    "prefill_and_first_token_seconds": 5.804490745999942,
+    "incremental_decode_seconds": 0.3889547419998962,
+    "incremental_decode_input_tokens": 1,
+    "step_seconds": [
+      5.804490745999942,
+      0.3889547419998962
+    ],
+    "embedding_cuda_allocation_deltas_bytes": [
+      0,
+      0
+    ],
+    "embedding_cuda_allocation_delta_max_bytes": 0,
+    "final_cache_length": 9
+  },
+  "memory_after_load": {
+    "allocated_bytes": 2051864576,
+    "reserved_bytes": 2092957696,
+    "peak_allocated_bytes": 2109867520,
+    "peak_reserved_bytes": 2155872256,
+    "device_used_bytes": 3250061312,
+    "device_free_bytes": 5335154688,
+    "device_total_bytes": 8585216000,
+    "peak_allocated_mib": 2012.126,
+    "peak_reserved_mib": 2056.0,
+    "device_used_mib": 3099.5
+  },
+  "memory_final": {
+    "allocated_bytes": 2060383232,
+    "reserved_bytes": 2092957696,
+    "peak_allocated_bytes": 2109867520,
+    "peak_reserved_bytes": 2155872256,
+    "device_used_bytes": 3266838528,
+    "device_free_bytes": 5318377472,
+    "device_total_bytes": 8585216000,
+    "peak_allocated_mib": 2012.126,
+    "peak_reserved_mib": 2056.0,
+    "device_used_mib": 3115.5
+  },
+  "gpu_budget_gib": 7.5,
+  "gpu_budget_bytes": 8053063680,
+  "gpu_budget_checks": {
+    "peak_allocated_bytes": true,
+    "peak_reserved_bytes": true,
+    "device_used_bytes": true
+  }
+}

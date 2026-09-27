@@ -1,0 +1,1189 @@
+{
+  "schema_version": 1,
+  "experiment": "alpha_memory_attention_profile",
+  "environment": {
+    "command": "scripts/m1/run_alpha_qualification.py profile --model models/gemma-4-E4B-it --samples results/t1/ladder/4096/sample.jsonl --out results/m1/alpha/alpha2_memory_attention_profile.json --snapshot-out results/m1/alpha/alpha2_memory_snapshot.pickle --max-length 4096 --no-gradient-checkpointing",
+    "cwd": "/root/autodl-tmp/edgeforge-m1/workspace",
+    "hostname": "autodl-container-atdlpbjbca-22473649",
+    "seed_determinism": "recorded_seeds_only",
+    "torch_version": "2.11.0+cu128",
+    "torch_cuda": "12.8",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "gpu_capability": [
+      12,
+      0
+    ],
+    "gpu_total_mib": 97251,
+    "bf16_supported": true,
+    "template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+    "template_matches_frozen": true,
+    "model_weights_bytes": 15992595884,
+    "model_weights_sha256": "cfbd3d2f1cd71bd471c37fe2bf8546d5028d41e5736f64e1ca6c6b8893125503",
+    "model_weights_matches_frozen": true,
+    "model_config_sha256": "33b10c02df3c2e8536cf323d29d53262aaa2f4d11dbe19bc729373fbe90295d4",
+    "model_config": {
+      "architectures": [
+        "Gemma4ForConditionalGeneration"
+      ],
+      "audio_config": {
+        "_name_or_path": "",
+        "architectures": null,
+        "attention_chunk_size": 12,
+        "attention_context_left": 13,
+        "attention_context_right": 0,
+        "attention_invalid_logits_value": -1000000000.0,
+        "attention_logit_cap": 50.0,
+        "chunk_size_feed_forward": 0,
+        "conv_kernel_size": 5,
+        "dtype": "bfloat16",
+        "gradient_clipping": 10000000000.0,
+        "hidden_act": "silu",
+        "hidden_size": 1024,
+        "id2label": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        },
+        "initializer_range": 0.02,
+        "is_encoder_decoder": false,
+        "label2id": {
+          "LABEL_0": 0,
+          "LABEL_1": 1
+        },
+        "model_type": "gemma4_audio",
+        "num_attention_heads": 8,
+        "num_hidden_layers": 12,
+        "output_attentions": false,
+        "output_hidden_states": false,
+        "output_proj_dims": 1536,
+        "problem_type": null,
+        "residual_weight": 0.5,
+        "return_dict": true,
+        "rms_norm_eps": 1e-06,
+        "subsampling_conv_channels": [
+          128,
+          32
+        ],
+        "use_clipped_linears": true
+      },
+      "audio_token_id": 258881,
+      "boa_token_id": 256000,
+      "boi_token_id": 255999,
+      "dtype": "bfloat16",
+      "eoa_token_id": 258883,
+      "eoa_token_index": 258883,
+      "eoi_token_id": 258882,
+      "eos_token_id": [
+        1,
+        106
+      ],
+      "image_token_id": 258880,
+      "initializer_range": 0.02,
+      "model_type": "gemma4",
+      "text_config": {
+        "attention_bias": false,
+        "attention_dropout": 0.0,
+        "attention_k_eq_v": false,
+        "bos_token_id": 2,
+        "dtype": "bfloat16",
+        "enable_moe_block": false,
+        "eos_token_id": 1,
+        "expert_intermediate_size": null,
+        "final_logit_softcapping": 30.0,
+        "global_head_dim": 512,
+        "head_dim": 256,
+        "hidden_activation": "gelu_pytorch_tanh",
+        "hidden_size": 2560,
+        "hidden_size_per_layer_input": 256,
+        "initializer_range": 0.02,
+        "intermediate_size": 10240,
+        "layer_types": [
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention"
+        ],
+        "max_position_embeddings": 131072,
+        "model_type": "gemma4_text",
+        "num_attention_heads": 8,
+        "num_experts": null,
+        "num_global_key_value_heads": null,
+        "num_hidden_layers": 42,
+        "num_key_value_heads": 2,
+        "num_kv_shared_layers": 18,
+        "pad_token_id": 0,
+        "rms_norm_eps": 1e-06,
+        "rope_parameters": {
+          "full_attention": {
+            "partial_rotary_factor": 0.25,
+            "rope_theta": 1000000.0,
+            "rope_type": "proportional"
+          },
+          "sliding_attention": {
+            "rope_theta": 10000.0,
+            "rope_type": "default"
+          }
+        },
+        "sliding_window": 512,
+        "tie_word_embeddings": true,
+        "top_k_experts": null,
+        "use_bidirectional_attention": null,
+        "use_cache": true,
+        "use_double_wide_mlp": false,
+        "vocab_size": 262144,
+        "vocab_size_per_layer_input": 262144
+      },
+      "tie_word_embeddings": true,
+      "transformers_version": "5.5.0.dev0",
+      "video_token_id": 258884,
+      "vision_config": {
+        "_name_or_path": "",
+        "architectures": null,
+        "attention_bias": false,
+        "attention_dropout": 0.0,
+        "chunk_size_feed_forward": 0,
+        "default_output_length": 280,
+        "dtype": "bfloat16",
+        "global_head_dim": 64,
+        "head_dim": 64,
+        "hidden_activation": "gelu_pytorch_tanh",
+        "hidden_size": 768,
+        "id2label": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        },
+        "initializer_range": 0.02,
+        "intermediate_size": 3072,
+        "is_encoder_decoder": false,
+        "label2id": {
+          "LABEL_0": 0,
+          "LABEL_1": 1
+        },
+        "max_position_embeddings": 131072,
+        "model_type": "gemma4_vision",
+        "num_attention_heads": 12,
+        "num_hidden_layers": 16,
+        "num_key_value_heads": 12,
+        "output_attentions": false,
+        "output_hidden_states": false,
+        "patch_size": 16,
+        "pooling_kernel_size": 3,
+        "position_embedding_size": 10240,
+        "problem_type": null,
+        "return_dict": true,
+        "rms_norm_eps": 1e-06,
+        "rope_parameters": {
+          "rope_theta": 100.0,
+          "rope_type": "default"
+        },
+        "standardize": false,
+        "use_clipped_linears": true
+      },
+      "vision_soft_tokens_per_image": 280
+    }
+  },
+  "seed": 20260811,
+  "gradient_checkpointing": false,
+  "checkpointing": {
+    "implementation": "non_reentrant",
+    "use_reentrant": false,
+    "use_cache": false
+  },
+  "samples_file": "results/t1/ladder/4096/sample.jsonl",
+  "samples_file_sha256": "676bbf16395de6db2258569e765419173e028e66890da74f033fb5aba032c7b7",
+  "sample": {
+    "uid": "Crownelius__Complete-FABLE.5-traces-2M:4c2f2ba16f5eef1778b9ebfe4313cdf1fb9531d4a9a206deadfaa118d386c146:0",
+    "length": 4096,
+    "supervised_tokens": 3872,
+    "token_label_sha256": "1d4d63d527716ee01b6ae34a50d992172964a4c21088a65f28219fbccf8a6057"
+  },
+  "snapshot_path": "results/m1/alpha/alpha2_memory_snapshot.pickle",
+  "status": "completed",
+  "last_stage": "synchronize",
+  "loss": 3.487748384475708,
+  "elapsed_seconds": 4.751070751808584,
+  "peak_allocated_gib": 85.90656328201294,
+  "peak_reserved_gib": 86.8125,
+  "attention_kernels": [
+    {
+      "operator": "aten::scaled_dot_product_attention",
+      "count": 35,
+      "input_shapes": [
+        [
+          1,
+          8,
+          4096,
+          256
+        ],
+        [
+          1,
+          8,
+          4096,
+          256
+        ],
+        [
+          1,
+          8,
+          4096,
+          256
+        ],
+        [
+          1,
+          1,
+          4096,
+          4096
+        ],
+        [],
+        [],
+        [],
+        []
+      ],
+      "self_cuda_time_us": 0.0,
+      "cuda_time_us": 134881.2309999998,
+      "self_cuda_memory_bytes": -17920,
+      "cuda_memory_bytes": 3527802880
+    },
+    {
+      "operator": "aten::_scaled_dot_product_efficient_attention",
+      "count": 35,
+      "input_shapes": [
+        [
+          1,
+          8,
+          4096,
+          256
+        ],
+        [
+          1,
+          8,
+          4096,
+          256
+        ],
+        [
+          1,
+          8,
+          4096,
+          256
+        ],
+        [
+          1,
+          8,
+          4096,
+          4096
+        ],
+        [],
+        [],
+        [],
+        []
+      ],
+      "self_cuda_time_us": 0.0,
+      "cuda_time_us": 132568.5360000002,
+      "self_cuda_memory_bytes": 0,
+      "cuda_memory_bytes": 1178992640
+    },
+    {
+      "operator": "aten::scaled_dot_product_attention",
+      "count": 7,
+      "input_shapes": [
+        [
+          1,
+          8,
+          4096,
+          512
+        ],
+        [
+          1,
+          8,
+          4096,
+          512
+        ],
+        [
+          1,
+          8,
+          4096,
+          512
+        ],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "self_cuda_time_us": 0.0,
+      "cuda_time_us": 24188.071000000113,
+      "self_cuda_memory_bytes": 0,
+      "cuda_memory_bytes": 470679552
+    },
+    {
+      "operator": "aten::_scaled_dot_product_efficient_attention",
+      "count": 7,
+      "input_shapes": [
+        [
+          1,
+          8,
+          4096,
+          512
+        ],
+        [
+          1,
+          8,
+          4096,
+          512
+        ],
+        [
+          1,
+          8,
+          4096,
+          512
+        ],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "self_cuda_time_us": 0.0,
+      "cuda_time_us": 24188.071000000113,
+      "self_cuda_memory_bytes": 0,
+      "cuda_memory_bytes": 470679552
+    },
+    {
+      "operator": "aten::_scaled_dot_product_efficient_attention_backward",
+      "count": 7,
+      "input_shapes": [
+        [
+          1,
+          8,
+          4096,
+          512
+        ],
+        [
+          1,
+          8,
+          4096,
+          512
+        ],
+        [
+          1,
+          8,
+          4096,
+          512
+        ],
+        [
+          1,
+          8,
+          4096,
+          512
+        ],
+        [],
+        [
+          1,
+          8,
+          4096,
+          512
+        ],
+        [
+          1,
+          8,
+          4096
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "self_cuda_time_us": 0.0,
+      "cuda_time_us": 99982.90600000019,
+      "self_cuda_memory_bytes": 0,
+      "cuda_memory_bytes": 1409286144
+    },
+    {
+      "operator": "aten::_scaled_dot_product_efficient_attention_backward",
+      "count": 35,
+      "input_shapes": [
+        [
+          1,
+          8,
+          4096,
+          256
+        ],
+        [
+          1,
+          8,
+          4096,
+          256
+        ],
+        [
+          1,
+          8,
+          4096,
+          256
+        ],
+        [
+          1,
+          8,
+          4096,
+          256
+        ],
+        [
+          1,
+          8,
+          4096,
+          4096
+        ],
+        [
+          1,
+          8,
+          4096,
+          256
+        ],
+        [
+          1,
+          8,
+          4096
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "self_cuda_time_us": 0.0,
+      "cuda_time_us": 356682.0379999983,
+      "self_cuda_memory_bytes": 0,
+      "cuda_memory_bytes": 3523215360
+    }
+  ],
+  "top_cuda_memory_operators": [
+    {
+      "operator": "aten::empty_strided",
+      "count": 2399,
+      "input_shapes": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "self_cuda_memory_bytes": 81885488640,
+      "cuda_memory_bytes": 81885488640,
+      "self_cuda_time_us": 0
+    },
+    {
+      "operator": "aten::empty",
+      "count": 1461,
+      "input_shapes": [
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "self_cuda_memory_bytes": 38939530240,
+      "cuda_memory_bytes": 38939530240,
+      "self_cuda_time_us": 0
+    },
+    {
+      "operator": "aten::mul",
+      "count": 168,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          10240
+        ],
+        []
+      ],
+      "self_cuda_memory_bytes": 28185722880,
+      "cuda_memory_bytes": 28185722880,
+      "self_cuda_time_us": 35212.34300000011
+    },
+    {
+      "operator": "aten::mm",
+      "count": 126,
+      "input_shapes": [
+        [
+          4096,
+          8
+        ],
+        [
+          8,
+          10240
+        ]
+      ],
+      "self_cuda_memory_bytes": 21139292160,
+      "cuda_memory_bytes": 21139292160,
+      "self_cuda_time_us": 11252.973999999173
+    },
+    {
+      "operator": "aten::add",
+      "count": 126,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          10240
+        ],
+        [
+          1,
+          4096,
+          10240
+        ],
+        []
+      ],
+      "self_cuda_memory_bytes": 21139292160,
+      "cuda_memory_bytes": 21139292160,
+      "self_cuda_time_us": 42777.33400000038
+    },
+    {
+      "operator": "aten::mul",
+      "count": 126,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          10240
+        ],
+        [
+          1,
+          4096,
+          10240
+        ]
+      ],
+      "self_cuda_memory_bytes": 21139292160,
+      "cuda_memory_bytes": 21139292160,
+      "self_cuda_time_us": 42638.03300000058
+    },
+    {
+      "operator": "aten::mul",
+      "count": 463,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          2560
+        ],
+        []
+      ],
+      "self_cuda_memory_bytes": 19419627520,
+      "cuda_memory_bytes": 19419627520,
+      "self_cuda_time_us": 9206.066999998395
+    },
+    {
+      "operator": "aten::pow",
+      "count": 421,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          2560
+        ],
+        []
+      ],
+      "self_cuda_memory_bytes": 17658019840,
+      "cuda_memory_bytes": 17658019840,
+      "self_cuda_time_us": 3223.8700000009267
+    },
+    {
+      "operator": "aten::mul",
+      "count": 421,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          2560
+        ],
+        [
+          1,
+          4096,
+          1
+        ]
+      ],
+      "self_cuda_memory_bytes": 17658019840,
+      "cuda_memory_bytes": 17658019840,
+      "self_cuda_time_us": 15535.164999998466
+    },
+    {
+      "operator": "aten::mul",
+      "count": 421,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          2560
+        ],
+        [
+          2560
+        ]
+      ],
+      "self_cuda_memory_bytes": 17658019840,
+      "cuda_memory_bytes": 17658019840,
+      "self_cuda_time_us": 11084.039999999339
+    },
+    {
+      "operator": "aten::mul",
+      "count": 420,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          2560
+        ],
+        [
+          1,
+          4096,
+          2560
+        ]
+      ],
+      "self_cuda_memory_bytes": 17616076800,
+      "cuda_memory_bytes": 17616076800,
+      "self_cuda_time_us": 22004.539999999804
+    },
+    {
+      "operator": "aten::mm",
+      "count": 339,
+      "input_shapes": [
+        [
+          4096,
+          8
+        ],
+        [
+          8,
+          2560
+        ]
+      ],
+      "self_cuda_memory_bytes": 14218690560,
+      "cuda_memory_bytes": 14218690560,
+      "self_cuda_time_us": 5417.622999998974
+    },
+    {
+      "operator": "aten::add",
+      "count": 335,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          2560
+        ],
+        [
+          1,
+          4096,
+          2560
+        ],
+        []
+      ],
+      "self_cuda_memory_bytes": 14050918400,
+      "cuda_memory_bytes": 14050918400,
+      "self_cuda_time_us": 13881.146999999415
+    },
+    {
+      "operator": "aten::mm",
+      "count": 126,
+      "input_shapes": [
+        [
+          4096,
+          2560
+        ],
+        [
+          2560,
+          10240
+        ]
+      ],
+      "self_cuda_memory_bytes": 10569646080,
+      "cuda_memory_bytes": 10569646080,
+      "self_cuda_time_us": 67341.2859999999
+    },
+    {
+      "operator": "aten::div",
+      "count": 210,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          2560
+        ],
+        []
+      ],
+      "self_cuda_memory_bytes": 8808038400,
+      "cuda_memory_bytes": 8808038400,
+      "self_cuda_time_us": 5207.340999999782
+    },
+    {
+      "operator": "aten::div",
+      "count": 2,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          262144
+        ],
+        []
+      ],
+      "self_cuda_memory_bytes": 8589934592,
+      "cuda_memory_bytes": 8589934592,
+      "self_cuda_time_us": 11709.104999999749
+    },
+    {
+      "operator": "aten::mul",
+      "count": 2,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          262144
+        ],
+        []
+      ],
+      "self_cuda_memory_bytes": 8589934592,
+      "cuda_memory_bytes": 8589934592,
+      "self_cuda_time_us": 11709.934999999823
+    },
+    {
+      "operator": "aten::gelu",
+      "count": 42,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          10240
+        ],
+        []
+      ],
+      "self_cuda_memory_bytes": 7046430720,
+      "cuda_memory_bytes": 7046430720,
+      "self_cuda_time_us": 9526.998999999894
+    },
+    {
+      "operator": "aten::gelu_backward",
+      "count": 42,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          10240
+        ],
+        [
+          1,
+          4096,
+          10240
+        ],
+        []
+      ],
+      "self_cuda_memory_bytes": 7046430720,
+      "cuda_memory_bytes": 7046430720,
+      "self_cuda_time_us": 13819.078000000445
+    },
+    {
+      "operator": "aten::mul",
+      "count": 140,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          8,
+          256
+        ],
+        [
+          1,
+          4096,
+          1,
+          256
+        ]
+      ],
+      "self_cuda_memory_bytes": 4697620480,
+      "cuda_memory_bytes": 4697620480,
+      "self_cuda_time_us": 5289.144999999611
+    },
+    {
+      "operator": "aten::mm",
+      "count": 1,
+      "input_shapes": [
+        [
+          4096,
+          2560
+        ],
+        [
+          2560,
+          262144
+        ]
+      ],
+      "self_cuda_memory_bytes": 4294967296,
+      "cuda_memory_bytes": 4294967296,
+      "self_cuda_time_us": 101037.60600000003
+    },
+    {
+      "operator": "aten::tanh",
+      "count": 1,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          262144
+        ]
+      ],
+      "self_cuda_memory_bytes": 4294967296,
+      "cuda_memory_bytes": 4294967296,
+      "self_cuda_time_us": 5860.247999999905
+    },
+    {
+      "operator": "aten::_log_softmax",
+      "count": 1,
+      "input_shapes": [
+        [
+          4096,
+          262144
+        ],
+        [],
+        []
+      ],
+      "self_cuda_memory_bytes": 4294967296,
+      "cuda_memory_bytes": 4294967296,
+      "self_cuda_time_us": 11486.349999999977
+    },
+    {
+      "operator": "aten::nll_loss_backward",
+      "count": 1,
+      "input_shapes": [
+        [],
+        [
+          4096,
+          262144
+        ],
+        [
+          4096
+        ],
+        [],
+        [],
+        [],
+        []
+      ],
+      "self_cuda_memory_bytes": 4294967296,
+      "cuda_memory_bytes": 4294967296,
+      "self_cuda_time_us": 30.752000000094995
+    },
+    {
+      "operator": "aten::_log_softmax_backward_data",
+      "count": 1,
+      "input_shapes": [
+        [
+          4096,
+          262144
+        ],
+        [
+          4096,
+          262144
+        ],
+        [],
+        []
+      ],
+      "self_cuda_memory_bytes": 4294967296,
+      "cuda_memory_bytes": 4294967296,
+      "self_cuda_time_us": 11516.52600000007
+    },
+    {
+      "operator": "aten::tanh_backward",
+      "count": 1,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          262144
+        ],
+        [
+          1,
+          4096,
+          262144
+        ]
+      ],
+      "self_cuda_memory_bytes": 4294967296,
+      "cuda_memory_bytes": 4294967296,
+      "self_cuda_time_us": 8657.138000000035
+    },
+    {
+      "operator": "aten::mul",
+      "count": 105,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          8,
+          256
+        ],
+        [
+          1,
+          4096,
+          8,
+          256
+        ]
+      ],
+      "self_cuda_memory_bytes": 3523215360,
+      "cuda_memory_bytes": 3523215360,
+      "self_cuda_time_us": 3915.584999996936
+    },
+    {
+      "operator": "aten::mm",
+      "count": 126,
+      "input_shapes": [
+        [
+          4096,
+          10240
+        ],
+        [
+          10240,
+          2560
+        ]
+      ],
+      "self_cuda_memory_bytes": 2643984384,
+      "cuda_memory_bytes": 2643984384,
+      "self_cuda_time_us": 75797.2689999995
+    },
+    {
+      "operator": "aten::resize_",
+      "count": 44,
+      "input_shapes": [
+        [
+          0
+        ],
+        [],
+        []
+      ],
+      "self_cuda_memory_bytes": 2608989184,
+      "cuda_memory_bytes": 2608989184,
+      "self_cuda_time_us": 0
+    },
+    {
+      "operator": "aten::mm",
+      "count": 70,
+      "input_shapes": [
+        [
+          4096,
+          8
+        ],
+        [
+          8,
+          2048
+        ]
+      ],
+      "self_cuda_memory_bytes": 2348810240,
+      "cuda_memory_bytes": 2348810240,
+      "self_cuda_time_us": 902.3090000004158
+    },
+    {
+      "operator": "aten::mul",
+      "count": 70,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          2048
+        ],
+        []
+      ],
+      "self_cuda_memory_bytes": 2348810240,
+      "cuda_memory_bytes": 2348810240,
+      "self_cuda_time_us": 1121.5520000001416
+    },
+    {
+      "operator": "aten::add",
+      "count": 70,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          2048
+        ],
+        [
+          1,
+          4096,
+          2048
+        ],
+        []
+      ],
+      "self_cuda_memory_bytes": 2348810240,
+      "cuda_memory_bytes": 2348810240,
+      "self_cuda_time_us": 2497.243000000424
+    },
+    {
+      "operator": "aten::pow",
+      "count": 70,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          8,
+          256
+        ],
+        []
+      ],
+      "self_cuda_memory_bytes": 2348810240,
+      "cuda_memory_bytes": 2348810240,
+      "self_cuda_time_us": 419.01099999964936
+    },
+    {
+      "operator": "aten::mul",
+      "count": 70,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          8,
+          256
+        ],
+        [
+          1,
+          4096,
+          8,
+          1
+        ]
+      ],
+      "self_cuda_memory_bytes": 2348810240,
+      "cuda_memory_bytes": 2348810240,
+      "self_cuda_time_us": 1781.7789999999804
+    },
+    {
+      "operator": "aten::mul",
+      "count": 70,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          8,
+          256
+        ],
+        [
+          256
+        ]
+      ],
+      "self_cuda_memory_bytes": 2348810240,
+      "cuda_memory_bytes": 2348810240,
+      "self_cuda_time_us": 1514.4760000004899
+    },
+    {
+      "operator": "aten::cat",
+      "count": 68,
+      "input_shapes": [
+        [],
+        []
+      ],
+      "self_cuda_memory_bytes": 1892155392,
+      "cuda_memory_bytes": 1892155392,
+      "self_cuda_time_us": 1820.8830000000307
+    },
+    {
+      "operator": "aten::mul",
+      "count": 28,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          8,
+          512
+        ],
+        [
+          1,
+          4096,
+          1,
+          512
+        ]
+      ],
+      "self_cuda_memory_bytes": 1879048192,
+      "cuda_memory_bytes": 1879048192,
+      "self_cuda_time_us": 2483.413999999524
+    },
+    {
+      "operator": "aten::mm",
+      "count": 84,
+      "input_shapes": [
+        [
+          4096,
+          256
+        ],
+        [
+          256,
+          2560
+        ]
+      ],
+      "self_cuda_memory_bytes": 1762131968,
+      "cuda_memory_bytes": 1762131968,
+      "self_cuda_time_us": 3637.898999999801
+    },
+    {
+      "operator": "aten::mul",
+      "count": 42,
+      "input_shapes": [
+        [
+          1,
+          4096,
+          2560
+        ],
+        [
+          1
+        ]
+      ],
+      "self_cuda_memory_bytes": 1761607680,
+      "cuda_memory_bytes": 1761607680,
+      "self_cuda_time_us": 2468.2819999994244
+    },
+    {
+      "operator": "aten::mm",
+      "count": 69,
+      "input_shapes": [
+        [
+          4096,
+          2048
+        ],
+        [
+          2048,
+          2560
+        ]
+      ],
+      "self_cuda_memory_bytes": 1447034880,
+      "cuda_memory_bytes": 1447034880,
+      "self_cuda_time_us": 8708.214000000327
+    }
+  ],
+  "snapshot_bytes": 10745571,
+  "snapshot_sha256": "0bc1fa8235030ef35d3ae66d9b3a21959f703f8d46ce106570b2ade86dde63b3"
+}

@@ -1,0 +1,47 @@
+{
+  "checks": {
+    "anchor_accounts": true,
+    "anchor_arithmetic": true,
+    "carrier_roles": true,
+    "implementation_formal_runner_sha256": true,
+    "implementation_governor_guard_sha256": true,
+    "implementation_measurement_payload_sha256": true,
+    "implementation_npu_sampler_sha256": true,
+    "implementation_runner_source_sha256": true,
+    "implementation_telemetry_sampler_sha256": true,
+    "manual_greedy_contract": true,
+    "payload_bytes": true,
+    "payload_prompt_sequence": true,
+    "payload_sha256": true,
+    "payload_trailing_lf": true,
+    "per_prompt_identity": true,
+    "prereg_payload_sha256": true,
+    "prereg_prompt_manifest_sha256": true,
+    "prompt_count": true,
+    "single_segment_owner_waiver": true,
+    "source_archive_sha256": true,
+    "source_literal_extraction": true,
+    "source_member_sha256": true
+  },
+  "formal_execution_started": false,
+  "implementation_hashes": {
+    "formal_runner": "d6e4ff31739b69b8e3253af802b6fad86d3dfabfdf39103bcf03c7efaac163bf",
+    "measurement_payload": "46526dcfd6a85997c12b0430afc2e28b90442d41709d95409b438907014e36cb",
+    "npu_sampler": "52f7bc03d3e6b5f13a3b2db1c740fb15d019fcb10a6e1aedccecda5a2e2b8301",
+    "runner_source": "1a1b6662cd720d4247d0b09b5e49d7faf73243ee29bbe795ff0588fc2f3e0733",
+    "scripts/operator/board/governor_guard.sh": "6adc7622dc43897d108aec853dd0ea70bd99b81f095fa61edf12e0da5663bf0d",
+    "scripts/operator/board/telemetry_sampler.sh": "74f8e8a85858c567206b7234dafe7015a59483c42d83300a04b3532a1368b84c"
+  },
+  "label": "board-diagnostic-1core",
+  "prereg": {
+    "path": "configs/operator/board/ope4_diag_protocol.json",
+    "sha256": "16a7bc44a4956d8458747d1b94e7cf72f4c3e631d796977fc6f0ab14aa6100ba"
+  },
+  "prompt_manifest": {
+    "path": "configs/operator/board/ope4_five_prompt_manifest.json",
+    "sha256": "29f67ecd982e90dd24948b84500f1688c1ac5e9a03d02f4bc9ae4086fc7e5e7a"
+  },
+  "schema": "edgeforge-ope4-prereg-verification-v1",
+  "stage": "OPE4",
+  "status": "PASS"
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_GQA_DECODE_ATTENTION_CORRECTNESS",
+  "timestamp": "2026-09-16T17:28:18+08:00",
+  "protocol": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k3_gqa_decode_attention_prereg.json",
+    "sha256": "fe427c9650aa929d18f72daaaa22ed918b7d33fd5b0af4da12386e0a86229626"
+  },
+  "locked_candidate": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k3_gqa_attention.py",
+    "sha256": "3d3d57ac20e390e9f117ac763af7d5ffcfabe084fce861461e8e62e183ac76f0"
+  },
+  "candidate_lock_receipt": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_candidate_lock_receipt_20260916.json",
+    "sha256": "261e6b443bb9adfb36403edc49d2328f6ac2426dc4af967c417794884ca8eb39"
+  },
+  "runner": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k3_correctness.py",
+    "sha256": "75aee702b7431516ff3e394616b695cd7231ce43c7410cde7ffeb4fc59e50d25"
+  },
+  "result": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_correctness_20260916.json",
+    "sha256": "8ba0bca4ee44af54d7da368b72a61833adaba0a0ebcfbe8fa700d376129df514"
+  },
+  "gates": {
+    "protocol_immutable": "PASS",
+    "candidate_source_locked": "PASS",
+    "source_and_git_identity": "PASS",
+    "all_length_cases": "PASS",
+    "fresh_representative_matrix": "PASS",
+    "mask_matrix": "PASS",
+    "gqa_head_mapping_microcase": "PASS",
+    "source_tensors_unmodified": "PASS",
+    "fallback_rejection_matrix": "PASS",
+    "frozen_autotune_space": "PASS",
+    "day1_performance": "NOT_STARTED"
+  },
+  "counts": {
+    "candidate_trials": 75,
+    "fallback_cases": 13,
+    "exact_output_trials": 64,
+    "maximum_absolute_error": 0.00390625
+  },
+  "next_authorized_action": "Run K3 isolated Day-1 performance with the unchanged protocol, candidate, and correctness receipt; apply the frozen bounded continuation gate.",
+  "status": "PASS"
+}

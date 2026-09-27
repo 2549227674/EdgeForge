@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_REPLICATION_R2",
+  "frozen_at": "2026-09-16T17:40:08+08:00",
+  "revision_type": "OWNER_AUTHORIZED_ADAPTIVE_OVERRIDE_AFTER_DAY1",
+  "owner_instruction": "取消核验检查sha环节，浪费时间",
+  "owner_continuation_instruction": "执行下一步阶段",
+  "disclosure": "The original K3 R1 protocol required two different valid calendar days. After seeing the positive Day-1 result, the owner explicitly directed immediate continuation and removal of SHA verification. R2 preserves R1 evidence but replaces only the calendar-separation and SHA-verification requirements. This run is an independent same-day replication and must not be called cross-day evidence.",
+  "original_evidence": {
+    "protocol_path": "configs/operator/k3_gqa_decode_attention_prereg.json",
+    "candidate_path": "scripts/operator/k3_gqa_attention.py",
+    "correctness_receipt_path": "results/operator/pool/k3_gqa_correctness_receipt_20260916.json",
+    "day1_result_path": "results/operator/pool/k3_gqa_day1_20260916.json",
+    "day1_receipt_path": "results/operator/pool/k3_gqa_day1_receipt_20260916.json",
+    "day1_status": "K3_PROVISIONAL_DAY1_POSITIVE",
+    "day1_aggregate_speedup": 1.2750024353857878,
+    "day1_family_speedups": {
+      "sliding": 1.1165311435227647,
+      "full": 1.7140642276370235
+    }
+  },
+  "identity_policy": {
+    "sha256_calculation": "SKIPPED_BY_OWNER_DIRECTION",
+    "sha256_comparison": "SKIPPED_BY_OWNER_DIRECTION",
+    "required_checks": [
+      "all referenced files exist",
+      "formal correctness receipt status is PASS",
+      "Day-1 receipt status is K3_PROVISIONAL_DAY1_POSITIVE",
+      "Day-1 result reports a valid positive day",
+      "candidate module imports successfully"
+    ]
+  },
+  "unchanged_measurement_contract": {
+    "population": "the same frozen 13 GQA decode cases and 911148 projected invocations",
+    "input_seed": 20261011,
+    "implementations": ["current_eager", "compile_eager", "candidate"],
+    "warmup_repetitions_per_case_per_implementation": 50,
+    "measured_repetitions_per_case_per_implementation": 200,
+    "interleave": "three-way rotation by repetition index within each case",
+    "same_day_bandwidth": "repeat the 512 MiB float32 triad with 50 warmups and 200 repetitions",
+    "telemetry_interval_seconds": 1.0,
+    "minimum_memory_clock_ratio_vs_op0": 0.95,
+    "invalidate_on_thermal_or_hardware_throttle": true
+  },
+  "replication_gate": {
+    "independent_process": true,
+    "fresh_bandwidth_and_telemetry": true,
+    "replication_performance_positive": "aggregate speedup >=1.05 and neither family speedup below 0.95",
+    "aggregate_speedup_relative_difference_vs_day1_max": 0.10,
+    "family_direction_must_match_day1": true,
+    "pass_status": "K3_R2_SAME_DAY_REPLICATION_PASS_NCU_AUTHORIZED",
+    "invalid_status": "K3_R2_REPLICATION_INVALID_TELEMETRY",
+    "fail_status": "K3_R2_REPLICATION_FAIL_CLOSED"
+  },
+  "downstream": {
+    "on_pass": "Authorize only the three frozen K3 ncu Tier-B cases. C02 reconnection remains unauthorized until ncu completes.",
+    "on_invalid": "Repeat this unchanged R2 replication; do not run ncu or reconnection.",
+    "on_fail": "Close K3; do not run ncu or reconnection."
+  }
+}

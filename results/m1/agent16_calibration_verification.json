@@ -1,0 +1,1 @@
+{"dataset_sha256": "c2b1c7a062a60ba6a6aaa2d198045d74407472b03712d1dff1dced1493c2863a", "holdout_intersection": 0, "manifest_sha256": "01e45a0c5aa57ec3317cdabbb4fb75ee3613bda3788f8b0683c5009bb3001c6c", "mode": "verify-only", "records": 16, "second_pass_rerender_match": true, "status": "PASS", "total_tokens": 116577, "wall_seconds": 12.795}

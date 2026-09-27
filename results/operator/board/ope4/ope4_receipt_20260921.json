@@ -1,0 +1,2151 @@
+{
+  "anchor": {
+    "all_non_lmhead_linear": {
+      "gap_pct": 160.4712297599354,
+      "label": "all 343 non-lmhead linear calls",
+      "predicted_lower_bound_ms": 171.2765979998949,
+      "weight_bytes": 3972792320
+    },
+    "attribution_summary": "实测高于两列解析下界；prompt 窗口内 NPU core0 mean/p50=94.267%/95.000%，10 Hz 尺度呈持续近满载，不支持把主要差额归为百毫秒级粗粒度调度空洞（更细气泡仍不可见）。进程级 CPU 参与约 0.607 核，未显示 4 个可用 A76 饱和。结合 OPE2 已记录的 M=1 同几何强路径瓶颈，NPU/runtime decode 路径限制与现象相容；现有接口没有 NPU DRAM 字节计数器，SRAM 复用和权重压缩均不能证实或排除。",
+    "claim_limit": "the prediction assumes full listed weight traffic at the CPU triad ceiling and is only a lower-bound accounting anchor; SRAM reuse, weight compression, and scheduling bubbles remain candidates unless directly supported",
+    "core_projection": {
+      "gap_pct": 166.00010020295292,
+      "label": "258 core projection calls; not all non-lmhead linear",
+      "predicted_lower_bound_ms": 167.7165763324606,
+      "weight_bytes": 3890216960
+    },
+    "measured_primary_decode_ms_per_token": 446.1262611013072,
+    "metric": "aggregate consecutive NORMAL callback interval",
+    "model_stage_anchor_present": true,
+    "ope0_replication_status": "PASS_SINGLE_SEGMENT_OWNER_WAIVER",
+    "ope0_tier_a_ceiling_gbps": 23.1951846685,
+    "primary_carrier": "c02_a2"
+  },
+  "board_run": "results/operator/board/ope4/ope4_segment1_20260921T130538+0800",
+  "carriers": {
+    "c02_a2": {
+      "aggregate": {
+        "callback_decode_interval_count": 306,
+        "callback_interval_count_equals_perf_generate_tokens": true,
+        "callback_token_interval_ms": {
+          "iqr": 2.318093249999947,
+          "max": 479.012626,
+          "mean": 446.1262611013072,
+          "min": 441.193084,
+          "p25": 444.68703175,
+          "p50": 445.828688,
+          "p75": 447.00512499999996,
+          "samples": 306
+        },
+        "callback_vs_perf_decode_relative_delta": 0.0004879243150055546,
+        "memory_usage_mb": {
+          "iqr": 0.0,
+          "max": 5861.160156,
+          "mean": 5860.4359372,
+          "min": 5857.539062,
+          "p25": 5861.160156,
+          "p50": 5861.160156,
+          "p75": 5861.160156,
+          "samples": 5
+        },
+        "primary_decode_ms_per_token": 446.1262611013072,
+        "rkllm_generate_time_ms": {
+          "iqr": 35692.14209,
+          "max": 42374.691406,
+          "mean": 27289.6119142,
+          "min": 3154.271973,
+          "p25": 6673.354004,
+          "p50": 41880.246094,
+          "p75": 42365.496094,
+          "samples": 5
+        },
+        "rkllm_generate_time_ms_total": 136448.059571,
+        "rkllm_generate_tokens_total": 306,
+        "rkllm_perf_decode_ms_per_token": 445.9086914084967,
+        "rkllm_prefill_time_ms": {
+          "iqr": 20.414001999999982,
+          "max": 782.010986,
+          "mean": 661.2089966,
+          "min": 617.648987,
+          "p25": 623.265991,
+          "p50": 639.439026,
+          "p75": 643.679993,
+          "samples": 5
+        },
+        "wall_minus_rkllm_stages_ms": {
+          "iqr": 18.679591999998593,
+          "max": 22.91883200000302,
+          "mean": 14.86936100000039,
+          "min": 2.3212499999999636,
+          "p25": 4.065182000000277,
+          "p50": 22.296766999999818,
+          "p75": 22.74477399999887,
+          "samples": 5
+        },
+        "wall_run_ms": {
+          "iqr": 35704.018017,
+          "max": 43170.251854,
+          "mean": 27965.6902718,
+          "min": 3774.24221,
+          "p25": 7316.858212,
+          "p50": 42546.222854,
+          "p75": 43020.876229,
+          "samples": 5
+        },
+        "wall_ttft_ms": {
+          "iqr": 19.067999999999984,
+          "max": 783.20025,
+          "mean": 662.675767,
+          "min": 618.932125,
+          "p25": 625.776959,
+          "p50": 640.624542,
+          "p75": 644.844959,
+          "samples": 5
+        }
+      },
+      "carrier": "c02_a2",
+      "gates": {
+        "exactly_five_prompts": true,
+        "npu_numeric_each_prompt_window_pass": true,
+        "perf_all_events_numeric_pass": true,
+        "prompt_structure_pass": true,
+        "run_exit_zero": true,
+        "transcripts_pass": true
+      },
+      "init_ms": 16050.982799,
+      "npu_load_prompt_union": {
+        "core0": {
+          "iqr": 1.0,
+          "max": 96.0,
+          "mean": 94.26733380986418,
+          "min": 0.0,
+          "p25": 95.0,
+          "p50": 95.0,
+          "p75": 96.0,
+          "samples": 1399
+        },
+        "core1": {
+          "iqr": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "p25": 0.0,
+          "p50": 0.0,
+          "p75": 0.0,
+          "samples": 1399
+        },
+        "core2": {
+          "iqr": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "p25": 0.0,
+          "p50": 0.0,
+          "p75": 0.0,
+          "samples": 1399
+        }
+      },
+      "process_perf_stat": {
+        "all_expected_numeric": true,
+        "cpu_cores_utilized": 0.6071224229634761,
+        "events": {
+          "context-switches": {
+            "enabled_pct": 100.0,
+            "raw": "333145",
+            "runtime_ns": 95871724888,
+            "unit": "",
+            "value": 333145.0
+          },
+          "cpu-migrations": {
+            "enabled_pct": 100.0,
+            "raw": "9",
+            "runtime_ns": 95871724888,
+            "unit": "",
+            "value": 9.0
+          },
+          "cycles:u": {
+            "enabled_pct": 100.0,
+            "raw": "196033253536",
+            "runtime_ns": 96012556024,
+            "unit": "",
+            "value": 196033253536.0
+          },
+          "instructions:u": {
+            "enabled_pct": 100.0,
+            "raw": "536175055791",
+            "runtime_ns": 96012556024,
+            "unit": "",
+            "value": 536175055791.0
+          },
+          "page-faults": {
+            "enabled_pct": 100.0,
+            "raw": "268813",
+            "runtime_ns": 95871724888,
+            "unit": "",
+            "value": 268813.0
+          },
+          "task-clock": {
+            "enabled_pct": 100.0,
+            "raw": "95871.72",
+            "runtime_ns": 95871724888,
+            "unit": "msec",
+            "value": 95871.72
+          }
+        },
+        "ipc": 2.7351229759217133
+      },
+      "process_wall_ms": 157911.677075,
+      "prompt_count": 5,
+      "prompts": [
+        {
+          "callback_decode": {
+            "interval_distribution_ms": {
+              "iqr": 2.3458744999999794,
+              "max": 458.040042,
+              "mean": 446.263205031579,
+              "min": 442.522792,
+              "p25": 444.821709,
+              "p50": 446.04525,
+              "p75": 447.1675835,
+              "samples": 95
+            },
+            "intervals_ms": [
+              450.370083,
+              444.922042,
+              443.401876,
+              445.759708,
+              445.428375,
+              442.522792,
+              445.615042,
+              443.895667,
+              445.4555,
+              444.614042,
+              444.341042,
+              453.075,
+              443.421125,
+              446.675542,
+              444.834542,
+              446.126625,
+              446.999875,
+              444.393251,
+              446.95525,
+              443.941458,
+              446.735334,
+              443.625,
+              446.793667,
+              447.069292,
+              443.64075,
+              446.464959,
+              444.276583,
+              446.552167,
+              445.468042,
+              448.64925,
+              446.649584,
+              444.623667,
+              446.46875,
+              445.524917,
+              445.698167,
+              446.278875,
+              446.049625,
+              446.605542,
+              443.290167,
+              446.537583,
+              444.663626,
+              447.501541,
+              447.132876,
+              458.040042,
+              446.489166,
+              445.626709,
+              447.092917,
+              446.360542,
+              448.428458,
+              447.327126,
+              445.616208,
+              446.04525,
+              444.782625,
+              445.270292,
+              444.808876,
+              446.159875,
+              446.217917,
+              443.312625,
+              443.830042,
+              445.461042,
+              445.830875,
+              446.183208,
+              443.996001,
+              447.6535,
+              445.0775,
+              444.075625,
+              445.165292,
+              443.7125,
+              444.738001,
+              445.322208,
+              447.617042,
+              444.938084,
+              446.014041,
+              442.981292,
+              447.945459,
+              455.445375,
+              445.552334,
+              447.202291,
+              446.012876,
+              448.999833,
+              445.720917,
+              448.223709,
+              448.359333,
+              446.201292,
+              448.433417,
+              443.578042,
+              448.976208,
+              447.257417,
+              448.029459,
+              447.462458,
+              445.425459,
+              448.917875,
+              447.493959,
+              448.654792,
+              447.888291
+            ],
+            "normal_callbacks": 96,
+            "span_ms": 42395.004478
+          },
+          "npu_load_10hz": {
+            "cores": {
+              "core0": {
+                "iqr": 1.0,
+                "max": 96.0,
+                "mean": 92.87703016241299,
+                "min": 0.0,
+                "p25": 95.0,
+                "p50": 95.0,
+                "p75": 96.0,
+                "samples": 431
+              },
+              "core1": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 431
+              },
+              "core2": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 431
+              }
+            },
+            "numeric_core0_samples": 431,
+            "pass": true,
+            "samples": 431
+          },
+          "prompt_id": 1,
+          "rkllm_perf": {
+            "generate_ms_per_token": 446.0493832210526,
+            "generate_time_ms": 42374.691406,
+            "generate_tokens": 95,
+            "memory_usage_mb": 5857.539062,
+            "normal_callback_minus_generate_tokens": 1,
+            "prefill_time_ms": 623.265991,
+            "prefill_tokens": 21
+          },
+          "stage_breakdown": {
+            "interpretation": "residual is descriptive callback/runtime overhead, not an undocumented SDK stage",
+            "rkllm_generate_ms": 42374.691406,
+            "rkllm_prefill_ms": 623.265991,
+            "wall_minus_rkllm_stages_ms": 22.91883200000302,
+            "wall_run_ms": 43020.876229
+          },
+          "structure_pass": true,
+          "transcript": {
+            "bytes": 369,
+            "nonempty": true,
+            "pad_literal_seen": false,
+            "pass": true,
+            "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/board/ope4/ope4_segment1_20260921T130538+0800/c02_a2/prompt_01.utf8",
+            "replacement_character_seen": false,
+            "semantic_evaluation": "NOT_PERFORMED_FORBIDDEN",
+            "sha256": "b8e0e788bc4638b49b5edf7814429d5a23e9c3940af03a4669c7ccf862242ec5",
+            "utf8_valid": true
+          },
+          "wall_run_ms": 43020.876229,
+          "wall_ttft_ms": 625.776959
+        },
+        {
+          "callback_decode": {
+            "interval_distribution_ms": {
+              "iqr": 2.245687499999974,
+              "max": 455.905917,
+              "mean": 446.1785081052632,
+              "min": 442.184167,
+              "p25": 444.8898125,
+              "p50": 445.8685,
+              "p75": 447.1355,
+              "samples": 95
+            },
+            "intervals_ms": [
+              452.333584,
+              447.065792,
+              446.994041,
+              444.668001,
+              444.581958,
+              444.085542,
+              444.892,
+              442.64675,
+              444.902501,
+              444.787583,
+              443.587084,
+              445.018292,
+              442.184167,
+              444.948,
+              444.670042,
+              444.57525,
+              443.154542,
+              443.428125,
+              445.510625,
+              442.379292,
+              444.670042,
+              444.999917,
+              451.065125,
+              446.866584,
+              444.061625,
+              444.276,
+              444.738292,
+              445.8685,
+              444.023709,
+              444.528583,
+              446.089292,
+              446.177959,
+              445.666958,
+              445.693792,
+              444.887625,
+              446.420042,
+              445.036667,
+              446.214709,
+              445.606875,
+              445.378208,
+              443.128584,
+              443.935625,
+              446.545167,
+              443.862125,
+              444.976875,
+              445.829709,
+              445.806375,
+              445.712459,
+              444.485708,
+              446.462917,
+              443.809334,
+              446.454167,
+              445.375291,
+              447.383417,
+              455.905917,
+              445.882209,
+              448.481542,
+              448.045208,
+              448.624167,
+              447.066375,
+              447.375542,
+              447.203459,
+              445.233542,
+              446.204208,
+              445.637792,
+              446.44775,
+              447.221834,
+              446.348,
+              446.919958,
+              445.574209,
+              447.519334,
+              446.667375,
+              447.269375,
+              447.283084,
+              445.842833,
+              447.528084,
+              446.402542,
+              446.884375,
+              447.321292,
+              447.047708,
+              445.771084,
+              445.792958,
+              447.426292,
+              445.827667,
+              446.881459,
+              447.067541,
+              454.757042,
+              448.302459,
+              446.924625,
+              448.119875,
+              447.515542,
+              448.229834,
+              448.338917,
+              447.437083,
+              448.17675
+            ],
+            "normal_callbacks": 96,
+            "span_ms": 42386.95827
+          },
+          "npu_load_10hz": {
+            "cores": {
+              "core0": {
+                "iqr": 0.0,
+                "max": 96.0,
+                "mean": 94.93039443155452,
+                "min": 86.0,
+                "p25": 95.0,
+                "p50": 95.0,
+                "p75": 95.0,
+                "samples": 431
+              },
+              "core1": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 431
+              },
+              "core2": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 431
+              }
+            },
+            "numeric_core0_samples": 431,
+            "pass": true,
+            "samples": 431
+          },
+          "prompt_id": 2,
+          "rkllm_perf": {
+            "generate_ms_per_token": 445.9525904631579,
+            "generate_time_ms": 42365.496094,
+            "generate_tokens": 95,
+            "memory_usage_mb": 5861.160156,
+            "normal_callback_minus_generate_tokens": 1,
+            "prefill_time_ms": 782.010986,
+            "prefill_tokens": 37
+          },
+          "stage_breakdown": {
+            "interpretation": "residual is descriptive callback/runtime overhead, not an undocumented SDK stage",
+            "rkllm_generate_ms": 42365.496094,
+            "rkllm_prefill_ms": 782.010986,
+            "wall_minus_rkllm_stages_ms": 22.74477399999887,
+            "wall_run_ms": 43170.251854
+          },
+          "structure_pass": true,
+          "transcript": {
+            "bytes": 319,
+            "nonempty": true,
+            "pad_literal_seen": false,
+            "pass": true,
+            "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/board/ope4/ope4_segment1_20260921T130538+0800/c02_a2/prompt_02.utf8",
+            "replacement_character_seen": false,
+            "semantic_evaluation": "NOT_PERFORMED_FORBIDDEN",
+            "sha256": "ccc1d9eed4c50e772b7021fab27f8393df7a618c312e5eacdb8b62f6add63481",
+            "utf8_valid": true
+          },
+          "wall_run_ms": 43170.251854,
+          "wall_ttft_ms": 783.20025
+        },
+        {
+          "callback_decode": {
+            "interval_distribution_ms": {
+              "iqr": 6.520646000000056,
+              "max": 479.012626,
+              "mean": 450.7469168571429,
+              "min": 442.925,
+              "p25": 443.86110399999995,
+              "p50": 444.805084,
+              "p75": 450.38175,
+              "samples": 7
+            },
+            "intervals_ms": [
+              450.583292,
+              443.629083,
+              479.012626,
+              442.925,
+              444.093125,
+              444.805084,
+              450.180208
+            ],
+            "normal_callbacks": 8,
+            "span_ms": 3155.228418
+          },
+          "npu_load_10hz": {
+            "cores": {
+              "core0": {
+                "iqr": 5.25,
+                "max": 95.0,
+                "mean": 92.63157894736842,
+                "min": 89.0,
+                "p25": 89.75,
+                "p50": 92.0,
+                "p75": 95.0,
+                "samples": 38
+              },
+              "core1": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 38
+              },
+              "core2": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 38
+              }
+            },
+            "numeric_core0_samples": 38,
+            "pass": true,
+            "samples": 38
+          },
+          "prompt_id": 3,
+          "rkllm_perf": {
+            "generate_ms_per_token": 450.61028185714287,
+            "generate_time_ms": 3154.271973,
+            "generate_tokens": 7,
+            "memory_usage_mb": 5861.160156,
+            "normal_callback_minus_generate_tokens": 1,
+            "prefill_time_ms": 617.648987,
+            "prefill_tokens": 21
+          },
+          "stage_breakdown": {
+            "interpretation": "residual is descriptive callback/runtime overhead, not an undocumented SDK stage",
+            "rkllm_generate_ms": 3154.271973,
+            "rkllm_prefill_ms": 617.648987,
+            "wall_minus_rkllm_stages_ms": 2.3212499999999636,
+            "wall_run_ms": 3774.24221
+          },
+          "structure_pass": true,
+          "transcript": {
+            "bytes": 31,
+            "nonempty": true,
+            "pad_literal_seen": false,
+            "pass": true,
+            "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/board/ope4/ope4_segment1_20260921T130538+0800/c02_a2/prompt_03.utf8",
+            "replacement_character_seen": false,
+            "semantic_evaluation": "NOT_PERFORMED_FORBIDDEN",
+            "sha256": "a1b7eb2ee7a6aded8dda4e6cf30826f5afffb28a5597ee9389e91eb326d4e319",
+            "utf8_valid": true
+          },
+          "wall_run_ms": 3774.24221,
+          "wall_ttft_ms": 618.932125
+        },
+        {
+          "callback_decode": {
+            "interval_distribution_ms": {
+              "iqr": 1.8538329999999519,
+              "max": 453.931042,
+              "mean": 445.75842396808514,
+              "min": 441.193084,
+              "p25": 444.67565675000003,
+              "p50": 445.83306300000004,
+              "p75": 446.52948975,
+              "samples": 94
+            },
+            "intervals_ms": [
+              451.294959,
+              450.753625,
+              443.517083,
+              445.588792,
+              443.307959,
+              446.446583,
+              446.449501,
+              445.255416,
+              445.109001,
+              443.177583,
+              445.477375,
+              445.651501,
+              446.3655,
+              446.318833,
+              444.263167,
+              445.734626,
+              443.487625,
+              446.5545,
+              445.198833,
+              445.426626,
+              446.152,
+              444.551333,
+              446.626834,
+              443.6215,
+              446.580459,
+              446.226083,
+              443.653001,
+              444.983291,
+              441.611626,
+              445.123583,
+              441.193084,
+              445.455208,
+              444.885584,
+              450.538083,
+              446.451834,
+              444.131917,
+              446.025125,
+              445.736084,
+              446.020166,
+              445.807251,
+              444.48425,
+              445.127667,
+              444.147667,
+              445.358958,
+              446.014625,
+              443.106417,
+              445.907584,
+              444.190833,
+              445.969709,
+              443.924542,
+              447.734875,
+              447.089708,
+              444.439334,
+              445.8615,
+              444.289709,
+              445.988958,
+              444.629209,
+              445.858875,
+              445.964167,
+              443.312042,
+              446.05225,
+              444.815,
+              446.005584,
+              444.52275,
+              446.283542,
+              453.931042,
+              445.561958,
+              445.494001,
+              445.928291,
+              447.120334,
+              447.439709,
+              445.517041,
+              445.804626,
+              446.519208,
+              444.92175,
+              444.178584,
+              447.297083,
+              447.083876,
+              445.896208,
+              446.756334,
+              447.166125,
+              447.257417,
+              448.065917,
+              447.479667,
+              446.917917,
+              443.408583,
+              447.179542,
+              443.657083,
+              446.261084,
+              446.532917,
+              447.006875,
+              447.017375,
+              445.244334,
+              446.814083
+            ],
+            "normal_callbacks": 95,
+            "span_ms": 41901.291853
+          },
+          "npu_load_10hz": {
+            "cores": {
+              "core0": {
+                "iqr": 1.0,
+                "max": 96.0,
+                "mean": 95.09389671361502,
+                "min": 90.0,
+                "p25": 95.0,
+                "p50": 95.0,
+                "p75": 96.0,
+                "samples": 426
+              },
+              "core1": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 426
+              },
+              "core2": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 426
+              }
+            },
+            "numeric_core0_samples": 426,
+            "pass": true,
+            "samples": 426
+          },
+          "prompt_id": 4,
+          "rkllm_perf": {
+            "generate_ms_per_token": 445.53453291489365,
+            "generate_time_ms": 41880.246094,
+            "generate_tokens": 94,
+            "memory_usage_mb": 5861.160156,
+            "normal_callback_minus_generate_tokens": 1,
+            "prefill_time_ms": 643.679993,
+            "prefill_tokens": 26
+          },
+          "stage_breakdown": {
+            "interpretation": "residual is descriptive callback/runtime overhead, not an undocumented SDK stage",
+            "rkllm_generate_ms": 41880.246094,
+            "rkllm_prefill_ms": 643.679993,
+            "wall_minus_rkllm_stages_ms": 22.296766999999818,
+            "wall_run_ms": 42546.222854
+          },
+          "structure_pass": true,
+          "transcript": {
+            "bytes": 294,
+            "nonempty": true,
+            "pad_literal_seen": false,
+            "pass": true,
+            "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/board/ope4/ope4_segment1_20260921T130538+0800/c02_a2/prompt_04.utf8",
+            "replacement_character_seen": false,
+            "semantic_evaluation": "NOT_PERFORMED_FORBIDDEN",
+            "sha256": "d201a82769a0e15d553398ef845096cae8cbf6fe6551a35e2f59a272c8a8a1e7",
+            "utf8_valid": true
+          },
+          "wall_run_ms": 42546.222854,
+          "wall_ttft_ms": 644.844959
+        },
+        {
+          "callback_decode": {
+            "interval_distribution_ms": {
+              "iqr": 1.2261665000000335,
+              "max": 450.98375,
+              "mean": 445.07685853333334,
+              "min": 442.586959,
+              "p25": 443.8252295,
+              "p50": 444.627459,
+              "p75": 445.051396,
+              "samples": 15
+            },
+            "intervals_ms": [
+              450.177,
+              443.511834,
+              450.98375,
+              443.4885,
+              443.99425,
+              445.222459,
+              444.098375,
+              445.027625,
+              442.586959,
+              444.819375,
+              444.627459,
+              443.788917,
+              444.889666,
+              443.861542,
+              445.075167
+            ],
+            "normal_callbacks": 16,
+            "span_ms": 6676.152878
+          },
+          "npu_load_10hz": {
+            "cores": {
+              "core0": {
+                "iqr": 1.0,
+                "max": 96.0,
+                "mean": 94.58904109589041,
+                "min": 89.0,
+                "p25": 95.0,
+                "p50": 95.0,
+                "p75": 96.0,
+                "samples": 73
+              },
+              "core1": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 73
+              },
+              "core2": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 73
+              }
+            },
+            "numeric_core0_samples": 73,
+            "pass": true,
+            "samples": 73
+          },
+          "prompt_id": 5,
+          "rkllm_perf": {
+            "generate_ms_per_token": 444.8902669333333,
+            "generate_time_ms": 6673.354004,
+            "generate_tokens": 15,
+            "memory_usage_mb": 5861.160156,
+            "normal_callback_minus_generate_tokens": 1,
+            "prefill_time_ms": 639.439026,
+            "prefill_tokens": 25
+          },
+          "stage_breakdown": {
+            "interpretation": "residual is descriptive callback/runtime overhead, not an undocumented SDK stage",
+            "rkllm_generate_ms": 6673.354004,
+            "rkllm_prefill_ms": 639.439026,
+            "wall_minus_rkllm_stages_ms": 4.065182000000277,
+            "wall_run_ms": 7316.858212
+          },
+          "structure_pass": true,
+          "transcript": {
+            "bytes": 29,
+            "nonempty": true,
+            "pad_literal_seen": false,
+            "pass": true,
+            "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/board/ope4/ope4_segment1_20260921T130538+0800/c02_a2/prompt_05.utf8",
+            "replacement_character_seen": false,
+            "semantic_evaluation": "NOT_PERFORMED_FORBIDDEN",
+            "sha256": "fa41b3f571d2d8b4209874a85e99d7df79f75df4bcafab31ea40c4a9fae428a1",
+            "utf8_valid": true
+          },
+          "wall_run_ms": 7316.858212,
+          "wall_ttft_ms": 640.624542
+        }
+      ],
+      "run_exit_code": 0,
+      "runner_meta": {
+        "carrier": "c02_a2",
+        "destroy_end_monotonic_raw_ns": "1756641224857",
+        "destroy_return": "0",
+        "destroy_start_monotonic_raw_ns": "1754732650648",
+        "enabled_cpus_mask": "0xf0",
+        "init_end_monotonic_raw_ns": "1614780530581",
+        "init_return": "0",
+        "init_start_monotonic_raw_ns": "1598729547782",
+        "manual_template_return": "0",
+        "max_context_len": "16384",
+        "max_new_tokens": "96",
+        "model_path": "/home/orangepi/edgeforge_ope_r1/models/C02-S.O-w8a8-rk3588-16k-1core-A2.rkllm",
+        "model_size_bytes": "11687037412",
+        "prompt_payload": "/home/orangepi/edgeforge_ope_r1/data/operator/board/ope4_fixed_prompts.txt",
+        "runner_return": "0"
+      }
+    },
+    "official_a1": {
+      "aggregate": {
+        "callback_decode_interval_count": 255,
+        "callback_interval_count_equals_perf_generate_tokens": true,
+        "callback_token_interval_ms": {
+          "iqr": 3.0719799999999964,
+          "max": 455.129792,
+          "mean": 446.2396683529412,
+          "min": 441.879083,
+          "p25": 444.4889165,
+          "p50": 446.02075,
+          "p75": 447.5608965,
+          "samples": 255
+        },
+        "callback_vs_perf_decode_relative_delta": 0.0004869189074970803,
+        "memory_usage_mb": {
+          "iqr": 0.0,
+          "max": 5861.523438,
+          "mean": 5860.7937504,
+          "min": 5857.875,
+          "p25": 5861.523438,
+          "p50": 5861.523438,
+          "p75": 5861.523438,
+          "samples": 5
+        },
+        "primary_decode_ms_per_token": 446.2396683529412,
+        "rkllm_generate_time_ms": {
+          "iqr": 35173.083008,
+          "max": 42450.695312,
+          "mean": 22747.14707,
+          "min": 3123.501953,
+          "p25": 7131.624023,
+          "p50": 18725.207031,
+          "p75": 42304.707031,
+          "samples": 5
+        },
+        "rkllm_generate_time_ms_total": 113735.73535,
+        "rkllm_generate_tokens_total": 255,
+        "rkllm_perf_decode_ms_per_token": 446.02249156862746,
+        "rkllm_prefill_time_ms": {
+          "iqr": 19.380004999999983,
+          "max": 781.487976,
+          "mean": 664.032788,
+          "min": 621.978027,
+          "p25": 626.065979,
+          "p50": 645.185974,
+          "p75": 645.445984,
+          "samples": 5
+        },
+        "wall_minus_rkllm_stages_ms": {
+          "iqr": 18.523518000003605,
+          "max": 23.104177000001073,
+          "mean": 12.627378000000954,
+          "min": 2.2780219999999645,
+          "p25": 4.410422999999355,
+          "p50": 10.410327000001416,
+          "p75": 22.93394100000296,
+          "samples": 5
+        },
+        "wall_run_ms": {
+          "iqr": 35172.656767,
+          "max": 43255.117229,
+          "mean": 23423.807236,
+          "min": 3747.758002,
+          "p25": 7781.22042,
+          "p50": 19381.063342,
+          "p75": 42953.877187,
+          "samples": 5
+        },
+        "wall_ttft_ms": {
+          "iqr": 18.006916000000047,
+          "max": 782.663875,
+          "mean": 665.495775,
+          "min": 623.2485,
+          "p25": 628.592417,
+          "p50": 646.37475,
+          "p75": 646.599333,
+          "samples": 5
+        }
+      },
+      "carrier": "official_a1",
+      "gates": {
+        "exactly_five_prompts": true,
+        "npu_numeric_each_prompt_window_pass": true,
+        "perf_all_events_numeric_pass": true,
+        "prompt_structure_pass": true,
+        "run_exit_zero": true,
+        "transcripts_pass": true
+      },
+      "init_ms": 16087.726674,
+      "npu_load_prompt_union": {
+        "core0": {
+          "iqr": 1.0,
+          "max": 96.0,
+          "mean": 94.09726962457339,
+          "min": 0.0,
+          "p25": 95.0,
+          "p50": 95.0,
+          "p75": 96.0,
+          "samples": 1172
+        },
+        "core1": {
+          "iqr": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "p25": 0.0,
+          "p50": 0.0,
+          "p75": 0.0,
+          "samples": 1172
+        },
+        "core2": {
+          "iqr": 0.0,
+          "max": 0.0,
+          "mean": 0.0,
+          "min": 0.0,
+          "p25": 0.0,
+          "p50": 0.0,
+          "p75": 0.0,
+          "samples": 1172
+        }
+      },
+      "process_perf_stat": {
+        "all_expected_numeric": true,
+        "cpu_cores_utilized": 0.6091019349133663,
+        "events": {
+          "context-switches": {
+            "enabled_pct": 100.0,
+            "raw": "282029",
+            "runtime_ns": 82400137257,
+            "unit": "",
+            "value": 282029.0
+          },
+          "cpu-migrations": {
+            "enabled_pct": 100.0,
+            "raw": "9",
+            "runtime_ns": 82400137257,
+            "unit": "",
+            "value": 9.0
+          },
+          "cycles:u": {
+            "enabled_pct": 100.0,
+            "raw": "164956540055",
+            "runtime_ns": 82518984476,
+            "unit": "",
+            "value": 164956540055.0
+          },
+          "instructions:u": {
+            "enabled_pct": 100.0,
+            "raw": "450261507799",
+            "runtime_ns": 82518984476,
+            "unit": "",
+            "value": 450261507799.0
+          },
+          "page-faults": {
+            "enabled_pct": 100.0,
+            "raw": "268744",
+            "runtime_ns": 82400137257,
+            "unit": "",
+            "value": 268744.0
+          },
+          "task-clock": {
+            "enabled_pct": 100.0,
+            "raw": "82400.14",
+            "runtime_ns": 82400137257,
+            "unit": "msec",
+            "value": 82400.14
+          }
+        },
+        "ipc": 2.7295765760416244
+      },
+      "process_wall_ms": 135281.363064,
+      "prompt_count": 5,
+      "prompts": [
+        {
+          "callback_decode": {
+            "interval_distribution_ms": {
+              "iqr": 3.129436999999996,
+              "max": 453.439292,
+              "mean": 445.52822038947363,
+              "min": 441.924,
+              "p25": 443.8705835,
+              "p50": 444.997875,
+              "p75": 447.0000205,
+              "samples": 95
+            },
+            "intervals_ms": [
+              450.949917,
+              444.373709,
+              443.411792,
+              444.008542,
+              442.773041,
+              443.341792,
+              442.945709,
+              444.169542,
+              443.911125,
+              442.185625,
+              443.229792,
+              450.571625,
+              444.917084,
+              444.260542,
+              443.141416,
+              443.603417,
+              443.093292,
+              443.177292,
+              443.626459,
+              443.900917,
+              444.17275,
+              441.924,
+              443.578625,
+              442.679125,
+              444.831334,
+              444.13425,
+              445.221292,
+              444.465875,
+              443.235334,
+              443.397792,
+              442.780042,
+              443.858333,
+              444.166334,
+              443.890417,
+              444.336666,
+              442.870167,
+              444.802459,
+              443.660292,
+              444.997875,
+              445.5465,
+              444.357667,
+              445.696709,
+              443.470708,
+              452.668417,
+              444.24625,
+              443.882834,
+              445.417,
+              444.57525,
+              445.96125,
+              444.881501,
+              446.101541,
+              446.746709,
+              446.119334,
+              447.851833,
+              443.783959,
+              446.202458,
+              443.83675,
+              446.139751,
+              446.294333,
+              447.099625,
+              447.769001,
+              444.973666,
+              447.967042,
+              445.696417,
+              446.992875,
+              447.617917,
+              445.855667,
+              447.426,
+              444.155834,
+              447.570084,
+              446.002958,
+              444.35825,
+              447.649125,
+              443.798834,
+              447.522542,
+              453.439292,
+              446.803875,
+              448.369542,
+              446.252625,
+              447.827625,
+              446.299584,
+              449.098708,
+              447.081542,
+              449.532125,
+              448.768542,
+              448.165959,
+              448.501958,
+              447.292126,
+              445.717417,
+              445.983708,
+              447.846875,
+              445.096751,
+              447.007166,
+              445.006042,
+              446.257292
+            ],
+            "normal_callbacks": 96,
+            "span_ms": 42325.180937
+          },
+          "npu_load_10hz": {
+            "cores": {
+              "core0": {
+                "iqr": 1.0,
+                "max": 96.0,
+                "mean": 92.79069767441861,
+                "min": 0.0,
+                "p25": 95.0,
+                "p50": 95.0,
+                "p75": 96.0,
+                "samples": 430
+              },
+              "core1": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 430
+              },
+              "core2": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 430
+              }
+            },
+            "numeric_core0_samples": 430,
+            "pass": true,
+            "samples": 430
+          },
+          "prompt_id": 1,
+          "rkllm_perf": {
+            "generate_ms_per_token": 445.31270558947364,
+            "generate_time_ms": 42304.707031,
+            "generate_tokens": 95,
+            "memory_usage_mb": 5857.875,
+            "normal_callback_minus_generate_tokens": 1,
+            "prefill_time_ms": 626.065979,
+            "prefill_tokens": 21
+          },
+          "stage_breakdown": {
+            "interpretation": "residual is descriptive callback/runtime overhead, not an undocumented SDK stage",
+            "rkllm_generate_ms": 42304.707031,
+            "rkllm_prefill_ms": 626.065979,
+            "wall_minus_rkllm_stages_ms": 23.104177000001073,
+            "wall_run_ms": 42953.877187
+          },
+          "structure_pass": true,
+          "transcript": {
+            "bytes": 433,
+            "nonempty": true,
+            "pad_literal_seen": false,
+            "pass": true,
+            "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/board/ope4/ope4_segment1_20260921T130538+0800/official_a1/prompt_01.utf8",
+            "replacement_character_seen": false,
+            "semantic_evaluation": "NOT_PERFORMED_FORBIDDEN",
+            "sha256": "8d41994a02de34e23a6178e4a3d1ca164c55aadf4a87ab9664c289cc88f397c0",
+            "utf8_valid": true
+          },
+          "wall_run_ms": 42953.877187,
+          "wall_ttft_ms": 628.592417
+        },
+        {
+          "callback_decode": {
+            "interval_distribution_ms": {
+              "iqr": 3.446478500000012,
+              "max": 454.040417,
+              "mean": 447.0775353052632,
+              "min": 442.919459,
+              "p25": 445.246667,
+              "p50": 447.018541,
+              "p75": 448.6931455,
+              "samples": 95
+            },
+            "intervals_ms": [
+              450.978792,
+              445.297709,
+              444.520708,
+              442.919459,
+              444.496208,
+              446.712,
+              446.947667,
+              444.304584,
+              444.914167,
+              444.398792,
+              444.9515,
+              445.49925,
+              446.228125,
+              446.386501,
+              443.601083,
+              447.294167,
+              444.203083,
+              446.224917,
+              445.925667,
+              444.987667,
+              446.053417,
+              443.002,
+              454.040417,
+              445.462209,
+              446.963708,
+              447.684417,
+              443.225417,
+              444.832792,
+              444.368458,
+              447.615292,
+              446.746125,
+              447.003667,
+              444.051709,
+              445.032292,
+              447.903458,
+              445.257751,
+              448.1785,
+              447.544417,
+              444.57525,
+              445.163542,
+              444.581667,
+              447.602458,
+              446.362584,
+              447.741583,
+              447.415209,
+              446.225792,
+              446.395542,
+              445.152458,
+              446.474292,
+              445.986042,
+              444.056083,
+              447.026709,
+              445.941417,
+              448.217,
+              451.380709,
+              449.151791,
+              447.353084,
+              449.273709,
+              449.347791,
+              447.551709,
+              449.083834,
+              445.235583,
+              449.714417,
+              446.265167,
+              448.789833,
+              448.488251,
+              446.02075,
+              449.386583,
+              447.066959,
+              449.44375,
+              448.413584,
+              449.063417,
+              449.213041,
+              444.726626,
+              451.055208,
+              446.275959,
+              449.260583,
+              449.092584,
+              448.67375,
+              448.617459,
+              448.180541,
+              449.023751,
+              447.230292,
+              447.018541,
+              448.875876,
+              444.637667,
+              453.62625,
+              447.983083,
+              449.726376,
+              448.712541,
+              447.028459,
+              450.386708,
+              449.180667,
+              450.059459,
+              448.073792
+            ],
+            "normal_callbacks": 96,
+            "span_ms": 42472.365854
+          },
+          "npu_load_10hz": {
+            "cores": {
+              "core0": {
+                "iqr": 0.0,
+                "max": 96.0,
+                "mean": 94.86143187066975,
+                "min": 84.0,
+                "p25": 95.0,
+                "p50": 95.0,
+                "p75": 95.0,
+                "samples": 433
+              },
+              "core1": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 433
+              },
+              "core2": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 433
+              }
+            },
+            "numeric_core0_samples": 433,
+            "pass": true,
+            "samples": 433
+          },
+          "prompt_id": 2,
+          "rkllm_perf": {
+            "generate_ms_per_token": 446.84942433684216,
+            "generate_time_ms": 42450.695312,
+            "generate_tokens": 95,
+            "memory_usage_mb": 5861.523438,
+            "normal_callback_minus_generate_tokens": 1,
+            "prefill_time_ms": 781.487976,
+            "prefill_tokens": 37
+          },
+          "stage_breakdown": {
+            "interpretation": "residual is descriptive callback/runtime overhead, not an undocumented SDK stage",
+            "rkllm_generate_ms": 42450.695312,
+            "rkllm_prefill_ms": 781.487976,
+            "wall_minus_rkllm_stages_ms": 22.93394100000296,
+            "wall_run_ms": 43255.117229
+          },
+          "structure_pass": true,
+          "transcript": {
+            "bytes": 361,
+            "nonempty": true,
+            "pad_literal_seen": false,
+            "pass": true,
+            "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/board/ope4/ope4_segment1_20260921T130538+0800/official_a1/prompt_02.utf8",
+            "replacement_character_seen": false,
+            "semantic_evaluation": "NOT_PERFORMED_FORBIDDEN",
+            "sha256": "bff91580d388adf2270e893b1efa67cb2490055140f5f20dff320bea61de6a15",
+            "utf8_valid": true
+          },
+          "wall_run_ms": 43255.117229,
+          "wall_ttft_ms": 782.663875
+        },
+        {
+          "callback_decode": {
+            "interval_distribution_ms": {
+              "iqr": 2.041958500000021,
+              "max": 453.317958,
+              "mean": 446.3465418571428,
+              "min": 442.737167,
+              "p25": 444.80566699999997,
+              "p50": 445.064083,
+              "p75": 446.8476255,
+              "samples": 7
+            },
+            "intervals_ms": [
+              448.604917,
+              442.737167,
+              444.73625,
+              445.090334,
+              445.064083,
+              444.875084,
+              453.317958
+            ],
+            "normal_callbacks": 8,
+            "span_ms": 3124.425793
+          },
+          "npu_load_10hz": {
+            "cores": {
+              "core0": {
+                "iqr": 7.0,
+                "max": 96.0,
+                "mean": 93.91891891891892,
+                "min": 89.0,
+                "p25": 89.0,
+                "p50": 96.0,
+                "p75": 96.0,
+                "samples": 37
+              },
+              "core1": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 37
+              },
+              "core2": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 37
+              }
+            },
+            "numeric_core0_samples": 37,
+            "pass": true,
+            "samples": 37
+          },
+          "prompt_id": 3,
+          "rkllm_perf": {
+            "generate_ms_per_token": 446.2145647142857,
+            "generate_time_ms": 3123.501953,
+            "generate_tokens": 7,
+            "memory_usage_mb": 5861.523438,
+            "normal_callback_minus_generate_tokens": 1,
+            "prefill_time_ms": 621.978027,
+            "prefill_tokens": 21
+          },
+          "stage_breakdown": {
+            "interpretation": "residual is descriptive callback/runtime overhead, not an undocumented SDK stage",
+            "rkllm_generate_ms": 3123.501953,
+            "rkllm_prefill_ms": 621.978027,
+            "wall_minus_rkllm_stages_ms": 2.2780219999999645,
+            "wall_run_ms": 3747.758002
+          },
+          "structure_pass": true,
+          "transcript": {
+            "bytes": 31,
+            "nonempty": true,
+            "pad_literal_seen": false,
+            "pass": true,
+            "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/board/ope4/ope4_segment1_20260921T130538+0800/official_a1/prompt_03.utf8",
+            "replacement_character_seen": false,
+            "semantic_evaluation": "NOT_PERFORMED_FORBIDDEN",
+            "sha256": "a1b7eb2ee7a6aded8dda4e6cf30826f5afffb28a5597ee9389e91eb326d4e319",
+            "utf8_valid": true
+          },
+          "wall_run_ms": 3747.758002,
+          "wall_ttft_ms": 623.2485
+        },
+        {
+          "callback_decode": {
+            "interval_distribution_ms": {
+              "iqr": 1.548896999999954,
+              "max": 455.129792,
+              "mean": 446.05675021428567,
+              "min": 442.823208,
+              "p25": 445.03761425,
+              "p50": 445.9355835,
+              "p75": 446.58651124999994,
+              "samples": 42
+            },
+            "intervals_ms": [
+              450.653,
+              451.076792,
+              446.802709,
+              444.643792,
+              444.439333,
+              446.982667,
+              445.270292,
+              444.481625,
+              443.871459,
+              446.66825,
+              445.89125,
+              446.105042,
+              445.5465,
+              443.259834,
+              445.036958,
+              443.722417,
+              445.963292,
+              446.196334,
+              445.178708,
+              447.3,
+              443.478876,
+              446.399625,
+              445.515,
+              447.041875,
+              446.610501,
+              443.847833,
+              445.916625,
+              445.602209,
+              446.514542,
+              445.153042,
+              446.433458,
+              446.296084,
+              442.823208,
+              455.129792,
+              444.955,
+              445.954542,
+              446.983542,
+              446.194875,
+              445.648584,
+              445.039583,
+              447.615292,
+              446.139167
+            ],
+            "normal_callbacks": 43,
+            "span_ms": 18734.383509
+          },
+          "npu_load_10hz": {
+            "cores": {
+              "core0": {
+                "iqr": 1.0,
+                "max": 96.0,
+                "mean": 95.05154639175258,
+                "min": 88.0,
+                "p25": 95.0,
+                "p50": 95.0,
+                "p75": 96.0,
+                "samples": 194
+              },
+              "core1": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 194
+              },
+              "core2": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 194
+              }
+            },
+            "numeric_core0_samples": 194,
+            "pass": true,
+            "samples": 194
+          },
+          "prompt_id": 4,
+          "rkllm_perf": {
+            "generate_ms_per_token": 445.83826264285716,
+            "generate_time_ms": 18725.207031,
+            "generate_tokens": 42,
+            "memory_usage_mb": 5861.523438,
+            "normal_callback_minus_generate_tokens": 1,
+            "prefill_time_ms": 645.445984,
+            "prefill_tokens": 26
+          },
+          "stage_breakdown": {
+            "interpretation": "residual is descriptive callback/runtime overhead, not an undocumented SDK stage",
+            "rkllm_generate_ms": 18725.207031,
+            "rkllm_prefill_ms": 645.445984,
+            "wall_minus_rkllm_stages_ms": 10.410327000001416,
+            "wall_run_ms": 19381.063342
+          },
+          "structure_pass": true,
+          "transcript": {
+            "bytes": 117,
+            "nonempty": true,
+            "pad_literal_seen": false,
+            "pass": true,
+            "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/board/ope4/ope4_segment1_20260921T130538+0800/official_a1/prompt_04.utf8",
+            "replacement_character_seen": false,
+            "semantic_evaluation": "NOT_PERFORMED_FORBIDDEN",
+            "sha256": "909dbe83e86662151c3c0ac69d364448594fb5dbb22eb8814a332974b746bf16",
+            "utf8_valid": true
+          },
+          "wall_run_ms": 19381.063342,
+          "wall_ttft_ms": 646.599333
+        },
+        {
+          "callback_decode": {
+            "interval_distribution_ms": {
+              "iqr": 2.130186750000007,
+              "max": 451.773875,
+              "mean": 445.92245856249997,
+              "min": 441.879083,
+              "p25": 444.81850075,
+              "p50": 445.8931465,
+              "p75": 446.9486875,
+              "samples": 16
+            },
+            "intervals_ms": [
+              448.112292,
+              445.560792,
+              451.773875,
+              444.094,
+              445.674251,
+              443.30125,
+              446.7435,
+              441.879083,
+              447.078626,
+              447.078625,
+              445.114833,
+              446.112042,
+              445.060001,
+              446.905375,
+              443.43425,
+              446.836542
+            ],
+            "normal_callbacks": 17,
+            "span_ms": 7134.759337
+          },
+          "npu_load_10hz": {
+            "cores": {
+              "core0": {
+                "iqr": 1.75,
+                "max": 96.0,
+                "mean": 94.76923076923077,
+                "min": 89.0,
+                "p25": 94.25,
+                "p50": 96.0,
+                "p75": 96.0,
+                "samples": 78
+              },
+              "core1": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 78
+              },
+              "core2": {
+                "iqr": 0.0,
+                "max": 0.0,
+                "mean": 0.0,
+                "min": 0.0,
+                "p25": 0.0,
+                "p50": 0.0,
+                "p75": 0.0,
+                "samples": 78
+              }
+            },
+            "numeric_core0_samples": 78,
+            "pass": true,
+            "samples": 78
+          },
+          "prompt_id": 5,
+          "rkllm_perf": {
+            "generate_ms_per_token": 445.7265014375,
+            "generate_time_ms": 7131.624023,
+            "generate_tokens": 16,
+            "memory_usage_mb": 5861.523438,
+            "normal_callback_minus_generate_tokens": 1,
+            "prefill_time_ms": 645.185974,
+            "prefill_tokens": 25
+          },
+          "stage_breakdown": {
+            "interpretation": "residual is descriptive callback/runtime overhead, not an undocumented SDK stage",
+            "rkllm_generate_ms": 7131.624023,
+            "rkllm_prefill_ms": 645.185974,
+            "wall_minus_rkllm_stages_ms": 4.410422999999355,
+            "wall_run_ms": 7781.22042
+          },
+          "structure_pass": true,
+          "transcript": {
+            "bytes": 31,
+            "nonempty": true,
+            "pad_literal_seen": false,
+            "pass": true,
+            "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/board/ope4/ope4_segment1_20260921T130538+0800/official_a1/prompt_05.utf8",
+            "replacement_character_seen": false,
+            "semantic_evaluation": "NOT_PERFORMED_FORBIDDEN",
+            "sha256": "488798ae7909b5e6bc53e483bde7dfce984af1b87ae61b0845f3fdec277efe13",
+            "utf8_valid": true
+          },
+          "wall_run_ms": 7781.22042,
+          "wall_ttft_ms": 646.37475
+        }
+      ],
+      "run_exit_code": 0,
+      "runner_meta": {
+        "carrier": "official_a1",
+        "destroy_end_monotonic_raw_ns": "1897076984257",
+        "destroy_return": "0",
+        "destroy_start_monotonic_raw_ns": "1895125819715",
+        "enabled_cpus_mask": "0xf0",
+        "init_end_monotonic_raw_ns": "1777883347867",
+        "init_return": "0",
+        "init_start_monotonic_raw_ns": "1761795621193",
+        "manual_template_return": "0",
+        "max_context_len": "16384",
+        "max_new_tokens": "96",
+        "model_path": "/home/orangepi/edgeforge_m0_frozen_r2/gemma-4-e4b-it-w8a8-rk3588-16k-1core.rkllm",
+        "model_size_bytes": "11687037412",
+        "prompt_payload": "/home/orangepi/edgeforge_ope_r1/data/operator/board/ope4_fixed_prompts.txt",
+        "runner_return": "0"
+      }
+    }
+  },
+  "comparison": {
+    "c02_over_official_primary_decode_ratio": 0.9997458602188986,
+    "c02_over_official_ttft_p50_ratio": 0.991103909922224,
+    "interpretation": "system diagnostic only; not a training-quality conclusion"
+  },
+  "controller_meta": {
+    "absolute_time_authority": "controller",
+    "board_boot_id": "d71ea52f-ab16-411f-a329-6544feac0d45",
+    "board_wall_clock_authoritative": false,
+    "controller_after": "2026-09-21T13:11:02.012268031+08:00",
+    "controller_before": "2026-09-21T13:05:50.693724485+08:00",
+    "controller_elapsed_seconds": 311.318544,
+    "controller_exit_code": 0,
+    "duration_authority": "board CLOCK_MONOTONIC_RAW with controller elapsed as cross-check",
+    "note": "The board rebooted before formal execution; the formal segment itself stayed on one boot and completed without reconnect or resume.",
+    "schema": "edgeforge-ope4-controller-time-v1"
+  },
+  "governor_guard": {
+    "events": {
+      "after_restore": {
+        "board_wall_time": "2026-09-19T00:48:40.961740189+08:00",
+        "event": "after_restore",
+        "npu_governor": "rknpu_ondemand",
+        "policy4_governor": "ondemand",
+        "policy6_governor": "ondemand",
+        "uptime_s": "1904.16"
+      },
+      "after_set": {
+        "board_wall_time": "2026-09-19T00:43:32.435130058+08:00",
+        "event": "after_set",
+        "npu_governor": "performance",
+        "policy4_governor": "performance",
+        "policy6_governor": "performance",
+        "uptime_s": "1595.63"
+      },
+      "before": {
+        "board_wall_time": "2026-09-19T00:43:32.343911445+08:00",
+        "event": "before",
+        "npu_governor": "rknpu_ondemand",
+        "policy4_governor": "ondemand",
+        "policy6_governor": "ondemand",
+        "uptime_s": "1595.54"
+      }
+    },
+    "exact_restore_pass": true,
+    "pass": true,
+    "set_to_performance_pass": true
+  },
+  "implementation_identity": {
+    "checks": [
+      {
+        "expected_sha256": "1a1b6662cd720d4247d0b09b5e49d7faf73243ee29bbe795ff0588fc2f3e0733",
+        "observed_sha256": "1a1b6662cd720d4247d0b09b5e49d7faf73243ee29bbe795ff0588fc2f3e0733",
+        "path": "scripts/operator/board/rkllm_ope4_diag.cpp"
+      },
+      {
+        "expected_sha256": "d6e4ff31739b69b8e3253af802b6fad86d3dfabfdf39103bcf03c7efaac163bf",
+        "observed_sha256": "d6e4ff31739b69b8e3253af802b6fad86d3dfabfdf39103bcf03c7efaac163bf",
+        "path": "scripts/operator/board/run_ope4.sh"
+      },
+      {
+        "expected_sha256": "46526dcfd6a85997c12b0430afc2e28b90442d41709d95409b438907014e36cb",
+        "observed_sha256": "46526dcfd6a85997c12b0430afc2e28b90442d41709d95409b438907014e36cb",
+        "path": "scripts/operator/board/ope4_measure_payload.sh"
+      },
+      {
+        "expected_sha256": "52f7bc03d3e6b5f13a3b2db1c740fb15d019fcb10a6e1aedccecda5a2e2b8301",
+        "observed_sha256": "52f7bc03d3e6b5f13a3b2db1c740fb15d019fcb10a6e1aedccecda5a2e2b8301",
+        "path": "scripts/operator/board/npu_load_sampler.py"
+      },
+      {
+        "expected_sha256": "74f8e8a85858c567206b7234dafe7015a59483c42d83300a04b3532a1368b84c",
+        "observed_sha256": "74f8e8a85858c567206b7234dafe7015a59483c42d83300a04b3532a1368b84c",
+        "path": "scripts/operator/board/telemetry_sampler.sh"
+      },
+      {
+        "expected_sha256": "6adc7622dc43897d108aec853dd0ea70bd99b81f095fa61edf12e0da5663bf0d",
+        "observed_sha256": "6adc7622dc43897d108aec853dd0ea70bd99b81f095fa61edf12e0da5663bf0d",
+        "path": "scripts/operator/board/governor_guard.sh"
+      }
+    ],
+    "pass": true
+  },
+  "label": "board-diagnostic-1core",
+  "measurement_valid": true,
+  "negative_scope_assertions": {
+    "b0_or_pc_same_table_comparison": false,
+    "driver_kernel_dt_or_runtime_so_modified": false,
+    "frozen_model_modified": false,
+    "isolated_primitive_called_tpot": false,
+    "prompt_cache_ab_performed": false,
+    "quality_evaluation_performed": false,
+    "semantic_transcript_judgment_performed": false,
+    "three_core_or_multicore_llm_run": false
+  },
+  "ope3_preservation": {
+    "full_ke1_four_gate_closure_pass": false,
+    "isolated_measurement_pass": true,
+    "ope4_model_stage_anchor_present_now": true,
+    "reason": "OPE4 cannot repair the frozen OPE3 Tier-B cache-line proxy failure",
+    "source_status": "VALID_OPE3_TIER_B_CACHELINE_PROXY_REJECTED_OPE4_ANCHOR_PENDING",
+    "tier_b_preregistered_analytic_backing_pass": false
+  },
+  "prereg_ref": "configs/operator/board/ope4_diag_protocol.json",
+  "prereg_sha256": "16a7bc44a4956d8458747d1b94e7cf72f4c3e631d796977fc6f0ab14aa6100ba",
+  "replication": {
+    "claim": "NO_OPE4_REPLICATION_CLAIM",
+    "formal_segments": 1,
+    "owner_instruction": "不需要复测，取消同日复测，只测一次",
+    "status": "WAIVED_BY_OWNER_NOT_SATISFIED"
+  },
+  "run_meta": {
+    "board_end_monotonic_raw_ns": "1904230639594",
+    "board_end_uptime_s": "1904.17",
+    "board_end_wall": "2026-09-19T00:48:40.974701623+08:00",
+    "board_start_boot_id": "d71ea52f-ab16-411f-a329-6544feac0d45",
+    "board_start_monotonic_raw_ns": "1595473878822",
+    "board_start_uptime_s": "1595.41",
+    "board_start_wall": "2026-09-19T00:43:32.211667653+08:00",
+    "c02_model_bytes": "11687037412",
+    "c02_model_bytes_after": "11687037412",
+    "c02_model_mtime_epoch": "1789655691",
+    "c02_model_mtime_epoch_after": "1789655691",
+    "c02_model_path": "/home/orangepi/edgeforge_ope_r1/models/C02-S.O-w8a8-rk3588-16k-1core-A2.rkllm",
+    "carrier_order": "c02_a2-official_a1",
+    "gxx": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "official_model_bytes": "11687037412",
+    "official_model_bytes_after": "11687037412",
+    "official_model_mtime_epoch": "1786098318",
+    "official_model_mtime_epoch_after": "1786098318",
+    "official_model_path": "/home/orangepi/edgeforge_m0_frozen_r2/gemma-4-e4b-it-w8a8-rk3588-16k-1core.rkllm",
+    "prereg_sha256": "16a7bc44a4956d8458747d1b94e7cf72f4c3e631d796977fc6f0ab14aa6100ba",
+    "prompt_payload_sha256": "b5cbaf281f3c379e7c375e92a6570799b92226e267378747b65079c74eded290",
+    "run_exit_code": "0",
+    "runner_binary_sha256": "46aac6b93e656ce77d25c5761e1e4fc9658e9567f1ba468508538160b0b85620",
+    "runner_source_sha256": "1a1b6662cd720d4247d0b09b5e49d7faf73243ee29bbe795ff0588fc2f3e0733",
+    "segment_label": "segment1_owner_waived_single",
+    "uname": "Linux orangepi5 6.1.99-rockchip-rk3588 #1.2.2 SMP Thu Jun 26 14:42:53 CST 2025 aarch64 aarch64 aarch64 GNU/Linux"
+  },
+  "schema": "edgeforge-ope4-diagnostic-receipt-v1",
+  "stage": "OPE4",
+  "status": "VALID_OPE4_SINGLE_SEGMENT_OWNER_WAIVER_MODEL_STAGE_ANCHOR_PRESENT",
+  "telemetry": {
+    "carriers": {
+      "c02_a2": {
+        "frequency": {
+          "policy4": {
+            "min_fraction_of_max": 1.0,
+            "p50_fraction_of_max": 1.0,
+            "pass": true,
+            "samples": 155
+          },
+          "policy6": {
+            "min_fraction_of_max": 1.0,
+            "p50_fraction_of_max": 1.0,
+            "pass": true,
+            "samples": 155
+          }
+        },
+        "governor_pass": true,
+        "governor_values": [
+          [
+            "performance",
+            "performance",
+            "performance"
+          ]
+        ],
+        "numeric_samples_pass": true,
+        "samples": 155,
+        "thermal": {
+          "thermal_zone0_soc_thermal": {
+            "lowest_trip_c": 75.0,
+            "max_c": 55.461,
+            "pass": true,
+            "samples": 155
+          },
+          "thermal_zone1_bigcore0_thermal": {
+            "lowest_trip_c": 115.0,
+            "max_c": 55.461,
+            "pass": true,
+            "samples": 155
+          },
+          "thermal_zone2_bigcore1_thermal": {
+            "lowest_trip_c": 115.0,
+            "max_c": 55.461,
+            "pass": true,
+            "samples": 155
+          },
+          "thermal_zone3_littlecore_thermal": {
+            "lowest_trip_c": 115.0,
+            "max_c": 55.461,
+            "pass": true,
+            "samples": 155
+          },
+          "thermal_zone4_center_thermal": {
+            "lowest_trip_c": 115.0,
+            "max_c": 54.538,
+            "pass": true,
+            "samples": 155
+          },
+          "thermal_zone5_gpu_thermal": {
+            "lowest_trip_c": 115.0,
+            "max_c": 52.692,
+            "pass": true,
+            "samples": 155
+          },
+          "thermal_zone6_npu_thermal": {
+            "lowest_trip_c": 115.0,
+            "max_c": 53.615,
+            "pass": true,
+            "samples": 155
+          }
+        },
+        "thermal_pass": true
+      },
+      "official_a1": {
+        "frequency": {
+          "policy4": {
+            "min_fraction_of_max": 1.0,
+            "p50_fraction_of_max": 1.0,
+            "pass": true,
+            "samples": 133
+          },
+          "policy6": {
+            "min_fraction_of_max": 1.0,
+            "p50_fraction_of_max": 1.0,
+            "pass": true,
+            "samples": 133
+          }
+        },
+        "governor_pass": true,
+        "governor_values": [
+          [
+            "performance",
+            "performance",
+            "performance"
+          ]
+        ],
+        "numeric_samples_pass": true,
+        "samples": 133,
+        "thermal": {
+          "thermal_zone0_soc_thermal": {
+            "lowest_trip_c": 75.0,
+            "max_c": 57.307,
+            "pass": true,
+            "samples": 133
+          },
+          "thermal_zone1_bigcore0_thermal": {
+            "lowest_trip_c": 115.0,
+            "max_c": 57.307,
+            "pass": true,
+            "samples": 133
+          },
+          "thermal_zone2_bigcore1_thermal": {
+            "lowest_trip_c": 115.0,
+            "max_c": 58.23,
+            "pass": true,
+            "samples": 133
+          },
+          "thermal_zone3_littlecore_thermal": {
+            "lowest_trip_c": 115.0,
+            "max_c": 57.307,
+            "pass": true,
+            "samples": 133
+          },
+          "thermal_zone4_center_thermal": {
+            "lowest_trip_c": 115.0,
+            "max_c": 57.307,
+            "pass": true,
+            "samples": 133
+          },
+          "thermal_zone5_gpu_thermal": {
+            "lowest_trip_c": 115.0,
+            "max_c": 55.461,
+            "pass": true,
+            "samples": 133
+          },
+          "thermal_zone6_npu_thermal": {
+            "lowest_trip_c": 115.0,
+            "max_c": 56.384,
+            "pass": true,
+            "samples": 133
+          }
+        },
+        "thermal_pass": true
+      }
+    },
+    "frequency_pass": true,
+    "governor_pass": true,
+    "numeric_samples_each_carrier_pass": true,
+    "samples": 293,
+    "thermal_pass": true
+  },
+  "validity_gates": {
+    "a76_frequency_pass": true,
+    "carrier_and_prompt_gates_pass": true,
+    "carrier_artifacts_unchanged_pass": true,
+    "formal_run_exit_zero": true,
+    "governor_restore_pass": true,
+    "implementation_identity_pass": true,
+    "npu_load_windows_pass": true,
+    "performance_governors_during_run_pass": true,
+    "prereg_identity_pass": true,
+    "process_perf_pass": true,
+    "telemetry_samples_pass": true,
+    "thermal_pass": true,
+    "timebase_pass": true,
+    "transcripts_pass": true,
+    "workload_identity_pass": true
+  },
+  "visualizations": {
+    "npu_load_curve_png": "results/operator/board/ope4/ope4_npu_load_curve_20260921.png",
+    "npu_load_curve_svg": "results/operator/board/ope4/ope4_npu_load_curve_20260921.svg",
+    "source": "scripts/operator/board/plot_ope4_npu_load.py"
+  }
+}

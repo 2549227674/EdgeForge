@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "stage": "OPE0-bandwidth-ceiling",
+  "status": "PASS_SINGLE_SEGMENT_OWNER_WAIVER",
+  "tier": "Tier-A",
+  "ceiling_gbps": 23.195184668499998,
+  "segment_ceiling_gbps": [
+    23.195184668499998
+  ],
+  "between_segment_relative_delta": null,
+  "stable_segment_sizes_mib": [
+    256,
+    512,
+    1024
+  ],
+  "kernel": "STREAM-style NEON triad C=A+scalar*B",
+  "definition": "single formal segment stable-size p50 after explicit owner waiver of the preregistered second segment",
+  "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+  "ope0_receipt_ref": "results/operator/board/ope0/ope0_receipt_20260918T1216+0800.json"
+}

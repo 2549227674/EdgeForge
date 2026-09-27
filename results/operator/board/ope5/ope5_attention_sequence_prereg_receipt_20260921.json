@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-01-DECODE-ATTENTION-SEQUENCE-PREREG-VERIFY",
+  "status": "PASS_FROZEN_BEFORE_IMPLEMENTATION_NO_BOARD_EXECUTION",
+  "recorded_at": "2026-09-21T18:01:00+08:00",
+  "check_summary": {
+    "passed": 30,
+    "total": 30
+  },
+  "checks": {
+    "source_sha256_scope_freeze": true,
+    "source_sha256_ope5_backlog_triage": true,
+    "source_sha256_shape_census": true,
+    "source_sha256_ope1_shape_manifest": true,
+    "source_sha256_ope2_preregistration": true,
+    "source_sha256_ope2_receipt": true,
+    "source_sha256_ope2_matrix_terminals": true,
+    "source_sha256_board_environment_identity": true,
+    "source_sha256_board_environment_completion": true,
+    "source_sha256_pc_k3_preregistration": true,
+    "source_sha256_pc_k3_correctness_receipt": true,
+    "source_sha256_pc_k3_reconnect_adjudication": true,
+    "source_sha256_ope4_receipt": true,
+    "prereg_status": true,
+    "scope_identity": true,
+    "selected_identity_and_four_questions": true,
+    "semantic_contract_exact": true,
+    "dual_form_kv_layout_frozen": true,
+    "grouped_rknpu_contract_frozen": true,
+    "three_complete_sequence_implementations": true,
+    "performance_population_weights_exact": true,
+    "all_performance_shapes_align_after_padding": true,
+    "correctness_population_and_account_exact": true,
+    "state_and_padding_gates_frozen": true,
+    "single_segment_no_retest_policy": true,
+    "timing_and_interleave_frozen": true,
+    "telemetry_perf_and_restore_frozen": true,
+    "source_lock_before_only_formal_run": true,
+    "no_prereg_execution_or_implementation": true,
+    "git_sha_at_freeze": true
+  },
+  "sources": [
+    {
+      "name": "scope_freeze",
+      "path": "configs/operator/board/ope5_attention_sequence_scope.json",
+      "expected_sha256": "ac238bc0abdd9ed0d11c631969bcfd50c73de306d633b13196fe4226554a83f8",
+      "observed_sha256": "ac238bc0abdd9ed0d11c631969bcfd50c73de306d633b13196fe4226554a83f8"
+    },
+    {
+      "name": "ope5_backlog_triage",
+      "path": "configs/operator/board/ope5_backlog_triage.json",
+      "expected_sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539",
+      "observed_sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539"
+    },
+    {
+      "name": "shape_census",
+      "path": "results/operator/shape_census.json",
+      "expected_sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f",
+      "observed_sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f"
+    },
+    {
+      "name": "ope1_shape_manifest",
+      "path": "configs/operator/board/ope1_shape_manifest.json",
+      "expected_sha256": "1b5f6a4690da92fcc2aa2213915280cda3ef866feab5fcbcfd06c702b781e05d",
+      "observed_sha256": "1b5f6a4690da92fcc2aa2213915280cda3ef866feab5fcbcfd06c702b781e05d"
+    },
+    {
+      "name": "ope2_preregistration",
+      "path": "configs/operator/board/ope2_matmul_prereg.json",
+      "expected_sha256": "9f66365f34ed5a162cfc7b9d53c5bb28dae9d53521feb20cb219d85eef6bf895",
+      "observed_sha256": "9f66365f34ed5a162cfc7b9d53c5bb28dae9d53521feb20cb219d85eef6bf895"
+    },
+    {
+      "name": "ope2_receipt",
+      "path": "results/operator/board/ope2/ope2_receipt_20260918.json",
+      "expected_sha256": "b408e1aacff736ac2f40d46af6613953a7ae74e43a2bbb81b4874a12358b8819",
+      "observed_sha256": "b408e1aacff736ac2f40d46af6613953a7ae74e43a2bbb81b4874a12358b8819"
+    },
+    {
+      "name": "ope2_matrix_terminals",
+      "path": "results/operator/board/ope2/ope2_formal_20260918T1254/matrix/matrix_terminals.jsonl",
+      "expected_sha256": "3553b667071d113fed308e110b4b4f303e9a63d011cfc951aef283da8d8da5b6",
+      "observed_sha256": "3553b667071d113fed308e110b4b4f303e9a63d011cfc951aef283da8d8da5b6"
+    },
+    {
+      "name": "board_environment_identity",
+      "path": "results/operator/board/board_env_identity_20260917T2022+0800.json",
+      "expected_sha256": "000cbc82dd1386871521ba22f1a73b20aba9e63bcbc5264f136b988847407028",
+      "observed_sha256": "000cbc82dd1386871521ba22f1a73b20aba9e63bcbc5264f136b988847407028"
+    },
+    {
+      "name": "board_environment_completion",
+      "path": "results/operator/board/board_env_identity_20260918T1154+0800.json",
+      "expected_sha256": "d74091b5da57934b16095550c609dc69861ac09a7987d9a7ea0e6b8046cca4df",
+      "observed_sha256": "d74091b5da57934b16095550c609dc69861ac09a7987d9a7ea0e6b8046cca4df"
+    },
+    {
+      "name": "pc_k3_preregistration",
+      "path": "configs/operator/k3_gqa_decode_attention_prereg.json",
+      "expected_sha256": "fe427c9650aa929d18f72daaaa22ed918b7d33fd5b0af4da12386e0a86229626",
+      "observed_sha256": "fe427c9650aa929d18f72daaaa22ed918b7d33fd5b0af4da12386e0a86229626"
+    },
+    {
+      "name": "pc_k3_correctness_receipt",
+      "path": "results/operator/pool/k3_gqa_correctness_receipt_20260916.json",
+      "expected_sha256": "ac8e9834ccfd32d731ef6374c962989486b3779caa9fa90e848a1392b8f7cf32",
+      "observed_sha256": "ac8e9834ccfd32d731ef6374c962989486b3779caa9fa90e848a1392b8f7cf32"
+    },
+    {
+      "name": "pc_k3_reconnect_adjudication",
+      "path": "results/operator/pool/k3_gqa_reconnect_r5_adjudication_receipt_20260916.json",
+      "expected_sha256": "0325ffc028ea3ff53bc9fa7a5ba22ccb486dd7e47b040685b300dd7b460e3c12",
+      "observed_sha256": "0325ffc028ea3ff53bc9fa7a5ba22ccb486dd7e47b040685b300dd7b460e3c12"
+    },
+    {
+      "name": "ope4_receipt",
+      "path": "results/operator/board/ope4/ope4_receipt_20260921.json",
+      "expected_sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d",
+      "observed_sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d"
+    }
+  ],
+  "scope_receipt_status": "PASS_OPE5_01_FOUR_QUESTIONS_DISTINCT_SEQUENCE_PREREG_AUTHORIZED",
+  "board_connection_performed": false,
+  "implementation": {
+    "implemented": false,
+    "source_locked": false,
+    "formal_execution_started": false
+  },
+  "future_formal_segments": 1,
+  "performance_smoke_authorized": false,
+  "same_day_retest_authorized": false,
+  "automatic_retry_authorized": false,
+  "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED"
+}

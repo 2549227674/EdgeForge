@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_GQA_DECODE_SELECTION",
+  "frozen_at": "2026-09-16T17:02:23+08:00",
+  "frozen_before_formal_probe_measurement": true,
+  "frozen_before_gqa_candidate_implementation": true,
+  "host_scope": "RTX 4060 Laptop GPU / sm_89 / WSL2 only",
+  "formal_numbers_must_not_be_extrapolated": [
+    "sm_100",
+    "sm_120",
+    "board targets",
+    "prefill attention",
+    "llama.cpp"
+  ],
+  "source_identity": {
+    "shape_census": {
+      "path": "results/operator/shape_census.json",
+      "sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f"
+    },
+    "op1_receipt": {
+      "path": "results/operator/op1/op1_receipt.json",
+      "sha256": "e07ab8594314f171d38cd50bcedd0acd7dae2b09b17a2c3e272c720d3965ae60"
+    },
+    "op1_channel_b_profiler": {
+      "path": "results/operator/op1/channel_b_profiler.json",
+      "sha256": "d1e9524cffc6c81c6ef401d7281e7ca353baf110ddc9d72a4a522a4ad81d278a"
+    },
+    "k2_r2_closure_receipt": {
+      "path": "results/operator/pool/k2_r2_day1_receipt_20260916.json",
+      "sha256": "8bef2b9e9385869211d826b47750bac1cec16b35c976aa142b569dd2059dc6bb"
+    },
+    "op0_receipt": {
+      "path": "results/operator/op0/op0_receipt.json",
+      "sha256": "86c3a2fa42b5a0c157e3880a4861efce330fb453025001f9c8752b387930261d"
+    },
+    "same_day_bandwidth_config": {
+      "path": "configs/operator/op5_k2_selection_probe.json",
+      "sha256": "455078161d9935388d19d5aae3ff48ae9da6ba66ffecb2cb347656981720b347"
+    },
+    "transformers_gemma4_source": {
+      "path": ".venv-bfcl/lib/python3.12/site-packages/transformers/models/gemma4/modeling_gemma4.py",
+      "sha256": "a0a5aaaeb61430bca1d13f3e8aed0bafb0d2ee9bef05135e16e7c84d7084db2c"
+    },
+    "transformers_sdpa_source": {
+      "path": ".venv-bfcl/lib/python3.12/site-packages/transformers/integrations/sdpa_attention.py",
+      "sha256": "d334e0b1d0c17ac97964348e49e6df681a4193241c8161f23292817ca39e2098"
+    },
+    "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0"
+  },
+  "objective": {
+    "primary": "Decide whether GQA decode attention has enough measured headroom over the fastest correctness-eligible existing implementation to justify a new custom candidate.",
+    "non_objectives": [
+      "implementing or timing a new custom attention kernel",
+      "measuring prefill attention",
+      "claiming an isolated tensor probe is already deployment-equivalent",
+      "reusing K2 performance or correctness conclusions"
+    ]
+  },
+  "authenticity_contract": {
+    "implementation": "transformers Gemma4 eager_attention_forward",
+    "normal_inference_caller_discards_attention_weights": true,
+    "formal_scope": "decode Q=1 with output_attentions=false on the frozen C02 tape population",
+    "batch": 1,
+    "query_heads": 8,
+    "key_value_heads": 2,
+    "gqa_groups": 4,
+    "scaling": 1.0,
+    "dropout": 0.0,
+    "dtype": "bfloat16",
+    "mask": "contiguous BF16 zero mask [1,1,1,K] representing the all-visible decode cache slice",
+    "sliding": {
+      "head_dim": 256,
+      "kv_tokens": 512,
+      "calls_per_forward": 35,
+      "projected_forwards": 21694,
+      "projected_invocations": 759290
+    },
+    "full": {
+      "head_dim": 512,
+      "kv_tokens_min": 807,
+      "kv_tokens_max": 7359,
+      "calls_per_forward": 7,
+      "projected_forwards": 21694,
+      "projected_invocations": 151858
+    },
+    "total_projected_decode_invocations": 911148
+  },
+  "full_length_stratification": {
+    "method": "Expand every exact inclusive full-attention K range from the 11 census requests into a 21,694-element multiset, sort it, partition by round(i*N/12), and use the lower median of each slice as representative K. Multiply each slice forward count by 7 full-attention layers.",
+    "bin_count": 12,
+    "bins": [
+      {"bin": 0, "min_k": 807, "max_k": 1436, "representative_k": 1264, "forward_count": 1808, "projected_invocations": 12656},
+      {"bin": 1, "min_k": 1436, "max_k": 1714, "representative_k": 1569, "forward_count": 1808, "projected_invocations": 12656},
+      {"bin": 2, "min_k": 1714, "max_k": 1973, "representative_k": 1843, "forward_count": 1808, "projected_invocations": 12656},
+      {"bin": 3, "min_k": 1973, "max_k": 2333, "representative_k": 2153, "forward_count": 1807, "projected_invocations": 12649},
+      {"bin": 4, "min_k": 2334, "max_k": 2695, "representative_k": 2514, "forward_count": 1808, "projected_invocations": 12656},
+      {"bin": 5, "min_k": 2695, "max_k": 3123, "representative_k": 2897, "forward_count": 1808, "projected_invocations": 12656},
+      {"bin": 6, "min_k": 3123, "max_k": 3575, "representative_k": 3349, "forward_count": 1808, "projected_invocations": 12656},
+      {"bin": 7, "min_k": 3575, "max_k": 4010, "representative_k": 3801, "forward_count": 1808, "projected_invocations": 12656},
+      {"bin": 8, "min_k": 4011, "max_k": 4440, "representative_k": 4191, "forward_count": 1807, "projected_invocations": 12649},
+      {"bin": 9, "min_k": 4440, "max_k": 5029, "representative_k": 4728, "forward_count": 1808, "projected_invocations": 12656},
+      {"bin": 10, "min_k": 5029, "max_k": 5632, "representative_k": 5331, "forward_count": 1808, "projected_invocations": 12656},
+      {"bin": 11, "min_k": 5633, "max_k": 7359, "representative_k": 6455, "forward_count": 1808, "projected_invocations": 12656}
+    ]
+  },
+  "baselines": {
+    "transformers_eager": {
+      "definition": "Frozen transformers eager_attention_forward with GQA KV repeat, QK matmul, BF16 zero mask add, FP32 softmax, and PV matmul; output tensor timed while its attention weights remain an internal materialized tensor.",
+      "mandatory": true
+    },
+    "compile_eager": {
+      "definition": "torch.compile(fullgraph=true, mode=reduce-overhead, dynamic=false) around the same output-only eager wrapper.",
+      "mandatory": true
+    },
+    "torch_sdpa_gqa": {
+      "definition": "torch.nn.functional.scaled_dot_product_attention with the same tensors, mask, scale=1.0, dropout=0, is_causal=false, and enable_gqa=true.",
+      "mandatory_comparator": true,
+      "best_baseline_eligible_only_if_correct": true
+    },
+    "compile_sdpa_gqa": {
+      "definition": "torch.compile(fullgraph=true, mode=reduce-overhead, dynamic=false) around torch_sdpa_gqa.",
+      "mandatory_comparator": true,
+      "best_baseline_eligible_only_if_correct": true
+    },
+    "best_baseline_rule": "For each case choose the minimum p50 among every correctness-eligible baseline; aggregate the chosen per-case latency with frozen projected invocation counts."
+  },
+  "correctness_protocol": {
+    "input_distribution": "seeded unit-normal FP32 tensors cast to BF16",
+    "seeds": [20260916, 20260917, 20260918],
+    "reference": "transformers_eager output tensor",
+    "tolerance": {"atol": 0.03125, "rtol": 0.02},
+    "compile_eager_must_match_reference": true,
+    "sdpa_is_excluded_from_best_baseline_if_any_case_fails": true,
+    "hard_contract": [
+      "all outputs have shape [1,1,8,head_dim], BF16 dtype, CUDA device, contiguous layout, and finite values",
+      "query, key, value, and mask contents and tensor versions remain unchanged",
+      "all 13 frozen performance cases pass for every seed"
+    ]
+  },
+  "analytic_bytes": {
+    "tier": "Tier-A compulsory unique bytes for the output-only current inference consumer",
+    "formula": "BF16 query + BF16 key + BF16 value + BF16 zero-mask slice + BF16 attention output; repeated KV views, materialized attention weights, and other implementation intermediates are not credited as compulsory bytes",
+    "bytes_per_case": "2*(8*D + 2*K*D + 2*K*D + K + 8*D)",
+    "same_day_ceiling": {
+      "operation": "Triton float32 triad",
+      "array_size_mib": 512,
+      "analytic_bytes_per_repetition": 1610612736,
+      "warmup_repetitions": 50,
+      "measured_repetitions": 200,
+      "block_size": 256
+    }
+  },
+  "measurement_protocol": {
+    "event_timer": "torch.cuda.Event(enable_timing=true)",
+    "warmup_repetitions_per_case_per_implementation": 50,
+    "measured_repetitions_per_case_per_implementation": 200,
+    "interleave": "four-way rotation by repetition index within each case",
+    "compile_fullgraph": true,
+    "compile_mode": "reduce-overhead",
+    "compile_dynamic": false,
+    "torch_dynamo_recompile_limit": 64,
+    "gpu_telemetry_interval_seconds": 1.0,
+    "minimum_memory_clock_ratio_vs_op0": 0.95,
+    "op0_memory_clock_mhz_p50": 8000.0,
+    "invalidate_on_thermal_or_hardware_throttle": true
+  },
+  "selection_gate": {
+    "authenticity": "PASS only if the census, OP1 receipt, and two channel-B observed decode shapes verify exactly.",
+    "bottleneck": "PASS if the invocation-weighted Tier-A relative score of the per-case best correctness-eligible existing baseline is <=0.80 on a valid day.",
+    "native_path_precedence": "If an SDPA baseline is correctness-eligible and at least 1.05x faster than current eager in the invocation-weighted aggregate, evaluate it as a configuration-only replacement before authoring a custom kernel.",
+    "custom_candidate_authorization": "A custom GQA candidate may be pre-registered only after Authenticity PASS, Bottleneck PASS, and explicit comparison against any correctness-eligible SDPA path.",
+    "if_bottleneck_fails": "Do not implement a custom GQA candidate; retain the valid probe and move the rolling backlog decision onward.",
+    "if_probe_is_invalid": "Repeat the unchanged probe; do not reinterpret an invalid day as a selection result."
+  }
+}

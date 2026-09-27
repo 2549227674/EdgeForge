@@ -1,0 +1,2 @@
+record_type,variant,warmup,reps,elapsed_us,checksum,observed
+perf,scalar,0,200,1175368.834000,15845364518883164378,18446744073709101679

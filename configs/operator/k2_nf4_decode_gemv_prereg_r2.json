@@ -1,0 +1,377 @@
+{
+  "schema_version": 2,
+  "stage": "OP5_K2_R2",
+  "protocol_revision": "R2",
+  "kernel": "k2_nf4_double_quant_decode_gemv",
+  "frozen_at": "2026-09-16T16:32:11+08:00",
+  "host_scope": "RTX 4060 Laptop GPU / sm_89 / WSL2 only",
+  "formal_numbers_must_not_be_extrapolated": [
+    "sm_100",
+    "sm_120",
+    "board targets",
+    "llama.cpp Q4_K_M"
+  ],
+  "revision_disclosure": {
+    "adaptive_followup_to_failed_r1": true,
+    "independent_replication_of_r1": false,
+    "r1_remains_immutable_and_failed": true,
+    "reason_for_revision": "R1 required the candidate to pass the same fixed allclose tolerance against both bitsandbytes fused eager and a BF16-dequantized explicit FP32 linear reference. The post-failure 126-case audit proved that 35 cases and 297 output elements have disjoint allowed intervals, so the conjunction is mathematically unsatisfiable.",
+    "known_r1_observations_used_to_design_r2": [
+      "The existing candidate compiled and ran on sm_89, including K=2560,N=10240.",
+      "The first complete R1 correctness run stopped in k_proj_full_nonshared / wide_normal / seed 20260916 with max_abs 0.125.",
+      "All frozen-oracle interval conflicts in the 126-case audit occurred in wide_normal; 13 of 14 variants and all three R1 seeds were affected.",
+      "The existing candidate matched an independently reconstructed FP32-weight semantic reference in the focused failing-case diagnosis, but this diagnosis is not an R2 holdout result.",
+      "No formal K2 candidate performance, ncu, or reconnection measurement was started under R1."
+    ],
+    "candidate_existed_before_r2_freeze": true,
+    "candidate_identity_locked_for_single_r2_attempt": {
+      "path": "scripts/operator/k2_nf4_gemv.py",
+      "sha256": "149b4b8c651cfa6530f320779687132f0bdb31f511282473250ffc80257d7c65"
+    },
+    "r2_holdout_inputs_evaluated_before_freeze": false,
+    "r2_performance_measured_before_freeze": false,
+    "interpretation_rule": "R2 is a transparently adapted confirmatory attempt. It must never be presented as if its oracle or holdouts had been chosen before observing R1."
+  },
+  "source_identity": {
+    "r1_preregistration": {
+      "path": "configs/operator/k2_nf4_decode_gemv_prereg.json",
+      "sha256": "bb497bf4be20a922abbe6edbf8e4812d55b01e14d8db088371ec332ad61f299f"
+    },
+    "r1_correctness_gate_receipt": {
+      "path": "results/operator/pool/k2_correctness_gate_receipt_20260916.json",
+      "sha256": "c25e744b5377f4f7254a24d3ab1139d842d6cf424f4d2d16dafe6034f422e04b"
+    },
+    "r1_oracle_consistency_audit": {
+      "path": "results/operator/failures/k2_oracle_consistency_audit_20260916.json",
+      "sha256": "0158290477f8f8d45cb0419e7e0f4daa5edc9048d239ce9edc585d9aa3901573"
+    },
+    "shape_census": {
+      "path": "results/operator/shape_census.json",
+      "sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f"
+    },
+    "op5_selection_result": {
+      "path": "results/operator/pool/op5_k2_selection.json",
+      "sha256": "cb83e67e8766d2e07e4267563ffd77875c49cc85a26fa93e55408c35e33fd43f"
+    },
+    "op5_receipt": {
+      "path": "results/operator/pool/op5_receipt.json",
+      "sha256": "1666ed0bd944e8b14e71ec18311f690ffd9e4c4d466ac75041965cdfd5304c92"
+    },
+    "candidate_source": {
+      "path": "scripts/operator/k2_nf4_gemv.py",
+      "sha256": "149b4b8c651cfa6530f320779687132f0bdb31f511282473250ffc80257d7c65"
+    },
+    "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0"
+  },
+  "formal_objective": {
+    "primary": "Test whether the already-implemented fused nested-NF4 decode GEMV satisfies one coherent FP32 mathematical contract and, only after correctness, delivers a positive isolated speedup over the faster vendor baseline.",
+    "deployment": "If isolated gates pass, determine whether the mathematically coherent candidate is deployment-equivalent by exact greedy token IDs on the frozen C02 tapes.",
+    "non_objectives": [
+      "repairing or overwriting the failed R1 result",
+      "reproducing bitsandbytes fused eager's implementation-specific rounding path as the mathematical definition",
+      "claiming that isolated semantic correctness alone proves deployment equivalence",
+      "tuning candidate code or launch configurations after observing R2 holdout results"
+    ]
+  },
+  "semantic_contract": {
+    "operation": "Y[1,N] = cast_bfloat16(sum_K(float32(X[1,K]) * W_fp32[N,K]))",
+    "packed_storage": "row-major flattened [N,K], two 4-bit indices per uint8; even flattened element uses the high nibble and odd element uses the low nibble",
+    "quant_blocksize": 64,
+    "nested_scale_blocksize": 256,
+    "nested_scale_formula": "scale_index=floor(flat_weight_index/64); scale_fp32=float32(second_code[first_absmax_uint8[scale_index]]) * second_absmax_float32[floor(scale_index/256)] + offset_float32",
+    "weight_formula": "W_fp32 = float32(NF4_CODEBOOK[nibble]) * scale_fp32",
+    "weight_rounding_before_multiply": "none; W_fp32 is not rounded to BF16 before the FP32 dot",
+    "activation_conversion": "BF16 activation is converted to FP32 before multiplication",
+    "accumulator_dtype": "float32",
+    "output_dtype": "bfloat16",
+    "bias": null,
+    "nf4_codebook_index_order": [
+      -1.0,
+      -0.6961928009986877,
+      -0.5250730514526367,
+      -0.39491748809814453,
+      -0.28444138169288635,
+      -0.18477343022823334,
+      -0.09105003625154495,
+      0.0,
+      0.07958029955625534,
+      0.16093020141124725,
+      0.24611230194568634,
+      0.33791524171829224,
+      0.44070982933044434,
+      0.5626170039176941,
+      0.7229568362236023,
+      1.0
+    ]
+  },
+  "oracle_policy": {
+    "single_hard_correctness_oracle": {
+      "name": "explicit_fp32_nf4_semantic_reference",
+      "definition": "Decode high/low nibbles and both nested scale levels explicitly in FP32 according to semantic_contract, materialize W_fp32 only inside the untimed reference path, run torch.nn.functional.linear on FP32 activation and W_fp32, then cast the output to BF16.",
+      "candidate_gate": true
+    },
+    "bitsandbytes_fused_eager": {
+      "role": "non-gating numerical comparator and mandatory performance baseline",
+      "candidate_gate": false,
+      "required_report": [
+        "eager versus primary-reference error metrics",
+        "candidate versus eager error metrics",
+        "candidate versus primary-reference error metrics",
+        "counts of exact, allclose, and non-allclose output elements"
+      ],
+      "reason_not_a_second_hard_oracle": "R1 proved that conjunction with the primary semantic reference can be mathematically unsatisfiable at the frozen tolerance."
+    },
+    "bnb_bf16_dequant_fp32_linear": {
+      "role": "optional diagnostic only",
+      "candidate_gate": false
+    },
+    "deployment_equivalence_oracle": "Exact greedy token IDs in the reconnection protocol; isolated semantic correctness is necessary but not sufficient for deployment."
+  },
+  "candidate_contract": {
+    "formal_scope": "decode M=1 only",
+    "required_conditions": [
+      "CUDA compute capability is sm_89",
+      "input is contiguous BF16 with shape [1,K] or [1,1,K]",
+      "inference/no-grad execution",
+      "quant_type is nf4 and QuantState is nested",
+      "quant blocksize is 64 and second-level blocksize is 256",
+      "packed and scale tensor dtypes, shapes, sizes, and devices match the frozen layout",
+      "bias is absent"
+    ],
+    "fallback": "Any condition miss, including every prefill M>1 call, invokes the original bitsandbytes Linear4bit path unchanged.",
+    "forbidden": [
+      "materializing the full BF16 or FP32 weight matrix in the candidate path",
+      "changing Parameters, QuantState tensors, or state_dict keys",
+      "editing the candidate source after this R2 freeze and still calling the run the single locked R2 attempt",
+      "selecting a launch configuration after observing R2 holdout or performance results",
+      "using repeated-single-weight L2 reuse as formal performance evidence"
+    ]
+  },
+  "target_population": {
+    "source_pointer": "results/operator/shape_census.json#/op_families/nf4_linear/shapes",
+    "formal_selection": "all 14 decode rows and all 343 real C02 Linear4bit module weights",
+    "expected_decode_rows": 14,
+    "expected_modules": 343,
+    "expected_projected_decode_invocations": 7441042,
+    "module_order_policy": "model.named_modules registration order for all full-sequence timing",
+    "representative_policy": "lexicographically first exact C02 module in each semantic variant"
+  },
+  "candidate_design": {
+    "algorithm": "One Triton program owns a tile of output rows, iterates K in fixed chunks, decodes NF4 nibbles and nested scales in registers, accumulates FP32 row reductions, and writes BF16 once.",
+    "autotune_key": [
+      "K",
+      "N"
+    ],
+    "frozen_search_space_inherited_unchanged_from_r1": [
+      {
+        "BLOCK_N": 4,
+        "BLOCK_K": 256,
+        "num_warps": 4,
+        "num_stages": 2
+      },
+      {
+        "BLOCK_N": 8,
+        "BLOCK_K": 256,
+        "num_warps": 4,
+        "num_stages": 3
+      },
+      {
+        "BLOCK_N": 8,
+        "BLOCK_K": 512,
+        "num_warps": 8,
+        "num_stages": 3
+      },
+      {
+        "BLOCK_N": 16,
+        "BLOCK_K": 256,
+        "num_warps": 8,
+        "num_stages": 3
+      },
+      {
+        "BLOCK_N": 16,
+        "BLOCK_K": 512,
+        "num_warps": 8,
+        "num_stages": 4
+      }
+    ],
+    "tuning_policy": "Autotune may select only from the inherited frozen search space. Choices are populated before formal correctness comparisons and recorded."
+  },
+  "r2_holdout_correctness_protocol": {
+    "holdout_status_at_freeze": "UNOBSERVED",
+    "all_actual_weights": {
+      "population": "all 343 C02 module weights",
+      "distribution": "unit_normal",
+      "seed": 20261001,
+      "primary_reference_required": true,
+      "vendor_comparator_report_required": true
+    },
+    "representative_matrix": {
+      "population": "one exact representative from each of 14 variants",
+      "distributions": [
+        {
+          "name": "unit_normal",
+          "definition": "normal(mean=0, std=1) generated in FP32 then cast to BF16"
+        },
+        {
+          "name": "wide_normal",
+          "definition": "normal(mean=0, std=8) generated in FP32 then cast to BF16"
+        },
+        {
+          "name": "near_zero_uniform",
+          "definition": "uniform(low=-0.001, high=0.001) generated in FP32 then cast to BF16"
+        },
+        {
+          "name": "alternating_wide",
+          "definition": "x[k] = 8 * (-1)^k * (1 + u[k]), where u is uniform(-0.125,0.125) in FP32, then cast to BF16",
+          "reason": "fresh cancellation-sensitive holdout added transparently after R1 exposed cancellation-path disagreements"
+        }
+      ],
+      "seeds": [
+        20261001,
+        20261002,
+        20261003
+      ],
+      "expected_trials": 168,
+      "primary_reference_required": true,
+      "vendor_comparator_report_required": true
+    },
+    "tolerances": {
+      "bfloat16": {
+        "atol": 0.03125,
+        "rtol": 0.02
+      }
+    },
+    "hard_assertions": [
+      "candidate is allclose to the single explicit FP32 semantic reference",
+      "candidate output shape, dtype, device, contiguity, and finite-value contract match",
+      "input and every packed/scale source tensor are unmodified",
+      "exhaustive nibble indices 0..15 prove high-nibble-first ordering",
+      "nested scale boundaries cover flat indices 63/64 and scale indices 255/256",
+      "fallback output is exactly equal to original Linear4bit for M>1 and every rejected condition",
+      "all 11 geometries use only a configuration in the frozen search space"
+    ],
+    "non_gating_but_mandatory_reports": [
+      "bitsandbytes fused eager versus primary reference",
+      "candidate versus bitsandbytes fused eager",
+      "bnb BF16-dequantized FP32-linear diagnostic versus primary reference"
+    ],
+    "candidate_source_hash_must_equal_locked_identity": true,
+    "pass_rule": "Every hard assertion passes for all 343 actual weights and all 168 representative holdout trials. Any candidate correctness failure closes K2 R2; candidate tuning after seeing the holdout is not allowed."
+  },
+  "analytic_bytes": {
+    "tier": "Tier-A compulsory unique bytes",
+    "formula": "input BF16 bytes + packed NF4 bytes + uint8 first-level scale-index bytes + float32 second-level absmax bytes + 256-entry float32 scale codebook + float32 offset + output BF16 bytes",
+    "cache_assumption": "Each tensor is counted once per invocation; no reuse between distinct module weights is credited.",
+    "same_day_ceiling_protocol": {
+      "operation": "Triton float32 triad",
+      "array_size_mib": 512,
+      "warmup_repetitions": 50,
+      "measured_repetitions": 200,
+      "block_size": 256
+    },
+    "tier_b_override": "For each representative decode row, ncu dram__bytes.sum supersedes Tier-A when absolute difference exceeds 15%."
+  },
+  "baselines": {
+    "eager": "bitsandbytes 0.50.0 fused bitsandbytes::gemm_4bit CUDA path on exact C02 tensors",
+    "compile": "torch.compile(fullgraph=true, mode=reduce-overhead, dynamic=false) around the same tensor-only bitsandbytes call",
+    "candidate": "locked Triton candidate source identified in revision_disclosure",
+    "best_baseline_rule": "For every case and aggregate classification, best_baseline_us=min(eager_p50_us, compile_p50_us). Eager remains the expected faster baseline from OP5 selection, but both are remeasured."
+  },
+  "measurement_protocol": {
+    "precondition": "R2 correctness receipt is PASS and candidate source SHA still equals the locked identity",
+    "event_timer": "torch.cuda.Event(enable_timing=true)",
+    "warmup_full_343_call_sequences_per_implementation": 50,
+    "steady_state_warmup_min_seconds": 2.0,
+    "measured_full_343_call_sequences_per_implementation": 200,
+    "timed_implementations": [
+      "eager",
+      "compile",
+      "candidate"
+    ],
+    "interleave_order": "three-way rotation by full-sequence repetition index; identical 343-module order",
+    "gpu_telemetry_interval_seconds": 1.0,
+    "minimum_memory_clock_ratio_vs_op0": 0.95,
+    "op0_memory_clock_mhz_p50": 8000.0,
+    "invalidate_on_thermal_or_hardware_throttle": true,
+    "record_software_power_cap_without_invalidating": true,
+    "required_report": [
+      "per-variant p50_us and IQR_us",
+      "census-invocation-weighted aggregate p50_us",
+      "candidate speedup versus eager, compile, and best baseline",
+      "analytic bytes, measured GB/s, and Tier-A relative score",
+      "full 343-call sequence p50 and IQR",
+      "autotune choice for every geometry"
+    ]
+  },
+  "bounded_continuation_gate": {
+    "single_r2_candidate_attempt": true,
+    "day1_must_be_positive_to_continue": true,
+    "positive_definition": "candidate invocation-weighted speedup versus best baseline is at least 1.05 and none of mlp_gate_proj, mlp_up_proj, or mlp_down_proj regresses by more than 5%",
+    "if_correctness_fails": "Close K2 R2 and move the OP5 backlog decision to GQA decode attention; do not edit or tune the candidate against the revealed holdout.",
+    "if_day1_is_not_positive": "Record the valid day and close K2 without day2, ncu, or reconnection.",
+    "if_day1_is_positive": "Proceed to the required second valid calendar day with unchanged code and protocol."
+  },
+  "cross_day_replication": {
+    "required_only_after_positive_day1": true,
+    "minimum_valid_calendar_days": 2,
+    "same_protocol_code_and_power_mode_required": true,
+    "consistency": [
+      "aggregate outcome remains positive on both days",
+      "aggregate candidate speedup versus best baseline differs by no more than 10% relative",
+      "mlp_gate_proj, mlp_up_proj, and mlp_down_proj speedup direction is identical",
+      "both days pass telemetry, memory-clock, and same-day bandwidth gates"
+    ],
+    "adjudication": "If consistency fails, run one third unchanged valid day and report the median; do not discard a valid slow day."
+  },
+  "ncu_tier_b": {
+    "precondition": "two-day isolated positive gate",
+    "population": "one exact representative module for each of 14 decode variants",
+    "metrics": [
+      "dram__bytes.sum",
+      "dram__throughput.avg.pct_of_peak_sustained_elapsed",
+      "sm__throughput.avg.pct_of_peak_sustained_elapsed"
+    ],
+    "repetitions_per_profiled_case": 1,
+    "analytic_override_threshold_fraction": 0.15
+  },
+  "reconnection_protocol": {
+    "precondition": "R2 correctness PASS, two-day isolated positive consistency PASS, and ncu Tier-B complete",
+    "registration": "torch.library custom op with fake/meta implementation and sm_89 CUDA implementation",
+    "dispatch": "reversible replacement of active C02 Linear4bit forward; candidate only for the exact M=1 contract, original forward otherwise",
+    "structural_gates": [
+      "343 active modules remain present",
+      "parameter object identities and state_dict key/value hashes are unchanged",
+      "CPU embedding/lm_head storage identities and placement are unchanged",
+      "prefill invokes original bitsandbytes",
+      "decode candidate invocation count is exactly 343 per generated token",
+      "peak VRAM remains below 7.5 GiB"
+    ],
+    "tape_replay": {
+      "population": "all 5 frozen tapes / 11 requests",
+      "paths": [
+        "A original bitsandbytes",
+        "B K2 R2 candidate dispatch"
+      ],
+      "passes_per_path": 2,
+      "timed_pass": 2,
+      "order": "A/B alternated by request, with both paths completing pass 1 before timed pass 2",
+      "hard_deployment_gate": "Every greedy token ID must match A versus B for every request. Any divergence means the semantically correct isolated kernel is not deployment-equivalent and must not replace the vendor path.",
+      "required_report": [
+        "kernel microseconds and inferred milliseconds per decode token",
+        "TTFT",
+        "TPOT and tokens per second",
+        "peak memory",
+        "thermal telemetry",
+        "token equality and first divergence",
+        "fallback counts and side effects"
+      ]
+    }
+  },
+  "execution_order": [
+    "Freeze this R2 file and record its SHA-256 before authoring or running the R2 harness.",
+    "Verify every source hash and the locked candidate source hash.",
+    "Run only the R2 correctness protocol and write an immutable receipt.",
+    "Only on correctness PASS run the first isolated calendar-day measurement.",
+    "Apply the bounded continuation gate before any second day, ncu, or reconnection."
+  ]
+}

@@ -1,0 +1,2 @@
+KE1_METADATA mode=measure M=1 K=10240 N=2560 threads=4 first_cpu=4 seed=20260920 candidate_backend=aarch64_neon_sdot analytic_bytes=26234880 analytic_ops=52428800
+KE1_MEASUREMENT_OBSERVED=16072851489361818024

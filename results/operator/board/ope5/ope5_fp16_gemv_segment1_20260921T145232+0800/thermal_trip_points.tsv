@@ -1,0 +1,10 @@
+zone	type	trip_index	trip_type	trip_temp_mC
+0	soc-thermal	0	passive	75000
+0	soc-thermal	1	passive	85000
+0	soc-thermal	2	critical	115000
+1	bigcore0-thermal	0	critical	115000
+2	bigcore1-thermal	0	critical	115000
+3	littlecore-thermal	0	critical	115000
+4	center-thermal	0	critical	115000
+5	gpu-thermal	0	critical	115000
+6	npu-thermal	0	critical	115000

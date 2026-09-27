@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "stage": "OP0",
+  "frozen_at": "2026-09-15T15:37:41+08:00",
+  "host_scope": "RTX 4060 Laptop GPU / sm_89 / WSL2 only",
+  "formal_numbers_must_not_be_extrapolated": [
+    "sm_100",
+    "sm_120",
+    "board targets"
+  ],
+  "power_protocol": {
+    "require_ac_power": true,
+    "change_host_power_plan": false,
+    "sample_interval_seconds": 1.0,
+    "invalidate_on_thermal_throttle": true,
+    "invalidate_on_hardware_slowdown": true,
+    "record_software_power_cap_without_invalidating": true
+  },
+  "bandwidth": {
+    "dtype": "float32",
+    "array_sizes_mib": [16, 32, 64, 128, 256, 512, 1024, 2048],
+    "operations": {
+      "memcpy": {
+        "implementation": "torch.Tensor.copy_ device-to-device",
+        "analytic_bytes_per_element": 8
+      },
+      "triad": {
+        "implementation": "Triton out = a + 0.5 * b",
+        "analytic_bytes_per_element": 12,
+        "block_size": 1024
+      }
+    },
+    "warmup_repetitions_per_operation": 50,
+    "measured_repetitions_per_operation": 200,
+    "interleave_order": "even rep memcpy/triad; odd rep triad/memcpy",
+    "stable_segment_sizes_mib": [512, 1024, 2048],
+    "stable_segment_max_iqr_fraction": 0.05,
+    "formal_ceiling_operation": "triad",
+    "datasheet_crosscheck_gbps_decimal": 256.0,
+    "byte_accounting": "read plus write DRAM traffic; decimal GB/s"
+  },
+  "k0_selfcheck": {
+    "kernel": "k0_vector_add",
+    "semantics": "out[i] = x[i] + y[i] for float32 contiguous vectors",
+    "timed_numel": 4194304,
+    "timed_tensor_bytes_each": 16777216,
+    "triton_block_size": 256,
+    "correctness_shapes": [1, 257, 65537, 4194304],
+    "correctness_seeds": [20260915, 20260916, 20260917],
+    "correctness_atol": 1e-06,
+    "correctness_rtol": 1e-06,
+    "warmup_repetitions_per_baseline": 50,
+    "steady_state_warmup_min_seconds": 2.0,
+    "minimum_memory_clock_ratio_vs_bandwidth": 0.95,
+    "steady_state_note": "Finalized before the accepted run after a dry run showed that 50 launches are too short for the laptop GPU to leave P4; steady-state launches are untimed.",
+    "measured_repetitions_per_baseline": 200,
+    "timed_baselines": ["eager", "compile", "candidate"],
+    "interleave_order": "three-way rotation by repetition index",
+    "nsys_measured_repetitions": 200,
+    "nsys_nvtx_range": "edgeforge_k0_nsys_measure",
+    "nsys_cuda_event_relative_bias_limit": 0.05,
+    "nsys_binary": "/home/qbz415/.local/opt/nvidia/nsight-systems-2026.5.1-cli/opt/nvidia/nsight-systems-cli/2026.5.1/target-linux-x64/nsys"
+  }
+}

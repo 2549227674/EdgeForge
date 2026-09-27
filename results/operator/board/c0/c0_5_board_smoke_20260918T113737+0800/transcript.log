@@ -1,0 +1,18 @@
+rkllm init start
+I rkllm: rkllm-runtime version: 1.3.0, rknpu driver version: 0.9.8, platform: RK3588
+I rkllm: loading rkllm model from /home/orangepi/edgeforge_ope_r1/models/C02-S.O-w8a8-rk3588-16k-1core-A2.rkllm
+I rkllm: rkllm-toolkit version: 1.3.0, max_context_limit: 16384, npu_core_num: 1, target_platform: RK3588, model_dtype: W8A8
+I rkllm: Enabled cpus: [4, 5, 6, 7]
+I rkllm: Enabled cpus num: 4
+W rkllm: Failed to parse chat_template: invalid format detected.
+rkllm init success
+I rkllm: Reset chat template:
+I rkllm: System_prompt: 
+I rkllm: Prompt_prefix: <bos><|turn>user\n
+I rkllm: Prompt_postfix: <turn|>\n<|turn>model\n
+W rkllm: Calling rkllm_set_chat_template will disable the internal automatic chat template parsing, including enable_thinking. Make sure your custom prompt is complete and valid.
+manual_gemma4_template_ret=0
+robot: thought
+The user is asking for a definition/explanation of "What is the difference between [X]?" or rather, they are asking about "What is [X]?" where X is "the explanation of what it is."
+
+Wait, the prompt says: "请解释什么是[X]" (Please

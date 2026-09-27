@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_NCU_R3_FREEZE",
+  "timestamp": "2026-09-16T17:40:08+08:00",
+  "protocol_path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k3_gqa_ncu_override_r3.json",
+  "adaptive_after_positive_day1": true,
+  "replication_gate": "WAIVED_BY_OWNER; NOT_SATISFIED",
+  "r2_replication_measurement_started": false,
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "authorized_scope": "Only the three frozen K3 ncu attribution cases.",
+  "status": "PASS_R3_NCU_OVERRIDE_FROZEN"
+}

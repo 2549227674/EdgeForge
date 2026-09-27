@@ -1,0 +1,68 @@
+{
+  "schema_version": 2,
+  "stage": "OPE-P0-completion",
+  "status": "PASS_CONTROLLER_CLOCK_PROTOCOL_PERF_AVAILABLE",
+  "extends": "results/operator/board/board_env_identity_20260917T2022+0800.json",
+  "controller_observation_window": {
+    "before": "2026-09-18T11:54:13.175857544+08:00",
+    "after": "2026-09-18T11:54:14.765908920+08:00"
+  },
+  "clock": {
+    "authority": "PC controller wall clock plus board monotonic uptime",
+    "system_clock_set_from_controller": true,
+    "rtc_written_from_system_clock": true,
+    "board_observed_at": "2026-09-18T11:54:10.723729310+08:00",
+    "board_uptime_seconds": 2806.63,
+    "rtc_observed_at": "2026-09-18T11:54:07.287721+08:00",
+    "timezone": "Asia/Shanghai",
+    "local_rtc": false,
+    "protocol": {
+      "absolute_event_time": "Use controller timestamps captured before and after each formal board run.",
+      "elapsed_time": "Use board CLOCK_MONOTONIC or /proc/uptime-derived timestamps; do not derive durations from board wall time.",
+      "board_wall_time": "Advisory only. Set from the controller before a formal run and record it with board uptime.",
+      "receipt_requirement": "Persist controller before/after timestamps and board uptime start/end in every formal-run receipt."
+    },
+    "network_daemon": {
+      "implementation": "chrony 4.2-2ubuntu2",
+      "enabled": true,
+      "active": true,
+      "synchronized": false,
+      "reason": "Configured public NTP pools are unreachable from the board because DNS/direct UDP is unavailable; the HTTP proxy cannot transport NTP.",
+      "systemd_timesyncd_installed": false,
+      "decision": "Keep the already-installed chrony instead of replacing it with systemd-timesyncd; both would require direct NTP reachability. Chrony is not treated as the current clock authority."
+    }
+  },
+  "perf": {
+    "status": "PASS",
+    "workspace_path": "/home/orangepi/edgeforge_ope_r1/bin/perf",
+    "resolved_path": "/usr/lib/linux-tools-5.15.0-191/perf",
+    "version": "perf version 5.15.209",
+    "kernel": "6.1.99-rockchip-rk3588",
+    "compatibility_note": "Ubuntu's perf userspace is from the 5.15 tools package and is used against the custom 6.1.99 kernel. The P0-required generic cycles event works; event-specific support remains subject to each later preregistration.",
+    "cycles_smoke": {
+      "command": "/home/orangepi/edgeforge_ope_r1/bin/perf stat -e cycles true",
+      "privilege": "orangepi user",
+      "exit_code": 0,
+      "cycles_user": 349226
+    },
+    "installed_packages": {
+      "linux-tools-common": "5.15.0-191.201",
+      "linux-tools-generic": "5.15.0.191.169",
+      "linux-tools-5.15.0-191": "5.15.0-191.201",
+      "linux-tools-5.15.0-191-generic": "5.15.0-191.201"
+    }
+  },
+  "network_install_path": {
+    "method": "Temporary SSH reverse tunnel from board 127.0.0.1:17888 to the PC HTTP proxy at 127.0.0.1:7888",
+    "apt_update": "PASS",
+    "package_install": "PASS",
+    "tunnel_closed_after_install": true
+  },
+  "changes": [
+    "Set the board system clock from the PC controller.",
+    "Wrote the corrected system clock to the hardware RTC.",
+    "Installed only the Ubuntu perf userspace dependencies; no kernel upgrade was performed.",
+    "Created /home/orangepi/edgeforge_ope_r1/bin/perf as a workspace-local symlink to the installed perf binary."
+  ],
+  "negative_statement": "No driver, device tree, kernel, RKLLM/RKNPU shared library, frozen artifact, model artifact, or governor value was modified. No formal performance measurement was run in this P0 completion step."
+}

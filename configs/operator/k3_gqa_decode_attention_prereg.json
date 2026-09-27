@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3",
+  "kernel": "k3_gqa_decode_attention",
+  "frozen_at": "2026-09-16T17:14:24+08:00",
+  "frozen_before_candidate_implementation": true,
+  "frozen_before_candidate_measurement": true,
+  "host_scope": "RTX 4060 Laptop GPU / sm_89 / WSL2 only",
+  "formal_numbers_must_not_be_extrapolated": [
+    "sm_100",
+    "sm_120",
+    "board targets",
+    "prefill attention",
+    "llama.cpp"
+  ],
+  "source_identity": {
+    "gqa_selection_protocol": {
+      "path": "configs/operator/op5_gqa_decode_selection_probe.json",
+      "sha256": "121ae0b4b4ad6858f1b497c1f6895073823519f17fe7ead93db94703f3d2617d"
+    },
+    "gqa_selection_prereg_receipt": {
+      "path": "results/operator/pool/op5_gqa_prereg_receipt_20260916.json",
+      "sha256": "6fd79a4fcaa47bd652b3e7f8b2174827ff348851e22e027d4ebd13f955c74c8f"
+    },
+    "gqa_selection_result": {
+      "path": "results/operator/pool/op5_gqa_selection_20260916.json",
+      "sha256": "0b83a210be8a061ce7572e9a71fc15d3814e7bcf050b09836826cdf41717c12d"
+    },
+    "gqa_selection_receipt": {
+      "path": "results/operator/pool/op5_gqa_selection_receipt_20260916.json",
+      "sha256": "9a5f231cedbe128973cad0c2ab09b888da9fff1eb4e5cb1e9168817f64c705bc"
+    },
+    "shape_census": {
+      "path": "results/operator/shape_census.json",
+      "sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f"
+    },
+    "op1_channel_b_profiler": {
+      "path": "results/operator/op1/channel_b_profiler.json",
+      "sha256": "d1e9524cffc6c81c6ef401d7281e7ca353baf110ddc9d72a4a522a4ad81d278a"
+    },
+    "transformers_gemma4_source": {
+      "path": ".venv-bfcl/lib/python3.12/site-packages/transformers/models/gemma4/modeling_gemma4.py",
+      "sha256": "a0a5aaaeb61430bca1d13f3e8aed0bafb0d2ee9bef05135e16e7c84d7084db2c"
+    },
+    "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0"
+  },
+  "selection_observations_disclosed_before_design": {
+    "custom_design_authorized": true,
+    "projected_decode_invocations": 911148,
+    "compile_eager_is_best_correctness_eligible_existing_baseline_for_all_13_cases": true,
+    "invocation_weighted_compile_eager_p50_us": 272.1787123951861,
+    "current_eager_p50_us": 371.4000173966074,
+    "best_baseline_tier_a_relative_score": 0.04808261149661573,
+    "sliding_relative_score": 0.021455380916028558,
+    "full_relative_score": 0.09225437095047313,
+    "native_and_compiled_sdpa_correctness_eligible": false,
+    "sdpa_allclose_trials": "1/39 for each SDPA path at atol=0.03125, rtol=0.02",
+    "interpretation": "The custom candidate must preserve the eager BF16-matmul plus FP32-softmax contract; native SDPA cannot be used as the correctness baseline or deployment shortcut."
+  },
+  "formal_objective": {
+    "primary": "Test whether a GQA-aware decode attention implementation that avoids physical KV 2-to-8 replication can beat the best correctness-eligible existing baseline while matching eager semantics.",
+    "deployment": "Only after isolated gates, prove exact greedy-token equivalence on all frozen tapes with an output-attentions-false dispatch and unchanged cache/state.",
+    "non_objectives": [
+      "prefill attention",
+      "output_attentions=true",
+      "changing q/k/v projection, rotary embedding, or KV cache update semantics",
+      "loosening correctness to admit the observed SDPA numerical path",
+      "tuning after formal holdout or Day-1 results"
+    ]
+  },
+  "semantic_contract": {
+    "operation": "For BF16 Q[1,8,1,D], K/V[1,2,K,D], repeat each KV head across four adjacent query heads; compute BF16 QK matmul with scale 1.0, add BF16 mask[1,1,1,K], apply softmax in FP32 then cast probabilities to BF16, compute BF16-probability x BF16-V matmul, and return contiguous BF16 [1,1,8,D].",
+    "reference": "transformers Gemma4 eager_attention_forward from the frozen source identity",
+    "query_heads": 8,
+    "key_value_heads": 2,
+    "gqa_groups": 4,
+    "scaling": 1.0,
+    "dropout": 0.0,
+    "output_attentions": false,
+    "mask_contract": "contiguous BF16 [1,1,1,K]; finite additive values or BF16 minimum are supported",
+    "accumulation": "QK and PV reductions accumulate FP32; probabilities round to BF16 between softmax and PV to match eager",
+    "output_dtype": "bfloat16"
+  },
+  "target_population": {
+    "phase": "decode M=1 only",
+    "sliding": {
+      "head_dim": 256,
+      "kv_tokens": 512,
+      "projected_invocations": 759290
+    },
+    "full": {
+      "head_dim": 512,
+      "kv_tokens_inclusive": [807, 7359],
+      "projected_invocations": 151858
+    },
+    "total_projected_invocations": 911148,
+    "performance_cases": [
+      {"family": "sliding", "K": 512, "D": 256, "projected_invocations": 759290},
+      {"family": "full", "K": 1264, "D": 512, "projected_invocations": 12656},
+      {"family": "full", "K": 1569, "D": 512, "projected_invocations": 12656},
+      {"family": "full", "K": 1843, "D": 512, "projected_invocations": 12656},
+      {"family": "full", "K": 2153, "D": 512, "projected_invocations": 12649},
+      {"family": "full", "K": 2514, "D": 512, "projected_invocations": 12656},
+      {"family": "full", "K": 2897, "D": 512, "projected_invocations": 12656},
+      {"family": "full", "K": 3349, "D": 512, "projected_invocations": 12656},
+      {"family": "full", "K": 3801, "D": 512, "projected_invocations": 12656},
+      {"family": "full", "K": 4191, "D": 512, "projected_invocations": 12649},
+      {"family": "full", "K": 4728, "D": 512, "projected_invocations": 12656},
+      {"family": "full", "K": 5331, "D": 512, "projected_invocations": 12656},
+      {"family": "full", "K": 6455, "D": 512, "projected_invocations": 12656}
+    ]
+  },
+  "candidate_design": {
+    "algorithm": "Three Triton stages: tiled GQA-aware QK directly against two KV heads into FP32 score workspace; row-wise FP32 softmax into BF16 probability workspace; tiled PV directly against two KV heads into contiguous BF16 output.",
+    "avoids": [
+      "physical KV repeat from 2 to 8 heads",
+      "full prefill score matrices",
+      "changes to projections, rotary embedding, cache tensors, Parameters, or state_dict"
+    ],
+    "workspace": "FP32 scores [8,K] plus BF16 probabilities [8,K]; maximum at K=7359 is below 0.34 MiB.",
+    "score_search_space": [
+      {"BLOCK_K": 8, "BLOCK_D": 64, "num_warps": 4, "num_stages": 2},
+      {"BLOCK_K": 16, "BLOCK_D": 64, "num_warps": 4, "num_stages": 3},
+      {"BLOCK_K": 16, "BLOCK_D": 128, "num_warps": 8, "num_stages": 3},
+      {"BLOCK_K": 32, "BLOCK_D": 64, "num_warps": 8, "num_stages": 3}
+    ],
+    "softmax_search_space": [
+      {"num_warps": 4, "num_stages": 2},
+      {"num_warps": 8, "num_stages": 2}
+    ],
+    "pv_search_space": [
+      {"BLOCK_D": 32, "BLOCK_K": 32, "num_warps": 4, "num_stages": 2},
+      {"BLOCK_D": 64, "BLOCK_K": 32, "num_warps": 4, "num_stages": 3},
+      {"BLOCK_D": 64, "BLOCK_K": 64, "num_warps": 8, "num_stages": 3},
+      {"BLOCK_D": 128, "BLOCK_K": 32, "num_warps": 8, "num_stages": 3}
+    ],
+    "tuning_policy": "Only the frozen configurations may be selected. Development smoke may use the already-observed selection seeds. Before formal correctness, lock the candidate source SHA and do not edit it again in this attempt."
+  },
+  "dispatch_contract": {
+    "required": [
+      "CUDA sm_89",
+      "inference/no-grad",
+      "contiguous BF16 Q[1,8,1,D], K/V[1,2,K,D], and mask[1,1,1,K] on one device",
+      "D is 256 with K=512 or D is 512 with 807<=K<=7359",
+      "scale=1.0, dropout=0, output_attentions=false"
+    ],
+    "fallback": "Any miss invokes the frozen transformers eager_attention_forward unchanged.",
+    "source_side_effects": "Q, K, V, mask, KV cache, module Parameters, and state_dict must remain unchanged."
+  },
+  "formal_correctness_protocol": {
+    "holdout_status_at_freeze": "UNOBSERVED_BY_CANDIDATE",
+    "candidate_source_must_be_locked_before_execution": true,
+    "fresh_seeds": [20261011, 20261012, 20261013],
+    "all_length_cases": {
+      "distribution": "unit_normal FP32 generated then cast BF16",
+      "seed": 20261011,
+      "sliding_K": [512],
+      "full_K": [807, 1264, 1436, 1569, 1714, 1843, 1973, 2153, 2334, 2514, 2695, 2897, 3123, 3349, 3575, 3801, 4011, 4191, 4440, 4728, 5029, 5331, 5632, 6455, 7359],
+      "expected_cases": 26
+    },
+    "representative_matrix": {
+      "cases": [
+        {"family": "sliding", "K": 512, "D": 256},
+        {"family": "full", "K": 807, "D": 512},
+        {"family": "full", "K": 2897, "D": 512},
+        {"family": "full", "K": 7359, "D": 512}
+      ],
+      "distributions": [
+        {"name": "unit_normal", "scale": 1.0},
+        {"name": "low_normal", "scale": 0.1},
+        {"name": "wide_normal", "scale": 2.0}
+      ],
+      "seeds": [20261011, 20261012, 20261013],
+      "expected_trials": 36
+    },
+    "mask_cases": [
+      "all-zero visible mask",
+      "first element set to BF16 minimum",
+      "last element set to BF16 minimum"
+    ],
+    "tolerance": {"atol": 0.03125, "rtol": 0.02},
+    "hard_assertions": [
+      "candidate output is allclose to frozen transformers eager output",
+      "GQA head mapping microcase proves query heads 0..3 consume KV head 0 and 4..7 consume KV head 1",
+      "output shape/dtype/device/contiguity/finite contract matches",
+      "all source tensors remain byte-identical with unchanged data_ptr and version",
+      "fallback is exact for every rejected condition",
+      "only frozen autotune choices are used"
+    ],
+    "failure_rule": "Any locked-candidate correctness failure closes this K3 attempt; do not tune against revealed holdouts."
+  },
+  "baselines": {
+    "current_eager": "Frozen transformers eager_attention_forward output path.",
+    "compile_eager": "torch.compile(fullgraph=true, mode=reduce-overhead, dynamic=false) around the same output-only eager path.",
+    "candidate": "Locked three-stage Triton K3 candidate.",
+    "best_baseline_rule": "Per case, min(current_eager_p50_us, compile_eager_p50_us). SDPA is excluded because the frozen selection probe found it correctness-ineligible."
+  },
+  "analytic_bytes": {
+    "tier": "Tier-A compulsory unique bytes for output_attentions=false",
+    "formula": "BF16 Q + BF16 K + BF16 V + BF16 mask + BF16 output",
+    "bytes_per_case": "2*(8*D + 2*K*D + 2*K*D + K + 8*D)",
+    "same_day_ceiling_protocol": {
+      "operation": "Triton float32 triad",
+      "array_size_mib": 512,
+      "warmup_repetitions": 50,
+      "measured_repetitions": 200,
+      "block_size": 256
+    },
+    "tier_b_override": "After two-day isolated positive gate, ncu dram__bytes.sum overrides Tier-A when absolute difference exceeds 15%."
+  },
+  "measurement_protocol": {
+    "precondition": "formal correctness receipt PASS and locked candidate SHA unchanged",
+    "event_timer": "torch.cuda.Event(enable_timing=true)",
+    "warmup_repetitions_per_case_per_implementation": 50,
+    "measured_repetitions_per_case_per_implementation": 200,
+    "timed_implementations": ["current_eager", "compile_eager", "candidate"],
+    "interleave": "three-way rotation by repetition index within each of 13 frozen cases",
+    "gpu_telemetry_interval_seconds": 1.0,
+    "minimum_memory_clock_ratio_vs_op0": 0.95,
+    "op0_memory_clock_mhz_p50": 8000.0,
+    "invalidate_on_thermal_or_hardware_throttle": true
+  },
+  "bounded_continuation_gate": {
+    "day1_positive_definition": "invocation-weighted candidate speedup versus per-case best baseline >=1.05 and neither sliding nor full family speedup is below 0.95",
+    "if_correctness_fails": "Close this K3 attempt and retain all evidence.",
+    "if_day1_is_not_positive": "Close K3 without Day-2, ncu, or reconnection.",
+    "if_day1_is_positive": "Run the unchanged second valid calendar day before ncu or reconnection."
+  },
+  "cross_day_replication": {
+    "required_only_after_positive_day1": true,
+    "minimum_valid_calendar_days": 2,
+    "aggregate_speedup_relative_difference_max": 0.10,
+    "family_direction_must_match": true
+  },
+  "ncu_tier_b": {
+    "precondition": "two valid positive isolated days",
+    "cases": [
+      {"family": "sliding", "K": 512, "D": 256},
+      {"family": "full", "K": 2897, "D": 512},
+      {"family": "full", "K": 6455, "D": 512}
+    ],
+    "metrics": [
+      "dram__bytes.sum",
+      "dram__throughput.avg.pct_of_peak_sustained_elapsed",
+      "sm__throughput.avg.pct_of_peak_sustained_elapsed"
+    ]
+  },
+  "reconnection_protocol": {
+    "precondition": "correctness PASS, two-day isolated positive consistency PASS, and ncu complete",
+    "dispatch": "torch.library output-only custom op inside the current output_attentions=false attention path; all misses use transformers eager",
+    "population": "all 5 frozen tapes / 11 requests",
+    "hard_gates": [
+      "exact greedy token IDs for every request",
+      "343 NF4 modules, all Parameters, state_dict hashes, and KV cache tensors remain structurally unchanged",
+      "candidate count is exactly 42 per generated token only when every dispatch condition holds",
+      "prefill always uses eager attention",
+      "peak VRAM remains below 7.5 GiB"
+    ]
+  },
+  "execution_order": [
+    "Freeze this protocol and receipt before candidate implementation.",
+    "Implement and debug only on already-observed selection inputs.",
+    "Lock candidate source SHA before revealing formal holdout inputs to the candidate.",
+    "Run formal correctness only.",
+    "Only on correctness PASS run Day-1 and apply the bounded continuation gate."
+  ]
+}

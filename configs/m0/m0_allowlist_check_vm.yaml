@@ -1,0 +1,45 @@
+# §3.3 selection-only run in the native Ubuntu VM.  Task copies only differ
+# from the frozen packages by an empty network allowlist.
+job_name: m0_allowlist_check_vm_r3
+jobs_dir: /home/runner/results
+n_attempts: 1
+n_concurrent_trials: 1
+retry:
+  max_retries: 0
+timeout_multiplier: 1.0
+agent_setup_timeout_multiplier: 3.0
+
+tasks:
+  - path: /home/runner/m0_allowlist_tasks/overfull-hbox
+  - path: /home/runner/m0_allowlist_tasks/regex-log
+  - path: /home/runner/m0_allowlist_tasks/constraints-scheduling
+  - path: /home/runner/m0_allowlist_tasks/break-filter-js-from-html
+  - path: /home/runner/m0_allowlist_tasks/nginx-request-logging
+  - path: /home/runner/m0_allowlist_tasks/openssl-selfsigned-cert
+  - path: /home/runner/m0_allowlist_tasks/polyglot-c-py
+  - path: /home/runner/m0_allowlist_tasks/count-dataset-tokens
+  - path: /home/runner/m0_allowlist_tasks/dna-insert
+  - path: /home/runner/m0_allowlist_tasks/multi-source-data-merger
+  - path: /home/runner/m0_allowlist_tasks/sanitize-git-repo
+  - path: /home/runner/m0_allowlist_tasks/filter-js-from-html
+  - path: /home/runner/m0_allowlist_tasks/build-cython-ext
+  - path: /home/runner/m0_allowlist_tasks/gcode-to-text
+  - path: /home/runner/m0_allowlist_tasks/largest-eigenval
+  - path: /home/runner/m0_allowlist_tasks/mailman
+  - path: /home/runner/m0_allowlist_tasks/pypi-server
+  - path: /home/runner/m0_allowlist_tasks/sqlite-db-truncate
+  - path: /home/runner/m0_allowlist_tasks/log-summary-date-ranges
+  - path: /home/runner/m0_allowlist_tasks/build-pmars
+
+agents:
+  - name: terminus-2
+    model_name: openai/gemma4-e4b
+    kwargs:
+      api_base: http://10.0.2.2:8080/v1
+      temperature: 1.0
+      max_turns: 30
+      parser_name: json
+      enable_summarize: false
+
+verifier:
+  disable: false

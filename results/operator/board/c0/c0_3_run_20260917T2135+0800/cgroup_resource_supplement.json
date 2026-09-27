@@ -1,0 +1,46 @@
+{
+  "schema": "edgeforge-ope-c0-3-cgroup-resource-supplement/v1",
+  "stage": "C0-3",
+  "status": "PASS",
+  "run_directory": "/root/autodl-fs/edgeforge-c0-3/run-20260917T2135+0800",
+  "build_receipt_sha256": "744502204fb30de0dc975ded2512c53d1a719af479ce671d4f5073e2339697c3",
+  "artifact": {
+    "path": "/root/autodl-fs/edgeforge-c0-3/run-20260917T2135+0800/artifacts/C02-S.O-w8a8-rk3588-16k-1core-A2.rkllm",
+    "bytes": 11687037412,
+    "sha256": "61d2fedd5ce1a0c5cbd785b5198550254bea26d685bc49cabe98558ae0fa2c62"
+  },
+  "cgroup_v2": {
+    "memory_max_bytes": 98784247808,
+    "memory_max_gib": 92.0,
+    "memory_high_bytes": 96636764160,
+    "memory_high_gib": 90.0,
+    "observed_memory_current_max_bytes": 68689256448,
+    "observed_memory_current_max_gib": 63.97185516357422,
+    "headroom_to_memory_max_bytes": 30094991360,
+    "headroom_to_memory_max_gib": 28.02814483642578,
+    "memory_events_after_run": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0
+    }
+  },
+  "process_observations": {
+    "root_process_vm_hwm_kib": 62345852,
+    "root_process_vm_hwm_gib": 59.457637786865234,
+    "process_tree_rss_peak_kib": 60957092,
+    "process_tree_rss_peak_gib": 58.13321304321289,
+    "gpu_memory_used_peak_mib": 38079
+  },
+  "monitor": {
+    "path": "cgroup_memory_monitor.tsv",
+    "sha256": "d18fe877de97c01fe91496f75b126e206e95a69a9d43434fb3e29b6de3228e86",
+    "sample_count": 1038,
+    "started_at": "2026-09-17T21:39:19+08:00",
+    "ended_at": "2026-09-17T21:59:17+08:00",
+    "peak_observed_at": "2026-09-17T21:39:24+08:00",
+    "coverage_note": "The external cgroup monitor began 325 seconds after the build receipt start. It therefore supplies an observed lower bound for whole-cgroup peak memory, not a full-run peak. The build's own process monitor covered the complete run."
+  },
+  "interpretation": "The authorized 92 GiB variance completed without hitting memory.high, memory.max, or any OOM event. The host-level MemAvailable value in receipt.json is not the container quota and must not be used as capacity evidence."
+}

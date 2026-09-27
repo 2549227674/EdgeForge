@@ -1,0 +1,2 @@
+case_id,variant,K,D,warmup,repetitions,elapsed_ms,affinity_pass
+sliding_k512_d256,hybrid_rknpu_sequence,512,256,10,163,502.1415,1

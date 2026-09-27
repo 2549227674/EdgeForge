@@ -1,0 +1,2673 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_GQA_DECODE_ATTENTION_ISOLATED_DAY1",
+  "calendar_day": "2026-09-16",
+  "timestamp": "2026-09-16T17:32:16+08:00",
+  "evidence_scope": "RTX 4060 Laptop GPU / sm_89 / WSL2 only",
+  "protocol": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k3_gqa_decode_attention_prereg.json",
+    "sha256_start": "fe427c9650aa929d18f72daaaa22ed918b7d33fd5b0af4da12386e0a86229626",
+    "sha256_end": "fe427c9650aa929d18f72daaaa22ed918b7d33fd5b0af4da12386e0a86229626"
+  },
+  "locked_candidate": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k3_gqa_attention.py",
+    "sha256_start": "3d3d57ac20e390e9f117ac763af7d5ffcfabe084fce861461e8e62e183ac76f0",
+    "sha256_end": "3d3d57ac20e390e9f117ac763af7d5ffcfabe084fce861461e8e62e183ac76f0"
+  },
+  "runner": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_k3_day1.py",
+    "sha256": "0d26582d7ec5bdbd6477f81198d04d7178de2ba08b573eb339e3df79eb933ed1"
+  },
+  "correctness_precondition": {
+    "receipt": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_correctness_receipt_20260916.json",
+      "sha256": "ac8e9834ccfd32d731ef6374c962989486b3779caa9fa90e848a1392b8f7cf32"
+    },
+    "result": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_correctness_20260916.json",
+      "sha256": "8ba0bca4ee44af54d7da368b72a61833adaba0a0ebcfbe8fa700d376129df514"
+    },
+    "status": "PASS"
+  },
+  "verified_sources": {
+    "gqa_selection_protocol": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op5_gqa_decode_selection_probe.json",
+      "sha256": "121ae0b4b4ad6858f1b497c1f6895073823519f17fe7ead93db94703f3d2617d",
+      "status": "PASS"
+    },
+    "gqa_selection_prereg_receipt": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_gqa_prereg_receipt_20260916.json",
+      "sha256": "6fd79a4fcaa47bd652b3e7f8b2174827ff348851e22e027d4ebd13f955c74c8f",
+      "status": "PASS"
+    },
+    "gqa_selection_result": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_gqa_selection_20260916.json",
+      "sha256": "0b83a210be8a061ce7572e9a71fc15d3814e7bcf050b09836826cdf41717c12d",
+      "status": "PASS"
+    },
+    "gqa_selection_receipt": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_gqa_selection_receipt_20260916.json",
+      "sha256": "9a5f231cedbe128973cad0c2ab09b888da9fff1eb4e5cb1e9168817f64c705bc",
+      "status": "PASS"
+    },
+    "shape_census": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/shape_census.json",
+      "sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f",
+      "status": "PASS"
+    },
+    "op1_channel_b_profiler": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/op1/channel_b_profiler.json",
+      "sha256": "d1e9524cffc6c81c6ef401d7281e7ca353baf110ddc9d72a4a522a4ad81d278a",
+      "status": "PASS"
+    },
+    "transformers_gemma4_source": {
+      "path": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/lib/python3.12/site-packages/transformers/models/gemma4/modeling_gemma4.py",
+      "sha256": "a0a5aaaeb61430bca1d13f3e8aed0bafb0d2ee9bef05135e16e7c84d7084db2c",
+      "status": "PASS"
+    }
+  },
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0",
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0"
+    },
+    "cuda": {
+      "available": true,
+      "torch_cuda": "13.0",
+      "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "sm_89",
+      "total_memory_bytes": 8585216000,
+      "multi_processor_count": 24,
+      "l2_cache_size_bytes": 33554432
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 8001 MHz, 140.00 W"
+  },
+  "compile": {
+    "wrapper_creation_seconds": 0.23841216799974063,
+    "fullgraph": true,
+    "mode": "reduce-overhead",
+    "dynamic": false,
+    "recompile_limit": 64
+  },
+  "same_day_bandwidth": {
+    "operation": "Triton float32 triad",
+    "array_size_mib": 512,
+    "analytic_bytes_per_repetition": 1610612736,
+    "latency_us": {
+      "count": 200,
+      "min": 6639.616013,
+      "q1": 6653.952122,
+      "p50": 6658.048153,
+      "q3": 6662.144184,
+      "max": 6827.007771,
+      "mean": 6658.585615,
+      "iqr": 8.192062
+    },
+    "gbps_decimal": {
+      "count": 200,
+      "min": 235.917812,
+      "q1": 241.755911,
+      "p50": 241.904639,
+      "q3": 242.053551,
+      "max": 242.576187,
+      "mean": 241.886103,
+      "iqr": 0.29764
+    },
+    "ceiling_gbps_decimal": 241.904639,
+    "correctness": {
+      "sample_indices": [
+        0,
+        67108864,
+        134217727
+      ],
+      "observed": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "pass": true
+    },
+    "protocol": {
+      "warmup_repetitions": 50,
+      "measured_repetitions": 200,
+      "block_size": 256
+    }
+  },
+  "benchmark": {
+    "protocol": {
+      "input_seed": 20261011,
+      "warmups_per_case_per_implementation": 50,
+      "measured_repetitions_per_case_per_implementation": 200,
+      "interleave": "three-way rotation by repetition index within each of 13 frozen cases"
+    },
+    "rows": [
+      {
+        "case": "sliding_k512_d256",
+        "family": "sliding",
+        "k_tokens": 512,
+        "head_dim": 256,
+        "projected_invocations": 759290,
+        "input_seed": 20261011,
+        "analytic_bytes": 1057792,
+        "implementations": {
+          "current_eager": {
+            "count": 200,
+            "min": 130.048007,
+            "q1": 248.576,
+            "p50": 268.287987,
+            "q3": 290.048003,
+            "max": 390.112013,
+            "mean": 272.03984,
+            "iqr": 41.472003
+          },
+          "compile_eager": {
+            "count": 200,
+            "min": 95.136002,
+            "q1": 197.632,
+            "p50": 210.943997,
+            "q3": 222.447995,
+            "max": 308.223993,
+            "mean": 210.68368,
+            "iqr": 24.815995
+          },
+          "candidate": {
+            "count": 200,
+            "min": 108.543999,
+            "q1": 179.167993,
+            "p50": 188.928001,
+            "q3": 203.776002,
+            "max": 315.551996,
+            "mean": 193.06832,
+            "iqr": 24.608009
+          }
+        },
+        "best_correctness_eligible_baseline": "compile_eager",
+        "best_baseline_p50_us": 210.943997,
+        "candidate_p50_us": 188.928001,
+        "candidate_speedup_vs_best_baseline": 1.1165311435227645,
+        "candidate_measured_gbps_decimal": 5.598915959524708,
+        "candidate_tier_a_relative_score": 0.02314513678890097
+      },
+      {
+        "case": "full_bin00_k1264_d512",
+        "family": "full",
+        "k_tokens": 1264,
+        "head_dim": 512,
+        "projected_invocations": 12656,
+        "input_seed": 20261011,
+        "analytic_bytes": 5196256,
+        "implementations": {
+          "current_eager": {
+            "count": 200,
+            "min": 403.456002,
+            "q1": 406.527996,
+            "p50": 430.592,
+            "q3": 444.671988,
+            "max": 761.856019,
+            "mean": 434.274881,
+            "iqr": 38.143992
+          },
+          "compile_eager": {
+            "count": 200,
+            "min": 220.159993,
+            "q1": 222.207993,
+            "p50": 236.543998,
+            "q3": 335.359991,
+            "max": 500.735998,
+            "mean": 275.038399,
+            "iqr": 113.151997
+          },
+          "candidate": {
+            "count": 200,
+            "min": 136.191994,
+            "q1": 138.239995,
+            "p50": 146.431997,
+            "q3": 247.807994,
+            "max": 488.447994,
+            "mean": 191.94096,
+            "iqr": 109.568
+          }
+        },
+        "best_correctness_eligible_baseline": "compile_eager",
+        "best_baseline_p50_us": 236.543998,
+        "candidate_p50_us": 146.431997,
+        "candidate_speedup_vs_best_baseline": 1.6153846348213088,
+        "candidate_measured_gbps_decimal": 35.4857961815545,
+        "candidate_tier_a_relative_score": 0.14669332646222835
+      },
+      {
+        "case": "full_bin01_k1569_d512",
+        "family": "full",
+        "k_tokens": 1569,
+        "head_dim": 512,
+        "projected_invocations": 12656,
+        "input_seed": 20261011,
+        "analytic_bytes": 6446146,
+        "implementations": {
+          "current_eager": {
+            "count": 200,
+            "min": 463.871986,
+            "q1": 465.920001,
+            "p50": 505.855978,
+            "q3": 508.928001,
+            "max": 1128.448009,
+            "mean": 503.413917,
+            "iqr": 43.008
+          },
+          "compile_eager": {
+            "count": 200,
+            "min": 240.64,
+            "q1": 242.688,
+            "p50": 265.215993,
+            "q3": 368.640006,
+            "max": 516.095996,
+            "mean": 309.653279,
+            "iqr": 125.952005
+          },
+          "candidate": {
+            "count": 200,
+            "min": 159.743994,
+            "q1": 161.791995,
+            "p50": 177.151993,
+            "q3": 279.552013,
+            "max": 474.112004,
+            "mean": 224.107039,
+            "iqr": 117.760018
+          }
+        },
+        "best_correctness_eligible_baseline": "compile_eager",
+        "best_baseline_p50_us": 265.215993,
+        "candidate_p50_us": 177.151993,
+        "candidate_speedup_vs_best_baseline": 1.4971098462324386,
+        "candidate_measured_gbps_decimal": 36.38765723623555,
+        "candidate_tier_a_relative_score": 0.15042149413362654
+      },
+      {
+        "case": "full_bin02_k1843_d512",
+        "family": "full",
+        "k_tokens": 1843,
+        "head_dim": 512,
+        "projected_invocations": 12656,
+        "input_seed": 20261011,
+        "analytic_bytes": 7568998,
+        "implementations": {
+          "current_eager": {
+            "count": 200,
+            "min": 573.440015,
+            "q1": 576.511979,
+            "p50": 604.160011,
+            "q3": 613.376021,
+            "max": 5255.167961,
+            "mean": 625.21552,
+            "iqr": 36.864042
+          },
+          "compile_eager": {
+            "count": 200,
+            "min": 282.624006,
+            "q1": 284.671992,
+            "p50": 300.03199,
+            "q3": 388.336003,
+            "max": 827.359974,
+            "mean": 334.57168,
+            "iqr": 103.664011
+          },
+          "candidate": {
+            "count": 200,
+            "min": 189.439997,
+            "q1": 190.464005,
+            "p50": 202.751994,
+            "q3": 285.696,
+            "max": 415.744007,
+            "mean": 236.5328,
+            "iqr": 95.231995
+          }
+        },
+        "best_correctness_eligible_baseline": "compile_eager",
+        "best_baseline_p50_us": 300.03199,
+        "candidate_p50_us": 202.751994,
+        "candidate_speedup_vs_best_baseline": 1.4797979742680114,
+        "candidate_measured_gbps_decimal": 37.331312263197766,
+        "candidate_tier_a_relative_score": 0.15432243225065959
+      },
+      {
+        "case": "full_bin03_k2153_d512",
+        "family": "full",
+        "k_tokens": 2153,
+        "head_dim": 512,
+        "projected_invocations": 12649,
+        "input_seed": 20261011,
+        "analytic_bytes": 8839378,
+        "implementations": {
+          "current_eager": {
+            "count": 200,
+            "min": 592.895985,
+            "q1": 603.136003,
+            "p50": 604.672015,
+            "q3": 643.072009,
+            "max": 729.088008,
+            "mean": 622.269286,
+            "iqr": 39.936006
+          },
+          "compile_eager": {
+            "count": 200,
+            "min": 330.751985,
+            "q1": 336.896002,
+            "p50": 340.48,
+            "q3": 445.439994,
+            "max": 619.423985,
+            "mean": 388.88592,
+            "iqr": 108.543992
+          },
+          "candidate": {
+            "count": 200,
+            "min": 231.424004,
+            "q1": 235.520005,
+            "p50": 237.568006,
+            "q3": 321.536005,
+            "max": 526.336014,
+            "mean": 282.273441,
+            "iqr": 86.015999
+          }
+        },
+        "best_correctness_eligible_baseline": "compile_eager",
+        "best_baseline_p50_us": 340.48,
+        "candidate_p50_us": 237.568006,
+        "candidate_speedup_vs_best_baseline": 1.433189618975882,
+        "candidate_measured_gbps_decimal": 37.20777956944253,
+        "candidate_tier_a_relative_score": 0.15381176534379123
+      },
+      {
+        "case": "full_bin04_k2514_d512",
+        "family": "full",
+        "k_tokens": 2514,
+        "head_dim": 512,
+        "projected_invocations": 12656,
+        "input_seed": 20261011,
+        "analytic_bytes": 10318756,
+        "implementations": {
+          "current_eager": {
+            "count": 200,
+            "min": 663.551986,
+            "q1": 665.600002,
+            "p50": 684.543997,
+            "q3": 695.039988,
+            "max": 801.792026,
+            "mean": 686.241593,
+            "iqr": 29.439986
+          },
+          "compile_eager": {
+            "count": 200,
+            "min": 393.216014,
+            "q1": 396.288007,
+            "p50": 405.503988,
+            "q3": 490.752004,
+            "max": 631.744027,
+            "mean": 440.054079,
+            "iqr": 94.463997
+          },
+          "candidate": {
+            "count": 200,
+            "min": 261.119992,
+            "q1": 262.143999,
+            "p50": 270.336002,
+            "q3": 336.095996,
+            "max": 466.816008,
+            "mean": 300.605279,
+            "iqr": 73.951997
+          }
+        },
+        "best_correctness_eligible_baseline": "compile_eager",
+        "best_baseline_p50_us": 405.503988,
+        "candidate_p50_us": 270.336002,
+        "candidate_speedup_vs_best_baseline": 1.4999999445134946,
+        "candidate_measured_gbps_decimal": 38.170113945829534,
+        "candidate_tier_a_relative_score": 0.15778992128311162
+      },
+      {
+        "case": "full_bin05_k2897_d512",
+        "family": "full",
+        "k_tokens": 2897,
+        "head_dim": 512,
+        "projected_invocations": 12656,
+        "input_seed": 20261011,
+        "analytic_bytes": 11888290,
+        "implementations": {
+          "current_eager": {
+            "count": 200,
+            "min": 791.552007,
+            "q1": 796.671987,
+            "p50": 809.983999,
+            "q3": 826.367974,
+            "max": 3741.695881,
+            "mean": 832.146236,
+            "iqr": 29.695988
+          },
+          "compile_eager": {
+            "count": 200,
+            "min": 453.631997,
+            "q1": 457.727998,
+            "p50": 472.063988,
+            "q3": 548.096001,
+            "max": 727.039993,
+            "mean": 500.651678,
+            "iqr": 90.368003
+          },
+          "candidate": {
+            "count": 200,
+            "min": 295.935988,
+            "q1": 297.984004,
+            "p50": 305.151999,
+            "q3": 368.128002,
+            "max": 486.400008,
+            "mean": 331.929441,
+            "iqr": 70.143998
+          }
+        },
+        "best_correctness_eligible_baseline": "compile_eager",
+        "best_baseline_p50_us": 472.063988,
+        "candidate_p50_us": 305.151999,
+        "candidate_speedup_vs_best_baseline": 1.5469798315166863,
+        "candidate_measured_gbps_decimal": 38.958584701914404,
+        "candidate_tier_a_relative_score": 0.16104934929302617
+      },
+      {
+        "case": "full_bin06_k3349_d512",
+        "family": "full",
+        "k_tokens": 3349,
+        "head_dim": 512,
+        "projected_invocations": 12656,
+        "input_seed": 20261011,
+        "analytic_bytes": 13740586,
+        "implementations": {
+          "current_eager": {
+            "count": 200,
+            "min": 905.215979,
+            "q1": 910.336018,
+            "p50": 926.720023,
+            "q3": 941.056013,
+            "max": 1071.10405,
+            "mean": 932.972482,
+            "iqr": 30.719995
+          },
+          "compile_eager": {
+            "count": 200,
+            "min": 508.928001,
+            "q1": 514.04798,
+            "p50": 523.775995,
+            "q3": 621.304005,
+            "max": 784.384012,
+            "mean": 561.823681,
+            "iqr": 107.256025
+          },
+          "candidate": {
+            "count": 200,
+            "min": 329.728007,
+            "q1": 330.751985,
+            "p50": 338.943988,
+            "q3": 405.503988,
+            "max": 542.72002,
+            "mean": 368.117755,
+            "iqr": 74.752003
+          }
+        },
+        "best_correctness_eligible_baseline": "compile_eager",
+        "best_baseline_p50_us": 523.775995,
+        "candidate_p50_us": 338.943988,
+        "candidate_speedup_vs_best_baseline": 1.5453172605026408,
+        "candidate_measured_gbps_decimal": 40.53940027400633,
+        "candidate_tier_a_relative_score": 0.16758422013563093
+      },
+      {
+        "case": "full_bin07_k3801_d512",
+        "family": "full",
+        "k_tokens": 3801,
+        "head_dim": 512,
+        "projected_invocations": 12656,
+        "input_seed": 20261011,
+        "analytic_bytes": 15592882,
+        "implementations": {
+          "current_eager": {
+            "count": 200,
+            "min": 1017.856002,
+            "q1": 1020.928025,
+            "p50": 1040.384054,
+            "q3": 1055.232018,
+            "max": 1238.976002,
+            "mean": 1045.619362,
+            "iqr": 34.303993
+          },
+          "compile_eager": {
+            "count": 200,
+            "min": 606.208026,
+            "q1": 612.352014,
+            "p50": 620.544016,
+            "q3": 711.935997,
+            "max": 957.440019,
+            "mean": 659.925126,
+            "iqr": 99.583983
+          },
+          "candidate": {
+            "count": 200,
+            "min": 371.711999,
+            "q1": 372.736007,
+            "p50": 382.975996,
+            "q3": 452.863991,
+            "max": 657.343984,
+            "mean": 411.225761,
+            "iqr": 80.127984
+          }
+        },
+        "best_correctness_eligible_baseline": "compile_eager",
+        "best_baseline_p50_us": 620.544016,
+        "candidate_p50_us": 382.975996,
+        "candidate_speedup_vs_best_baseline": 1.6203209143165203,
+        "candidate_measured_gbps_decimal": 40.715037398845226,
+        "candidate_tier_a_relative_score": 0.16831027948515376
+      },
+      {
+        "case": "full_bin08_k4191_d512",
+        "family": "full",
+        "k_tokens": 4191,
+        "head_dim": 512,
+        "projected_invocations": 12649,
+        "input_seed": 20261011,
+        "analytic_bytes": 17191102,
+        "implementations": {
+          "current_eager": {
+            "count": 200,
+            "min": 1118.208051,
+            "q1": 1130.496025,
+            "p50": 1141.759992,
+            "q3": 1153.944045,
+            "max": 1302.528024,
+            "mean": 1148.088495,
+            "iqr": 23.44802
+          },
+          "compile_eager": {
+            "count": 200,
+            "min": 696.319997,
+            "q1": 701.439977,
+            "p50": 705.536008,
+            "q3": 816.384003,
+            "max": 1094.655991,
+            "mean": 753.138724,
+            "iqr": 114.944026
+          },
+          "candidate": {
+            "count": 200,
+            "min": 408.576012,
+            "q1": 414.719999,
+            "p50": 419.840008,
+            "q3": 502.27201,
+            "max": 648.03201,
+            "mean": 453.058558,
+            "iqr": 87.552011
+          }
+        },
+        "best_correctness_eligible_baseline": "compile_eager",
+        "best_baseline_p50_us": 705.536008,
+        "candidate_p50_us": 419.840008,
+        "candidate_speedup_vs_best_baseline": 1.680487791911437,
+        "candidate_measured_gbps_decimal": 40.94679323653214,
+        "candidate_tier_a_relative_score": 0.16926832575762277
+      },
+      {
+        "case": "full_bin09_k4728_d512",
+        "family": "full",
+        "k_tokens": 4728,
+        "head_dim": 512,
+        "projected_invocations": 12656,
+        "input_seed": 20261011,
+        "analytic_bytes": 19391728,
+        "implementations": {
+          "current_eager": {
+            "count": 200,
+            "min": 1374.207973,
+            "q1": 1376.255989,
+            "p50": 1392.639995,
+            "q3": 1412.096024,
+            "max": 1574.911952,
+            "mean": 1403.672637,
+            "iqr": 35.840034
+          },
+          "compile_eager": {
+            "count": 200,
+            "min": 958.464026,
+            "q1": 964.608014,
+            "p50": 971.264005,
+            "q3": 1082.368016,
+            "max": 1404.76799,
+            "mean": 1018.456162,
+            "iqr": 117.760003
+          },
+          "candidate": {
+            "count": 200,
+            "min": 448.511988,
+            "q1": 450.560004,
+            "p50": 455.680013,
+            "q3": 533.248007,
+            "max": 685.055971,
+            "mean": 491.74768,
+            "iqr": 82.688004
+          }
+        },
+        "best_correctness_eligible_baseline": "compile_eager",
+        "best_baseline_p50_us": 971.264005,
+        "candidate_p50_us": 455.680013,
+        "candidate_speedup_vs_best_baseline": 2.1314606243219187,
+        "candidate_measured_gbps_decimal": 42.5555816511092,
+        "candidate_tier_a_relative_score": 0.1759188324251574
+      },
+      {
+        "case": "full_bin10_k5331_d512",
+        "family": "full",
+        "k_tokens": 5331,
+        "head_dim": 512,
+        "projected_invocations": 12656,
+        "input_seed": 20261011,
+        "analytic_bytes": 21862822,
+        "implementations": {
+          "current_eager": {
+            "count": 200,
+            "min": 1390.591979,
+            "q1": 1406.719983,
+            "p50": 1421.823978,
+            "q3": 1449.215949,
+            "max": 1574.911952,
+            "mean": 1429.475836,
+            "iqr": 42.495966
+          },
+          "compile_eager": {
+            "count": 200,
+            "min": 952.31998,
+            "q1": 962.559998,
+            "p50": 965.632021,
+            "q3": 1099.008024,
+            "max": 1364.992023,
+            "mean": 1027.176962,
+            "iqr": 136.448026
+          },
+          "candidate": {
+            "count": 200,
+            "min": 508.928001,
+            "q1": 517.120004,
+            "p50": 525.312006,
+            "q3": 601.343989,
+            "max": 855.040014,
+            "mean": 561.114725,
+            "iqr": 84.223986
+          }
+        },
+        "best_correctness_eligible_baseline": "compile_eager",
+        "best_baseline_p50_us": 965.632021,
+        "candidate_p50_us": 525.312006,
+        "candidate_speedup_vs_best_baseline": 1.8382066466609561,
+        "candidate_measured_gbps_decimal": 41.61873657995168,
+        "candidate_tier_a_relative_score": 0.17204604571453333
+      },
+      {
+        "case": "full_bin11_k6455_d512",
+        "family": "full",
+        "k_tokens": 6455,
+        "head_dim": 512,
+        "projected_invocations": 12656,
+        "input_seed": 20261011,
+        "analytic_bytes": 26468974,
+        "implementations": {
+          "current_eager": {
+            "count": 200,
+            "min": 1617.920041,
+            "q1": 1652.735949,
+            "p50": 1681.360006,
+            "q3": 1724.160016,
+            "max": 2064.383984,
+            "mean": 1694.296474,
+            "iqr": 71.424067
+          },
+          "compile_eager": {
+            "count": 200,
+            "min": 1192.960024,
+            "q1": 1200.127959,
+            "p50": 1206.272006,
+            "q3": 1364.432007,
+            "max": 4345.85619,
+            "mean": 1299.022236,
+            "iqr": 164.304048
+          },
+          "candidate": {
+            "count": 200,
+            "min": 583.679974,
+            "q1": 602.111995,
+            "p50": 629.248023,
+            "q3": 722.944006,
+            "max": 1144.768,
+            "mean": 666.953919,
+            "iqr": 120.832011
+          }
+        },
+        "best_correctness_eligible_baseline": "compile_eager",
+        "best_baseline_p50_us": 1206.272006,
+        "candidate_p50_us": 629.248023,
+        "candidate_speedup_vs_best_baseline": 1.9170056351531835,
+        "candidate_measured_gbps_decimal": 42.064453176676885,
+        "candidate_tier_a_relative_score": 0.17388857588910017
+      }
+    ],
+    "aggregate": {
+      "projected_decode_invocations": 911148,
+      "invocation_weighted_p50_us_by_implementation": {
+        "current_eager": 379.7478594132556,
+        "compile_eager": 273.1884965508589,
+        "candidate": 214.265078221751
+      },
+      "invocation_weighted_best_baseline_p50_us": 273.1884965508589,
+      "invocation_weighted_candidate_p50_us": 214.265078221751,
+      "candidate_speedup_vs_best_baseline": 1.2750024353857878,
+      "minimum_family_speedup_vs_best_baseline": 1.1165311435227647,
+      "performance_gate_positive": true,
+      "classification": "POSITIVE"
+    },
+    "family_aggregates": {
+      "sliding": {
+        "projected_invocations": 759290,
+        "invocation_weighted_best_baseline_p50_us": 210.943997,
+        "invocation_weighted_candidate_p50_us": 188.92800099999997,
+        "candidate_speedup_vs_best_baseline": 1.1165311435227647
+      },
+      "full": {
+        "projected_invocations": 151858,
+        "invocation_weighted_best_baseline_p50_us": 584.4109943051535,
+        "invocation_weighted_candidate_p50_us": 340.9504643305061,
+        "candidate_speedup_vs_best_baseline": 1.7140642276370235
+      }
+    }
+  },
+  "autotune": {
+    "choices": {
+      "score": [
+        {
+          "key": [
+            1264,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1569,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1843,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2153,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2514,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2897,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 128,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            3349,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            3801,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            4191,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            4728,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 32,
+          "BLOCK_D": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            512,
+            256,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 16,
+          "BLOCK_D": 64,
+          "num_warps": 4,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            5331,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 32,
+          "BLOCK_D": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            6455,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.float32"
+          ],
+          "BLOCK_K": 32,
+          "BLOCK_D": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        }
+      ],
+      "softmax": [
+        {
+          "key": [
+            1264,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            1569,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            1843,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            2153,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            2514,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            2897,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            3349,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            3801,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            4191,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            4728,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            512,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 4,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            5331,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        },
+        {
+          "key": [
+            6455,
+            "torch.float32",
+            "torch.bfloat16"
+          ],
+          "num_warps": 8,
+          "num_stages": 2
+        }
+      ],
+      "pv": [
+        {
+          "key": [
+            1264,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1569,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            1843,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2153,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2514,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            2897,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            3349,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            3801,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            4191,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            4728,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            512,
+            256,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            5331,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        },
+        {
+          "key": [
+            6455,
+            512,
+            "torch.bfloat16",
+            "torch.bfloat16",
+            "torch.bfloat16"
+          ],
+          "BLOCK_D": 64,
+          "BLOCK_K": 64,
+          "num_warps": 8,
+          "num_stages": 3
+        }
+      ]
+    },
+    "status": "PASS"
+  },
+  "telemetry": {
+    "interval_seconds": 1.0,
+    "sample_count": 43,
+    "errors": [],
+    "numeric": {
+      "sm_mhz": {
+        "count": 43,
+        "min": 780.0,
+        "q1": 787.5,
+        "p50": 855.0,
+        "q3": 900.0,
+        "max": 1095.0,
+        "mean": 858.14,
+        "iqr": 112.5
+      },
+      "memory_mhz": {
+        "count": 43,
+        "min": 8000.0,
+        "q1": 8000.0,
+        "p50": 8000.0,
+        "q3": 8000.0,
+        "max": 8000.0,
+        "mean": 8000.0,
+        "iqr": 0.0
+      },
+      "temperature_c": {
+        "count": 43,
+        "min": 62.0,
+        "q1": 65.0,
+        "p50": 66.0,
+        "q3": 66.0,
+        "max": 67.0,
+        "mean": 65.279,
+        "iqr": 1.0
+      },
+      "power_w": {
+        "count": 43,
+        "min": 4.7,
+        "q1": 25.92,
+        "p50": 28.53,
+        "q3": 30.16,
+        "max": 34.43,
+        "mean": 26.465,
+        "iqr": 4.24
+      }
+    },
+    "pstates": {
+      "P0": 43
+    },
+    "throttle_flags": {
+      "clocks_event_reasons.sw_power_cap": false,
+      "clocks_event_reasons.sw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_power_brake_slowdown": false
+    },
+    "thermal_or_hardware_throttle": false,
+    "samples": [
+      {
+        "timestamp": "2026/09/16 17:31:48.639",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "62",
+        "power.draw": "4.70",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:48+08:00",
+        "phase": "op5_same_day_bandwidth"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:48.772",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "62",
+        "power.draw": "5.13",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:48+08:00",
+        "phase": "op5_same_day_bandwidth"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:49.599",
+        "pstate": "P0",
+        "clocks.current.sm": "825",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "63",
+        "power.draw": "18.90",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:49+08:00",
+        "phase": "op5_same_day_bandwidth"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:49.737",
+        "pstate": "P0",
+        "clocks.current.sm": "825",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "63",
+        "power.draw": "20.90",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:49+08:00",
+        "phase": "op5_same_day_bandwidth"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:50.627",
+        "pstate": "P0",
+        "clocks.current.sm": "1095",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "64",
+        "power.draw": "33.89",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:50+08:00",
+        "phase": "op5_same_day_bandwidth"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:50.920",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "64",
+        "power.draw": "28.35",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:51+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:51.634",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "63",
+        "power.draw": "11.58",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:51+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:52.633",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "63",
+        "power.draw": "11.56",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:52+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:53.633",
+        "pstate": "P0",
+        "clocks.current.sm": "870",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "20.75",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:53+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:54.106",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "26.76",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:54+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:54.614",
+        "pstate": "P0",
+        "clocks.current.sm": "795",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "22.63",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:54+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:55.600",
+        "pstate": "P0",
+        "clocks.current.sm": "855",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "28.38",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:55+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:55.717",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "26.17",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:55+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:56.611",
+        "pstate": "P0",
+        "clocks.current.sm": "870",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "25.65",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:56+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:57.141",
+        "pstate": "P0",
+        "clocks.current.sm": "855",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "28.90",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:57+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:59.254",
+        "pstate": "P0",
+        "clocks.current.sm": "810",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "25.23",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:59+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:00.250",
+        "pstate": "P0",
+        "clocks.current.sm": "855",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "29.13",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:00+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:00.368",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "27.96",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:00+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:01.257",
+        "pstate": "P0",
+        "clocks.current.sm": "855",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "25.81",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:01+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:01.945",
+        "pstate": "P0",
+        "clocks.current.sm": "825",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "67",
+        "power.draw": "29.66",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:02+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:02.254",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "67",
+        "power.draw": "26.03",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:02+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:03.249",
+        "pstate": "P0",
+        "clocks.current.sm": "900",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "29.84",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:03+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:03.570",
+        "pstate": "P0",
+        "clocks.current.sm": "870",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "30.07",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:03+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:04.255",
+        "pstate": "P0",
+        "clocks.current.sm": "840",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "27.15",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:04+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:05.239",
+        "pstate": "P0",
+        "clocks.current.sm": "885",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "30.25",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:05+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:05.347",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "28.23",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:05+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:06.243",
+        "pstate": "P0",
+        "clocks.current.sm": "870",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "26.86",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:06+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:06.973",
+        "pstate": "P0",
+        "clocks.current.sm": "915",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "31.01",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:07+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:07.246",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "27.95",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:07+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:08.245",
+        "pstate": "P0",
+        "clocks.current.sm": "945",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "29.25",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:08+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:08.760",
+        "pstate": "P0",
+        "clocks.current.sm": "900",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "31.61",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:08+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:09.257",
+        "pstate": "P0",
+        "clocks.current.sm": "810",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "29.34",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:09+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:10.255",
+        "pstate": "P0",
+        "clocks.current.sm": "945",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "30.46",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:10+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:10.607",
+        "pstate": "P0",
+        "clocks.current.sm": "915",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "31.54",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:10+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:11.244",
+        "pstate": "P0",
+        "clocks.current.sm": "855",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "29.10",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:11+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:12.242",
+        "pstate": "P0",
+        "clocks.current.sm": "975",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "30.00",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:12+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:12.605",
+        "pstate": "P0",
+        "clocks.current.sm": "945",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "31.04",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:12+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:13.252",
+        "pstate": "P0",
+        "clocks.current.sm": "810",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "28.53",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:13+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:14.243",
+        "pstate": "P0",
+        "clocks.current.sm": "945",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "30.48",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:14+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:14.621",
+        "pstate": "P0",
+        "clocks.current.sm": "915",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "32.47",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:14+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:15.247",
+        "pstate": "P0",
+        "clocks.current.sm": "855",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "29.46",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:15+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:16.250",
+        "pstate": "P0",
+        "clocks.current.sm": "990",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "30.84",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:16+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:16.806",
+        "pstate": "P0",
+        "clocks.current.sm": "900",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "34.43",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:16+08:00",
+        "phase": "k3_day1_measurement"
+      }
+    ]
+  },
+  "bandwidth_telemetry": {
+    "interval_seconds": 1.0,
+    "sample_count": 5,
+    "errors": [],
+    "numeric": {
+      "sm_mhz": {
+        "count": 5,
+        "min": 780.0,
+        "q1": 780.0,
+        "p50": 825.0,
+        "q3": 825.0,
+        "max": 1095.0,
+        "mean": 861.0,
+        "iqr": 45.0
+      },
+      "memory_mhz": {
+        "count": 5,
+        "min": 8000.0,
+        "q1": 8000.0,
+        "p50": 8000.0,
+        "q3": 8000.0,
+        "max": 8000.0,
+        "mean": 8000.0,
+        "iqr": 0.0
+      },
+      "temperature_c": {
+        "count": 5,
+        "min": 62.0,
+        "q1": 62.0,
+        "p50": 63.0,
+        "q3": 63.0,
+        "max": 64.0,
+        "mean": 62.8,
+        "iqr": 1.0
+      },
+      "power_w": {
+        "count": 5,
+        "min": 4.7,
+        "q1": 5.13,
+        "p50": 18.9,
+        "q3": 20.9,
+        "max": 33.89,
+        "mean": 16.704,
+        "iqr": 15.77
+      }
+    },
+    "pstates": {
+      "P0": 5
+    },
+    "throttle_flags": {
+      "clocks_event_reasons.sw_power_cap": false,
+      "clocks_event_reasons.sw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_power_brake_slowdown": false
+    },
+    "thermal_or_hardware_throttle": false,
+    "samples": [
+      {
+        "timestamp": "2026/09/16 17:31:48.639",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "62",
+        "power.draw": "4.70",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:48+08:00",
+        "phase": "op5_same_day_bandwidth"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:48.772",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "62",
+        "power.draw": "5.13",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:48+08:00",
+        "phase": "op5_same_day_bandwidth"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:49.599",
+        "pstate": "P0",
+        "clocks.current.sm": "825",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "63",
+        "power.draw": "18.90",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:49+08:00",
+        "phase": "op5_same_day_bandwidth"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:49.737",
+        "pstate": "P0",
+        "clocks.current.sm": "825",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "63",
+        "power.draw": "20.90",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:49+08:00",
+        "phase": "op5_same_day_bandwidth"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:50.627",
+        "pstate": "P0",
+        "clocks.current.sm": "1095",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "64",
+        "power.draw": "33.89",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:50+08:00",
+        "phase": "op5_same_day_bandwidth"
+      }
+    ]
+  },
+  "measurement_telemetry": {
+    "interval_seconds": 1.0,
+    "sample_count": 38,
+    "errors": [],
+    "numeric": {
+      "sm_mhz": {
+        "count": 38,
+        "min": 780.0,
+        "q1": 798.75,
+        "p50": 855.0,
+        "q3": 900.0,
+        "max": 990.0,
+        "mean": 857.763,
+        "iqr": 101.25
+      },
+      "memory_mhz": {
+        "count": 38,
+        "min": 8000.0,
+        "q1": 8000.0,
+        "p50": 8000.0,
+        "q3": 8000.0,
+        "max": 8000.0,
+        "mean": 8000.0,
+        "iqr": 0.0
+      },
+      "temperature_c": {
+        "count": 38,
+        "min": 63.0,
+        "q1": 65.0,
+        "p50": 66.0,
+        "q3": 66.0,
+        "max": 67.0,
+        "mean": 65.605,
+        "iqr": 1.0
+      },
+      "power_w": {
+        "count": 38,
+        "min": 11.56,
+        "q1": 26.785,
+        "p50": 29.0,
+        "q3": 30.205,
+        "max": 34.43,
+        "mean": 27.749,
+        "iqr": 3.42
+      }
+    },
+    "pstates": {
+      "P0": 38
+    },
+    "throttle_flags": {
+      "clocks_event_reasons.sw_power_cap": false,
+      "clocks_event_reasons.sw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_power_brake_slowdown": false
+    },
+    "thermal_or_hardware_throttle": false,
+    "samples": [
+      {
+        "timestamp": "2026/09/16 17:31:50.920",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "64",
+        "power.draw": "28.35",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:51+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:51.634",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "63",
+        "power.draw": "11.58",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:51+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:52.633",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "63",
+        "power.draw": "11.56",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:52+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:53.633",
+        "pstate": "P0",
+        "clocks.current.sm": "870",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "20.75",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:53+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:54.106",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "26.76",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:54+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:54.614",
+        "pstate": "P0",
+        "clocks.current.sm": "795",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "22.63",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:54+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:55.600",
+        "pstate": "P0",
+        "clocks.current.sm": "855",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "28.38",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:55+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:55.717",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "26.17",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:55+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:56.611",
+        "pstate": "P0",
+        "clocks.current.sm": "870",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "25.65",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:56+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:57.141",
+        "pstate": "P0",
+        "clocks.current.sm": "855",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "28.90",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:57+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:31:59.254",
+        "pstate": "P0",
+        "clocks.current.sm": "810",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "25.23",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:31:59+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:00.250",
+        "pstate": "P0",
+        "clocks.current.sm": "855",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "29.13",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:00+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:00.368",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "27.96",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:00+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:01.257",
+        "pstate": "P0",
+        "clocks.current.sm": "855",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "25.81",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:01+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:01.945",
+        "pstate": "P0",
+        "clocks.current.sm": "825",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "67",
+        "power.draw": "29.66",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:02+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:02.254",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "67",
+        "power.draw": "26.03",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:02+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:03.249",
+        "pstate": "P0",
+        "clocks.current.sm": "900",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "29.84",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:03+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:03.570",
+        "pstate": "P0",
+        "clocks.current.sm": "870",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "30.07",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:03+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:04.255",
+        "pstate": "P0",
+        "clocks.current.sm": "840",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "27.15",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:04+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:05.239",
+        "pstate": "P0",
+        "clocks.current.sm": "885",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "30.25",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:05+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:05.347",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "28.23",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:05+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:06.243",
+        "pstate": "P0",
+        "clocks.current.sm": "870",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "26.86",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:06+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:06.973",
+        "pstate": "P0",
+        "clocks.current.sm": "915",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "31.01",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:07+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:07.246",
+        "pstate": "P0",
+        "clocks.current.sm": "780",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "27.95",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:07+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:08.245",
+        "pstate": "P0",
+        "clocks.current.sm": "945",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "29.25",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:08+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:08.760",
+        "pstate": "P0",
+        "clocks.current.sm": "900",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "31.61",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:08+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:09.257",
+        "pstate": "P0",
+        "clocks.current.sm": "810",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "29.34",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:09+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:10.255",
+        "pstate": "P0",
+        "clocks.current.sm": "945",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "30.46",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:10+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:10.607",
+        "pstate": "P0",
+        "clocks.current.sm": "915",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "31.54",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:10+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:11.244",
+        "pstate": "P0",
+        "clocks.current.sm": "855",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "29.10",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:11+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:12.242",
+        "pstate": "P0",
+        "clocks.current.sm": "975",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "30.00",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:12+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:12.605",
+        "pstate": "P0",
+        "clocks.current.sm": "945",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "31.04",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:12+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:13.252",
+        "pstate": "P0",
+        "clocks.current.sm": "810",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "28.53",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:13+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:14.243",
+        "pstate": "P0",
+        "clocks.current.sm": "945",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "30.48",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:14+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:14.621",
+        "pstate": "P0",
+        "clocks.current.sm": "915",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "32.47",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:14+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:15.247",
+        "pstate": "P0",
+        "clocks.current.sm": "855",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "65",
+        "power.draw": "29.46",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:15+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:16.250",
+        "pstate": "P0",
+        "clocks.current.sm": "990",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "30.84",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:16+08:00",
+        "phase": "k3_day1_measurement"
+      },
+      {
+        "timestamp": "2026/09/16 17:32:16.806",
+        "pstate": "P0",
+        "clocks.current.sm": "900",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "66",
+        "power.draw": "34.43",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-16T17:32:16+08:00",
+        "phase": "k3_day1_measurement"
+      }
+    ]
+  },
+  "telemetry_gates": {
+    "thermal_or_hardware_throttle_absent": true,
+    "memory_clock_ratio_vs_op0": 1.0,
+    "minimum_memory_clock_ratio": 0.95,
+    "memory_clock_gate": true,
+    "day_valid": true
+  },
+  "bounded_continuation_gate": {
+    "aggregate_speedup_threshold": 1.05,
+    "minimum_family_speedup_threshold": 0.95,
+    "performance_positive": true,
+    "day1_positive": true,
+    "conclusion": "PENDING_SECOND_VALID_CALENDAR_DAY"
+  },
+  "cross_day_replication": "PENDING_SECOND_VALID_CALENDAR_DAY",
+  "ncu_tier_b": "PENDING_SECOND_VALID_CALENDAR_DAY",
+  "reconnection": "PENDING_SECOND_VALID_CALENDAR_DAY",
+  "next_authorized_action": "Run the unchanged K3 measurement on a later calendar day; ncu and reconnection remain unauthorized until the two-day consistency gate passes.",
+  "status": "K3_PROVISIONAL_DAY1_POSITIVE"
+}

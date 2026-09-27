@@ -1,0 +1,79 @@
+{
+  "schema": "edgeforge-ope-a2-calibration-selection-rule/v1",
+  "status": "FROZEN",
+  "frozen_at": "2026-09-17T20:45:00+08:00",
+  "seed": "edgeforge-ope-a2-r1-20260917",
+  "purpose": "A2 single-artifact RKLLM W8A8 calibration for C02-S.O; source-diverse short windows within the X4 N=128 resource envelope",
+  "source_pool": {
+    "manifest": "manifests/mix_records_sha256.json",
+    "expected_records": 154097,
+    "holdout_manifest": "manifests/m1_holdout.json",
+    "holdout_policy": "exclude every frozen validation UID before selection",
+    "kernelbench_assertion": "data/pipeline/kernelbench_exclusion.json",
+    "kernelbench_policy": "both Infatoshi KernelBench trace sets remain excluded; selected and full canonical pool must contain zero kernelbench provenance hits"
+  },
+  "sample_contract": {
+    "sample_count": 128,
+    "max_total_tokens": 105865,
+    "max_sample_tokens": 1024,
+    "window_source_tokens": 827,
+    "min_materialized_tokens": 768,
+    "dataset_schema": "list[{input: materialized_window_text, target: empty_string}]",
+    "render_options": {
+      "add_generation_prompt": false,
+      "enable_thinking": true,
+      "preserve_thinking": true
+    },
+    "window_rule": "Render the complete source record with the frozen C02 template, tokenize without added special tokens, choose one deterministic contiguous window of at most 827 source token IDs, decode retaining special tokens, then re-encode. Shorten only the window tail if round-trip expansion exceeds 827.",
+    "zero_build_truncation_definition": "Every materialized data_quant input re-encodes to <=1024 tokens before RKLLM build. Source-window extraction is disclosed separately and is not counted as converter/build truncation.",
+    "source_json_bytes": {
+      "min_inclusive": 4096,
+      "max_inclusive": 262144,
+      "reason": "avoid trivial snippets and pathological multi-megabyte records while preserving ample capacity in every frozen stratum"
+    },
+    "unique_source_uid": true,
+    "unique_source_session": true
+  },
+  "selection_algorithm": {
+    "candidate_order": "sha256(seed + NUL + stratum + NUL + uid), then uid",
+    "window_offset": "sha256(seed + NUL + uid + NUL + window_offset) modulo (rendered_tokens - 827 + 1)",
+    "stratum_order": "the exact order of strata below",
+    "underfill_policy": "fail closed; never borrow quota from another stratum and never relax a cap"
+  },
+  "quota_summary": {
+    "Crownelius__Complete-FABLE.5-traces-2M": 64,
+    "lambda__hermes-agent-reasoning-traces": 32,
+    "AletheiaResearch__GLM-5.2-Agent": 16,
+    "armand0e__qwen3.7-max-pi-traces": 16,
+    "Glint-Research__Fable-5-traces": 0
+  },
+  "quota_rationale": {
+    "primary_axis": "canonical source dataset plus task type",
+    "hermes_nested_axis": "config-provenance source family times Hermes category",
+    "hermes_coverage": "all 16 nonempty family-category cells after holdout exclusion, two records per cell",
+    "glint_exclusion": "the sole fable-5 Glint record is a frozen validation-holdout UID; its calibration quota is therefore zero",
+    "qwen_caveat": "the sole qwen chat_or_reasoning record is a frozen validation-holdout UID; the 16 eligible Qwen slots are tool_agent records"
+  },
+  "strata": [
+    {"id": "crown_chat", "source_file": "Crownelius__Complete-FABLE.5-traces-2M.jsonl", "family": "claimed_anthropic_from_source_label", "task_type": "chat_or_reasoning", "quota": 32},
+    {"id": "crown_tool", "source_file": "Crownelius__Complete-FABLE.5-traces-2M.jsonl", "family": "claimed_anthropic_from_source_label", "task_type": "tool_agent", "quota": 32},
+    {"id": "glm52_tool", "source_file": "AletheiaResearch__GLM-5.2-Agent.jsonl", "family": "glm-5.2", "task_type": "tool_agent", "quota": 16},
+    {"id": "qwen37_tool", "source_file": "armand0e__qwen3.7-max-pi-traces.jsonl", "family": "qwen3.7-max", "task_type": "tool_agent", "quota": 16},
+    {"id": "hermes_glm51_agent_tools", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "glm-5.1", "category": "Agent Tools", "quota": 2},
+    {"id": "hermes_glm51_browser", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "glm-5.1", "category": "Browser Automation", "quota": 2},
+    {"id": "hermes_glm51_file", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "glm-5.1", "category": "File Operations", "quota": 2},
+    {"id": "hermes_glm51_multi", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "glm-5.1", "category": "Multi-Tool", "quota": 2},
+    {"id": "hermes_glm51_planning", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "glm-5.1", "category": "Planning & Organization", "quota": 2},
+    {"id": "hermes_glm51_repo", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "glm-5.1", "category": "Repository Tasks", "quota": 2},
+    {"id": "hermes_glm51_terminal", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "glm-5.1", "category": "Terminal & Coding", "quota": 2},
+    {"id": "hermes_kimi_agent_tools", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "kimi-k2.5", "category": "Agent Tools", "quota": 2},
+    {"id": "hermes_kimi_browser", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "kimi-k2.5", "category": "Browser Automation", "quota": 2},
+    {"id": "hermes_kimi_conversational", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "kimi-k2.5", "category": "Conversational", "quota": 2},
+    {"id": "hermes_kimi_file", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "kimi-k2.5", "category": "File Operations", "quota": 2},
+    {"id": "hermes_kimi_multi", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "kimi-k2.5", "category": "Multi-Tool", "quota": 2},
+    {"id": "hermes_kimi_planning", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "kimi-k2.5", "category": "Planning & Organization", "quota": 2},
+    {"id": "hermes_kimi_repo", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "kimi-k2.5", "category": "Repository Tasks", "quota": 2},
+    {"id": "hermes_kimi_scheduling", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "kimi-k2.5", "category": "Scheduling", "quota": 2},
+    {"id": "hermes_kimi_terminal", "source_file": "lambda__hermes-agent-reasoning-traces.jsonl", "family": "kimi-k2.5", "category": "Terminal & Coding", "quota": 2}
+  ]
+}

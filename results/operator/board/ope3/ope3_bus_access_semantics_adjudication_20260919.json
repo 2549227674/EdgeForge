@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "stage": "OPE3-K-E1-Tier-B-adjudication",
+  "status": "PREREGISTERED_CACHELINE_PROXY_REJECTED_NO_REPLACEMENT_GATE",
+  "recorded_at": "2026-09-19T22:05:07+08:00",
+  "trigger": {
+    "segment": "segment1",
+    "expected_analytic_bytes_for_200_repetitions": 5246976000,
+    "measured_cache_line_bytes": 64,
+    "variants": {
+      "scalar": {
+        "bus_access_count": 657008111,
+        "preregistered_bus_access_times_64_ratio": 8.013857716139734,
+        "posthoc_bus_access_times_8_ratio": 1.0017322145174667
+      },
+      "autovec": {
+        "bus_access_count": 661245383,
+        "preregistered_bus_access_times_64_ratio": 8.065541849629195,
+        "posthoc_bus_access_times_8_ratio": 1.0081927312036494
+      },
+      "neon_sdot": {
+        "bus_access_count": 657554361,
+        "preregistered_bus_access_times_64_ratio": 8.020520601580797,
+        "posthoc_bus_access_times_8_ratio": 1.0025650751975996
+      }
+    }
+  },
+  "board_observation": {
+    "formal_cpu_set": [4, 5, 6, 7],
+    "cpu_implementer": "0x41",
+    "cpu_part": "0xd0b",
+    "perf_name": "bus_access:u",
+    "perf_resolution": "armv8_pmuv3/bus_access/",
+    "cache_line_bytes_source": "/sys/devices/system/cpu/cpu7/cache/index0/coherency_line_size",
+    "cache_line_bytes": 64
+  },
+  "authoritative_semantics": {
+    "owner": "Arm",
+    "source": "https://raw.githubusercontent.com/ARM-software/data/0806afb1f3479432c30a9488872bd7040a1fe874/pmu/cortex-a76.json",
+    "source_revision": "0806afb1f3479432c30a9488872bd7040a1fe874",
+    "source_cpuid": "0x41d0b",
+    "event_name": "BUS_ACCESS",
+    "event_code_decimal": 25,
+    "finding": "The Cortex-A76 event counts transferred data beats between the core and SCU, not cache-line transactions."
+  },
+  "adjudication": {
+    "frozen_gate": "bus_access * measured cache-line bytes must be within 20% of analytic bytes",
+    "frozen_gate_pass": false,
+    "root_cause": "The preregistered conversion incorrectly equated one transferred beat with one 64-byte cache line.",
+    "posthoc_eight_byte_scale_disposition": "EMPIRICAL_DIAGNOSTIC_ONLY_NOT_AN_ACCEPTANCE_GATE",
+    "replacement_gate_promoted": false,
+    "measurement_protocol_changed": false,
+    "candidate_or_preregistration_changed": false,
+    "effect_on_ope3": "Tier-B counters and perf record remain valid collected evidence, but they do not provide the preregistered analytic-byte backing. OPE3 may close as an isolated valid measurement with this method gate rejected; OPE4 anchoring remains pending."
+  }
+}

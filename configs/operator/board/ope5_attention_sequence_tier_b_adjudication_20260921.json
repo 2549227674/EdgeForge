@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-01-DECODE-ATTENTION-SEQUENCE-POSTRUN-ADJUDICATION",
+  "status": "OWNER_WAIVER_ACCEPT_PRIMARY_DROP_FULL_TIER_B",
+  "recorded_at": "2026-09-21T18:27:57+08:00",
+  "adaptive_after_results": true,
+  "source_preregistration": {
+    "path": "configs/operator/board/ope5_attention_sequence_prereg.json",
+    "sha256": "a0cc5d0c516f1b9e12028debec03743c386980041e4a5c6e2502e3d110cff464"
+  },
+  "source_lock": {
+    "path": "results/operator/board/ope5/ope5_attention_sequence_source_lock_20260921.json",
+    "sha256": "fc2d1bd1c4d3a701fa081a80460c1dafb7738ed99afc835ac978edd4a043ae8b"
+  },
+  "source_run": "results/operator/board/ope5/ope5_attention_sequence_segment1_20260921T182337+0800",
+  "observed_failure": {
+    "runner_exit_code": 90,
+    "failed_phase": "tier_b_full_k3123_d512_cpu_scalar_sequence",
+    "stderr": "OPE5_ATTENTION_ERROR=unknown performance case: full_k3123_d512",
+    "cause": "The preregistered Tier-B list names full_k3123_d512, but K=3123 is a correctness-only representative and is absent from the 13-case performance population accepted by perf mode.",
+    "classification": "PROTOCOL_CASE_ID_SET_MISMATCH_AFTER_PRIMARY_COMPLETE",
+    "not_a_kernel_or_api_failure": true
+  },
+  "evidence_completed_before_failure": {
+    "rknpu_capability_cells": "26/26 PASS",
+    "correctness_output_elements": "270336/270336 PASS",
+    "state_gates": "8/8 PASS",
+    "primary_timing_cells": "39/39 complete",
+    "swa_tier_b_blocks": "3/3 implementations with all five events numeric",
+    "full_tier_b_blocks": "0/3; first block rejected the unknown case id before benchmark work"
+  },
+  "owner_instruction_basis": [
+    "不需要复测，取消同日复测，只测一次",
+    "所有权限已授权，遇到困难优先考虑解决，而不是回退"
+  ],
+  "adjudication": {
+    "additional_board_execution_authorized": false,
+    "second_formal_segment_authorized": false,
+    "source_edit_and_retry_authorized": false,
+    "primary_sequence_timing_accepted": true,
+    "swa_tier_b_accepted": true,
+    "full_tier_b_accepted": false,
+    "strict_original_prereg_complete": false,
+    "final_evidence_label": "single-segment primary-valid with disclosed partial Tier-B owner waiver",
+    "reason": "Capability, correctness, state, primary timing, telemetry, thermal, frequency, and governor restoration are independently complete. The failed auxiliary request cannot have executed because its case id is rejected during argument resolution. A rerun would violate the owner's one-test instruction, so the narrow resolution is to drop all full-context PMU claims while retaining the completed primary population."
+  },
+  "claim_limits": [
+    "Do not call the original preregistration fully satisfied.",
+    "Do not report full-context Tier-B CPU counters or infer NPU operation/byte counts.",
+    "Do not hide runner exit 90 or describe the sole segment as exit-zero.",
+    "Primary timing remains an isolated synthetic carrier result, not RKLLM attention time or deployment gain.",
+    "No additional board benchmark execution, correction run, retry, same-day retest, or cross-day replication may be performed for this attempt."
+  ]
+}

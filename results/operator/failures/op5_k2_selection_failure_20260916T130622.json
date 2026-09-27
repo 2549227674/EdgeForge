@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K2_SELECTION_GATE",
+  "started_at": "2026-09-16T13:06:22+08:00",
+  "failed_at": "2026-09-16T13:07:38+08:00",
+  "config": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op5_k2_selection_probe.json",
+  "config_sha256": "764ac242d7a5460330ca30f29a53cb21326c4b031fb5c2efb1da05900cc1d2a5",
+  "result": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_k2_selection.json",
+  "receipt": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/op5_receipt.json",
+  "command": [
+    "scripts/operator/run_op5_selection.py"
+  ],
+  "error_type": "FailOnRecompileLimitHit",
+  "error": "Hard failure due to fullgraph=True",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py\", line 2024, in _compile\n    raise_unimplemented_cache_limit_exceeded()\n  File \"/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py\", line 2008, in raise_unimplemented_cache_limit_exceeded\n    unimplemented(\n  File \"/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/lib/python3.12/site-packages/torch/_dynamo/exc.py\", line 727, in unimplemented\n    raise Unsupported(msg, gb_type, skip_frame)\ntorch._dynamo.exc.Unsupported: Dynamo recompile limit exceeded\n  Explanation: Dynamo attempted to recompile the code object too many times, exceeding the recompile_limit cache size limit (currently set to 8). Excessive recompilations can degrade performance due to the compilation overhead of each recompilation.\n  Hint: To monitor recompilations, enable TORCH_LOGS=recompiles. If recompilations are expected, consider increasing torch._dynamo.config.recompile_limit to an appropriate value.\n  Hint: See https://docs.pytorch.org/docs/main/user_guide/torch_compiler/compile/programming_model.recompilation.html for tips on dealing with recompilations.\n\n  Developer debug context: Limit type: recompile_limit\n\n For more details about this graph break, please visit: https://meta-pytorch.github.io/compile-graph-break-site/gb/gb0039.html\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_selection.py\", line 1015, in main\n    receipt = execute(config_path, result_path, receipt_path, args.device)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_selection.py\", line 869, in execute\n    benchmark = benchmark_baselines(\n                ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_selection.py\", line 587, in benchmark_baselines\n    compiled_output = call_record(record, operations[record.geometry][\"compile\"])\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/scripts/operator/run_op5_selection.py\", line 554, in call_record\n    return operation(\n           ^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py\", line 1166, in compile_wrapper\n    result = fn(*args, **kwargs)\n             ^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py\", line 2628, in __call__\n    result = self._torchdynamo_orig_backend(\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py\", line 777, in __call__\n    result = _compile(\n             ^^^^^^^^^\n  File \"/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/lib/python3.12/site-packages/torch/_dynamo/convert_frame.py\", line 2031, in _compile\n    raise FailOnRecompileLimitHit(\ntorch._dynamo.exc.FailOnRecompileLimitHit: Hard failure due to fullgraph=True\n",
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0",
+  "environment": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "python_executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "transformers": "5.15.0",
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "safetensors": "0.8.0"
+    },
+    "cuda": {
+      "available": true,
+      "torch_cuda": "13.0",
+      "device_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "sm_89",
+      "total_memory_bytes": 8585216000,
+      "multi_processor_count": 24,
+      "l2_cache_size_bytes": 33554432
+    },
+    "nvidia_smi": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 8001 MHz, 140.00 W"
+  },
+  "status": "FAIL"
+}

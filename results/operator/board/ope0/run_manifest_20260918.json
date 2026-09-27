@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "stage": "OPE0",
+  "formal_segments": [
+    {
+      "label": "segment1_formal",
+      "path": "results/operator/board/ope0/raw/ope0_segment1_formal_20260918T1216+0800",
+      "controller_before": "2026-09-18T12:15:55,467457993+08:00",
+      "controller_after": "2026-09-18T12:17:22,651122532+08:00"
+    }
+  ],
+  "invalid_harness_attempts": [
+    {
+      "label": "attempt1_invalid_csv",
+      "path": "results/operator/board/ope0/raw/ope0_segment1_20260918T1212+0800",
+      "controller_before": "2026-09-18T12:10:48,770381801+08:00",
+      "controller_after": "2026-09-18T12:12:15,186062960+08:00",
+      "reason": "GNU date --iso-8601=ns emitted a comma before fractional seconds, producing one extra CSV field in telemetry and NPU-load rows.",
+      "disposition": "INVALID_HARNESS_OUTPUT_NOT_ADOPTED"
+    },
+    {
+      "label": "attempt2_invalid_csv",
+      "path": "results/operator/board/ope0/raw/ope0_segment1_valid_20260918T1214+0800",
+      "controller_before": "2026-09-18T12:13:20,521998030+08:00",
+      "controller_after": "2026-09-18T12:14:48,390176940+08:00",
+      "reason": "Setting LC_ALL=C did not change this coreutils date output; the same extra CSV field remained.",
+      "disposition": "INVALID_HARNESS_OUTPUT_NOT_ADOPTED"
+    }
+  ],
+  "fix": {
+    "change": "Replace date --iso-8601=ns with an explicit %Y-%m-%dT%H:%M:%S.%N%:z format.",
+    "targeted_check": "A one-row board probe reported 27 header fields and 27 data fields before the adopted run.",
+    "failure_receipt_ref": "results/operator/board/failures/ope0_csv_timestamp_failures_20260918.json"
+  },
+  "owner_waiver": {
+    "recorded_at": "2026-09-18T12:21:16+08:00",
+    "skip_second_formal_segment": true,
+    "owner_direction": "If same-day dual-segment discipline means testing twice, do not do it.",
+    "execution_effect": "The queued second segment was cancelled before it began; only the single valid formal segment is adopted.",
+    "claim_limit": "Do not claim same-day replication or two-segment consistency."
+  }
+}

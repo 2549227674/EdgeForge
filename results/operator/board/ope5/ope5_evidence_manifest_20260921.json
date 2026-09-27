@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-BACKLOG-TRIAGE-AND-RMSNORM-PREREG",
+  "status": "PASS_SELECTION_AND_PREREG_NO_BOARD_EXECUTION",
+  "recorded_at": "2026-09-21T13:38:00+08:00",
+  "board_execution_started": false,
+  "files": [
+    {
+      "path": "configs/operator/board/ope5_backlog_triage.json",
+      "sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539",
+      "role": "frozen backlog adjudication"
+    },
+    {
+      "path": "configs/operator/board/ope5_rmsnorm_prereg.json",
+      "sha256": "971f97200383d341c0751d82b6c6b598804e95e4e80f5bdc00201381ea4cb224",
+      "role": "selected item preregistration"
+    },
+    {
+      "path": "scripts/operator/board/verify_ope5_selection.py",
+      "sha256": "fb874a99c226c1520e3b92e2cd442646ef2a4bef3345cfbe1ba13906f2b8c10f",
+      "role": "independent verifier"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_backlog_triage_receipt_20260921.json",
+      "sha256": "6dd1ea835d818eeb4b190e53fc1436d54ed7e4c9e177c7c80b90c0692eb8e82a",
+      "role": "26-of-26 triage receipt"
+    },
+    {
+      "path": "results/operator/board/ope5/ope5_rmsnorm_prereg_receipt_20260921.json",
+      "sha256": "87400ceceb98165bc5e3a363a9eaf97de4deef632b0dc8a95fdfe42255f27593",
+      "role": "22-of-22 preregistration receipt"
+    },
+    {
+      "path": "docs/operator/EdgeForge_算子面_板端_OPE5_backlog重排与RMSNorm立项_2026-09-21.md",
+      "sha256": "13137a87f45db4c0241e63c5a5dd057beb6b97a6f5814b744fbb494d244bc965",
+      "role": "human-readable adjudication"
+    },
+    {
+      "path": "results/operator/shape_census.json",
+      "sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f",
+      "role": "RMSNorm semantics and population authority"
+    },
+    {
+      "path": "results/operator/board/ope2/ope2_receipt_20260918.json",
+      "sha256": "b408e1aacff736ac2f40d46af6613953a7ae74e43a2bbb81b4874a12358b8819",
+      "role": "OPE2 terminal summary"
+    },
+    {
+      "path": "results/operator/board/ope2/ope2_formal_20260918T1254/matrix/matrix_terminals.jsonl",
+      "sha256": "3553b667071d113fed308e110b4b4f303e9a63d011cfc951aef283da8d8da5b6",
+      "role": "attention scope-N/A raw terminals"
+    },
+    {
+      "path": "results/operator/board/ope3/ope3_bus_access_semantics_adjudication_20260919.json",
+      "sha256": "294fc1d35d4cebb889a8211951ce8521d6b50ee07279559704e9e2b2ff1e52dc",
+      "role": "rejected cache-line proxy authority"
+    },
+    {
+      "path": "results/operator/board/ope4/ope4_receipt_20260921.json",
+      "sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d",
+      "role": "model-stage anchor and CPU participation"
+    },
+    {
+      "path": "configs/operator/k1_rmsnorm_prereg.json",
+      "sha256": "c5867a31d27f24ea411bd592af7648e9fc10a313ee74cc1425e829487cca2411",
+      "role": "PC K1 methodology reference"
+    },
+    {
+      "path": "results/operator/k1/op2_receipt.json",
+      "sha256": "414bfa626414aef041c20529ca49303f1545accd405e24cbb1a3c6ab9eead813",
+      "role": "PC K1 isolated receipt"
+    },
+    {
+      "path": "results/operator/k1/op3_receipt.json",
+      "sha256": "80c32bd466e2db199882affc3690b566eeb5f22ecc5ed58534c396ea18c5b210",
+      "role": "PC K1 reconnection receipt"
+    },
+    {
+      "path": "results/operator/k1/op4_receipt.json",
+      "sha256": "dd12ef31ee61c859142d6bc9f5df378ccfec98e2145d6bcef7a3405e0a5bbee8",
+      "role": "PC K1 Tier-B receipt"
+    }
+  ],
+  "claim_limits": [
+    "This archive contains a selection and preregistration result, not a board performance run.",
+    "The execution card and handoff are mutable status indexes and are intentionally excluded from the archive to avoid a circular archive-hash dependency.",
+    "Future implementation files require a separate source-lock receipt before formal timing."
+  ]
+}

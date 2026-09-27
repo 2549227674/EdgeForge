@@ -1,0 +1,2 @@
+record_type,variant,warmup,reps,elapsed_us,checksum,observed
+perf,neon_sdot,0,200,232060.792000,15845364518883164378,18446744073709101679

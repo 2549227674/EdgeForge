@@ -1,0 +1,29 @@
+{
+  "declared_files": {
+    "/root/autodl-tmp/edgeforge-m1/workspace/data/m1/calibration/agent16/data_quant.json": "c2b1c7a062a60ba6a6aaa2d198045d74407472b03712d1dff1dced1493c2863a",
+    "/root/autodl-tmp/edgeforge-m1/workspace/manifests/m1_calib_agent16_selection_rule.json": "689d6eeb0c5e23c0ab239f427df88e1aaf488cfde6739e39c810c32d982f982b",
+    "/root/autodl-tmp/edgeforge-m1/workspace/manifests/m1_calib_agent16_sha256.json": "01e45a0c5aa57ec3317cdabbb4fb75ee3613bda3788f8b0683c5009bb3001c6c",
+    "/root/autodl-tmp/edgeforge-m1/workspace/scripts/m1/prepare_agent16_calibration.py": "d2e796fe551ed0002a06f51dd20cf4b3a6b70ec2795f14792e3f1922de204499"
+  },
+  "holdout_intersection_count": 0,
+  "privacy": "No private source or rendered body is present in this receipt or in process output.",
+  "record_count": 16,
+  "runtime": {
+    "cgroup_cpu_max": "4400000 100000",
+    "cgroup_cpu_quota_cores": 44.0,
+    "cgroup_memory_limit_bytes": "236223201280",
+    "cuda_visible_devices": "",
+    "host_logical_cpus": 208,
+    "hostname": "autodl-container-atdlpbjbca-22473649",
+    "max_rss_kib": 1289268,
+    "niceness": 19,
+    "omp_num_threads": "1",
+    "wall_seconds": 12.947,
+    "workers": 1
+  },
+  "schema": "edgeforge-m1-agent16-calibration-receipt/v1",
+  "scope": "calibration preparation/freeze/audit only; no W8A8 build and no evaluation",
+  "second_pass_rerender_match": true,
+  "status": "PASS",
+  "total_calibration_tokens": 116577
+}

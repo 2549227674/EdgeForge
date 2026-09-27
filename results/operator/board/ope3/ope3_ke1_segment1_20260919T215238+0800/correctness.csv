@@ -1,0 +1,7 @@
+record_type,seed,distribution,variant,checked,mismatches,max_abs_diff,reference_checksum,actual_checksum
+correctness,20260919,small_symmetric_int8,autovec,2560,0,0,10188123018864929648,10188123018864929648
+correctness,20260919,small_symmetric_int8,neon_sdot,2560,0,0,10188123018864929648,10188123018864929648
+correctness,20260920,full_symmetric_int8,autovec,2560,0,0,15845364518883164378,15845364518883164378
+correctness,20260920,full_symmetric_int8,neon_sdot,2560,0,0,15845364518883164378,15845364518883164378
+correctness,20260921,alternating_extrema_with_random_sign,autovec,2560,0,0,1160414276590066942,1160414276590066942
+correctness,20260921,alternating_extrema_with_random_sign,neon_sdot,2560,0,0,1160414276590066942,1160414276590066942

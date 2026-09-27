@@ -1,0 +1,645 @@
+{
+  "schema_version": 1,
+  "stage": "OP0-c",
+  "kernel": "k0_vector_add",
+  "op_semantics_sha": "a7353f55dd63a9b3d43c48a8f3a50641f604387541d9225c3a510b9701c6097e",
+  "carrier": "synthetic_op0_harness_selfcheck",
+  "shapes": [
+    {
+      "dims": [
+        4194304
+      ],
+      "dtype": "float32",
+      "phase": "synthetic_selfcheck",
+      "weight": 1.0
+    }
+  ],
+  "baselines": {
+    "eager": {
+      "implementation": "torch.add(out=)",
+      "p50_us": 217.087999,
+      "iqr_us": 3.071994,
+      "reps": 200,
+      "distribution_us": {
+        "count": 200,
+        "min": 211.968005,
+        "q1": 216.064006,
+        "p50": 217.087999,
+        "q3": 219.136,
+        "max": 293.727994,
+        "mean": 217.712641,
+        "iqr": 3.071994
+      }
+    },
+    "compile": {
+      "implementation": "torch.compile(torch.add(out=), fullgraph=True, mode=reduce-overhead)",
+      "p50_us": 216.112003,
+      "iqr_us": 3.072008,
+      "reps": 200,
+      "distribution_us": {
+        "count": 200,
+        "min": 209.920004,
+        "q1": 215.039998,
+        "p50": 216.112003,
+        "q3": 218.112007,
+        "max": 381.951988,
+        "mean": 217.556322,
+        "iqr": 3.072008
+      }
+    },
+    "candidate": {
+      "implementation": "Triton k0_vector_add_kernel",
+      "p50_us": 215.039998,
+      "iqr_us": 3.072008,
+      "reps": 200,
+      "distribution_us": {
+        "count": 200,
+        "min": 208.895996,
+        "q1": 212.991998,
+        "p50": 215.039998,
+        "q3": 216.064006,
+        "max": 223.232001,
+        "mean": 214.805762,
+        "iqr": 3.072008
+      }
+    },
+    "reference": {
+      "implementation": "torch.add float32 semantic reference",
+      "timed": false,
+      "p50_us": null,
+      "iqr_us": null,
+      "reps": 0,
+      "reason": "correctness-only reference; three timed baselines are frozen in config"
+    }
+  },
+  "correctness": {
+    "tolerance_policy": {
+      "formula": "torch.allclose(actual, reference, atol + rtol * abs(reference))",
+      "atol": 1e-06,
+      "rtol": 1e-06,
+      "dtype": "float32"
+    },
+    "max_abs": 0.0,
+    "max_rel": 0.0,
+    "seeds": [
+      20260915,
+      20260916,
+      20260917
+    ],
+    "n_trials": 12,
+    "trials": [
+      {
+        "seed": 20260915,
+        "dims": [
+          1
+        ],
+        "implementations": {
+          "eager": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "compile": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "candidate": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          }
+        },
+        "pass": true
+      },
+      {
+        "seed": 20260915,
+        "dims": [
+          257
+        ],
+        "implementations": {
+          "eager": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "compile": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "candidate": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          }
+        },
+        "pass": true
+      },
+      {
+        "seed": 20260915,
+        "dims": [
+          65537
+        ],
+        "implementations": {
+          "eager": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "compile": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "candidate": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          }
+        },
+        "pass": true
+      },
+      {
+        "seed": 20260915,
+        "dims": [
+          4194304
+        ],
+        "implementations": {
+          "eager": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "compile": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "candidate": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          }
+        },
+        "pass": true
+      },
+      {
+        "seed": 20260916,
+        "dims": [
+          1
+        ],
+        "implementations": {
+          "eager": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "compile": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "candidate": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          }
+        },
+        "pass": true
+      },
+      {
+        "seed": 20260916,
+        "dims": [
+          257
+        ],
+        "implementations": {
+          "eager": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "compile": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "candidate": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          }
+        },
+        "pass": true
+      },
+      {
+        "seed": 20260916,
+        "dims": [
+          65537
+        ],
+        "implementations": {
+          "eager": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "compile": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "candidate": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          }
+        },
+        "pass": true
+      },
+      {
+        "seed": 20260916,
+        "dims": [
+          4194304
+        ],
+        "implementations": {
+          "eager": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "compile": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "candidate": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          }
+        },
+        "pass": true
+      },
+      {
+        "seed": 20260917,
+        "dims": [
+          1
+        ],
+        "implementations": {
+          "eager": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "compile": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "candidate": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          }
+        },
+        "pass": true
+      },
+      {
+        "seed": 20260917,
+        "dims": [
+          257
+        ],
+        "implementations": {
+          "eager": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "compile": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "candidate": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          }
+        },
+        "pass": true
+      },
+      {
+        "seed": 20260917,
+        "dims": [
+          65537
+        ],
+        "implementations": {
+          "eager": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "compile": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "candidate": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          }
+        },
+        "pass": true
+      },
+      {
+        "seed": 20260917,
+        "dims": [
+          4194304
+        ],
+        "implementations": {
+          "eager": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "compile": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          },
+          "candidate": {
+            "max_abs": 0.0,
+            "max_rel": 0.0,
+            "pass": true
+          }
+        },
+        "pass": true
+      }
+    ],
+    "pass": true
+  },
+  "roofline": {
+    "tier": "Tier-A analytic",
+    "analytic_bytes": 50331648,
+    "measured_gbps": 234.057145,
+    "ceiling_gbps": 234.467114,
+    "relative_score": 0.998251
+  },
+  "memory": {
+    "peak_allocated_bytes": 83887104,
+    "peak_reserved_bytes": 138412032
+  },
+  "clocks": {
+    "sm_mhz_p50": 2535.0,
+    "sm_mhz_min": 2535.0,
+    "memory_mhz_p50": 8000.0,
+    "temp_c_max": 78.0,
+    "power_w_p50": 70.34,
+    "pstates": {
+      "P0": 1
+    },
+    "throttle_flags": {
+      "clocks_event_reasons.sw_power_cap": false,
+      "clocks_event_reasons.sw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_power_brake_slowdown": false
+    },
+    "thermal_or_hardware_throttle": false,
+    "sample_count": 1,
+    "monitor_errors": []
+  },
+  "telemetry": {
+    "interval_seconds": 1.0,
+    "sample_count": 5,
+    "errors": [],
+    "numeric": {
+      "sm_mhz": {
+        "count": 5,
+        "min": 510.0,
+        "q1": 2535.0,
+        "p50": 2535.0,
+        "q3": 2535.0,
+        "max": 2535.0,
+        "mean": 2130.0,
+        "iqr": 0.0
+      },
+      "memory_mhz": {
+        "count": 5,
+        "min": 8000.0,
+        "q1": 8000.0,
+        "p50": 8000.0,
+        "q3": 8000.0,
+        "max": 8000.0,
+        "mean": 8000.0,
+        "iqr": 0.0
+      },
+      "temperature_c": {
+        "count": 5,
+        "min": 72.0,
+        "q1": 73.0,
+        "p50": 77.0,
+        "q3": 78.0,
+        "max": 78.0,
+        "mean": 75.6,
+        "iqr": 5.0
+      },
+      "power_w": {
+        "count": 5,
+        "min": 22.97,
+        "q1": 28.74,
+        "p50": 49.06,
+        "q3": 70.34,
+        "max": 70.35,
+        "mean": 48.292,
+        "iqr": 41.6
+      }
+    },
+    "pstates": {
+      "P0": 5
+    },
+    "throttle_flags": {
+      "clocks_event_reasons.sw_power_cap": false,
+      "clocks_event_reasons.sw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_power_brake_slowdown": false
+    },
+    "thermal_or_hardware_throttle": false,
+    "samples": [
+      {
+        "timestamp": "2026/09/15 15:39:21.855",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "73",
+        "power.draw": "28.74",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:21+08:00",
+        "phase": "k0_correctness"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:22.855",
+        "pstate": "P0",
+        "clocks.current.sm": "510",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "72",
+        "power.draw": "22.97",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:22+08:00",
+        "phase": "k0_stabilization"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:23.860",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "77",
+        "power.draw": "49.06",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:23+08:00",
+        "phase": "k0_stabilization"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:24.864",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "78",
+        "power.draw": "70.35",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:24+08:00",
+        "phase": "k0_stabilization"
+      },
+      {
+        "timestamp": "2026/09/15 15:39:25.066",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "78",
+        "power.draw": "70.34",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:25+08:00",
+        "phase": "k0_timing"
+      }
+    ]
+  },
+  "timing_phase_telemetry": {
+    "interval_seconds": 1.0,
+    "sample_count": 1,
+    "errors": [],
+    "numeric": {
+      "sm_mhz": {
+        "count": 1,
+        "min": 2535.0,
+        "q1": 2535.0,
+        "p50": 2535.0,
+        "q3": 2535.0,
+        "max": 2535.0,
+        "mean": 2535.0,
+        "iqr": 0.0
+      },
+      "memory_mhz": {
+        "count": 1,
+        "min": 8000.0,
+        "q1": 8000.0,
+        "p50": 8000.0,
+        "q3": 8000.0,
+        "max": 8000.0,
+        "mean": 8000.0,
+        "iqr": 0.0
+      },
+      "temperature_c": {
+        "count": 1,
+        "min": 78.0,
+        "q1": 78.0,
+        "p50": 78.0,
+        "q3": 78.0,
+        "max": 78.0,
+        "mean": 78.0,
+        "iqr": 0.0
+      },
+      "power_w": {
+        "count": 1,
+        "min": 70.34,
+        "q1": 70.34,
+        "p50": 70.34,
+        "q3": 70.34,
+        "max": 70.34,
+        "mean": 70.34,
+        "iqr": 0.0
+      }
+    },
+    "pstates": {
+      "P0": 1
+    },
+    "throttle_flags": {
+      "clocks_event_reasons.sw_power_cap": false,
+      "clocks_event_reasons.sw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_thermal_slowdown": false,
+      "clocks_event_reasons.hw_power_brake_slowdown": false
+    },
+    "thermal_or_hardware_throttle": false,
+    "samples": [
+      {
+        "timestamp": "2026/09/15 15:39:25.066",
+        "pstate": "P0",
+        "clocks.current.sm": "2535",
+        "clocks.current.memory": "8000",
+        "temperature.gpu": "78",
+        "power.draw": "70.34",
+        "clocks_event_reasons.sw_power_cap": "Not Active",
+        "clocks_event_reasons.sw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_thermal_slowdown": "Not Active",
+        "clocks_event_reasons.hw_power_brake_slowdown": "Not Active",
+        "captured_at": "2026-09-15T15:39:25+08:00",
+        "phase": "k0_timing"
+      }
+    ]
+  },
+  "backlink": {
+    "carrier": "synthetic",
+    "tape_ids": [],
+    "tokens_per_s_delta": null,
+    "ttft_delta": null,
+    "side_effects": [
+      "synthetic OP0 shape; excluded from formal carrier conclusions"
+    ]
+  },
+  "env_identity_ref": "results/operator/op0/env_identity_20260915.json",
+  "git_sha": "354d2c1b086a1809c256309f56bca420de243f92",
+  "timestamp": "2026-09-15T15:39:25+08:00",
+  "receipt": {
+    "warmup_repetitions_per_baseline": 50,
+    "measured_repetitions_per_baseline": 200,
+    "interleave_order": "three-way rotation by repetition index",
+    "event_timer": "torch.cuda.Event(enable_timing=True)",
+    "steady_state_warmup": {
+      "minimum_seconds": 2.0,
+      "observed_seconds": 2.023146,
+      "untimed_candidate_launches": 9856
+    },
+    "memory_clock_comparability": {
+      "bandwidth_memory_mhz_p50": 8000.0,
+      "k0_timing_memory_mhz_p50": 8000.0,
+      "observed_ratio": 1.0,
+      "minimum_ratio": 0.95,
+      "pass": true
+    },
+    "status": "PASS"
+  }
+}

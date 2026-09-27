@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "stage": "OPE3-K-E1-three-horizontal",
+  "shape_mkn": [
+    1,
+    10240,
+    2560
+  ],
+  "rows": [
+    {
+      "carrier": "a76-neon",
+      "lineage": "OPE3 int8 row-major [N,K], four A76 cores, neon_sdot",
+      "segment_p50_us": [
+        982.041,
+        907.375001
+      ],
+      "p50_us": 944.7080005,
+      "measured_gops": 55.497360001451575,
+      "measured_gbps": 27.770358656976356,
+      "tier_a_relative_to_ope0": 1.1972467153792326
+    },
+    {
+      "carrier": "rknpu-matmul",
+      "lineage": "OPE2 rknn_matmul_run, int8xint8_to_int32, core0, normal layout",
+      "p50_us": 2391.667,
+      "measured_gops": 21.921446424,
+      "measured_gbps": 10.969286277,
+      "tier_a_relative_to_ope0": 0.47291222
+    },
+    {
+      "carrier": "pc-sm89-reference",
+      "lineage": "K2-R2 bitsandbytes 0.50.0 fused NF4 eager on RTX 4060 Laptop / sm_89; different dtype, packing, runtime, and byte model",
+      "p50_us": 174.079999,
+      "analytic_bytes": 13549828,
+      "comparison_limit": "Context-only third column. It must not be ranked against the NEON or NPU rows as an implementation win/loss."
+    }
+  ],
+  "ranking_prohibited": true,
+  "ope4_anchor_status": "PENDING_OPE4"
+}

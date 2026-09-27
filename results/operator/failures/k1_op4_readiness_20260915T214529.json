@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "stage": "OP4-readiness",
+  "kernel": "k1_gemma4_rmsnorm",
+  "timestamp": "2026-09-15T21:45:29+08:00",
+  "status": "BLOCKED_SOFT",
+  "failure_kind": "WINDOWS_GPU_PERFORMANCE_COUNTER_PERMISSION",
+  "command": [
+    "/usr/local/cuda/bin/ncu",
+    "--set",
+    "basic",
+    "--kernel-name",
+    "regex:k0_vector_add_kernel",
+    "--launch-count",
+    "1",
+    "--target-processes",
+    "all",
+    ".venv-bfcl/bin/python",
+    "scripts/operator/k0_harness.py",
+    "--config",
+    "configs/operator/op0_measurement.json",
+    "--ncu-target"
+  ],
+  "exit_code": 1,
+  "stdout": "==PROF== Connected to process 70212 (/usr/bin/python3.12)\n==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information see https://developer.nvidia.com/ERR_NVGPUCTRPERM\n==PROF== Disconnected from process 70212\n",
+  "stderr": "",
+  "ncu": {
+    "path": "/usr/local/cuda/bin/ncu",
+    "version": "2025.1.1.0",
+    "build": "35528883",
+    "installed": true
+  },
+  "evidence": {
+    "original_op0_toolchain_probe": {
+      "path": "results/operator/op0/toolchain_probe.json",
+      "sha256": "0a48304b4552d4a1286389604cdcdd2912cce0dd158bdfe22adbc38fbf41dec0"
+    },
+    "op2_receipt": {
+      "path": "results/operator/k1/op2_receipt.json",
+      "sha256": "414bfa626414aef041c20529ca49303f1545accd405e24cbb1a3c6ab9eead813",
+      "status": "PASS"
+    },
+    "op3_receipt": {
+      "path": "results/operator/k1/op3_receipt.json",
+      "sha256": "80c32bd466e2db199882affc3690b566eeb5f22ecc5ed58534c396ea18c5b210",
+      "status": "PASS"
+    }
+  },
+  "assessment": {
+    "op4_executable_now": false,
+    "reason": "Nsight Compute cannot access NVIDIA GPU Performance Counters from WSL2 until the Windows host permission is enabled.",
+    "owner_action": "Windows NVIDIA Control Panel > Developer > Manage GPU Performance Counters > Allow access to the NVIDIA GPU Performance Counters to all users",
+    "resume_gate": "Rerun the identical counter smoke; it must exit 0 and report collected GPU metrics before any OP4 formal config or attribution run is started."
+  },
+  "scope": {
+    "counter_smoke_executed": true,
+    "op4_formal_config_frozen": false,
+    "op4_ncu_attribution_executed": false,
+    "op2_unchanged": true,
+    "op3_unchanged": true,
+    "op5_not_executed": true
+  },
+  "git_sha": "2a40732f4e4bbb45072e36efbf904546f7a0b6f0"
+}

@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "stage": "OP0-toolchain-probe",
+  "timestamp": "2026-09-15T15:38:56+08:00",
+  "path_fix": {
+    "cuda_bin": "/usr/local/cuda/bin",
+    "present_in_path": true,
+    "nvcc_resolved": "/usr/local/cuda/bin/nvcc",
+    "ncu_resolved": "/usr/local/cuda/bin/ncu",
+    "status": "PASS"
+  },
+  "nvcc": {
+    "installed": true,
+    "path": "/usr/local/cuda/bin/nvcc",
+    "version_probe": {
+      "command": [
+        "/usr/local/cuda/bin/nvcc",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Fri_Feb_21_20:23:50_PST_2025\nCuda compilation tools, release 12.8, V12.8.93\nBuild cuda_12.8.r12.8/compiler.35583870_0",
+      "stderr": "",
+      "timed_out": false
+    },
+    "release": "12.8",
+    "torch_cuda_target": "13.0",
+    "major_minor_matches_torch": false,
+    "cuda_cpp_policy": "standalone compile available; PyTorch extension requires an ABI/version smoke before use",
+    "status": "AVAILABLE_WITH_VERSION_MISMATCH"
+  },
+  "ncu": {
+    "installed": true,
+    "path": "/usr/local/cuda/bin/ncu",
+    "version_probe": {
+      "command": [
+        "/usr/local/cuda/bin/ncu",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "NVIDIA (R) Nsight Compute Command Line Profiler\nCopyright (c) 2018-2025 NVIDIA Corporation\nVersion 2025.1.1.0 (build 35528883) (public-release)",
+      "stderr": "",
+      "timed_out": false
+    },
+    "smoke": {
+      "command": [
+        "/usr/local/cuda/bin/ncu",
+        "--set",
+        "basic",
+        "--kernel-name",
+        "regex:k0_vector_add_kernel",
+        "--launch-count",
+        "1",
+        "--target-processes",
+        "all",
+        "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+        "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k0_harness.py",
+        "--config",
+        "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op0_measurement.json",
+        "--ncu-target"
+      ],
+      "exit_code": 1,
+      "stdout": "==PROF== Connected to process 17086 (/usr/bin/python3.12)\n==ERROR== ERR_NVGPUCTRPERM - The user does not have permission to access NVIDIA GPU Performance Counters on the target device 0. For instructions on enabling permissions and to get more information see https://developer.nvidia.com/ERR_NVGPUCTRPERM\n==PROF== Disconnected from process 17086",
+      "stderr": "",
+      "timed_out": false
+    },
+    "status": "BLOCKED_WINDOWS_PERFORMANCE_COUNTER_PERMISSION",
+    "owner_action": "Windows NVIDIA Control Panel > Developer > Manage GPU Performance Counters > Allow access to the NVIDIA GPU Performance Counters to all users",
+    "blocks_op0": false,
+    "blocks_op4_tier_b": true
+  },
+  "nsys": {
+    "configured_path": "/home/qbz415/.local/opt/nvidia/nsight-systems-2026.5.1-cli/opt/nvidia/nsight-systems-cli/2026.5.1/target-linux-x64/nsys",
+    "installed": true,
+    "version_probe": {
+      "command": [
+        "/home/qbz415/.local/opt/nvidia/nsight-systems-2026.5.1-cli/opt/nvidia/nsight-systems-cli/2026.5.1/target-linux-x64/nsys",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "NVIDIA Nsight Systems version 2026.5.1.161-265138896106v0",
+      "stderr": "",
+      "timed_out": false
+    },
+    "status": "PASS"
+  },
+  "status": "PASS"
+}

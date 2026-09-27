@@ -1,0 +1,2 @@
+case_id,variant,K,D,warmup,repetitions,elapsed_ms,affinity_pass
+sliding_k512_d256,cpu_neon_sequence,512,256,10,312,500.113833,1

@@ -1,0 +1,2 @@
+case_id,variant,K,D,warmup,repetitions,elapsed_ms,affinity_pass
+sliding_k512_d256,cpu_scalar_sequence,512,256,10,140,501.477667,1

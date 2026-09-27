@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "stage": "OPE2",
+  "adjudication_id": "OPE2-INT4-NATIVE-K8192-BOUNDARY",
+  "created_at": "2026-09-18T21:41:19+08:00",
+  "status": "CONFIRMED_RUNTIME_CORRECTNESS_BOUNDARY",
+  "runtime": "librknnrt 2.3.2 (429f97ae6b@2025-04-09T09:09:27)",
+  "axis": {
+    "type": "int4xint4_to_int16",
+    "core_mask": "core0",
+    "b_layout": "native"
+  },
+  "boundary": {
+    "last_verified_correct_k": 8192,
+    "first_verified_incorrect_k": 8224,
+    "k_alignment": 32,
+    "predicate": "K > 8192",
+    "observed_failure": "Output is pinned to signed int16 extrema for both constant and randomized inputs instead of the CPU oracle.",
+    "header_contract_context": "The board header admits the formal K=10240 geometry; the narrower K<=8192 correctness boundary is an observed runtime limitation, not a preregistered alignment exclusion."
+  },
+  "diagnostic_probes": [
+    {"K": 8192, "pattern": "constant", "status": "PASS"},
+    {"K": 8192, "pattern": "random", "status": "PASS"},
+    {"K": 8224, "pattern": "constant", "status": "CORRECTNESS_FAIL"},
+    {"K": 8224, "pattern": "random", "status": "CORRECTNESS_FAIL"},
+    {"K": 9216, "pattern": "constant", "status": "CORRECTNESS_FAIL"},
+    {"K": 10240, "pattern": "constant", "status": "CORRECTNESS_FAIL"},
+    {"K": 10240, "pattern": "random", "status": "CORRECTNESS_FAIL"}
+  ],
+  "affected_formal_cell_ids": [
+    "formal__decode_mlp_down_proj__int4xint4_to_int16__core0__native",
+    "formal__prefill_m813_mlp_down_proj__int4xint4_to_int16__core0__native",
+    "formal__prefill_m1445_mlp_down_proj__int4xint4_to_int16__core0__native",
+    "formal__prefill_m5142_mlp_down_proj__int4xint4_to_int16__core0__native",
+    "formal__prefill_m7082_mlp_down_proj__int4xint4_to_int16__core0__native"
+  ],
+  "terminal_disposition": "DISCARDED_RUNTIME_CORRECTNESS_BOUNDARY",
+  "performance_disposition": "EXCLUDE",
+  "matrix_acceptance": "The raw FAIL_CORRECTNESS terminals remain immutable. OPE2 may close with these five cells explicitly discarded because the full matrix has a terminal for every cell and the failure boundary is independently reproduced by adjacent aligned-K and randomized probes.",
+  "claim_limit": "Do not generalize this predicate to another librknnrt version, layout, type, or core mask. Do not use throughput from an incorrect cell.",
+  "evidence": {
+    "formal_terminals": "results/operator/board/ope2/ope2_formal_20260918T1254/matrix/matrix_terminals.jsonl",
+    "focused_probe_log": "results/operator/board/failures/ope2_int4_k_boundary_diag_20260918.log"
+  }
+}

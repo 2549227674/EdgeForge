@@ -1,0 +1,24 @@
+
+/home/orangepi/edgeforge_ope_r1/bin/ke1_gemv_bench:     file format elf64-littleaarch64
+
+
+Disassembly of section .init:
+
+Disassembly of section .plt:
+
+Disassembly of section .text:
+
+0000000000001e20 <dot_scalar>:
+    1e20:	aa0003e5 	mov	x5, x0
+    1e24:	d2800002 	mov	x2, #0x0                   	// #0
+    1e28:	52800000 	mov	w0, #0x0                   	// #0
+    1e2c:	d2850006 	mov	x6, #0x2800                	// #10240
+    1e30:	38e268a4 	ldrsb	w4, [x5, x2]
+    1e34:	38e26823 	ldrsb	w3, [x1, x2]
+    1e38:	91000442 	add	x2, x2, #0x1
+    1e3c:	1b030080 	madd	w0, w4, w3, w0
+    1e40:	eb06005f 	cmp	x2, x6
+    1e44:	54ffff61 	b.ne	1e30 <dot_scalar+0x10>  // b.any
+    1e48:	d65f03c0 	ret
+
+Disassembly of section .fini:

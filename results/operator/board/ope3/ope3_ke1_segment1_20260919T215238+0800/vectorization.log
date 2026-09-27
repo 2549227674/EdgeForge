@@ -1,0 +1,243 @@
+Increasing alignment of decl: permutations
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:162:24: optimized: loop vectorized using 16 byte vectors
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:160:1: note: vectorized 1 loops in function.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:165:10: note: ***** Analysis failed with vector mode VOID
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __fprintf_chk (stderr.12_1, 1, "%s\n", message_3(D));
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:52:3: missed: statement clobbers memory: exit (70);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:52:3: note: ***** Analysis failed with vector mode V2DI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:52:3: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:176:17: missed: couldn't vectorize loop
+/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:16103:10: missed: statement clobbers memory: _42 = __builtin_aarch64_ld1v16qi (_1);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:169:1: note: vectorized 0 loops in function.
+/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:16103:10: missed: statement clobbers memory: _42 = __builtin_aarch64_ld1v16qi (_1);
+/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:16103:10: missed: statement clobbers memory: _43 = __builtin_aarch64_ld1v16qi (_3);
+/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:16103:10: missed: statement clobbers memory: _44 = __builtin_aarch64_ld1v16qi (_5);
+/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:16103:10: missed: statement clobbers memory: _45 = __builtin_aarch64_ld1v16qi (_7);
+/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:16103:10: missed: statement clobbers memory: _46 = __builtin_aarch64_ld1v16qi (_8);
+/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:16103:10: missed: statement clobbers memory: _48 = __builtin_aarch64_ld1v16qi (_10);
+/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:16103:10: missed: statement clobbers memory: _50 = __builtin_aarch64_ld1v16qi (_12);
+/usr/lib/gcc/aarch64-linux-gnu/11/include/arm_neon.h:16103:10: missed: statement clobbers memory: _52 = __builtin_aarch64_ld1v16qi (_14);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:192:10: note: ***** Analysis failed with vector mode VOID
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:202:5: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:202:5: missed: not vectorized: control flow in loop.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:200:9: note: vectorized 0 loops in function.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:66:28: missed: statement clobbers memory: _42 = omp_get_thread_num ();
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:69:3: missed: statement clobbers memory: __builtin_memset (&set, 0, 128);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:71:12: missed: statement clobbers memory: rc_55 = pthread_setaffinity_np (_54, 128, &set);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:74:5: missed: statement clobbers memory: perror ("pthread_setaffinity_np");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:75:5: missed: statement clobbers memory: exit (71);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:209:19: missed: statement clobbers memory: _29 = dot_neon_sdot (pretmp_87, row_25);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:207:19: missed: statement clobbers memory: _34 = dot_autovec (pretmp_87, row_25);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:205:19: missed: statement clobbers memory: _39 = dot_scalar (pretmp_87, row_25);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:205:17: note: ***** Analysis failed with vector mode V2DI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:205:17: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:58:5: missed: statement clobbers memory: perror ("clock_gettime");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:59:5: missed: statement clobbers memory: exit (70);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:59:5: note: ***** Analysis failed with vector mode VOID
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:57:7: missed: statement clobbers memory: _1 = clock_gettime (4, &ts);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:55:15: missed: statement clobbers memory: now_seconds.part.0 ();
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:55:15: note: ***** Analysis failed with vector mode V2DI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:55:15: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:224:33: missed: couldn't vectorize loop
+/usr/include/aarch64-linux-gnu/bits/string_fortified.h:59:10: missed: statement clobbers memory: __builtin_memset (_7, 0, 10240);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:221:24: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:222:23: missed: not vectorized: data ref analysis failed: *_108 = _24;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:221:24: note: ***** Analysis failed with vector mode V2DI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:221:24: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:221:24: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:222:23: missed: not vectorized: data ref analysis failed: *_142 = _121;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:221:24: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:222:23: missed: not vectorized: data ref analysis failed: *_5 = _68;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:217:24: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:218:17: missed: not vectorized: data ref analysis failed: *_163 = _185;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:217:24: note: ***** Analysis failed with vector mode V2DI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:217:24: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:217:24: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:218:17: missed: not vectorized: data ref analysis failed: *_10 = _150;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:217:24: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:218:17: missed: not vectorized: data ref analysis failed: *_2 = _42;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:214:13: note: vectorized 0 loops in function.
+/usr/include/aarch64-linux-gnu/bits/string_fortified.h:59:10: missed: statement clobbers memory: __builtin_memset (_7, 0, 10240);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:227:1: note: ***** Analysis failed with vector mode V2DI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:227:1: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:257:32: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:257:32: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:199:21: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:199:21: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:135:24: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:138:12: missed: not vectorized: unsupported use in stmt.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:266:28: optimized: loop vectorized using 16 byte vectors
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:135:24: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:138:12: missed: not vectorized: unsupported use in stmt.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:308:29: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:308:29: missed: not vectorized: multiple nested loops.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:311:32: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:311:32: missed: not vectorized: control flow in loop.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:135:24: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:138:12: missed: not vectorized: unsupported use in stmt.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:135:24: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:138:12: missed: not vectorized: unsupported use in stmt.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:386:20: missed: couldn't vectorize loop
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:386:20: missed: not vectorized: control flow in loop.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:375:5: note: vectorized 1 loops in function.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:386:9: missed: statement clobbers memory: _5 = strcmp (_4, "--mode");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:388:16: missed: statement clobbers memory: _14 = strcmp (_4, "--threads");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:390:16: missed: statement clobbers memory: _22 = strcmp (_4, "--first-cpu");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:392:16: missed: statement clobbers memory: _28 = strcmp (_4, "--warmup");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:394:16: missed: statement clobbers memory: _34 = strcmp (_4, "--reps");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:396:16: missed: statement clobbers memory: _40 = strcmp (_4, "--seed");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:398:16: missed: statement clobbers memory: _46 = strcmp (_4, "--variant");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:127:9: missed: statement clobbers memory: _639 = strcmp (_51, "scalar");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:127:9: missed: statement clobbers memory: _644 = strcmp (_51, "autovec");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:127:9: missed: statement clobbers memory: _649 = strcmp (_51, "neon_sdot");
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __fprintf_chk (stderr.11_192, 1, "invalid variant: %s\n", _836);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:130:3: missed: statement clobbers memory: exit (2);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __fprintf_chk (stderr.23_135, 1, "usage: %s --mode correctness|measure|perf --threads N --first-cpu N [--warmup N] [--reps N] [--seed N] [--variant scalar|autovec|neon_sdot]\n", _52);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:359:31: missed: statement clobbers memory: parsed_181 = strtoull (_45, &end, 10);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __fprintf_chk (stderr.9_185, 1, "invalid %s: %s\n", "seed", _837);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:362:5: missed: statement clobbers memory: exit (2);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:347:17: missed: statement clobbers memory: parsed_172 = strtol (_39, &end, 10);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __fprintf_chk (stderr.6_179, 1, "invalid %s: %s\n", "reps", _838);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:351:5: missed: statement clobbers memory: exit (2);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:347:17: missed: statement clobbers memory: parsed_163 = strtol (_33, &end, 10);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __fprintf_chk (stderr.6_170, 1, "invalid %s: %s\n", "warmup", _310);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:351:5: missed: statement clobbers memory: exit (2);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:347:17: missed: statement clobbers memory: parsed_154 = strtol (_27, &end, 10);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __fprintf_chk (stderr.6_161, 1, "invalid %s: %s\n", "first-cpu", _402);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:351:5: missed: statement clobbers memory: exit (2);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:347:17: missed: statement clobbers memory: parsed_145 = strtol (_19, &end, 10);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __fprintf_chk (stderr.6_152, 1, "invalid %s: %s\n", "threads", _268);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:351:5: missed: statement clobbers memory: exit (2);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:412:7: missed: statement clobbers memory: _63 = strcmp (mode_835, "measure");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:416:7: missed: statement clobbers memory: _68 = strcmp (mode_835, "perf");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:421:3: missed: statement clobbers memory: omp_set_dynamic (0);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:422:3: missed: statement clobbers memory: omp_set_num_threads (threads_834);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:231:7: missed: statement clobbers memory: _194 = posix_memalign (&bench.x, 64, 10240);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:232:7: missed: statement clobbers memory: _198 = posix_memalign (&bench.weights, 64, 26214400);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:233:5: missed: statement clobbers memory: die ("failed to allocate K-E1 inputs");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:236:9: missed: statement clobbers memory: _203 = posix_memalign (_202, 64, 10240);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:238:7: missed: statement clobbers memory: die ("failed to allocate K-E1 output");
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __fprintf_chk (stderr.2_73, 1, "KE1_METADATA mode=%s M=1 K=%d N=%d threads=%d first_cpu=%d seed=%lu candidate_backend=%s analytic_bytes=26234880 analytic_ops=52428800\n", mode_835, 10240, 2560, threads_834, first_cpu_833, seed_830, "aarch64_neon_sdot");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:438:7: missed: statement clobbers memory: _74 = strcmp (mode_835, "correctness");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:440:14: missed: statement clobbers memory: _75 = strcmp (mode_835, "measure");
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:442:14: missed: statement clobbers memory: _76 = strcmp (mode_835, "perf");
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __fprintf_chk (stderr.23_137, 1, "usage: %s --mode correctness|measure|perf --threads N --first-cpu N [--warmup N] [--reps N] [--seed N] [--variant scalar|autovec|neon_sdot]\n", _77);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:328:3: missed: statement clobbers memory: initialize_inputs (&bench, seed_830, 1);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:331:18: missed: statement clobbers memory: start_358 = now_seconds ();
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:336:24: missed: statement clobbers memory: _371 = now_seconds ();
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:112:10: missed: statement clobbers memory: __builtin_puts (&"record_type,variant,warmup,reps,elapsed_us,checksum,observed"[0]);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:112:10: missed: statement clobbers memory: __printf_chk (1, "perf,%s,%d,%d,%.6f,%lu,%lu\n", _390, warmup_832, reps_831, elapsed_us_373, hash_816, observed_823);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:375:5: missed: statement clobbers memory: __builtin_GOMP_parallel (run_kernel._omp_fn.0, &.omp_data_o.17, 0, 0);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:375:5: missed: statement clobbers memory: __builtin_GOMP_parallel (run_kernel._omp_fn.0, &.omp_data_o.17, 0, 0);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:298:3: missed: statement clobbers memory: initialize_inputs (&bench, seed_830, 1);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:112:10: missed: statement clobbers memory: __builtin_puts (&"record_type,round,order_slot,variant,elapsed_us,checksum"[0]);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __fprintf_chk (stderr.22_335, 1, "KE1_MEASUREMENT_OBSERVED=%lu\n", observed_824);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:57:7: missed: statement clobbers memory: _348 = clock_gettime (4, &ts);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:375:5: missed: statement clobbers memory: __builtin_GOMP_parallel (run_kernel._omp_fn.0, &.omp_data_o.17, 0, 0);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:57:7: missed: statement clobbers memory: _341 = clock_gettime (4, &ts);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:112:10: missed: statement clobbers memory: __printf_chk (1, "timing,%d,%d,%s,%.6f,%lu\n", round_296, slot_527, _332, elapsed_us_308, hash_817);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:375:5: missed: statement clobbers memory: now_seconds.part.0 ();
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:375:5: missed: statement clobbers memory: __builtin_GOMP_parallel (run_kernel._omp_fn.0, &.omp_data_o.17, 0, 0);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:250:18: missed: not vectorized: more than one data ref in stmt: seeds = *.LC0;
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:112:10: missed: statement clobbers memory: __builtin_puts (&"record_type,seed,distribution,variant,checked,mismatches,max_abs_diff,reference_checksum,actual_checksum"[0]);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:258:5: missed: statement clobbers memory: initialize_inputs (&bench, _208, _209);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:375:5: missed: statement clobbers memory: __builtin_GOMP_parallel (run_kernel._omp_fn.0, &.omp_data_o.17, 0, 0);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:375:5: missed: statement clobbers memory: __builtin_GOMP_parallel (run_kernel._omp_fn.0, &.omp_data_o.17, 0, 0);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:112:10: missed: statement clobbers memory: __printf_chk (1, "correctness,%lu,%s,%s,%d,%zu,%lu,%lu,%lu\n", _208, _263, "autovec", 2560, _705, stmp__245.226_699, hash_818, hash_820);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:112:10: missed: statement clobbers memory: __printf_chk (1, "correctness,%lu,%s,%s,%d,%zu,%lu,%lu,%lu\n", _208, _263, "neon_sdot", 2560, _705, stmp__245.226_699, hash_818, hash_820);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:244:3: missed: statement clobbers memory: free (_395);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:245:3: missed: statement clobbers memory: free (_396);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:246:43: missed: statement clobbers memory: free (_391);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:246:43: missed: statement clobbers memory: free (_114);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:246:43: missed: statement clobbers memory: free (_306);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __builtin_fwrite ("perf mode requires --variant and positive --reps\n", 1, 49, stderr.1_72);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __builtin_fwrite ("formal measure mode requires exactly warmup=50 reps=200\n", 1, 56, stderr.0_67);
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:105:10: missed: statement clobbers memory: __fprintf_chk (stderr.23_136, 1, "usage: %s --mode correctness|measure|perf --threads N --first-cpu N [--warmup N] [--reps N] [--seed N] [--variant scalar|autovec|neon_sdot]\n", _62);
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: ***** Analysis succeeded with vector mode V2DI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: SLPing BB part
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: Costing subgraph: 
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: node 0xcae3808 (max_nunits=2, refcnt=1)
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: op template: bench.threads = threads_834;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: 	stmt 0 bench.threads = threads_834;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: 	stmt 1 bench.first_cpu = first_cpu_833;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: 	children 0xcae3888
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: node (external) 0xcae3888 (max_nunits=1, refcnt=1)
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: 	{ threads_834, first_cpu_833 }
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: Cost model analysis: 
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: Cost model analysis for part in loop 0:
+  Vector cost: 3
+  Scalar cost: 2
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: missed: not vectorized: vectorization is not profitable.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: Costing subgraph: 
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: node 0xcae3b08 (max_nunits=2, refcnt=1)
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: op template: MEM <unsigned int> [(distribution_t[3] *)&distributions] = 0;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: 	stmt 0 MEM <unsigned int> [(distribution_t[3] *)&distributions] = 0;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: 	stmt 1 MEM <unsigned int> [(distribution_t[3] *)&distributions + 4B] = 1;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: 	children 0xcae3a88
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: node (constant) 0xcae3a88 (max_nunits=1, refcnt=1)
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: 	{ 0, 1 }
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: Cost model analysis: 
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: Cost model analysis for part in loop 0:
+  Vector cost: 5
+  Scalar cost: 2
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: missed: not vectorized: vectorization is not profitable.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: ***** The result for vector mode V16QI would be the same
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: ***** Re-trying analysis with vector mode V8QI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: ***** Analysis succeeded with vector mode V8QI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: SLPing BB part
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: Costing subgraph: 
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: node 0xcae3b08 (max_nunits=2, refcnt=1)
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: op template: bench.threads = threads_834;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: 	stmt 0 bench.threads = threads_834;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: 	stmt 1 bench.first_cpu = first_cpu_833;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: 	children 0xcae3a88
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: node (external) 0xcae3a88 (max_nunits=1, refcnt=1)
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: 	{ threads_834, first_cpu_833 }
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: Cost model analysis: 
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: Cost model analysis for part in loop 0:
+  Vector cost: 3
+  Scalar cost: 2
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: missed: not vectorized: vectorization is not profitable.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: Costing subgraph: 
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: node 0xcae3908 (max_nunits=2, refcnt=1)
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: op template: MEM <unsigned int> [(distribution_t[3] *)&distributions] = 0;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: 	stmt 0 MEM <unsigned int> [(distribution_t[3] *)&distributions] = 0;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: 	stmt 1 MEM <unsigned int> [(distribution_t[3] *)&distributions + 4B] = 1;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: 	children 0xcae3a08
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: node (constant) 0xcae3a08 (max_nunits=1, refcnt=1)
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: 	{ 0, 1 }
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: Cost model analysis: 
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: Cost model analysis for part in loop 0:
+  Vector cost: 5
+  Scalar cost: 2
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: missed: not vectorized: vectorization is not profitable.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: ***** The result for vector mode V4HI would be the same
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: ***** Re-trying analysis with vector mode V2SI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: ***** Analysis succeeded with vector mode V2SI
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: SLPing BB part
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: Costing subgraph: 
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: node 0xcae3908 (max_nunits=2, refcnt=1)
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: op template: bench.threads = threads_834;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: 	stmt 0 bench.threads = threads_834;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: 	stmt 1 bench.first_cpu = first_cpu_833;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: 	children 0xcae3a08
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: node (external) 0xcae3a08 (max_nunits=1, refcnt=1)
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: 	{ threads_834, first_cpu_833 }
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: Cost model analysis: 
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: note: Cost model analysis for part in loop 0:
+  Vector cost: 3
+  Scalar cost: 2
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:423:11: missed: not vectorized: vectorization is not profitable.
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: Costing subgraph: 
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: node 0xcae3808 (max_nunits=2, refcnt=1)
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: op template: MEM <unsigned int> [(distribution_t[3] *)&distributions] = 0;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: 	stmt 0 MEM <unsigned int> [(distribution_t[3] *)&distributions] = 0;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: 	stmt 1 MEM <unsigned int> [(distribution_t[3] *)&distributions + 4B] = 1;
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: 	children 0xcae3988
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: node (constant) 0xcae3988 (max_nunits=1, refcnt=1)
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: 	{ 0, 1 }
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: Cost model analysis: 
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: note: Cost model analysis for part in loop 0:
+  Vector cost: 5
+  Scalar cost: 2
+/home/orangepi/edgeforge_ope_r1/scripts/ope3_r1/ke1_gemv_bench.c:252:24: missed: not vectorized: vectorization is not profitable.

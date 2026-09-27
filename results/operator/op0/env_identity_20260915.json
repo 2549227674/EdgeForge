@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "stage": "OP0-a",
+  "timestamp": "2026-09-15T15:38:53+08:00",
+  "host": {
+    "hostname": "LAPTOP-OBAD8432",
+    "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "wsl_interop_present": true,
+    "proc_version": "Linux version 6.6.87.2-microsoft-standard-WSL2 (root@439a258ad544) (gcc (GCC) 11.2.0, GNU ld (GNU Binutils) 2.37) #1 SMP PREEMPT_DYNAMIC Thu Jun  5 18:30:46 UTC 2025",
+    "os_release": "PRETTY_NAME=\"Ubuntu 24.04.2 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.2 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo"
+  },
+  "python": {
+    "version": "3.12.3",
+    "executable": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin/python",
+    "packages": {
+      "torch": "2.13.0",
+      "triton": "3.7.1",
+      "numpy": "1.26.4",
+      "transformers": "5.15.0",
+      "bitsandbytes": "0.50.0"
+    }
+  },
+  "cuda": {
+    "torch_cuda_target": "13.0",
+    "cudnn_version": 92000,
+    "device_count": 1,
+    "device": {
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "compute_capability": "sm_89",
+      "total_memory_bytes": 8585216000,
+      "multi_processor_count": 24,
+      "l2_cache_size_bytes": 33554432
+    },
+    "nvidia_smi": {
+      "command": [
+        "nvidia-smi",
+        "--query-gpu=name,uuid,driver_version,memory.total,clocks.max.sm,clocks.max.memory,power.max_limit,pci.bus_id",
+        "--format=csv,noheader"
+      ],
+      "exit_code": 0,
+      "stdout": "NVIDIA GeForce RTX 4060 Laptop GPU, GPU-8b85a8f7-74fa-9d8e-82f1-5ac8d08d1a3d, 592.82, 8188 MiB, 3105 MHz, 8001 MHz, 140.00 W, 00000000:01:00.0",
+      "stderr": "",
+      "timed_out": false
+    }
+  },
+  "power_identity": {
+    "active_plan": {
+      "command": [
+        "/mnt/c/Windows/System32/powercfg.exe",
+        "/GETACTIVESCHEME"
+      ],
+      "exit_code": 0,
+      "stdout": "��Դ���� GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (ƽ��)",
+      "stderr": "",
+      "timed_out": false
+    },
+    "battery_query": {
+      "command": [
+        "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+        "-NoProfile",
+        "-Command",
+        "Get-CimInstance Win32_Battery | Select-Object BatteryStatus,EstimatedChargeRemaining | ConvertTo-Json -Compress"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"BatteryStatus\":2,\"EstimatedChargeRemaining\":100}",
+      "stderr": "",
+      "timed_out": false
+    },
+    "battery_status": {
+      "BatteryStatus": 2,
+      "EstimatedChargeRemaining": 100
+    },
+    "ac_power_observed": true,
+    "plan_changed_by_script": false
+  },
+  "tool_resolution": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin:/usr/local/cuda/bin:/home/qbz415/.local/bin:/home/qbz415/piloop-edge-inference-profiler/.venv-bfcl/bin:/home/qbz415/.local/bin:/mnt/c/Users/Han/.codex/tmp/arg0/codex-arg0JZY8pg:/mnt/c/Users/Han/.codex/bin/wsl/d52321d8cd5e913f:/mnt/c/Users/Han/.codex/bin/wsl/1a4f6f66dd2f3710:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/snap/bin",
+    "cuda_bin_present_in_path": true,
+    "resolved": {
+      "nvcc": "/usr/local/cuda/bin/nvcc",
+      "ncu": "/usr/local/cuda/bin/ncu",
+      "nsys": "/usr/local/cuda/bin/nsys",
+      "nvidia-smi": "/usr/lib/wsl/lib/nvidia-smi"
+    },
+    "configured_nsys": "/home/qbz415/.local/opt/nvidia/nsight-systems-2026.5.1-cli/opt/nvidia/nsight-systems-cli/2026.5.1/target-linux-x64/nsys",
+    "versions": {
+      "nvcc": {
+        "command": [
+          "/usr/local/cuda/bin/nvcc",
+          "--version"
+        ],
+        "exit_code": 0,
+        "stdout": "nvcc: NVIDIA (R) Cuda compiler driver\nCopyright (c) 2005-2025 NVIDIA Corporation\nBuilt on Fri_Feb_21_20:23:50_PST_2025\nCuda compilation tools, release 12.8, V12.8.93\nBuild cuda_12.8.r12.8/compiler.35583870_0",
+        "stderr": "",
+        "timed_out": false
+      },
+      "ncu": {
+        "command": [
+          "/usr/local/cuda/bin/ncu",
+          "--version"
+        ],
+        "exit_code": 0,
+        "stdout": "NVIDIA (R) Nsight Compute Command Line Profiler\nCopyright (c) 2018-2025 NVIDIA Corporation\nVersion 2025.1.1.0 (build 35528883) (public-release)",
+        "stderr": "",
+        "timed_out": false
+      },
+      "path_nsys": {
+        "command": [
+          "/usr/local/cuda/bin/nsys",
+          "--version"
+        ],
+        "exit_code": 0,
+        "stdout": "NVIDIA Nsight Systems version 2024.6.2.225-246235244400v0",
+        "stderr": "",
+        "timed_out": false
+      },
+      "configured_nsys": {
+        "command": [
+          "/home/qbz415/.local/opt/nvidia/nsight-systems-2026.5.1-cli/opt/nvidia/nsight-systems-cli/2026.5.1/target-linux-x64/nsys",
+          "--version"
+        ],
+        "exit_code": 0,
+        "stdout": "NVIDIA Nsight Systems version 2026.5.1.161-265138896106v0",
+        "stderr": "",
+        "timed_out": false
+      }
+    }
+  },
+  "repository": {
+    "root": "/home/qbz415/piloop-edge-inference-profiler",
+    "git_sha": "354d2c1b086a1809c256309f56bca420de243f92",
+    "git_status_short": [
+      "M .gitignore",
+      " m third_party/harbor",
+      " ? third_party/llama.cpp",
+      "?? configs/operator/",
+      "?? docs/operator/",
+      "?? results/operator/",
+      "?? scripts/operator/"
+    ]
+  },
+  "measurement_config": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/op0_measurement.json",
+    "sha256": "e5207099d9d415fa58d8ff4cb6228525f02c32ed3653ab247028177468b92998",
+    "frozen_at": "2026-09-15T15:37:41+08:00"
+  },
+  "scope_guard": {
+    "host_scope": "RTX 4060 Laptop GPU / sm_89 / WSL2 only",
+    "formal_numbers_must_not_be_extrapolated": [
+      "sm_100",
+      "sm_120",
+      "board targets"
+    ]
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_LM_HEAD_DELIVERABILITY_PROBE_R1",
+  "target": "tied_cpu_lm_head_262144_vocab_softcap_30",
+  "frozen_at": "2026-09-16T20:47:31+08:00",
+  "host_scope": "RTX 4060 Laptop GPU / sm_89 / WSL2 only",
+  "authority": {
+    "owner_direction": "Execute the next stage and do not perform SHA verification.",
+    "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+    "upstream_k3_status": "K3_C02_RECONNECTION_FAIL_CLOSE_DEPLOYMENT_PATH",
+    "scope": "Re-adjudicate only the existing lm_head carrier-deliverability HOLD; do not implement or authorize a custom kernel in this probe."
+  },
+  "inputs": {
+    "model": "models/C02-S.O-bf16-r1",
+    "tapes_manifest": "traces/tapes/manifest.json",
+    "shape_census": "results/operator/shape_census.json",
+    "archived_baseline_metadata": "results/operator/k1/k1_rmsnorm_op3.json",
+    "backlog_selection": "results/operator/pool/op5_k2_selection.json",
+    "k3_r5_result": "results/operator/pool/k3_gqa_reconnect_r5_20260916.json",
+    "k3_r5_adjudication": "results/operator/pool/k3_gqa_reconnect_r5_adjudication_receipt_20260916.json",
+    "runner": "scripts/operator/run_op5_lm_head_deliverability_probe_r1.py"
+  },
+  "carrier": {
+    "model_class": "AutoModelForImageTextToText",
+    "dtype": "torch.bfloat16",
+    "attention_implementation_at_load": "eager",
+    "quantization": {
+      "load_in_4bit": true,
+      "bnb_4bit_quant_type": "nf4",
+      "bnb_4bit_use_double_quant": true,
+      "bnb_4bit_compute_dtype": "torch.bfloat16",
+      "llm_int8_enable_fp32_cpu_offload": true,
+      "expected_language_linear4bit_modules": 343
+    },
+    "gpu_budget_gib": 7.5,
+    "original_tied_weight_policy": "The model.language_model.embed_tokens and lm_head Parameter stays tied and CPU-resident. The probe may create one unregistered BF16 CUDA mirror tensor, then must delete it before exit."
+  },
+  "population": {
+    "projected_calls": 21705,
+    "input_shape": [1, 1, 2560],
+    "weight_shape": [262144, 2560],
+    "output_shape": [1, 1, 262144],
+    "softcap": 30.0,
+    "real_hidden_source": "The last hidden state from the longest of all 11 frozen rendered prompts in one fresh formal C02 NF4 load.",
+    "memory_stress": "Keep that prompt's DynamicCache alive while allocating and executing the CUDA mirror path."
+  },
+  "measurement": {
+    "seed": 20260915,
+    "cpu_gpu_correctness": "same-load CPU tied lm_head versus an unregistered BF16 CUDA mirror on the same real hidden state",
+    "softcap_elision_check": "argmax(raw logits) must equal argmax(tanh(logits/30)*30) independently on CPU and CUDA",
+    "warmup": 20,
+    "repetitions": 50,
+    "telemetry_interval_seconds": 1.0,
+    "performance_role": "diagnostic only; this probe has no speed threshold and cannot establish Bottleneck or candidate value"
+  },
+  "replay": {
+    "seed": 20260915
+  },
+  "preflight_revision": "Before formal execution, static compilation found that the shared carrier loader requires replay.seed in addition to measurement.seed. The identical seed was added and both frozen timestamps were advanced; no model load or measurement attempt had started.",
+  "no_sha_policy": {
+    "calculate_or_compare_sha": false,
+    "replacement_checks": [
+      "required input presence and model manifest byte sizes",
+      "backlog disposition is HOLD_CURRENT_CARRIER_DELIVERABILITY",
+      "shape census reports one tied CPU lm_head call per output token and 21705 projected calls",
+      "direct same-load storage identity, device, shape, dtype, logits, token, memory, and structure checks"
+    ]
+  },
+  "hard_gates": [
+    "formal carrier contains 343 active NF4 modules and the original tied lm_head/embedding weight remains on CPU",
+    "the longest frozen prompt is selected from all 11 requests and its real final hidden state is finite",
+    "R5 peak allocated bytes plus exact BF16 mirror bytes projects below 7.5 GiB",
+    "live peak allocated bytes with the longest-prompt cache and CUDA mirror present remains below 7.5 GiB",
+    "same-load CPU and CUDA softcapped greedy token IDs are identical",
+    "softcap elision preserves argmax independently on CPU and CUDA",
+    "the original tied CPU weight identity and model structure are unchanged after mirror cleanup",
+    "telemetry is present and has no thermal or hardware throttle"
+  ],
+  "decision": {
+    "on_pass": "LM_HEAD_DELIVERABILITY_HOLD_LIFTED_SELECTION_AUTHORIZED",
+    "on_fail": "OP5_NO_REMAINING_EXECUTABLE_KERNELS_CURRENT_CARRIER",
+    "pass_boundary": "A PASS authorizes a separate, freshly frozen lm_head A/B/C/D selection probe only. It does not authorize candidate implementation, performance claims, C02 reconnection, or deployment.",
+    "non_authorizations": [
+      "custom lm_head candidate",
+      "Bottleneck PASS",
+      "lm_head performance benefit",
+      "C02 deployment equivalence",
+      "cross-day repeatability",
+      "board, llama.cpp, sm_100, or sm_120 extrapolation"
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "identity": "C02-S.O-rkllm-input-r1",
+  "format": "huggingface_bf16_safetensors_single_file",
+  "created_at": "2026-09-17T20:19:08+08:00",
+  "card": "docs/operator/EdgeForge_算子面_板端_执行卡_R2.md",
+  "output_dir": "models/C02-S.O-rkllm-input-r1",
+  "lineage": {
+    "c02_source": {
+      "manifest": "models/C02-S.O-bf16-r1/artifact_manifest.json",
+      "manifest_sha256": "ee7d426d1e912a6c53cad1cd52739f26d7fff45b4a4f7429a4c08656f68dc5f2",
+      "artifact_set_sha256": "89578279a5f391e44628086a332cd0c119203f53b5d6d739c5aa9f0fe1717b0a",
+      "file_count": 11,
+      "status": "PASS"
+    },
+    "official_transplant_source": {
+      "manifest": "manifests/gemma4_e4b_rkllm_frozen_input_sha256.json",
+      "safetensors": "models/gemma-4-E4B-it/model.safetensors",
+      "safetensors_bytes": 15992595884,
+      "safetensors_sha256": "cfbd3d2f1cd71bd471c37fe2bf8546d5028d41e5736f64e1ca6c6b8893125503",
+      "status": "PASS"
+    },
+    "policy": "C02 payload plus the exact official values for the 54 keys absent from the transformers module tree; no source-layer copying"
+  },
+  "tensor_inventory": {
+    "c02_tensor_count": 2076,
+    "official_tensor_count": 2130,
+    "transplant_tensor_count": 54,
+    "output_tensor_count": 2130,
+    "output_keyset_equals_official": true,
+    "common_tensor_geometry_equals_official": true,
+    "all_output_tensors_byte_verified_against_selected_source": true,
+    "verified_tensor_count": 2130,
+    "source_layer_copy_audit": {
+      "mapping": "sliding_attention->22; full_attention->23",
+      "counts": {
+        "k_proj": {
+          "equal": 0,
+          "different": 18
+        },
+        "v_proj": {
+          "equal": 0,
+          "different": 18
+        },
+        "k_norm": {
+          "equal": 18,
+          "different": 0
+        }
+      },
+      "source_layer_copy_hypothesis": "REJECTED",
+      "observed_pattern": "all 36 k_proj/v_proj tensors differ from their official runtime source-layer tensor; all 18 k_norm tensors are byte-identical"
+    }
+  },
+  "files": [
+    {
+      "path": "chat_template.jinja",
+      "bytes": 18569,
+      "sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5"
+    },
+    {
+      "path": "config.json",
+      "bytes": 5469,
+      "sha256": "a866b497256661638db10c8d42e746f8ee2fc6434a637f00a032d00c6834a0f5"
+    },
+    {
+      "path": "generation_config.json",
+      "bytes": 204,
+      "sha256": "f980ee1dc9d6a30f92050e94eaf7511b95941ede02e9d7fcde002d8da6ef9523"
+    },
+    {
+      "path": "model.safetensors",
+      "bytes": 15992595884,
+      "sha256": "40469f7bd93b6f16dba63081ca5f430d6bdaa7f518d1ffab37f8b9a7be331d0f"
+    },
+    {
+      "path": "processor_config.json",
+      "bytes": 1689,
+      "sha256": "32bdf45d2ad4cc29a0822ddd157a182de76644f0419a6228d151495256e9813c"
+    },
+    {
+      "path": "tokenizer.json",
+      "bytes": 32169626,
+      "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 2095,
+      "sha256": "90c3a3ba5bf53818383a58e1a776cbcacd2a038d4812eaa373e1522f2d06f3df"
+    }
+  ],
+  "artifact_set_sha256": "e8fbfb93f6bd5b8405816ba3eacf3786a0778f1f286c204a71cd249edf42e2b7",
+  "excluded_stale_source_metadata": [
+    "artifact_manifest.json",
+    "model.safetensors.index.json"
+  ]
+}

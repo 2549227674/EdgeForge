@@ -1,0 +1,23 @@
+{
+  "schema": "edgeforge-ope-c0-4-local-download/v1",
+  "stage": "C0-4-cloud-to-pc",
+  "status": "PASS",
+  "observed_at": "2026-09-18T11:30:18+08:00",
+  "scope": "Local file identity after owner-managed MobaXterm download; PC-to-board transfer is not included.",
+  "artifact": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/models/C02-S.O-w8a8-rk3588-16k-1core-A2.rkllm",
+    "bytes": 11687037412,
+    "mtime": "2026-09-17 22:34:51.337520100 +0800",
+    "sha256": "61d2fedd5ce1a0c5cbd785b5198550254bea26d685bc49cabe98558ae0fa2c62"
+  },
+  "expected_from_build_receipt": {
+    "path": "results/operator/board/c0/c0_3_run_20260917T2135+0800/receipt.json",
+    "bytes": 11687037412,
+    "sha256": "61d2fedd5ce1a0c5cbd785b5198550254bea26d685bc49cabe98558ae0fa2c62"
+  },
+  "checks": {
+    "size_matches": true,
+    "sha256_matches": true
+  },
+  "continuation": "Do not repeat the full-file hash solely because a new conversation starts. Recheck only if file size/mtime changes, evidence conflicts, the input is replaced, or the current owner explicitly requests it."
+}

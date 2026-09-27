@@ -1,0 +1,694 @@
+{
+  "schema_version": 1,
+  "experiment": "alpha_logits_fingerprint",
+  "environment": {
+    "command": "scripts/m1/run_alpha_qualification.py fingerprint --model models/gemma-4-E4B-it --samples results/m1/alpha/fingerprint_samples.jsonl --out results/m1/alpha/g3_logits_fingerprint.json --max-length 512 --count 32",
+    "cwd": "/root/autodl-tmp/edgeforge-m1/workspace",
+    "hostname": "autodl-container-atdlpbjbca-22473649",
+    "seed_determinism": "recorded_seeds_only",
+    "torch_version": "2.11.0+cu128",
+    "torch_cuda": "12.8",
+    "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "gpu_capability": [
+      12,
+      0
+    ],
+    "gpu_total_mib": 97251,
+    "bf16_supported": true,
+    "template_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+    "template_matches_frozen": true,
+    "model_weights_bytes": 15992595884,
+    "model_weights_sha256": "cfbd3d2f1cd71bd471c37fe2bf8546d5028d41e5736f64e1ca6c6b8893125503",
+    "model_weights_matches_frozen": true,
+    "model_config_sha256": "33b10c02df3c2e8536cf323d29d53262aaa2f4d11dbe19bc729373fbe90295d4",
+    "model_config": {
+      "architectures": [
+        "Gemma4ForConditionalGeneration"
+      ],
+      "audio_config": {
+        "_name_or_path": "",
+        "architectures": null,
+        "attention_chunk_size": 12,
+        "attention_context_left": 13,
+        "attention_context_right": 0,
+        "attention_invalid_logits_value": -1000000000.0,
+        "attention_logit_cap": 50.0,
+        "chunk_size_feed_forward": 0,
+        "conv_kernel_size": 5,
+        "dtype": "bfloat16",
+        "gradient_clipping": 10000000000.0,
+        "hidden_act": "silu",
+        "hidden_size": 1024,
+        "id2label": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        },
+        "initializer_range": 0.02,
+        "is_encoder_decoder": false,
+        "label2id": {
+          "LABEL_0": 0,
+          "LABEL_1": 1
+        },
+        "model_type": "gemma4_audio",
+        "num_attention_heads": 8,
+        "num_hidden_layers": 12,
+        "output_attentions": false,
+        "output_hidden_states": false,
+        "output_proj_dims": 1536,
+        "problem_type": null,
+        "residual_weight": 0.5,
+        "return_dict": true,
+        "rms_norm_eps": 1e-06,
+        "subsampling_conv_channels": [
+          128,
+          32
+        ],
+        "use_clipped_linears": true
+      },
+      "audio_token_id": 258881,
+      "boa_token_id": 256000,
+      "boi_token_id": 255999,
+      "dtype": "bfloat16",
+      "eoa_token_id": 258883,
+      "eoa_token_index": 258883,
+      "eoi_token_id": 258882,
+      "eos_token_id": [
+        1,
+        106
+      ],
+      "image_token_id": 258880,
+      "initializer_range": 0.02,
+      "model_type": "gemma4",
+      "text_config": {
+        "attention_bias": false,
+        "attention_dropout": 0.0,
+        "attention_k_eq_v": false,
+        "bos_token_id": 2,
+        "dtype": "bfloat16",
+        "enable_moe_block": false,
+        "eos_token_id": 1,
+        "expert_intermediate_size": null,
+        "final_logit_softcapping": 30.0,
+        "global_head_dim": 512,
+        "head_dim": 256,
+        "hidden_activation": "gelu_pytorch_tanh",
+        "hidden_size": 2560,
+        "hidden_size_per_layer_input": 256,
+        "initializer_range": 0.02,
+        "intermediate_size": 10240,
+        "layer_types": [
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "sliding_attention",
+          "full_attention"
+        ],
+        "max_position_embeddings": 131072,
+        "model_type": "gemma4_text",
+        "num_attention_heads": 8,
+        "num_experts": null,
+        "num_global_key_value_heads": null,
+        "num_hidden_layers": 42,
+        "num_key_value_heads": 2,
+        "num_kv_shared_layers": 18,
+        "pad_token_id": 0,
+        "rms_norm_eps": 1e-06,
+        "rope_parameters": {
+          "full_attention": {
+            "partial_rotary_factor": 0.25,
+            "rope_theta": 1000000.0,
+            "rope_type": "proportional"
+          },
+          "sliding_attention": {
+            "rope_theta": 10000.0,
+            "rope_type": "default"
+          }
+        },
+        "sliding_window": 512,
+        "tie_word_embeddings": true,
+        "top_k_experts": null,
+        "use_bidirectional_attention": null,
+        "use_cache": true,
+        "use_double_wide_mlp": false,
+        "vocab_size": 262144,
+        "vocab_size_per_layer_input": 262144
+      },
+      "tie_word_embeddings": true,
+      "transformers_version": "5.5.0.dev0",
+      "video_token_id": 258884,
+      "vision_config": {
+        "_name_or_path": "",
+        "architectures": null,
+        "attention_bias": false,
+        "attention_dropout": 0.0,
+        "chunk_size_feed_forward": 0,
+        "default_output_length": 280,
+        "dtype": "bfloat16",
+        "global_head_dim": 64,
+        "head_dim": 64,
+        "hidden_activation": "gelu_pytorch_tanh",
+        "hidden_size": 768,
+        "id2label": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        },
+        "initializer_range": 0.02,
+        "intermediate_size": 3072,
+        "is_encoder_decoder": false,
+        "label2id": {
+          "LABEL_0": 0,
+          "LABEL_1": 1
+        },
+        "max_position_embeddings": 131072,
+        "model_type": "gemma4_vision",
+        "num_attention_heads": 12,
+        "num_hidden_layers": 16,
+        "num_key_value_heads": 12,
+        "output_attentions": false,
+        "output_hidden_states": false,
+        "patch_size": 16,
+        "pooling_kernel_size": 3,
+        "position_embedding_size": 10240,
+        "problem_type": null,
+        "return_dict": true,
+        "rms_norm_eps": 1e-06,
+        "rope_parameters": {
+          "rope_theta": 100.0,
+          "rope_type": "default"
+        },
+        "standardize": false,
+        "use_clipped_linears": true
+      },
+      "vision_soft_tokens_per_image": 280
+    }
+  },
+  "seed": 20260811,
+  "checkpointing": {
+    "implementation": "non_reentrant",
+    "use_reentrant": false,
+    "use_cache": false
+  },
+  "samples_file": "results/m1/alpha/fingerprint_samples.jsonl",
+  "samples_file_sha256": "73277c8ac0620873350574edc3fd59c5de8d25fdc6a732ff3bcd16a23c9fbec0",
+  "samples": [
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee172-2f9f-7341-8125-4e5d535d9e56:0",
+      "length": 512,
+      "supervised_tokens": 136,
+      "token_label_sha256": "85385cbf23cc0d965ebb2e4acf35e1d38e5c43becdf2302f8e82663b28868165"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee173-6fff-7300-ab06-cf89fc97744b:1",
+      "length": 512,
+      "supervised_tokens": 133,
+      "token_label_sha256": "de1ad7bced1db3c176e36160d7bc1aa82a88325117be18581a77d1a63a372eb3"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee174-28a3-76b2-bae6-f6679665530c:2",
+      "length": 512,
+      "supervised_tokens": 135,
+      "token_label_sha256": "396bc419bc4ecf185f4da27b41e62084c3d931d310d35f4ab43c03bf159f2ef2"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee177-4aa8-7439-af33-649141f0e2c6:4",
+      "length": 512,
+      "supervised_tokens": 139,
+      "token_label_sha256": "769ecb25b5580d28eb8741eaef01a8b10f5013135cdbd07409741ae7a0223ca1"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-695b-729e-9bcb-9192fc451d25:5",
+      "length": 512,
+      "supervised_tokens": 132,
+      "token_label_sha256": "ac508f009f373ce22347ae468f85f4781ee075a821e1ee4f1274946ce01a96dc"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-699b-710a-9553-087aa3830843:6",
+      "length": 512,
+      "supervised_tokens": 138,
+      "token_label_sha256": "12c622014d39a58c5e6334f0c4e3fad72ad072ebe8e2d037d805544507eed74c"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6abe-722c-864e-046c1eb5e1e9:7",
+      "length": 512,
+      "supervised_tokens": 135,
+      "token_label_sha256": "82084dd95fbfa7f99f1197dbb86c6aeec174c6789f46699e6c5f57b59d428f03"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b34-7106-a681-f5d68ade46b5:9",
+      "length": 512,
+      "supervised_tokens": 129,
+      "token_label_sha256": "65b72fd3eff734ff82a80495abf2b6088bcf660f635129e7162792a9f3016f69"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b49-74fe-acdf-7db962bf91cf:10",
+      "length": 512,
+      "supervised_tokens": 137,
+      "token_label_sha256": "604672ef9f89e5d4b5b2261e42bc9262a615e60d6edf28d0b3d57fb1e387dc5c"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b5d-739c-abc4-7a695e11ec95:11",
+      "length": 512,
+      "supervised_tokens": 136,
+      "token_label_sha256": "49849173f20d88273ffe98e7a33f5d736deebee3bafee10a6e56faf93d3476f5"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6c93-709c-9a90-b72bfff48d3a:12",
+      "length": 512,
+      "supervised_tokens": 111,
+      "token_label_sha256": "738fed57e57e0ad45ab3d8491b2e546aa7f1c88f83d2bc71ab55b582a47ac45c"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee190-7bed-7235-9acc-bbf17f0b6e46:13",
+      "length": 512,
+      "supervised_tokens": 123,
+      "token_label_sha256": "ee16bf43c42b5a07bf76d7decc3f8839a241973f6a5f9f0628f28be728de6386"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee193-f6ad-726a-a910-1fc256893c5c:14",
+      "length": 512,
+      "supervised_tokens": 121,
+      "token_label_sha256": "055cf333f453773a29b59ad59b28300b9d48cada2499c56eff2ab2fbd30417c4"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee19c-bd20-74bd-bc18-a7db41554c6b:15",
+      "length": 512,
+      "supervised_tokens": 117,
+      "token_label_sha256": "a152426bb2f5309db48740c973a145982924ec79c8249a997bdeb9dc9ee1acd2"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1a1-ba56-75ce-a3a8-38e71f97a846:16",
+      "length": 512,
+      "supervised_tokens": 136,
+      "token_label_sha256": "194fee92079d01d8e885613307a97b67037fe9dcdda8492118b1c4919ca18a65"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a3b7-761b-abc4-5f78a747b2a9:17",
+      "length": 512,
+      "supervised_tokens": 138,
+      "token_label_sha256": "b89e044e01c220f4d413bacd215d7d5a9e0f77e8fa796ad0f63f061c5e0b97f0"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a4be-7752-a155-1c26f2d31f34:19",
+      "length": 512,
+      "supervised_tokens": 138,
+      "token_label_sha256": "90acd871dfeb5de0d1ec8e6295f23136f319380d2b22f393b190b0e4937df565"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a5e7-72bb-b81b-cef030975684:20",
+      "length": 512,
+      "supervised_tokens": 138,
+      "token_label_sha256": "eb5539d0ba57a45d405ced6626595c1096f2c264f3d6d8407848c3a1214e2df1"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a6a5-7549-92e7-0ed6e20877cd:21",
+      "length": 512,
+      "supervised_tokens": 126,
+      "token_label_sha256": "6146868324de75c817c26db270772dce604a3caeae0d65d929a27b9e188b4efc"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a74c-715a-9c4e-8ac650001d81:22",
+      "length": 512,
+      "supervised_tokens": 76,
+      "token_label_sha256": "ca003bcfd6dff92500a6723318366a507ff1fb2b5f4caaf8f1447bcd0ca73511"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a78f-7244-b496-dfd5ad479dcf:23",
+      "length": 512,
+      "supervised_tokens": 122,
+      "token_label_sha256": "d16cf47342afd097b4c955bd5167d507a6d8e2513fbc55c93d086d980d70bb4f"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a92d-70ce-8d35-a2ea793b536a:24",
+      "length": 512,
+      "supervised_tokens": 123,
+      "token_label_sha256": "9be43fcd12f8882899ba6f7e9082ba5945da1c83508d979a4c0253175bd42e17"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a988-72c7-a9a1-b8aecef227c1:25",
+      "length": 512,
+      "supervised_tokens": 102,
+      "token_label_sha256": "fd6023893b30e2ac497695e837063498fb2022961a467ed3bb14f4110a0470ee"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a9a1-72ce-a534-3c563906f079:26",
+      "length": 512,
+      "supervised_tokens": 122,
+      "token_label_sha256": "26f5a9cdc35b3c8520ce3a0946d6cb0a23fb6953885e76d5864fe5d49215b2a2"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a9f1-74d9-bed7-0a3950776dc5:27",
+      "length": 512,
+      "supervised_tokens": 119,
+      "token_label_sha256": "b9d7e22929de189008007efdb7f46bf3c2db42b4cc95b76851da19e10239663a"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-aad4-739b-9e12-2329a26d882c:28",
+      "length": 512,
+      "supervised_tokens": 122,
+      "token_label_sha256": "ca358f9aa98ae58389959ba13d4ea2b0448084ffde89ba3ff53a9dacdab10ede"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-ad2b-70db-be90-3755399f696c:29",
+      "length": 512,
+      "supervised_tokens": 136,
+      "token_label_sha256": "493db4079e2d294f9c65a38df9ecb19212b8d4f4bee9cb0b8c49b7abab091b30"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-ad76-7025-bd60-872a919488f8:30",
+      "length": 512,
+      "supervised_tokens": 124,
+      "token_label_sha256": "4865b9cda5a5447903509e5ed39184fcfbe8e4dd7decc8bbdf762c8a34ca8c3a"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-aeb3-726d-842c-4729148399b0:31",
+      "length": 512,
+      "supervised_tokens": 138,
+      "token_label_sha256": "21d470270fdb46d2c9bd68f8f97810a0e50313df3e7d75170441e024adfad38a"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-af2c-700b-b19b-c33c49b832af:32",
+      "length": 512,
+      "supervised_tokens": 121,
+      "token_label_sha256": "df9efc776e4886f32fc56a12f2f71e910e0dd0497d4ee0b5f3a74ce5f493ce48"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-af91-73fd-a1a2-04795a7b5060:33",
+      "length": 512,
+      "supervised_tokens": 138,
+      "token_label_sha256": "7e2f0eae0e3a05f37fbd1a75cf9b3a8f558bed3a1305b1f841e464a665371443"
+    },
+    {
+      "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-b15e-7351-ac5f-720726095082:34",
+      "length": 512,
+      "supervised_tokens": 124,
+      "token_label_sha256": "7250932ebb56fdc157fd89d1023294094842418cba788bd858f396b8d86d3492"
+    }
+  ],
+  "comparison": {
+    "tokens": 16384,
+    "top1_equal_tokens": 16384,
+    "top1_agreement": 1.0,
+    "mean_abs_delta_logprob": 0.0,
+    "per_sample": [
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee172-2f9f-7341-8125-4e5d535d9e56:0",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "e0e6b5a244bdd16a9e93101caaccd91eba35df711043f950130327badf5080f5",
+        "candidate_top1_sha256": "e0e6b5a244bdd16a9e93101caaccd91eba35df711043f950130327badf5080f5"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee173-6fff-7300-ab06-cf89fc97744b:1",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "8586796423d266eec40aee860a3791e85feba04fc66f0d5ed7844296a322598b",
+        "candidate_top1_sha256": "8586796423d266eec40aee860a3791e85feba04fc66f0d5ed7844296a322598b"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee174-28a3-76b2-bae6-f6679665530c:2",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "c62e8148646b42ec4e78350ee8f3290f00d87346a64f9215db3b9b18bed520bb",
+        "candidate_top1_sha256": "c62e8148646b42ec4e78350ee8f3290f00d87346a64f9215db3b9b18bed520bb"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee177-4aa8-7439-af33-649141f0e2c6:4",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "4bebc7f124fd74af91b571338111ab5338f7033e6972d957faab3076f6953a81",
+        "candidate_top1_sha256": "4bebc7f124fd74af91b571338111ab5338f7033e6972d957faab3076f6953a81"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-695b-729e-9bcb-9192fc451d25:5",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "f1e10eae38c58bd1a9e970105e46c5cee59a93788d64b4bb4d131eb8d3d3511b",
+        "candidate_top1_sha256": "f1e10eae38c58bd1a9e970105e46c5cee59a93788d64b4bb4d131eb8d3d3511b"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-699b-710a-9553-087aa3830843:6",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "e86d0f57722a3e251ee47a6595ae151339162627c7a9f3609dd6ee07f8c1a791",
+        "candidate_top1_sha256": "e86d0f57722a3e251ee47a6595ae151339162627c7a9f3609dd6ee07f8c1a791"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6abe-722c-864e-046c1eb5e1e9:7",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "4e15fbdc7908177ee41a02a0c331b85e16657cefb84e46984f92e211457349ae",
+        "candidate_top1_sha256": "4e15fbdc7908177ee41a02a0c331b85e16657cefb84e46984f92e211457349ae"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b34-7106-a681-f5d68ade46b5:9",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "40b7c9fd417162fe0e1813e5b7c327179d4ded7ca7545983f541ac5f0b6f964a",
+        "candidate_top1_sha256": "40b7c9fd417162fe0e1813e5b7c327179d4ded7ca7545983f541ac5f0b6f964a"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b49-74fe-acdf-7db962bf91cf:10",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "3963070aad1ca2fcee2f57ae7e59c69d4a5d923024f1159169c96e53a110e27a",
+        "candidate_top1_sha256": "3963070aad1ca2fcee2f57ae7e59c69d4a5d923024f1159169c96e53a110e27a"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6b5d-739c-abc4-7a695e11ec95:11",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "e765c7e7cfdfc7b80997620046a38456ec4e44c4814e025d7f82bc10f4f1688c",
+        "candidate_top1_sha256": "e765c7e7cfdfc7b80997620046a38456ec4e44c4814e025d7f82bc10f4f1688c"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee188-6c93-709c-9a90-b72bfff48d3a:12",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "148e8cf046765197e8aa033b0c673dee4b8dbaac8f56284a485719196a647a84",
+        "candidate_top1_sha256": "148e8cf046765197e8aa033b0c673dee4b8dbaac8f56284a485719196a647a84"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee190-7bed-7235-9acc-bbf17f0b6e46:13",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "56bc938d7996935bad94b9d5945ae2516fcc855843597daaed01fbb341576c5a",
+        "candidate_top1_sha256": "56bc938d7996935bad94b9d5945ae2516fcc855843597daaed01fbb341576c5a"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee193-f6ad-726a-a910-1fc256893c5c:14",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "34e49c3a1f0524a4bb49093159e929c0c1bb0f180b21c9ad1fcf070dbb8c42cc",
+        "candidate_top1_sha256": "34e49c3a1f0524a4bb49093159e929c0c1bb0f180b21c9ad1fcf070dbb8c42cc"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee19c-bd20-74bd-bc18-a7db41554c6b:15",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "b5d3fc07f7db4cd85d5cc769a93c52e6332f737e64e4c956fbb7ec079ff74995",
+        "candidate_top1_sha256": "b5d3fc07f7db4cd85d5cc769a93c52e6332f737e64e4c956fbb7ec079ff74995"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1a1-ba56-75ce-a3a8-38e71f97a846:16",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "95301210fc7a67f5fd069d8ec356b44c90e95fd59dd29946079a33111ca4fcd5",
+        "candidate_top1_sha256": "95301210fc7a67f5fd069d8ec356b44c90e95fd59dd29946079a33111ca4fcd5"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a3b7-761b-abc4-5f78a747b2a9:17",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "ce814c10133faa333116aa9b86fbf3f4f3e9c6da4063577ab897a8675020184c",
+        "candidate_top1_sha256": "ce814c10133faa333116aa9b86fbf3f4f3e9c6da4063577ab897a8675020184c"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a4be-7752-a155-1c26f2d31f34:19",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "411e4d1d1e7a8878267dbb0d7d98a1487adb2aad2ff7ee7a69c13a5f3f49ff7e",
+        "candidate_top1_sha256": "411e4d1d1e7a8878267dbb0d7d98a1487adb2aad2ff7ee7a69c13a5f3f49ff7e"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a5e7-72bb-b81b-cef030975684:20",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "458846be04b56c2806e309094a3114d4a719449649715c82dc66f6ddfa7c7f59",
+        "candidate_top1_sha256": "458846be04b56c2806e309094a3114d4a719449649715c82dc66f6ddfa7c7f59"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a6a5-7549-92e7-0ed6e20877cd:21",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "7291a7150fd57af0e88c82c73717cd88517b249689d4b0ab069e3046a441882e",
+        "candidate_top1_sha256": "7291a7150fd57af0e88c82c73717cd88517b249689d4b0ab069e3046a441882e"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a74c-715a-9c4e-8ac650001d81:22",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "9e4c4b19cebd708ae54646f7644fd2337c83e0117febd3d3f4621a656307663c",
+        "candidate_top1_sha256": "9e4c4b19cebd708ae54646f7644fd2337c83e0117febd3d3f4621a656307663c"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a78f-7244-b496-dfd5ad479dcf:23",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "2c358c32880846f3cd4a8f4a1e2b5f5619f714b6adea936fa2ab52226ba3f36e",
+        "candidate_top1_sha256": "2c358c32880846f3cd4a8f4a1e2b5f5619f714b6adea936fa2ab52226ba3f36e"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a92d-70ce-8d35-a2ea793b536a:24",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "2b28fd7824858755980617603172cdbaaf05099233861917211614bd5bcec651",
+        "candidate_top1_sha256": "2b28fd7824858755980617603172cdbaaf05099233861917211614bd5bcec651"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a988-72c7-a9a1-b8aecef227c1:25",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "9364b705f515cff5b38bd692446e01248e52a7e278af5cecf16ddefbfd2a9917",
+        "candidate_top1_sha256": "9364b705f515cff5b38bd692446e01248e52a7e278af5cecf16ddefbfd2a9917"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a9a1-72ce-a534-3c563906f079:26",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "d634947c92e750aa9989706220c1b31d259bd666e257a6ac642cc959eb56915e",
+        "candidate_top1_sha256": "d634947c92e750aa9989706220c1b31d259bd666e257a6ac642cc959eb56915e"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-a9f1-74d9-bed7-0a3950776dc5:27",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "2926b5234ed942de1dc3065b48542d8cff914764eb9e7bfaaf27c4bfe1f3be34",
+        "candidate_top1_sha256": "2926b5234ed942de1dc3065b48542d8cff914764eb9e7bfaaf27c4bfe1f3be34"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-aad4-739b-9e12-2329a26d882c:28",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "edcbb6203a7f1fae206fc211dbb33c2cdb7ed8a6b4c49b4dbe05e5daa44f764b",
+        "candidate_top1_sha256": "edcbb6203a7f1fae206fc211dbb33c2cdb7ed8a6b4c49b4dbe05e5daa44f764b"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-ad2b-70db-be90-3755399f696c:29",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "f807961489e390ff6efb4cf96e84669c91639cd4f681dac8a629bc0d13e76016",
+        "candidate_top1_sha256": "f807961489e390ff6efb4cf96e84669c91639cd4f681dac8a629bc0d13e76016"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-ad76-7025-bd60-872a919488f8:30",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "26f96fa212115e47f2cc95c56e14ce982085ef3e0d73c6e1a0d51a7a40ddcfdd",
+        "candidate_top1_sha256": "26f96fa212115e47f2cc95c56e14ce982085ef3e0d73c6e1a0d51a7a40ddcfdd"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-aeb3-726d-842c-4729148399b0:31",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "aadf72b3403a050da25bdf8d0034d433cb44ceea8e55ebf2817ec091a2952974",
+        "candidate_top1_sha256": "aadf72b3403a050da25bdf8d0034d433cb44ceea8e55ebf2817ec091a2952974"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-af2c-700b-b19b-c33c49b832af:32",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "8eceaae0c72aa32ab48488d55f0e7e77516c45083a2f97045791904383847edd",
+        "candidate_top1_sha256": "8eceaae0c72aa32ab48488d55f0e7e77516c45083a2f97045791904383847edd"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-af91-73fd-a1a2-04795a7b5060:33",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "507ef98541e0d57d81eda6b866a13d17f37dbc7cba56553d6cf6df3dbbabc45b",
+        "candidate_top1_sha256": "507ef98541e0d57d81eda6b866a13d17f37dbc7cba56553d6cf6df3dbbabc45b"
+      },
+      {
+        "uid": "AletheiaResearch__GLM-5.2-Agent:019ee1b0-b15e-7351-ac5f-720726095082:34",
+        "tokens": 512,
+        "top1_agreement": 1.0,
+        "mean_abs_delta_logprob": 0.0,
+        "reference_top1_sha256": "a2c5345f010070f2b1545368b46d5c6bd5a408b1e3186eeef3f9825c0814158e",
+        "candidate_top1_sha256": "a2c5345f010070f2b1545368b46d5c6bd5a408b1e3186eeef3f9825c0814158e"
+      }
+    ]
+  },
+  "gates": {
+    "min_top1_agreement": 0.999,
+    "max_mean_abs_delta_logprob": 0.005
+  },
+  "peak_allocated_gib": 22.925235271453857,
+  "pass": true
+}

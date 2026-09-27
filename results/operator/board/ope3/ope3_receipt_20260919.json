@@ -1,0 +1,897 @@
+{
+  "schema_version": 1,
+  "stage": "OPE3-K-E1",
+  "status": "VALID_OPE3_TIER_B_CACHELINE_PROXY_REJECTED_OPE4_ANCHOR_PENDING",
+  "prereg_ref": "configs/operator/board/ke1_neon_prereg.json",
+  "prereg_sha256": "c6e3d043b3f86635ba47578d96d4477ded470747c222660bb53e99d48a459a30",
+  "run_manifest_ref": "results/operator/board/ope3/ope3_run_manifest_20260919.json",
+  "segments": [
+    {
+      "label": "segment1",
+      "path": "results/operator/board/ope3/ope3_ke1_segment1_20260919T215238+0800",
+      "controller_before": "2026-09-19T21:52:38.093379772+08:00",
+      "controller_after": "2026-09-19T21:53:46.799996905+08:00",
+      "run_meta": {
+        "segment_label": "segment1",
+        "run_correctness": "yes",
+        "run_tier_b": "yes",
+        "board_start_wall": "2026-09-19T00:11:36.056523156+08:00",
+        "board_start_uptime_s": "6879.17",
+        "board_start_boot_id": "70927827-f44f-4d30-911b-579299e51251",
+        "uname": "Linux orangepi5 6.1.99-rockchip-rk3588 #1.2.2 SMP Thu Jun 26 14:42:53 CST 2025 aarch64 aarch64 aarch64 GNU/Linux",
+        "gcc": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+        "prereg_sha256": "c6e3d043b3f86635ba47578d96d4477ded470747c222660bb53e99d48a459a30",
+        "candidate_source_sha256": "c068d271d18f59dda9cd5c67ce170da66f870531997d40fbb4d87b753df0838f",
+        "bench_sha256": "d8dbc79a1568d237cc1f0e8bb1cef62b98277f0e7d3cdb2f295a08cff4e9358d",
+        "cache_line_bytes": "64",
+        "board_end_wall": "2026-09-19T00:11:46.226513461+08:00",
+        "board_end_uptime_s": "6889.33",
+        "run_exit_code": "0"
+      },
+      "timebase": {
+        "controller_elapsed_s": 68.706617,
+        "board_monotonic_elapsed_s": 10.159999999999854,
+        "pass": true,
+        "board_wall_clock_disposition": "RECORDED_BUT_NON_AUTHORITATIVE_CONTROLLER_AND_MONOTONIC_USED"
+      },
+      "timing": {
+        "scalar": {
+          "samples": 200,
+          "latency_us": {
+            "min": 5786.375,
+            "p25": 5804.166,
+            "p50": 5811.167,
+            "p75": 5817.875001,
+            "max": 5839.458,
+            "iqr": 13.709001000000171,
+            "iqr_over_p50": 0.0023590788218614558
+          },
+          "checksum_values": [
+            "15845364518883164378"
+          ],
+          "stability_pass": true
+        },
+        "autovec": {
+          "samples": 200,
+          "latency_us": {
+            "min": 1005.958999,
+            "p25": 1014.6352499999999,
+            "p50": 1018.6455000000001,
+            "p75": 1026.15675,
+            "max": 1096.375,
+            "iqr": 11.521500000000174,
+            "iqr_over_p50": 0.011310608057464715
+          },
+          "checksum_values": [
+            "15845364518883164378"
+          ],
+          "stability_pass": true
+        },
+        "neon_sdot": {
+          "samples": 200,
+          "latency_us": {
+            "min": 964.25,
+            "p25": 976.5,
+            "p50": 982.041,
+            "p75": 989.3332497499999,
+            "max": 1099.583001,
+            "iqr": 12.833249749999936,
+            "iqr_over_p50": 0.013067936827484734
+          },
+          "checksum_values": [
+            "15845364518883164378"
+          ],
+          "stability_pass": true
+        }
+      },
+      "timing_count_pass": true,
+      "cross_variant_checksum_pass": true,
+      "telemetry": {
+        "samples": 10,
+        "formal_window_samples": 2,
+        "governor_values": [
+          [
+            "performance",
+            "performance",
+            "performance"
+          ]
+        ],
+        "governor_pass": true,
+        "frequency": {
+          "policy4": {
+            "samples": 2,
+            "min_fraction_of_max": 1.0,
+            "p50_fraction_of_max": 1.0,
+            "pass": true
+          },
+          "policy6": {
+            "samples": 2,
+            "min_fraction_of_max": 1.0,
+            "p50_fraction_of_max": 1.0,
+            "pass": true
+          }
+        },
+        "thermal": {
+          "thermal_zone0_soc_thermal": {
+            "max_c": 51.769,
+            "lowest_trip_c": 75.0,
+            "pass": true
+          },
+          "thermal_zone1_bigcore0_thermal": {
+            "max_c": 56.384,
+            "lowest_trip_c": 115.0,
+            "pass": true
+          },
+          "thermal_zone2_bigcore1_thermal": {
+            "max_c": 56.384,
+            "lowest_trip_c": 115.0,
+            "pass": true
+          },
+          "thermal_zone3_littlecore_thermal": {
+            "max_c": 52.692,
+            "lowest_trip_c": 115.0,
+            "pass": true
+          },
+          "thermal_zone4_center_thermal": {
+            "max_c": 49.0,
+            "lowest_trip_c": 115.0,
+            "pass": true
+          },
+          "thermal_zone5_gpu_thermal": {
+            "max_c": 46.23,
+            "lowest_trip_c": 115.0,
+            "pass": true
+          },
+          "thermal_zone6_npu_thermal": {
+            "max_c": 48.076,
+            "lowest_trip_c": 115.0,
+            "pass": true
+          }
+        },
+        "thermal_pass": true
+      },
+      "governor_guard": {
+        "events": {
+          "before": {
+            "event": "before",
+            "board_wall_time": "2026-09-19T00:11:36.124939678+08:00",
+            "uptime_s": "6879.23",
+            "policy4_governor": "ondemand",
+            "policy6_governor": "ondemand",
+            "npu_governor": "rknpu_ondemand"
+          },
+          "after_set": {
+            "event": "after_set",
+            "board_wall_time": "2026-09-19T00:11:36.205175154+08:00",
+            "uptime_s": "6879.31",
+            "policy4_governor": "performance",
+            "policy6_governor": "performance",
+            "npu_governor": "performance"
+          },
+          "after_restore": {
+            "event": "after_restore",
+            "board_wall_time": "2026-09-19T00:11:46.215990900+08:00",
+            "uptime_s": "6889.32",
+            "policy4_governor": "ondemand",
+            "policy6_governor": "ondemand",
+            "npu_governor": "rknpu_ondemand"
+          }
+        },
+        "event_shape_pass": true,
+        "performance_set_pass": true,
+        "exact_restore_pass": true
+      },
+      "codegen": {
+        "variants": {
+          "scalar": {
+            "static_sdot_instruction_count": 0
+          },
+          "autovec": {
+            "static_sdot_instruction_count": 1
+          },
+          "neon_sdot": {
+            "static_sdot_instruction_count": 4
+          }
+        },
+        "scalar_has_no_sdot_and_candidate_has_sdot_pass": true
+      },
+      "segment_pass": true,
+      "correctness": {
+        "rows": [
+          {
+            "record_type": "correctness",
+            "seed": "20260919",
+            "distribution": "small_symmetric_int8",
+            "variant": "autovec",
+            "checked": "2560",
+            "mismatches": "0",
+            "max_abs_diff": "0",
+            "reference_checksum": "10188123018864929648",
+            "actual_checksum": "10188123018864929648"
+          },
+          {
+            "record_type": "correctness",
+            "seed": "20260919",
+            "distribution": "small_symmetric_int8",
+            "variant": "neon_sdot",
+            "checked": "2560",
+            "mismatches": "0",
+            "max_abs_diff": "0",
+            "reference_checksum": "10188123018864929648",
+            "actual_checksum": "10188123018864929648"
+          },
+          {
+            "record_type": "correctness",
+            "seed": "20260920",
+            "distribution": "full_symmetric_int8",
+            "variant": "autovec",
+            "checked": "2560",
+            "mismatches": "0",
+            "max_abs_diff": "0",
+            "reference_checksum": "15845364518883164378",
+            "actual_checksum": "15845364518883164378"
+          },
+          {
+            "record_type": "correctness",
+            "seed": "20260920",
+            "distribution": "full_symmetric_int8",
+            "variant": "neon_sdot",
+            "checked": "2560",
+            "mismatches": "0",
+            "max_abs_diff": "0",
+            "reference_checksum": "15845364518883164378",
+            "actual_checksum": "15845364518883164378"
+          },
+          {
+            "record_type": "correctness",
+            "seed": "20260921",
+            "distribution": "alternating_extrema_with_random_sign",
+            "variant": "autovec",
+            "checked": "2560",
+            "mismatches": "0",
+            "max_abs_diff": "0",
+            "reference_checksum": "1160414276590066942",
+            "actual_checksum": "1160414276590066942"
+          },
+          {
+            "record_type": "correctness",
+            "seed": "20260921",
+            "distribution": "alternating_extrema_with_random_sign",
+            "variant": "neon_sdot",
+            "checked": "2560",
+            "mismatches": "0",
+            "max_abs_diff": "0",
+            "reference_checksum": "1160414276590066942",
+            "actual_checksum": "1160414276590066942"
+          }
+        ],
+        "expected_trials": 6,
+        "observed_trials": 6,
+        "trial_identity_pass": true,
+        "exact_comparisons": 15360,
+        "pass": true
+      },
+      "tier_b": {
+        "variants": {
+          "scalar": {
+            "group_exit_code": 0,
+            "counters": {
+              "cycles:u": 11053181026.0,
+              "instructions:u": 32027787267.0,
+              "l2d_cache_refill:u": 4384445.0,
+              "bus_access:u": 657008111.0
+            },
+            "source_by_event": {
+              "cycles:u": "group",
+              "instructions:u": "group",
+              "l2d_cache_refill:u": "group",
+              "bus_access:u": "group"
+            },
+            "missing_events": [],
+            "all_events_pass": true,
+            "derived_counts": {
+              "ipc": 2.8976081357631065,
+              "cycles_per_requested_repetition": 55265905.13,
+              "instructions_per_requested_repetition": 160138936.335,
+              "scope_limit": "perf stat covers process initialization plus the requested kernel repetitions; values are not region-instrumented."
+            },
+            "bus_access_proxy": {
+              "status": "PREREGISTERED_GATE_DO_NOT_REINTERPRET",
+              "cache_line_bytes": 64,
+              "proxy_bytes": 42048519104.0,
+              "expected_analytic_bytes": 5246976000,
+              "ratio": 8.013857716139734,
+              "within_20_percent": false
+            },
+            "posthoc_bus_access_scale_diagnostic": {
+              "status": "POSTHOC_DIAGNOSTIC_NOT_AN_ACCEPTANCE_GATE",
+              "effective_bytes_per_count_to_match_analytic": 7.986166246888237,
+              "eight_bytes_per_count_ratio_to_analytic": 1.0017322145174667,
+              "interpretation_limit": "A ratio near one is an empirical scale observation only; it does not establish the PMU event's architectural unit."
+            }
+          },
+          "autovec": {
+            "group_exit_code": 0,
+            "counters": {
+              "cycles:u": 2529772090.0,
+              "instructions:u": 2502557918.0,
+              "l2d_cache_refill:u": 30469987.0,
+              "bus_access:u": 661245383.0
+            },
+            "source_by_event": {
+              "cycles:u": "group",
+              "instructions:u": "group",
+              "l2d_cache_refill:u": "group",
+              "bus_access:u": "group"
+            },
+            "missing_events": [],
+            "all_events_pass": true,
+            "derived_counts": {
+              "ipc": 0.9892424412034683,
+              "cycles_per_requested_repetition": 12648860.45,
+              "instructions_per_requested_repetition": 12512789.59,
+              "scope_limit": "perf stat covers process initialization plus the requested kernel repetitions; values are not region-instrumented."
+            },
+            "bus_access_proxy": {
+              "status": "PREREGISTERED_GATE_DO_NOT_REINTERPRET",
+              "cache_line_bytes": 64,
+              "proxy_bytes": 42319704512.0,
+              "expected_analytic_bytes": 5246976000,
+              "ratio": 8.065541849629195,
+              "within_20_percent": false
+            },
+            "posthoc_bus_access_scale_diagnostic": {
+              "status": "POSTHOC_DIAGNOSTIC_NOT_AN_ACCEPTANCE_GATE",
+              "effective_bytes_per_count_to_match_analytic": 7.934990753651886,
+              "eight_bytes_per_count_ratio_to_analytic": 1.0081927312036494,
+              "interpretation_limit": "A ratio near one is an empirical scale observation only; it does not establish the PMU event's architectural unit."
+            }
+          },
+          "neon_sdot": {
+            "group_exit_code": 0,
+            "counters": {
+              "cycles:u": 2394184057.0,
+              "instructions:u": 1670050649.0,
+              "l2d_cache_refill:u": 34704562.0,
+              "bus_access:u": 657554361.0
+            },
+            "source_by_event": {
+              "cycles:u": "group",
+              "instructions:u": "group",
+              "l2d_cache_refill:u": "group",
+              "bus_access:u": "group"
+            },
+            "missing_events": [],
+            "all_events_pass": true,
+            "derived_counts": {
+              "ipc": 0.6975448040918936,
+              "cycles_per_requested_repetition": 11970920.285,
+              "instructions_per_requested_repetition": 8350253.245,
+              "scope_limit": "perf stat covers process initialization plus the requested kernel repetitions; values are not region-instrumented."
+            },
+            "bus_access_proxy": {
+              "status": "PREREGISTERED_GATE_DO_NOT_REINTERPRET",
+              "cache_line_bytes": 64,
+              "proxy_bytes": 42083479104.0,
+              "expected_analytic_bytes": 5246976000,
+              "ratio": 8.020520601580797,
+              "within_20_percent": false
+            },
+            "posthoc_bus_access_scale_diagnostic": {
+              "status": "POSTHOC_DIAGNOSTIC_NOT_AN_ACCEPTANCE_GATE",
+              "effective_bytes_per_count_to_match_analytic": 7.979531900633232,
+              "eight_bytes_per_count_ratio_to_analytic": 1.0025650751975996,
+              "interpretation_limit": "A ratio near one is an empirical scale observation only; it does not establish the PMU event's architectural unit."
+            }
+          }
+        },
+        "all_stat_events_pass": true,
+        "perf_record_exit_code": 0,
+        "perf_report_exit_code": 0,
+        "perf_record_and_report_pass": true,
+        "preregistered_analytic_backing_pass": false,
+        "proxy_investigation": "The frozen bus_access*cache-line proxy is evaluated as written. Any miss is retained; the separate 8-byte-scale diagnostic is post-hoc and cannot convert that miss into a pass.",
+        "authoritative_event_semantics": {
+          "source": "https://raw.githubusercontent.com/ARM-software/data/0806afb1f3479432c30a9488872bd7040a1fe874/pmu/cortex-a76.json",
+          "source_owner": "Arm",
+          "source_revision": "0806afb1f3479432c30a9488872bd7040a1fe874",
+          "source_cpuid": "0x41d0b",
+          "finding": "Cortex-A76 BUS_ACCESS counts transferred data beats between the core and SCU, not cache-line transactions.",
+          "adjudication": "Multiplying every event by the 64-byte cache-line size is not architecturally justified, so the preregistered proxy is rejected when it misses; no replacement scale is promoted."
+        }
+      }
+    },
+    {
+      "label": "segment2",
+      "path": "results/operator/board/ope3/ope3_ke1_segment2_20260919T222436+0800",
+      "controller_before": "2026-09-19T22:24:36.181494534+08:00",
+      "controller_after": "2026-09-19T22:24:55.129748510+08:00",
+      "run_meta": {
+        "segment_label": "segment2",
+        "run_correctness": "no",
+        "run_tier_b": "no",
+        "board_start_wall": "2026-09-19T00:43:08.938990281+08:00",
+        "board_start_uptime_s": "8772.05",
+        "board_start_boot_id": "70927827-f44f-4d30-911b-579299e51251",
+        "uname": "Linux orangepi5 6.1.99-rockchip-rk3588 #1.2.2 SMP Thu Jun 26 14:42:53 CST 2025 aarch64 aarch64 aarch64 GNU/Linux",
+        "gcc": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+        "prereg_sha256": "c6e3d043b3f86635ba47578d96d4477ded470747c222660bb53e99d48a459a30",
+        "candidate_source_sha256": "c068d271d18f59dda9cd5c67ce170da66f870531997d40fbb4d87b753df0838f",
+        "bench_sha256": "d8dbc79a1568d237cc1f0e8bb1cef62b98277f0e7d3cdb2f295a08cff4e9358d",
+        "cache_line_bytes": "64",
+        "board_end_wall": "2026-09-19T00:43:15.195535506+08:00",
+        "board_end_uptime_s": "8778.30",
+        "run_exit_code": "0"
+      },
+      "timebase": {
+        "controller_elapsed_s": 18.948254,
+        "board_monotonic_elapsed_s": 6.25,
+        "pass": true,
+        "board_wall_clock_disposition": "RECORDED_BUT_NON_AUTHORITATIVE_CONTROLLER_AND_MONOTONIC_USED"
+      },
+      "timing": {
+        "scalar": {
+          "samples": 200,
+          "latency_us": {
+            "min": 5777.917,
+            "p25": 5793.374999,
+            "p50": 5800.8125,
+            "p75": 5808.25,
+            "max": 5836.249999,
+            "iqr": 14.875001000000339,
+            "iqr_over_p50": 0.0025642961223105104
+          },
+          "checksum_values": [
+            "15845364518883164378"
+          ],
+          "stability_pass": true
+        },
+        "autovec": {
+          "samples": 200,
+          "latency_us": {
+            "min": 928.083,
+            "p25": 935.374999,
+            "p50": 938.1455000000001,
+            "p75": 944.19799975,
+            "max": 1039.209001,
+            "iqr": 8.823000750000006,
+            "iqr_over_p50": 0.009404725333117309
+          },
+          "checksum_values": [
+            "15845364518883164378"
+          ],
+          "stability_pass": true
+        },
+        "neon_sdot": {
+          "samples": 200,
+          "latency_us": {
+            "min": 896.292,
+            "p25": 903.802249,
+            "p50": 907.375001,
+            "p75": 914.155999,
+            "max": 1029.875,
+            "iqr": 10.353749999999991,
+            "iqr_over_p50": 0.011410662613130545
+          },
+          "checksum_values": [
+            "15845364518883164378"
+          ],
+          "stability_pass": true
+        }
+      },
+      "timing_count_pass": true,
+      "cross_variant_checksum_pass": true,
+      "telemetry": {
+        "samples": 6,
+        "formal_window_samples": 2,
+        "governor_values": [
+          [
+            "performance",
+            "performance",
+            "performance"
+          ]
+        ],
+        "governor_pass": true,
+        "frequency": {
+          "policy4": {
+            "samples": 2,
+            "min_fraction_of_max": 1.0,
+            "p50_fraction_of_max": 1.0,
+            "pass": true
+          },
+          "policy6": {
+            "samples": 2,
+            "min_fraction_of_max": 1.0,
+            "p50_fraction_of_max": 1.0,
+            "pass": true
+          }
+        },
+        "thermal": {
+          "thermal_zone0_soc_thermal": {
+            "max_c": 49.923,
+            "lowest_trip_c": 75.0,
+            "pass": true
+          },
+          "thermal_zone1_bigcore0_thermal": {
+            "max_c": 53.615,
+            "lowest_trip_c": 115.0,
+            "pass": true
+          },
+          "thermal_zone2_bigcore1_thermal": {
+            "max_c": 54.538,
+            "lowest_trip_c": 115.0,
+            "pass": true
+          },
+          "thermal_zone3_littlecore_thermal": {
+            "max_c": 50.846,
+            "lowest_trip_c": 115.0,
+            "pass": true
+          },
+          "thermal_zone4_center_thermal": {
+            "max_c": 47.153,
+            "lowest_trip_c": 115.0,
+            "pass": true
+          },
+          "thermal_zone5_gpu_thermal": {
+            "max_c": 44.384,
+            "lowest_trip_c": 115.0,
+            "pass": true
+          },
+          "thermal_zone6_npu_thermal": {
+            "max_c": 46.23,
+            "lowest_trip_c": 115.0,
+            "pass": true
+          }
+        },
+        "thermal_pass": true
+      },
+      "governor_guard": {
+        "events": {
+          "before": {
+            "event": "before",
+            "board_wall_time": "2026-09-19T00:43:09.001526659+08:00",
+            "uptime_s": "8772.11",
+            "policy4_governor": "ondemand",
+            "policy6_governor": "ondemand",
+            "npu_governor": "rknpu_ondemand"
+          },
+          "after_set": {
+            "event": "after_set",
+            "board_wall_time": "2026-09-19T00:43:09.071641775+08:00",
+            "uptime_s": "8772.18",
+            "policy4_governor": "performance",
+            "policy6_governor": "performance",
+            "npu_governor": "performance"
+          },
+          "after_restore": {
+            "event": "after_restore",
+            "board_wall_time": "2026-09-19T00:43:15.182448366+08:00",
+            "uptime_s": "8778.29",
+            "policy4_governor": "ondemand",
+            "policy6_governor": "ondemand",
+            "npu_governor": "rknpu_ondemand"
+          }
+        },
+        "event_shape_pass": true,
+        "performance_set_pass": true,
+        "exact_restore_pass": true
+      },
+      "codegen": {
+        "variants": {
+          "scalar": {
+            "static_sdot_instruction_count": 0
+          },
+          "autovec": {
+            "static_sdot_instruction_count": 1
+          },
+          "neon_sdot": {
+            "static_sdot_instruction_count": 4
+          }
+        },
+        "scalar_has_no_sdot_and_candidate_has_sdot_pass": true
+      },
+      "segment_pass": true
+    }
+  ],
+  "correctness": {
+    "rows": [
+      {
+        "record_type": "correctness",
+        "seed": "20260919",
+        "distribution": "small_symmetric_int8",
+        "variant": "autovec",
+        "checked": "2560",
+        "mismatches": "0",
+        "max_abs_diff": "0",
+        "reference_checksum": "10188123018864929648",
+        "actual_checksum": "10188123018864929648"
+      },
+      {
+        "record_type": "correctness",
+        "seed": "20260919",
+        "distribution": "small_symmetric_int8",
+        "variant": "neon_sdot",
+        "checked": "2560",
+        "mismatches": "0",
+        "max_abs_diff": "0",
+        "reference_checksum": "10188123018864929648",
+        "actual_checksum": "10188123018864929648"
+      },
+      {
+        "record_type": "correctness",
+        "seed": "20260920",
+        "distribution": "full_symmetric_int8",
+        "variant": "autovec",
+        "checked": "2560",
+        "mismatches": "0",
+        "max_abs_diff": "0",
+        "reference_checksum": "15845364518883164378",
+        "actual_checksum": "15845364518883164378"
+      },
+      {
+        "record_type": "correctness",
+        "seed": "20260920",
+        "distribution": "full_symmetric_int8",
+        "variant": "neon_sdot",
+        "checked": "2560",
+        "mismatches": "0",
+        "max_abs_diff": "0",
+        "reference_checksum": "15845364518883164378",
+        "actual_checksum": "15845364518883164378"
+      },
+      {
+        "record_type": "correctness",
+        "seed": "20260921",
+        "distribution": "alternating_extrema_with_random_sign",
+        "variant": "autovec",
+        "checked": "2560",
+        "mismatches": "0",
+        "max_abs_diff": "0",
+        "reference_checksum": "1160414276590066942",
+        "actual_checksum": "1160414276590066942"
+      },
+      {
+        "record_type": "correctness",
+        "seed": "20260921",
+        "distribution": "alternating_extrema_with_random_sign",
+        "variant": "neon_sdot",
+        "checked": "2560",
+        "mismatches": "0",
+        "max_abs_diff": "0",
+        "reference_checksum": "1160414276590066942",
+        "actual_checksum": "1160414276590066942"
+      }
+    ],
+    "expected_trials": 6,
+    "observed_trials": 6,
+    "trial_identity_pass": true,
+    "exact_comparisons": 15360,
+    "pass": true
+  },
+  "aggregate": {
+    "scalar": {
+      "segment_p50_us": [
+        5811.167,
+        5800.8125
+      ],
+      "p50_us": 5805.989750000001,
+      "measured_gops": 9.03012272799827,
+      "measured_gbps": 4.51858875568976,
+      "tier_a_relative_to_ope0": 0.19480719038319133
+    },
+    "autovec": {
+      "segment_p50_us": [
+        1018.6455000000001,
+        938.1455000000001
+      ],
+      "p50_us": 978.3955000000001,
+      "measured_gops": 53.586509749891526,
+      "measured_gbps": 26.814187105316815,
+      "tier_a_relative_to_ope0": 1.1560238682527744
+    },
+    "neon_sdot": {
+      "segment_p50_us": [
+        982.041,
+        907.375001
+      ],
+      "p50_us": 944.7080005,
+      "measured_gops": 55.497360001451575,
+      "measured_gbps": 27.770358656976356,
+      "tier_a_relative_to_ope0": 1.1972467153792326
+    }
+  },
+  "candidate_vs_autovec": {
+    "speedup": 1.0356591660938306,
+    "speedup_vs_scalar": 6.145803514871366,
+    "segment_directions": [
+      "neon_faster",
+      "neon_faster"
+    ],
+    "classification": "NEON_FASTER",
+    "candidate_p50_relative_delta_between_segments": 0.07903606083623937,
+    "autovec_emits_sdot_in_both_segments": true,
+    "interpretation": "When autovec_emits_sdot_in_both_segments is true, this is a hand-unrolled intrinsic schedule versus GCC's sdot loop, not a scalar-instruction versus dot-product comparison."
+  },
+  "replication": {
+    "same_day": true,
+    "gap_seconds": 1849.381498,
+    "minimum_gap_seconds": 1800,
+    "pass": true
+  },
+  "time_authority": {
+    "controller_wall_clock": "AUTHORITATIVE_FOR_SEGMENT_ORDER_AND_GAP",
+    "board_monotonic_uptime": "AUTHORITATIVE_FOR_BOARD_RUN_DURATION",
+    "board_wall_clock": "NON_AUTHORITATIVE_RECORDED_ONLY",
+    "same_board_boot_between_segments": true,
+    "board_boot_ids": [
+      "70927827-f44f-4d30-911b-579299e51251"
+    ]
+  },
+  "tier_b": {
+    "variants": {
+      "scalar": {
+        "group_exit_code": 0,
+        "counters": {
+          "cycles:u": 11053181026.0,
+          "instructions:u": 32027787267.0,
+          "l2d_cache_refill:u": 4384445.0,
+          "bus_access:u": 657008111.0
+        },
+        "source_by_event": {
+          "cycles:u": "group",
+          "instructions:u": "group",
+          "l2d_cache_refill:u": "group",
+          "bus_access:u": "group"
+        },
+        "missing_events": [],
+        "all_events_pass": true,
+        "derived_counts": {
+          "ipc": 2.8976081357631065,
+          "cycles_per_requested_repetition": 55265905.13,
+          "instructions_per_requested_repetition": 160138936.335,
+          "scope_limit": "perf stat covers process initialization plus the requested kernel repetitions; values are not region-instrumented."
+        },
+        "bus_access_proxy": {
+          "status": "PREREGISTERED_GATE_DO_NOT_REINTERPRET",
+          "cache_line_bytes": 64,
+          "proxy_bytes": 42048519104.0,
+          "expected_analytic_bytes": 5246976000,
+          "ratio": 8.013857716139734,
+          "within_20_percent": false
+        },
+        "posthoc_bus_access_scale_diagnostic": {
+          "status": "POSTHOC_DIAGNOSTIC_NOT_AN_ACCEPTANCE_GATE",
+          "effective_bytes_per_count_to_match_analytic": 7.986166246888237,
+          "eight_bytes_per_count_ratio_to_analytic": 1.0017322145174667,
+          "interpretation_limit": "A ratio near one is an empirical scale observation only; it does not establish the PMU event's architectural unit."
+        }
+      },
+      "autovec": {
+        "group_exit_code": 0,
+        "counters": {
+          "cycles:u": 2529772090.0,
+          "instructions:u": 2502557918.0,
+          "l2d_cache_refill:u": 30469987.0,
+          "bus_access:u": 661245383.0
+        },
+        "source_by_event": {
+          "cycles:u": "group",
+          "instructions:u": "group",
+          "l2d_cache_refill:u": "group",
+          "bus_access:u": "group"
+        },
+        "missing_events": [],
+        "all_events_pass": true,
+        "derived_counts": {
+          "ipc": 0.9892424412034683,
+          "cycles_per_requested_repetition": 12648860.45,
+          "instructions_per_requested_repetition": 12512789.59,
+          "scope_limit": "perf stat covers process initialization plus the requested kernel repetitions; values are not region-instrumented."
+        },
+        "bus_access_proxy": {
+          "status": "PREREGISTERED_GATE_DO_NOT_REINTERPRET",
+          "cache_line_bytes": 64,
+          "proxy_bytes": 42319704512.0,
+          "expected_analytic_bytes": 5246976000,
+          "ratio": 8.065541849629195,
+          "within_20_percent": false
+        },
+        "posthoc_bus_access_scale_diagnostic": {
+          "status": "POSTHOC_DIAGNOSTIC_NOT_AN_ACCEPTANCE_GATE",
+          "effective_bytes_per_count_to_match_analytic": 7.934990753651886,
+          "eight_bytes_per_count_ratio_to_analytic": 1.0081927312036494,
+          "interpretation_limit": "A ratio near one is an empirical scale observation only; it does not establish the PMU event's architectural unit."
+        }
+      },
+      "neon_sdot": {
+        "group_exit_code": 0,
+        "counters": {
+          "cycles:u": 2394184057.0,
+          "instructions:u": 1670050649.0,
+          "l2d_cache_refill:u": 34704562.0,
+          "bus_access:u": 657554361.0
+        },
+        "source_by_event": {
+          "cycles:u": "group",
+          "instructions:u": "group",
+          "l2d_cache_refill:u": "group",
+          "bus_access:u": "group"
+        },
+        "missing_events": [],
+        "all_events_pass": true,
+        "derived_counts": {
+          "ipc": 0.6975448040918936,
+          "cycles_per_requested_repetition": 11970920.285,
+          "instructions_per_requested_repetition": 8350253.245,
+          "scope_limit": "perf stat covers process initialization plus the requested kernel repetitions; values are not region-instrumented."
+        },
+        "bus_access_proxy": {
+          "status": "PREREGISTERED_GATE_DO_NOT_REINTERPRET",
+          "cache_line_bytes": 64,
+          "proxy_bytes": 42083479104.0,
+          "expected_analytic_bytes": 5246976000,
+          "ratio": 8.020520601580797,
+          "within_20_percent": false
+        },
+        "posthoc_bus_access_scale_diagnostic": {
+          "status": "POSTHOC_DIAGNOSTIC_NOT_AN_ACCEPTANCE_GATE",
+          "effective_bytes_per_count_to_match_analytic": 7.979531900633232,
+          "eight_bytes_per_count_ratio_to_analytic": 1.0025650751975996,
+          "interpretation_limit": "A ratio near one is an empirical scale observation only; it does not establish the PMU event's architectural unit."
+        }
+      }
+    },
+    "all_stat_events_pass": true,
+    "perf_record_exit_code": 0,
+    "perf_report_exit_code": 0,
+    "perf_record_and_report_pass": true,
+    "preregistered_analytic_backing_pass": false,
+    "proxy_investigation": "The frozen bus_access*cache-line proxy is evaluated as written. Any miss is retained; the separate 8-byte-scale diagnostic is post-hoc and cannot convert that miss into a pass.",
+    "authoritative_event_semantics": {
+      "source": "https://raw.githubusercontent.com/ARM-software/data/0806afb1f3479432c30a9488872bd7040a1fe874/pmu/cortex-a76.json",
+      "source_owner": "Arm",
+      "source_revision": "0806afb1f3479432c30a9488872bd7040a1fe874",
+      "source_cpuid": "0x41d0b",
+      "finding": "Cortex-A76 BUS_ACCESS counts transferred data beats between the core and SCU, not cache-line transactions.",
+      "adjudication": "Multiplying every event by the 64-byte cache-line size is not architecturally justified, so the preregistered proxy is rejected when it misses; no replacement scale is promoted."
+    }
+  },
+  "posthoc_analysis_adjudication": {
+    "recorded_at": "2026-09-19T22:05:07+08:00",
+    "trigger": "The first segment's preregistered bus_access*64-byte proxy was about 8.0 times the analytic byte model.",
+    "resolution": "Arm's Cortex-A76 PMU description establishes that BUS_ACCESS counts data beats rather than cache-line transactions. The frozen proxy therefore remains a failed gate. An observed 8-byte scale is reported only as a post-hoc diagnostic.",
+    "protocol_effect": "None: preregistration, candidate source, inputs, repetitions, timing, correctness, telemetry, Tier-B events, and the second segment protocol were unchanged.",
+    "analysis_code_effect": "The summarizer was amended after segment 1 to separate valid data collection from the rejected proxy and to prevent the post-hoc scale from being promoted to an acceptance gate.",
+    "detail_ref": "results/operator/board/ope3/ope3_bus_access_semantics_adjudication_20260919.json"
+  },
+  "three_horizontal_table_ref": "results/operator/board/ope3/ope3_three_horizontal_20260919.json",
+  "ope4_anchor": {
+    "status": "PENDING_OPE4",
+    "future_field": "board-diagnostic-1core decode stage/token timing",
+    "current_disposition": "OPE3 may close its isolated measurement and three-horizontal row, but final stage anchoring remains explicitly pending until OPE4."
+  },
+  "execution_validity_gates": {
+    "identity_pass": true,
+    "correctness_pass": true,
+    "both_segments_pass": true,
+    "same_day_pass": true,
+    "minimum_gap_pass": true,
+    "replication_pass": true,
+    "tier_b_present_once": true,
+    "tier_b_collection_pass": true
+  },
+  "method_gates": {
+    "tier_b_preregistered_analytic_backing_pass": false,
+    "ope4_model_stage_anchor_present": false
+  },
+  "isolated_measurement_pass": true,
+  "full_ke1_four_gate_closure_pass": false,
+  "claim_limits": [
+    "The CPU kernel is a cross-ISA instrument and is not used by the closed RKLLM deployment path; no board-model speedup may be claimed.",
+    "The OPE2 value is an isolated NPU primitive result, not RKLLM TPOT.",
+    "The PC row uses NF4 on sm_89 and is lineage-separated; it is context, not a same-format hardware contest.",
+    "The OPE4 model-stage anchor is pending and must not be fabricated from isolated OPE2/OPE3 timings.",
+    "All Tier-A scores inherit the single-segment owner-waiver evidence level of the OPE0 denominator.",
+    "No 3-core LLM, driver, device-tree, kernel, shared-library, quality-evaluation, or frozen model artifact change is authorized by this preregistration."
+  ]
+}

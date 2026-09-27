@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-02-FP16-GEMV-SCOPE",
+  "status": "PASS_OPE5_02_FOUR_QUESTIONS_PREREG_AUTHORIZED",
+  "frozen_at": "2026-09-21T14:23:48+08:00",
+  "board_execution_started": false,
+  "candidate_implemented": false,
+  "selection": {
+    "candidate_id": "OPE5-02",
+    "name": "NEON FP16 GEMV",
+    "backlog_rank_at_ope5_triage": 2,
+    "queue_state": "FIRST_REMAINING_AFTER_VALID_OPE5_03_COMPLETION",
+    "decision": "SELECT_FOR_INDEPENDENT_PREREGISTRATION",
+    "scope": "One authentic decode down-projection geometry on four A76 cores: M=1,K=10240,N=2560, FP16 activation and row-major FP16 weights, FP32 accumulation/output. Report one-invocation timing and a census-weighted 42-call projection; do not measure the full linear population."
+  },
+  "sources": {
+    "ope5_backlog_triage": {
+      "path": "configs/operator/board/ope5_backlog_triage.json",
+      "sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539"
+    },
+    "ope1_shape_manifest": {
+      "path": "configs/operator/board/ope1_shape_manifest.json",
+      "sha256": "1b5f6a4690da92fcc2aa2213915280cda3ef866feab5fcbcfd06c702b781e05d"
+    },
+    "ope0_bandwidth_ceiling": {
+      "path": "results/operator/board/bandwidth_ceiling.json",
+      "sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9"
+    },
+    "ope2_receipt": {
+      "path": "results/operator/board/ope2/ope2_receipt_20260918.json",
+      "sha256": "b408e1aacff736ac2f40d46af6613953a7ae74e43a2bbb81b4874a12358b8819"
+    },
+    "ope2_cells": {
+      "path": "results/operator/board/ope2/ope2_cells_20260918.csv",
+      "sha256": "fa021d9d2c3057a07f6b6eadfa48116bccd3b783d074f7e0a54c0914e8f34fd7"
+    },
+    "ope3_receipt": {
+      "path": "results/operator/board/ope3/ope3_receipt_20260919.json",
+      "sha256": "5a3e96c095888b7ea9d96d93aee8463351affd05f8d77da8351dcee09f3e489e"
+    },
+    "ope3_three_horizontal": {
+      "path": "results/operator/board/ope3/ope3_three_horizontal_20260919.json",
+      "sha256": "53b7fbe41327d0b8809299af0e24fe33446724f84b12a5ba7e909f0abdff9531"
+    },
+    "ope4_receipt": {
+      "path": "results/operator/board/ope4/ope4_receipt_20260921.json",
+      "sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d"
+    },
+    "ope5_03_receipt": {
+      "path": "results/operator/board/ope5/ope5_receipt_20260921.json",
+      "sha256": "0e4eb654fe51b73e8ea41f888effc19921376caacb5440da31a2b2bb77cfacab"
+    }
+  },
+  "four_questions": {
+    "A_authenticity": {
+      "status": "PASS_SHAPE_AND_FREQUENCY_ONLY",
+      "evidence": "OPE1 freezes decode_mlp_down_proj at M=1,K=10240,N=2560 with 42 calls/model-forward and 911148 observed invocations. FP16 activation/weight with FP32 output matches the OPE1 fp16 analytic contract and the OPE2 primitive row.",
+      "limit": "The deployed C02/official carriers are W8A8. CPU FP16 execution and row-major [N,K] storage are cross-ISA comparator choices, not evidence of the closed RKLLM internal dtype, layout, or placement."
+    },
+    "B_bottleneck": {
+      "status": "PASS_DIAGNOSTIC_NOT_DEPLOYMENT_ATTRIBUTION",
+      "evidence": "OPE3 already measures the same geometry and four-A76 topology in int8; OPE2 already measures the same geometry in NPU FP16. The missing cell is a four-A76 FP16 path, which isolates the CPU dtype/ISA tax without repeating either anchor.",
+      "limit": "The result cannot identify the cause of the OPE4 160.471% analytic-vs-stage gap because the W8A8 runtime is closed and no carrier proves that it dispatches FP16 down-projection to CPU."
+    },
+    "C_capability": {
+      "status": "PASS_DESIGN",
+      "evidence": "The measured A76 exposes fphp/asimdhp and board GCC 11.4 supports FP16 loads/conversion plus FP32 NEON FMA. K=10240 and N=2560 are divisible by the eight-half vector tile and N is divisible by four worker partitions.",
+      "limit": "The candidate uses FP16 storage converted to FP32 accumulation and does not require BF16, i8mm, SVE, SME, or FP16 FMLAL extensions."
+    },
+    "D_deliverability": {
+      "status": "PASS_ISOLATED_LINEAGE_TABLE",
+      "evidence": "The result can add a fourth lineage-separated same-shape row beside OPE3 A76 int8, OPE2 NPU FP16, and the existing PC NF4 context row; it can also report a 42-call counterfactual projection against OPE4 TPOT.",
+      "limit": "No hardware win/loss, RKLLM component attribution, deployment speedup, or quality statement is deliverable."
+    }
+  },
+  "novel_evidence_contract": {
+    "new_measurement": "Four-A76 FP16-storage/FP32-accumulate GEMV for the exact OPE3 down-projection geometry.",
+    "primary_comparison": "OPE5-02 FP16 NEON versus OPE3 int8 neon_sdot on the same M/K/N, four A76 cores, and row-major [N,K] CPU layout; report latency ratio and analytic-byte ratio without treating dtype as a single isolated causal variable beyond these explicit contracts.",
+    "reused_anchor_no_rerun": "OPE2 core0 normal-layout FP16 primitive p50=4728.208 us, 11.095011048 GB/s, correctness PASS.",
+    "stage_context": "OPE4 C02 aggregate decode=446.1262611013072 ms/token; the 42-call CPU FP16 projection is a counterfactual isolated ratio only.",
+    "duplicate_avoidance": [
+      "Do not rerun OPE2 NPU FP16 cells.",
+      "Do not rerun OPE3 int8 GEMV.",
+      "Do not add gate/up, prefill, A55, NPU, model, or full-linear-population lanes.",
+      "Do not use OPE5-03 RMSNorm timing as a GEMV baseline."
+    ]
+  },
+  "frozen_shape": {
+    "shape_id": "decode_mlp_down_proj",
+    "phase": "decode",
+    "m": 1,
+    "k": 10240,
+    "n": 2560,
+    "calls_per_model_forward": 42,
+    "observed_model_forwards": 21694,
+    "observed_invocations": 911148,
+    "census_ptr": "$.op_families.nf4_linear.shapes[phase=decode,variant=mlp_down_proj]",
+    "cpu_weight_layout": "row-major contiguous [N,K]",
+    "activation_dtype": "IEEE float16",
+    "weight_dtype": "IEEE float16",
+    "accumulator_output_dtype": "float32"
+  },
+  "analytic_account": {
+    "activation_read_bytes_per_call": 20480,
+    "weight_read_bytes_per_call": 52428800,
+    "output_write_bytes_per_call": 10240,
+    "total_bytes_per_call": 52459520,
+    "ops_per_call": 52428800,
+    "ops_per_byte": 0.999414405621706,
+    "bytes_for_42_call_projection": 2203299840,
+    "ops_for_42_call_projection": 2202009600,
+    "ope0_ceiling_gbps": 23.1951846685,
+    "roofline_floor_us_per_call": 2261.6556302413123,
+    "roofline_floor_ms_for_42_calls": 94.98953647013512,
+    "roofline_floor_percent_of_ope4_tpot": 21.2920746327831,
+    "interpretation": "The floor assumes every analytic byte is charged once per call. It is an isolated FP16 counterfactual and not an RKLLM prediction."
+  },
+  "anchors": {
+    "ope3_a76_int8": {
+      "shape_mkn": [1, 10240, 2560],
+      "cores": 4,
+      "variant": "neon_sdot",
+      "p50_us": 944.7080005,
+      "analytic_bytes": 26234880,
+      "measured_gbps": 27.770358656976356,
+      "evidence_limit": "Two OPE3 segments, but the frozen bus_access*64 analytic-backing gate failed and remains rejected."
+    },
+    "ope2_npu_fp16": {
+      "cell_id": "formal__decode_mlp_down_proj__fp16xfp16_to_fp32__core0__normal",
+      "shape_mkn": [1, 10240, 2560],
+      "p50_us": 4728.208,
+      "analytic_bytes": 52459520,
+      "measured_gbps": 11.095011048,
+      "correctness_pass": true,
+      "evidence_limit": "One isolated rknn_matmul_run core0 primitive cell; not RKLLM TPOT and not a hardware ranking denominator."
+    },
+    "ope4": {
+      "primary_decode_ms_per_token": 446.1262611013072,
+      "primary_process_cpu_cores_utilized": 0.6071224229634761,
+      "evidence_limit": "One owner-waived formal model-stage segment."
+    }
+  },
+  "decision": {
+    "preregistration_authorized": true,
+    "implementation_authorized_by_this_file": false,
+    "board_execution_authorized_by_this_file": false,
+    "next_action": "Freeze configs/operator/board/ope5_fp16_gemv_prereg.json and verify it before candidate implementation.",
+    "no_automatic_fallback": "If the preregistration is inconsistent, repair and version the conflict; do not silently select OPE5-05 or start an exploratory board run."
+  },
+  "claim_limits": [
+    "Only shape and frequency are deployment-authentic; CPU FP16 dtype/layout/execution are isolated comparator choices.",
+    "The 42-call value is a multiplication of isolated p50 unless an explicitly preregistered population sequence is measured; do not label it measured RKLLM time.",
+    "The same-shape OPE2, OPE3, OPE4, and PC rows remain lineage-separated and are not a hardware leaderboard.",
+    "No board process, candidate implementation, A55 lane, NPU rerun, RKLLM run, quality evaluation, or frozen artifact mutation occurs in this stage."
+  ],
+  "git_sha_at_freeze": "213460d88311cba5d84add4d3ee57aae26716c6d"
+}

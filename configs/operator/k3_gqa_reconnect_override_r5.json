@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_RECONNECT_R5",
+  "kernel": "k3_gqa_decode_attention",
+  "frozen_at": "2026-09-16T18:23:51+08:00",
+  "host_scope": "RTX 4060 Laptop GPU / sm_89 / WSL2 only",
+  "authority": {
+    "owner_direction": "Execute the next stage after the R3 ncu PASS and do not perform SHA verification.",
+    "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+    "replication_disclosure": "The original cross-day replication and the prepared same-day R2 replication were waived by the owner after Day-1. This reconnection must not be described as an independent or cross-day replication PASS.",
+    "upstream_ncu_status": "K3_R3_NCU_PASS_RECONNECTION_AUTHORIZED",
+    "upstream_ncu_receipt": "results/operator/pool/k3_gqa_ncu_r3_receipt_20260916.json"
+  },
+  "r4_invalidation": {
+    "failure_receipt": "results/operator/failures/k3_gqa_reconnect_r4_2026-09-16T181918_0800.json",
+    "completed_candidate_requests_before_interrupt": 1,
+    "observed_candidate_calls": 0,
+    "cause": "Real decode passes attention_mask=None because the last causal token sees all cached positions; the locked candidate contract requires an explicit contiguous BF16 zero mask.",
+    "secondary_observation": "An all-eager fallback replay differed from the archived OP3 A2 token list after a fresh NF4 model load, so a cross-process archived token list is not a valid strict oracle for R5.",
+    "disposition": "R4 is retained as an invalid execution attempt and contributes no reconnection decision."
+  },
+  "r5_changes_frozen_before_formal_replay": {
+    "mask_normalization": "For decode-shaped calls only, normalize attention_mask=None to a contiguous BF16 zero tensor [1,1,1,K]. Non-None masks remain unchanged.",
+    "probe_evidence": "The real first decode call had contiguous BF16 Q/K/V, dropout=0, scaling=1, softcap=None, output_attentions=false; eligibility changed from false to true only after None-to-zero-mask normalization.",
+    "oracle": "Run one full eager A path and one full K3 B path inside the same model load, with fresh cache and the same seed for each request; compare token lists directly.",
+    "registry_cleanup": "Remove the temporary attention function from AttentionInterface._global_mapping, matching Transformers register() semantics."
+  },
+  "inputs": {
+    "model": "models/C02-S.O-bf16-r1",
+    "tapes_manifest": "traces/tapes/manifest.json",
+    "shape_census": "results/operator/shape_census.json",
+    "archived_baseline_metadata": "results/operator/k1/k1_rmsnorm_op3.json",
+    "candidate": "scripts/operator/k3_gqa_attention.py",
+    "custom_op_and_dispatch": "scripts/operator/k3_gqa_custom_op_r5.py",
+    "runner": "scripts/operator/run_k3_reconnect_r5.py"
+  },
+  "carrier": {
+    "model_class": "AutoModelForImageTextToText",
+    "dtype": "torch.bfloat16",
+    "attention_implementation_at_load": "eager",
+    "quantization": {
+      "load_in_4bit": true,
+      "bnb_4bit_quant_type": "nf4",
+      "bnb_4bit_use_double_quant": true,
+      "bnb_4bit_compute_dtype": "torch.bfloat16",
+      "llm_int8_enable_fp32_cpu_offload": true,
+      "expected_language_linear4bit_modules": 343
+    },
+    "persistent_cpu_modules": [
+      "model.language_model.embed_tokens",
+      "model.language_model.embed_tokens_per_layer",
+      "lm_head"
+    ],
+    "gpu_budget_gib": 7.5
+  },
+  "dispatch": {
+    "torch_library_op": "edgeforge::k3_gqa_attention",
+    "attention_registry_key": "edgeforge_k3_gqa_r5",
+    "language_attention_class": "transformers.models.gemma4.modeling_gemma4.Gemma4TextAttention",
+    "expected_attention_modules": 42,
+    "candidate_scope": "decode Q=1, output_attentions=false, exact frozen BF16 sm_89 contract after None-to-zero-mask normalization",
+    "prefill_policy": "always transformers eager",
+    "miss_policy": "transformers eager with an explicit fallback reason",
+    "expected_total_attention_calls": 911610,
+    "expected_candidate_calls": 911148,
+    "expected_synthetic_zero_masks": 911148,
+    "expected_prefill_eager_calls": 462,
+    "expected_candidate_calls_by_family": {
+      "sliding": 759290,
+      "full": 151858
+    },
+    "expected_candidate_calls_per_module": 21694
+  },
+  "length_bucket_adapter": {
+    "reason": "The locked Triton candidate specializes/autotunes on exact K, while full-attention K advances every decode token. Padding to a frozen correctness-covered upper bucket bounds compilation without changing the three candidate kernels.",
+    "sliding": "K remains exactly 512 and is not padded",
+    "full_upper_buckets": [807, 1264, 1436, 1569, 1714, 1843, 1973, 2153, 2334, 2514, 2695, 2897, 3123, 3349, 3575, 3801, 4011, 4191, 4440, 4728, 5029, 5331, 5632, 6455, 7359],
+    "padding": "K/V append BF16 zeros and the additive mask appends torch.finfo(torch.bfloat16).min; exact bucket hits use the original tensors.",
+    "prewarm": "Run one untracked custom-op call for sliding K=512 and each full upper bucket before B replay so compilation/autotune is excluded from B request timing.",
+    "evidence_boundary": "The adapter receives no isolated or ncu performance claim. Its deployment correctness is decided only by the same-load full replay exact-token gate."
+  },
+  "replay": {
+    "population": "all 5 frozen tapes / 11 requests",
+    "paths": {
+      "A": "same-load unmodified Transformers eager attention",
+      "B": "same-load R5 K3 output-only dispatch"
+    },
+    "passes_per_path": 1,
+    "schedule": "all 11 A requests, prewarm 26 bounded shapes, then all 11 B requests",
+    "seed": 20260915,
+    "strategy": "greedy argmax",
+    "eos_policy": "record EOS but do not truncate",
+    "completion_budget_source": "reference_completion_tokens",
+    "expected_completion_tokens_per_path": 21705,
+    "expected_total_completion_tokens": 43410,
+    "expected_decode_forwards_per_path": 21694,
+    "kv_policy": "fresh DynamicCache per request; no cache crosses request boundaries",
+    "telemetry_interval_seconds": 1.0,
+    "progress_interval_tokens": 64
+  },
+  "no_sha_policy": {
+    "calculate_or_compare_sha": false,
+    "replacement_checks": [
+      "required file presence and manifest inventory byte sizes",
+      "5-tape / 11-request IDs, prompt lengths, and completion budgets",
+      "same-load direct A/B generated-token list equality",
+      "direct module, Parameter, state_dict-key, NF4 storage, device-map, and cache-structure equality",
+      "full-attention padding is restricted to the frozen correctness-covered upper buckets"
+    ]
+  },
+  "hard_gates": [
+    "all 22 full-budget A/B request runs complete",
+    "the prefill-produced first greedy token matches A versus B for every request",
+    "every greedy token ID matches A versus B for every request",
+    "exactly 911148 B decode attention calls use the candidate with 911148 explicit zero masks and exactly 462 B prefill calls use eager",
+    "all 42 text-attention modules hit the candidate exactly 21694 times; family counts are sliding=759290 and full=151858",
+    "candidate inputs preserve data pointers, shapes, strides, dtypes, and devices across every custom-op call",
+    "343 NF4 modules, all Parameters, state_dict keys, device map, tied CPU embedding/lm_head storage, and attention configuration are structurally unchanged after restoration",
+    "all 22 final KV caches have the expected layer types, BF16 CUDA tensor geometry, and request sequence length",
+    "peak CUDA allocated memory remains below 7.5 GiB",
+    "telemetry is present and shows no thermal or hardware throttle"
+  ],
+  "decision": {
+    "on_pass": "K3_C02_RECONNECTION_PASS",
+    "on_fail": "K3_C02_RECONNECTION_FAIL_CLOSE_DEPLOYMENT_PATH",
+    "non_authorizations": [
+      "cross-day or independent replication PASS",
+      "prefill acceleration",
+      "sm_100 or sm_120 extrapolation",
+      "board deployment",
+      "llama.cpp integration",
+      "training"
+    ]
+  }
+}

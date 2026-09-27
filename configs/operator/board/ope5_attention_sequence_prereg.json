@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-01-DECODE-ATTENTION-SEQUENCE",
+  "status": "PREREGISTERED_FROZEN_NOT_RUN",
+  "frozen_at": "2026-09-21T18:01:00+08:00",
+  "board_connection_performed": false,
+  "formal_execution_started": false,
+  "candidate_implemented": false,
+  "selection": {
+    "candidate_id": "OPE5-01",
+    "kernel_id": "ope5_hybrid_gqa_decode_step_v1",
+    "scope_path": "configs/operator/board/ope5_attention_sequence_scope.json",
+    "scope_sha256": "ac238bc0abdd9ed0d11c631969bcfd50c73de306d633b13196fe4226554a83f8",
+    "decision": "DISTINCT_SEQUENCE_CARRIER_FROZEN",
+    "four_question_statuses": {
+      "A_authenticity": "PASS_REAL_DUAL_FORM_SEQUENCE_POPULATION",
+      "B_bottleneck": "PASS_MISSING_NONLINEAR_SEQUENCE_INSTRUMENT",
+      "C_capability": "PASS_CORE0_FP16_DESIGN_WITH_FORMAL_FAIL_CLOSED_GATE",
+      "D_deliverability": "PASS_BOUNDED_DISTINCT_SEQUENCE_CARRIER"
+    }
+  },
+  "sources": {
+    "scope_freeze": {
+      "path": "configs/operator/board/ope5_attention_sequence_scope.json",
+      "sha256": "ac238bc0abdd9ed0d11c631969bcfd50c73de306d633b13196fe4226554a83f8"
+    },
+    "ope5_backlog_triage": {
+      "path": "configs/operator/board/ope5_backlog_triage.json",
+      "sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539"
+    },
+    "shape_census": {
+      "path": "results/operator/shape_census.json",
+      "sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f"
+    },
+    "ope1_shape_manifest": {
+      "path": "configs/operator/board/ope1_shape_manifest.json",
+      "sha256": "1b5f6a4690da92fcc2aa2213915280cda3ef866feab5fcbcfd06c702b781e05d"
+    },
+    "ope2_preregistration": {
+      "path": "configs/operator/board/ope2_matmul_prereg.json",
+      "sha256": "9f66365f34ed5a162cfc7b9d53c5bb28dae9d53521feb20cb219d85eef6bf895"
+    },
+    "ope2_receipt": {
+      "path": "results/operator/board/ope2/ope2_receipt_20260918.json",
+      "sha256": "b408e1aacff736ac2f40d46af6613953a7ae74e43a2bbb81b4874a12358b8819"
+    },
+    "ope2_matrix_terminals": {
+      "path": "results/operator/board/ope2/ope2_formal_20260918T1254/matrix/matrix_terminals.jsonl",
+      "sha256": "3553b667071d113fed308e110b4b4f303e9a63d011cfc951aef283da8d8da5b6"
+    },
+    "board_environment_identity": {
+      "path": "results/operator/board/board_env_identity_20260917T2022+0800.json",
+      "sha256": "000cbc82dd1386871521ba22f1a73b20aba9e63bcbc5264f136b988847407028"
+    },
+    "board_environment_completion": {
+      "path": "results/operator/board/board_env_identity_20260918T1154+0800.json",
+      "sha256": "d74091b5da57934b16095550c609dc69861ac09a7987d9a7ea0e6b8046cca4df"
+    },
+    "pc_k3_preregistration": {
+      "path": "configs/operator/k3_gqa_decode_attention_prereg.json",
+      "sha256": "fe427c9650aa929d18f72daaaa22ed918b7d33fd5b0af4da12386e0a86229626"
+    },
+    "pc_k3_correctness_receipt": {
+      "path": "results/operator/pool/k3_gqa_correctness_receipt_20260916.json",
+      "sha256": "ac8e9834ccfd32d731ef6374c962989486b3779caa9fa90e848a1392b8f7cf32"
+    },
+    "pc_k3_reconnect_adjudication": {
+      "path": "results/operator/pool/k3_gqa_reconnect_r5_adjudication_receipt_20260916.json",
+      "sha256": "0325ffc028ea3ff53bc9fa7a5ba22ccb486dd7e47b040685b300dd7b460e3c12"
+    },
+    "ope4_receipt": {
+      "path": "results/operator/board/ope4/ope4_receipt_20260921.json",
+      "sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d"
+    },
+    "git_sha_at_freeze": "213460d88311cba5d84add4d3ee57aae26716c6d"
+  },
+  "semantic_contract": {
+    "phase": "decode q_len=1 only",
+    "operation": "For FP16 Q[8,D], K/V state[2,capacity,D], append the current FP16 K/V token, select the logical SWA tail or full prefix, map query head h to KV head floor(h/4), compute FP16 QK with FP32 accumulation and scale 1.0, apply the logical mask, run numerically stable FP32 softmax, round probabilities to FP16, compute FP16 probability x FP16 V with FP32 accumulation, and round contiguous output[8,D] to FP16.",
+    "query_heads": 8,
+    "key_value_heads": 2,
+    "gqa_groups": 4,
+    "query_length": 1,
+    "scaling": 1.0,
+    "dropout": 0.0,
+    "input_dtype": "IEEE float16",
+    "qk_accumulator_dtype": "float32",
+    "softmax_dtype": "float32",
+    "probability_carrier_dtype": "IEEE float16",
+    "pv_accumulator_dtype": "float32",
+    "output_dtype": "IEEE float16",
+    "gqa_mapping": "query heads 0..3 use KV head 0; query heads 4..7 use KV head 1",
+    "no_physical_repeat_kv": true,
+    "source_tensor_mutation": "Only the designated cache slot for the appended current token may change; Q and all other logical K/V elements remain byte-identical."
+  },
+  "kv_state_contract": {
+    "sliding": {
+      "head_dim": 256,
+      "physical_layout": "head-major FP16 ring [2,1024,256] for both K and V",
+      "active_view": "the newest 512 logical tokens after append, oldest-to-newest, including wrap",
+      "logical_tokens": 512,
+      "timed_work": "append, ring-index update, active-tail gather, QK transpose pack, V pack, and padding are inside the timed boundary"
+    },
+    "full": {
+      "head_dim": 512,
+      "physical_layout": "head-major FP16 prefix [2,7360,512] for both K and V",
+      "active_view": "positions 0..L-1 after appending the current token",
+      "logical_tokens_inclusive": [807, 7359],
+      "timed_work": "append, prefix view, QK transpose pack, V pack, and padding are inside the timed boundary"
+    },
+    "carrier_limit": "The layouts are explicit synthetic state carriers. They preserve GQA, window, prefix, append, and wrap semantics but are not claimed byte-identical to RKLLM's private cache."
+  },
+  "rknpu_contract": {
+    "api_type": "RKNN_FLOAT16_MM_FLOAT16_TO_FLOAT32",
+    "core_mask": "RKNN_NPU_CORE_0",
+    "qk_per_kv_head": {
+      "logical": "[4,D] x [D,L] -> [4,L]",
+      "api_mkn": "[4,D,ceil(L/16)*16]",
+      "padding": "K columns beyond L are zero in the packed matrix and their FP32 scores are overwritten with -infinity before softmax"
+    },
+    "pv_per_kv_head": {
+      "logical": "[4,L] x [L,D] -> [4,D]",
+      "api_mkn": "[4,ceil(L/32)*32,D]",
+      "padding": "FP16 probabilities and V rows beyond L are zero"
+    },
+    "calls_per_attention_step": 4,
+    "context_lifetime": "Create all frozen shape/type contexts and allocate maximum buffers before timing; reuse them for every repetition. Context creation and allocation are excluded, while per-step packing, set_io, run, and output consumption are included.",
+    "capability_gate": "Inside the sole formal segment and before any timing, every frozen QK/PV context must create, set core0, set I/O, run, and destroy cleanly on a correctness corpus. A failure invalidates the segment; no per-head, CPU-only, dtype, core-mask, or shape fallback is accepted."
+  },
+  "implementations": {
+    "cpu_scalar_sequence": {
+      "role": "timed complete-sequence scalar baseline",
+      "placement": "single thread pinned to CPU7",
+      "contract": "Same KV state, packing, mask, stable FP32 softmax, FP16 probability carrier, output conversion, and final layout as the hybrid path; scalar FP32 accumulation with vectorization disabled for QK/PV."
+    },
+    "cpu_neon_sequence": {
+      "role": "timed complete-sequence explicit A76 NEON baseline",
+      "placement": "single thread pinned to CPU7",
+      "contract": "Same complete sequence with FP16 loads/conversion and FP32 NEON FMA for QK/PV; softmax remains the common scalar FP32 implementation."
+    },
+    "hybrid_rknpu_sequence": {
+      "role": "timed candidate",
+      "placement": "CPU orchestration and softmax pinned to CPU7; grouped QK/PV on RKNPU core0",
+      "contract": "Two grouped QK plus two grouped PV matmul runs per attention step, without materialized KV repetition."
+    },
+    "common_timed_boundary": "CLOCK_MONOTONIC_RAW immediately before KV append through final contiguous FP16 [8,D] output; excludes corpus generation, allocation, RKNN context creation, and result serialization."
+  },
+  "formal_population": {
+    "decode_forwards": 21694,
+    "performance_cases": [
+      {"case_id": "sliding_k512_d256", "family": "sliding", "K": 512, "D": 256, "projected_invocations": 759290},
+      {"case_id": "full_k1264_d512", "family": "full", "K": 1264, "D": 512, "projected_invocations": 12656},
+      {"case_id": "full_k1569_d512", "family": "full", "K": 1569, "D": 512, "projected_invocations": 12656},
+      {"case_id": "full_k1843_d512", "family": "full", "K": 1843, "D": 512, "projected_invocations": 12656},
+      {"case_id": "full_k2153_d512", "family": "full", "K": 2153, "D": 512, "projected_invocations": 12649},
+      {"case_id": "full_k2514_d512", "family": "full", "K": 2514, "D": 512, "projected_invocations": 12656},
+      {"case_id": "full_k2897_d512", "family": "full", "K": 2897, "D": 512, "projected_invocations": 12656},
+      {"case_id": "full_k3349_d512", "family": "full", "K": 3349, "D": 512, "projected_invocations": 12656},
+      {"case_id": "full_k3801_d512", "family": "full", "K": 3801, "D": 512, "projected_invocations": 12656},
+      {"case_id": "full_k4191_d512", "family": "full", "K": 4191, "D": 512, "projected_invocations": 12649},
+      {"case_id": "full_k4728_d512", "family": "full", "K": 4728, "D": 512, "projected_invocations": 12656},
+      {"case_id": "full_k5331_d512", "family": "full", "K": 5331, "D": 512, "projected_invocations": 12656},
+      {"case_id": "full_k6455_d512", "family": "full", "K": 6455, "D": 512, "projected_invocations": 12656}
+    ],
+    "weight_checks": {
+      "sliding_invocations": 759290,
+      "full_invocations": 151858,
+      "total_invocations": 911148,
+      "sliding_calls_per_forward": 35,
+      "full_calls_per_forward": 7,
+      "total_calls_per_forward": 42
+    },
+    "aggregation": {
+      "family_metric": "invocation-weighted median latency within the frozen family cases",
+      "all_attention_metric": "sum(projected_invocations * case_p50_us) / 911148",
+      "model_forward_equivalent": "42 * all_attention_metric / 1000, reported in ms as an isolated population counterfactual",
+      "ope4_fraction": "model_forward_equivalent_ms / 446.1262611013072, labelled counterfactual only"
+    }
+  },
+  "formal_correctness_protocol": {
+    "reference": "Untimed long-double-or-FP64 host implementation of the exact frozen FP16-storage/FP32-softmax/probability-round/output-round contract, with deterministic reduction order documented in the result.",
+    "representative_cases": [
+      {"family": "sliding", "K": 512, "D": 256},
+      {"family": "full", "K": 807, "D": 512},
+      {"family": "full", "K": 1973, "D": 512},
+      {"family": "full", "K": 3123, "D": 512},
+      {"family": "full", "K": 4440, "D": 512},
+      {"family": "full", "K": 7359, "D": 512}
+    ],
+    "distributions": [
+      {"name": "low_normal", "scale": 0.1},
+      {"name": "unit_normal", "scale": 1.0}
+    ],
+    "seeds": [2026092101, 2026092102],
+    "logical_trials": 24,
+    "implementations_checked": ["cpu_scalar_sequence", "cpu_neon_sequence", "hybrid_rknpu_sequence"],
+    "expected_output_element_comparisons": 270336,
+    "tolerance": {"atol": 0.03125, "rtol": 0.02},
+    "state_microcases": [
+      "GQA mapping proves heads 0..3 consume KV0 and heads 4..7 consume KV1",
+      "SWA ring wrap preserves the newest 512 tokens in chronological order at logical positions 1023 and 1024",
+      "full prefix append exposes exactly L tokens at L=807 and L=7359",
+      "QK padded positions receive negative infinity before softmax",
+      "PV padded probabilities and V rows are zero",
+      "FP32 pre-round softmax row sums differ from 1 by at most 2e-6 and FP16 carrier row sums differ by at most 0.01",
+      "Q and all non-appended cache elements are byte-identical before and after each trial",
+      "all outputs are finite, contiguous, FP16, and shaped [8,D]"
+    ],
+    "failure_rule": "Any capability, state, shape, dtype, finiteness, row-sum, mutation, or elementwise failure stops before timing and closes the sole segment invalid. Do not tune against the failed corpus or rerun."
+  },
+  "measurement_protocol": {
+    "formal_segments": 1,
+    "performance_smoke": false,
+    "automatic_retry": false,
+    "same_day_retest": false,
+    "cross_day_retest": false,
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "cpu_affinity": [7],
+    "cpu_policy": "policy6",
+    "cpu_governor_during_segment": "performance",
+    "npu_governor_during_segment": "performance",
+    "governor_restore": "Record original policy6 and NPU governors and restore both on every exit path.",
+    "warmup_repetitions_per_case_per_implementation": 10,
+    "minimum_measured_repetitions_per_case_per_implementation": 50,
+    "minimum_measured_elapsed_ms_per_case_per_implementation": 500,
+    "maximum_measured_repetitions_per_case_per_implementation": 5000,
+    "interleave": "Rotate the six permutations of the three implementations by measurement block; no implementation may be measured in a separate thermal epoch.",
+    "timer": "CLOCK_MONOTONIC_RAW around the common complete-sequence boundary",
+    "telemetry": {
+      "system_interval_seconds": 1.0,
+      "npu_load_interval_seconds": 0.1,
+      "required": [
+        "policy6 governor/current/max frequency",
+        "NPU governor/current/max frequency",
+        "all thermal zones",
+        "rknpu core0/core1/core2 load",
+        "board monotonic uptime",
+        "controller before/after timestamps"
+      ]
+    },
+    "tier_b": {
+      "cases": ["sliding_k512_d256", "full_k3123_d512"],
+      "events": ["cycles:u", "instructions:u", "task-clock", "context-switches", "cpu-migrations"],
+      "policy": "One bundled perf-stat block per implementation and case inside the same formal segment. CPU counters describe host participation; they are not NPU operation or byte counters."
+    },
+    "validity_gates": [
+      "formal correctness and capability gates pass before timing",
+      "all three implementations have the frozen count and elapsed-time minima in all 13 cases",
+      "policy6 remains at recorded max frequency during timed windows",
+      "NPU governor and frequency remain at the frozen performance state during timed windows",
+      "rknpu load is numeric and core1/core2 remain zero for the core0 candidate",
+      "no thermal zone reaches its recorded trip point",
+      "all required perf events are numeric",
+      "governors restore exactly",
+      "runner, telemetry, and controller exit zero"
+    ]
+  },
+  "implementation_and_lock_policy": {
+    "future_files": [
+      "scripts/operator/board/ope5_attention_sequence_bench.cpp",
+      "scripts/operator/board/ope5_attention_sequence_measure_payload.sh",
+      "scripts/operator/board/run_ope5_attention_sequence.sh"
+    ],
+    "allowed_before_source_lock": [
+      "write the three complete-sequence implementations and formal runner",
+      "compile/link/disassembly inspection on the board without executing the benchmark binary",
+      "host-only deterministic unit checks that do not use RKNPU, formal timing, or the board"
+    ],
+    "forbidden_before_source_lock": [
+      "board benchmark execution",
+      "rknn_matmul_run capability smoke",
+      "performance calibration",
+      "formal correctness corpus execution"
+    ],
+    "source_lock": "Hash the preregistration and all three future files after compile/disassembly-only review and before the first benchmark-binary execution.",
+    "post_lock_rule": "The first benchmark-binary execution is the sole formal segment. No source edit, retry, same-day retest, or replacement segment is authorized afterward."
+  },
+  "execution_order": [
+    "Independently verify this preregistration while implementation files and board execution are absent.",
+    "Implement the frozen complete sequence; perform only compile/link/disassembly review and then source-lock.",
+    "Run the sole formal segment: capability and correctness gates first, then timing, Tier-B, telemetry, restore, and receipt.",
+    "If valid, report family and population-weighted isolated results with the frozen claim limits; otherwise close with retained failure evidence."
+  ],
+  "claim_limits": [
+    "No result may be called an RKLLM attention component time or subtracted from OPE4 TPOT.",
+    "FP16 board results must not be merged with BF16 RTX4060 K3 performance.",
+    "The hybrid path is a synthetic host-orchestrated carrier, not a deployable RKLLM patch.",
+    "No prefill, multi-core NPU, quality, token-equivalence, energy, or cost claim is authorized.",
+    "The 42-call forward equivalent is a census-weighted counterfactual, not an observed model-forward timer.",
+    "Only one formal segment is authorized; replication remains waived and unsatisfied."
+  ]
+}

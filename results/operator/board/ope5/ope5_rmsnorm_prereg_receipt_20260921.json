@@ -1,0 +1,95 @@
+{
+  "checks": {
+    "analytic_bytes_population": true,
+    "anchor_arithmetic": true,
+    "correctness_population": true,
+    "eight_unique_formal_cases": true,
+    "formal_call_population": true,
+    "four_questions_pass": true,
+    "git_sha_at_freeze": true,
+    "implementation_absent_at_freeze": true,
+    "no_formal_execution": true,
+    "no_meaningless_smoke": true,
+    "old_tier_b_proxy_not_reintroduced": true,
+    "per_case_analytic_formulas": true,
+    "selected_identity": true,
+    "single_segment_owner_waiver": true,
+    "source_ope0_bandwidth_ceiling_sha256": true,
+    "source_ope3_bus_access_adjudication_sha256": true,
+    "source_ope4_receipt_sha256": true,
+    "source_pc_k1_op2_receipt_sha256": true,
+    "source_pc_k1_op4_receipt_sha256": true,
+    "source_pc_k1_prereg_sha256": true,
+    "source_shape_census_sha256": true,
+    "triage_identity": true
+  },
+  "formal_population": {
+    "analytic_bytes_per_model_forward": 3840000,
+    "calls_per_model_forward": 302,
+    "cases": 8,
+    "floor_percent_of_ope4_tpot": 0.037108688116587484,
+    "ope0_roofline_floor_ms": 0.16555160283827683,
+    "randomized_tensor_comparisons": 144
+  },
+  "git_sha": "213460d88311cba5d84add4d3ee57aae26716c6d",
+  "implementation": {
+    "formal_execution_started": false,
+    "implemented": false,
+    "source_locked": false
+  },
+  "owner_variance": {
+    "formal_segments": 1,
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "second_segment_scheduled": false
+  },
+  "preregistration": {
+    "path": "configs/operator/board/ope5_rmsnorm_prereg.json",
+    "sha256": "971f97200383d341c0751d82b6c6b598804e95e4e80f5bdc00201381ea4cb224"
+  },
+  "recorded_at": "2026-09-21T13:38:00+08:00",
+  "schema_version": 1,
+  "source_hashes_at_freeze": {
+    "ope0_bandwidth_ceiling": {
+      "expected_sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9",
+      "observed_sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9",
+      "path": "results/operator/board/bandwidth_ceiling.json"
+    },
+    "ope3_bus_access_adjudication": {
+      "expected_sha256": "294fc1d35d4cebb889a8211951ce8521d6b50ee07279559704e9e2b2ff1e52dc",
+      "observed_sha256": "294fc1d35d4cebb889a8211951ce8521d6b50ee07279559704e9e2b2ff1e52dc",
+      "path": "results/operator/board/ope3/ope3_bus_access_semantics_adjudication_20260919.json"
+    },
+    "ope4_receipt": {
+      "expected_sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d",
+      "observed_sha256": "4ffedc56c1a2b66c5414186aa3a88e91fdc920ca95542ebf3ab9546b6eb48d2d",
+      "path": "results/operator/board/ope4/ope4_receipt_20260921.json"
+    },
+    "pc_k1_op2_receipt": {
+      "expected_sha256": "414bfa626414aef041c20529ca49303f1545accd405e24cbb1a3c6ab9eead813",
+      "observed_sha256": "414bfa626414aef041c20529ca49303f1545accd405e24cbb1a3c6ab9eead813",
+      "path": "results/operator/k1/op2_receipt.json"
+    },
+    "pc_k1_op4_receipt": {
+      "expected_sha256": "dd12ef31ee61c859142d6bc9f5df378ccfec98e2145d6bcef7a3405e0a5bbee8",
+      "observed_sha256": "dd12ef31ee61c859142d6bc9f5df378ccfec98e2145d6bcef7a3405e0a5bbee8",
+      "path": "results/operator/k1/op4_receipt.json"
+    },
+    "pc_k1_prereg": {
+      "expected_sha256": "c5867a31d27f24ea411bd592af7648e9fc10a313ee74cc1425e829487cca2411",
+      "observed_sha256": "c5867a31d27f24ea411bd592af7648e9fc10a313ee74cc1425e829487cca2411",
+      "path": "configs/operator/k1_rmsnorm_prereg.json"
+    },
+    "shape_census": {
+      "expected_sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f",
+      "observed_sha256": "a21ec57b9ea8825f836000ebd8d08d3be99ef9bca201036cf5fcb45fa7c11c8f",
+      "path": "results/operator/shape_census.json"
+    }
+  },
+  "stage": "OPE5-03-RMSNorm-PREREG",
+  "status": "PASS_FROZEN_BEFORE_IMPLEMENTATION_NO_BOARD_EXECUTION",
+  "triage": {
+    "path": "configs/operator/board/ope5_backlog_triage.json",
+    "sha256": "78fe4a8e001f00beaac0ab3db0bceaadf5261e87ac39e76a8ceef67f5c175539",
+    "status": "PASS_OPE5_BACKLOG_REORDERED_RMSNORM_SELECTED"
+  }
+}

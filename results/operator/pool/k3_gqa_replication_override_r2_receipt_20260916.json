@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_REPLICATION_R2_FREEZE",
+  "timestamp": "2026-09-16T17:40:08+08:00",
+  "protocol_path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k3_gqa_replication_override_r2.json",
+  "adaptive_after_day1": true,
+  "original_cross_day_gate": "REPLACED_FOR_R2_BY_EXPLICIT_OWNER_DIRECTION",
+  "same_day_replication_must_not_be_labeled_cross_day": true,
+  "sha_verification": "SKIPPED_BY_OWNER_DIRECTION",
+  "superseded_by_owner_instruction": "确认，执行，顺便整理那些历史台账，如果没有保留价值可以删去",
+  "formal_replication_started": false,
+  "replication_result_created": false,
+  "superseded_by": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k3_gqa_ncu_override_r3.json",
+  "next_authorized_action": "Skip replication and execute only the three frozen K3 ncu attribution cases under the R3 owner override.",
+  "status": "SUPERSEDED_UNEXECUTED_BY_OWNER"
+}

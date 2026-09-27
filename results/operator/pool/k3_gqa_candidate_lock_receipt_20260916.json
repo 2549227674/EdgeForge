@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K3_GQA_DECODE_ATTENTION_CANDIDATE_LOCK",
+  "timestamp": "2026-09-16T17:23:12+08:00",
+  "protocol": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k3_gqa_decode_attention_prereg.json",
+    "sha256": "fe427c9650aa929d18f72daaaa22ed918b7d33fd5b0af4da12386e0a86229626"
+  },
+  "preregistration_receipt": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/results/operator/pool/k3_gqa_prereg_receipt_20260916.json",
+    "sha256": "7516c79668bffb164101d3a80af2c2270dd69ff7a17b598cda57fd1193a57ebf",
+    "status": "PASS"
+  },
+  "candidate": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/scripts/operator/k3_gqa_attention.py",
+    "sha256": "3d3d57ac20e390e9f117ac763af7d5ffcfabe084fce861461e8e62e183ac76f0",
+    "semantic_stages": [
+      "GQA-aware BF16 QK with FP32 accumulation and FP32 score workspace",
+      "row-wise FP32 softmax with BF16 probability boundary",
+      "GQA-aware BF16 PV with FP32 accumulation and BF16 output"
+    ],
+    "source_locked_before_formal_holdout": true
+  },
+  "development_evidence": {
+    "formal": false,
+    "inputs": "Only all 13 already-observed selection shapes and selection seeds 20260916, 20260917, and 20260918.",
+    "correctness_trials": 39,
+    "allclose_trials": 39,
+    "maximum_absolute_error": 0.015625,
+    "tolerance": {"atol": 0.03125, "rtol": 0.02},
+    "exact_fallback_smoke": [
+      "scaling mismatch",
+      "output_attentions=true",
+      "softcap present"
+    ],
+    "informal_invocation_weighted_candidate_p50_us": 154.19750557854937,
+    "informal_invocation_weighted_eager_p50_us": 296.0286666145025,
+    "informal_speedup_vs_eager": 1.919801915756045
+  },
+  "lock_assertions": {
+    "formal_fresh_seeds_not_executed": true,
+    "formal_all_length_cases_not_executed": true,
+    "formal_representative_distributions_not_executed": true,
+    "formal_day1_not_started": true,
+    "no_source_edits_allowed_after_this_receipt": true
+  },
+  "next_authorized_action": "Run the frozen formal correctness protocol only; a failure closes the locked K3 attempt.",
+  "status": "PASS_CANDIDATE_LOCKED"
+}

@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "stage": "C0-cloud-environment-probe",
+  "controller_observed_at": "2026-09-17T20:22:14+08:00",
+  "status": "TOOLKIT_ENV_PASS_RESOURCE_VARIANCE_BUILD_PASS",
+  "corrected_at": "2026-09-17T21:29:46+08:00",
+  "correction": "The initial search did not follow /root/autodl-fs, which is a symlink to /autodl-fs/data. The later host-level free output (754 GiB) was also not the instance allocation: cgroup v2 proves a 92 GiB hard limit and a 90 GiB high watermark. The isolated RKLLM environment was installed and import-tested. The default build gate correctly refused 92 GiB against the frozen 96 GiB floor; the owner then accepted one evidence-backed variance, under which the unchanged A2 build completed PASS.",
+  "host_identity": {
+    "hostname": "autodl-container-z7m72ul12w-4c2b02f8",
+    "workspace": "/root/autodl-tmp/edgeforge-m1/workspace"
+  },
+  "resources": {
+    "gpu": "NVIDIA GeForce RTX 4090",
+    "gpu_memory_total_mib": 49140,
+    "gpu_memory_used_mib_at_probe": 0,
+    "driver_version": "580.105.08",
+    "system_memory_host_view_gib_not_instance_quota": 754,
+    "system_memory_contract_gib": 92,
+    "cgroup_v2_memory_max_bytes": 98784247808,
+    "cgroup_v2_memory_max_gib": 92,
+    "cgroup_v2_memory_high_bytes": 96636764160,
+    "cgroup_v2_memory_high_gib": 90,
+    "data_disk_mount": "/root/autodl-tmp",
+    "data_disk_size_reported": "250G",
+    "data_disk_available_reported_at_correction": "85G",
+    "persistent_scratch_mount": "/root/autodl-fs -> /autodl-fs/data",
+    "persistent_scratch_size_reported": "200G",
+    "persistent_scratch_available_reported": "198G",
+    "d_ope_8_gpu_floor": "PASS",
+    "d_ope_8_memory_floor": "FAIL_BY_4_GIB_OWNER_VARIANCE_ACCEPTED_FOR_ONE_BUILD",
+    "d_ope_8_scratch_free_space_floor": "PASS_ON_AUTODL_FS"
+  },
+  "python_environment": {
+    "path": "/root/autodl-tmp/edgeforge-m1/rkllm-1.3.0-venv/bin/python",
+    "python": "3.10.12",
+    "torch": "2.6.0+cu124",
+    "transformers": "5.8.0",
+    "accelerate": "1.5.2",
+    "safetensors": "0.5.3",
+    "numpy": "1.26.4",
+    "rkllm_toolkit": "1.3.0",
+    "rkllm_import": "PASS",
+    "dependency_index": "https://repo.huaweicloud.com/repository/pypi/simple",
+    "proxy": "none; /etc/network_turbo and the PC 7888 reverse proxy were slower in measured trials and were not retained"
+  },
+  "toolkit_search": {
+    "venv_import_rkllm": "ModuleNotFoundError",
+    "miniconda_import_rkllm": "ModuleNotFoundError",
+    "system_python_import_rkllm": "ModuleNotFoundError",
+    "initial_search_followed_autodl_fs_symlink": false,
+    "rkllm_release_archive": {
+      "path": "/root/autodl-fs/rknn-llm-release-v1.3.0.zip",
+      "resolved_mount": "/autodl-fs/data",
+      "filesystem": "fuse.autofs",
+      "mount_size_reported": "200G",
+      "mount_available_reported": "197.4G",
+      "bytes": 175452346,
+      "sha256": "d6f204f03000a6349bd309683f14953b6eeb26c49265b8d063bc3af2366bd432",
+      "zip_integrity": "PASS"
+    },
+    "compatible_wheel": {
+      "archive_member": "rknn-llm-release-v1.3.0/rkllm-toolkit/packages/rkllm_toolkit-1.3.0-cp310-cp310-linux_x86_64.whl",
+      "python_abi": "cp310-cp310-linux_x86_64",
+      "sha256": "2523e71f305963495c9fccc639dbcf8f9f49a9b8c6d6f6b355e58a3af076f753"
+    },
+    "pinned_requirements_observed": {
+      "python": "3.10.12; matching cp310 ABI wheel selected",
+      "torch": "2.6.0",
+      "transformers": "5.8.0",
+      "safetensors": "0.5.3",
+      "numpy": ">=1.23.1,<=1.26.4"
+    },
+    "assessment": "Trusted RKLLM Toolkit 1.3.0 source asset and its matching CPython 3.10 wheel are verified. The isolated archive-pinned environment is installed and import-tested without modifying the C0-1b verification environment. The default 92 GiB versus 96 GiB gate refused fail-closed; after the owner accepted a one-build variance, C0-3 completed with load/build/export=0/0/0 and no cgroup memory event."
+  },
+  "source_assets": {
+    "c02_path": "models/C02-S.O-bf16-r1",
+    "c02_manifest_sha256": "ee7d426d1e912a6c53cad1cd52739f26d7fff45b4a4f7429a4c08656f68dc5f2",
+    "official_path": "models/gemma-4-E4B-it",
+    "official_model_bytes": 15992595884,
+    "derived_path": "models/C02-S.O-rkllm-input-r1",
+    "derived_model_bytes": 15992595884,
+    "derived_model_sha256": "40469f7bd93b6f16dba63081ca5f430d6bdaa7f518d1ffab37f8b9a7be331d0f"
+  },
+  "completed_on_host": {
+    "c0_1b_transplant": "PASS",
+    "c0_1b_bf16_logits_gate": "PASS",
+    "c0_2_a2_freeze": "PASS",
+    "c0_3_isolated_toolkit_environment": "PASS",
+    "c0_3_default_resource_gate": {
+      "status": "PASS_FAIL_CLOSED_WITHOUT_BUILD",
+      "receipt": "results/operator/board/c0/c0_3_preflight_refusal_20260917T2130+0800/receipt.json",
+      "observed_cgroup_memory_gib": 92,
+      "required_memory_gib": 96,
+      "sdk_results": {},
+      "artifact": null
+    },
+    "c0_3_owner_variance_build": {
+      "status": "PASS",
+      "receipt": "results/operator/board/c0/c0_3_run_20260917T2135+0800/receipt.json",
+      "resource_supplement": "results/operator/board/c0/c0_3_run_20260917T2135+0800/cgroup_resource_supplement.json",
+      "sdk_results": {
+        "load_huggingface": 0,
+        "build": 0,
+        "export_rkllm": 0
+      },
+      "wall_seconds": 1523.503988262266,
+      "artifact": {
+        "path": "/root/autodl-fs/edgeforge-c0-3/run-20260917T2135+0800/artifacts/C02-S.O-w8a8-rk3588-16k-1core-A2.rkllm",
+        "bytes": 11687037412,
+        "sha256": "61d2fedd5ce1a0c5cbd785b5198550254bea26d685bc49cabe98558ae0fa2c62"
+      },
+      "resource_peaks": {
+        "gpu_memory_used_mib": 38079,
+        "root_process_vm_hwm_kib": 62345852,
+        "process_tree_rss_kib": 60957092,
+        "observed_cgroup_memory_current_max_bytes": 68689256448,
+        "observed_cgroup_memory_current_max_is_lower_bound": true
+      },
+      "cgroup_memory_events_after_run": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0
+      }
+    }
+  },
+  "execution_statement": "A new isolated RKLLM 1.3.0 environment was created under /root/autodl-tmp/edgeforge-m1/rkllm-1.3.0-venv. No existing environment was modified. The default 92 GiB resource check refused without entering the SDK. After owner variance acceptance, exactly one unchanged A2 build/export ran from /root/autodl-fs and completed PASS; no downgrade, sample change, retry, or proxy was used."
+}

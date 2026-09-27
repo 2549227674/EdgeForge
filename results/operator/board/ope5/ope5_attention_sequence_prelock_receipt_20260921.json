@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "stage": "OPE5-01-DECODE-ATTENTION-SEQUENCE-PRELOCK",
+  "status": "PASS_COMPILE_DISASSEMBLY_ONLY_BENCHMARK_COUNT_ZERO",
+  "recorded_at": "2026-09-21T18:21:51+08:00",
+  "board": "orangepi@192.168.137.66",
+  "board_connection_performed": true,
+  "benchmark_execution_count": 0,
+  "formal_execution_started": false,
+  "checks": {
+    "aarch64_compile_link_exit_zero": true,
+    "build_stderr_empty": true,
+    "scalar_dot_has_no_vector_fmla": true,
+    "neon_dot_has_fcvtl": true,
+    "neon_dot_has_vector_fmla": true,
+    "neon_pv_has_fcvtl": true,
+    "neon_pv_has_vector_fmla": true,
+    "benchmark_execution_count_zero": true
+  },
+  "check_summary": {
+    "passed": 8,
+    "total": 8
+  },
+  "compile": {
+    "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "flags": "-O3 -std=gnu++17 -mcpu=cortex-a76 -fno-fast-math -fno-math-errno -pthread -Wall -Wextra -Werror",
+    "link": "-lrknnrt with board-distribution aarch64 rpath",
+    "binary_path": "/home/orangepi/edgeforge_ope_r1/bin/ope5_attention_sequence_bench",
+    "binary_sha256": "84102719f63ac23349b5467f7ea68cde8b1297a1c32a171b92051bd9a47bb4ef"
+  },
+  "evidence_directory": "results/operator/board/ope5/ope5_attention_sequence_prelock_20260921T182000+0800",
+  "evidence": {
+    "build_stdout": {
+      "path": "results/operator/board/ope5/ope5_attention_sequence_prelock_20260921T182000+0800/build.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "build_stderr": {
+      "path": "results/operator/board/ope5/ope5_attention_sequence_prelock_20260921T182000+0800/build.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "scalar_disassembly": {
+      "path": "results/operator/board/ope5/ope5_attention_sequence_prelock_20260921T182000+0800/disassembly_scalar_dot.txt",
+      "sha256": "6d7fa0766ed37a36d7ad49df1bc2043bc7b32acc277bb465df5b747f6bb5edab"
+    },
+    "neon_dot_disassembly": {
+      "path": "results/operator/board/ope5/ope5_attention_sequence_prelock_20260921T182000+0800/disassembly_neon_dot.txt",
+      "sha256": "c50f05e00312cda5b61b42c5893c38c62079e6c29f0cd0a52f67311ddaff5c86"
+    },
+    "neon_pv_disassembly": {
+      "path": "results/operator/board/ope5/ope5_attention_sequence_prelock_20260921T182000+0800/disassembly_neon_pv.txt",
+      "sha256": "675b90e022709cbb6199bf14387e80b41ff18f6b594d5085f2ba7d04202bbf92"
+    },
+    "execution_count": {
+      "path": "results/operator/board/ope5/ope5_attention_sequence_prelock_20260921T182000+0800/execution_count.env",
+      "sha256": "7ffd4b6b8a21a63f9b89289a00bc2e403375f39f3ee5aa3dca0a5b25b84309bf"
+    }
+  },
+  "next_action": "Freeze the implementation files and board binary before the first benchmark-binary execution; that execution is the sole formal segment."
+}

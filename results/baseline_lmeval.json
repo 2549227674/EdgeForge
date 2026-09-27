@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0",
+  "status": "partial",
+  "runner": {
+    "package": "lm-eval",
+    "version": "0.4.9.1",
+    "release_tag": "v0.4.9.1",
+    "release_tag_commit": "d021bf846218f1bb3bdc0603864789329476d464",
+    "installed_package_git_hash": "275d43e",
+    "transformers_version": "5.14.1",
+    "api_runner": "scripts/run_lm_eval.py",
+    "model": "gemma4-e4b",
+    "num_concurrent": 1,
+    "max_length": 32768,
+    "max_gen_toks": 4096
+  },
+  "mmlu": {
+    "status": "formal_fast_complete",
+    "task": "edgeforge_mmlu_fast_500",
+    "task_definition": "tasks/edgeforge_mmlu_fast/edgeforge_mmlu_fast_500.yaml",
+    "task_version": "1.0-edgeforge-fast-500",
+    "samples": 500,
+    "num_fewshot": 5,
+    "chat_template": true,
+    "accuracy": 0.598,
+    "accuracy_stderr": 0.0200325794339127,
+    "result": "results/lmeval/mmlu_fast_500_llamacpp_logits/models__gemma-4-E4B-it/results_2026-08-04T22-26-56.630433.json",
+    "result_sha256": "c710eb8c8f5ea035d076c7935da2b4aa00092722e6698a18ea609753b7309771",
+    "samples_directory": "results/lmeval/mmlu_fast_500_llamacpp_logits/models__gemma-4-E4B-it",
+    "samples_combined_sha256": "1305d41279b370eab5b02f5807eecbe64b74232042d34ed2a3c4b9a17723b329",
+    "log": "logs/m0/m0_lmeval_mmlu_fast_500_llamacpp_logits.log",
+    "prompt_loglikelihood_scorer": {
+      "source": "scripts/llama_loglikelihood.cpp",
+      "source_sha256": "82eea2aadb0a585080dddffbc241c1b09b6d7a88c9f003e27dfedad6b0afd1bf",
+      "adapter": "scripts/edgeforge_llamacpp_loglikelihood.py",
+      "adapter_sha256": "8f3aba5c00d59d725b97dc5615361628a387870f9e1fdda1e6749be01dae1e52",
+      "binary_sha256": "9115aee798dec4a6be3bc226c07085f018953281a98a024c863db7a05c8107e8",
+      "llama_cpp_commit": "ad8d8219915df8e423768d082d1dccfccb6e8437",
+      "protocol": "lm-eval constructs the chat-templated MCQ requests; the scorer returns continuation-token loglikelihood from the same GGUF and pinned llama.cpp runtime"
+    },
+    "resolved_failures": {
+      "chat_template": "The custom TemplateLM adapter returns a plain string, avoiding the local-completions JsonChatStr.rstrip incompatibility.",
+      "prompt_logprobs": "The pinned in-process llama.cpp scorer reads logits directly instead of requiring unsupported echo token_logprobs from /v1/completions."
+    },
+    "historical_diagnostics": {
+    "formal_smoke": {
+      "task": "mmlu_college_mathematics",
+      "samples": 5,
+      "chat_template": true,
+      "failure": "JsonChatStr has no rstrip",
+      "log": "logs/m0/m0_lmeval_mmlu_smoke.log"
+    },
+    "endpoint_logprob_diagnostic": {
+      "task": "mmlu_college_mathematics",
+      "samples": 5,
+      "chat_template": false,
+      "requests_prepared": 20,
+      "failure": "KeyError: token_logprobs",
+      "reason": "The completion endpoint does not return prompt token_logprobs/top_logprobs when echo=true.",
+      "log": "logs/m0/m0_lmeval_mmlu_logprob_diagnostic.log"
+    }
+    },
+    "smoke": {
+      "task": "mmlu_college_mathematics",
+      "samples": 5,
+      "accuracy": 0.2,
+      "result": "results/lmeval/mmlu_smoke_5shot_llamacpp_logits/models__gemma-4-E4B-it/results_2026-08-04T21-20-04.183529.json",
+      "result_sha256": "d2535f31ba7d374fb66b8cc5d148672b2713f8ec6a340ebc38c9b7df3793f587",
+      "samples_file": "results/lmeval/mmlu_smoke_5shot_llamacpp_logits/models__gemma-4-E4B-it/samples_mmlu_college_mathematics_2026-08-04T21-20-04.183529.jsonl",
+      "samples_sha256": "d16a3f7e4794486c9e05273f5a5a136a3c576715b30a4d7b07b6a241fbc1c3a3",
+      "log": "logs/m0/m0_lmeval_mmlu_smoke_5shot_llamacpp_logits.log"
+    },
+    "note": "Formal fast-tier score uses the frozen 500-row stratified manifest across all 57 MMLU subjects; the five-row result remains smoke-only."
+  },
+  "gsm8k": {
+    "status": "formal_fast_complete",
+    "task": "edgeforge_gsm8k_fast_200",
+    "task_definition": "tasks/edgeforge_gsm8k_fast_200.yaml",
+    "task_version": "3.0-edgeforge-fast-200",
+    "samples": 200,
+    "num_fewshot": 5,
+    "data_revision": "740312add88f781978c0658806c59bc2815b9866",
+    "data_sha256": {
+      "train": "ea82612ea9582142387730c793eb67d3b12849002bc0b7fa6f8efafa7351419d",
+      "test": "ee7b8da9e381df27b9e3f7758a159ab2bdaa4dbaa910546cbbc47e0cb44e4f59"
+    },
+    "strict_exact_match": 0.84,
+    "strict_exact_match_stderr": 0.02598801424545769,
+    "flexible_exact_match": 0.845,
+    "flexible_exact_match_stderr": 0.02565474281971524,
+    "result": "results/lmeval/gsm8k_fast_200/gemma4-e4b/results_2026-08-04T23-11-46.389008.json",
+    "result_sha256": "39c187933c210af4484f197ab46b4cff7bd13e554a5eaa886a3327b9bfc05e92",
+    "samples_file": "results/lmeval/gsm8k_fast_200/gemma4-e4b/samples_edgeforge_gsm8k_fast_200_2026-08-04T23-11-46.389008.jsonl",
+    "samples_sha256": "7b1cfcca44a48b2a27ad4296014f2b92bb46a746a449d1feee7083f41516f96f",
+    "samples_lines": 400,
+    "log": "logs/m0/m0_lmeval_gsm8k_fast_200.log",
+    "smoke": {
+      "task": "edgeforge_gsm8k",
+      "task_version": "3.0-edgeforge.2",
+      "samples": 5,
+      "strict_exact_match": 0.8,
+      "flexible_exact_match": 0.8,
+      "result": "results/lmeval/gsm8k_smoke_fixed/gemma4-e4b/results_2026-08-04T20-46-10.907230.json",
+      "log": "logs/m0/m0_lmeval_gsm8k_smoke.log"
+    },
+    "note": "Formal fast-tier score uses the frozen 200-row manifest and excludes smoke doc_ids 0-4. The sample JSONL has one row per evaluation filter (400 lines for 200 documents)."
+  },
+  "humaneval": {
+    "status": "smoke_complete_not_formal_baseline",
+    "task": "edgeforge_humaneval",
+    "task_version": "1.0-edgeforge.1",
+    "samples": 5,
+    "confirm_run_unsafe_code": true,
+    "hf_allow_code_eval": true,
+    "temp_environment": "TMPDIR=/tmp TMP=/tmp TEMP=/tmp",
+    "data_revision": "7dce6050a7d6d172f3cc5c32aa97f52fa1a2e544",
+    "data_sha256": "2f2871a15fbc95b6c683043359f4ed8e144c5a1c4f24f25f66bc51f598dfcfb6",
+    "pass_at_1": 0.0,
+    "resolved_failure": {
+      "cause": "Python tempfile selected /mnt/c/Users/Han/AppData/Local/Temp, where AF_UNIX listener creation is unsupported.",
+      "fix": "Pin TMPDIR, TMP, and TEMP to native Linux /tmp for the code_eval process."
+    },
+    "result": "results/lmeval/humaneval_smoke_fixed/gemma4-e4b/results_2026-08-04T21-08-20.611861.json",
+    "result_sha256": "22b8cfee8bedbb333b157c0b59ba7548fe2986c527bdf919dbd2663ea353cdd5",
+    "samples_file": "results/lmeval/humaneval_smoke_fixed/gemma4-e4b/samples_edgeforge_humaneval_2026-08-04T21-08-20.611861.jsonl",
+    "samples_sha256": "cf0b47c55ad12357a752c85c5d659b21dcbaa7f62a3c7103aeeb3313bdc157cb",
+    "log": "logs/m0/m0_lmeval_humaneval_smoke_fixed.log",
+    "note": "The official code_eval executor completed normally; 0/5 is a valid model score, not an infrastructure failure."
+  },
+  "frozen_fast_manifests": {
+    "checksum_file": "manifests/lm_eval_fast_manifests.sha256",
+    "mmlu": {
+      "path": "manifests/mmlu_fast_500.json",
+      "sha256": "53819e8860712011bcc0df483a5aef2f9dd303a68fb83e318084b5b73c00185b",
+      "dataset_revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+      "samples": 500,
+      "selection": "seeded stratified sample covering all 57 subjects (8 or 9 rows each)",
+      "smoke_exclusion": "college_mathematics test doc_ids 0-4"
+    },
+    "gsm8k": {
+      "path": "manifests/gsm8k_fast_200.json",
+      "sha256": "a04b131f870e856a901844b903188e3c62fe643a66ac74cd5f3a17faa97a94af",
+      "dataset_revision": "740312add88f781978c0658806c59bc2815b9866",
+      "samples": 200,
+      "selection": "seeded simple random sample without replacement",
+      "smoke_exclusion": "test doc_ids 0-4"
+    },
+    "generator": {
+      "path": "scripts/freeze_lmeval_fast_manifests.py",
+      "sha256": "e14277b8772c390308c97021d481d7f614026cd8bbb7589d4e0bef5e394a4c9d",
+      "seed": 20260804
+    }
+  },
+  "next_action": "M0 line A is frozen with the declared HumanEval gap: only a valid five-sample smoke exists, so no formal full HumanEval baseline is claimed. Continue with the next milestone using the frozen manifests and B0-derived replay tapes; run the deferred official-QAT TB slow gate only in the M6 three-point comparison."
+}

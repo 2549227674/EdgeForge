@@ -1,0 +1,126 @@
+{
+  "schema_version": 3,
+  "candidate": "C01-S",
+  "format": "huggingface_bf16_safetensors",
+  "merge_script_sha256": "804c9392405715e8949c470a6213c4fc3891241a45a168faf7d7d3fd87c548e2",
+  "base_model": "models/gemma-4-E4B-it",
+  "base_model_safetensors_sha256": "cfbd3d2f1cd71bd471c37fe2bf8546d5028d41e5736f64e1ca6c6b8893125503",
+  "adapter": "results/t2/c01_s_family_80_20_half_r1/adapter",
+  "adapter_files": [
+    {
+      "path": "README.md",
+      "bytes": 5196,
+      "sha256": "6a369ffd0c2d8faf04f11e374228788bdb6d63f9d006215a273f8ad032301ec9"
+    },
+    {
+      "path": "adapter_config.json",
+      "bytes": 10162,
+      "sha256": "c3b3d2588b0d1eeea5aa84df262ed3cfca605306990e9c00aead78ef65c1fe4a"
+    },
+    {
+      "path": "adapter_model.safetensors",
+      "bytes": 101178872,
+      "sha256": "686ff4871947ba86c9830aaa2a33ad0f53cc09fc23db7feb10fa06473251c417"
+    }
+  ],
+  "adapter_artifact_set_sha256": "132e98e2dcc28851894c4295981d0e08708a7dde11384b21ec583bb58d3646c4",
+  "training_report": "results/t2/c01_s_family_80_20_half_r1/report.json",
+  "training_report_sha256": "a950394e75a5f36db5030aac2c9b94c20f370229dada2e4fdc35d309cfbb7512",
+  "training_plan_sha256": "61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e",
+  "training_completed_steps": 4096,
+  "training_input_tokens": 148425311,
+  "processor_assets": [
+    {
+      "path": "chat_template.jinja",
+      "bytes": 18569,
+      "source_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5",
+      "candidate_sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5"
+    },
+    {
+      "path": "processor_config.json",
+      "bytes": 1689,
+      "source_sha256": "32bdf45d2ad4cc29a0822ddd157a182de76644f0419a6228d151495256e9813c",
+      "candidate_sha256": "32bdf45d2ad4cc29a0822ddd157a182de76644f0419a6228d151495256e9813c"
+    },
+    {
+      "path": "tokenizer.json",
+      "bytes": 32169626,
+      "source_sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+      "candidate_sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 2095,
+      "source_sha256": "90c3a3ba5bf53818383a58e1a776cbcacd2a038d4812eaa373e1522f2d06f3df",
+      "candidate_sha256": "90c3a3ba5bf53818383a58e1a776cbcacd2a038d4812eaa373e1522f2d06f3df"
+    }
+  ],
+  "tensor_inventory": {
+    "shard_count": 4,
+    "tensor_count": 2076,
+    "dtype_numel": {
+      "BF16": 7941101802
+    },
+    "all_tensors_bf16": true,
+    "lora_tensor_count": 0
+  },
+  "files": [
+    {
+      "path": "chat_template.jinja",
+      "bytes": 18569,
+      "sha256": "0a2c8073c878ab1da004bee933a998606537bbb62016310352c7285c3f01c5b5"
+    },
+    {
+      "path": "config.json",
+      "bytes": 5176,
+      "sha256": "6b23bfd41dafe39fd7d61e858c156370bb23d531de46190e4457748ef3e7176c"
+    },
+    {
+      "path": "generation_config.json",
+      "bytes": 204,
+      "sha256": "b3b67b69c99550f50f7c2493f94eb9a5edb8c83bb7d90f1c059b8a742c7f9166"
+    },
+    {
+      "path": "model-00001-of-00004.safetensors",
+      "bytes": 5637144744,
+      "sha256": "aa3e9d1e0443f9874260af4efbe8f0aa4c8fed25d41c9ca172e4c354d101c709"
+    },
+    {
+      "path": "model-00002-of-00004.safetensors",
+      "bytes": 4994573962,
+      "sha256": "cfcc89ea53515c42577d05e4f7d90ea6f00e7ec29c0516a883a142d26af1b2da"
+    },
+    {
+      "path": "model-00003-of-00004.safetensors",
+      "bytes": 4996204630,
+      "sha256": "acbaaed4d41b48485f182d8e71070576ac9e649a2ef716979808864422d6e8be"
+    },
+    {
+      "path": "model-00004-of-00004.safetensors",
+      "bytes": 254550436,
+      "sha256": "8080cb1ab73a91528449fc238665f6a2938583e5f1dc877c099292a1f31f6144"
+    },
+    {
+      "path": "model.safetensors.index.json",
+      "bytes": 212437,
+      "sha256": "5e39c95dba0d7db21b506892fd57719b740f6934a93bb49bd0b8ba049ff9a61f"
+    },
+    {
+      "path": "processor_config.json",
+      "bytes": 1689,
+      "sha256": "32bdf45d2ad4cc29a0822ddd157a182de76644f0419a6228d151495256e9813c"
+    },
+    {
+      "path": "tokenizer.json",
+      "bytes": 32169626,
+      "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "bytes": 2095,
+      "sha256": "90c3a3ba5bf53818383a58e1a776cbcacd2a038d4812eaa373e1522f2d06f3df"
+    }
+  ],
+  "total_bytes": 15914883568,
+  "artifact_set_sha256": "1eebd3e1302a502ce41a9416267219e70cec63ac69ea20429dd97bd47ba9a133"
+}

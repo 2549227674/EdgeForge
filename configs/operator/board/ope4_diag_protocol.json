@@ -1,0 +1,189 @@
+{
+  "schema": "edgeforge-ope4-diagnostic-prereg-v1",
+  "stage": "OPE4",
+  "status": "PREREGISTERED_FROZEN_NOT_RUN",
+  "label": "board-diagnostic-1core",
+  "frozen_at_controller": "2026-09-21T12:55:00+08:00",
+  "controller_git_sha_at_freeze": "213460d88311cba5d84add4d3ee57aae26716c6d",
+  "authority": {
+    "execution_card": "docs/operator/EdgeForge_算子面_板端_执行卡_R2.md#ope4-双载体层级归因",
+    "handoff": "docs/handoff/算子面_板端_OPE3_隔离测量完成交接_2026-09-21.md",
+    "ope3_terminal_status": "VALID_OPE3_TIER_B_CACHELINE_PROXY_REJECTED_OPE4_ANCHOR_PENDING"
+  },
+  "owner_variance": {
+    "requested_at_controller": "2026-09-21T12:55:00+08:00",
+    "instruction": "不需要复测，取消同日复测，只测一次",
+    "effect": "the same-day second segment is cancelled before any formal OPE4 model run",
+    "replication_status": "WAIVED_BY_OWNER_NOT_SATISFIED",
+    "claim_limit": "the single segment may close the model-stage anchor if all other gates pass, but cannot support an OPE4 replication claim"
+  },
+  "workload": {
+    "prompt_manifest": "configs/operator/board/ope4_five_prompt_manifest.json",
+    "prompt_manifest_sha256": "29f67ecd982e90dd24948b84500f1688c1ac5e9a03d02f4bc9ae4086fc7e5e7a",
+    "payload_file": "data/operator/board/ope4_fixed_prompts.txt",
+    "payload_sha256": "b5cbaf281f3c379e7c375e92a6570799b92226e267378747b65079c74eded290",
+    "prompt_count": 5,
+    "prompt_order": [1, 2, 3, 4, 5]
+  },
+  "carriers": {
+    "c02_a2": {
+      "role": "primary",
+      "carrier": "rkllm-1core-c02",
+      "lineage": "C02-S.O BF16 merge -> RKLLM input backfill -> A2 128-window calibration -> W8A8/16K/1-core",
+      "board_path": "/home/orangepi/edgeforge_ope_r1/models/C02-S.O-w8a8-rk3588-16k-1core-A2.rkllm",
+      "bytes": 11687037412,
+      "mtime_epoch_seconds": 1789655691,
+      "expected_build_sha256": "61d2fedd5ce1a0c5cbd785b5198550254bea26d685bc49cabe98558ae0fa2c62",
+      "identity_check_for_this_run": "path + byte size + frozen mtime; no 11.7-GB rehash per owner efficiency instruction",
+      "reference_receipt": "results/operator/board/c0/c0_5_board_smoke_20260918T113737+0800/receipt.json"
+    },
+    "official_a1": {
+      "role": "read_only_comparison",
+      "carrier": "rkllm-1core-official",
+      "lineage": "official Gemma-4 E4B weights -> official 19-entry calibration -> W8A8/16K/1-core M0 frozen R2.0",
+      "board_path": "/home/orangepi/edgeforge_m0_frozen_r2/gemma-4-e4b-it-w8a8-rk3588-16k-1core.rkllm",
+      "bytes": 11687037412,
+      "mtime_epoch_seconds": 1786098318,
+      "frozen_sha256": "4bdad6bfa34e23562d65c86ad1fcc68c626c6eb6f2761b4d354f26f6d7edb10b",
+      "identity_check_for_this_run": "path + byte size + frozen mtime + existing P0 read-only SHA receipt; no repeated 11.7-GB rehash",
+      "frozen_marker": "/home/orangepi/edgeforge_m0_frozen_r2/FROZEN.txt",
+      "write_policy": "zero writes to the frozen model and its directory"
+    }
+  },
+  "measurement_protocol": {
+    "formal_segments": 1,
+    "carrier_order": "c02_a2-official_a1",
+    "segment_label": "segment1_owner_waived_single",
+    "same_process_across_carriers": false,
+    "model_initializations_per_carrier": 1,
+    "prompts_per_initialization": 5,
+    "prompt_warmup_runs": 0,
+    "warmup_rationale": "the exact five-prompt workload is measured without adding an unregistered prompt; init is separately timed and excluded from per-prompt TTFT",
+    "inter_carrier_settle_seconds": 5,
+    "max_new_tokens": 96,
+    "max_context_len": 16384,
+    "template_path": "manual-rkllm-set-chat-template",
+    "template_system_prompt": "",
+    "template_prefix": "<bos><|turn>user\n",
+    "template_postfix": "<turn|>\n<|turn>model\n",
+    "top_k": 1,
+    "top_p": 0.95,
+    "temperature": 0.8,
+    "repeat_penalty": 1.1,
+    "greedy_reason": "top_k=1 makes top_p and temperature non-operative",
+    "skip_special_token": true,
+    "ignore_eos_token": false,
+    "keep_history": 0,
+    "prompt_cache": false,
+    "thinking": false,
+    "cpu_set": [4, 5, 6, 7],
+    "rkllm_enabled_cpu_mask_hex": "0xf0",
+    "cpu_governor": "performance",
+    "npu_governor": "performance",
+    "governor_restore": "paired trap, exact pre-run values",
+    "board_clock_policy": "controller before/after is absolute authority; board wall time is recorded, monotonic-raw is duration/alignment authority"
+  },
+  "instrumentation": {
+    "callback": {
+      "clock": "CLOCK_MONOTONIC_RAW",
+      "events": ["NORMAL", "WAITING", "FINISH", "ERROR"],
+      "fields": [
+        "timestamp_ns",
+        "state",
+        "token_id",
+        "text_bytes",
+        "RKLLMPerfStat.prefill_time_ms",
+        "RKLLMPerfStat.prefill_tokens",
+        "RKLLMPerfStat.generate_time_ms",
+        "RKLLMPerfStat.generate_tokens",
+        "RKLLMPerfStat.memory_usage_mb"
+      ],
+      "transcript_storage": "one raw UTF-8 file per carrier and prompt"
+    },
+    "npu_load": {
+      "source": "/sys/kernel/debug/rknpu/load",
+      "rate_hz": 10,
+      "clock": "CLOCK_MONOTONIC_RAW"
+    },
+    "telemetry": {
+      "rate_hz": 1,
+      "fields": "CPU/NPU/DMC frequency and governor, all thermal zones, NPU load"
+    },
+    "process_perf_stat": {
+      "binary": "/home/orangepi/edgeforge_ope_r1/bin/perf",
+      "scope": "each carrier process including RKLLM worker threads",
+      "events": [
+        "task-clock",
+        "context-switches",
+        "cpu-migrations",
+        "page-faults",
+        "cycles:u",
+        "instructions:u"
+      ]
+    }
+  },
+  "metric_definitions": {
+    "wall_ttft_ms": "(first NORMAL callback monotonic_raw_ns - rkllm_run call start monotonic_raw_ns) / 1e6",
+    "callback_token_interval_ms": "difference between consecutive NORMAL callback timestamps within one prompt; WAITING callbacks are recorded but excluded",
+    "primary_aggregate_decode_ms_per_token": "sum(last NORMAL - first NORMAL) across valid prompts / sum(NORMAL callback count - 1), in milliseconds",
+    "rkllm_perf_decode_ms_per_token": "sum(RKLLMPerfStat.generate_time_ms) / sum(RKLLMPerfStat.generate_tokens), reported as a runtime cross-check when token counts are positive",
+    "stage_breakdown": "RKLLMPerfStat prefill/generate fields plus wall callback timings; residual is descriptive and is not forced into an undocumented SDK stage",
+    "npu_load_curve": "10-Hz core0/core1/core2 samples aligned to each prompt run window on CLOCK_MONOTONIC_RAW",
+    "cpu_participation": "perf task-clock divided by carrier runner wall span, plus cycles/instructions/IPC"
+  },
+  "anchor": {
+    "primary_carrier": "c02_a2",
+    "ope0_tier_a_ceiling_gbps": 23.1951846685,
+    "ope0_replication_status": "PASS_SINGLE_SEGMENT_OWNER_WAIVER",
+    "core_projection_weight_bytes": 3890216960,
+    "core_projection_label": "258 core projection calls; not all non-lmhead linear",
+    "all_non_lmhead_linear_weight_bytes": 3972792320,
+    "all_non_lmhead_linear_label": "all 343 non-lmhead linear calls",
+    "core_projection_predicted_lower_bound_ms": 167.7165763324606,
+    "all_non_lmhead_linear_predicted_lower_bound_ms": 171.2765979998949,
+    "prediction_formula": "weight bytes / (23.1951846685 * 1e9 bytes/s) * 1e3",
+    "gap_formula_pct": "(measured aggregate decode ms/token - predicted lower bound ms) / predicted lower bound ms * 100",
+    "interpretation_limit": "the prediction assumes full listed weight traffic at the CPU triad ceiling and is only a lower-bound accounting anchor; SRAM reuse, weight compression, and scheduling bubbles remain candidates unless directly supported"
+  },
+  "validity_gates": {
+    "each_carrier_exit_zero": true,
+    "each_carrier_exactly_five_prompt_summaries": true,
+    "each_prompt_one_finish_callback": true,
+    "each_prompt_has_normal_callback_and_nonempty_output": true,
+    "transcript_utf8": true,
+    "transcript_pad_literal_absent": "[PAD]",
+    "transcript_replacement_character_absent": true,
+    "semantic_evaluation": "FORBIDDEN",
+    "perf_stat_all_events_numeric": true,
+    "npu_load_numeric_samples_each_prompt_window": true,
+    "telemetry_numeric_samples_each_carrier_phase": true,
+    "a76_frequency_min_fraction_of_max": 0.95,
+    "thermal_samples_below_nonzero_trip_points": true,
+    "governors_restored_exactly": true,
+    "carrier_artifacts_unchanged_by_run": true
+  },
+  "implementation": {
+    "runner_source": "scripts/operator/board/rkllm_ope4_diag.cpp",
+    "runner_source_sha256": "1a1b6662cd720d4247d0b09b5e49d7faf73243ee29bbe795ff0588fc2f3e0733",
+    "formal_runner": "scripts/operator/board/run_ope4.sh",
+    "formal_runner_sha256": "d6e4ff31739b69b8e3253af802b6fad86d3dfabfdf39103bcf03c7efaac163bf",
+    "measurement_payload": "scripts/operator/board/ope4_measure_payload.sh",
+    "measurement_payload_sha256": "46526dcfd6a85997c12b0430afc2e28b90442d41709d95409b438907014e36cb",
+    "npu_sampler": "scripts/operator/board/npu_load_sampler.py",
+    "npu_sampler_sha256": "52f7bc03d3e6b5f13a3b2db1c740fb15d019fcb10a6e1aedccecda5a2e2b8301",
+    "telemetry_sampler_sha256": "74f8e8a85858c567206b7234dafe7015a59483c42d83300a04b3532a1368b84c",
+    "governor_guard_sha256": "6adc7622dc43897d108aec853dd0ea70bd99b81f095fa61edf12e0da5663bf0d"
+  },
+  "frozen_prohibitions": [
+    "3-core or multi-core LLM execution",
+    "driver, kernel, device-tree, runtime .so, or frozen model modification",
+    "w8a8 group-size experiments",
+    "prompt-cache A/B",
+    "thinking or tool-call semantics",
+    "context-length reduction probes",
+    "quality or semantic scoring",
+    "B0 or PC same-table comparison",
+    "converting isolated OPE2/OPE3 primitive timings into TPOT",
+    "rewriting the OPE3 Tier-B cache-line proxy failure"
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "stage": "T3_OPD_rank_4096_memory_gate",
+  "started_at": "2026-08-12T20:38:54.476227+08:00",
+  "argv": [
+    "scripts/m1/run_t3_rank4096_memory_gate.py",
+    "--model",
+    "models/C01-S-bf16-r1",
+    "--plan",
+    "results/t1/family_80_20_half_plan_r1/family_80_20.parquet",
+    "--teacher-url",
+    "http://127.0.0.1:8000",
+    "--rank",
+    "256",
+    "--alpha",
+    "16",
+    "--learning-rate",
+    "5e-5",
+    "--weight-decay",
+    "0",
+    "--output",
+    "results/m1/t3_rank256_4096_memory_gate_receipt.json"
+  ],
+  "configuration": {
+    "rank": 256,
+    "alpha": 16,
+    "use_rslora": true,
+    "scaling": 1.0,
+    "learning_rate": 5e-05,
+    "weight_decay": 0.0,
+    "quantization": "bnb_nf4_double_quant_bf16_compute",
+    "attention": "sdpa",
+    "activation_checkpointing": false,
+    "use_cache": true,
+    "target_scope": "language_model_linear_only"
+  },
+  "inputs": {
+    "model": "/root/autodl-tmp/edgeforge-m1/workspace/models/C01-S-bf16-r1",
+    "plan": "/root/autodl-tmp/edgeforge-m1/workspace/results/t1/family_80_20_half_plan_r1/family_80_20.parquet",
+    "plan_sha256": "61ece8bad05f4156b4b20fa734c2b7e1f804fc879aa50d7a28cceb790042820e",
+    "rollout": {
+      "uid": "lambda__hermes-agent-reasoning-traces:14d1b510-67cb-4e1c-a9dd-c74e0f9d8b31:0::segment:0000:part:0000",
+      "prompt_length": 3072,
+      "completion_length": 1024,
+      "sequence_sha256": "891754d8b67517793a7eba8f4a3268c340c2e488f111b3884be4a061c6167b55"
+    },
+    "teacher_score_latency_seconds": 1.0476495260372758
+  },
+  "runtime": {
+    "packages": {
+      "accelerate": "1.14.0",
+      "bitsandbytes": "0.50.0",
+      "datasets": "5.0.1",
+      "numpy": "2.3.5",
+      "peft": "0.20.0",
+      "pyarrow": "25.0.1",
+      "torch": "2.13.0",
+      "transformers": "5.15.0",
+      "trl": "1.9.2",
+      "vllm": "0.27.0"
+    },
+    "cuda_visible_devices": "1",
+    "initial_gpu_inventory": [
+      {
+        "index": 0,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-8441031a-35d4-fc0b-d6c1-70adb534e305",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 78093,
+        "utilization_percent": 0
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-39160c7c-0272-9254-c171-be00298b0dfc",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 3,
+        "utilization_percent": 0
+      }
+    ],
+    "teacher_initial_health": {
+      "status": 200,
+      "latency_seconds": 0.021982548059895635,
+      "body": "{\"status\":\"ok\"}"
+    },
+    "final_gpu_inventory": [
+      {
+        "index": 0,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-8441031a-35d4-fc0b-d6c1-70adb534e305",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 78093,
+        "utilization_percent": 0
+      },
+      {
+        "index": 1,
+        "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+        "uuid": "GPU-39160c7c-0272-9254-c171-be00298b0dfc",
+        "memory_total_mib": 97887,
+        "memory_used_mib": 88343,
+        "utilization_percent": 17
+      }
+    ],
+    "teacher_final_health": {
+      "status": 200,
+      "latency_seconds": 0.00196552905254066,
+      "body": "{\"status\":\"ok\"}"
+    }
+  },
+  "status": "PASS",
+  "trainable_parameter_tensors": 686,
+  "trainable_parameters": 622067712,
+  "target_module_count": 343,
+  "loss": 1.1889605522155762,
+  "grad_norm_before_clipping": 1.998049020767212,
+  "step_seconds": 2.7803363929269835,
+  "peak_allocated_gib": 81.46987962722778,
+  "peak_reserved_gib": 85.5859375,
+  "finished_at": "2026-08-12T20:39:19.725535+08:00",
+  "wall_seconds": 25.249345670919865
+}

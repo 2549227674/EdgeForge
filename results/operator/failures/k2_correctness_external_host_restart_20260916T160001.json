@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "stage": "OP5_K2_ISOLATED_CORRECTNESS",
+  "started_at": "2026-09-16T15:54:26+08:00",
+  "interrupted_at_approximately": "2026-09-16T16:00:01+08:00",
+  "classification": "EXTERNAL_HOST_RESTART",
+  "evidence": "The WSL kernel log starts a new boot at 16:00:01, including block-device remount and journal recovery. The Python process disappeared without an exception receipt while still hashing the complete C02 artifact inventory.",
+  "formal_correctness_started": false,
+  "formal_performance_measurement_started": false,
+  "result_or_receipt_written": false,
+  "preregistration": {
+    "path": "/home/qbz415/piloop-edge-inference-profiler/configs/operator/k2_nf4_decode_gemv_prereg.json",
+    "sha256_after_restart": "bb497bf4be20a922abbe6edbf8e4812d55b01e14d8db088371ec332ad61f299f"
+  },
+  "status": "INTERRUPTED_NO_FORMAL_DATA"
+}

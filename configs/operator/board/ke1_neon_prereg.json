@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "stage": "OPE3-K-E1",
+  "status": "PREREGISTERED_FROZEN_NOT_RUN",
+  "frozen_at": "2026-09-19T21:32:26+08:00",
+  "selection": {
+    "kernel_id": "ke1_int8_gemv_sdot",
+    "decision": "SELECTED",
+    "scope": "One formal decode down-projection shape only; the optional gate/up shape is not scheduled in OPE3.",
+    "four_questions": {
+      "authenticity": "PASS: the operation, M/K/N geometry, and frequency are frozen in the E4B census and OPE1 manifest; CPU execution is a cross-ISA instrument, not the RKLLM deployment path.",
+      "bottleneck": "PASS: M=1 int8 GEMV has 1.998438719750 ops/analytic-byte and is expected to be memory-bound against the OPE0 board ceiling.",
+      "capability": "PASS: the measured A76 feature set contains asimddp; the candidate uses ARMv8.2 dot-product intrinsics and does not require i8mm, SVE, or SME.",
+      "deliverability": "PASS: the row has an exact OPE2 int8 primitive anchor, a lineage-separated sm_89 NF4 reference, and an explicit future OPE4 stage anchor."
+    }
+  },
+  "sources": {
+    "execution_card": "docs/operator/EdgeForge_算子面_板端_执行卡_R2.md",
+    "ope1_manifest": {
+      "path": "configs/operator/board/ope1_shape_manifest.json",
+      "sha256": "1b5f6a4690da92fcc2aa2213915280cda3ef866feab5fcbcfd06c702b781e05d",
+      "status": "PASS_MANIFEST_FROZEN"
+    },
+    "ope0_bandwidth_ceiling": {
+      "path": "results/operator/board/bandwidth_ceiling.json",
+      "sha256": "8dde6394083a57902e2c38991a5d99cae8e04edfedeb1bfb640266405167cef9",
+      "ceiling_gbps_decimal": 23.195184668499998,
+      "evidence_limit": "One formal OPE0 segment; the owner waived the second segment, so this denominator is not replicated evidence."
+    },
+    "ope2_anchor": {
+      "receipt_path": "results/operator/board/ope2/ope2_receipt_20260918.json",
+      "receipt_sha256": "b408e1aacff736ac2f40d46af6613953a7ae74e43a2bbb81b4874a12358b8819",
+      "cells_path": "results/operator/board/ope2/ope2_cells_20260918.csv",
+      "cells_sha256": "fa021d9d2c3057a07f6b6eadfa48116bccd3b783d074f7e0a54c0914e8f34fd7"
+    },
+    "pc_reference": {
+      "path": "results/operator/pool/k2_r2_day1_20260916.json",
+      "sha256": "07c7006651254246a3023e8fad8b4652697f3b7c2c5711eebb89b5e82561dff0"
+    },
+    "git_sha_at_freeze": "213460d88311cba5d84add4d3ee57aae26716c6d"
+  },
+  "semantic_contract": {
+    "operation": "For n in [0,N), Y[n] = sum over k in [0,K) of int32(X[k]) * int32(W[n,K+k]).",
+    "shape_mkn": [
+      1,
+      10240,
+      2560
+    ],
+    "activation_dtype": "signed int8",
+    "weight_dtype": "signed int8",
+    "accumulator_and_output_dtype": "signed int32",
+    "weight_storage": "row-major contiguous [N,K], one output row per contiguous K-byte span",
+    "bias": null,
+    "overflow_contract": "Frozen correctness distributions keep every exact sum inside signed int32; overflow behavior is not part of the contract.",
+    "oracle": "Scalar C accumulation in int32 with vectorization disabled; every output element must match exactly."
+  },
+  "candidate": {
+    "source_path": "scripts/operator/board/ke1_gemv_bench.c",
+    "source_sha256": "c068d271d18f59dda9cd5c67ce170da66f870531997d40fbb4d87b753df0838f",
+    "identity_policy": "The source hash is checked in every formal segment. Any source change requires a transparently versioned preregistration before new formal data."
+  },
+  "formal_shape": {
+    "shape_id": "decode_mlp_down_proj",
+    "phase": "decode",
+    "census_ptr": "$.op_families.nf4_linear.shapes[phase=decode,variant=mlp_down_proj]",
+    "frequency": {
+      "calls_per_model_forward": 42,
+      "observed_model_forwards": 21694,
+      "observed_invocations": 911148
+    },
+    "analytics": {
+      "activation_read_bytes": 10240,
+      "weight_read_bytes": 26214400,
+      "output_write_bytes": 10240,
+      "total_unique_bytes": 26234880,
+      "ops": 52428800,
+      "arithmetic_intensity_ops_per_byte": 1.9984387197501952,
+      "ope0_roofline_lower_bound_us": 1131.048550591107
+    }
+  },
+  "baselines": {
+    "scalar": {
+      "role": "exact oracle and timed scalar baseline",
+      "implementation": "plain C inner product compiled at -O3 with function-scoped vectorization disabled",
+      "required_assembly_property": "no NEON dot-product instruction in the scalar kernel"
+    },
+    "autovec": {
+      "role": "compiler baseline",
+      "implementation": "the same plain C inner-product semantics compiled with -O3 -mcpu=cortex-a76 and normal GCC auto-vectorization",
+      "required_build_evidence": "retain GCC vectorization diagnostics and disassembly"
+    },
+    "neon_sdot": {
+      "role": "candidate",
+      "implementation": "ARM NEON signed-dot intrinsics with independent accumulators and exact int32 reduction",
+      "required_assembly_property": "candidate disassembly contains sdot"
+    }
+  },
+  "correctness_protocol": {
+    "must_complete_before_timing": true,
+    "trials": [
+      {
+        "seed": 20260919,
+        "distribution": "small_symmetric_int8",
+        "range_inclusive": [-8, 7]
+      },
+      {
+        "seed": 20260920,
+        "distribution": "full_symmetric_int8",
+        "range_inclusive": [-127, 127]
+      },
+      {
+        "seed": 20260921,
+        "distribution": "alternating_extrema_with_random_sign",
+        "magnitudes": [127, 113]
+      }
+    ],
+    "coverage": "All 2,560 outputs for autovec and neon_sdot are compared with the scalar oracle in every trial.",
+    "tolerance": {
+      "atol": 0,
+      "rtol": 0
+    },
+    "pass_rule": "All 15,360 candidate/baseline output comparisons are exact and all output checksums are emitted.",
+    "repair_kill": "After three candidate correctness repair iterations, stop OPE3 and retain the failing cases. Harness-only defects may be fixed with an explicit attempt record."
+  },
+  "measurement_protocol": {
+    "board": "Orange Pi 5 / RK3588S",
+    "cpu_set": [4, 5, 6, 7],
+    "threads": 4,
+    "thread_pinning": "OpenMP worker tid i is pinned to cpu 4+i; the controller also uses taskset -c 4-7.",
+    "governors_during_window": {
+      "policy4": "performance",
+      "policy6": "performance",
+      "npu": "performance"
+    },
+    "warmup_repetitions_per_variant": 50,
+    "timed_repetitions_per_variant": 200,
+    "formal_input": {
+      "seed": 20260920,
+      "distribution": "full_symmetric_int8",
+      "range_inclusive": [-127, 127]
+    },
+    "interleave": "Six fixed permutations of scalar/autovec/neon_sdot repeat round-robin so each variant occupies every order slot.",
+    "clock": "CLOCK_MONOTONIC_RAW around one full four-thread GEMV invocation",
+    "summary": [
+      "p25_us",
+      "p50_us",
+      "p75_us",
+      "iqr_us",
+      "iqr_over_p50"
+    ],
+    "telemetry_hz": 1,
+    "frequency_gate": "Every timed-window policy4 and policy6 frequency sample must be at least 95% of its recorded max.",
+    "thermal_gate": "No timed-window thermal sample may equal or exceed the lowest enabled trip point recorded for its zone.",
+    "stability_gate": "If any variant has IQR/p50 > 0.30, discard that segment and repeat it once unchanged; a second unstable segment closes that segment as invalid.",
+    "formal_segments": 2,
+    "minimum_same_day_segment_separation_seconds": 1800,
+    "replication_gate": "Both valid segments must have the same candidate-vs-autovec direction and their candidate p50 relative difference must be <= 0.10.",
+    "controller_clock": "Record controller wall-clock timestamps immediately before and after each board run; use board monotonic time for durations.",
+    "smoke_policy": "No separate performance smoke is scheduled. The exact randomized correctness gate is the only pre-formal execution check."
+  },
+  "tier_a": {
+    "formula": "total_unique_bytes / p50_seconds / 1e9",
+    "relative_score_formula": "measured_gbps / 23.195184668499998",
+    "interpretation": "Analytic unique-byte roofline score; it does not assert that every counted byte reached DRAM."
+  },
+  "tier_b": {
+    "tool": "/home/orangepi/edgeforge_ope_r1/bin/perf",
+    "scope": "Run once after the first valid formal segment for all three variants; perf record is required only for neon_sdot.",
+    "stat_events": [
+      "cycles:u",
+      "instructions:u",
+      "l2d_cache_refill:u",
+      "bus_access:u"
+    ],
+    "stat_repetitions_per_variant": 200,
+    "counter_policy": "Attempt the frozen event group first. If parsing or support fails, isolate each event once and mark only unsupported events N/A; do not substitute unnamed raw events.",
+    "cache_line_bytes_source": "/sys/devices/system/cpu/cpu7/cache/index0/coherency_line_size",
+    "bus_access_proxy": "bus_access * measured cache-line bytes",
+    "analytic_backing_gate": "Report the ratio of bus_access proxy bytes to total_unique_bytes * perf repetitions. A ratio within [0.80,1.20] is supporting evidence; a miss is retained and investigated, not normalized away.",
+    "record": {
+      "variant": "neon_sdot",
+      "event": "cycles:u",
+      "frequency_hz": 99,
+      "call_graph": "dwarf",
+      "artifacts": [
+        "perf.data",
+        "perf_report.txt"
+      ]
+    }
+  },
+  "cross_isa_anchors": {
+    "npu_primitive": {
+      "lineage": "OPE2 rknn_matmul_run, int8xint8_to_int32, core0, normal layout",
+      "cell_id": "formal__decode_mlp_down_proj__int8xint8_to_int32__core0__normal",
+      "p50_us": 2391.667,
+      "measured_gops": 21.921446424,
+      "measured_gbps": 10.969286277,
+      "memory_relative_to_ope0": 0.47291222
+    },
+    "pc_sm89_reference": {
+      "lineage": "K2-R2 bitsandbytes 0.50.0 fused NF4 eager on RTX 4060 Laptop / sm_89; different dtype, packing, runtime, and byte model",
+      "variant": "mlp_down_proj",
+      "shape": [1, 10240, 2560],
+      "p50_us": 174.079999,
+      "analytic_bytes": 13549828,
+      "use": "Context-only third column. It must not be ranked against the NEON or NPU rows as an implementation win/loss."
+    },
+    "ope4_anchor": {
+      "status": "PENDING_OPE4",
+      "future_field": "board-diagnostic-1core decode stage/token timing",
+      "current_disposition": "OPE3 may close its isolated measurement and three-horizontal row, but final stage anchoring remains explicitly pending until OPE4."
+    }
+  },
+  "outcome_rules": {
+    "ope3_measurement_pass": "Correctness, all three timed baselines, Tier-A, supported Tier-B counters, telemetry, paired governor restore, and two-segment replication gates pass.",
+    "candidate_negative_rule": "If neon_sdot is more than 30% slower than autovec and perf shows no bandwidth or stall headroom explanation, record a valid optimization-negative result; do not tune after observing formal data.",
+    "success_definition": "Gate closure and accurate reporting, not beating autovec, the NPU primitive, or the sm_89 reference.",
+    "time_kill": "Stop and write a bounded result if OPE3 exceeds four working days."
+  },
+  "claim_limits": [
+    "The CPU kernel is a cross-ISA instrument and is not used by the closed RKLLM deployment path; no board-model speedup may be claimed.",
+    "The OPE2 value is an isolated NPU primitive result, not RKLLM TPOT.",
+    "The PC row uses NF4 on sm_89 and is lineage-separated; it is context, not a same-format hardware contest.",
+    "The OPE4 model-stage anchor is pending and must not be fabricated from isolated OPE2/OPE3 timings.",
+    "All Tier-A scores inherit the single-segment owner-waiver evidence level of the OPE0 denominator.",
+    "No 3-core LLM, driver, device-tree, kernel, shared-library, quality-evaluation, or frozen model artifact change is authorized by this preregistration."
+  ]
+}
