@@ -263,10 +263,17 @@ def fig_npu(t_name, t):
     for key, label, color, lw in lines:
         pts = sorted(s[key].items())
         xs, ys = [p[0] for p in pts], [p[1] for p in pts]
-        ax.plot(xs, ys, color=color, lw=lw, solid_capstyle="round", label=label, zorder=3)
+        # gate/up_proj and o_proj were only measured at M = 1, 813, 1445, 5142, 7082:
+        # nothing between 1 and 813, so that segment is dashed instead of implying a measured curve.
+        gap = len(xs) > 1 and xs[1] > 2
+        if gap:
+            ax.plot(xs[:2], ys[:2], color=color, lw=lw * 0.7, ls=(0, (3, 3)), zorder=3)
+        start = 1 if gap else 0
+        ax.plot(xs[start:], ys[start:], color=color, lw=lw, solid_capstyle="round", label=label, zorder=3)
         ax.scatter(xs, ys, s=22, color=color, edgecolor=t["surface"], linewidth=1.2, zorder=4)
         extra = " · 峰值" if key == (2048, 2560) else ""
         ax.text(xs[-1] * 1.15, ys[-1], f"{ys[-1]:,.0f} GOPS{extra}", fontsize=9, color=t["ink"], va="center")
+    ax.text(1.25, 330, "虚线：M=1 到 813 之间没有测点，只连两端", fontsize=8.8, color=t["ink2"], va="center")
     ax.set_xlim(0.8, 7082 * 9)
     ax.set_ylim(10, 5000)
     ax.set_xticks([1, 10, 100, 1000, 7082])
