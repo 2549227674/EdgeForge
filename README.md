@@ -13,13 +13,13 @@
 
 | 模块 | 结果 | 条件与基线 | 入口 |
 |---|---|---|---|
-| 数据治理 | 9 个来源 → **15.4 万条**规范 agent 轨迹 | 近重去重、13-gram 测试集去污染、脱敏、按源会话划分验证集 | [报告](docs/m0/05_data_pipeline.md) · [代码](scripts/m0/data/) |
-| SFT | 验证集 loss **1.630 → 0.839** | 双卡 DDP，QLoRA，4,096 步，token 加权损失 | [审计](results/m1/c01_s_completion_audit.md) |
-| 在线蒸馏 | 31B teacher → E4B student，**960 步** | teacher 由 vLLM 部署，rsLoRA，reverse-KL 近似目标 | [配置](configs/m1/t3_opd.yaml) |
 | 板端部署 | RKLLM **W8A8**，RK3588 NPU 单核 **16K 上下文**运行 | 补齐 54 个共享 KV 权重键，逐位校验 2,130 个张量 | [转换代码](scripts/operator/board/) |
 | 多核排障 | 定位为 **IOVA 4 GiB 窗口耗尽**（3 核缺口 44.9 MB） | ioctl 拦截 + ftrace 映射记录；CMA 仍有空闲 | [报告](docs/m0/06_board_smoke.md) |
 | ARM NEON | FP16 GEMV **5.84 → 2.92 ms（2.00×）** | 4×A76，K=10240、N=2560，较 GCC -O3 | [报告](docs/operator/EdgeForge_算子面_板端_OPE5_FP16_GEMV正式段报告_2026-09-21.md) |
 | NPU 评测 | 峰值 **1.74 TOPS**；down_proj 形状只有 **22 GOPS** | RKNN matmul API，INT8，core0，按模型真实形状 | [汇总表](results/operator/board/ope2/ope2_cells_20260918.csv) |
+| 数据治理 | 9 个来源 → **15.4 万条**规范 agent 轨迹 | 近重去重、13-gram 测试集去污染、脱敏、按源会话划分验证集 | [报告](docs/m0/05_data_pipeline.md) · [代码](scripts/m0/data/) |
+| SFT | 验证集 loss **1.630 → 0.839** | 双卡 DDP，QLoRA，4,096 步，token 加权损失 | [审计](results/m1/c01_s_completion_audit.md) |
+| 在线蒸馏 | 31B teacher → E4B student，**960 步** | teacher 由 vLLM 部署，rsLoRA，reverse-KL 近似目标 | [配置](configs/m1/t3_opd.yaml) |
 | GPU 算子 | Triton RMSNorm **2.51×**（较 eager） | 96 组形状、576 次正确性检查，隔离测试 | [实现](scripts/operator/k1_rmsnorm.py) |
 | 显存受限推理 | lm_head 镜像后每 token **143.4 → 119.8 ms（1.20×）** | 8 GB 显存，21,705 个 token 输出逐一一致，配对计时 | [裁决](docs/operator/EdgeForge_算子面_lm_head_执行裁决_R1.md) |
 
